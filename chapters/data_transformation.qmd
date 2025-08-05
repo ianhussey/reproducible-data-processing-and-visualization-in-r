@@ -21,6 +21,8 @@ options(scipen = 999)
 
 ## Dependencies and data
 
+**\[\[This data comes from a real study on implicit and self-reported evaluations. The implementation of the procedure produced three data files: one for the demographics data, one for the self-reported evaluations, and one for the implicit measure (the 'Affect Misattribution Procedure'). This script uses each of these to learn and practice functions from the readr, dplyr, and tidyr libraries that are commonly used for data wrangling. In doing so, we will learn how to do many of the steps involved in data processing for a given experiment.\]\]**
+
 ```{r}
 
 library(dplyr)

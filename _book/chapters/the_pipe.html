@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Loading, viewing, and saving data – Reproducible Data Processing and Visualization</title>
+<title>5&nbsp; The pipe – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1702,8 +1702,8 @@ async function fuseSearch(query, fuse, fuseOptions) {
 }
 </script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/the_pipe.html" rel="next">
-<link href="../chapters/fundamentals.html" rel="prev">
+<link href="../chapters/data_transformation.html" rel="next">
+<link href="../chapters/loading_data.html" rel="prev">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
   bubbles: true,
@@ -4743,230 +4743,6 @@ vertical-align: -.125em;
     "search-label": "Search"
   }
 }</script>
-<script>$(document).ready(function(){
-    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
-    if ($('[data-toggle="popover"]').popover === 'function') {
-        $('[data-toggle="popover"]').popover();
-    }
-});
-</script>
-<style type="text/css">
-.lightable-minimal {
-border-collapse: separate;
-border-spacing: 16px 1px;
-width: 100%;
-margin-bottom: 10px;
-}
-.lightable-minimal td {
-margin-left: 5px;
-margin-right: 5px;
-}
-.lightable-minimal th {
-margin-left: 5px;
-margin-right: 5px;
-}
-.lightable-minimal thead tr:last-child th {
-border-bottom: 2px solid #00000050;
-empty-cells: hide;
-}
-.lightable-minimal tbody tr:first-child td {
-padding-top: 0.5em;
-}
-.lightable-minimal.lightable-hover tbody tr:hover {
-background-color: #f5f5f5;
-}
-.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
-background-color: #f5f5f5;
-}
-.lightable-classic {
-border-top: 0.16em solid #111111;
-border-bottom: 0.16em solid #111111;
-width: 100%;
-margin-bottom: 10px;
-margin: 10px 5px;
-}
-.lightable-classic tfoot tr td {
-border: 0;
-}
-.lightable-classic tfoot tr:first-child td {
-border-top: 0.14em solid #111111;
-}
-.lightable-classic caption {
-color: #222222;
-}
-.lightable-classic td {
-padding-left: 5px;
-padding-right: 5px;
-color: #222222;
-}
-.lightable-classic th {
-padding-left: 5px;
-padding-right: 5px;
-font-weight: normal;
-color: #222222;
-}
-.lightable-classic thead tr:last-child th {
-border-bottom: 0.10em solid #111111;
-}
-.lightable-classic.lightable-hover tbody tr:hover {
-background-color: #F9EEC1;
-}
-.lightable-classic.lightable-striped tbody tr:nth-child(even) {
-background-color: #f5f5f5;
-}
-.lightable-classic-2 {
-border-top: 3px double #111111;
-border-bottom: 3px double #111111;
-width: 100%;
-margin-bottom: 10px;
-}
-.lightable-classic-2 tfoot tr td {
-border: 0;
-}
-.lightable-classic-2 tfoot tr:first-child td {
-border-top: 3px double #111111;
-}
-.lightable-classic-2 caption {
-color: #222222;
-}
-.lightable-classic-2 td {
-padding-left: 5px;
-padding-right: 5px;
-color: #222222;
-}
-.lightable-classic-2 th {
-padding-left: 5px;
-padding-right: 5px;
-font-weight: normal;
-color: #222222;
-}
-.lightable-classic-2 tbody tr:last-child td {
-border-bottom: 3px double #111111;
-}
-.lightable-classic-2 thead tr:last-child th {
-border-bottom: 1px solid #111111;
-}
-.lightable-classic-2.lightable-hover tbody tr:hover {
-background-color: #F9EEC1;
-}
-.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
-background-color: #f5f5f5;
-}
-.lightable-material {
-min-width: 100%;
-white-space: nowrap;
-table-layout: fixed;
-font-family: Roboto, sans-serif;
-border: 1px solid #EEE;
-border-collapse: collapse;
-margin-bottom: 10px;
-}
-.lightable-material tfoot tr td {
-border: 0;
-}
-.lightable-material tfoot tr:first-child td {
-border-top: 1px solid #EEE;
-}
-.lightable-material th {
-height: 56px;
-padding-left: 16px;
-padding-right: 16px;
-}
-.lightable-material td {
-height: 52px;
-padding-left: 16px;
-padding-right: 16px;
-border-top: 1px solid #eeeeee;
-}
-.lightable-material.lightable-hover tbody tr:hover {
-background-color: #f5f5f5;
-}
-.lightable-material.lightable-striped tbody tr:nth-child(even) {
-background-color: #f5f5f5;
-}
-.lightable-material.lightable-striped tbody td {
-border: 0;
-}
-.lightable-material.lightable-striped thead tr:last-child th {
-border-bottom: 1px solid #ddd;
-}
-.lightable-material-dark {
-min-width: 100%;
-white-space: nowrap;
-table-layout: fixed;
-font-family: Roboto, sans-serif;
-border: 1px solid #FFFFFF12;
-border-collapse: collapse;
-margin-bottom: 10px;
-background-color: #363640;
-}
-.lightable-material-dark tfoot tr td {
-border: 0;
-}
-.lightable-material-dark tfoot tr:first-child td {
-border-top: 1px solid #FFFFFF12;
-}
-.lightable-material-dark th {
-height: 56px;
-padding-left: 16px;
-padding-right: 16px;
-color: #FFFFFF60;
-}
-.lightable-material-dark td {
-height: 52px;
-padding-left: 16px;
-padding-right: 16px;
-color: #FFFFFF;
-border-top: 1px solid #FFFFFF12;
-}
-.lightable-material-dark.lightable-hover tbody tr:hover {
-background-color: #FFFFFF12;
-}
-.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
-background-color: #FFFFFF12;
-}
-.lightable-material-dark.lightable-striped tbody td {
-border: 0;
-}
-.lightable-material-dark.lightable-striped thead tr:last-child th {
-border-bottom: 1px solid #FFFFFF12;
-}
-.lightable-paper {
-width: 100%;
-margin-bottom: 10px;
-color: #444;
-}
-.lightable-paper tfoot tr td {
-border: 0;
-}
-.lightable-paper tfoot tr:first-child td {
-border-top: 1px solid #00000020;
-}
-.lightable-paper thead tr:last-child th {
-color: #666;
-vertical-align: bottom;
-border-bottom: 1px solid #00000020;
-line-height: 1.15em;
-padding: 10px 5px;
-}
-.lightable-paper td {
-vertical-align: middle;
-border-bottom: 1px solid #00000010;
-line-height: 1.15em;
-padding: 7px 5px;
-}
-.lightable-paper.lightable-hover tbody tr:hover {
-background-color: #F9EEC1;
-}
-.lightable-paper.lightable-striped tbody tr:nth-child(even) {
-background-color: #00000008;
-}
-.lightable-paper.lightable-striped tbody td {
-border: 0;
-}
-</style>
 
 
 </head>
@@ -4980,7 +4756,7 @@ border: 0;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/loading_data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_pipe.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -5031,13 +4807,13 @@ border: 0;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/the_pipe.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/the_pipe.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe</span></span></a>
   </div>
 </li>
@@ -5087,26 +4863,18 @@ border: 0;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#loading-.csv-files" id="toc-loading-.csv-files" class="nav-link active" data-scroll-target="#loading-.csv-files"><span class="header-section-number">4.1</span> Loading .csv files</a>
+  <li><a href="#exploring-data" id="toc-exploring-data" class="nav-link active" data-scroll-target="#exploring-data"><span class="header-section-number">5.1</span> Exploring data</a>
   <ul class="collapse">
-  <li><a href="#relative-vs.-absolute-paths-avoid-using-setwd" id="toc-relative-vs.-absolute-paths-avoid-using-setwd" class="nav-link" data-scroll-target="#relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()!</code></a></li>
-  <li><a href="#check-your-learning" id="toc-check-your-learning" class="nav-link" data-scroll-target="#check-your-learning"><span class="header-section-number">4.1.2</span> Check your learning</a></li>
+  <li><a href="#count-number-of-rows" id="toc-count-number-of-rows" class="nav-link" data-scroll-target="#count-number-of-rows"><span class="header-section-number">5.1.1</span> Count number of rows</a></li>
+  <li><a href="#viewing-column-names" id="toc-viewing-column-names" class="nav-link" data-scroll-target="#viewing-column-names"><span class="header-section-number">5.1.2</span> Viewing column names</a></li>
+  <li><a href="#viewing-column-names-and-types" id="toc-viewing-column-names-and-types" class="nav-link" data-scroll-target="#viewing-column-names-and-types"><span class="header-section-number">5.1.3</span> Viewing column names and types</a></li>
   </ul></li>
-  <li><a href="#viewing-data-frames" id="toc-viewing-data-frames" class="nav-link" data-scroll-target="#viewing-data-frames"><span class="header-section-number">4.2</span> Viewing data frames</a>
+  <li><a href="#the-pipe-or" id="toc-the-pipe-or" class="nav-link" data-scroll-target="#the-pipe-or"><span class="header-section-number">5.2</span> The pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</a>
   <ul class="collapse">
-  <li><a href="#in-your-environment" id="toc-in-your-environment" class="nav-link" data-scroll-target="#in-your-environment"><span class="header-section-number">4.2.1</span> In your environment</a></li>
-  <li><a href="#printing-data-frames-below-chunks" id="toc-printing-data-frames-below-chunks" class="nav-link" data-scroll-target="#printing-data-frames-below-chunks"><span class="header-section-number">4.2.2</span> Printing data frames below chunks</a></li>
-  <li><a href="#printing-data-frames-more-nicely" id="toc-printing-data-frames-more-nicely" class="nav-link" data-scroll-target="#printing-data-frames-more-nicely"><span class="header-section-number">4.2.3</span> Printing data frames more nicely</a></li>
+  <li><a href="#what-is-the-pipe" id="toc-what-is-the-pipe" class="nav-link" data-scroll-target="#what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</a></li>
+  <li><a href="#why-use-the-pipe" id="toc-why-use-the-pipe" class="nav-link" data-scroll-target="#why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</a></li>
   </ul></li>
-  <li><a href="#saving-.csv-files" id="toc-saving-.csv-files" class="nav-link" data-scroll-target="#saving-.csv-files"><span class="header-section-number">4.3</span> Saving .csv files</a></li>
-  <li><a href="#loading-.xlsx-files" id="toc-loading-.xlsx-files" class="nav-link" data-scroll-target="#loading-.xlsx-files"><span class="header-section-number">4.4</span> Loading .xlsx files</a>
-  <ul class="collapse">
-  <li><a href="#check-your-learning-1" id="toc-check-your-learning-1" class="nav-link" data-scroll-target="#check-your-learning-1"><span class="header-section-number">4.4.1</span> Check your learning</a></li>
-  <li><a href="#preserving-the-raw-data-skipping-rows-when-loading" id="toc-preserving-the-raw-data-skipping-rows-when-loading" class="nav-link" data-scroll-target="#preserving-the-raw-data-skipping-rows-when-loading"><span class="header-section-number">4.4.2</span> Preserving the raw data / skipping rows when loading</a></li>
-  </ul></li>
-  <li><a href="#combining-multiple-data-sets" id="toc-combining-multiple-data-sets" class="nav-link" data-scroll-target="#combining-multiple-data-sets"><span class="header-section-number">4.5</span> Combining multiple data sets</a></li>
-  <li><a href="#loading-and-writing-.rda-files" id="toc-loading-and-writing-.rda-files" class="nav-link" data-scroll-target="#loading-and-writing-.rda-files"><span class="header-section-number">4.6</span> Loading and writing .rda files</a></li>
-  <li><a href="#loading-multiple-data-files-at-once" id="toc-loading-multiple-data-files-at-once" class="nav-link" data-scroll-target="#loading-multiple-data-files-at-once"><span class="header-section-number">4.7</span> Loading multiple data files at once</a></li>
+  <li><a href="#using-the-pipe-cleaning-column-names" id="toc-using-the-pipe-cleaning-column-names" class="nav-link" data-scroll-target="#using-the-pipe-cleaning-column-names"><span class="header-section-number">5.3</span> Using the pipe &amp; cleaning column names</a></li>
   </ul>
 </nav>
     </div>
@@ -5115,7 +4883,7 @@ border: 0;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -5132,1829 +4900,251 @@ border: 0;
 </header>
 
 
-<section id="loading-.csv-files" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="loading-.csv-files"><span class="header-section-number">4.1</span> Loading .csv files</h2>
-<section id="relative-vs.-absolute-paths-avoid-using-setwd" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()!</code></h3>
-<p>When we write .R scripts, we often use <code>setwd()</code> to define where files should be loaded from and saved to. The problem with <code>setwd()</code> is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes <code>setwd("C:/Users/IanHussey/Documents/R_course/")</code>, before loading some data using <code>read.csv()</code>. If I email you this script and data file, it script won’t work on your machine unless your folders are identically named; you have to change the file path in <code>setwd()</code>. This lowers the reproducibility of the code, as it can’t be run trivially by other people on other computers.</p>
-<p>This is because <code>setwd()</code> uses ‘absolute’ paths that point to a specific location in a directory structure. One of the very useful features of RMarkdown (.Rmd) and Quarto (.qmd) files is that they instead use ‘relative’ paths, which specify where a file or directory is <em>in relation to</em> the .Rmd or .qmd script. That is, the working directory is by definition wherever the .Rmd or .qmd file is, without being specified.</p>
-<p>If I have a directory - located anywhere on my hard drive - called ‘R_course’ that contains the folders ‘code’ and ‘data’, and the ‘data’ directory itself contains the directories ‘processed’ and ‘raw’. Imagine the files within these directories are as follows:</p>
-<pre class="text"><code>R_course/
-├── code/
-│   ├── analysis.qmd
-│   ├── data_shouldnt_usually_go_here.csv
-│   └── analysis.qmd
-└── data/
-    ├── processed/
-    │   └── data_processed.csv
-    └── raw/
-        ├── data_demographics_raw.csv
-        ├── data_selfreports_raw.csv
-        ├── code_shouldnt_usually_go_here.qmd
-        └── data_behavioraltask_raw.csv</code></pre>
-<p>Because .qmd files use ‘relative’ paths, to load the ‘data_shouldnt_usually_go_here.csv’ file I only need to do the following, without any <code>setwd()</code> call:</p>
+<section id="exploring-data" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="exploring-data"><span class="header-section-number">5.1</span> Exploring data</h2>
+<section id="count-number-of-rows" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="count-number-of-rows"><span class="header-section-number">5.1.1</span> Count number of rows</h3>
+<p>A very early step in any data processing is to understand how many rows are in a data frame, as this often represents the number of participants or total number of trials. This is useful to check at multiple steps of your data processing to make sure you have not done something wrong.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_shouldnt_usually_go_here.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Of course, code and data should be clearly separated within a project so ‘data_shouldnt_usually_go_here.csv’ should not usually go in that directory, as the name suggests.</p>
-<p>If I instead wanted to load ‘data_processed.csv’, I would do this as follows. This data file actually exists in this project, so the code will run assuming you have the data files in the correct location relative to this .qmd script.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/processed/data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>This is parsed as follows: <code>../</code> tells RStudio to go ‘up’ one directory level from ‘analysis.qmd’ to the ‘R_course’ folder that contains it. <code>data/</code> then tells it to go ‘down’ one level into the ‘data’ folder inside ‘R_course’. Likewise, <code>processed/</code> then tells it to go ‘down’ another level into the ‘processed’ folder, before loading the ‘data_processed.csv’ file.</p>
-<p>Note that <code>../</code> can be stacked to go ‘up’ multiple directory levels, e.g., <code>../../</code>.</p>
-<p>As long as you send move the entire ‘R_course’ folder and preserve the relative location between the code and the data, the .qmd file’s <code>read.csv()</code> call will still work. It doesn’t matter whether you the ‘R_course’ directory to somewhere else on your hard drive, or create a .zip file and email it to someone else, or distribute it via GitHub, or whether they’re using Windows or Mac.</p>
-<p>Also note that because the directory ‘R_course’ is never specified in the <code>read.csv()</code> call, it can be called anything else and still work. The same goes for the name of the script which calls <code>read.csv()</code> - in this case, the script you’re reading is called ‘loading_data.qmd’ and the code still works.</p>
-<p>FYI, you can also use relative paths in regular .R files using the {here} library (see <a href="https://here.r-lib.org/" class="uri">https://here.r-lib.org/</a>).</p>
-</section>
-<section id="check-your-learning" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="check-your-learning"><span class="header-section-number">4.1.2</span> Check your learning</h3>
-<p><strong>Question:</strong> Using the above file structure diagram, what R code is needed to load the ‘data_shouldnt_usually_go_here.csv’ file from the ‘code_shouldnt_usually_go_here.qmd’?</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../code/data_shouldnt_usually_go_here.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="viewing-data-frames" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="viewing-data-frames"><span class="header-section-number">4.2</span> Viewing data frames</h2>
-<section id="in-your-environment" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="in-your-environment"><span class="header-section-number">4.2.1</span> In your environment</h3>
-<p>Data frames (and other objects) that have already been loaded into your R environment will appear under the ‘files’ tab in RStudio.</p>
-<p>You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows).</p>
-</section>
-<section id="printing-data-frames-below-chunks" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="printing-data-frames-below-chunks"><span class="header-section-number">4.2.2</span> Printing data frames below chunks</h3>
-<p>To print a data frame below the code chunk, you can;</p>
-<p>Run the object name:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat_processed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># demographics data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw.csv"</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># self report measure data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data_selfreport_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_selfreport_raw.csv"</span>) </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># affect attribution procedure data</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>data_amp_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_demographics_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    unique_id age    gender mean_self_report n_items  amp_score
-1   548957868  23      &lt;NA&gt;               NA      NA         NA
-2   504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
-3   994692692  21    female         1.333333       3 0.80555556
-4   902223169  19    female         2.666667       3 0.56944444
-5   469672453  27      male         1.333333       3 0.25000000
-6   637089700  43      male         2.000000       3 0.50000000
-7     4345805  54      male         3.000000       3 0.36111111
-8   786441188  27    female         1.666667       3 0.76388889
-9   510787584  34    female         4.000000       3 0.51388889
-10  684265529  19 nonbinary         1.000000       3 0.54166667
-11   47022865  21      male         1.000000       3 0.47222222
-12  199802590  27      male         5.666667       3 0.52777778
-13  295696078  32      male         1.000000       3 0.54166667
-14   32034696  38      male         1.333333       3 0.62500000
-15  609227927  18      male               NA      NA 0.98611111
-16   59367911  47    female         1.000000       3 0.48611111
-17  386661197  46      male         2.333333       3 0.44444444
-18  238678139  38    female         1.000000       3 0.65277778
-19  764499289  52      male         1.666667       3 0.55555556
-20  586346915  36    female         1.000000       3 0.54166667
-21  100125154  29      male         2.333333       3 0.51388889
-22  550721671  28    female         1.000000       3 0.52777778
-23  161234436  25      male         6.666667       3 0.56944444
-24  621686155  42    female         1.000000       3 0.51388889
-25  238079276  28    female         1.666667       3 0.54166667
-26  561842983  23    female         1.000000       3 0.94444444
-27  627537443  27    female         1.000000       3 0.68055556
-28  591041139  29 nonbinary         3.666667       3 0.61111111
-29  601833546  34      male         3.000000       3 0.50000000
-30  874662429  36      male         3.000000       3 0.52777778
-31  658421880  53    female         1.000000       3 0.51388889
-32  557207580  28    female         1.000000       3 0.55555556
-33   13708908  25      male         1.000000       3 0.55555556
-34  699441423  48      male         1.000000       3 0.98611111
-35  841303698  19    female         1.000000       3 0.58333333
-36  881713870  25 nonbinary         5.333333       3 0.48611111
-37  663795436  39    female         1.000000       3 0.52777778
-38  422087765  45    female         1.000000       3 0.48611111
-39  343944905  31      male         4.666667       3 0.52777778
-40  920212493  61      male         1.333333       3 0.86111111
-41  526570034  63      male         1.000000       3 0.61111111
-42  882246022  61      male         1.000000       3 0.52777778
-43  904883244  59      male         1.000000       3 0.61111111
-44  293831276  60    female         1.000000       3 0.06944444
-45  530863876  42      male         2.666667       3 0.43055556
-46  753565148  26    female         1.000000       3 0.55555556
-47  727031797  27      male         1.000000       3 0.73611111
-48  751712225  22    female         1.000000       3 0.50000000
-49  464934738  21      male         2.000000       3 0.48611111
-50  563522777  53      male         2.666667       3 0.50000000
-51  373740279  51    female         1.000000       3 0.62500000
-52  589607780  35    female         1.000000       3 0.48611111
-53  681045009  26      male         3.000000       3 0.95833333
-54  855399085  32    female         1.000000       3 0.00000000
-55  821599197  45    female         1.000000       3 0.36111111
-56  311497290  48      male         3.000000       3 0.29166667
-57  254118946  64    female         2.666667       3 0.45833333
-58  317124448  36    female         1.000000       3 0.87500000
-59  730068356  51    female         1.000000       3 0.94444444
-60  236383059  37      male         1.000000       3 0.48611111
-61  246374429  21    female         1.000000       3 0.50000000
-62  952386283  26    female         2.333333       3 0.52777778
-63  694264273  31      male         2.333333       3 0.59722222
-64  175188025  42      male         1.000000       3 0.81944444
-65  339232704  31      male         2.000000       3 0.77777778
-66  386456897  23      male         1.333333       3 0.47222222
-67  637668138  30      male         2.000000       3 0.50000000
-68  237498336  49      male         1.000000       3 0.58333333
-69  631750145  24    female         1.000000       3 0.51388889
-70  867476338  29    female         1.000000       3 0.47222222
-71  196574198  21    female         1.000000       3 0.88888889
-72  692009266  31      male         1.000000       3 0.54166667
-73  477618299  53      male         1.000000       3 0.63888889
-74  325830955  50      male         4.333333       3 0.56944444
-75  965314508  28      male         1.000000       3 0.50000000
-76   72442795  19    female         1.666667       3 0.94444444
-77  216287717  50    female         3.333333       3 0.52777778
-78  287027128  37    female         1.000000       3 0.50000000
-79  247697997  20      male         2.000000       3 0.62500000
-80  954130481  50    female         1.000000       3 0.51388889
-81  564734227  30      male         1.666667       3 0.37500000
-82  797453632  21      male         1.000000       3 0.58333333
-83   85445170  26      male         1.000000       3 0.45833333
-84  614285355  59      male         1.000000       3 0.56944444
-85   14943693  39      male         1.333333       3 0.97222222
-86  920896673  35      male         1.000000       3 0.47222222
-87   75092407  22    female         1.000000       3 0.40277778
-88   83185292  39      male         3.333333       3 0.43055556
-89  234276163  55    female         1.000000       3 0.84722222
-90  940229231  45      male         3.000000       3 0.68055556
-91  456445084  48      male         1.000000       3 0.51388889
-92  102678881  32      male         1.000000       3 0.98611111
-93  187172011  51    female         1.000000       3 0.98611111
-94  108266335  32    female         1.000000       3 0.61111111
-95  752580117  35      male         1.000000       3 0.13888889
-96  506524197  36      male         2.000000       3 0.55555556
-97  524337317  29      male         1.666667       3 0.55555556
-98  759418836  32      male         1.000000       3 0.97222222
-99  233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
-100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
-101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
-102 893377996  NA      &lt;NA&gt;               NA       1         NA
-    proportion_too_fast_trials n_trials exclude_amp
-1                           NA       NA        &lt;NA&gt;
-2                  0.000000000        8     include
-3                  0.000000000       72     include
-4                  0.000000000       72     include
-5                  0.000000000       72     include
-6                  0.000000000       72     include
-7                  0.041666667       72     include
-8                  0.000000000       72     include
-9                  0.013888889       72     include
-10                 0.000000000       72     include
-11                 0.000000000       72     include
-12                 0.000000000       72     include
-13                 0.000000000       72     include
-14                 0.000000000       72     include
-15                 0.055555556       72     include
-16                 0.000000000       72     include
-17                 0.000000000       72     include
-18                 0.000000000       72     include
-19                 0.000000000       72     include
-20                 0.000000000       72     include
-21                 0.000000000       72     include
-22                 0.000000000       72     include
-23                 0.111111111       72     exclude
-24                 0.000000000       72     include
-25                 0.000000000       72     include
-26                 0.000000000       72     include
-27                 0.000000000       72     include
-28                 0.000000000       72     include
-29                 0.000000000       72     include
-30                 0.000000000       72     include
-31                 0.000000000       72     include
-32                 0.000000000       72     include
-33                 0.000000000       72     include
-34                 0.000000000       72     include
-35                 0.000000000       72     include
-36                 0.000000000       72     include
-37                 0.000000000       72     include
-38                 0.000000000       72     include
-39                 0.319444444       72     exclude
-40                 0.000000000       72     include
-41                 0.000000000       72     include
-42                 0.000000000       72     include
-43                 0.000000000       72     include
-44                 0.000000000       72     include
-45                 0.000000000       72     include
-46                 0.000000000       72     include
-47                 0.055555556       72     include
-48                 0.000000000       72     include
-49                 0.083333333       72     include
-50                 0.083333333       72     include
-51                 0.000000000       72     include
-52                 0.000000000       72     include
-53                 0.041666667       72     include
-54                 0.000000000       72     include
-55                 0.000000000       72     include
-56                 0.000000000       72     include
-57                 0.000000000       72     include
-58                 0.000000000       72     include
-59                 0.000000000       72     include
-60                 0.000000000       72     include
-61                 0.000000000       72     include
-62                 0.000000000       72     include
-63                 0.000000000       72     include
-64                 0.000000000       72     include
-65                 0.000000000       72     include
-66                 0.000000000       72     include
-67                 0.013888889       72     include
-68                 0.000000000       72     include
-69                 0.125000000       72     exclude
-70                 0.000000000       72     include
-71                 0.000000000       72     include
-72                 0.000000000       72     include
-73                 0.000000000       72     include
-74                 0.027777778       72     include
-75                 0.000000000       72     include
-76                 0.000000000       72     include
-77                 0.000000000       72     include
-78                 0.000000000       72     include
-79                 0.000000000       72     include
-80                 0.000000000       72     include
-81                 0.152777778       72     exclude
-82                 0.013888889       72     include
-83                 0.180555556       72     exclude
-84                 0.000000000       72     include
-85                 0.000000000       72     include
-86                 0.055555556       72     include
-87                 0.027777778       72     include
-88                 0.000000000       72     include
-89                 0.000000000       72     include
-90                 0.000000000       72     include
-91                 0.000000000       72     include
-92                 0.000000000       72     include
-93                 0.000000000       72     include
-94                 0.000000000       72     include
-95                 0.000000000       72     include
-96                 0.000000000       72     include
-97                 0.000000000       72     include
-98                 0.013888889       72     include
-99                 0.000000000       72     include
-100                0.006944444      144     include
-101                0.000000000       72     include
-102                         NA       NA        &lt;NA&gt;</code></pre>
+<pre><code>[1] 200</code></pre>
 </div>
-</div>
-<p>Use <code>print()</code>:</p>
-<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_processed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_selfreport_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    unique_id age    gender mean_self_report n_items  amp_score
-1   548957868  23      &lt;NA&gt;               NA      NA         NA
-2   504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
-3   994692692  21    female         1.333333       3 0.80555556
-4   902223169  19    female         2.666667       3 0.56944444
-5   469672453  27      male         1.333333       3 0.25000000
-6   637089700  43      male         2.000000       3 0.50000000
-7     4345805  54      male         3.000000       3 0.36111111
-8   786441188  27    female         1.666667       3 0.76388889
-9   510787584  34    female         4.000000       3 0.51388889
-10  684265529  19 nonbinary         1.000000       3 0.54166667
-11   47022865  21      male         1.000000       3 0.47222222
-12  199802590  27      male         5.666667       3 0.52777778
-13  295696078  32      male         1.000000       3 0.54166667
-14   32034696  38      male         1.333333       3 0.62500000
-15  609227927  18      male               NA      NA 0.98611111
-16   59367911  47    female         1.000000       3 0.48611111
-17  386661197  46      male         2.333333       3 0.44444444
-18  238678139  38    female         1.000000       3 0.65277778
-19  764499289  52      male         1.666667       3 0.55555556
-20  586346915  36    female         1.000000       3 0.54166667
-21  100125154  29      male         2.333333       3 0.51388889
-22  550721671  28    female         1.000000       3 0.52777778
-23  161234436  25      male         6.666667       3 0.56944444
-24  621686155  42    female         1.000000       3 0.51388889
-25  238079276  28    female         1.666667       3 0.54166667
-26  561842983  23    female         1.000000       3 0.94444444
-27  627537443  27    female         1.000000       3 0.68055556
-28  591041139  29 nonbinary         3.666667       3 0.61111111
-29  601833546  34      male         3.000000       3 0.50000000
-30  874662429  36      male         3.000000       3 0.52777778
-31  658421880  53    female         1.000000       3 0.51388889
-32  557207580  28    female         1.000000       3 0.55555556
-33   13708908  25      male         1.000000       3 0.55555556
-34  699441423  48      male         1.000000       3 0.98611111
-35  841303698  19    female         1.000000       3 0.58333333
-36  881713870  25 nonbinary         5.333333       3 0.48611111
-37  663795436  39    female         1.000000       3 0.52777778
-38  422087765  45    female         1.000000       3 0.48611111
-39  343944905  31      male         4.666667       3 0.52777778
-40  920212493  61      male         1.333333       3 0.86111111
-41  526570034  63      male         1.000000       3 0.61111111
-42  882246022  61      male         1.000000       3 0.52777778
-43  904883244  59      male         1.000000       3 0.61111111
-44  293831276  60    female         1.000000       3 0.06944444
-45  530863876  42      male         2.666667       3 0.43055556
-46  753565148  26    female         1.000000       3 0.55555556
-47  727031797  27      male         1.000000       3 0.73611111
-48  751712225  22    female         1.000000       3 0.50000000
-49  464934738  21      male         2.000000       3 0.48611111
-50  563522777  53      male         2.666667       3 0.50000000
-51  373740279  51    female         1.000000       3 0.62500000
-52  589607780  35    female         1.000000       3 0.48611111
-53  681045009  26      male         3.000000       3 0.95833333
-54  855399085  32    female         1.000000       3 0.00000000
-55  821599197  45    female         1.000000       3 0.36111111
-56  311497290  48      male         3.000000       3 0.29166667
-57  254118946  64    female         2.666667       3 0.45833333
-58  317124448  36    female         1.000000       3 0.87500000
-59  730068356  51    female         1.000000       3 0.94444444
-60  236383059  37      male         1.000000       3 0.48611111
-61  246374429  21    female         1.000000       3 0.50000000
-62  952386283  26    female         2.333333       3 0.52777778
-63  694264273  31      male         2.333333       3 0.59722222
-64  175188025  42      male         1.000000       3 0.81944444
-65  339232704  31      male         2.000000       3 0.77777778
-66  386456897  23      male         1.333333       3 0.47222222
-67  637668138  30      male         2.000000       3 0.50000000
-68  237498336  49      male         1.000000       3 0.58333333
-69  631750145  24    female         1.000000       3 0.51388889
-70  867476338  29    female         1.000000       3 0.47222222
-71  196574198  21    female         1.000000       3 0.88888889
-72  692009266  31      male         1.000000       3 0.54166667
-73  477618299  53      male         1.000000       3 0.63888889
-74  325830955  50      male         4.333333       3 0.56944444
-75  965314508  28      male         1.000000       3 0.50000000
-76   72442795  19    female         1.666667       3 0.94444444
-77  216287717  50    female         3.333333       3 0.52777778
-78  287027128  37    female         1.000000       3 0.50000000
-79  247697997  20      male         2.000000       3 0.62500000
-80  954130481  50    female         1.000000       3 0.51388889
-81  564734227  30      male         1.666667       3 0.37500000
-82  797453632  21      male         1.000000       3 0.58333333
-83   85445170  26      male         1.000000       3 0.45833333
-84  614285355  59      male         1.000000       3 0.56944444
-85   14943693  39      male         1.333333       3 0.97222222
-86  920896673  35      male         1.000000       3 0.47222222
-87   75092407  22    female         1.000000       3 0.40277778
-88   83185292  39      male         3.333333       3 0.43055556
-89  234276163  55    female         1.000000       3 0.84722222
-90  940229231  45      male         3.000000       3 0.68055556
-91  456445084  48      male         1.000000       3 0.51388889
-92  102678881  32      male         1.000000       3 0.98611111
-93  187172011  51    female         1.000000       3 0.98611111
-94  108266335  32    female         1.000000       3 0.61111111
-95  752580117  35      male         1.000000       3 0.13888889
-96  506524197  36      male         2.000000       3 0.55555556
-97  524337317  29      male         1.666667       3 0.55555556
-98  759418836  32      male         1.000000       3 0.97222222
-99  233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
-100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
-101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
-102 893377996  NA      &lt;NA&gt;               NA       1         NA
-    proportion_too_fast_trials n_trials exclude_amp
-1                           NA       NA        &lt;NA&gt;
-2                  0.000000000        8     include
-3                  0.000000000       72     include
-4                  0.000000000       72     include
-5                  0.000000000       72     include
-6                  0.000000000       72     include
-7                  0.041666667       72     include
-8                  0.000000000       72     include
-9                  0.013888889       72     include
-10                 0.000000000       72     include
-11                 0.000000000       72     include
-12                 0.000000000       72     include
-13                 0.000000000       72     include
-14                 0.000000000       72     include
-15                 0.055555556       72     include
-16                 0.000000000       72     include
-17                 0.000000000       72     include
-18                 0.000000000       72     include
-19                 0.000000000       72     include
-20                 0.000000000       72     include
-21                 0.000000000       72     include
-22                 0.000000000       72     include
-23                 0.111111111       72     exclude
-24                 0.000000000       72     include
-25                 0.000000000       72     include
-26                 0.000000000       72     include
-27                 0.000000000       72     include
-28                 0.000000000       72     include
-29                 0.000000000       72     include
-30                 0.000000000       72     include
-31                 0.000000000       72     include
-32                 0.000000000       72     include
-33                 0.000000000       72     include
-34                 0.000000000       72     include
-35                 0.000000000       72     include
-36                 0.000000000       72     include
-37                 0.000000000       72     include
-38                 0.000000000       72     include
-39                 0.319444444       72     exclude
-40                 0.000000000       72     include
-41                 0.000000000       72     include
-42                 0.000000000       72     include
-43                 0.000000000       72     include
-44                 0.000000000       72     include
-45                 0.000000000       72     include
-46                 0.000000000       72     include
-47                 0.055555556       72     include
-48                 0.000000000       72     include
-49                 0.083333333       72     include
-50                 0.083333333       72     include
-51                 0.000000000       72     include
-52                 0.000000000       72     include
-53                 0.041666667       72     include
-54                 0.000000000       72     include
-55                 0.000000000       72     include
-56                 0.000000000       72     include
-57                 0.000000000       72     include
-58                 0.000000000       72     include
-59                 0.000000000       72     include
-60                 0.000000000       72     include
-61                 0.000000000       72     include
-62                 0.000000000       72     include
-63                 0.000000000       72     include
-64                 0.000000000       72     include
-65                 0.000000000       72     include
-66                 0.000000000       72     include
-67                 0.013888889       72     include
-68                 0.000000000       72     include
-69                 0.125000000       72     exclude
-70                 0.000000000       72     include
-71                 0.000000000       72     include
-72                 0.000000000       72     include
-73                 0.000000000       72     include
-74                 0.027777778       72     include
-75                 0.000000000       72     include
-76                 0.000000000       72     include
-77                 0.000000000       72     include
-78                 0.000000000       72     include
-79                 0.000000000       72     include
-80                 0.000000000       72     include
-81                 0.152777778       72     exclude
-82                 0.013888889       72     include
-83                 0.180555556       72     exclude
-84                 0.000000000       72     include
-85                 0.000000000       72     include
-86                 0.055555556       72     include
-87                 0.027777778       72     include
-88                 0.000000000       72     include
-89                 0.000000000       72     include
-90                 0.000000000       72     include
-91                 0.000000000       72     include
-92                 0.000000000       72     include
-93                 0.000000000       72     include
-94                 0.000000000       72     include
-95                 0.000000000       72     include
-96                 0.000000000       72     include
-97                 0.000000000       72     include
-98                 0.013888889       72     include
-99                 0.000000000       72     include
-100                0.006944444      144     include
-101                0.000000000       72     include
-102                         NA       NA        &lt;NA&gt;</code></pre>
+<pre><code>[1] 392</code></pre>
 </div>
-</div>
-</section>
-<section id="printing-data-frames-more-nicely" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="printing-data-frames-more-nicely"><span class="header-section-number">4.2.3</span> Printing data frames more nicely</h3>
-<p>Printing data frames by calling their name or using <code>print()</code> don’t produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.</p>
-<p>Note that this code uses the ‘pipe’, which we cover in more detail in the next chapter.</p>
-<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">unique_id</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">gender</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">mean_self_report</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_items</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">amp_score</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">proportion_too_fast_trials</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_trials</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">exclude_amp</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">548957868</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">504546409</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.3750000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">994692692</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8055556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">902223169</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">2.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5694444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">469672453</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.2500000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">637089700</td>
-<td style="text-align: right;">43</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4345805</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.3611111</td>
-<td style="text-align: right;">0.0416667</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">786441188</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.7638889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">510787584</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">4.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0138889</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">684265529</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">nonbinary</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5416667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">47022865</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4722222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">199802590</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">5.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">295696078</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5416667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">32034696</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6250000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">609227927</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.9861111</td>
-<td style="text-align: right;">0.0555556</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">59367911</td>
-<td style="text-align: right;">47</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">386661197</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4444444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">238678139</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6527778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">764499289</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">586346915</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5416667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">100125154</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">550721671</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">161234436</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">6.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5694444</td>
-<td style="text-align: right;">0.1111111</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">exclude</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">621686155</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">238079276</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5416667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">561842983</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9444444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">627537443</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6805556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">591041139</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">nonbinary</td>
-<td style="text-align: right;">3.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6111111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">601833546</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">874662429</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">658421880</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">557207580</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13708908</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">699441423</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">841303698</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5833333</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">881713870</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">nonbinary</td>
-<td style="text-align: right;">5.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">663795436</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">422087765</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">343944905</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">4.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.3194444</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">exclude</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">920212493</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8611111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">526570034</td>
-<td style="text-align: right;">63</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6111111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">882246022</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">904883244</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6111111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">293831276</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.0694444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">530863876</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4305556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">753565148</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">727031797</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.7361111</td>
-<td style="text-align: right;">0.0555556</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">751712225</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">464934738</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0833333</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">563522777</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0833333</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">373740279</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6250000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">589607780</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">681045009</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9583333</td>
-<td style="text-align: right;">0.0416667</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">855399085</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">821599197</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.3611111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">311497290</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.2916667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">254118946</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">2.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4583333</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">317124448</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8750000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">730068356</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9444444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">236383059</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">246374429</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">952386283</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">2.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">694264273</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5972222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">175188025</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8194444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">339232704</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.7777778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">386456897</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4722222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">637668138</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0138889</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">237498336</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5833333</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">631750145</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.1250000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">exclude</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">867476338</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4722222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">196574198</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8888889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">692009266</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5416667</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">477618299</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6388889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">325830955</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">4.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5694444</td>
-<td style="text-align: right;">0.0277778</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">965314508</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">72442795</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9444444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">216287717</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">3.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5277778</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">287027128</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">247697997</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6250000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">954130481</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">564734227</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.3750000</td>
-<td style="text-align: right;">0.1527778</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">exclude</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">797453632</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5833333</td>
-<td style="text-align: right;">0.0138889</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">85445170</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4583333</td>
-<td style="text-align: right;">0.1805556</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">exclude</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">614285355</td>
-<td style="text-align: right;">59</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5694444</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14943693</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9722222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">920896673</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4722222</td>
-<td style="text-align: right;">0.0555556</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">75092407</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4027778</td>
-<td style="text-align: right;">0.0277778</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">83185292</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.333333</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.4305556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">234276163</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8472222</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">940229231</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">3.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6805556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">456445084</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5138889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">102678881</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">187172011</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9861111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">108266335</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">female</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.6111111</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">752580117</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.1388889</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">506524197</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">2.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">524337317</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5555556</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">759418836</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">male</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.9722222</td>
-<td style="text-align: right;">0.0138889</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">233735378</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.666667</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.5000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">246532124</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">4.000000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5486111</td>
-<td style="text-align: right;">0.0069444</td>
-<td style="text-align: right;">144</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">494447594</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.000000</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0.8750000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">include</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">893377996</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-</section>
-<section id="saving-.csv-files" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="saving-.csv-files"><span class="header-section-number">4.3</span> Saving .csv files</h2>
-<p>Writing .csv files to disk is as easy as loading them.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> dat_processed, <span class="co"># the data frame to save</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../data/processed/data_processed.csv"</span>) <span class="co"># the file to save it to</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="loading-.xlsx-files" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="loading-.xlsx-files"><span class="header-section-number">4.4</span> Loading .xlsx files</h2>
-<p>While .csv files are a good default file format to use for most projects, Excel, SPSS, and other file formats can also be loaded.</p>
-<p>There are several packages available to load Excel files in particular. Any of them are fine <em>except</em> <code>library(xlsx)</code> which requires you to install rJava, which often causes compatibility issues. <code>library(readxl)</code> is a safer bet. Because excel files can contain multiple sheets, the source can be specified with the <code>sheet</code> argument.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="check-your-learning-1" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="check-your-learning-1"><span class="header-section-number">4.4.1</span> Check your learning</h3>
-<p><strong>Question:</strong> How would you know what arguments <code>readxl::read_excel()</code> takes?</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>By consulting the help menu with /Users/Ian-Hussey/Library/R/arm64/4.5/library/readxl/help/read_excel.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="preserving-the-raw-data-skipping-rows-when-loading" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="preserving-the-raw-data-skipping-rows-when-loading"><span class="header-section-number">4.4.2</span> Preserving the raw data / skipping rows when loading</h3>
-<p>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</p>
-<p>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in ‘data_likert.xlsx’ are on the fourth row, causing a mess when you load the file:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># head() allows you to see the first few rows of an R object. conversely, tail() shows the last few. </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_amp_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  `Date created: 02/04/2024` ...2  ...3    ...4     ...5    
-  &lt;chr&gt;                      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   
-1 subset: sample 1           &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
-2 &lt;NA&gt;                       &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
-3 date                       group subject likert_1 likert_2
-4 44735                      1     1       1        4       
-5 44735                      2     2       3        3       
-6 44735                      2     3       2        1       </code></pre>
+<pre><code>[1] 8224</code></pre>
 </div>
 </div>
-<p>Handle with with code, not by deleting the information in those rows. When using <code>read.csv()</code> or <code>readxl::read_excel()</code> this can be done using the <code>skip</code> argument.</p>
+<ul>
+<li>Why are there different number of rows in the three data frames when this data all comes from the same participants?</li>
+<li>Why are the numbers not round?</li>
+</ul>
+</section>
+<section id="viewing-column-names" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="viewing-column-names"><span class="header-section-number">5.1.2</span> Viewing column names</h3>
+<p>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_demographics_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 5
-  date                group subject likert_1 likert_2
-  &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 2022-06-23 00:00:00     1       1        1        4
-2 2022-06-23 00:00:00     2       2        3        3
-3 2022-06-23 00:00:00     2       3        2        1
-4 2022-06-23 00:00:00     1       4        5        5
-5 2022-06-23 00:00:00     1       5        3        3</code></pre>
+<pre><code> [1] "date"           "time"           "group"          "subject"       
+ [5] "session"        "build"          "blocknum"       "trialnum"      
+ [9] "blockcode"      "trialcode"      "pretrialpause"  "posttrialpause"
+[13] "trialduration"  "trialtimeout"   "response"       "correct"       
+[17] "latency"       </code></pre>
 </div>
-</div>
-</section>
-</section>
-<section id="combining-multiple-data-sets" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="combining-multiple-data-sets"><span class="header-section-number">4.5</span> Combining multiple data sets</h2>
-<p>You can combine multiple data sets with (nearly) the same structure using <code>dplyr::bind_rows()</code>. In this case, ‘data_likert.xlsx’ have mostly the same columns, with sheet 1 also having the ‘likert_2’ column. Missing columns are filled with NA when using <code>dplyr::bind_rows()</code>. This has its advantages over base R’s <code>rbind()</code> which requires that column names must match between the objects.</p>
-<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>dat_likert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(data_demographics_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   date                group subject likert_1 likert_2
-   &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 2022-06-23 00:00:00     1       1        1        4
- 2 2022-06-23 00:00:00     2       2        3        3
- 3 2022-06-23 00:00:00     2       3        2        1
- 4 2022-06-23 00:00:00     1       4        5        5
- 5 2022-06-23 00:00:00     1       5        3        3
- 6 2022-06-23 00:00:00     1       6        1       NA
- 7 2022-06-23 00:00:00     2       7        3       NA
- 8 2022-06-23 00:00:00     2       8        2       NA
- 9 2022-06-23 00:00:00     1       9        5       NA
-10 2022-06-23 00:00:00     1      10        3       NA</code></pre>
+<pre><code>c("date", "time", "group", "subject", "session", "build", "blocknum", 
+"trialnum", "blockcode", "trialcode", "pretrialpause", "posttrialpause", 
+"trialduration", "trialtimeout", "response", "correct", "latency"
+)</code></pre>
 </div>
-</div>
-</section>
-<section id="loading-and-writing-.rda-files" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="loading-and-writing-.rda-files"><span class="header-section-number">4.6</span> Loading and writing .rda files</h2>
-<p>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <code>compress = "gz"</code> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.</p>
-<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>c("date", "time", "group", "subject", "session", "build", "blocknum", 
+"trialnum", "blockcode", "trialcode", "pretrialpause", "posttrialpause", 
+"trialduration", "trialtimeout", "response", "correct", "latency"
+)</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_selfreport_raw <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>c("date", "time", "group", "subject", "session", "build", "blocknum", 
+"trialnum", "blockcode", "trialcode", "pretrialpause", "posttrialpause", 
+"trialduration", "trialtimeout", "response", "correct", "latency"
+)</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>c("date", "time", "subject", "blockcode", "Blocknum and trialnum", 
+"trialcode", "primestim", "targetstim", "correct", "latency")</code></pre>
+</div>
 </div>
 </section>
-<section id="loading-multiple-data-files-at-once" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="loading-multiple-data-files-at-once"><span class="header-section-number">4.7</span> Loading multiple data files at once</h2>
-<p>Some psychology software such as PsychoPy often saves each participant’s data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some packages and functions we won’t cover until later in the course. I include it here just so that you know that it can be done quite easily.</p>
+<section id="viewing-column-names-and-types" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="viewing-column-names-and-types"><span class="header-section-number">5.1.3</span> Viewing column names and types</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read.csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_demographics_raw) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 17
+  date       time        group subject session build blocknum trialnum blockcode
+  &lt;date&gt;     &lt;time&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+1 2022-06-23 10:46:30   8.66e8  5.49e8       1 6.6.0        1        2 demograp…
+2 2022-06-23 10:46:30   8.66e8  5.49e8       1 6.6.0        1        3 demograp…
+3 2022-06-23 11:54:55   6.31e8  5.05e8       1 6.6.0        1        2 demograp…
+4 2022-06-23 11:54:55   6.31e8  5.05e8       1 6.6.0        1        3 demograp…
+5 2022-06-23 12:23:32   5.69e8  9.95e8       1 6.6.0        1        2 demograp…
+6 2022-06-23 12:23:32   5.69e8  9.95e8       1 6.6.0        1        3 demograp…
+# ℹ 8 more variables: trialcode &lt;chr&gt;, pretrialpause &lt;dbl&gt;,
+#   posttrialpause &lt;dbl&gt;, trialduration &lt;dbl&gt;, trialtimeout &lt;dbl&gt;,
+#   response &lt;chr&gt;, correct &lt;dbl&gt;, latency &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_selfreport_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 17
+  date     time         group  subject session build blocknum trialnum blockcode
+  &lt;chr&gt;    &lt;time&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+1 23.06.22 12:37:34 762566308   8.93e8       1 06.0…        1        1 scale    
+2 23.06.22 12:37:34 762566308   8.93e8       1 06.0…        1        2 scale    
+3 23.06.22 12:26:48 569179372   9.95e8       1 06.0…        1        1 scale    
+4 23.06.22 12:26:48 569179372   9.95e8       1 06.0…        1        2 scale    
+5 23.06.22 12:26:48 569179372   9.95e8       1 06.0…        1        3 scale    
+6 23.06.22 12:26:48 569179372   9.95e8       1 06.0…        1        4 scale    
+# ℹ 8 more variables: trialcode &lt;chr&gt;, pretrialpause &lt;dbl&gt;,
+#   posttrialpause &lt;dbl&gt;, trialduration &lt;dbl&gt;, trialtimeout &lt;dbl&gt;,
+#   response &lt;chr&gt;, correct &lt;dbl&gt;, latency &lt;dbl&gt;</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_amp_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+  date     time     subject blockcode Blocknum and trialnu…¹ trialcode primestim
+  &lt;chr&gt;    &lt;time&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;         &lt;dbl&gt;
+1 23.06.22 10:46:38  5.49e8 practice  1_4                    prime_ne…         0
+2 23.06.22 10:46:38  5.49e8 practice  1_5                    prime_ne…         0
+3 23.06.22 10:46:38  5.49e8 practice  1_6                    prime_po…         0
+4 23.06.22 10:46:38  5.49e8 test      2_1                    instruct…         0
+5 23.06.22 11:55:36  5.05e8 practice  1_4                    prime_ne…         0
+6 23.06.22 11:55:36  5.05e8 practice  1_5                    prime_po…         0
+# ℹ abbreviated name: ¹​`Blocknum and trialnum`
+# ℹ 3 more variables: targetstim &lt;dbl&gt;, correct &lt;dbl&gt;, latency &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="the-pipe-or" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-pipe-or"><span class="header-section-number">5.2</span> The pipe (<code>%&gt;%</code> or <code>|&gt;</code>)</h2>
+<p><code>%&gt;%</code> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible.</p>
+<p><code>|&gt;</code> is a version of the pipe more recently added to base-R. It is slightly faster but less flexible.</p>
+<p>If you’re not sure, it’s easier to use <code>%&gt;%</code>.</p>
+<section id="what-is-the-pipe" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</h3>
+<p>The output of what is left of the pipe is used as the input to the right of the pipe, usually as the first argument or the data argument.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use a function without the pipe</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>example_without_pipe <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(data_demographics_raw)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use a function with the pipe. </span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>example_with_pipe <span class="ot">&lt;-</span> data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check they produce identical results</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(example_without_pipe, example_with_pipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="why-use-the-pipe" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</h3>
+<p>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the way that humans organize and describe steps. Without the pipe, code is written from the inside out, in the way that the computer understands it but humans do not as easily.</p>
+<p>The utility of this becomes more obvious when there are many steps:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use a series of functions without the pipe</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>example2_without_pipe <span class="ot">&lt;-</span> <span class="fu">summarise</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">rename</span>(<span class="fu">clean_names</span>(<span class="at">dat =</span> data_amp_raw), <span class="at">unique_id =</span> subject, <span class="at">block =</span> blockcode, <span class="at">trial_type =</span> trialcode, <span class="at">rt =</span> latency), <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)), unique_id), <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use a series of functions with the pipe</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>example2_with_pipe <span class="ot">&lt;-</span> data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># clean the column names</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename the columns</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable using existing ones</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across trials for each participant</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># check they produce identical results</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(example2_without_pipe, example2_with_pipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="using-the-pipe-cleaning-column-names" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="using-the-pipe-cleaning-column-names"><span class="header-section-number">5.3</span> Using the pipe &amp; cleaning column names</h2>
+<p>It is almost always useful to start by converting all column names to ones that play nice with R/tidyverse and which use the same naming convention (e.g., snake_case, which is standard in tidyverse).</p>
+<p>How would you bring up the help menu to understand how <code>janitor::clean_names()</code> works?</p>
+<p>Rewrite each of the below to use the pipe.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_demographics_clean_names <span class="ot">&lt;-</span> data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>data_selfreport_clean_names <span class="ot">&lt;-</span> data_selfreport_raw <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>data_amp_clean_names <span class="ot">&lt;-</span> data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -7434,263 +5624,178 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/fundamentals.html" class="pagination-link" aria-label="Fundamentals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals</span></span>
+      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/the_pipe.html" class="pagination-link" aria-label="The pipe">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/data_transformation.html" class="pagination-link" aria-label="Data transformation">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Loading, viewing, and saving data"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">    self-contained: true</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading .csv files</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relative vs. absolute paths: Avoid using `setwd()!`</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>When we write .R scripts, we often use <span class="in">`setwd()`</span> to define where files should be loaded from and saved to. The problem with <span class="in">`setwd()`</span> is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes <span class="in">`setwd("C:/Users/IanHussey/Documents/R_course/")`</span>, before loading some data using <span class="in">`read.csv()`</span>. If I email you this script and data file, it script won't work on your machine unless your folders are identically named; you have to change the file path in <span class="in">`setwd()`</span>. This lowers the reproducibility of the code, as it can't be run trivially by other people on other computers.</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>This is because <span class="in">`setwd()`</span> uses 'absolute' paths that point to a specific location in a directory structure. One of the very useful features of RMarkdown (.Rmd) and Quarto (.qmd) files is that they instead use 'relative' paths, which specify where a file or directory is *in relation to* the .Rmd or .qmd script. That is, the working directory is by definition wherever the .Rmd or .qmd file is, without being specified.</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>If I have a directory - located anywhere on my hard drive - called 'R_course' that contains the folders 'code' and 'data', and the 'data' directory itself contains the directories 'processed' and 'raw'. Imagine the files within these directories are as follows:</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="in">R_course/</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="in">├── code/</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── analysis.qmd</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── data_shouldnt_usually_go_here.csv</span></span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── analysis.qmd</span></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="in">└── data/</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── processed/</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="in">    │   └── data_processed.csv</span></span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="in">    └── raw/</span></span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── data_demographics_raw.csv</span></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── data_selfreports_raw.csv</span></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── code_shouldnt_usually_go_here.qmd</span></span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="in">        └── data_behavioraltask_raw.csv</span></span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>Because .qmd files use 'relative' paths, to load the 'data_shouldnt_usually_go_here.csv' file I only need to do the following, without any <span class="in">`setwd()`</span> call:</span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the data file doesn't exist</span></span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data_shouldnt_usually_go_here.csv"</span>)</span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>Of course, code and data should be clearly separated within a project so 'data_shouldnt_usually_go_here.csv' should not usually go in that directory, as the name suggests.</span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>If I instead wanted to load 'data_processed.csv', I would do this as follows. This data file actually exists in this project, so the code will run assuming you have the data files in the correct location relative to this .qmd script.</span>
-<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/processed/data_processed.csv"</span>)</span>
-<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>This is parsed as follows: <span class="in">`../`</span> tells RStudio to go 'up' one directory level from 'analysis.qmd' to the 'R_course' folder that contains it. <span class="in">`data/`</span> then tells it to go 'down' one level into the 'data' folder inside 'R_course'. Likewise, <span class="in">`processed/`</span> then tells it to go 'down' another level into the 'processed' folder, before loading the 'data_processed.csv' file.</span>
-<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`../`</span> can be stacked to go 'up' multiple directory levels, e.g., <span class="in">`../../`</span>.</span>
-<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>As long as you send move the entire 'R_course' folder and preserve the relative location between the code and the data, the .qmd file's <span class="in">`read.csv()`</span> call will still work. It doesn't matter whether you the 'R_course' directory to somewhere else on your hard drive, or create a .zip file and email it to someone else, or distribute it via GitHub, or whether they're using Windows or Mac.</span>
-<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>Also note that because the directory 'R_course' is never specified in the <span class="in">`read.csv()`</span> call, it can be called anything else and still work. The same goes for the name of the script which calls <span class="in">`read.csv()`</span> - in this case, the script you're reading is called 'loading_data.qmd' and the code still works.</span>
-<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>FYI, you can also use relative paths in regular .R files using the {here} library (see <span class="ot">&lt;https://here.r-lib.org/&gt;</span>).</span>
-<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Check your learning</span></span>
-<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'? </span>
-<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true title="Click to show answer"}</span>
-<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the code file doesn't exist</span></span>
-<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../code/data_shouldnt_usually_go_here.csv"</span>)</span>
-<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Viewing data frames</span></span>
-<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### In your environment</span></span>
-<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio. </span>
-<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows). </span>
-<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
-<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a><span class="co"># To view the contents of 'dat_processed', double click 'dat_processed' below to highlight it, then press and hold Cmd (on Mac) or Ctrl (on Windows) + click 'dat_processed' </span></span>
-<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>dat_processed</span>
-<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a><span class="fu">### Printing data frames below chunks</span></span>
-<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a>To print a data frame below the code chunk, you can;</span>
-<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a>Run the object name:</span>
-<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a>dat_processed</span>
-<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`print()`</span>:</span>
-<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_processed)</span>
-<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### Printing data frames more nicely</span></span>
-<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>Printing data frames by calling their name or using <span class="in">`print()`</span> don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages. </span>
-<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a>Note that this code uses the 'pipe', which we cover in more detail in the next chapter.</span>
-<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="sc">%&gt;%</span></span>
-<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also print more APA-style tables, although they're slightly harder to read, using `kableExtra::kable_classic()`. </span></span>
-<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a><span class="co"># This will work when your script runs on your local machine, but won't render on the website version of this book for reasons I can't quite figure out.</span></span>
-<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a><span class="co"># This chunk is set to not run or show for the book, but you can run the code below directly if you're using the script locally and therefore able to read this.</span></span>
-<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="sc">|&gt;</span></span>
-<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Saving .csv files</span></span>
-<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a>Writing .csv files to disk is as easy as loading them.</span>
-<span id="cb20-166"><a href="#cb20-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> dat_processed, <span class="co"># the data frame to save</span></span>
-<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../data/processed/data_processed.csv"</span>) <span class="co"># the file to save it to</span></span>
-<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading .xlsx files</span></span>
-<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a>While .csv files are a good default file format to use for most projects, Excel, SPSS, and other file formats can also be loaded.</span>
-<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a>There are several packages available to load Excel files in particular. Any of them are fine *except* <span class="in">`library(xlsx)`</span> which requires you to install rJava, which often causes compatibility issues. <span class="in">`library(readxl)`</span> is a safer bet. Because excel files can contain multiple sheets, the source can be specified with the <span class="in">`sheet`</span> argument.</span>
-<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb20-185"><a href="#cb20-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-186"><a href="#cb20-186" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>)</span>
-<span id="cb20-188"><a href="#cb20-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-189"><a href="#cb20-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a><span class="fu">### Check your learning</span></span>
-<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a>**Question:** How would you know what arguments <span class="in">`readxl::read_excel()`</span> takes?</span>
-<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true title="Click to show answer"}</span>
-<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a>By consulting the help menu with <span class="in">`r ?readxl::read_excel()`</span>.</span>
-<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb20-199"><a href="#cb20-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preserving the raw data / skipping rows when loading</span></span>
-<span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</span>
-<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in 'data_likert.xlsx' are on the fourth row, causing a mess when you load the file:</span>
-<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a><span class="co"># head() allows you to see the first few rows of an R object. conversely, tail() shows the last few. </span></span>
-<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span>
-<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a>Handle with with code, not by deleting the information in those rows. When using <span class="in">`read.csv()`</span> or <span class="in">`readxl::read_excel()`</span> this can be done using the <span class="in">`skip`</span> argument.</span>
-<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
-<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span>
-<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Combining multiple data sets</span></span>
-<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a>You can combine multiple data sets with (nearly) the same structure using <span class="in">`dplyr::bind_rows()`</span>. In this case, 'data_likert.xlsx' have mostly the same columns, with sheet 1 also having the 'likert_2' column. Missing columns are filled with NA when using <span class="in">`dplyr::bind_rows()`</span>. This has its advantages over base R's <span class="in">`rbind()`</span> which requires that column names must match between the objects.</span>
-<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
-<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
-<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a>dat_likert</span>
-<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading and writing .rda files</span></span>
-<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <span class="in">`compress = "gz"`</span> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R. </span>
-<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
-<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
-<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>,</span>
-<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
-<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
-<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>)</span>
-<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading multiple data files at once</span></span>
-<span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a>Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some packages and functions we won't cover until later in the course. I include it here just so that you know that it can be done quite easily.</span>
-<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-267"><a href="#cb20-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the code file doesn't exist</span></span>
-<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
-<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
-<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
-<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
-<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read.csv)</span>
-<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb28" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The pipe"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">    self-contained: true</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring data</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Count number of rows</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>A very early step in any data processing is to understand how many rows are in a data frame, as this often represents the number of participants or total number of trials. This is useful to check at multiple steps of your data processing to make sure you have not done something wrong.</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="co"># demographics data</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>data_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw.csv"</span>) </span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a><span class="co"># self report measure data</span></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>data_selfreport_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_selfreport_raw.csv"</span>) </span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a><span class="co"># affect attribution procedure data</span></span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>data_amp_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>)</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_demographics_raw)</span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_selfreport_raw)</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_amp_raw)</span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Why are there different number of rows in the three data frames when this data all comes from the same participants?</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Why are the numbers not round?</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Viewing column names</span></span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</span>
+<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-62"><a href="#cb28-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-63"><a href="#cb28-63" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names</span></span>
+<span id="cb28-64"><a href="#cb28-64" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_demographics_raw)</span>
+<span id="cb28-65"><a href="#cb28-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-66"><a href="#cb28-66" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector</span></span>
+<span id="cb28-67"><a href="#cb28-67" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(data_demographics_raw))</span>
+<span id="cb28-68"><a href="#cb28-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a>data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span>
+<span id="cb28-72"><a href="#cb28-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-73"><a href="#cb28-73" aria-hidden="true" tabindex="-1"></a>data_selfreport_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span>
+<span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span>
+<span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-81"><a href="#cb28-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-83"><a href="#cb28-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Viewing column names and types</span></span>
+<span id="cb28-84"><a href="#cb28-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-87"><a href="#cb28-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-88"><a href="#cb28-88" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_demographics_raw) </span>
+<span id="cb28-89"><a href="#cb28-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-90"><a href="#cb28-90" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_selfreport_raw)</span>
+<span id="cb28-91"><a href="#cb28-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-92"><a href="#cb28-92" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_amp_raw)</span>
+<span id="cb28-93"><a href="#cb28-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-94"><a href="#cb28-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-95"><a href="#cb28-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-96"><a href="#cb28-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## The pipe (`%&gt;%` or `|&gt;`)</span></span>
+<span id="cb28-97"><a href="#cb28-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-98"><a href="#cb28-98" aria-hidden="true" tabindex="-1"></a><span class="in">`%&gt;%`</span> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible.</span>
+<span id="cb28-99"><a href="#cb28-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-100"><a href="#cb28-100" aria-hidden="true" tabindex="-1"></a><span class="in">`|&gt;`</span> is a version of the pipe more recently added to base-R. It is slightly faster but less flexible.</span>
+<span id="cb28-101"><a href="#cb28-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-102"><a href="#cb28-102" aria-hidden="true" tabindex="-1"></a>If you're not sure, it's easier to use <span class="in">`%&gt;%`</span>.</span>
+<span id="cb28-103"><a href="#cb28-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-104"><a href="#cb28-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### What is the pipe?</span></span>
+<span id="cb28-105"><a href="#cb28-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-106"><a href="#cb28-106" aria-hidden="true" tabindex="-1"></a>The output of what is left of the pipe is used as the input to the right of the pipe, usually as the first argument or the data argument.</span>
+<span id="cb28-107"><a href="#cb28-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-110"><a href="#cb28-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-111"><a href="#cb28-111" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb28-112"><a href="#cb28-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-113"><a href="#cb28-113" aria-hidden="true" tabindex="-1"></a><span class="co"># use a function without the pipe</span></span>
+<span id="cb28-114"><a href="#cb28-114" aria-hidden="true" tabindex="-1"></a>example_without_pipe <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(data_demographics_raw)</span>
+<span id="cb28-115"><a href="#cb28-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-116"><a href="#cb28-116" aria-hidden="true" tabindex="-1"></a><span class="co"># use a function with the pipe. </span></span>
+<span id="cb28-117"><a href="#cb28-117" aria-hidden="true" tabindex="-1"></a>example_with_pipe <span class="ot">&lt;-</span> data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-118"><a href="#cb28-118" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb28-119"><a href="#cb28-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-120"><a href="#cb28-120" aria-hidden="true" tabindex="-1"></a><span class="co"># check they produce identical results</span></span>
+<span id="cb28-121"><a href="#cb28-121" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(example_without_pipe, example_with_pipe)</span>
+<span id="cb28-122"><a href="#cb28-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-124"><a href="#cb28-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why use the pipe?</span></span>
+<span id="cb28-125"><a href="#cb28-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-126"><a href="#cb28-126" aria-hidden="true" tabindex="-1"></a>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the way that humans organize and describe steps. Without the pipe, code is written from the inside out, in the way that the computer understands it but humans do not as easily.</span>
+<span id="cb28-127"><a href="#cb28-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-128"><a href="#cb28-128" aria-hidden="true" tabindex="-1"></a>The utility of this becomes more obvious when there are many steps:</span>
+<span id="cb28-129"><a href="#cb28-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-132"><a href="#cb28-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-133"><a href="#cb28-133" aria-hidden="true" tabindex="-1"></a><span class="co"># use a series of functions without the pipe</span></span>
+<span id="cb28-134"><a href="#cb28-134" aria-hidden="true" tabindex="-1"></a>example2_without_pipe <span class="ot">&lt;-</span> <span class="fu">summarise</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">rename</span>(<span class="fu">clean_names</span>(<span class="at">dat =</span> data_amp_raw), <span class="at">unique_id =</span> subject, <span class="at">block =</span> blockcode, <span class="at">trial_type =</span> trialcode, <span class="at">rt =</span> latency), <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)), unique_id), <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) </span>
+<span id="cb28-135"><a href="#cb28-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-136"><a href="#cb28-136" aria-hidden="true" tabindex="-1"></a><span class="co"># use a series of functions with the pipe</span></span>
+<span id="cb28-137"><a href="#cb28-137" aria-hidden="true" tabindex="-1"></a>example2_with_pipe <span class="ot">&lt;-</span> data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-138"><a href="#cb28-138" aria-hidden="true" tabindex="-1"></a>  <span class="co"># clean the column names</span></span>
+<span id="cb28-139"><a href="#cb28-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-140"><a href="#cb28-140" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename the columns</span></span>
+<span id="cb28-141"><a href="#cb28-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
+<span id="cb28-142"><a href="#cb28-142" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
+<span id="cb28-143"><a href="#cb28-143" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb28-144"><a href="#cb28-144" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span></span>
+<span id="cb28-145"><a href="#cb28-145" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable using existing ones</span></span>
+<span id="cb28-146"><a href="#cb28-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-147"><a href="#cb28-147" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across trials for each participant</span></span>
+<span id="cb28-148"><a href="#cb28-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span></span>
+<span id="cb28-149"><a href="#cb28-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) </span>
+<span id="cb28-150"><a href="#cb28-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-151"><a href="#cb28-151" aria-hidden="true" tabindex="-1"></a><span class="co"># check they produce identical results</span></span>
+<span id="cb28-152"><a href="#cb28-152" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(example2_without_pipe, example2_with_pipe)</span>
+<span id="cb28-153"><a href="#cb28-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-154"><a href="#cb28-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-155"><a href="#cb28-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-156"><a href="#cb28-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the pipe &amp; cleaning column names</span></span>
+<span id="cb28-157"><a href="#cb28-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-158"><a href="#cb28-158" aria-hidden="true" tabindex="-1"></a>It is almost always useful to start by converting all column names to ones that play nice with R/tidyverse and which use the same naming convention (e.g., snake_case, which is standard in tidyverse).</span>
+<span id="cb28-159"><a href="#cb28-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-160"><a href="#cb28-160" aria-hidden="true" tabindex="-1"></a>How would you bring up the help menu to understand how <span class="in">`janitor::clean_names()`</span> works?</span>
+<span id="cb28-161"><a href="#cb28-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-162"><a href="#cb28-162" aria-hidden="true" tabindex="-1"></a>Rewrite each of the below to use the pipe.</span>
+<span id="cb28-163"><a href="#cb28-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-166"><a href="#cb28-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-167"><a href="#cb28-167" aria-hidden="true" tabindex="-1"></a>data_demographics_clean_names <span class="ot">&lt;-</span> data_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-168"><a href="#cb28-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb28-169"><a href="#cb28-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-170"><a href="#cb28-170" aria-hidden="true" tabindex="-1"></a>data_selfreport_clean_names <span class="ot">&lt;-</span> data_selfreport_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-171"><a href="#cb28-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb28-172"><a href="#cb28-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-173"><a href="#cb28-173" aria-hidden="true" tabindex="-1"></a>data_amp_clean_names <span class="ot">&lt;-</span> data_amp_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-174"><a href="#cb28-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb28-175"><a href="#cb28-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-176"><a href="#cb28-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

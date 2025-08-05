@@ -9,9 +9,10 @@ book:
   chapters:
     - index.qmd
     - chapters/learning_resources.qmd
-    - chapters/fundamentals.qmd
     - chapters/reproducible_reports.qmd
+    - chapters/fundamentals.qmd
     - chapters/loading_data.qmd
+    - chapters/the_pipe.qmd
     - chapters/data_transformation.qmd
     - chapters/reshaping_and_pivots.qmd
     - chapters/joins.qmd
