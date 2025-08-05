@@ -1,0 +1,175 @@
+---
+title: "Fundamentals"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+```
+
+## RStudio
+
+### Settings
+
+For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'.
+
+![](../images/rstudio_settings.png)
+
+### Shortcuts
+
+Later chapters describe chunks, pipes, etc. For the moment, know that there are shortcuts for them:
+
+Windows
+
+-   Insert Chunk: Ctrl + Alt + I
+-   Insert Pipe (\|\>): shift + Ctrl + M
+-   Multi-line typing: Alt + Mouse click-and-drag, then type
+-   Fix Indentation: Select Text + Ctrl + I
+-   Comment out (#) multiple Lines: Mouse click-and-drag multiple lines, then Shift + Ctrl + C
+
+Mac
+
+-   Insert Chunk: Cmd + Alt + I
+-   Insert Pipe (\|\>): shift + Cmd + M
+-   Multi-line typing: Alt + Mouse click-and-drag, then type
+-   Fix Indentation: Select Text + Cmd + I
+-   Comment out (#) multiple Lines: Mouse click-and-drag multiple lines, then Shift + Cmd + C
+
+## Dependencies
+
+Install libraries from CRAN with `install.packages()`. This only needs to be done once, not on every run of the script.
+
+```{r}
+#| eval: false
+install.packages(tidyverse)
+```
+
+In-development libraries are sometimes not on CRAN and can be installed directly from GitHub with `devtools::install_github()`.
+
+```{r}
+#| eval: false
+install.packages(devtools)
+devtools::install_github("ianhussey/tides") # username/repository
+```
+
+Necessary packages (aka dependencies) are loaded with `library()`. For tidiness, these should all be loaded at the start of your script.
+
+```{r}
+library(tidyverse) # umbrella package that loads dplyr/tidyr/ggplot2 and others
+```
+
+## Accessing the help menu
+
+For any function in a loaded package, simply type `?` before the function's name to bring up the help menu. This helps you understand the function's purpose, its arguments, and outputs.
+
+```{r}
+?select
+```
+
+If you scroll to the bottom of a function's help page, you'll find an 'Index' hyperlink. Clicking this brings you to a list of all the package's functions. Once you get nerdy, this can be a very useful way to discover and learn all a package's functions.
+
+## Namespace collisons: a common source of errors
+
+Some common packages have identically named functions with different syntax. For example, if you load both {dplyr} and {MASS}, use of the function `select()` can refer to either `dplyr::select()` or `MASS::select()`, and your code might not run if the other package is loaded.
+
+You can see if you have two identically named functions loaded by opening the help menu and seeing if more than one entry appears (e.g. with `?select()`).
+
+Avoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:
+
+| Function | tidyverse Source | Conflicting Package(s) | Notes |
+|----------------|----------------|----------------|-------------------------|
+| filter | dplyr | stats | stats::filter() is for signal processing (time series) |
+| lag | dplyr | stats | Different semantics: dplyr::lag() is simpler |
+| select | dplyr | MASS | MASS::select() is for stepwise regression |
+| slice | dplyr | IRanges / S4Vectors | Common in Bioconductor workflows |
+| rename | dplyr | MASS | MASS::rename() is deprecated, but may still load |
+| summarise | dplyr | Hmisc | Hmisc::summarize() differs in behavior |
+| intersect | dplyr | base | dplyr re-exports base::intersect() |
+| union | dplyr | base | dplyr re-exports base::union() |
+| setdiff | dplyr | base | dplyr re-exports base::setdiff() |
+| count | dplyr | plyr | Different behavior/output in plyr::count() |
+| desc | dplyr | IRanges | Conflicts with IRanges sorting |
+| mutate | dplyr | plyr | Conflicts common when plyr is loaded |
+| arrange | dplyr | plyr | Subtle differences; dplyr preferred |
+
+Solve this issue either by specifying which package should be used each time you use the function (e.g., `dplyr::select()` instead of `select()`) or by specifying below your `library()` calls which version is preferred:
+
+```{r}
+#| warning: true
+library(conflicted)
+conflict_prefer(name = "select", winner = "dplyr")
+```
+
+## Assignment of objects
+
+Assignment of objects is done via `<-` by convention.
+
+```{r}
+x <- 5
+x
+```
+
+Technically you can also use `=`, but it's best to avoid it.
+
+```{r}
+y = "hello"
+y
+```
+
+It's somewhat less well known, but you can also do "right-assignment" (`->`) instead of the much more common left assignment (`<-`).
+
+```{r}
+"really? yes." -> z
+z
+```
+
+## Rounding: `round()` probably doesn't do what you think
+
+Did you know that R doesn't use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
+
+This is easier to show than explain. What do you expect the output of the below chunk to be? And what is the actual output?
+
+```{r}
+round(c(0.5, 
+        1.5, 
+        2.5, 
+        3.5, 
+        4.5, 
+        5.5))
+```
+
+In most of your R scripts, you should probably instead use `janitor::round_half_up()`:
+
+```{r}
+library(janitor)
+
+janitor::round_half_up(c(0.5, 
+                         1.5, 
+                         2.5, 
+                         3.5, 
+                         4.5, 
+                         5.5))
+```
+
+or `roundwork::round_up(0.5)`:
+
+```{r}
+library(roundwork) 
+
+roundwork::round_up(c(0.5, 
+                      1.5, 
+                      2.5, 
+                      3.5, 
+                      4.5, 
+                      5.5))
+```

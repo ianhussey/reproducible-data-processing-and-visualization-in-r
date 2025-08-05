@@ -1,0 +1,41 @@
+project:
+  type: book
+
+book:
+  title: "Reproducible Data Processing and Visualization"
+  subtitle: "in R and tidyverse"
+  author: "Ian Hussey"
+  date: today
+  chapters:
+    - index.qmd
+    - chapters/learning_resources.qmd
+    - chapters/fundamentals.qmd
+    - chapters/reproducible_reports.qmd
+    - chapters/loading_data.qmd
+    - chapters/data_transformation.qmd
+    - chapters/reshaping_and_pivots.qmd
+    - chapters/joins.qmd
+    - chapters/reporting.qmd
+    - chapters/visualization.qmd
+    #- references.qmd
+    - chapters/license.qmd
+    
+
+bibliography: references.bib
+
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    warning: false
+    theme: cosmo
+    #highlight: haddock
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+cover-image: cover.png
+

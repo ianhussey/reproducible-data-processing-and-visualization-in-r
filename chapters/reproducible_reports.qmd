@@ -1,0 +1,66 @@
+---
+title: "Reproducible reports"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Literature programming and code chunks
+
+Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.
+
+Code can be written in 'in line' in the text as follows: `r 1+1`. In the RMarkdown document, you have hover over the in line code and press enter or return to run the code.
+
+You can also write it in chunks:
+
+```{r}
+
+2+2
+
+```
+
+Output appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk. You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk.
+
+## Math via LaTeX
+
+You can include math in line with LaTeX code placed between dollar signs: e.g., "$\eta_{p}^{2}$ = 0.03".
+
+You can also write longer chunks of LaTeX, for example to specify that the mean ($\bar{x}$) is the sum of all elements of the vector $x$ divided by number of elements in the vector ($n$).
+
+This code:
+
+```         
+$$
+\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
+$$
+```
+
+Produces this math:
+
+$$
+\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
+$$
+
+## Source versus Visual editor
+
+## kniting/rendering and reproducibilty
+
+\TODO
+
+## Levels of heading
+
+\TODO

@@ -1,0 +1,300 @@
+---
+title: "Reporting"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Dependencies
+
+```{r}
+
+library(dplyr)
+library(readr)
+library(report) # part of {easystats}
+library(see) # part of {easystats}
+library(parameters) # part of {easystats}
+library(correlation) # part of {easystats}
+library(effectsize) # part of {easystats}
+library(performance) # part of {easystats}
+library(janitor)
+library(lme4)
+library(knitr)
+library(kableExtra)
+
+```
+
+## Inference tests
+
+### Regressions
+
+```{r}
+
+# fit model
+model <- lm(wt ~ 1 + am + mpg, data = mtcars)
+
+# report - text output (nb omits intercept!)
+report(model)
+
+# each parameter (including intercept)
+report_parameters(model)
+
+# just parameters in text format
+report_statistics(model)
+
+# just parameters in table format
+parameters(model)
+
+# just parameters in table html format 
+parameters(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+# what if i just want some of these cols?
+parameters(model) |>
+  as.data.frame() |>
+  mutate(p = insight::format_p(p)) |>
+  select(r = Coefficient, ci_lower = CI_low, ci_upper = CI_high, p) |>
+  mutate_if(is.numeric, round_half_up, digits = 2)
+
+# table in markdown format
+report_table(model)
+
+# table in html format - needs to be rounded manually
+report_table(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+# plot
+parameters(model) |>
+  plot() 
+
+```
+
+### Correlations
+
+#### Single correlation tests
+
+```{r}
+
+# fit model
+model <- cor.test(mtcars$mpg, mtcars$wt)
+
+# report - text output 
+report(model)
+
+# table in html format - needs to be rounded manually
+report_table(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+```
+
+#### Many
+
+```{r}
+
+results <- correlation(iris)
+
+results
+
+results %>%
+  summary(redundant = TRUE) %>%
+  plot()
+
+```
+
+#### By group
+
+```{r}
+
+iris %>%
+  select(Species, Sepal.Length, Sepal.Width, Petal.Width) %>%
+  group_by(Species) %>%
+  correlation()
+
+```
+
+### t-tests
+
+NB Cohen's d is approximated - better to calculate it separately and accurately.
+
+```{r}
+
+# fit model
+model <- t.test(mpg ~ am, data = mtcars)
+
+# report - text output 
+report(model)
+
+# table in html format - needs to be rounded manually
+report_table(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+
+# estimate Cohen's d directly from data
+cohens_d(mpg ~ am, data = mtcars)
+
+```
+
+### Multilevel/hierarchical/mixed models
+
+```{r}
+
+# fit model
+model <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+
+# parameters in text format 
+report(model)
+
+# parameters in table format
+parameters(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+# table in html format - needs to be rounded manually
+report_table(model) |>
+  mutate(p = insight::format_p(p)) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+# plot
+parameters(model) |>
+  plot() 
+
+# check assumptions of random effects
+result <- check_normality(model, effects = "random")
+plot(result)
+
+```
+
+### ANOVAs
+
+```{r}
+
+# fit model
+model <- aov(mpg ~ factor(gear) + factor(carb), data = mtcars)
+
+# commonly used effect size: partial eta squared
+eta_squared(model)
+
+# better effect size: partialomega squared
+omega_squared(model)
+
+```
+
+## Summary statistics
+
+```{r}
+
+# all columns
+iris |>
+  group_by(Species) |>
+  report_table() 
+
+# all columns - html output with rounding
+iris |>
+  group_by(Species) |>
+  report_table() |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+# subset of columns
+iris |>
+  group_by(Species) |>
+  report_table() |>
+  select(Group, Variable, n_Obs, Mean, SD) |>
+  mutate_if(is.numeric, round_half_up, digits = 2) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+```
+
+## Assumption checks
+
+Beware that checking assumptions can lead to as many bad practices as it does good ones! (e.g., poorly justified post hoc outlier exclusion)
+
+### Multiple checks at once
+
+```{r fig.height=8, fig.width=8}
+
+# fit model
+model <- lm(wt ~ 1 + am + mpg, data = mtcars)
+
+# check multiple model assumptions
+check_model(model)
+
+```
+
+### Normality of distribution of residuals
+
+```{r}
+
+res_normality <- check_normality(model)
+
+res_normality
+plot(res_normality, type = "qq")
+plot(res_normality, type = "density")
+
+```
+
+### Multicolinearity
+
+```{r}
+
+res_collinearity <- check_collinearity(model)
+
+res_collinearity
+plot(res_collinearity)
+
+```
+
+### Outliers
+
+```{r}
+
+res_outliers <- check_outliers(model, method = "cook") # "all" requires other dependencies and can take some time to run  
+#res_outliers <- check_outliers(model, method = "all") # "all" requires other dependencies and can take some time to run  
+
+res_outliers
+plot(res_outliers)
+
+```
+
+### Heteroscedasticity
+
+```{r}
+
+res_het <- check_heteroscedasticity(model)
+
+res_het
+plot(res_het)
+
+```

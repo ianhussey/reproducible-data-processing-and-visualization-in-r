@@ -1,0 +1,99 @@
+---
+title: "Joins"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Dependencies
+
+```{r}
+
+library(dplyr)
+library(readr)
+
+```
+
+## Get data
+
+```{r}
+
+data_unique_id_subset <- read_csv("../data/raw/data_unique_id_subset.csv")
+data_age_gender_subset <- read_csv("../data/raw/data_age_gender_subset.csv")
+data_amp_summary_subset <- read_csv("../data/raw/data_amp_summary_subset.csv")
+data_selfreport_summary_subset <- read_csv("../data/raw/data_selfreport_summary_subset.csv")
+
+nrow(data_unique_id_subset)
+nrow(data_age_gender_subset)
+nrow(data_amp_summary_subset)
+nrow(data_selfreport_summary_subset)
+
+```
+
+## Practicing joins
+
+Using the data frames below and functions from the \_join family, write code to do the following joins.
+
+### Practice 1
+
+create 'data_combined' by joining data_amp_summary_subset and data_age_gender_subset so that unique_ids in either data frame are retained. which join is this? implement it.
+
+```{r}
+
+# data_combined <- 
+
+```
+
+### Practice 2
+
+create 'data_self_reports_and_their_amp_data' by joining data_selfreport_summary_subset and data_amp_summary_subset so that all participants have self-report data, + AMP data if available. which join is this? implement it.
+
+```{r}
+
+# data_self_reports_and_their_amp_data <- 
+
+```
+
+### Practice 3
+
+do the opposite: create 'data_amp_data_and_their_self_reports' by joining data_amp_summary_subset and data_selfreport_summary_subset so that all participants have AMP data, + self-report data if available. which join is this? implement it.
+
+```{r}
+
+# data_amp_data_and_their_self_reports <- 
+
+```
+
+### Practice 4
+
+create data_combined_2 by joining 'data_combined' and data_selfreport_summary_subset only unique_ids already present in data_combined are retained. which join is this? implement it.
+
+```{r}
+
+# data_combined_2 <- 
+
+```
+
+### Practice 5
+
+create 'data_missing_ids' which should list the unique_ids are missing from data_unique_id_subset but are present in at least one of data_age_gender_subset, data_amp_summary_subset, and data_selfreport_summary_subset. This will require two different joins. Which? Implement them.
+
+```{r}
+
+# data_missing_ids <- 
+
+```

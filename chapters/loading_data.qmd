@@ -1,0 +1,276 @@
+---
+title: "Loading data"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Dependencies
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+library(readr)
+library(janitor) # for clean_names() and round_half_up()
+library(roundwork) # for round_up()
+library(stringr)
+library(knitr) # for kable()
+library(kableExtra) # for kable_classic()
+library(readxl) # for read_excel()
+
+```
+
+## Loading data
+
+### Relative vs. absolute paths
+
+This data comes from a real study on implicit and self-reported evaluations. The implementation of the procedure produced three data files: one for the demographics data, one for the self-reported evaluations, and one for the implicit measure (the 'Affect Misattribution Procedure'). This script uses each of these to learn and practice functions from the readr, dplyr, and tidyr libraries that are commonly used for data wrangling. In doing so, we will learn how to do many of the steps involved in data processing for a given experiment.
+
+#### Avoid using `setwd()`
+
+\TODO add explainer - breaks between machines, breaks between mac and windows
+
+```{r}
+
+# \TODO 
+
+```
+
+#### Use relative paths
+
+Either through Rmarkdown files, Quarto files, or in regular .R files using the {here} library (see <https://here.r-lib.org/>).
+
+```{r}
+
+# demographics data
+data_demographics_raw <- read_csv(file = "../data/raw/data_demographics_raw.csv") 
+
+# self report measure data
+data_selfreport_raw <- read_csv(file = "../data/raw/data_selfreport_raw.csv") 
+
+# affect attribution procedure data
+data_amp_raw <- read_csv(file = "../data/raw/data_amp_raw.csv")
+
+```
+
+### Reading other file formats
+
+Excel, SPSS, and other file formats can also be loaded. There are several packages available to load Excel files in particular. Any of them are fine *except* `library(xlsx)` which requires you to install rJava, which often causes compatibility issues. `library(readxl)` is a safer bet.
+
+```{r}
+
+dat_likert_1 <- readxl::read_excel("../data/raw/data_likert.xlsx", sheet = "data1")
+
+# print the object
+dat_likert_1
+
+```
+
+### Preserving the raw data / skipping rows
+
+With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.
+
+Sometimes extra rows etc. make a data file harder to read into R. Handle with with code, not by deleting the information in those rows.
+
+```{r}
+
+# use skip parameter to skip rows
+dat_likert_1 <- readxl::read_excel("../data/raw/data_likert.xlsx", sheet = "data1", skip = 3)
+
+dat_likert_1
+
+```
+
+### Combining multiple data sets
+
+Combining multiple data sets with (nearly) the same structure using `bind_rows()`
+
+```{r}
+
+dat_likert_1 <- readxl::read_excel("../data/raw/data_likert.xlsx", sheet = "data1", skip = 3)
+dat_likert_2 <- readxl::read_excel("../data/raw/data_likert.xlsx", sheet = "data2", skip = 3)
+
+dat_likert <- bind_rows(dat_likert_1,
+                        dat_likert_2)
+
+dat_likert
+
+```
+
+### Reading multiple data sets at once
+
+Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. This uses some things we won't cover until later - just know that it can be done quite easily.
+
+*The below code chunk is set not to run, as there is no such data to be loaded from the data folder.*
+
+```{r eval=FALSE, include=TRUE}
+
+# list all the files in a directory
+file_names <- list.files(path = "../data/individual_files", 
+                         pattern = "\\.csv$", 
+                         full.names = TRUE)
+
+# use (or 'map') the read_csv function onto each of the file names 
+data_combined <- purrr::map_dfr(.x = file_names, .f = read_csv)
+
+```
+
+## Printing tables nicely
+
+```{r}
+
+dat_likert |>
+  knitr::kable(align = "r") |>
+  kableExtra::kable_classic(full_width = FALSE)
+
+```
+
+## Exploring data
+
+### Count number of rows
+
+A very early step in any data processing is to understand how many rows are in a data frame, as this often represents the number of participants or total number of trials. This is useful to check at multiple steps of your data processing to make sure you have not done something wrong.
+
+```{r}
+
+nrow(data_demographics_raw)
+
+nrow(data_selfreport_raw)
+
+nrow(data_amp_raw)
+
+```
+
+-   Why are there different number of rows in the three data frames when this data all comes from the same participants?
+-   Why are the numbers not round?
+
+### Viewing column names
+
+How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.
+
+```{r}
+
+# print all column names
+colnames(data_demographics_raw)
+
+# print all column names as a vector
+dput(colnames(data_demographics_raw))
+
+data_demographics_raw %>%
+  colnames() %>%
+  dput()
+
+data_selfreport_raw %>%
+  colnames() %>%
+  dput()
+
+data_amp_raw %>%
+  colnames() %>%
+  dput()
+
+```
+
+### Viewing column names and types
+
+```{r}
+
+head(data_demographics_raw) 
+
+head(data_selfreport_raw)
+
+head(data_amp_raw)
+
+```
+
+## The pipe (`%>%` or `|>`)
+
+`%>%` is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible.
+
+`|>` is a version of the pipe more recently added to base-R. It is slightly faster but less flexible.
+
+If you're not sure, it's easier to use `%>%`.
+
+### What is the pipe?
+
+The output of what is left of the pipe is used as the input to the right of the pipe, usually as the first argument or the data argument.
+
+```{r}
+
+# use a function without the pipe
+example_without_pipe <- clean_names(data_demographics_raw)
+
+# use a function with the pipe. 
+example_with_pipe <- data_demographics_raw %>%
+  clean_names()
+
+# check they produce identical results
+identical(example_without_pipe, example_with_pipe)
+
+```
+
+### Why use the pipe?
+
+The pipe allows us to write code that reads from top to bottom, following a series of steps, in the way that humans organize and describe steps. Without the pipe, code is written from the inside out, in the way that the computer understands it but humans do not as easily.
+
+The utility of this becomes more obvious when there are many steps:
+
+```{r}
+
+# use a series of functions without the pipe
+example2_without_pipe <- summarise(group_by(mutate(rename(clean_names(dat = data_amp_raw), unique_id = subject, block = blockcode, trial_type = trialcode, rt = latency), fast_trial = ifelse(rt < 100, 1, 0)), unique_id), percent_fast_trials = mean(fast_trial)*100) 
+
+# use a series of functions with the pipe
+example2_with_pipe <- data_amp_raw %>%
+  # clean the column names
+  clean_names() %>%
+  # rename the columns
+  rename(unique_id = subject,
+         block = blockcode,
+         trial_type = trialcode,
+         rt = latency) %>%
+  # create a new variable using existing ones
+  mutate(fast_trial = ifelse(rt < 100, 1, 0)) %>%
+  # summarize across trials for each participant
+  group_by(unique_id) %>%
+  summarise(percent_fast_trials = mean(fast_trial)*100) 
+
+# check they produce identical results
+identical(example2_without_pipe, example2_with_pipe)
+
+```
+
+## Using the pipe & cleaning column names
+
+It is almost always useful to start by converting all column names to ones that play nice with R/tidyverse and which use the same naming convention (e.g., snake_case, which is standard in tidyverse).
+
+How would you bring up the help menu to understand how `janitor::clean_names()` works?
+
+Rewrite each of the below to use the pipe.
+
+```{r}
+
+data_demographics_clean_names <- data_demographics_raw %>%
+  clean_names() 
+
+data_selfreport_clean_names <- data_selfreport_raw %>%
+  clean_names() 
+
+data_amp_clean_names <- data_amp_raw %>%
+  clean_names() 
+
+```

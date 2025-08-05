@@ -1,0 +1,18 @@
+---
+title: "Other learning resources"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+-   You can find cheatsheets in the /resources folder \[\TODO add link\]
+-   The Open Source textbook R for Data Science (aka, [Wickham's R4DS](https://r4ds.hadley.nz/)) is invaluable. Hadley Wickham is the main developer of the "tidyverse" set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its [section on data transformation](https://r4ds.hadley.nz/data-transform).
+    -   The entire second edition of the book is available at <https://r4ds.hadley.nz/>.
+    -   The first edition is also available. It does some things better in my opinion, e.g., it has a better explanation of the pipe (`%>%` or `|>`). See <https://r4ds.had.co.nz/pipes.html>.
+    -   The first edition also talks about RMarkdown, whereas the second edition has moved to a different technology called Quarto (which we won't cover, although they're similar). See <https://r4ds.had.co.nz/r-markdown.html>.
+-   For people who prefer to learn in an interactive environment, I suggest this web app: <https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome>.
+-   For people who prefer some video content - although seeing other people code can never replace practicing coding yourself! - I can also recommend De Bruine et al.'s Open Source textbook and videos [Data Skills for Reproducible Research](https://psyteachr.github.io/reprores-v3/). E.g., see their page with links to videos for [dplyr](https://psyteachr.github.io/reprores-v3/dplyr.html) and [tidyr](https://psyteachr.github.io/reprores-v3/tidyr.html).

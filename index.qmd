@@ -1,0 +1,3 @@
+# Introduction {.unnumbered}
+
+This e-book provides materials for the course "Reproducible Data Processing and Visualization in R", delivered by [Psychology of Digitalisation research group](https://www.dig.psy.unibe.ch/) at at the University of Bern Institute of Psychology.

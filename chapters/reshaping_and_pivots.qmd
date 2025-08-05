@@ -1,0 +1,237 @@
+---
+title: "Reshaping and pivots"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Resources
+
+See code and gifs [here](https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#pivot-wider-and-longer) which illustrate pivots (and indeed other tidyverse verbs).
+
+## Dependencies
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+library(tibble)
+#install.packages("devtools")
+#devtools::install_github("debruine/faux")
+library(faux)
+library(janitor)
+library(ggplot2)
+library(scales)
+library(psych)
+library(readr)
+library(knitr)
+library(kableExtra)
+
+```
+
+## Example
+
+### Simulate data in wide format
+
+```{r}
+
+# set seed for reproducibility
+set.seed(123)
+
+# generate data 
+data_wide <- 
+  faux::rnorm_multi(n = 100,
+                    vars = 5,
+                    mu = 3,
+                    sd = 1,
+                    r = 0.5,
+                    varnames = paste0("item_", 1:5),
+                    empirical = FALSE) %>%
+  rownames_to_column(var = "id")
+
+# recode responses less than 1 or more than 5 to those values, then round scores to whole numbers
+# note that {faux} has functions for doing this better
+
+
+# dat <- data_wide |>
+#   mutate(item_1 = round_half_up(item_1, digits = 0),
+#          item_1 = ifewlse
+
+data_wide_likert <- data_wide %>%
+  mutate(across(starts_with("item_"), ~ round_half_up(.x, digits = 0))) %>%
+  mutate(across(starts_with("item_"), ~ ifelse(.x < 1, 1, ifelse(.x > 5, 5, .x))))
+
+```
+
+### Cronbach's alpha
+
+Wide data like this is a) common and b) useful for calculating metrics like internal consistency.
+
+```{r}
+
+res_alpha <- data_wide_likert %>%
+  #select(-id) %>%
+  select(starts_with("item_")) %>%
+  psych::alpha()
+
+cronbachs_alpha_estimate <- res_alpha$total$raw_alpha |>
+  round_half_up(digits = 2)
+
+```
+
+Cronbach's $\alpha$ = `r cronbachs_alpha_estimate`
+
+### Plot simulated data
+
+```{r}
+
+ggplot(data_wide_likert, aes(x = item_1)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw()
+
+ggplot(data_wide_likert, aes(x = item_2)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw()
+
+ggplot(data_wide_likert, aes(x = item_3)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw()
+
+ggplot(data_wide_likert, aes(x = item_4)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw()
+
+ggplot(data_wide_likert, aes(x = item_5)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw()
+
+```
+
+-   These plots repeat the mortal coding sin of repeating ourselves. If we reshaped the data to 'long' format we could use just one ggplot() call that includes facet_wrap().
+
+### Reshape
+
+Using `pivot_longer()`.
+
+```{r}
+
+# positive selection
+data_long <- data_wide_likert %>%
+  pivot_longer(cols = starts_with("item_"),
+               names_to = "item",
+               values_to = "response")
+
+# positive selection using a different tidy select function
+data_long <- data_wide_likert %>%
+  pivot_longer(cols = contains("item_"),
+               names_to = "item",
+               values_to = "response")
+
+# negative selection
+data_long <- data_wide_likert %>%
+  pivot_longer(cols = -id,
+               names_to = "item",
+               values_to = "response") |>
+  mutate(item = stringr::str_remove(item, "item_"))
+
+ggplot(data_long, aes(x = response)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw() +
+  facet_wrap(~ item)
+
+```
+
+-   What other ways could you specify this pivot_longer call's arguments?
+-   `facet_wrap()` is to {ggplot} as `group_by()` is to {dplyr}
+
+#### Calculate sum scores
+
+```{r}
+
+temp <- data_wide_likert |>
+  group_by(id) |>
+  mutate(sum_score = item_1 + item_2 + item_3 + item_4 + item_5)
+  #mutate(sum_score = rowSums(item_1, item_2, item_3, item_4, item_5))
+
+```
+
+-   row math is much faster than column math in R!
+
+```{r}
+
+sum_scores <- data_long %>%
+  group_by(id) %>%
+  summarise(sum_score = sum(response))
+
+
+ggplot(sum_scores, aes(x = sum_score)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  scale_x_continuous(breaks = breaks_pretty(n = 10)) +
+  theme_linedraw()
+
+```
+
+### Convert this long data back to wide
+
+Just to know how to do it.
+
+```{r}
+
+data_wide_again <- data_long %>%
+  pivot_wider(names_from = item,
+              values_from = response,
+              names_prefix = "item_")
+
+```
+
+### Combine item and sum scores in one data frame
+
+```{r}
+
+data_item_and_sum_scores <- data_wide_again %>%
+  left_join(sum_scores, by = "id")
+
+# why joins are needed over bind_cols 
+# wrong <- bind_cols(data_wide_again, sum_scores |> select(-id))
+
+```
+
+## New facet plot with items and sum score
+
+```{r}
+
+data_long_with_sum_score <- data_item_and_sum_scores %>%
+  pivot_longer(cols = -id,
+               names_to = "item",
+               values_to = "response")
+
+ggplot(data_long_with_sum_score, aes(x = response)) +
+  geom_histogram(binwidth = 1, boundary = -0.5) +
+  theme_linedraw() +
+  facet_wrap(~ item, scales = "free")
+
+```
+
+## Practice
+
+Wrangle the demographics data included in this exercise more efficiently by reshaping it into wide format. Before, we used filter() to wrangle the age and gender data separately.
+
+```{r}
+
+dat <- read_csv("../data/raw/data_demographics_raw.csv")
+
+```
