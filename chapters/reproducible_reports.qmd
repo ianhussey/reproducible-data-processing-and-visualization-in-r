@@ -270,6 +270,14 @@ report::report_text(res)
 
 Edit this .qmd file to make the following changes.
 
+### Insert a new chunk and write code to install the following packages
+
+Use the `install.packages()` function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names. Run the code to install these packages.
+
+### Inserting a new chunk below this heading
+
+Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some code inside the chunk, e.g., "10 - 5". Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
+
 ### Add authorship
 
 Add the following text to the YAML header on line 3, just under 'title': `author: "yourname"`, and replace 'yourname' with your name. Click 'render' to create a reproducible report as a .html from this .qmd file. It will now list you as the author.

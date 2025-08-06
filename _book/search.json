@@ -4,7 +4,7 @@
     "href": "chapters/fundamentals.html",
     "title": "3  Fundamentals",
     "section": "",
-    "text": "3.1 RStudio",
+    "text": "3.1 What’s the difference between Base R, RStudio IDE, and tidyverse?\nThis is an understandable point of confusion, so let’s clarify:\nThere is a long-standing debate about whether base R (alone) or R+{tidyverse} is better. Thankfully, I can resolve this question for you immediately: R+{tidyverse} is better. All hail the One True Language, {tidyverse}.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -23,8 +23,8 @@
     "objectID": "chapters/fundamentals.html#dependencies",
     "href": "chapters/fundamentals.html#dependencies",
     "title": "3  Fundamentals",
-    "section": "3.2 Dependencies",
-    "text": "3.2 Dependencies\nInstall libraries from CRAN with install.packages(). This only needs to be done once, not on every run of the script.\n\n\nCode\ninstall.packages(tidyverse)\n\n\nIn-development libraries are sometimes not on CRAN and can be installed directly from GitHub with devtools::install_github().\n\n\nCode\ninstall.packages(devtools)\ndevtools::install_github(\"ianhussey/tides\") # username/repository\n\n\nNecessary packages (aka dependencies) are loaded with library(). For tidiness, these should all be loaded at the start of your script.\n\n\nCode\nlibrary(tidyverse) # umbrella package that loads dplyr/tidyr/ggplot2 and others",
+    "section": "3.4 Dependencies",
+    "text": "3.4 Dependencies\nInstall libraries from CRAN with install.packages(). This only needs to be done once, not on every run of the script.\n\n\nCode\ninstall.packages(tidyverse)\n\n\nIn-development libraries are sometimes not on CRAN and can be installed directly from GitHub with devtools::install_github().\n\n\nCode\ninstall.packages(devtools)\ndevtools::install_github(\"ianhussey/tides\") # username/repository\n\n\nNecessary packages (aka dependencies) can be loaded with library(). For tidiness, these should usually all be loaded at the start of your script. Some chapters in this book load libraries only when they’re used, to clearly introduce which packages provide which functions.\n\n\nCode\nlibrary(tidyverse) # umbrella package that loads dplyr/tidyr/ggplot2 and others",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -33,8 +33,8 @@
     "objectID": "chapters/fundamentals.html#accessing-the-help-menu",
     "href": "chapters/fundamentals.html#accessing-the-help-menu",
     "title": "3  Fundamentals",
-    "section": "3.3 Accessing the help menu",
-    "text": "3.3 Accessing the help menu\nFor any function in a loaded package, simply type ? before the function’s name to bring up the help menu. This helps you understand the function’s purpose, its arguments, and outputs.\n\n\nCode\n?select\n\n\nIf you scroll to the bottom of a function’s help page, you’ll find an ‘Index’ hyperlink. Clicking this brings you to a list of all the package’s functions. Once you get nerdy, this can be a very useful way to discover and learn all a package’s functions.",
+    "section": "3.5 Accessing the help menu",
+    "text": "3.5 Accessing the help menu\nFor any function in a loaded package, simply type ? before the function’s name to bring up the help menu. This helps you understand the function’s purpose, its arguments, and outputs.\n\n\nCode\n?select\n\n\nIf you scroll to the bottom of a function’s help page, you’ll find an ‘Index’ hyperlink. Clicking this brings you to a list of all the package’s functions. Once you get nerdy, this can be a very useful way to discover and learn all a package’s functions.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -43,8 +43,8 @@
     "objectID": "chapters/fundamentals.html#namespace-collisons-a-common-source-of-errors",
     "href": "chapters/fundamentals.html#namespace-collisons-a-common-source-of-errors",
     "title": "3  Fundamentals",
-    "section": "3.4 Namespace collisons: a common source of errors",
-    "text": "3.4 Namespace collisons: a common source of errors\nSome common packages have identically named functions with different syntax. For example, if you load both {dplyr} and {MASS}, use of the function select() can refer to either dplyr::select() or MASS::select(), and your code might not run if the other package is loaded.\nYou can see if you have two identically named functions loaded by opening the help menu and seeing if more than one entry appears (e.g. with ?select()).\nAvoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:\n\n\n\n\n\n\n\n\n\nFunction\ntidyverse Source\nConflicting Package(s)\nNotes\n\n\n\n\nfilter\ndplyr\nstats\nstats::filter() is for signal processing (time series)\n\n\nlag\ndplyr\nstats\nDifferent semantics: dplyr::lag() is simpler\n\n\nselect\ndplyr\nMASS\nMASS::select() is for stepwise regression\n\n\nslice\ndplyr\nIRanges / S4Vectors\nCommon in Bioconductor workflows\n\n\nrename\ndplyr\nMASS\nMASS::rename() is deprecated, but may still load\n\n\nsummarise\ndplyr\nHmisc\nHmisc::summarize() differs in behavior\n\n\nintersect\ndplyr\nbase\ndplyr re-exports base::intersect()\n\n\nunion\ndplyr\nbase\ndplyr re-exports base::union()\n\n\nsetdiff\ndplyr\nbase\ndplyr re-exports base::setdiff()\n\n\ncount\ndplyr\nplyr\nDifferent behavior/output in plyr::count()\n\n\ndesc\ndplyr\nIRanges\nConflicts with IRanges sorting\n\n\nmutate\ndplyr\nplyr\nConflicts common when plyr is loaded\n\n\narrange\ndplyr\nplyr\nSubtle differences; dplyr preferred\n\n\n\nSolve this issue either by specifying which package should be used each time you use the function (e.g., dplyr::select() instead of select()) or by specifying below your library() calls which version is preferred:\n\n\nCode\nlibrary(conflicted)\nconflict_prefer(name = \"select\", winner = \"dplyr\")\n\n\n[conflicted] Will prefer dplyr::select over any other package.",
+    "section": "3.6 Namespace collisons: a common source of errors",
+    "text": "3.6 Namespace collisons: a common source of errors\nSome common packages have identically named functions with different syntax. For example, if you load both {dplyr} and {MASS}, use of the function select() can refer to either dplyr::select() or MASS::select(), and your code might not run if the other package is loaded.\nYou can see if you have two identically named functions loaded by opening the help menu and seeing if more than one entry appears (e.g. with ?select()).\nAvoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:\n\n\n\n\n\n\n\n\n\nFunction\ntidyverse Source\nConflicting Package(s)\nNotes\n\n\n\n\nfilter\ndplyr\nstats\nstats::filter() is for signal processing (time series)\n\n\nlag\ndplyr\nstats\nDifferent semantics: dplyr::lag() is simpler\n\n\nselect\ndplyr\nMASS\nMASS::select() is for stepwise regression\n\n\nslice\ndplyr\nIRanges / S4Vectors\nCommon in Bioconductor workflows\n\n\nrename\ndplyr\nMASS\nMASS::rename() is deprecated, but may still load\n\n\nsummarise\ndplyr\nHmisc\nHmisc::summarize() differs in behavior\n\n\nintersect\ndplyr\nbase\ndplyr re-exports base::intersect()\n\n\nunion\ndplyr\nbase\ndplyr re-exports base::union()\n\n\nsetdiff\ndplyr\nbase\ndplyr re-exports base::setdiff()\n\n\ncount\ndplyr\nplyr\nDifferent behavior/output in plyr::count()\n\n\ndesc\ndplyr\nIRanges\nConflicts with IRanges sorting\n\n\nmutate\ndplyr\nplyr\nConflicts common when plyr is loaded\n\n\narrange\ndplyr\nplyr\nSubtle differences; dplyr preferred\n\n\n\nSolve this issue either by specifying which package should be used each time you use the function (e.g., dplyr::select() instead of select()) or by specifying below your library() calls which version is preferred:\n\n\nCode\nlibrary(conflicted)\nconflict_prefer(name = \"select\", winner = \"dplyr\")\n\n\n[conflicted] Will prefer dplyr::select over any other package.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -53,8 +53,8 @@
     "objectID": "chapters/fundamentals.html#assignment-of-objects",
     "href": "chapters/fundamentals.html#assignment-of-objects",
     "title": "3  Fundamentals",
-    "section": "3.5 Assignment of objects",
-    "text": "3.5 Assignment of objects\nAssignment of objects is done via &lt;- by convention.\n\n\nCode\nx &lt;- 5\nx\n\n\n[1] 5\n\n\nTechnically you can also use =, but it’s best to avoid it.\n\n\nCode\ny = \"hello\"\ny\n\n\n[1] \"hello\"\n\n\nIt’s somewhat less well known, but you can also do “right-assignment” (-&gt;) instead of the much more common left assignment (&lt;-).\n\n\nCode\n\"really? yes.\" -&gt; z\nz\n\n\n[1] \"really? yes.\"",
+    "section": "3.7 Assignment of objects",
+    "text": "3.7 Assignment of objects\nAssignment of objects is done via &lt;- by convention.\n\n\nCode\n# set the variable x to be the number 5\nx &lt;- 5\n\n# print the contents of x\nx\n\n\n[1] 5\n\n\nTechnically you can also use =, but it’s best to avoid it.\n\n\nCode\n# set the variable y to be the string \"hello\"\ny = \"hello\"\n\n# print the contents of y\ny\n\n\n[1] \"hello\"\n\n\nIt’s somewhat less well known, but you can also do “right-assignment” (-&gt;) instead of the much more common left assignment (&lt;-).\n\n\nCode\n# set the variable y to be the string \"really? yes.\"\n\"really? yes.\" -&gt; z\n\n# print the contents of z\nz\n\n\n[1] \"really? yes.\"",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -63,8 +63,8 @@
     "objectID": "chapters/fundamentals.html#rounding-round-probably-doesnt-do-what-you-think",
     "href": "chapters/fundamentals.html#rounding-round-probably-doesnt-do-what-you-think",
     "title": "3  Fundamentals",
-    "section": "3.6 Rounding: round() probably doesn’t do what you think",
-    "text": "3.6 Rounding: round() probably doesn’t do what you think\nDid you know that R doesn’t use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses “banker’s rounding”, which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.\nThis is easier to show than explain. What do you expect the output of the below chunk to be? And what is the actual output?\n\n\nCode\nround(c(0.5, \n        1.5, \n        2.5, \n        3.5, \n        4.5, \n        5.5))\n\n\n[1] 0 2 2 4 4 6\n\n\nIn most of your R scripts, you should probably instead use janitor::round_half_up():\n\n\nCode\nlibrary(janitor)\n\njanitor::round_half_up(c(0.5, \n                         1.5, \n                         2.5, \n                         3.5, \n                         4.5, \n                         5.5))\n\n\n[1] 1 2 3 4 5 6\n\n\nor roundwork::round_up():\n\n\nCode\nlibrary(roundwork) \n\nroundwork::round_up(c(0.5, \n                      1.5, \n                      2.5, \n                      3.5, \n                      4.5, \n                      5.5))\n\n\n[1] 1 2 3 4 5 6",
+    "section": "3.8 Rounding: round() probably doesn’t do what you think",
+    "text": "3.8 Rounding: round() probably doesn’t do what you think\nDid you know that R doesn’t use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses “banker’s rounding”, which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.\nThis is easier to show than explain. The round() function rounds each of the numbers passed to it. What do you expect the output to be?\n\n\nCode\nround(c(0.5, \n        1.5, \n        2.5, \n        3.5, \n        4.5, \n        5.5))\n\n\n\n\n\n\n\n\nClick to show result\n\n\n\n\n\n\n[1] 0 2 2 4 4 6\n\nWhy is this? Because R’s round() function uses “banker’s rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it’s usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.\n\n\n\nIn most of your R scripts, you should probably instead use janitor::round_half_up() instead, which produces the round-5-upwards behavior you were probably taught in school.\n\n\nCode\nlibrary(janitor)\n\njanitor::round_half_up(c(0.5, \n                         1.5, \n                         2.5, \n                         3.5, \n                         4.5, \n                         5.5))\n\n\n[1] 1 2 3 4 5 6\n\n\nAnother great option is roundwork::round_up(), which is a package that my PhD student Lukas Jung wrote before joining our research group.\n\n\nCode\nlibrary(roundwork) \n\nroundwork::round_up(c(0.5, \n                      1.5, \n                      2.5, \n                      3.5, \n                      4.5, \n                      5.5))\n\n\n[1] 1 2 3 4 5 6",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -73,8 +73,8 @@
     "objectID": "chapters/fundamentals.html#exercises",
     "href": "chapters/fundamentals.html#exercises",
     "title": "3  Fundamentals",
-    "section": "3.7 Exercises",
-    "text": "3.7 Exercises\nEdit this .qmd file to make the following changes.\n\n3.7.1 Fix indentation / white space\nRead the code in the chunk below. We will cover the functions in later chapters, you don’t need to understand it yet. Notice that the indentation or ‘white space’ is somewhat chaotic. Fix this with a keyboard shortcut: with your mouse, highlight the code the chunk below and press Ctrl + I (Windows) or Cmd + I (Mac) to fix the indentation. Notice how much easier it is to read.\nYou can undo this with Ctrl + z (Windows) or Cmd + z (Mac) if you want to see it before/after again.\n\n\nCode\n# create table\ndat_processed_long %&gt;%\n  # summarize mean and SD by subscale\ndplyr::group_by(subscale) %&gt;%\n  dplyr::summarize(n = dplyr::n(),\nm = mean(score, na.rm = TRUE),\n               sd = sd(score, na.rm = TRUE)) %&gt;%\n  # round estimates \n  dplyr::mutate(m = janitor::round_half_up(m, digits = 2),\n  sd = janitor::round_half_up(sd, digits = 2)) %&gt;%\n# print nicer table\nknitr::kable(align = 'r') |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n3.7.2 Insert a new chunk below this heading\nEither type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some code inside the chunk, e.g., “10 - 5”. Run the code in the chunk by clicking the green right-arrow: \n\n\n3.7.3 Insert a new chunk and write code to install the following packages\nUse the install.packages() function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names. Run the code to install these packages.",
+    "section": "3.9 Exercises",
+    "text": "3.9 Exercises\nEdit this .qmd file to make the following changes.\n\n3.9.1 Fix indentation / white space\nRead the code in the chunk below. We will cover the functions in later chapters, you don’t need to understand it yet. Notice that the indentation or ‘white space’ is somewhat chaotic. Fix this with a keyboard shortcut: with your mouse, highlight the code the chunk below and press Ctrl + I (Windows) or Cmd + I (Mac) to fix the indentation. Notice how much easier it is to read.\nYou can undo this with Ctrl + z (Windows) or Cmd + z (Mac) if you want to see it before/after again.\n\n\nCode\n# create table\ndat_processed_long %&gt;%\n  # summarize mean and SD by subscale\ndplyr::group_by(subscale) %&gt;%\n  dplyr::summarize(n = dplyr::n(),\nm = mean(score, na.rm = TRUE),\n               sd = sd(score, na.rm = TRUE)) %&gt;%\n  # round estimates \n  dplyr::mutate(m = janitor::round_half_up(m, digits = 2),\n  sd = janitor::round_half_up(sd, digits = 2)) %&gt;%\n# print nicer table\nknitr::kable(align = 'r') |&gt;\n  kableExtra::kable_styling()",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
     ]
@@ -92,131 +92,131 @@
   {
     "objectID": "chapters/reproducible_reports.html",
     "href": "chapters/reproducible_reports.html",
-    "title": "2  Reproducible reports",
+    "title": "4  Reproducible reports",
     "section": "",
-    "text": "2.1 Literate programming\nLiterate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.",
+    "text": "4.1 Literate programming\nLiterate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#literate-programming",
     "href": "chapters/reproducible_reports.html#literate-programming",
-    "title": "2  Reproducible reports",
+    "title": "4  Reproducible reports",
     "section": "",
-    "text": "2.1.1 In line code\nCode can be written in ‘in line’ in the text as follows: 2. In the RMarkdown document, you have hover over the in line code and press enter or return to run the code.\n\n\n2.1.2 Code chunks\nFor any code that isn’t extremely short, you should write it in code chunks.\nThese are written as follows: three backticks followed by “{r}” specifies that it is a chunk of R code, then the code, then three more backticks to end the chunk. Note that backticks are not apostrophes! (` vs ’).\nYou can also insert a code chunk with Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac).\nOutput appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk: \nYou can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: \nFor example:\n\n\nCode\n2+2\n\n\n[1] 4",
+    "text": "4.1.1 In line code\nCode can be written in ‘in line’ in the text as follows: 2. In the RMarkdown document, you have hover over the in line code and press enter or return to run the code.\n\n\n4.1.2 Code chunks\nFor any code that isn’t extremely short, you should write it in code chunks.\nThese are written as follows: three backticks followed by “{r}” specifies that it is a chunk of R code, then the code, then three more backticks to end the chunk. Note that backticks are not apostrophes! (` vs ’).\nYou can also insert a code chunk with Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac).\nOutput appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk: \nYou can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: \nFor example:\n\n\nCode\n2+2\n\n\n[1] 4",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#rendering-and-reproducibilty",
     "href": "chapters/reproducible_reports.html#rendering-and-reproducibilty",
-    "title": "2  Reproducible reports",
-    "section": "2.2 Rendering and reproducibilty",
-    "text": "2.2 Rendering and reproducibilty\nQuarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:\n\nIt allows you to make more attractive outputs with tables, plots, and results.\nIt can greatly increase reproducibility. Each time you ‘render’ a .html file from a .qmd/.Rmd, the code is run in a new R session in the background. The .html file is only created if all the code runs. This is extremely useful for ensuring that your code does indeed run, that you have all necessary packages loaded, etc. Note however that it does not ensure that your code is error free, that there are not unnecessary packages loaded, etc.",
+    "title": "4  Reproducible reports",
+    "section": "4.2 Rendering and reproducibilty",
+    "text": "4.2 Rendering and reproducibilty\nQuarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:\n\nIt allows you to make more attractive outputs with tables, plots, and results.\nIt can greatly increase reproducibility. Each time you ‘render’ a .html file from a .qmd/.Rmd, the code is run in a new R session in the background. The .html file is only created if all the code runs. This is extremely useful for ensuring that your code does indeed run, that you have all necessary packages loaded, etc. Note however that it does not ensure that your code is error free, that there are not unnecessary packages loaded, etc.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#markdown-formatting-and-levels-of-heading",
     "href": "chapters/reproducible_reports.html#markdown-formatting-and-levels-of-heading",
-    "title": "2  Reproducible reports",
-    "section": "2.3 Markdown formatting and levels of heading",
-    "text": "2.3 Markdown formatting and levels of heading\nQuarto (.qmd) and RMarkdown files (.Rmd) allow you to use markdown formatting. This is a very simple way to do basic formatting, such as headings, emphasis, bullet points and lists.\nMarkdown formatting can be used as follows.\nDon’t forget the space after the #, or spaces between lines to separate sections of different types!\n# Level 1 heading\n\n## Level 2 heading\n\n### Level 3 heading\n\nNormal text.\n\n*italic text*\n\n**bold text**\n\n- bullet points\n- bullet points\n\n1. numbered list\n2. numbered list\n\nDisplay an image in visual editor/on rendering:\n![](../images/r_meme.png)\nEach of the above are rendered as follows in the .html file once rendered:",
+    "title": "4  Reproducible reports",
+    "section": "4.3 Markdown formatting and levels of heading",
+    "text": "4.3 Markdown formatting and levels of heading\nQuarto (.qmd) and RMarkdown files (.Rmd) allow you to use markdown formatting. This is a very simple way to do basic formatting, such as headings, emphasis, bullet points and lists.\nMarkdown formatting can be used as follows.\nDon’t forget the space after the #, or spaces between lines to separate sections of different types!\n# Level 1 heading\n\n## Level 2 heading\n\n### Level 3 heading\n\nNormal text.\n\n*italic text*\n\n**bold text**\n\n- bullet points\n- bullet points\n\n1. numbered list\n2. numbered list\n\nDisplay an image in visual editor/on rendering:\n![](../images/r_meme.png)\nEach of the above are rendered as follows in the .html file once rendered:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#level-1-heading",
     "href": "chapters/reproducible_reports.html#level-1-heading",
-    "title": "2  Reproducible reports",
-    "section": "2.4 Level 1 heading",
-    "text": "2.4 Level 1 heading\n\n2.4.1 Level 2 heading\n\n2.4.1.1 Level 3 heading\nNormal text.\nitalic text\nbold text\n\nbullet points\nbullet points\n\n\nnumbered list\nnumbered list\n\nDisplay an image in visual editor/on rendering:",
+    "title": "4  Reproducible reports",
+    "section": "4.4 Level 1 heading",
+    "text": "4.4 Level 1 heading\n\n4.4.1 Level 2 heading\n\n4.4.1.1 Level 3 heading\nNormal text.\nitalic text\nbold text\n\nbullet points\nbullet points\n\n\nnumbered list\nnumbered list\n\nDisplay an image in visual editor/on rendering:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#table-of-contents-and-outline",
     "href": "chapters/reproducible_reports.html#table-of-contents-and-outline",
-    "title": "2  Reproducible reports",
-    "section": "2.5 Table of contents and outline",
-    "text": "2.5 Table of contents and outline\nLevels of heading are extremely useful for structuring your report.\n\nThey automatically appear as headings in the “Outline” section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the ‘Outline’ button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.\nWhen the file is rendered (.qmd) or knited (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has toc: true, as this file does).",
+    "title": "4  Reproducible reports",
+    "section": "4.5 Table of contents and outline",
+    "text": "4.5 Table of contents and outline\nLevels of heading are extremely useful for structuring your report.\n\nThey automatically appear as headings in the “Outline” section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the ‘Outline’ button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.\nWhen the file is rendered (.qmd) or knited (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has toc: true, as this file does).",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#math-typesetting-via-latex",
     "href": "chapters/reproducible_reports.html#math-typesetting-via-latex",
-    "title": "2  Reproducible reports",
-    "section": "2.6 Math typesetting via LaTeX",
-    "text": "2.6 Math typesetting via LaTeX\nYou can include math in line with LaTeX code placed between dollar signs: e.g., “$\\eta_{p}^{2}$ = 0.03” produces “\\(\\eta_{p}^{2}\\) = 0.03”.\nYou can also write longer chunks of LaTeX, for example to specify that the mean (\\(\\bar{x}\\)) is the sum of all elements of the vector \\(x\\) divided by number of elements in the vector (\\(n\\)).\nThis code:\n$$\n\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i.\n$$\nProduces this math:\n\\[\n\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i.\n\\]",
+    "title": "4  Reproducible reports",
+    "section": "4.6 Math typesetting via LaTeX",
+    "text": "4.6 Math typesetting via LaTeX\nYou can include math in line with LaTeX code placed between dollar signs: e.g., “$\\eta_{p}^{2}$ = 0.03” produces “\\(\\eta_{p}^{2}\\) = 0.03”.\nYou can also write longer chunks of LaTeX, for example to specify that the mean (\\(\\bar{x}\\)) is the sum of all elements of the vector \\(x\\) divided by number of elements in the vector (\\(n\\)).\nThis code:\n$$\n\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i.\n$$\nProduces this math:\n\\[\n\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i.\n\\]",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#source-versus-visual-editor",
     "href": "chapters/reproducible_reports.html#source-versus-visual-editor",
-    "title": "2  Reproducible reports",
-    "section": "2.7 Source versus Visual editor",
-    "text": "2.7 Source versus Visual editor\nYou can view a .qmd file’s raw code in the ‘Source’ viewer. The button for this appears on the top left above the code in RStudio.\nScreenshot of Source editor mode:\n\nYou can also view the a live preview of the rendered file, including tables, plots, math, etc., using ‘Visual’ editor mode, although there will some simplifications compared to when you render a .html file.\nScreenshot of Visual editor mode:",
+    "title": "4  Reproducible reports",
+    "section": "4.7 Source versus Visual editor",
+    "text": "4.7 Source versus Visual editor\nYou can view a .qmd file’s raw code in the ‘Source’ viewer. The button for this appears on the top left above the code in RStudio.\nScreenshot of Source editor mode:\n\nYou can also view the a live preview of the rendered file, including tables, plots, math, etc., using ‘Visual’ editor mode, although there will some simplifications compared to when you render a .html file.\nScreenshot of Visual editor mode:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#reading-processing-and-writing-data",
     "href": "chapters/reproducible_reports.html#reading-processing-and-writing-data",
-    "title": "2  Reproducible reports",
-    "section": "2.8 Reading, processing, and writing data",
-    "text": "2.8 Reading, processing, and writing data\nRaw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.\nWe will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.\nRead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# load raw data\ndat_raw &lt;- readr::read_csv(\"../data/raw/data_raw_bfi.csv\")\n\n# process data\ndat_processed &lt;- dat_raw %&gt;%\n  # rename variable to make it clearer\n  dplyr::rename(race_iat = IAT_score) %&gt;%\n  # exclude participants with missing data or who did not meet performance criteria\n  dplyr::filter(complete_individual_differences_data == TRUE & exclude_iat == FALSE) %&gt;%\n  # calculate sum scores for the BFI personality subscales\n  dplyr::rowwise() %&gt;%\n  dplyr::mutate(openness = mean(c_across(starts_with(\"bfi_o\"))),\n                conscientiousness = mean(c_across(starts_with(\"bfi_c\"))),\n                extroversion = mean(c_across(starts_with(\"bfi_e\"))),\n                agreeableness = mean(c_across(starts_with(\"bfi_a\"))),\n                neuroticism = mean(c_across(starts_with(\"bfi_n\")))) %&gt;%\n  dplyr::ungroup() %&gt;%\n  # retain only the columns needed\n  dplyr::select(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)\n\n# create a directory to save processed data to \ndir.create(\"../data/processed\")\n\n# save data\nreadr::write_csv(dat_processed, \"../data/processed/data_processed_bfi_race_iat.csv\")\n\n# reshape to long format for tables and plots\ndat_processed_long &lt;- dat_processed %&gt;%\n  tidyr::pivot_longer(cols = c(openness, conscientiousness, extroversion, agreeableness, neuroticism),\n                      names_to = \"subscale\",\n                      values_to = \"score\")",
+    "title": "4  Reproducible reports",
+    "section": "4.8 Reading, processing, and writing data",
+    "text": "4.8 Reading, processing, and writing data\nRaw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.\nWe will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.\nRead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# load raw data\ndat_raw &lt;- readr::read_csv(\"../data/raw/data_raw_bfi.csv\")\n\n# process data\ndat_processed &lt;- dat_raw %&gt;%\n  # rename variable to make it clearer\n  dplyr::rename(race_iat = IAT_score) %&gt;%\n  # exclude participants with missing data or who did not meet performance criteria\n  dplyr::filter(complete_individual_differences_data == TRUE & exclude_iat == FALSE) %&gt;%\n  # calculate sum scores for the BFI personality subscales\n  dplyr::rowwise() %&gt;%\n  dplyr::mutate(openness = mean(c_across(starts_with(\"bfi_o\"))),\n                conscientiousness = mean(c_across(starts_with(\"bfi_c\"))),\n                extroversion = mean(c_across(starts_with(\"bfi_e\"))),\n                agreeableness = mean(c_across(starts_with(\"bfi_a\"))),\n                neuroticism = mean(c_across(starts_with(\"bfi_n\")))) %&gt;%\n  dplyr::ungroup() %&gt;%\n  # retain only the columns needed\n  dplyr::select(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)\n\n# create a directory to save processed data to \ndir.create(\"../data/processed\")\n\n# save data\nreadr::write_csv(dat_processed, \"../data/processed/data_processed_bfi_race_iat.csv\")\n\n# reshape to long format for tables and plots\ndat_processed_long &lt;- dat_processed %&gt;%\n  tidyr::pivot_longer(cols = c(openness, conscientiousness, extroversion, agreeableness, neuroticism),\n                      names_to = \"subscale\",\n                      values_to = \"score\")",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#tables",
     "href": "chapters/reproducible_reports.html#tables",
-    "title": "2  Reproducible reports",
-    "section": "2.9 Tables",
-    "text": "2.9 Tables\nSummary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.\nAgain, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, tead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(janitor)\nlibrary(knitr)\nlibrary(kableExtra)\n\n# table\ndat_processed_long %&gt;%\n  # summarize mean and SD by subscale\n  dplyr::group_by(subscale) %&gt;%\n  dplyr::summarize(n = dplyr::n(),\n                   m = mean(score, na.rm = TRUE),\n                   sd = sd(score, na.rm = TRUE)) %&gt;%\n  # round estimates \n  dplyr::mutate(m = janitor::round_half_up(m, digits = 2),\n                sd = janitor::round_half_up(sd, digits = 2)) %&gt;%\n  # print nicer table\n  knitr::kable(align = 'r') |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n\nsubscale\nn\nm\nsd\n\n\n\n\nagreeableness\n167\n4.00\n0.38\n\n\nconscientiousness\n167\n4.24\n0.48\n\n\nextroversion\n167\n4.18\n0.49\n\n\nneuroticism\n167\n3.91\n0.50\n\n\nopenness\n167\n4.37\n0.48",
+    "title": "4  Reproducible reports",
+    "section": "4.9 Tables",
+    "text": "4.9 Tables\nSummary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.\nAgain, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, tead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(janitor)\nlibrary(knitr)\nlibrary(kableExtra)\n\n# table\ndat_processed_long %&gt;%\n  # summarize mean and SD by subscale\n  dplyr::group_by(subscale) %&gt;%\n  dplyr::summarize(n = dplyr::n(),\n                   m = mean(score, na.rm = TRUE),\n                   sd = sd(score, na.rm = TRUE)) %&gt;%\n  # round estimates \n  dplyr::mutate(m = janitor::round_half_up(m, digits = 2),\n                sd = janitor::round_half_up(sd, digits = 2)) %&gt;%\n  # print nicer table\n  knitr::kable(align = 'r') |&gt;\n  kableExtra::kable_styling()\n\n\n\n\n\nsubscale\nn\nm\nsd\n\n\n\n\nagreeableness\n167\n4.00\n0.38\n\n\nconscientiousness\n167\n4.24\n0.48\n\n\nextroversion\n167\n4.18\n0.49\n\n\nneuroticism\n167\n3.91\n0.50\n\n\nopenness\n167\n4.37\n0.48",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#plots",
     "href": "chapters/reproducible_reports.html#plots",
-    "title": "2  Reproducible reports",
-    "section": "2.10 Plots",
-    "text": "2.10 Plots\nPlots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.\nAs before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(ggplot2)\n\n# plot\nggplot(dat_processed_long, aes(score, race_iat)) +\n  geom_point(alpha = 0.7) +\n  facet_wrap(~ subscale) +\n  theme_linedraw() +\n  ylab(\"Implicit racial bias\") +\n  xlab(\"Personality subscale score\")",
+    "title": "4  Reproducible reports",
+    "section": "4.10 Plots",
+    "text": "4.10 Plots\nPlots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.\nAs before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.\n\n\nCode\n# dependencies\nlibrary(ggplot2)\n\n# plot\nggplot(dat_processed_long, aes(score, race_iat)) +\n  geom_point(alpha = 0.7) +\n  facet_wrap(~ subscale) +\n  theme_linedraw() +\n  ylab(\"Implicit racial bias\") +\n  xlab(\"Personality subscale score\")",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#analyses",
     "href": "chapters/reproducible_reports.html#analyses",
-    "title": "2  Reproducible reports",
-    "section": "2.11 Analyses",
-    "text": "2.11 Analyses\nAnalyses can be run, and even their results extracted an interpreted, with the help of R packages such as {report} and {parameters} from the easystats cluster of packages.\n\n\nCode\n# dependencies\nlibrary(report)\n\n# fit correlation test\nres &lt;- cor.test(formula = ~ race_iat + extroversion, \n                data = dat_processed, \n                use = \"pairwise.complete.obs\")\n\n# create standard report of results\nreport::report_text(res)\n\n\nEffect sizes were labelled following Funder's (2019) recommendations.\n\nThe Pearson's product-moment correlation between race_iat and extroversion is\nnegative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,\n0.05], t(73) = -1.52, p = 0.132)",
+    "title": "4  Reproducible reports",
+    "section": "4.11 Analyses",
+    "text": "4.11 Analyses\nAnalyses can be run, and even their results extracted an interpreted, with the help of R packages such as {report} and {parameters} from the easystats cluster of packages.\n\n\nCode\n# dependencies\nlibrary(report)\n\n# fit correlation test\nres &lt;- cor.test(formula = ~ race_iat + extroversion, \n                data = dat_processed, \n                use = \"pairwise.complete.obs\")\n\n# create standard report of results\nreport::report_text(res)\n\n\nEffect sizes were labelled following Funder's (2019) recommendations.\n\nThe Pearson's product-moment correlation between race_iat and extroversion is\nnegative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,\n0.05], t(73) = -1.52, p = 0.132)",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
     "objectID": "chapters/reproducible_reports.html#exercises",
     "href": "chapters/reproducible_reports.html#exercises",
-    "title": "2  Reproducible reports",
-    "section": "2.12 Exercises",
-    "text": "2.12 Exercises\nEdit this .qmd file to make the following changes.\n\n2.12.1 Add authorship\nAdd the following text to the YAML header on line 3, just under ‘title’: author: \"yourname\", and replace ‘yourname’ with your name. Click ‘render’ to create a reproducible report as a .html from this .qmd file. It will now list you as the author.\n\n\n2.12.2 Add date\nAdd the following text to the YAML header on line 4: date: today. Now when you render again, it will list today’s date so that you know when the report was created.\n\n\n2.12.3 Make the plot more colorful\nChange the ‘aesthetics’ call from aes(score, race_iat) to aes(score, race_iat, color = subscale). Run all previous chunks to reload and reprocess the data using this button:  Then, run the plot chunk again using this one to view your more colorful plot:",
+    "title": "4  Reproducible reports",
+    "section": "4.12 Exercises",
+    "text": "4.12 Exercises\nEdit this .qmd file to make the following changes.\n\n4.12.1 Add authorship\nAdd the following text to the YAML header on line 3, just under ‘title’: author: \"yourname\", and replace ‘yourname’ with your name. Click ‘render’ to create a reproducible report as a .html from this .qmd file. It will now list you as the author.\n\n\n4.12.2 Add date\nAdd the following text to the YAML header on line 4: date: today. Now when you render again, it will list today’s date so that you know when the report was created.\n\n\n4.12.3 Make the plot more colorful\nChange the ‘aesthetics’ call from aes(score, race_iat) to aes(score, race_iat, color = subscale). Run all previous chunks to reload and reprocess the data using this button:  Then, run the plot chunk again using this one to view your more colorful plot:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible reports</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reproducible reports</span>"
     ]
   },
   {
@@ -687,6 +687,116 @@
     "text": "© Ian Hussey (2025)\nText and figures are licensed under a Creative Commons Attribution 4.0 (CC BY 4.0) license.\nCode is licensed under the MIT License.\nYou are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite it.\nCitation:\nHussey, I. (2025) Improving your statistical inferences using Monte Carlo simulation studies in tidyverse. github.com/ianhussey/improving-your-statistical-inferences-through-monte-carlo-simulation-studies",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>License and citation</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/fundamentals.html#rstudio-keyboard-shortcuts",
+    "href": "chapters/fundamentals.html#rstudio-keyboard-shortcuts",
+    "title": "3  Fundamentals",
+    "section": "3.3 RStudio keyboard shortcuts",
+    "text": "3.3 RStudio keyboard shortcuts\nOnce you have learned about some of the concepts mentioned below in later chapters, it can be useful to come back to these cheatsheets to learn the keyboard shortcuts for them.\n\n\n3.3.1 Particularly useful shortcuts\nWindows\n\nInsert Chunk: Ctrl + Alt + I\nInsert Pipe (|&gt;): shift + Ctrl + M\nMulti-line typing: Alt + Mouse click-and-highlight multiple lines, then type\nMove cursor by word instead of by character: Alt + arrows\nHighlight words: Shift + alt + arrows\nFix Indentation: Mouse click-and-highlight multiple lines + Ctrl + I\nComment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Ctrl + C\n\nMac\n\nInsert Chunk: Cmd + Alt + I\nInsert Pipe (|&gt;): shift + Cmd + M\nMulti-line typing: Alt + Mouse click-and-highlight multiple lines, then type\nMove cursor by word instead of by character: Option + arrows\nHighlight words: Shift + option + arrows\nFix Indentation: Mouse click-and-highlight multiple lines + Cmd + I\nComment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Cmd + C\n\nYou can also change or set up additional keyboard shortcuts in the “Tools&gt;Modify keyboard shortcuts” drop down menu. For example, I have modified the shortcut to switch between Source viewer vs. Visual viewer to be “Cmd + `”.\nOf the above, multi-line typing is the one that reliably gets an audiable ‘whoa’ from audiences. It’s easier to see than explain:\n\nWhen you get a bit more experienced with RStudio, I highly recommend you check out this blog post on shortcuts to know about more advanced features such as Function/Variable Extraction, Renaming in Scope, Code Snippets, and advanced search and find-and-replace.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/how_to_use_this_book.html",
+    "href": "chapters/how_to_use_this_book.html",
+    "title": "1  How to use this book",
+    "section": "",
+    "text": "1.1 Other learning resources",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to use this book</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/how_to_use_this_book.html#other-learning-resources",
+    "href": "chapters/how_to_use_this_book.html#other-learning-resources",
+    "title": "1  How to use this book",
+    "section": "",
+    "text": "You can find cheatsheets in the /resources folder [add link]\nThe Open Source textbook Data Skills for Reproducible Research (DeBruine et al.) is very good, e.g., its sections on dplyr and tidyr.\nAllison Horst’s interactive web app to learn dplyr is great: https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome.\nThe Open Source textbook R for Data Science (aka, Wickham’s R4DS) is also very good, if a little dryer. Hadley Wickham is the main developer of the “tidyverse” set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its section on data transformation.\n\nThe entire second edition of the book is available at https://r4ds.hadley.nz/.\n\nGarrick Aden-Buie’s tidyexplain is great for understanding how tidyr’s pivot functions work: https://github.com/gadenbuie/tidyexplain\ndatasciencebox.org has good interactive tutorials, but they are more useful for practicing processing and visualization skills once you’ve already learned the functions\n\nggplot2 https://minecr.shinyapps.io/dsbox-01-edibnb/\nggplot2, pipe, mutate https://minecr.shinyapps.io/dsbox-02-accidents\nggplot2, pipe, select, arrange, summarize, count, filter https://minecr.shinyapps.io/dsbox-03-collegemajors\ncount, arrange, summarize https://minecr.shinyapps.io/dsbox-04-legosales/\n\nIf you’d like video content, datasciencebox.org also has it: https://datasciencebox.org/02-exploring-data",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How to use this book</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/fundamentals.html#whats-the-difference-between-base-r-rstudio-ide-and-tidyverse",
+    "href": "chapters/fundamentals.html#whats-the-difference-between-base-r-rstudio-ide-and-tidyverse",
+    "title": "3  Fundamentals",
+    "section": "",
+    "text": "Base R is the coding language that we learn in this course.\nRStudio IDE (Integrated Development Environment) is the application we use to write R code in. There are others but RStudio is the best option, although this could change in future.\n{tidyverse} is a set of R packages that enhance base R’s utility and usability, built around the concept of Tidy Data. We’ll learn about Tidy Data in another chapter. {tidyverse} arguably changes how we write R code so fundamentally that some people argue that R+{tidyverse} should be conceptualized as a meaningfully different language with different conventions and workflows.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/fundamentals.html#rstudio-ide-basics",
+    "href": "chapters/fundamentals.html#rstudio-ide-basics",
+    "title": "3  Fundamentals",
+    "section": "3.2 RStudio IDE basics",
+    "text": "3.2 RStudio IDE basics\nGet familiar with the different parts of the RStudio IDE user interface with this cheatsheet, which you can also download as a pdf here.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Fundamentals</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html",
+    "href": "chapters/setup.html",
+    "title": "1  Installation and setup",
+    "section": "",
+    "text": "1.1 Install the base R language and the RStudio IDE\nYou should install the base R language and the RStudio IDE from here.\nThere are detailed steps available for Windows and Mac here.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and setup</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html#rstudio-settings-and-options",
+    "href": "chapters/setup.html#rstudio-settings-and-options",
+    "title": "1  Installation and setup",
+    "section": "1.2 RStudio settings and options",
+    "text": "1.2 RStudio settings and options\n\n1.2.1 Important settings to change for reproducibility\nFor reproducibility, please ensure RStudio’s settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools&gt;Global Options menu, go to General, and untick the following box and set save to ‘Never’. \n\n\n1.2.2 RStudio themes\nRStudio can be skinned with different themes, including dark themes that may be easier on your eyes or are, at least, objectively cooler.\nThe objectively coolest theme of them all is Synthwave85, which can be installed by running the following line of code in RStudio’s console: rstudioapi::addTheme(\"https://raw.githubusercontent.com/jnolis/synthwave85/master/Synthwave85.rstheme\", TRUE, TRUE, FALSE)\nTo change themes, click the ‘Tools’ drop down menu, then ‘Global Options’, then ‘Appearance’, then ‘RStudio Theme’.\n\n\n\n1.2.3 RStudio fonts\nCertain monospaced fonts provide the advantage of rendering common R characters or functions more nicely.\nThis is the same code displayed using Monaco, a built-in font:\n\nAnd using JetBrainsMono, which supports rendering the base-R pipe (|&gt;) and non-equivalence symbols as single characters\n\nIf you prefer the latter, you can download JetBrainsMono from here and install on your computer. Restart RStudio, then change the font by clicking the ‘Tools’ drop down menu, then ‘Global Options’, then ‘Appearance’, then ‘Editor font’.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and setup</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html#install-slack-and-github",
+    "href": "chapters/setup.html#install-slack-and-github",
+    "title": "1  Installation and setup",
+    "section": "1.3 Install Slack and GitHub",
+    "text": "1.3 Install Slack and GitHub\nIf you are reading this book as part of a course with me at the University of Bern, please:\n\nInstall the Slack app. You can download it for Windows here or for Mac here.\nI will send an invitation to the course’s Slack workspace to all students enrolled in the course. Please check your @students.unibe.ch email address.\nInstall the GitHub desktop app. You can download here.\nMake an account yourself on https://github.com and log into it on the GitHub desktop app. University of Bern does provide you access to a branded GitHub account, but you’ll lose access to it after you finish your studies, so it’s better to make your own private account.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Installation and setup</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Reproducible Data Processing and Visualization",
+    "section": "",
+    "text": "About this book\nThis Open Source eBook provides materials for the course “Reproducible Data Processing and Visualization in R” that I deliver at the University of Bern’s Institute of Psychology.",
+    "crumbs": [
+      "About this book"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-this-book",
+    "href": "index.html#how-to-use-this-book",
+    "title": "Reproducible Data Processing and Visualization",
+    "section": "How to use this book",
+    "text": "How to use this book\n\nYou can find cheatsheets in the /resources folder [add link]",
+    "crumbs": [
+      "About this book"
+    ]
+  },
+  {
+    "objectID": "index.html#other-learning-resources",
+    "href": "index.html#other-learning-resources",
+    "title": "Reproducible Data Processing and Visualization",
+    "section": "Other learning resources",
+    "text": "Other learning resources\nThere are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:\n\nLisa DeBruine et al.’s (2021) Open Source textbook Data Skills for Reproducible Research\n\nSection on {dplyr}\nSection on {tidyr}\n\nAllison Horst’s interactive web app for learning {dplyr}\nHadley Wickham’s R For Data Science, aka R4DS)\n\nSection on data transformation\n\nGarrick Aden-Buie’s tidyexplain gifs for understanding how {tidyr}’s pivot functions work\ndatasciencebox.org\n\nInteractive tutorials that very useful for practicing processing and visualization skills once you’ve already learned the functions (i.e., don’t start here)\n\nPractice the functions ggplot\nPractice the functions ggplot, pipe, mutate\nPractice the functions ggplot, pipe, select, arrange, summarize, count, filter\nPractice the functions count, arrange, summarize\n\nRecorded presentations on many relevant topics",
+    "crumbs": [
+      "About this book"
     ]
   }
 ]

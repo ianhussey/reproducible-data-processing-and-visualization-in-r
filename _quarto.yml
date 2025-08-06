@@ -8,9 +8,9 @@ book:
   date: today
   chapters:
     - index.qmd
-    - chapters/how_to_use_this_book.qmd
-    - chapters/reproducible_reports.qmd
+    - chapters/setup.qmd
     - chapters/fundamentals.qmd
+    - chapters/reproducible_reports.qmd
     - chapters/loading_data.qmd
     - chapters/the_pipe.qmd
     - chapters/data_transformation.qmd

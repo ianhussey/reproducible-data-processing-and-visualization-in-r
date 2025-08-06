@@ -1,3 +1,40 @@
-# Introduction {.unnumbered}
+## Introduction {.unnumbered}
 
-This e-book provides materials for the course "Reproducible Data Processing and Visualization in R", delivered by [Psychology of Digitalisation research group](https://www.dig.psy.unibe.ch/) at at the University of Bern Institute of Psychology.
+This [Open Source](license.qmd) eBook provides materials for the course "Reproducible Data Processing and Visualization in R" that I deliver at the University of Bern's Institute of Psychology.
+
+## How to use this book
+
+This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files. I suggest that you [download the .zip file]() of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book.
+
+-   You can find cheatsheets in the /resources folder \[\TODO add link\]
+
+![](images/practice.png){.center width="50%"}
+
+## Other learning resources
+
+There are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:
+
+-   Lisa DeBruine et al.'s (2021) Open Source textbook [Data Skills for Reproducible Research](https://psyteachr.github.io/reprores-v3/)
+    -   [Section on {dplyr}](https://psyteachr.github.io/reprores-v3/dplyr.html)
+    -   [Section on {tidyr}](https://psyteachr.github.io/reprores-v3/tidyr.html)
+-   Allison Horst's [interactive web app for learning {dplyr}](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)
+-   Hadley Wickham's R For Data Science, aka [R4DS](https://r4ds.hadley.nz/))
+    -   [Section on data transformation](https://r4ds.hadley.nz/data-transform)
+-   Garrick Aden-Buie's [tidyexplain gifs](https://github.com/gadenbuie/tidyexplain) for understanding how {tidyr}'s pivot functions work
+-   [datasciencebox.org](https://datasciencebox.org)
+    -   Interactive tutorials that very useful for practicing processing and visualization skills once you've *already* learned the functions (i.e., don't start here)
+        -   [Practice the functions ggplot](https://minecr.shinyapps.io/dsbox-01-edibnb)
+        -   [Practice the functions ggplot, pipe, mutate](https://minecr.shinyapps.io/dsbox-02-accidents)
+        -   [Practice the functions ggplot, pipe, select, arrange, summarize, count, filter](https://minecr.shinyapps.io/dsbox-03-collegemajors)
+        -   [Practice the functions count, arrange, summarize](https://minecr.shinyapps.io/dsbox-04-legosales)
+    -   [Recorded presentations](https://datasciencebox.org/02-exploring-data) on many relevant topics
+
+# Find me elsewhere
+
+You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website [mmmdata.io](https://mmmdata.io).
+
+You can find me on Bluesky at [\@ianhussey](https://bsky.app/profile/ianhussey.mmmdata.io).
+
+# Contributing
+
+If you are interested in contributing to or adapting this eBook, all code and data for this book are available for download [here](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r).

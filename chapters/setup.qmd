@@ -11,18 +11,17 @@ format:
 
 ## Install the base R language and the RStudio IDE
 
-You should install the base R language and the RStudio IDE from [here](https://posit.co/download/rstudio-desktop/).  
+You should install the base R language and the RStudio IDE from [here](https://posit.co/download/rstudio-desktop/).
 
 There are detailed steps available for Windows and Mac [here](https://psyteachr.github.io/RSetGo/).
 
-## RStudio settings 
+## RStudio settings and options
 
-### Important reproducibility settings that must be changed from defaults
+### Important settings to change for reproducibility 
 
-For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'.
-![](../images/rstudio_settings.png)
+For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'. ![](../images/rstudio_settings.png)
 
-## RStudio themes
+### RStudio themes
 
 RStudio can be skinned with different themes, including dark themes that may be easier on your eyes or are, at least, objectively cooler.
 
@@ -32,18 +31,25 @@ To change themes, click the 'Tools' drop down menu, then 'Global Options', then 
 
 ![](../images/synthwave85_theme.png)
 
-## RStudio fonts
+### RStudio fonts
 
-Certain monospaced fonts provide the advantage of rendering common R characters or functions more nicely. 
+Certain monospaced fonts provide the advantage of rendering common R characters or functions more nicely.
 
 This is the same code displayed using Monaco, a built-in font:
 
 ![](../images/font_monaco.png)
 
-And using JetBrainsMono, which supports rendering the base-R pipe (`|>`) and non-equivalence symbols as single characters 
+And using JetBrainsMono, which supports rendering the base-R pipe (`|>`) and non-equivalence symbols as single characters
 
 ![](../images/font_jetbrainsmono.png)
 
 If you prefer the latter, you can download JetBrainsMono from [here](https://www.jetbrains.com/lp/mono/) and install on your computer. Restart RStudio, then change the font by clicking the 'Tools' drop down menu, then 'Global Options', then 'Appearance', then 'Editor font'.
 
+## Install Slack and GitHub
 
+If you are reading this book as part of a course with me at the University of Bern, please:
+
+-   Install the Slack app. You can download it [for Windows here](https://slack.com/downloads/windows) or [for Mac here](https://slack.com/downloads/mac).
+-   I will send an invitation to the course's Slack workspace to all students enrolled in the course. Please check your \@students.unibe.ch email address.
+-   Install the GitHub desktop app. You can download [here](https://desktop.github.com/download/).
+-   Make an account yourself on https://github.com and log into it on the GitHub desktop app. University of Bern does provide you access to a branded GitHub account, but you'll lose access to it after you finish your studies, so it's better to make your own private account.

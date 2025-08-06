@@ -17,9 +17,29 @@ format:
 options(scipen = 999)  
 ```
 
-## Keyboard shortcuts
+## What's the difference between Base R, RStudio IDE, and tidyverse?
 
-Later chapters describe chunks, pipes, etc. For the moment, know that there are shortcuts for them:
+This is an understandable point of confusion, so let's clarify:
+
+-   Base R is the coding language that we learn in this course.
+-   RStudio IDE (Integrated Development Environment) is the application we use to write R code in. There are others but RStudio is the best option, although this could change in future.
+-   {tidyverse} is a set of R packages that enhance base R's utility and usability, built around the concept of Tidy Data. We'll learn about Tidy Data in another chapter. {tidyverse} arguably changes how we write R code so fundamentally that some people argue that R+{tidyverse} should be conceptualized as a meaningfully different language with different conventions and workflows.
+
+There is a long-standing debate about whether base R (alone) or R+{tidyverse} is better. Thankfully, I can resolve this question for you immediately: R+{tidyverse} is better. *All hail the One True Language, {tidyverse}*.
+
+## RStudio IDE basics
+
+Get familiar with the different parts of the RStudio IDE user interface with this cheatsheet, which you can also download as a pdf [here](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/resources/cheatsheet%20-%20rstudio-ide.pdf).
+
+![](../images/cheatsheet_rstudio_1.png)
+
+## RStudio keyboard shortcuts
+
+Once you have learned about some of the concepts mentioned below in later chapters, it can be useful to come back to these cheatsheets to learn the keyboard shortcuts for them.
+
+![](../images/cheatsheet_rstudio_2.png)
+
+### Particularly useful shortcuts
 
 Windows
 
@@ -43,6 +63,12 @@ Mac
 
 You can also change or set up additional keyboard shortcuts in the "Tools\>Modify keyboard shortcuts" drop down menu. For example, I have modified the shortcut to switch between Source viewer vs. Visual viewer to be "Cmd + \`".
 
+Of the above, multi-line typing is the one that reliably gets an audiable 'whoa' from audiences. It's easier to see than explain:
+
+![](../images/mutli_line_typing.gif)
+
+When you get a bit more experienced with RStudio, I highly recommend you check out [this](https://www.appsilon.com/post/r-studio-shortcuts-and-tips-part-2) blog post on shortcuts to know about more advanced features such as Function/Variable Extraction, Renaming in Scope, Code Snippets, and advanced search and find-and-replace.
+
 ## Dependencies
 
 Install libraries from CRAN with `install.packages()`. This only needs to be done once, not on every run of the script.
@@ -60,7 +86,7 @@ install.packages(devtools)
 devtools::install_github("ianhussey/tides") # username/repository
 ```
 
-Necessary packages (aka dependencies) are loaded with `library()`. For tidiness, these should all be loaded at the start of your script.
+Necessary packages (aka dependencies) can be loaded with `library()`. For tidiness, these should usually all be loaded at the start of your script. Some chapters in this book load libraries only when they're used, to clearly introduce which packages provide which functions.
 
 ```{r}
 library(tidyverse) # umbrella package that loads dplyr/tidyr/ggplot2 and others
@@ -113,21 +139,30 @@ conflict_prefer(name = "select", winner = "dplyr")
 Assignment of objects is done via `<-` by convention.
 
 ```{r}
+# set the variable x to be the number 5
 x <- 5
+
+# print the contents of x
 x
 ```
 
 Technically you can also use `=`, but it's best to avoid it.
 
 ```{r}
+# set the variable y to be the string "hello"
 y = "hello"
+
+# print the contents of y
 y
 ```
 
 It's somewhat less well known, but you can also do "right-assignment" (`->`) instead of the much more common left assignment (`<-`).
 
 ```{r}
+# set the variable y to be the string "really? yes."
 "really? yes." -> z
+
+# print the contents of z
 z
 ```
 
@@ -135,9 +170,10 @@ z
 
 Did you know that R doesn't use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
 
-This is easier to show than explain. What do you expect the output of the below chunk to be? And what is the actual output?
+This is easier to show than explain. The `round()` function rounds each of the numbers passed to it. What do you expect the output to be?
 
 ```{r}
+#| eval: false
 round(c(0.5, 
         1.5, 
         2.5, 
@@ -146,7 +182,13 @@ round(c(0.5,
         5.5))
 ```
 
-In most of your R scripts, you should probably instead use `janitor::round_half_up()`:
+::: {.callout-note collapse="true" title="Click to show result"}
+> \[1\] 0 2 2 4 4 6
+
+Why is this? Because R's `round()` function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.
+:::
+
+In most of your R scripts, you should probably instead use `janitor::round_half_up()` instead, which produces the round-5-upwards behavior you were probably taught in school.
 
 ```{r}
 library(janitor)
@@ -159,7 +201,7 @@ janitor::round_half_up(c(0.5,
                          5.5))
 ```
 
-or `roundwork::round_up()`:
+Another great option is `roundwork::round_up()`, which is a package that my PhD student [Lukas Jung](https://bsky.app/profile/lhdjung.bsky.social) wrote before joining our research group.
 
 ```{r}
 library(roundwork) 
@@ -199,10 +241,4 @@ knitr::kable(align = 'r') |>
   kableExtra::kable_styling()
 ```
 
-### Insert a new chunk below this heading
 
-Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some code inside the chunk, e.g., "10 - 5". Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
-
-### Insert a new chunk and write code to install the following packages
-
-Use the `install.packages()` function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names. Run the code to install these packages.
