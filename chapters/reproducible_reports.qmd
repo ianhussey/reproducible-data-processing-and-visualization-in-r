@@ -142,20 +142,6 @@ $$
 \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
 $$
 
-## Source versus Visual editor
-
-You can view a .qmd file's raw code in the 'Source' viewer. The button for this appears on the top left above the code in RStudio.
-
-Screenshot of Source editor mode:
-
-![](../images/source_editor.png){style="border: 1px solid black;"}
-
-You can also view the a live preview of the rendered file, including tables, plots, math, etc., using 'Visual' editor mode, although there will some simplifications compared to when you render a .html file.
-
-Screenshot of Visual editor mode:
-
-![](../images/visual_editor.png){style="border: 1px solid black;"}
-
 ## Reading, processing, and writing data
 
 Raw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.
@@ -268,7 +254,7 @@ report::report_text(res)
 
 ## Exercises
 
-Edit this .qmd file to make the following changes.
+Edit your local copy of this .qmd file to make the following changes.
 
 ### Insert a new chunk and write code to install the following packages
 

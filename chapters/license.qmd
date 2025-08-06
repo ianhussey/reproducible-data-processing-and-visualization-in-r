@@ -10,4 +10,4 @@ You are free to copy, share, adapt, and reuse the contents of this book — text
 
 Suggested citation:
 
-Hussey, I. (2025) Reproducible data processing and visualization in R. <https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r>
+Hussey, I. (2025) Reproducible data processing and visualization in R and tidyverse. <https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r>

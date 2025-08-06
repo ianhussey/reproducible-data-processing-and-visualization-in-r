@@ -33,7 +33,21 @@ Get familiar with the different parts of the RStudio IDE user interface with thi
 
 ![](../images/cheatsheet_rstudio_1.png)
 
-## RStudio keyboard shortcuts
+### Source versus Visual editor
+
+You can view a .qmd file's raw code in the 'Source' viewer. The button for this appears on the top left above the code in RStudio.
+
+Screenshot of Source editor mode:
+
+![](../images/source_editor.png){style="border: 1px solid black;"}
+
+You can also view the a live preview of the rendered file, including tables, plots, math, etc., using 'Visual' editor mode, although there will some simplifications compared to when you render a .html file. We'll cover rendering in a later chapter.
+
+Screenshot of Visual editor mode:
+
+![](../images/visual_editor.png){style="border: 1px solid black;"}
+
+### Keyboard shortcuts
 
 Once you have learned about some of the concepts mentioned below in later chapters, it can be useful to come back to these cheatsheets to learn the keyboard shortcuts for them.
 
@@ -216,7 +230,7 @@ roundwork::round_up(c(0.5,
 
 ## Exercises
 
-Edit this .qmd file to make the following changes.
+Edit your local copy of this .qmd file to make the following changes.
 
 ### Fix indentation / white space
 
@@ -240,5 +254,3 @@ m = mean(score, na.rm = TRUE),
 knitr::kable(align = 'r') |>
   kableExtra::kable_styling()
 ```
-
-

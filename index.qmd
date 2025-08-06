@@ -4,11 +4,13 @@ This [Open Source](license.qmd) eBook provides materials for the semester-long M
 
 ## How to use this book
 
-This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files. 
+This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.
 
-I suggest that you [download the .zip file](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip) of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. *If the the .zip file does not contain the most recent versions, please contact me and I'll updated it.* If you're impatient, you can also [download the most recent versions from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r), along with the other files that create this eBook. 
+I suggest that you [download the .zip file](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip) of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. *If the the .zip file does not contain the most recent versions, please contact me and I'll updated it.* If you're impatient, you can also [download the most recent versions from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r), along with the other files that create this eBook.
 
-Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or [create simulated data sets](https://declaredesign.org/r/fabricatr/), and practice. 
+You can also copy and paste the code for any chapter directly from the website. Click the "\</\> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.
+
+Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or [create simulated data sets](https://declaredesign.org/r/fabricatr/), and practice.
 
 ![](images/practice.png){.center width="50%"}
 
@@ -20,7 +22,7 @@ There are many excellent Open Source resources to learn R and {tidyverse} for da
     -   [Section on {dplyr}](https://psyteachr.github.io/reprores-v3/dplyr.html)
     -   [Section on {tidyr}](https://psyteachr.github.io/reprores-v3/tidyr.html)
 -   Allison Horst's [interactive web app for learning {dplyr}](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)
--   Hadley Wickham's R For Data Science, aka [R4DS](https://r4ds.hadley.nz/))
+-   Hadley Wickham's Open Source textbook R For Data Science (aka [R4DS](https://r4ds.hadley.nz/))
     -   [Section on data transformation](https://r4ds.hadley.nz/data-transform)
 -   Garrick Aden-Buie's [tidyexplain gifs](https://github.com/gadenbuie/tidyexplain) for understanding how {tidyr}'s pivot functions work
 -   [datasciencebox.org](https://datasciencebox.org)
