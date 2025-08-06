@@ -1,0 +1,62 @@
+---
+title: "title"
+author: "name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    code_download: true
+    code_folding: hide
+    highlight: haddock
+    theme: flatly
+    toc: yes
+    toc_float: yes
+---
+
+```{r, include=FALSE}
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# do not print messages and warnings to the html file
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE)
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999) 
+
+```
+
+# Level of heading 1
+
+## Level of heading 2
+
+### Level of heading 3
+
+Text
+
+```{r}
+
+# code chunk
+
+```
+
+# License and citation
+
+(c) [name] ([date])
+
+All text is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en): you can use or modify it as you please as long as you cite its source.
+
+All code is [MIT](https://opensource.org/license/mit) licensed: you can use or modify it as you please.
+
+Suggested citation:
+
+[add] 
+
+# Session info
+
+You can help make your code and results more reproducible by including a `sessionInfo()` call at the end of your scripts. This prints details of your operating system, R version, and packages that were used in your script. When you click knit to create a
+
+```{r}
+
+sessionInfo()
+
+```
