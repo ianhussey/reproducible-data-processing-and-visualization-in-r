@@ -1702,7 +1702,7 @@ async function fuseSearch(query, fuse, fuseOptions) {
 }
 </script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/fundamentals.html" rel="next">
+<link href="../chapters/reproducible_reports.html" rel="next">
 <link href="../index.html" rel="prev">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
@@ -4795,56 +4795,62 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
+  <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
+  <a href="../chapters/fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/the_pipe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
   </div>
 </li>
     </ul>
@@ -4879,14 +4885,21 @@ vertical-align: -.125em;
 
 <ul>
 <li>You can find cheatsheets in the /resources folder [add link]</li>
-<li>The Open Source textbook R for Data Science (aka, <a href="https://r4ds.hadley.nz/">Wickham’s R4DS</a>) is invaluable. Hadley Wickham is the main developer of the “tidyverse” set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its <a href="https://r4ds.hadley.nz/data-transform">section on data transformation</a>.
+<li>The Open Source textbook <a href="https://psyteachr.github.io/reprores-v3/">Data Skills for Reproducible Research</a> (DeBruine et al.) is very good, e.g., its sections on <a href="https://psyteachr.github.io/reprores-v3/dplyr.html">dplyr</a> and <a href="https://psyteachr.github.io/reprores-v3/tidyr.html">tidyr</a>.</li>
+<li>Allison Horst’s interactive web app to learn dplyr is great: <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome" class="uri">https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome</a>.</li>
+<li>The Open Source textbook R for Data Science (aka, <a href="https://r4ds.hadley.nz/">Wickham’s R4DS</a>) is also very good, if a little dryer. Hadley Wickham is the main developer of the “tidyverse” set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its <a href="https://r4ds.hadley.nz/data-transform">section on data transformation</a>.
 <ul>
 <li>The entire second edition of the book is available at <a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a>.</li>
-<li>The first edition is also available. It does some things better in my opinion, e.g., it has a better explanation of the pipe (<code>%&gt;%</code> or <code>|&gt;</code>). See <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</li>
-<li>The first edition also talks about RMarkdown, whereas the second edition has moved to a different technology called Quarto (which we won’t cover, although they’re similar). See <a href="https://r4ds.had.co.nz/r-markdown.html" class="uri">https://r4ds.had.co.nz/r-markdown.html</a>.</li>
 </ul></li>
-<li>For people who prefer to learn in an interactive environment, I suggest this web app: <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome" class="uri">https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome</a>.</li>
-<li>For people who prefer some video content - although seeing other people code can never replace practicing coding yourself! - I can also recommend De Bruine et al.’s Open Source textbook and videos <a href="https://psyteachr.github.io/reprores-v3/">Data Skills for Reproducible Research</a>. E.g., see their page with links to videos for <a href="https://psyteachr.github.io/reprores-v3/dplyr.html">dplyr</a> and <a href="https://psyteachr.github.io/reprores-v3/tidyr.html">tidyr</a>.</li>
+<li>Garrick Aden-Buie’s tidyexplain is great for understanding how tidyr’s pivot functions work: <a href="https://github.com/gadenbuie/tidyexplain" class="uri">https://github.com/gadenbuie/tidyexplain</a></li>
+<li>datasciencebox.org has good interactive tutorials, but they are more useful for practicing processing and visualization skills once you’ve already learned the functions
+<ul>
+<li>ggplot2 <a href="https://minecr.shinyapps.io/dsbox-01-edibnb/" class="uri">https://minecr.shinyapps.io/dsbox-01-edibnb/</a></li>
+<li>ggplot2, pipe, mutate <a href="https://minecr.shinyapps.io/dsbox-02-accidents" class="uri">https://minecr.shinyapps.io/dsbox-02-accidents</a></li>
+<li>ggplot2, pipe, select, arrange, summarize, count, filter <a href="https://minecr.shinyapps.io/dsbox-03-collegemajors" class="uri">https://minecr.shinyapps.io/dsbox-03-collegemajors</a></li>
+<li>count, arrange, summarize <a href="https://minecr.shinyapps.io/dsbox-04-legosales/" class="uri">https://minecr.shinyapps.io/dsbox-04-legosales/</a></li>
+</ul></li>
+<li>If you’d like video content, datasciencebox.org also has it: <a href="https://datasciencebox.org/02-exploring-data" class="uri">https://datasciencebox.org/02-exploring-data</a></li>
 </ul>
 
 
@@ -5369,8 +5382,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/fundamentals.html" class="pagination-link" aria-label="Fundamentals">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/reproducible_reports.html" class="pagination-link" aria-label="Reproducible reports">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -5386,12 +5399,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can find cheatsheets in the /resources folder <span class="sc">\[</span>\TODO add link<span class="sc">\]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The Open Source textbook R for Data Science (aka, <span class="co">[</span><span class="ot">Wickham's R4DS</span><span class="co">](https://r4ds.hadley.nz/)</span>) is invaluable. Hadley Wickham is the main developer of the "tidyverse" set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its <span class="co">[</span><span class="ot">section on data transformation</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span>.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>The entire second edition of the book is available at <span class="ot">&lt;https://r4ds.hadley.nz/&gt;</span>.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>The first edition is also available. It does some things better in my opinion, e.g., it has a better explanation of the pipe (<span class="in">`%&gt;%`</span> or <span class="in">`|&gt;`</span>). See <span class="ot">&lt;https://r4ds.had.co.nz/pipes.html&gt;</span>.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>The first edition also talks about RMarkdown, whereas the second edition has moved to a different technology called Quarto (which we won't cover, although they're similar). See <span class="ot">&lt;https://r4ds.had.co.nz/r-markdown.html&gt;</span>.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>For people who prefer to learn in an interactive environment, I suggest this web app: <span class="ot">&lt;https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome&gt;</span>.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>For people who prefer some video content - although seeing other people code can never replace practicing coding yourself! - I can also recommend De Bruine et al.'s Open Source textbook and videos <span class="co">[</span><span class="ot">Data Skills for Reproducible Research</span><span class="co">](https://psyteachr.github.io/reprores-v3/)</span>. E.g., see their page with links to videos for <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://psyteachr.github.io/reprores-v3/dplyr.html)</span> and <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://psyteachr.github.io/reprores-v3/tidyr.html)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The Open Source textbook <span class="co">[</span><span class="ot">Data Skills for Reproducible Research</span><span class="co">](https://psyteachr.github.io/reprores-v3/)</span> (DeBruine et al.) is very good, e.g., its sections on <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://psyteachr.github.io/reprores-v3/dplyr.html)</span> and <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://psyteachr.github.io/reprores-v3/tidyr.html)</span>.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Allison Horst's interactive web app to learn dplyr is great: <span class="ot">&lt;https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome&gt;</span>.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The Open Source textbook R for Data Science (aka, <span class="co">[</span><span class="ot">Wickham's R4DS</span><span class="co">](https://r4ds.hadley.nz/)</span>) is also very good, if a little dryer. Hadley Wickham is the main developer of the "tidyverse" set of packages, including dplyr, tidyr, ggplot2, stringr, lubridate, and others. See its <span class="co">[</span><span class="ot">section on data transformation</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span>.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>The entire second edition of the book is available at <span class="ot">&lt;https://r4ds.hadley.nz/&gt;</span>.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Garrick Aden-Buie's tidyexplain is great for understanding how tidyr's pivot functions work: <span class="ot">&lt;https://github.com/gadenbuie/tidyexplain&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>datasciencebox.org has good interactive tutorials, but they are more useful for practicing processing and visualization skills once you've already learned the functions</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>ggplot2 <span class="ot">&lt;https://minecr.shinyapps.io/dsbox-01-edibnb/&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>ggplot2, pipe, mutate <span class="ot">&lt;https://minecr.shinyapps.io/dsbox-02-accidents&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>ggplot2, pipe, select, arrange, summarize, count, filter <span class="ot">&lt;https://minecr.shinyapps.io/dsbox-03-collegemajors&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>count, arrange, summarize <span class="ot">&lt;https://minecr.shinyapps.io/dsbox-04-legosales/&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If you'd like video content, datasciencebox.org also has it: <span class="ot">&lt;https://datasciencebox.org/02-exploring-data&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

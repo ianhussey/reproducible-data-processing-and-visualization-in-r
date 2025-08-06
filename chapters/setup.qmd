@@ -1,0 +1,49 @@
+---
+title: "Installation and setup"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+    self-contained: true
+---
+
+## Install the base R language and the RStudio IDE
+
+You should install the base R language and the RStudio IDE from [here](https://posit.co/download/rstudio-desktop/).  
+
+There are detailed steps available for Windows and Mac [here](https://psyteachr.github.io/RSetGo/).
+
+## RStudio settings 
+
+### Important reproducibility settings that must be changed from defaults
+
+For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'.
+![](../images/rstudio_settings.png)
+
+## RStudio themes
+
+RStudio can be skinned with different themes, including dark themes that may be easier on your eyes or are, at least, objectively cooler.
+
+The objectively coolest theme of them all is Synthwave85, which can be installed by running the following line of code in RStudio's console: `rstudioapi::addTheme("https://raw.githubusercontent.com/jnolis/synthwave85/master/Synthwave85.rstheme", TRUE, TRUE, FALSE)`
+
+To change themes, click the 'Tools' drop down menu, then 'Global Options', then 'Appearance', then 'RStudio Theme'.
+
+![](../images/synthwave85_theme.png)
+
+## RStudio fonts
+
+Certain monospaced fonts provide the advantage of rendering common R characters or functions more nicely. 
+
+This is the same code displayed using Monaco, a built-in font:
+
+![](../images/font_monaco.png)
+
+And using JetBrainsMono, which supports rendering the base-R pipe (`|>`) and non-equivalence symbols as single characters 
+
+![](../images/font_jetbrainsmono.png)
+
+If you prefer the latter, you can download JetBrainsMono from [here](https://www.jetbrains.com/lp/mono/) and install on your computer. Restart RStudio, then change the font by clicking the 'Tools' drop down menu, then 'Global Options', then 'Appearance', then 'Editor font'.
+
+

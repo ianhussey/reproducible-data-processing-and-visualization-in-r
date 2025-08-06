@@ -19,13 +19,35 @@ options(scipen = 999)
 
 ```
 
-## Literature programming and code chunks
+## Literate programming
 
 Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.
 
+### In line code
+
 Code can be written in 'in line' in the text as follows: `r 1+1`. In the RMarkdown document, you have hover over the in line code and press enter or return to run the code.
 
-You can also write it in chunks:
+### Code chunks
+
+For any code that isn't extremely short, you should write it in code chunks.
+
+These are written as follows: three backticks followed by "{r}" specifies that it is a chunk of R code, then the code, then three more backticks to end the chunk. Note that backticks are not apostrophes! (\` vs ').
+
+````{=markdown}
+```{r}
+
+# code goes here
+
+```
+````
+
+You can also insert a code chunk with Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac).
+
+Output appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk: ![](../images/chunk_run_this_chunk.png)
+
+You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: ![](../images/chunk_run_previous_chunks.png)
+
+For example:
 
 ```{r}
 
@@ -33,17 +55,82 @@ You can also write it in chunks:
 
 ```
 
-Output appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk. You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk.
+## Rendering and reproducibilty
 
-## Math via LaTeX
+Quarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:
 
-You can include math in line with LaTeX code placed between dollar signs: e.g., "$\eta_{p}^{2}$ = 0.03".
+1.  It allows you to make more attractive outputs with tables, plots, and results.
+2.  It can greatly increase reproducibility. Each time you 'render' a .html file from a .qmd/.Rmd, the code is run in a new R session in the background. The .html file is only created if all the code runs. This is extremely useful for ensuring that your code does indeed run, that you have all necessary packages loaded, etc. Note however that it does not ensure that your code is error free, that there are not unnecessary packages loaded, etc.
+
+## Markdown formatting and levels of heading
+
+Quarto (.qmd) and RMarkdown files (.Rmd) allow you to use markdown formatting. This is a very simple way to do basic formatting, such as headings, emphasis, bullet points and lists.
+
+Markdown formatting can be used as follows.
+
+**Don't forget the space after the #, or spaces between lines to separate sections of different types!**
+
+``` text
+# Level 1 heading
+
+## Level 2 heading
+
+### Level 3 heading
+
+Normal text.
+
+*italic text*
+
+**bold text**
+
+- bullet points
+- bullet points
+
+1. numbered list
+2. numbered list
+
+Display an image in visual editor/on rendering:
+![](../images/r_meme.png)
+```
+
+Each of the above are rendered as follows in the .html file once rendered:
+
+## Level 1 heading
+
+### Level 2 heading
+
+#### Level 3 heading
+
+Normal text.
+
+*italic text*
+
+**bold text**
+
+-   bullet points
+-   bullet points
+
+1.  numbered list
+2.  numbered list
+
+Display an image in visual editor/on rendering: ![](../images/r_meme.png)
+
+## Table of contents and outline
+
+Levels of heading are extremely useful for structuring your report.
+
+1.  They automatically appear as headings in the "Outline" section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the 'Outline' button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.
+2.  When the file is rendered (.qmd) or knited (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has `toc: true`, as this file does).
+
+## Math typesetting via LaTeX
+
+You can include math in line with LaTeX code placed between dollar signs: e.g., "`$\eta_{p}^{2}$` = 0.03" produces "$\eta_{p}^{2}$ = 0.03".
 
 You can also write longer chunks of LaTeX, for example to specify that the mean ($\bar{x}$) is the sum of all elements of the vector $x$ divided by number of elements in the vector ($n$).
 
 This code:
 
-```         
+``` text
 $$
 \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
 $$
@@ -57,10 +144,140 @@ $$
 
 ## Source versus Visual editor
 
-## kniting/rendering and reproducibilty
+You can view a .qmd file's raw code in the 'Source' viewer. The button for this appears on the top left above the code in RStudio.
 
-\TODO
+Screenshot of Source editor mode:
 
-## Levels of heading
+![](../images/source_editor.png){style="border: 1px solid black;"}
 
-\TODO
+You can also view the a live preview of the rendered file, including tables, plots, math, etc., using 'Visual' editor mode, although there will some simplifications compared to when you render a .html file.
+
+Screenshot of Visual editor mode:
+
+![](../images/visual_editor.png){style="border: 1px solid black;"}
+
+## Reading, processing, and writing data
+
+Raw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.
+
+We will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.
+
+Read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
+
+```{r}
+# dependencies
+library(dplyr)
+library(tidyr)
+library(readr)
+
+# load raw data
+dat_raw <- readr::read_csv("../data/raw/data_raw_bfi.csv")
+
+# process data
+dat_processed <- dat_raw %>%
+  # rename variable to make it clearer
+  dplyr::rename(race_iat = IAT_score) %>%
+  # exclude participants with missing data or who did not meet performance criteria
+  dplyr::filter(complete_individual_differences_data == TRUE & exclude_iat == FALSE) %>%
+  # calculate sum scores for the BFI personality subscales
+  dplyr::rowwise() %>%
+  dplyr::mutate(openness = mean(c_across(starts_with("bfi_o"))),
+                conscientiousness = mean(c_across(starts_with("bfi_c"))),
+                extroversion = mean(c_across(starts_with("bfi_e"))),
+                agreeableness = mean(c_across(starts_with("bfi_a"))),
+                neuroticism = mean(c_across(starts_with("bfi_n")))) %>%
+  dplyr::ungroup() %>%
+  # retain only the columns needed
+  dplyr::select(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)
+
+# create a directory to save processed data to 
+dir.create("../data/processed")
+
+# save data
+readr::write_csv(dat_processed, "../data/processed/data_processed_bfi_race_iat.csv")
+
+# reshape to long format for tables and plots
+dat_processed_long <- dat_processed %>%
+  tidyr::pivot_longer(cols = c(openness, conscientiousness, extroversion, agreeableness, neuroticism),
+                      names_to = "subscale",
+                      values_to = "score")
+```
+
+## Tables
+
+Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.
+
+Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, tead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
+
+```{r}
+# dependencies
+library(janitor)
+library(knitr)
+library(kableExtra)
+
+# table
+dat_processed_long %>%
+  # summarize mean and SD by subscale
+  dplyr::group_by(subscale) %>%
+  dplyr::summarize(n = dplyr::n(),
+                   m = mean(score, na.rm = TRUE),
+                   sd = sd(score, na.rm = TRUE)) %>%
+  # round estimates 
+  dplyr::mutate(m = janitor::round_half_up(m, digits = 2),
+                sd = janitor::round_half_up(sd, digits = 2)) %>%
+  # print nicer table
+  knitr::kable(align = 'r') |>
+  kableExtra::kable_styling()
+```
+
+## Plots
+
+Plots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.
+
+As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
+
+```{r}
+# dependencies
+library(ggplot2)
+
+# plot
+ggplot(dat_processed_long, aes(score, race_iat)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~ subscale) +
+  theme_linedraw() +
+  ylab("Implicit racial bias") +
+  xlab("Personality subscale score")
+```
+
+## Analyses
+
+Analyses can be run, and even their results extracted an interpreted, with the help of R packages such as {report} and {parameters} from the [easystats](https://easystats.github.io/easystats/) cluster of packages.
+
+```{r}
+# dependencies
+library(report)
+
+# fit correlation test
+res <- cor.test(formula = ~ race_iat + extroversion, 
+                data = dat_processed, 
+                use = "pairwise.complete.obs")
+
+# create standard report of results
+report::report_text(res)
+```
+
+## Exercises
+
+Edit this .qmd file to make the following changes.
+
+### Add authorship
+
+Add the following text to the YAML header on line 3, just under 'title': `author: "yourname"`, and replace 'yourname' with your name. Click 'render' to create a reproducible report as a .html from this .qmd file. It will now list you as the author.
+
+### Add date
+
+Add the following text to the YAML header on line 4: `date: today`. Now when you render again, it will list today's date so that you know when the report was created.
+
+### Make the plot more colorful
+
+Change the 'aesthetics' call from `aes(score, race_iat)` to `aes(score, race_iat, color = subscale)`. Run all previous chunks to reload and reprocess the data using this button: ![](../images/chunk_run_previous_chunks.png) Then, run the plot chunk again using this one to view your more colorful plot: ![](../images/chunk_run_this_chunk.png)
