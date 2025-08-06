@@ -21,7 +21,7 @@ options(scipen = 999)
 
 ## Loading .csv files
 
-### Relative vs. absolute paths: Avoid using `setwd()!`
+### Relative vs. absolute paths: Avoid using `setwd()`!
 
 When we write .R scripts, we often use `setwd()` to define where files should be loaded from and saved to. The problem with `setwd()` is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes `setwd("C:/Users/IanHussey/Documents/R_course/")`, before loading some data using `read.csv()`. If I email you this script and data file, it script won't work on your machine unless your folders are identically named; you have to change the file path in `setwd()`. This lowers the reproducibility of the code, as it can't be run trivially by other people on other computers.
 
@@ -72,9 +72,9 @@ FYI, you can also use relative paths in regular .R files using the {here} librar
 
 ### Check your learning
 
-**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'? 
+**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'?
 
-::: {.callout-note collapse=true title="Click to show answer"}
+::: {.callout-note collapse="true" title="Click to show answer"}
 ```{r}
 #| eval: false # this code chunk is set to not run as the code file doesn't exist
 dat <- read.csv("../../code/data_shouldnt_usually_go_here.csv")
@@ -85,9 +85,9 @@ dat <- read.csv("../../code/data_shouldnt_usually_go_here.csv")
 
 ### In your environment
 
-Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio. 
+Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio.
 
-You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows). 
+You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows).
 
 ```{r}
 #| eval: false 
@@ -117,7 +117,7 @@ print(dat_processed)
 
 ### Printing data frames more nicely
 
-Printing data frames by calling their name or using `print()` don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages. 
+Printing data frames by calling their name or using `print()` don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.
 
 Note that this code uses the 'pipe', which we cover in more detail in the next chapter.
 
@@ -170,10 +170,8 @@ dat_likert_1 <- readxl::read_excel(path = "../data/raw/data_likert.xlsx",
 
 **Question:** How would you know what arguments `readxl::read_excel()` takes?
 
-::: {.callout-note collapse=true title="Click to show answer"}
-
+::: {.callout-note collapse="true" title="Click to show answer"}
 By consulting the help menu with `r ?readxl::read_excel()`.
-
 :::
 
 ### Preserving the raw data / skipping rows when loading
@@ -215,7 +213,7 @@ dat_likert
 
 ## Loading and writing .rda files
 
-R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the `compress = "gz"` argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R. 
+R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the `compress = "gz"` argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.
 
 ```{r}
 library(readr)
@@ -245,5 +243,3 @@ file_names <- list.files(path = "../data/raw/individual_files",
 # use (or 'map') the read_csv function onto each of the file names 
 data_combined <- purrr::map_dfr(.x = file_names, .f = read.csv)
 ```
-
-

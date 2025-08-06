@@ -8,6 +8,6 @@ Code is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite it.
 
-Citation:
+Suggested citation:
 
-Hussey, I. (2025) Improving your statistical inferences using Monte Carlo simulation studies in tidyverse. github.com/ianhussey/improving-your-statistical-inferences-through-monte-carlo-simulation-studies
+Hussey, I. (2025) Reproducible data processing and visualization in R. <https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r>

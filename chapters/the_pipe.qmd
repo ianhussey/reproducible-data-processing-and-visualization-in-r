@@ -1,5 +1,5 @@
 ---
-title: "The pipe"
+title: "The pipe: `%>%` and `|>`"
 format:
   html:
     toc: true
@@ -184,7 +184,7 @@ data_demographics_raw %>%
   janitor::clean_names(dat = .)
 ```
 
-The base R pipe (`|>`) is less intelligent behind the scenes. It always supplies the input as the first argument. This can be overridden with `_`, although this works imperfectly and not all functions will accept it. 
+The base R pipe (`|>`) is less intelligent behind the scenes. It always supplies the input as the first argument. This can be overridden with `_`, although this works imperfectly and not all functions will accept it.
 
 ```{r}
 data_demographics_raw |>

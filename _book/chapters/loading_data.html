@@ -1703,7 +1703,7 @@ async function fuseSearch(query, fuse, fuseOptions) {
 </script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/the_pipe.html" rel="next">
-<link href="../chapters/fundamentals.html" rel="prev">
+<link href="../chapters/reproducible_reports.html" rel="prev">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
   bubbles: true,
@@ -5013,20 +5013,20 @@ border: 0;
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/learning_resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Other learning resources</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -5089,7 +5089,7 @@ border: 0;
   <ul>
   <li><a href="#loading-.csv-files" id="toc-loading-.csv-files" class="nav-link active" data-scroll-target="#loading-.csv-files"><span class="header-section-number">4.1</span> Loading .csv files</a>
   <ul class="collapse">
-  <li><a href="#relative-vs.-absolute-paths-avoid-using-setwd" id="toc-relative-vs.-absolute-paths-avoid-using-setwd" class="nav-link" data-scroll-target="#relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()!</code></a></li>
+  <li><a href="#relative-vs.-absolute-paths-avoid-using-setwd" id="toc-relative-vs.-absolute-paths-avoid-using-setwd" class="nav-link" data-scroll-target="#relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()</code>!</a></li>
   <li><a href="#check-your-learning" id="toc-check-your-learning" class="nav-link" data-scroll-target="#check-your-learning"><span class="header-section-number">4.1.2</span> Check your learning</a></li>
   </ul></li>
   <li><a href="#viewing-data-frames" id="toc-viewing-data-frames" class="nav-link" data-scroll-target="#viewing-data-frames"><span class="header-section-number">4.2</span> Viewing data frames</a>
@@ -5135,7 +5135,7 @@ border: 0;
 <section id="loading-.csv-files" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="loading-.csv-files"><span class="header-section-number">4.1</span> Loading .csv files</h2>
 <section id="relative-vs.-absolute-paths-avoid-using-setwd" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()!</code></h3>
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="relative-vs.-absolute-paths-avoid-using-setwd"><span class="header-section-number">4.1.1</span> Relative vs.&nbsp;absolute paths: Avoid using <code>setwd()</code>!</h3>
 <p>When we write .R scripts, we often use <code>setwd()</code> to define where files should be loaded from and saved to. The problem with <code>setwd()</code> is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes <code>setwd("C:/Users/IanHussey/Documents/R_course/")</code>, before loading some data using <code>read.csv()</code>. If I email you this script and data file, it script won’t work on your machine unless your folders are identically named; you have to change the file path in <code>setwd()</code>. This lowers the reproducibility of the code, as it can’t be run trivially by other people on other computers.</p>
 <p>This is because <code>setwd()</code> uses ‘absolute’ paths that point to a specific location in a directory structure. One of the very useful features of RMarkdown (.Rmd) and Quarto (.qmd) files is that they instead use ‘relative’ paths, which specify where a file or directory is <em>in relation to</em> the .Rmd or .qmd script. That is, the working directory is by definition wherever the .Rmd or .qmd file is, without being specified.</p>
 <p>If I have a directory - located anywhere on my hard drive - called ‘R_course’ that contains the folders ‘code’ and ‘data’, and the ‘data’ directory itself contains the directories ‘processed’ and ‘raw’. Imagine the files within these directories are as follows:</p>
@@ -5216,109 +5216,109 @@ Click to show answer
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat_processed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    unique_id age    gender mean_self_report n_items  amp_score
-1   548957868  23      &lt;NA&gt;               NA      NA         NA
-2   504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
-3   994692692  21    female         1.333333       3 0.80555556
-4   902223169  19    female         2.666667       3 0.56944444
-5   469672453  27      male         1.333333       3 0.25000000
-6   637089700  43      male         2.000000       3 0.50000000
-7     4345805  54      male         3.000000       3 0.36111111
-8   786441188  27    female         1.666667       3 0.76388889
-9   510787584  34    female         4.000000       3 0.51388889
-10  684265529  19 nonbinary         1.000000       3 0.54166667
-11   47022865  21      male         1.000000       3 0.47222222
-12  199802590  27      male         5.666667       3 0.52777778
-13  295696078  32      male         1.000000       3 0.54166667
-14   32034696  38      male         1.333333       3 0.62500000
-15  609227927  18      male               NA      NA 0.98611111
-16   59367911  47    female         1.000000       3 0.48611111
-17  386661197  46      male         2.333333       3 0.44444444
-18  238678139  38    female         1.000000       3 0.65277778
-19  764499289  52      male         1.666667       3 0.55555556
-20  586346915  36    female         1.000000       3 0.54166667
-21  100125154  29      male         2.333333       3 0.51388889
-22  550721671  28    female         1.000000       3 0.52777778
-23  161234436  25      male         6.666667       3 0.56944444
-24  621686155  42    female         1.000000       3 0.51388889
-25  238079276  28    female         1.666667       3 0.54166667
-26  561842983  23    female         1.000000       3 0.94444444
-27  627537443  27    female         1.000000       3 0.68055556
-28  591041139  29 nonbinary         3.666667       3 0.61111111
-29  601833546  34      male         3.000000       3 0.50000000
-30  874662429  36      male         3.000000       3 0.52777778
-31  658421880  53    female         1.000000       3 0.51388889
-32  557207580  28    female         1.000000       3 0.55555556
-33   13708908  25      male         1.000000       3 0.55555556
-34  699441423  48      male         1.000000       3 0.98611111
-35  841303698  19    female         1.000000       3 0.58333333
-36  881713870  25 nonbinary         5.333333       3 0.48611111
-37  663795436  39    female         1.000000       3 0.52777778
-38  422087765  45    female         1.000000       3 0.48611111
-39  343944905  31      male         4.666667       3 0.52777778
-40  920212493  61      male         1.333333       3 0.86111111
-41  526570034  63      male         1.000000       3 0.61111111
-42  882246022  61      male         1.000000       3 0.52777778
-43  904883244  59      male         1.000000       3 0.61111111
-44  293831276  60    female         1.000000       3 0.06944444
-45  530863876  42      male         2.666667       3 0.43055556
-46  753565148  26    female         1.000000       3 0.55555556
-47  727031797  27      male         1.000000       3 0.73611111
-48  751712225  22    female         1.000000       3 0.50000000
-49  464934738  21      male         2.000000       3 0.48611111
-50  563522777  53      male         2.666667       3 0.50000000
-51  373740279  51    female         1.000000       3 0.62500000
-52  589607780  35    female         1.000000       3 0.48611111
-53  681045009  26      male         3.000000       3 0.95833333
-54  855399085  32    female         1.000000       3 0.00000000
-55  821599197  45    female         1.000000       3 0.36111111
-56  311497290  48      male         3.000000       3 0.29166667
-57  254118946  64    female         2.666667       3 0.45833333
-58  317124448  36    female         1.000000       3 0.87500000
-59  730068356  51    female         1.000000       3 0.94444444
-60  236383059  37      male         1.000000       3 0.48611111
-61  246374429  21    female         1.000000       3 0.50000000
-62  952386283  26    female         2.333333       3 0.52777778
-63  694264273  31      male         2.333333       3 0.59722222
-64  175188025  42      male         1.000000       3 0.81944444
-65  339232704  31      male         2.000000       3 0.77777778
-66  386456897  23      male         1.333333       3 0.47222222
-67  637668138  30      male         2.000000       3 0.50000000
-68  237498336  49      male         1.000000       3 0.58333333
-69  631750145  24    female         1.000000       3 0.51388889
-70  867476338  29    female         1.000000       3 0.47222222
-71  196574198  21    female         1.000000       3 0.88888889
-72  692009266  31      male         1.000000       3 0.54166667
-73  477618299  53      male         1.000000       3 0.63888889
-74  325830955  50      male         4.333333       3 0.56944444
-75  965314508  28      male         1.000000       3 0.50000000
-76   72442795  19    female         1.666667       3 0.94444444
-77  216287717  50    female         3.333333       3 0.52777778
-78  287027128  37    female         1.000000       3 0.50000000
-79  247697997  20      male         2.000000       3 0.62500000
-80  954130481  50    female         1.000000       3 0.51388889
-81  564734227  30      male         1.666667       3 0.37500000
-82  797453632  21      male         1.000000       3 0.58333333
-83   85445170  26      male         1.000000       3 0.45833333
-84  614285355  59      male         1.000000       3 0.56944444
-85   14943693  39      male         1.333333       3 0.97222222
-86  920896673  35      male         1.000000       3 0.47222222
-87   75092407  22    female         1.000000       3 0.40277778
-88   83185292  39      male         3.333333       3 0.43055556
-89  234276163  55    female         1.000000       3 0.84722222
-90  940229231  45      male         3.000000       3 0.68055556
-91  456445084  48      male         1.000000       3 0.51388889
-92  102678881  32      male         1.000000       3 0.98611111
-93  187172011  51    female         1.000000       3 0.98611111
-94  108266335  32    female         1.000000       3 0.61111111
-95  752580117  35      male         1.000000       3 0.13888889
-96  506524197  36      male         2.000000       3 0.55555556
-97  524337317  29      male         1.666667       3 0.55555556
-98  759418836  32      male         1.000000       3 0.97222222
-99  233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
-100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
-101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
-102 893377996  NA      &lt;NA&gt;               NA       1         NA
+<pre><code>      X unique_id age    gender mean_self_report n_items  amp_score
+1     1 548957868  23      &lt;NA&gt;               NA      NA         NA
+2     2 504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
+3     3 994692692  21    female         1.333333       3 0.80555556
+4     4 902223169  19    female         2.666667       3 0.56944444
+5     5 469672453  27      male         1.333333       3 0.25000000
+6     6 637089700  43      male         2.000000       3 0.50000000
+7     7   4345805  54      male         3.000000       3 0.36111111
+8     8 786441188  27    female         1.666667       3 0.76388889
+9     9 510787584  34    female         4.000000       3 0.51388889
+10   10 684265529  19 nonbinary         1.000000       3 0.54166667
+11   11  47022865  21      male         1.000000       3 0.47222222
+12   12 199802590  27      male         5.666667       3 0.52777778
+13   13 295696078  32      male         1.000000       3 0.54166667
+14   14  32034696  38      male         1.333333       3 0.62500000
+15   15 609227927  18      male               NA      NA 0.98611111
+16   16  59367911  47    female         1.000000       3 0.48611111
+17   17 386661197  46      male         2.333333       3 0.44444444
+18   18 238678139  38    female         1.000000       3 0.65277778
+19   19 764499289  52      male         1.666667       3 0.55555556
+20   20 586346915  36    female         1.000000       3 0.54166667
+21   21 100125154  29      male         2.333333       3 0.51388889
+22   22 550721671  28    female         1.000000       3 0.52777778
+23   23 161234436  25      male         6.666667       3 0.56944444
+24   24 621686155  42    female         1.000000       3 0.51388889
+25   25 238079276  28    female         1.666667       3 0.54166667
+26   26 561842983  23    female         1.000000       3 0.94444444
+27   27 627537443  27    female         1.000000       3 0.68055556
+28   28 591041139  29 nonbinary         3.666667       3 0.61111111
+29   29 601833546  34      male         3.000000       3 0.50000000
+30   30 874662429  36      male         3.000000       3 0.52777778
+31   31 658421880  53    female         1.000000       3 0.51388889
+32   32 557207580  28    female         1.000000       3 0.55555556
+33   33  13708908  25      male         1.000000       3 0.55555556
+34   34 699441423  48      male         1.000000       3 0.98611111
+35   35 841303698  19    female         1.000000       3 0.58333333
+36   36 881713870  25 nonbinary         5.333333       3 0.48611111
+37   37 663795436  39    female         1.000000       3 0.52777778
+38   38 422087765  45    female         1.000000       3 0.48611111
+39   39 343944905  31      male         4.666667       3 0.52777778
+40   40 920212493  61      male         1.333333       3 0.86111111
+41   41 526570034  63      male         1.000000       3 0.61111111
+42   42 882246022  61      male         1.000000       3 0.52777778
+43   43 904883244  59      male         1.000000       3 0.61111111
+44   44 293831276  60    female         1.000000       3 0.06944444
+45   45 530863876  42      male         2.666667       3 0.43055556
+46   46 753565148  26    female         1.000000       3 0.55555556
+47   47 727031797  27      male         1.000000       3 0.73611111
+48   48 751712225  22    female         1.000000       3 0.50000000
+49   49 464934738  21      male         2.000000       3 0.48611111
+50   50 563522777  53      male         2.666667       3 0.50000000
+51   51 373740279  51    female         1.000000       3 0.62500000
+52   52 589607780  35    female         1.000000       3 0.48611111
+53   53 681045009  26      male         3.000000       3 0.95833333
+54   54 855399085  32    female         1.000000       3 0.00000000
+55   55 821599197  45    female         1.000000       3 0.36111111
+56   56 311497290  48      male         3.000000       3 0.29166667
+57   57 254118946  64    female         2.666667       3 0.45833333
+58   58 317124448  36    female         1.000000       3 0.87500000
+59   59 730068356  51    female         1.000000       3 0.94444444
+60   60 236383059  37      male         1.000000       3 0.48611111
+61   61 246374429  21    female         1.000000       3 0.50000000
+62   62 952386283  26    female         2.333333       3 0.52777778
+63   63 694264273  31      male         2.333333       3 0.59722222
+64   64 175188025  42      male         1.000000       3 0.81944444
+65   65 339232704  31      male         2.000000       3 0.77777778
+66   66 386456897  23      male         1.333333       3 0.47222222
+67   67 637668138  30      male         2.000000       3 0.50000000
+68   68 237498336  49      male         1.000000       3 0.58333333
+69   69 631750145  24    female         1.000000       3 0.51388889
+70   70 867476338  29    female         1.000000       3 0.47222222
+71   71 196574198  21    female         1.000000       3 0.88888889
+72   72 692009266  31      male         1.000000       3 0.54166667
+73   73 477618299  53      male         1.000000       3 0.63888889
+74   74 325830955  50      male         4.333333       3 0.56944444
+75   75 965314508  28      male         1.000000       3 0.50000000
+76   76  72442795  19    female         1.666667       3 0.94444444
+77   77 216287717  50    female         3.333333       3 0.52777778
+78   78 287027128  37    female         1.000000       3 0.50000000
+79   79 247697997  20      male         2.000000       3 0.62500000
+80   80 954130481  50    female         1.000000       3 0.51388889
+81   81 564734227  30      male         1.666667       3 0.37500000
+82   82 797453632  21      male         1.000000       3 0.58333333
+83   83  85445170  26      male         1.000000       3 0.45833333
+84   84 614285355  59      male         1.000000       3 0.56944444
+85   85  14943693  39      male         1.333333       3 0.97222222
+86   86 920896673  35      male         1.000000       3 0.47222222
+87   87  75092407  22    female         1.000000       3 0.40277778
+88   88  83185292  39      male         3.333333       3 0.43055556
+89   89 234276163  55    female         1.000000       3 0.84722222
+90   90 940229231  45      male         3.000000       3 0.68055556
+91   91 456445084  48      male         1.000000       3 0.51388889
+92   92 102678881  32      male         1.000000       3 0.98611111
+93   93 187172011  51    female         1.000000       3 0.98611111
+94   94 108266335  32    female         1.000000       3 0.61111111
+95   95 752580117  35      male         1.000000       3 0.13888889
+96   96 506524197  36      male         2.000000       3 0.55555556
+97   97 524337317  29      male         1.666667       3 0.55555556
+98   98 759418836  32      male         1.000000       3 0.97222222
+99   99 233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
+100 100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
+101 101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
+102 102 893377996  NA      &lt;NA&gt;               NA       1         NA
     proportion_too_fast_trials n_trials exclude_amp
 1                           NA       NA        &lt;NA&gt;
 2                  0.000000000        8     include
@@ -5431,109 +5431,109 @@ Click to show answer
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_processed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    unique_id age    gender mean_self_report n_items  amp_score
-1   548957868  23      &lt;NA&gt;               NA      NA         NA
-2   504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
-3   994692692  21    female         1.333333       3 0.80555556
-4   902223169  19    female         2.666667       3 0.56944444
-5   469672453  27      male         1.333333       3 0.25000000
-6   637089700  43      male         2.000000       3 0.50000000
-7     4345805  54      male         3.000000       3 0.36111111
-8   786441188  27    female         1.666667       3 0.76388889
-9   510787584  34    female         4.000000       3 0.51388889
-10  684265529  19 nonbinary         1.000000       3 0.54166667
-11   47022865  21      male         1.000000       3 0.47222222
-12  199802590  27      male         5.666667       3 0.52777778
-13  295696078  32      male         1.000000       3 0.54166667
-14   32034696  38      male         1.333333       3 0.62500000
-15  609227927  18      male               NA      NA 0.98611111
-16   59367911  47    female         1.000000       3 0.48611111
-17  386661197  46      male         2.333333       3 0.44444444
-18  238678139  38    female         1.000000       3 0.65277778
-19  764499289  52      male         1.666667       3 0.55555556
-20  586346915  36    female         1.000000       3 0.54166667
-21  100125154  29      male         2.333333       3 0.51388889
-22  550721671  28    female         1.000000       3 0.52777778
-23  161234436  25      male         6.666667       3 0.56944444
-24  621686155  42    female         1.000000       3 0.51388889
-25  238079276  28    female         1.666667       3 0.54166667
-26  561842983  23    female         1.000000       3 0.94444444
-27  627537443  27    female         1.000000       3 0.68055556
-28  591041139  29 nonbinary         3.666667       3 0.61111111
-29  601833546  34      male         3.000000       3 0.50000000
-30  874662429  36      male         3.000000       3 0.52777778
-31  658421880  53    female         1.000000       3 0.51388889
-32  557207580  28    female         1.000000       3 0.55555556
-33   13708908  25      male         1.000000       3 0.55555556
-34  699441423  48      male         1.000000       3 0.98611111
-35  841303698  19    female         1.000000       3 0.58333333
-36  881713870  25 nonbinary         5.333333       3 0.48611111
-37  663795436  39    female         1.000000       3 0.52777778
-38  422087765  45    female         1.000000       3 0.48611111
-39  343944905  31      male         4.666667       3 0.52777778
-40  920212493  61      male         1.333333       3 0.86111111
-41  526570034  63      male         1.000000       3 0.61111111
-42  882246022  61      male         1.000000       3 0.52777778
-43  904883244  59      male         1.000000       3 0.61111111
-44  293831276  60    female         1.000000       3 0.06944444
-45  530863876  42      male         2.666667       3 0.43055556
-46  753565148  26    female         1.000000       3 0.55555556
-47  727031797  27      male         1.000000       3 0.73611111
-48  751712225  22    female         1.000000       3 0.50000000
-49  464934738  21      male         2.000000       3 0.48611111
-50  563522777  53      male         2.666667       3 0.50000000
-51  373740279  51    female         1.000000       3 0.62500000
-52  589607780  35    female         1.000000       3 0.48611111
-53  681045009  26      male         3.000000       3 0.95833333
-54  855399085  32    female         1.000000       3 0.00000000
-55  821599197  45    female         1.000000       3 0.36111111
-56  311497290  48      male         3.000000       3 0.29166667
-57  254118946  64    female         2.666667       3 0.45833333
-58  317124448  36    female         1.000000       3 0.87500000
-59  730068356  51    female         1.000000       3 0.94444444
-60  236383059  37      male         1.000000       3 0.48611111
-61  246374429  21    female         1.000000       3 0.50000000
-62  952386283  26    female         2.333333       3 0.52777778
-63  694264273  31      male         2.333333       3 0.59722222
-64  175188025  42      male         1.000000       3 0.81944444
-65  339232704  31      male         2.000000       3 0.77777778
-66  386456897  23      male         1.333333       3 0.47222222
-67  637668138  30      male         2.000000       3 0.50000000
-68  237498336  49      male         1.000000       3 0.58333333
-69  631750145  24    female         1.000000       3 0.51388889
-70  867476338  29    female         1.000000       3 0.47222222
-71  196574198  21    female         1.000000       3 0.88888889
-72  692009266  31      male         1.000000       3 0.54166667
-73  477618299  53      male         1.000000       3 0.63888889
-74  325830955  50      male         4.333333       3 0.56944444
-75  965314508  28      male         1.000000       3 0.50000000
-76   72442795  19    female         1.666667       3 0.94444444
-77  216287717  50    female         3.333333       3 0.52777778
-78  287027128  37    female         1.000000       3 0.50000000
-79  247697997  20      male         2.000000       3 0.62500000
-80  954130481  50    female         1.000000       3 0.51388889
-81  564734227  30      male         1.666667       3 0.37500000
-82  797453632  21      male         1.000000       3 0.58333333
-83   85445170  26      male         1.000000       3 0.45833333
-84  614285355  59      male         1.000000       3 0.56944444
-85   14943693  39      male         1.333333       3 0.97222222
-86  920896673  35      male         1.000000       3 0.47222222
-87   75092407  22    female         1.000000       3 0.40277778
-88   83185292  39      male         3.333333       3 0.43055556
-89  234276163  55    female         1.000000       3 0.84722222
-90  940229231  45      male         3.000000       3 0.68055556
-91  456445084  48      male         1.000000       3 0.51388889
-92  102678881  32      male         1.000000       3 0.98611111
-93  187172011  51    female         1.000000       3 0.98611111
-94  108266335  32    female         1.000000       3 0.61111111
-95  752580117  35      male         1.000000       3 0.13888889
-96  506524197  36      male         2.000000       3 0.55555556
-97  524337317  29      male         1.666667       3 0.55555556
-98  759418836  32      male         1.000000       3 0.97222222
-99  233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
-100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
-101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
-102 893377996  NA      &lt;NA&gt;               NA       1         NA
+<pre><code>      X unique_id age    gender mean_self_report n_items  amp_score
+1     1 548957868  23      &lt;NA&gt;               NA      NA         NA
+2     2 504546409  NA      &lt;NA&gt;               NA      NA 0.37500000
+3     3 994692692  21    female         1.333333       3 0.80555556
+4     4 902223169  19    female         2.666667       3 0.56944444
+5     5 469672453  27      male         1.333333       3 0.25000000
+6     6 637089700  43      male         2.000000       3 0.50000000
+7     7   4345805  54      male         3.000000       3 0.36111111
+8     8 786441188  27    female         1.666667       3 0.76388889
+9     9 510787584  34    female         4.000000       3 0.51388889
+10   10 684265529  19 nonbinary         1.000000       3 0.54166667
+11   11  47022865  21      male         1.000000       3 0.47222222
+12   12 199802590  27      male         5.666667       3 0.52777778
+13   13 295696078  32      male         1.000000       3 0.54166667
+14   14  32034696  38      male         1.333333       3 0.62500000
+15   15 609227927  18      male               NA      NA 0.98611111
+16   16  59367911  47    female         1.000000       3 0.48611111
+17   17 386661197  46      male         2.333333       3 0.44444444
+18   18 238678139  38    female         1.000000       3 0.65277778
+19   19 764499289  52      male         1.666667       3 0.55555556
+20   20 586346915  36    female         1.000000       3 0.54166667
+21   21 100125154  29      male         2.333333       3 0.51388889
+22   22 550721671  28    female         1.000000       3 0.52777778
+23   23 161234436  25      male         6.666667       3 0.56944444
+24   24 621686155  42    female         1.000000       3 0.51388889
+25   25 238079276  28    female         1.666667       3 0.54166667
+26   26 561842983  23    female         1.000000       3 0.94444444
+27   27 627537443  27    female         1.000000       3 0.68055556
+28   28 591041139  29 nonbinary         3.666667       3 0.61111111
+29   29 601833546  34      male         3.000000       3 0.50000000
+30   30 874662429  36      male         3.000000       3 0.52777778
+31   31 658421880  53    female         1.000000       3 0.51388889
+32   32 557207580  28    female         1.000000       3 0.55555556
+33   33  13708908  25      male         1.000000       3 0.55555556
+34   34 699441423  48      male         1.000000       3 0.98611111
+35   35 841303698  19    female         1.000000       3 0.58333333
+36   36 881713870  25 nonbinary         5.333333       3 0.48611111
+37   37 663795436  39    female         1.000000       3 0.52777778
+38   38 422087765  45    female         1.000000       3 0.48611111
+39   39 343944905  31      male         4.666667       3 0.52777778
+40   40 920212493  61      male         1.333333       3 0.86111111
+41   41 526570034  63      male         1.000000       3 0.61111111
+42   42 882246022  61      male         1.000000       3 0.52777778
+43   43 904883244  59      male         1.000000       3 0.61111111
+44   44 293831276  60    female         1.000000       3 0.06944444
+45   45 530863876  42      male         2.666667       3 0.43055556
+46   46 753565148  26    female         1.000000       3 0.55555556
+47   47 727031797  27      male         1.000000       3 0.73611111
+48   48 751712225  22    female         1.000000       3 0.50000000
+49   49 464934738  21      male         2.000000       3 0.48611111
+50   50 563522777  53      male         2.666667       3 0.50000000
+51   51 373740279  51    female         1.000000       3 0.62500000
+52   52 589607780  35    female         1.000000       3 0.48611111
+53   53 681045009  26      male         3.000000       3 0.95833333
+54   54 855399085  32    female         1.000000       3 0.00000000
+55   55 821599197  45    female         1.000000       3 0.36111111
+56   56 311497290  48      male         3.000000       3 0.29166667
+57   57 254118946  64    female         2.666667       3 0.45833333
+58   58 317124448  36    female         1.000000       3 0.87500000
+59   59 730068356  51    female         1.000000       3 0.94444444
+60   60 236383059  37      male         1.000000       3 0.48611111
+61   61 246374429  21    female         1.000000       3 0.50000000
+62   62 952386283  26    female         2.333333       3 0.52777778
+63   63 694264273  31      male         2.333333       3 0.59722222
+64   64 175188025  42      male         1.000000       3 0.81944444
+65   65 339232704  31      male         2.000000       3 0.77777778
+66   66 386456897  23      male         1.333333       3 0.47222222
+67   67 637668138  30      male         2.000000       3 0.50000000
+68   68 237498336  49      male         1.000000       3 0.58333333
+69   69 631750145  24    female         1.000000       3 0.51388889
+70   70 867476338  29    female         1.000000       3 0.47222222
+71   71 196574198  21    female         1.000000       3 0.88888889
+72   72 692009266  31      male         1.000000       3 0.54166667
+73   73 477618299  53      male         1.000000       3 0.63888889
+74   74 325830955  50      male         4.333333       3 0.56944444
+75   75 965314508  28      male         1.000000       3 0.50000000
+76   76  72442795  19    female         1.666667       3 0.94444444
+77   77 216287717  50    female         3.333333       3 0.52777778
+78   78 287027128  37    female         1.000000       3 0.50000000
+79   79 247697997  20      male         2.000000       3 0.62500000
+80   80 954130481  50    female         1.000000       3 0.51388889
+81   81 564734227  30      male         1.666667       3 0.37500000
+82   82 797453632  21      male         1.000000       3 0.58333333
+83   83  85445170  26      male         1.000000       3 0.45833333
+84   84 614285355  59      male         1.000000       3 0.56944444
+85   85  14943693  39      male         1.333333       3 0.97222222
+86   86 920896673  35      male         1.000000       3 0.47222222
+87   87  75092407  22    female         1.000000       3 0.40277778
+88   88  83185292  39      male         3.333333       3 0.43055556
+89   89 234276163  55    female         1.000000       3 0.84722222
+90   90 940229231  45      male         3.000000       3 0.68055556
+91   91 456445084  48      male         1.000000       3 0.51388889
+92   92 102678881  32      male         1.000000       3 0.98611111
+93   93 187172011  51    female         1.000000       3 0.98611111
+94   94 108266335  32    female         1.000000       3 0.61111111
+95   95 752580117  35      male         1.000000       3 0.13888889
+96   96 506524197  36      male         2.000000       3 0.55555556
+97   97 524337317  29      male         1.666667       3 0.55555556
+98   98 759418836  32      male         1.000000       3 0.97222222
+99   99 233735378  NA      &lt;NA&gt;         1.666667       3 0.50000000
+100 100 246532124  NA      &lt;NA&gt;         4.000000       1 0.54861111
+101 101 494447594  NA      &lt;NA&gt;         1.000000       3 0.87500000
+102 102 893377996  NA      &lt;NA&gt;               NA       1         NA
     proportion_too_fast_trials n_trials exclude_amp
 1                           NA       NA        &lt;NA&gt;
 2                  0.000000000        8     include
@@ -5658,6 +5658,7 @@ Click to show answer
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">X</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">unique_id</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">age</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">gender</th>
@@ -5671,6 +5672,7 @@ Click to show answer
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">548957868</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: right;">NA</td>
@@ -5682,6 +5684,7 @@ Click to show answer
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">504546409</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -5693,6 +5696,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">994692692</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">female</td>
@@ -5704,6 +5708,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">902223169</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">female</td>
@@ -5715,6 +5720,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">469672453</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">male</td>
@@ -5726,6 +5732,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">637089700</td>
 <td style="text-align: right;">43</td>
 <td style="text-align: right;">male</td>
@@ -5737,6 +5744,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">4345805</td>
 <td style="text-align: right;">54</td>
 <td style="text-align: right;">male</td>
@@ -5748,6 +5756,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">786441188</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">female</td>
@@ -5759,6 +5768,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">510787584</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">female</td>
@@ -5770,6 +5780,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">684265529</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">nonbinary</td>
@@ -5781,6 +5792,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">11</td>
 <td style="text-align: right;">47022865</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">male</td>
@@ -5792,6 +5804,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">12</td>
 <td style="text-align: right;">199802590</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">male</td>
@@ -5803,6 +5816,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">13</td>
 <td style="text-align: right;">295696078</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">male</td>
@@ -5814,6 +5828,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">14</td>
 <td style="text-align: right;">32034696</td>
 <td style="text-align: right;">38</td>
 <td style="text-align: right;">male</td>
@@ -5825,6 +5840,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">15</td>
 <td style="text-align: right;">609227927</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">male</td>
@@ -5836,6 +5852,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">59367911</td>
 <td style="text-align: right;">47</td>
 <td style="text-align: right;">female</td>
@@ -5847,6 +5864,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">17</td>
 <td style="text-align: right;">386661197</td>
 <td style="text-align: right;">46</td>
 <td style="text-align: right;">male</td>
@@ -5858,6 +5876,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">18</td>
 <td style="text-align: right;">238678139</td>
 <td style="text-align: right;">38</td>
 <td style="text-align: right;">female</td>
@@ -5869,6 +5888,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">19</td>
 <td style="text-align: right;">764499289</td>
 <td style="text-align: right;">52</td>
 <td style="text-align: right;">male</td>
@@ -5880,6 +5900,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">20</td>
 <td style="text-align: right;">586346915</td>
 <td style="text-align: right;">36</td>
 <td style="text-align: right;">female</td>
@@ -5891,6 +5912,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">21</td>
 <td style="text-align: right;">100125154</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">male</td>
@@ -5902,6 +5924,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">22</td>
 <td style="text-align: right;">550721671</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">female</td>
@@ -5913,6 +5936,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">23</td>
 <td style="text-align: right;">161234436</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">male</td>
@@ -5924,6 +5948,7 @@ Click to show answer
 <td style="text-align: right;">exclude</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">24</td>
 <td style="text-align: right;">621686155</td>
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">female</td>
@@ -5935,6 +5960,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">25</td>
 <td style="text-align: right;">238079276</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">female</td>
@@ -5946,6 +5972,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">26</td>
 <td style="text-align: right;">561842983</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: right;">female</td>
@@ -5957,6 +5984,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">27</td>
 <td style="text-align: right;">627537443</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">female</td>
@@ -5968,6 +5996,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">28</td>
 <td style="text-align: right;">591041139</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">nonbinary</td>
@@ -5979,6 +6008,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">29</td>
 <td style="text-align: right;">601833546</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">male</td>
@@ -5990,6 +6020,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">30</td>
 <td style="text-align: right;">874662429</td>
 <td style="text-align: right;">36</td>
 <td style="text-align: right;">male</td>
@@ -6001,6 +6032,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">31</td>
 <td style="text-align: right;">658421880</td>
 <td style="text-align: right;">53</td>
 <td style="text-align: right;">female</td>
@@ -6012,6 +6044,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">32</td>
 <td style="text-align: right;">557207580</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">female</td>
@@ -6023,6 +6056,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">33</td>
 <td style="text-align: right;">13708908</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">male</td>
@@ -6034,6 +6068,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">34</td>
 <td style="text-align: right;">699441423</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: right;">male</td>
@@ -6045,6 +6080,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">35</td>
 <td style="text-align: right;">841303698</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">female</td>
@@ -6056,6 +6092,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">36</td>
 <td style="text-align: right;">881713870</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">nonbinary</td>
@@ -6067,6 +6104,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">37</td>
 <td style="text-align: right;">663795436</td>
 <td style="text-align: right;">39</td>
 <td style="text-align: right;">female</td>
@@ -6078,6 +6116,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">38</td>
 <td style="text-align: right;">422087765</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: right;">female</td>
@@ -6089,6 +6128,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">39</td>
 <td style="text-align: right;">343944905</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">male</td>
@@ -6100,6 +6140,7 @@ Click to show answer
 <td style="text-align: right;">exclude</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">40</td>
 <td style="text-align: right;">920212493</td>
 <td style="text-align: right;">61</td>
 <td style="text-align: right;">male</td>
@@ -6111,6 +6152,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">41</td>
 <td style="text-align: right;">526570034</td>
 <td style="text-align: right;">63</td>
 <td style="text-align: right;">male</td>
@@ -6122,6 +6164,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">882246022</td>
 <td style="text-align: right;">61</td>
 <td style="text-align: right;">male</td>
@@ -6133,6 +6176,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">904883244</td>
 <td style="text-align: right;">59</td>
 <td style="text-align: right;">male</td>
@@ -6144,6 +6188,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">44</td>
 <td style="text-align: right;">293831276</td>
 <td style="text-align: right;">60</td>
 <td style="text-align: right;">female</td>
@@ -6155,6 +6200,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">45</td>
 <td style="text-align: right;">530863876</td>
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">male</td>
@@ -6166,6 +6212,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">46</td>
 <td style="text-align: right;">753565148</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">female</td>
@@ -6177,6 +6224,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">47</td>
 <td style="text-align: right;">727031797</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">male</td>
@@ -6188,6 +6236,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">48</td>
 <td style="text-align: right;">751712225</td>
 <td style="text-align: right;">22</td>
 <td style="text-align: right;">female</td>
@@ -6199,6 +6248,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">49</td>
 <td style="text-align: right;">464934738</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">male</td>
@@ -6210,6 +6260,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">50</td>
 <td style="text-align: right;">563522777</td>
 <td style="text-align: right;">53</td>
 <td style="text-align: right;">male</td>
@@ -6221,6 +6272,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">373740279</td>
 <td style="text-align: right;">51</td>
 <td style="text-align: right;">female</td>
@@ -6232,6 +6284,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">52</td>
 <td style="text-align: right;">589607780</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: right;">female</td>
@@ -6243,6 +6296,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">53</td>
 <td style="text-align: right;">681045009</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">male</td>
@@ -6254,6 +6308,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">54</td>
 <td style="text-align: right;">855399085</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">female</td>
@@ -6265,6 +6320,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">55</td>
 <td style="text-align: right;">821599197</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: right;">female</td>
@@ -6276,6 +6332,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">56</td>
 <td style="text-align: right;">311497290</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: right;">male</td>
@@ -6287,6 +6344,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">57</td>
 <td style="text-align: right;">254118946</td>
 <td style="text-align: right;">64</td>
 <td style="text-align: right;">female</td>
@@ -6298,6 +6356,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">58</td>
 <td style="text-align: right;">317124448</td>
 <td style="text-align: right;">36</td>
 <td style="text-align: right;">female</td>
@@ -6309,6 +6368,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">59</td>
 <td style="text-align: right;">730068356</td>
 <td style="text-align: right;">51</td>
 <td style="text-align: right;">female</td>
@@ -6320,6 +6380,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">60</td>
 <td style="text-align: right;">236383059</td>
 <td style="text-align: right;">37</td>
 <td style="text-align: right;">male</td>
@@ -6331,6 +6392,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">61</td>
 <td style="text-align: right;">246374429</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">female</td>
@@ -6342,6 +6404,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">62</td>
 <td style="text-align: right;">952386283</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">female</td>
@@ -6353,6 +6416,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">63</td>
 <td style="text-align: right;">694264273</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">male</td>
@@ -6364,6 +6428,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">64</td>
 <td style="text-align: right;">175188025</td>
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">male</td>
@@ -6375,6 +6440,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">65</td>
 <td style="text-align: right;">339232704</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">male</td>
@@ -6386,6 +6452,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">66</td>
 <td style="text-align: right;">386456897</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: right;">male</td>
@@ -6397,6 +6464,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">67</td>
 <td style="text-align: right;">637668138</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">male</td>
@@ -6408,6 +6476,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">68</td>
 <td style="text-align: right;">237498336</td>
 <td style="text-align: right;">49</td>
 <td style="text-align: right;">male</td>
@@ -6419,6 +6488,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">69</td>
 <td style="text-align: right;">631750145</td>
 <td style="text-align: right;">24</td>
 <td style="text-align: right;">female</td>
@@ -6430,6 +6500,7 @@ Click to show answer
 <td style="text-align: right;">exclude</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">70</td>
 <td style="text-align: right;">867476338</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">female</td>
@@ -6441,6 +6512,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">71</td>
 <td style="text-align: right;">196574198</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">female</td>
@@ -6452,6 +6524,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">72</td>
 <td style="text-align: right;">692009266</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">male</td>
@@ -6463,6 +6536,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">73</td>
 <td style="text-align: right;">477618299</td>
 <td style="text-align: right;">53</td>
 <td style="text-align: right;">male</td>
@@ -6474,6 +6548,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">74</td>
 <td style="text-align: right;">325830955</td>
 <td style="text-align: right;">50</td>
 <td style="text-align: right;">male</td>
@@ -6485,6 +6560,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">75</td>
 <td style="text-align: right;">965314508</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">male</td>
@@ -6496,6 +6572,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">76</td>
 <td style="text-align: right;">72442795</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">female</td>
@@ -6507,6 +6584,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">77</td>
 <td style="text-align: right;">216287717</td>
 <td style="text-align: right;">50</td>
 <td style="text-align: right;">female</td>
@@ -6518,6 +6596,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">78</td>
 <td style="text-align: right;">287027128</td>
 <td style="text-align: right;">37</td>
 <td style="text-align: right;">female</td>
@@ -6529,6 +6608,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">79</td>
 <td style="text-align: right;">247697997</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">male</td>
@@ -6540,6 +6620,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">80</td>
 <td style="text-align: right;">954130481</td>
 <td style="text-align: right;">50</td>
 <td style="text-align: right;">female</td>
@@ -6551,6 +6632,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">81</td>
 <td style="text-align: right;">564734227</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">male</td>
@@ -6562,6 +6644,7 @@ Click to show answer
 <td style="text-align: right;">exclude</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">82</td>
 <td style="text-align: right;">797453632</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">male</td>
@@ -6573,6 +6656,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">83</td>
 <td style="text-align: right;">85445170</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">male</td>
@@ -6584,6 +6668,7 @@ Click to show answer
 <td style="text-align: right;">exclude</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">84</td>
 <td style="text-align: right;">614285355</td>
 <td style="text-align: right;">59</td>
 <td style="text-align: right;">male</td>
@@ -6595,6 +6680,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">85</td>
 <td style="text-align: right;">14943693</td>
 <td style="text-align: right;">39</td>
 <td style="text-align: right;">male</td>
@@ -6606,6 +6692,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">86</td>
 <td style="text-align: right;">920896673</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: right;">male</td>
@@ -6617,6 +6704,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">87</td>
 <td style="text-align: right;">75092407</td>
 <td style="text-align: right;">22</td>
 <td style="text-align: right;">female</td>
@@ -6628,6 +6716,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">88</td>
 <td style="text-align: right;">83185292</td>
 <td style="text-align: right;">39</td>
 <td style="text-align: right;">male</td>
@@ -6639,6 +6728,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">89</td>
 <td style="text-align: right;">234276163</td>
 <td style="text-align: right;">55</td>
 <td style="text-align: right;">female</td>
@@ -6650,6 +6740,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">90</td>
 <td style="text-align: right;">940229231</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: right;">male</td>
@@ -6661,6 +6752,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">91</td>
 <td style="text-align: right;">456445084</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: right;">male</td>
@@ -6672,6 +6764,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">92</td>
 <td style="text-align: right;">102678881</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">male</td>
@@ -6683,6 +6776,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">93</td>
 <td style="text-align: right;">187172011</td>
 <td style="text-align: right;">51</td>
 <td style="text-align: right;">female</td>
@@ -6694,6 +6788,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">94</td>
 <td style="text-align: right;">108266335</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">female</td>
@@ -6705,6 +6800,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">95</td>
 <td style="text-align: right;">752580117</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: right;">male</td>
@@ -6716,6 +6812,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">96</td>
 <td style="text-align: right;">506524197</td>
 <td style="text-align: right;">36</td>
 <td style="text-align: right;">male</td>
@@ -6727,6 +6824,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">97</td>
 <td style="text-align: right;">524337317</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">male</td>
@@ -6738,6 +6836,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">98</td>
 <td style="text-align: right;">759418836</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">male</td>
@@ -6749,6 +6848,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">99</td>
 <td style="text-align: right;">233735378</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -6760,6 +6860,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">100</td>
 <td style="text-align: right;">246532124</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -6771,6 +6872,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">101</td>
 <td style="text-align: right;">494447594</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -6782,6 +6884,7 @@ Click to show answer
 <td style="text-align: right;">include</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">102</td>
 <td style="text-align: right;">893377996</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
@@ -7434,8 +7537,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/fundamentals.html" class="pagination-link" aria-label="Fundamentals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals</span></span>
+      <a href="../chapters/reproducible_reports.html" class="pagination-link" aria-label="Reproducible reports">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -7467,7 +7570,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading .csv files</span></span>
 <span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relative vs. absolute paths: Avoid using `setwd()!`</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Relative vs. absolute paths: Avoid using `setwd()`!</span></span>
 <span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>When we write .R scripts, we often use <span class="in">`setwd()`</span> to define where files should be loaded from and saved to. The problem with <span class="in">`setwd()`</span> is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes <span class="in">`setwd("C:/Users/IanHussey/Documents/R_course/")`</span>, before loading some data using <span class="in">`read.csv()`</span>. If I email you this script and data file, it script won't work on your machine unless your folders are identically named; you have to change the file path in <span class="in">`setwd()`</span>. This lowers the reproducibility of the code, as it can't be run trivially by other people on other computers.</span>
 <span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -7518,9 +7621,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Check your learning</span></span>
 <span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'? </span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'?</span>
 <span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true title="Click to show answer"}</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
 <span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the code file doesn't exist</span></span>
 <span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../code/data_shouldnt_usually_go_here.csv"</span>)</span>
@@ -7531,9 +7634,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### In your environment</span></span>
 <span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio. </span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio.</span>
 <span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows). </span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows).</span>
 <span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false </span></span>
@@ -7563,7 +7666,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### Printing data frames more nicely</span></span>
 <span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>Printing data frames by calling their name or using <span class="in">`print()`</span> don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages. </span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>Printing data frames by calling their name or using <span class="in">`print()`</span> don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.</span>
 <span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a>Note that this code uses the 'pipe', which we cover in more detail in the next chapter.</span>
 <span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
@@ -7615,82 +7718,79 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a>**Question:** How would you know what arguments <span class="in">`readxl::read_excel()`</span> takes?</span>
 <span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true title="Click to show answer"}</span>
-<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a>By consulting the help menu with <span class="in">`r ?readxl::read_excel()`</span>.</span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a>By consulting the help menu with <span class="in">`r ?readxl::read_excel()`</span>.</span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preserving the raw data / skipping rows when loading</span></span>
 <span id="cb20-199"><a href="#cb20-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preserving the raw data / skipping rows when loading</span></span>
+<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</span>
 <span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</span>
+<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in 'data_likert.xlsx' are on the fourth row, causing a mess when you load the file:</span>
 <span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-204"><a href="#cb20-204" aria-hidden="true" tabindex="-1"></a>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in 'data_likert.xlsx' are on the fourth row, causing a mess when you load the file:</span>
-<span id="cb20-205"><a href="#cb20-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a><span class="co"># head() allows you to see the first few rows of an R object. conversely, tail() shows the last few. </span></span>
-<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span>
-<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a><span class="co"># head() allows you to see the first few rows of an R object. conversely, tail() shows the last few. </span></span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a>Handle with with code, not by deleting the information in those rows. When using <span class="in">`read.csv()`</span> or <span class="in">`readxl::read_excel()`</span> this can be done using the <span class="in">`skip`</span> argument.</span>
 <span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a>Handle with with code, not by deleting the information in those rows. When using <span class="in">`read.csv()`</span> or <span class="in">`readxl::read_excel()`</span> this can be done using the <span class="in">`skip`</span> argument.</span>
-<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
-<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span>
-<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
+<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span>
+<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Combining multiple data sets</span></span>
 <span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Combining multiple data sets</span></span>
+<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a>You can combine multiple data sets with (nearly) the same structure using <span class="in">`dplyr::bind_rows()`</span>. In this case, 'data_likert.xlsx' have mostly the same columns, with sheet 1 also having the 'likert_2' column. Missing columns are filled with NA when using <span class="in">`dplyr::bind_rows()`</span>. This has its advantages over base R's <span class="in">`rbind()`</span> which requires that column names must match between the objects.</span>
 <span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a>You can combine multiple data sets with (nearly) the same structure using <span class="in">`dplyr::bind_rows()`</span>. In this case, 'data_likert.xlsx' have mostly the same columns, with sheet 1 also having the 'likert_2' column. Missing columns are filled with NA when using <span class="in">`dplyr::bind_rows()`</span>. This has its advantages over base R's <span class="in">`rbind()`</span> which requires that column names must match between the objects.</span>
-<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
-<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
-<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a>dat_likert</span>
-<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-229"><a href="#cb20-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a>dat_likert</span>
+<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading and writing .rda files</span></span>
 <span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading and writing .rda files</span></span>
+<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <span class="in">`compress = "gz"`</span> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.</span>
 <span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <span class="in">`compress = "gz"`</span> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R. </span>
-<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
-<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
-<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>,</span>
-<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
-<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
-<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>)</span>
-<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
+<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>,</span>
+<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
+<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
+<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/dat_likert.rda"</span>)</span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading multiple data files at once</span></span>
 <span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a><span class="fu">## Loading multiple data files at once</span></span>
+<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a>Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some packages and functions we won't cover until later in the course. I include it here just so that you know that it can be done quite easily.</span>
 <span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a>Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some packages and functions we won't cover until later in the course. I include it here just so that you know that it can be done quite easily.</span>
-<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-267"><a href="#cb20-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the code file doesn't exist</span></span>
-<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
-<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
-<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
-<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
-<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read.csv)</span>
-<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-266"><a href="#cb20-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # this code chunk is set to not run as the code file doesn't exist</span></span>
+<span id="cb20-267"><a href="#cb20-267" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
+<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
+<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
+<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
+<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read.csv)</span>
+<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

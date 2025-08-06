@@ -1,12 +1,14 @@
 ## Introduction {.unnumbered}
 
-This [Open Source](license.qmd) eBook provides materials for the course "Reproducible Data Processing and Visualization in R" that I deliver at the University of Bern's Institute of Psychology.
+This [Open Source](license.qmd) eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I deliver at the University of Bern's Institute of Psychology.
 
 ## How to use this book
 
-This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files. I suggest that you [download the .zip file]() of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book.
+This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files. 
 
--   You can find cheatsheets in the /resources folder \[\TODO add link\]
+I suggest that you [download the .zip file](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip) of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. *If the the .zip file does not contain the most recent versions, please contact me and I'll updated it.* If you're impatient, you can also [download the most recent versions from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r), along with the other files that create this eBook. 
+
+Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or [create simulated data sets](https://declaredesign.org/r/fabricatr/), and practice. 
 
 ![](images/practice.png){.center width="50%"}
 
