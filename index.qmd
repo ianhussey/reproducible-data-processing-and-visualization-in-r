@@ -41,4 +41,4 @@ You can find me on Bluesky at [\@ianhussey](https://bsky.app/profile/ianhussey.m
 
 # Contributing
 
-If you are interested in contributing to or adapting this eBook, all code and data for this book are available for download [here](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r).
+If you are interested in contributing to or adapting this eBook, all code and data are available on [GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r).

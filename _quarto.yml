@@ -12,12 +12,13 @@ book:
     - chapters/fundamentals.qmd
     - chapters/reproducible_reports.qmd
     - chapters/loading_data.qmd
-    - chapters/the_pipe.qmd
+    - chapters/the_pipe_and_renaming.qmd
     - chapters/data_transformation.qmd
     - chapters/reshaping_and_pivots.qmd
     - chapters/joins.qmd
+    - chapters/visualization.qmd 
     - chapters/reporting.qmd
-    - chapters/visualization.qmd
+    - chapters/the_linear_model.qmd
     #- references.qmd
     - chapters/license.qmd
     
@@ -32,9 +33,8 @@ format:
     code-tools: true
     warning: false
     theme: cosmo
+    #embed-resources: false
     #highlight: haddock
-  pdf:
-    documentclass: scrreprt
 
 editor: visual
 

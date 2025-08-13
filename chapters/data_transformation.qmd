@@ -6,7 +6,6 @@ format:
     toc_float: true
     code-fold: show
     code-tools: true
-    self-contained: true
 ---
 
 ```{r}
@@ -18,6 +17,16 @@ format:
 options(scipen = 999)  
 
 ```
+
+## TODO
+
+-   add a broken qualtrics file example where the text responses don't match the number responses
+-   This chapter needs to be broken down into more chapters to have it map onto lessons better?
+-   add across(), separate()
+-   add notes Tidy Data
+-   add section on forcats and stringr (passing reference to regex) and maybe lubridate at least in passing
+-   swap current examples for the toy ones, make a larger assignment using the real and messy data sets
+-   add later chapter on purrr
 
 ## Dependencies and data
 

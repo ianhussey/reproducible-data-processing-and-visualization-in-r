@@ -6,7 +6,6 @@ format:
     toc_float: true
     code-fold: show
     code-tools: true
-    self-contained: true
 ---
 
 ## Install the base R language and the RStudio IDE
@@ -17,9 +16,11 @@ There are detailed steps available for Windows and Mac [here](https://psyteachr.
 
 ## RStudio settings and options
 
-### Important settings to change for reproducibility 
+### Important settings to change for reproducibility
 
-For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'. ![](../images/rstudio_settings.png)
+For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools\>Global Options menu, go to General, and untick the following box and set save to 'Never'.
+
+![](../images/rstudio_settings.png)
 
 ### RStudio themes
 

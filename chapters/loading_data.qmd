@@ -6,7 +6,6 @@ format:
     toc_float: true
     code-fold: show
     code-tools: true
-    self-contained: true
 ---
 
 ```{r}
@@ -19,11 +18,48 @@ options(scipen = 999)
 
 ```
 
+## Using .csv files rather than Excel .xlsx files
+
+While Microsoft Excel's .xlsx files provide many features, in the context of reproducible data processing and analysis they often introduce more risks than benefits.
+
+Excel allows the user to write formula to process and analyze data. However, Excel formula are less reproducible than R code as they are not always visible to the user and it is easy to make copy paste and cell location errors.
+
+This isn't merely speculation:
+
+### Case study 1: Reinhard & Rogoff (2010)
+
+In the immediate aftermath of the 2008 Financial Crisis, an article by then-Harvard Professor and previously Chief Economist of the International Monetary Fund, Kenneth Rogoff, was heavily referenced by economists as part of the rationale to dramatically cut state spending ([Reinhart & Rogoff (2010)](https://doi.org/10.1257/aer.100.2.573)). Countries including my own, Ireland, the U.K. and others adopted radical austerity policies and slashed funding to education and healthcare, from which we have not yet fully recovered from. Thomas Herndon, then a first year PhD student, found serious errors in Reinhart and Rogoff's Excel formula ([Herndon et al. (2014)](https://doi.org/10.1093/cje/bet075)). When corrected, the results indicated that austerity policies were harmful rather than helpful. Global economic history was changed by this data processing error.
+
+![](../images/osborne_austerity_error.png)
+
+For coverage of this fascinating and horrifying story:
+
+-   [Wikipedia page](https://en.wikipedia.org/wiki/Growth_in_a_Time_of_Debt)
+-   Commentary by [Paul Krugman, Nobel Laureat, in the New York Times](https://www.nytimes.com/2013/04/19/opinion/krugman-the-excel-depression.html?_r=0)
+-   [The Guardian](https://www.theguardian.com/politics/2013/apr/18/uncovered-error-george-osborne-austerity)
+-   [The London Economic Review](https://www.thelondoneconomic.com/lifestyle/george-osborne-plunged-uk-into-austerity-due-to-an-error-on-a-spreadsheet-335732/))
+
+### Case study 2: Excel corrupts the genomics literature
+
+Excel's automatic data conversion 'feature' turns certain text strings that also happen to refer to identifiers for genes (e.g., SEPT2, MARCH1) into dates or numbers. When genetics data is opened in Excel, automatically converted, and then saved, these silent changes propagated into data analyses. [Ziemann et al. (2016)](https://doi.org/10.1186/s13059-016-1044-7) estimated that \~20% of papers with Excel gene lists contained such errors, demonstrating field-wide contamination of results and reproducibility risks (see [coverage in Science News](https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel)). Subsequent audits showed the problem persisted years later, despite awareness of the problem and guidance on how to prevent it, underscoring how Excel can corrupt bioinformatics workflows (see [Abeysooriya et al., 2021](https://doi.org/10.1371/journal.pcbi.1008984)).
+
+### Other reasons to avoid Excel
+
+Other less extreme but nonetheless good reasons not to use Excel and .xlsx files also exist. Use colors (in cells or text) to carry information (e.g., "cells in red represent the outcome variables"), which can't be easily read into R. Generally, colorful .xlsx files are a statistician's nightmare.
+
+So, we'll use .csv files and avoid manually altering data outside of reproducible R workflows.
+
 ## Loading .csv files
 
-### Relative vs. absolute paths: Avoid using `setwd()`!
+### `read.csv()` and `readr::read_csv()`
 
-When we write .R scripts, we often use `setwd()` to define where files should be loaded from and saved to. The problem with `setwd()` is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes `setwd("C:/Users/IanHussey/Documents/R_course/")`, before loading some data using `read.csv()`. If I email you this script and data file, it script won't work on your machine unless your folders are identically named; you have to change the file path in `setwd()`. This lowers the reproducibility of the code, as it can't be run trivially by other people on other computers.
+Base R's `read.csv()` has a slightly better version in the {readr} package, `readr::read_csv()`, which is more explicit about how it parses column types. This can become useful in more complex data sets. I recommend you use `read_csv()` and will use it throughout this book.
+
+### Relative vs. absolute paths: Avoid using `setwd()`! {#relative-paths}
+
+Where to load data from?
+
+When we write .R scripts, we often use `setwd()` to define where files should be loaded from and saved to. The problem with `setwd()` is that it hard-codes file paths that are usually specific to the computer and user. For example, if I write an .R script that includes `setwd("C:/Users/IanHussey/Documents/R_course/")`, before loading some data using `read_csv()`. If I email you this script and data file, it script won't work on your machine unless your folders are identically named; you have to change the file path in `setwd()`. This lowers the reproducibility of the code, as it can't be run trivially by other people on other computers.
 
 This is because `setwd()` uses 'absolute' paths that point to a specific location in a directory structure. One of the very useful features of RMarkdown (.Rmd) and Quarto (.qmd) files is that they instead use 'relative' paths, which specify where a file or directory is *in relation to* the .Rmd or .qmd script. That is, the working directory is by definition wherever the .Rmd or .qmd file is, without being specified.
 
@@ -37,7 +73,7 @@ R_course/
 │   └── analysis.qmd
 └── data/
     ├── processed/
-    │   └── data_processed.csv
+    │   └── data_likert.csv
     └── raw/
         ├── data_demographics_raw.csv
         ├── data_selfreports_raw.csv
@@ -49,37 +85,92 @@ Because .qmd files use 'relative' paths, to load the 'data_shouldnt_usually_go_h
 
 ```{r}
 #| eval: false # this code chunk is set to not run as the data file doesn't exist
-dat <- read.csv("data_shouldnt_usually_go_here.csv")
+dat <- read_csv("data_shouldnt_usually_go_here.csv")
 ```
 
 Of course, code and data should be clearly separated within a project so 'data_shouldnt_usually_go_here.csv' should not usually go in that directory, as the name suggests.
 
-If I instead wanted to load 'data_processed.csv', I would do this as follows. This data file actually exists in this project, so the code will run assuming you have the data files in the correct location relative to this .qmd script.
+If I instead wanted to load 'data_likert.csv', I would do this as follows. This data file actually exists in this project, so the code will run assuming you have the data files in the correct location relative to this .qmd script.
 
 ```{r}
-dat_processed <- read.csv("../data/processed/data_processed.csv")
+library(readr)
+
+dat_likert <- read_csv("../data/raw/data_likert.csv")
 ```
 
-This is parsed as follows: `../` tells RStudio to go 'up' one directory level from 'analysis.qmd' to the 'R_course' folder that contains it. `data/` then tells it to go 'down' one level into the 'data' folder inside 'R_course'. Likewise, `processed/` then tells it to go 'down' another level into the 'processed' folder, before loading the 'data_processed.csv' file.
+This is parsed as follows: `../` tells RStudio to go 'up' one directory level from 'analysis.qmd' to the 'R_course' folder that contains it. `data/` then tells it to go 'down' one level into the 'data' folder inside 'R_course'. Likewise, `processed/` then tells it to go 'down' another level into the 'processed' folder, before loading the 'data_likert.csv' file.
 
 Note that `../` can be stacked to go 'up' multiple directory levels, e.g., `../../`.
 
-As long as you send move the entire 'R_course' folder and preserve the relative location between the code and the data, the .qmd file's `read.csv()` call will still work. It doesn't matter whether you the 'R_course' directory to somewhere else on your hard drive, or create a .zip file and email it to someone else, or distribute it via GitHub, or whether they're using Windows or Mac.
+As long as you send move the entire 'R_course' folder and preserve the relative location between the code and the data, the .qmd file's `read_csv()` call will still work. It doesn't matter whether you the 'R_course' directory to somewhere else on your hard drive, or create a .zip file and email it to someone else, or distribute it via GitHub, or whether they're using Windows or Mac.
 
-Also note that because the directory 'R_course' is never specified in the `read.csv()` call, it can be called anything else and still work. The same goes for the name of the script which calls `read.csv()` - in this case, the script you're reading is called 'loading_data.qmd' and the code still works.
+Also note that because the directory 'R_course' is never specified in the `read_csv()` call, it can be called anything else and still work. The same goes for the name of the script which calls `read_csv()` - in this case, the script you're reading is called 'loading_data.qmd' and the code still works.
 
-FYI, you can also use relative paths in regular .R files using the {here} library (see <https://here.r-lib.org/>).
+FYI, you can also use relative paths in regular .R files using the [{here}](https://here.r-lib.org/) library.
 
-### Check your learning
+### Understanding directory structures with `list.files()`, `list.dirs()`, `file.exists()` and `dir.exists()`
 
-**Question:** Using the above file structure diagram, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'?
+When trying to write relative paths to load or save data, it often takes me a few attempts to get it right. I go back and forth looking at the files and directories themselves in File Explorer (Widows) or Finder (Mac) and adjusting the R code.
 
-::: {.callout-note collapse="true" title="Click to show answer"}
+You can also explore directory and file structures directly in R to make this easier using `list.files()` to list files and `list.dirs()` to list directories.
+
+List the files in the same folder as this .qmd file:
+
 ```{r}
-#| eval: false # this code chunk is set to not run as the code file doesn't exist
-dat <- read.csv("../../code/data_shouldnt_usually_go_here.csv")
+list.files() 
 ```
-:::
+
+Go 'up' one directory and list the directories present:
+
+```{r}
+list.dirs(path = "../", # 'up' one directory level
+          full.names = FALSE, # abbreviated dir names
+          recursive = FALSE) # only the directories, not their contents
+```
+
+From the above we can see that the 'data' folder is up one directory level from the current .qmd file. Let's confirm this with `dir.exists()` to check the directory does indeed exist:
+
+```{r}
+dir.exists("../data")
+```
+
+Ok, we're getting close. So what's in the '../data' directory?
+
+```{r}
+list.dirs(path = "../data", # 'up' one directory level, then 'down' into 'data'
+          full.names = FALSE, # abbreviated dir names
+          recursive = FALSE) # only the directories, not their contents
+```
+
+It contains the folders 'processed' and 'raw'. What's in the 'raw' directory?
+
+```{r}
+list.files("../data/raw") 
+```
+
+If we were looking to find and load the 'data_likert.csv' file, we know its directory path and that it exists. As already used above:
+
+```{r}
+dat_likert <- read_csv("../data/raw/data_likert.csv")
+```
+
+### Creating new directories with `dir.create()`
+
+Sometimes, you might want to save files to a directory does not yet exist.
+
+On the one hand, you could just open File Explorer (Windows) or Finder (Mac) and create a new directory manually (e.g., File\>New folder).
+
+However, we want our R code to be highly reproducible. Requiring manual steps like the above often breaks the code on other people's machines.
+
+Instead, you can create folders directly from R using `dir.create()`. For example, if your analysis script is located at `R_course/code/analysis.qmd`, and you want to save plots that you create to a 'plots' directory within 'code', you can include this line in your 'analysis.qmd' file:
+
+```{r}
+dir.create("plots")
+```
+
+### Other file and directory functions
+
+You can also rename, copy, delete, and move files and directories with functions such as `file.rename()`, `file.copy()`, `file.remove()`, `file.move()`. Use the help menu to discover and understand these and other functions.
 
 ## Viewing data frames
 
@@ -87,16 +178,14 @@ dat <- read.csv("../../code/data_shouldnt_usually_go_here.csv")
 
 Data frames (and other objects) that have already been loaded into your R environment will appear under the 'files' tab in RStudio.
 
-You can view them by clicking on them in the files tab, or in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows).
+You can view them by clicking on them in the 'Environment' tab in RStudio, running `View(object)` (where 'object' is your object's name, e.g. `View(dat_likert)`), or clicking the object's name in the Source window where code appears with Cmd+click (on Mac) or Ctrl+click (on Windows).
 
 ```{r}
 #| eval: false 
 #| include: false
 
-# To view the contents of 'dat_processed', double click 'dat_processed' below to highlight it, then press and hold Cmd (on Mac) or Ctrl (on Windows) + click 'dat_processed' 
-
-dat_processed
-
+# To view the contents of 'dat_likert', click 'dat_likert' below to highlight it, then press and hold Cmd (on Mac) or Ctrl (on Windows) + click 'dat_likert' 
+dat_likert
 ```
 
 ### Printing data frames below chunks
@@ -106,26 +195,26 @@ To print a data frame below the code chunk, you can;
 Run the object name:
 
 ```{r}
-dat_processed
+dat_likert
 ```
 
 Use `print()`:
 
 ```{r}
-print(dat_processed)
+print(dat_likert)
 ```
 
-### Printing data frames more nicely
+### Printing nicer tables
 
 Printing data frames by calling their name or using `print()` don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.
 
-Note that this code uses the 'pipe', which we cover in more detail in the next chapter.
+Note that this code uses the 'pipe' (`%>%`), which we cover in more detail in a [later chapter](chatpers/the_pipe.qmd). You don't need to understand how it works yet, just the output that it creates.
 
 ```{r}
 library(knitr)
 library(kableExtra)
 
-dat_processed %>%
+dat_likert %>%
   knitr::kable(align = "r") %>%
   kableExtra::kable_styling(full_width = FALSE)
 ```
@@ -133,11 +222,11 @@ dat_processed %>%
 ```{r}
 #| echo: false
 #| include: false
-# You can also print more APA-style tables, although they're slightly harder to read, using `kableExtra::kable_classic()`. 
+# You can also print more APA-style tables using `kableExtra::kable_classic()`. 
 # This will work when your script runs on your local machine, but won't render on the website version of this book for reasons I can't quite figure out.
 # This chunk is set to not run or show for the book, but you can run the code below directly if you're using the script locally and therefore able to read this.
 
-dat_processed |>
+dat_likert |>
   knitr::kable(align = "r") |>
   kableExtra::kable_classic(full_width = FALSE)
 ```
@@ -147,10 +236,8 @@ dat_processed |>
 Writing .csv files to disk is as easy as loading them.
 
 ```{r}
-
-write.csv(x = dat_processed, # the data frame to save
-          file = "../data/processed/data_processed.csv") # the file to save it to
-
+write.csv(x = dat_likert, # the data frame to save
+          file = "../data/raw/data_likert.csv") # the file to save it to
 ```
 
 ## Loading .xlsx files
@@ -166,14 +253,6 @@ dat_likert_1 <- readxl::read_excel(path = "../data/raw/data_likert.xlsx",
                                    sheet = "data1")
 ```
 
-### Check your learning
-
-**Question:** How would you know what arguments `readxl::read_excel()` takes?
-
-::: {.callout-note collapse="true" title="Click to show answer"}
-By consulting the help menu with `r ?readxl::read_excel()`.
-:::
-
 ### Preserving the raw data / skipping rows when loading
 
 With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.
@@ -185,7 +264,7 @@ Sometimes extra rows etc. make a data file harder to read into R. For example, t
 head(dat_likert_1)
 ```
 
-Handle with with code, not by deleting the information in those rows. When using `read.csv()` or `readxl::read_excel()` this can be done using the `skip` argument.
+Handle with with code, not by deleting the information in those rows. When using `read_csv()` or `readxl::read_excel()` this can be done using the `skip` argument.
 
 ```{r}
 dat_likert_1 <- readxl::read_excel(path = "../data/raw/data_likert.xlsx", 
@@ -220,16 +299,16 @@ library(readr)
 
 # write
 readr::write_rds(x = dat_likert, 
-                 file = "../data/raw/dat_likert.rda",
+                 file = "../data/raw/data_likert.rds",
                  compress = "gz")
 
 # read
-dat_likert <- readr::read_rds(file = "../data/raw/dat_likert.rda")
+dat_likert <- readr::read_rds(file = "../data/raw/data_likert.rds")
 ```
 
 ## Loading multiple data files at once
 
-Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some packages and functions we won't cover until later in the course. I include it here just so that you know that it can be done quite easily.
+Some psychology software such as PsychoPy often saves each participant's data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some functions from the {purrr} package not explained here. It's included here so that you know that it can be done quite easily.
 
 ```{r}
 #| eval: false # this code chunk is set to not run as the code file doesn't exist
@@ -241,5 +320,107 @@ file_names <- list.files(path = "../data/raw/individual_files",
                          full.names = TRUE)
 
 # use (or 'map') the read_csv function onto each of the file names 
-data_combined <- purrr::map_dfr(.x = file_names, .f = read.csv)
+data_combined <- purrr::map_dfr(.x = file_names, .f = read_csv)
 ```
+
+## Exercises
+
+Check your learning with the following questions. Exercises involving running code should be run in your local copy of the .qmd files (see the [Introduction](../index.qmd) to get a copy of them).
+
+### How can you run all all the code chunks in this file with a single click?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Clicking the green down arrow button in the last chunk.
+
+See the chapter on [Reproducible Reports](reproducible_reports.qmd) to refresh your knowledge.
+:::
+
+Do this in order to load all the objects into your environment so that you can complete the next exercise.
+
+### What are three ways to view the contents of an object?
+
+Do all three ways for the `dat_likert` object.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+1.  Clicking the object's name the 'Environment' tab in RStudio
+2.  Running `View(object)` (where 'object' is your object's name)
+3.  Clicking the object's name in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows)
+:::
+
+### How would you know what arguments `readxl::read_excel()` takes?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+By consulting the help menu with `r ?readxl::read_excel()`.
+
+See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge.
+:::
+
+### How to use relative paths to load files?
+
+Using the file structure diagram under the [Relative vs. absolute paths](#relative-paths) section above, what R code is needed to load the 'data_shouldnt_usually_go_here.csv' file from the 'code_shouldnt_usually_go_here.qmd'?
+
+::: {.callout-note collapse="true" title="Click to show hint"}
+You need to understand relative paths and use "../" to go 'up' directories.
+:::
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+#| eval: false # this code chunk is set to not run as the code file doesn't exist
+dat <- read_csv("../../code/data_shouldnt_usually_go_here.csv")
+```
+:::
+
+### Load and print nicely formatted table
+
+Following the same file structure as above, there is a file called "data_likert.csv" in the 'raw' data directory.
+
+Write R code to:
+
+1.  Load that data file from this .qmd file, which is located in the 'code' directory.
+2.  Assign it to an object called `data_exercise`.
+3.  Load the {kable} and {kableExtra} libraries.
+4.  Print `data_exercise` as nicely formatted table.
+
+::: {.callout-note collapse="true" title="Click to show hint"}
+See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge on loading dependencies/libraries and object assignment.
+
+Adapt the code used in this chapter for the other steps.
+:::
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+data_exercise <- read_csv("../data/raw/data_likert.csv")
+
+library(knitr)
+library(kableExtra)
+
+data_exercise %>%
+  kable(align = "r") %>%
+  kable_styling(full_width = FALSE)
+```
+:::
+
+### Check whether 'data_likert.rds' exists
+
+Earlier steps in this lesson saved a file called 'data_likert.rds' to the same directory as 'data_csv.csv'.
+
+Use the functions `list.dirs()`, `list.files()`, and `file.exists()` to navigate the file structure, listing directories along the way, to write the `file.exists()` call that confirm that the file exists. It should return `TRUE`.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+list.dirs(path = "../", # 'up' one directory level
+          full.names = FALSE, # abbreviated dir names
+          recursive = FALSE) # only the directories, not their contents
+
+list.dirs(path = "../data", # 'up' one directory level, down one into 'data'
+          full.names = FALSE, # abbreviated dir names
+          recursive = FALSE) # only the directories, not their contents
+
+list.files(path = "../data/raw", # 'up' one directory level, down one into 'data', down another into 'raw'
+           full.names = FALSE, # abbreviated dir names
+           pattern = "\\.rds$", # only return files ending in ".rds"
+           recursive = FALSE) # only the directories, not their contents
+
+file.exists("../data/raw/data_likert.rds")
+```
+:::

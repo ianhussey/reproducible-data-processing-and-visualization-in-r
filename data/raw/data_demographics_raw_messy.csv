@@ -1,0 +1,19 @@
+subject and session info columns,,task structure columns,,response columns,,,
+,,,,,,,
+date,Subject Code,build,block code and trial number,Trial Code,Key response (use this!),correct,0 ms onset RT
+23.06.2022,548957868,06.06.2000,demographics_2,age,23,1,1372
+23.06.2022,548957868,06.06.2000,demographics_3,gender,female,1,619
+23.06.2022,548957868,06.06.2000,demographics_2,psychiatric diagnosis,schizophrenia,1,1372
+23.06.2022,548957868,06.06.2000,demographics_3,prolific ID,asldkjaao87809,1,619
+23.06.2022,504546409,06.06.2000,demographics_2,age,48,1,3946
+23.06.2022,504546409,06.06.2000,demographics_3,gender,yes,1,3724
+23.06.2022,504546409,06.06.2000,demographics_2,psychiatric diagnosis,OCD,1,3946
+23.06.2022,504546409,06.06.2000,demographics_3,prolific ID,ad;oi98732paisdh,1,3724
+23.06.2022,994692692,06.06.2000,demographics_2,age,21,1,2576
+23.06.2022,994692692,06.06.2000,demographics_3,gender,female,1,3050
+23.06.2022,994692692,06.06.2000,demographics_2,psychiatric diagnosis,schizophrenia,1,2576
+23.06.2022,994692692,06.06.2000,demographics_3,prolific ID,1023984cao982738,1,3050
+23.06.2022,246532124,06.06.2000,demographics_2,age,999,1,4311
+23.06.2022,246532124,06.06.2000,demographics_3,gender,Male,1,2793
+23.06.2022,246532124,06.06.2000,demographics_2,psychiatric diagnosis,GAD,1,6887
+23.06.2022,246532124,06.06.2000,demographics_2,prolific ID,2982879q8w7r,1,6887

@@ -1,0 +1,30 @@
+# Purpose
+
+This file tracks which datasets are used in which scripts to help get rid of unused datasets later.
+
+# Data files
+
+```{r}
+
+data.frame(file = list.files(full.names = FALSE, # abbreviated dir names
+                             recursive = TRUE)) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+```
+
+
+processed/data_demographics_age_gender_tidy.csv       
+processed/data_processed_bfi_race_iat.csv       
+processed/data_processed.csv        
+raw/data_age_gender_subset.csv        
+raw/data_amp_raw.csv              - used in the_pipe_and_renaming  
+raw/data_amp_summary_subset.csv   - used in the_pipe_and_renaming    
+raw/data_demographics_raw.csv     - used in the_pipe_and_renaming  
+raw/data_likert.csv       - used in loading_data
+raw/data_likert.rds       - used in loading_data
+raw/data_likert.xlsx      - used in loading_data  
+raw/data_raw_bfi.csv        
+raw/data_selfreport_raw.csv       
+raw/data_selfreport_summary_subset.csv        
+raw/data_unique_id_subset.csv       

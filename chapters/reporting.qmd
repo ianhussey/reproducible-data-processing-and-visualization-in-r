@@ -6,7 +6,6 @@ format:
     toc_float: true
     code-fold: show
     code-tools: true
-    self-contained: true
 ---
 
 ```{r}

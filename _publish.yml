@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 200a45c4-706b-4119-ba9b-81fcfa8461af
+      url: https://ianhussey.quarto.pub/reproducible-data-processing-and-visualization

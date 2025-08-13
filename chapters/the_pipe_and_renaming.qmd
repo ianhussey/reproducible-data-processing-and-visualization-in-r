@@ -1,0 +1,290 @@
+---
+title: "The pipe (`%>%` and `|>`) and renaming columns"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## Exploring data
+
+As in the last chapter, we load data using relative paths and `read_csv()`. 
+
+We then use `head()` to view the first few lines, or view the data frame directly to inspect it. 
+
+```{r}
+library(readr) # for read_csv()
+library(dplyr) # for %>%
+library(knitr) # for kable()
+library(kableExtra) # for kable_extra()
+
+dat_demographics_raw <- read_csv(file = "../data/raw/data_demographics_raw_messy.csv") 
+
+head(dat_demographics_raw) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. How should you alter the above code to ignore the first two lines when reading the data in to R?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_demographics_raw <- read_csv(file = "../data/raw/data_demographics_raw_messy.csv", 
+                                 skip = 2) # add skip = 2 to ignore the first two lines
+
+head(dat_demographics_raw) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+:::
+
+### Count rows and columns with `nrow()` and `ncol()`
+
+Processing and cleaning any data set requires an understanding what it contains - as well as a thorough understanding of how the data was generated (e.g., the study's design and specific implementation; what rows represent what measurement and in what way, etc.). 
+
+A rudimentary but important step to understanding what a data set contains is to know how many rows and columns it contains. 
+
+This is useful to check at multiple steps of your data processing to make sure you have not done something wrong by gaining or losing columns or rows that you should not.
+
+Number of rows:
+
+```{r}
+nrow(dat_demographics_raw)
+```
+
+Number of columns:
+
+```{r}
+ncol(dat_demographics_raw)
+```
+
+### Viewing column names, types and the first few rows of data with `head()`
+
+```{r}
+head(dat_demographics_raw) 
+```
+
+### Viewing column names with `colnames()`
+
+How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.
+
+```{r}
+colnames(dat_demographics_raw)
+```
+
+Later, when you're used to using functions such as `rename()` and `mutate()`, you will often want a vector of column names that you can easily copy-paste into code, without all the extra white-space and including commas between them. For this, you can use `dput()`:
+
+```{r}
+dput(colnames(dat_demographics_raw))
+```
+
+This takes the output of `colnames()` and applies `dput()` to it. When your data processing calls muliple functions in a row, this could get complicated to read and write. It's therefore time to introduce 'the pipe'.
+
+## The pipe 
+
+### What is the pipe?
+
+The output of the function to the left of the pipe is used as the input to the function to the right of the pipe.
+
+``` text
+[this function's output...] %>%
+  [...becomes this function's input]
+```
+
+For example, the following code does the same thing with and without the pipe:
+
+```{r}
+# print all column names as a vector - without the pipe
+dput(colnames(dat_demographics_raw))
+
+# print all column names as a vector - using the pipe
+dat_demographics_raw %>%
+  colnames() %>% 
+  dput() 
+```
+
+### Why use the pipe?
+
+The pipe allows us to write code that reads from top to bottom, following a series of steps, in the same way that humans would describe and conduct the steps. Without the pipe, code is written from the inside out in the way that R understands it but humans do not as easily.
+
+The utility of the pipe becomes more obvious when there are many steps in the workflow.
+
+The following example uses functions we have not learned yet. We'll cover them in later chapters. For the moment, the point is to demonstrate the usage of the pipe.
+
+Without the pipe:
+
+```{r}
+library(dplyr) # for rename, mutate, select, group_by, summarize
+library(janitor) # for round_half_up
+
+dat <- 
+  mutate(
+    summarise(
+      group_by(
+        mutate(
+          rename(
+            readr::read_csv(file = "../data/raw/data_amp_raw.csv"),
+            unique_id = subject,
+            block = blockcode,
+            trial_type = trialcode,
+            rt = latency
+          ),
+          fast_trial = ifelse(rt < 100, 1, 0)
+        ),
+        unique_id
+      ),
+      percent_fast_trials = mean(fast_trial) * 100
+    ),
+    percent_fast_trials = round_half_up(percent_fast_trials, digits = 2)
+  )
+
+# print the first few rows
+head(dat, n = 10) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+```
+
+Notice how the above code has to be written and read from the middle outwards: data is loaded, and what is loaded is used to `rename()` columns, and what the output is used to `mutate()` (create) a new column, whose output is used to `summarize()` across rows for each participant. 
+
+This becomes much more linear and human-readable when we use the pipe:
+
+```{r}
+dat <- 
+  # read data from csv
+  read_csv(file = "../data/raw/data_amp_raw.csv") %>% # -> pass the output onward to the next function
+  
+  # rename columns
+  rename(unique_id = subject,
+         block = blockcode,
+         trial_type = trialcode,
+         rt = latency) %>% # -> pass the output onward to the next function
+  
+  # create a new variable from existing ones
+  mutate(fast_trial = ifelse(rt < 100, 1, 0)) %>% # -> pass the output onward to the next function
+  
+  # summarize across rows, clustered by participant
+  group_by(unique_id) %>% # -> pass the output onward to the next function
+  summarise(percent_fast_trials = mean(fast_trial)*100) |>
+  # round the percents to two decimal places
+  mutate(percent_fast_trials = round_half_up(percent_fast_trials, digits = 2))
+
+# print the first few rows
+head(dat, n = 10) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+```
+
+## Implicit arguments & the pipe
+
+As in other cases in R, arguments can be passed to functions 'explicitly' (by naming the argument) or 'implicitly' (without names).
+
+How the pipe works can be slightly clearer if we use explicit arguments.
+
+The pipe passes the output of the preceding function on to the next function as '.':
+
+```{r}
+dat_demographics_raw %>% # output passed forward as '.'
+  head(x = .) %>% # output passed forward as '.'
+  kable(x = .) %>% # -> output passed forward as '.'
+  kable_classic(kable_input = .,
+                full_width = FALSE)
+```
+
+If not passed explicitly, the input is passed to the next function's *first* argument OR, if the funtion takes the '.data' argument (i.e., most {tidyverse} functions) it is passed to '.data':
+
+```{r}
+dat_demographics_raw %>% # output passed forward to first argument
+  head() %>% # output passed forward to first argument
+  kable() %>% # -> output passed forward to first argument
+  kable_classic(full_width = FALSE)
+```
+
+### The two pipes: `%>%` vs. `|>`
+
+`%>%` is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible because it can pass to the '.data' argument.
+
+`|>` is a version of the pipe added more recently to base-R. It is slightly faster but less flexible. This speed only matters if you're doing this with much larger data sets or very frequently (e.g., in Monte Carlo simulations).
+
+The base R pipe (`|>`) is less intelligent behind the scenes. It always supplies the input as the first argument and can't handle passing to '.data'. If you want to pass its output explicitly, you use  '_' instead of '.'. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe `|>`:
+
+```{r}
+dat_demographics_raw |> # output passed forward as '_'
+  head(x = _) |> # output passed forward as '_'
+  kable(x = _) |> # output passed forward as '_'
+  kable_classic(kable_input = _,
+                full_width = FALSE)
+```
+
+If you're not sure, it's usually easier to use `%>%`.
+
+I try to use `%>%` throughout this book, but because I use `|>` more often in my own code I might slip up.
+
+## Renaming columns
+
+### Why rename
+
+TODO
+
+### Naming conventions
+
+TODO snake case, camel case, etc
+
+### Renaming columns with `rename()` & the pipe
+
+TODO
+
+simpler rename example
+
+TODO
+
+more complex rename example:
+
+```{r}
+
+# this won't work, as the spaces and brackets in "Key response (use this!)" break the code unless you tell R that it is all one column name
+# dat_demographics_raw %>%
+#   rename(response = Key response (use this!)) %>%
+#   head() %>%
+#   kable() %>%
+#   kable_classic(full_width = FALSE)
+
+dat_demographics_raw %>%
+  rename(response = "Key response (use this!)") %>%
+  head() %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+```
+
+## Automatically cleaning names with `clean_names()`
+
+TODO why; mention that across() solutions will come in later chapters
+
+```{r}
+library(janitor) # for clean_names()
+
+dat_demographics_raw_clean <- dat_demographics_raw %>%
+  clean_names()
+
+dat_demographics_raw_clean %>%
+  head() %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+## Exercises
+
+TODO
+

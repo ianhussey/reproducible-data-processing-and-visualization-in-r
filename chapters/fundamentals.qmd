@@ -6,7 +6,6 @@ format:
     toc_float: true
     code-fold: show
     code-tools: true
-    self-contained: true
 ---
 
 ```{r}
@@ -230,11 +229,13 @@ roundwork::round_up(c(0.5,
 
 ## Exercises
 
-Edit your local copy of this .qmd file to make the following changes.
-
 ### Fix indentation / white space
 
-Read the code in the chunk below. We will cover the functions in later chapters, you don't need to understand it yet. Notice that the indentation or 'white space' is somewhat chaotic. Fix this with a keyboard shortcut: with your mouse, highlight the code the chunk below and press Ctrl + I (Windows) or Cmd + I (Mac) to fix the indentation. Notice how much easier it is to read.
+Edit your local copy of this .qmd file to make the following changes. If you're reading this as an eBook on the website, create a new .R file in RStudio on your computer ('File\>New File\>R script'). Copy and paste the code below into that file.
+
+We will cover the functions used in the code in later chapters - you don't need to understand it yet. Notice that the indentation or 'white space' is somewhat chaotic.
+
+Fix this with a keyboard shortcut: with your mouse, highlight the code and press Ctrl + I (Windows) or Cmd + I (Mac) to fix the indentation. Notice how much easier it is to read.
 
 You can undo this with Ctrl + z (Windows) or Cmd + z (Mac) if you want to see it before/after again.
 

@@ -1,0 +1,31 @@
+---
+title: "Understanding (almost) everything as a Linear Model"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+TODO
+
+Ease of reporting via automated reported has to be strongly balanced against thorough understanding of the models themselves. 
+
+- linear model
+- (almost) everything is a linear model
+  - even means and SDs
+  - even correlations
+  - even named tests
+  - even CFA and path analysis
+
