@@ -26,20 +26,6 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
     invisible(TRUE)
   }
 
-  # --- directories (from your structure) ---
-  # dirs <- c(
-  #   "code",
-  #   "code/models",
-  #   "code/plots",
-  #   "communications",
-  #   "data",
-  #   "data/raw",
-  #   "data/processed",
-  #   "data/results",
-  #   "methods",
-  #   "preregistration"
-  # )
-  
   dirs <- c(
     "models",
     "plots",
@@ -47,7 +33,10 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
     "../data",
     "../data/raw",
     "../data/processed",
-    "../data/results",
+    "../data/output",
+    "../data/output/plots",
+    "../data/output/fitted_models",
+    "../data/output/results",
     "../methods",
     "../preregistration"
   )
@@ -98,7 +87,10 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
       "data/\n" %+%
       "  raw/                # raw data and codebooks/data dictionaries (should be read-only, except for removal of private data)\n" %+%
       "  processed/          # cleaned datasets and codebooks/data dictionaries\n" %+%
-      "  results/            # derived result tables/matrices\n" %+%
+      "  outputs/            # outputs of the processing and analyses scripts\n" %+%
+      "    plots/            # plots and figures, .png/.pdf/etc.\n" %+%
+      "    fitted_models/    # fitted model objects, eg from brms, lme4, lavaan, etc.\n" %+%
+      "    results/          # tables and matrices, eg for descriptive statistics, formatted statistical results, correlation tables\n" %+%
       "methods/              # measures, implementations (qualtrics, lab.js, psychopy files, etc.), .docx files with items, etc.\n" %+%
       "preregistration/      # preregistration documents\n" %+%
       "LICENSE               # suggested: CC BY 4.0\n" %+%
