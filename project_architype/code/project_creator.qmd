@@ -56,12 +56,12 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
   paths_dir <- file.path(root, dirs)
   invisible(lapply(paths_dir, mkd))
 
-  # add .gitkeep to keep empty dirs in VCS
-  gitkeep_dirs <- paths_dir
-  invisible(lapply(gitkeep_dirs, function(d) touch(join(d, ".gitkeep"))))
+  # # add .gitkeep to keep empty dirs in VCS
+  # gitkeep_dirs <- paths_dir
+  # invisible(lapply(gitkeep_dirs, function(d) touch(join(d, ".gitkeep"))))
 
   # --- files: LICENSE (CC BY 4.0) & README ---
-  license_path <- join(root, "LICENSE")
+  license_path <- join(root, "../LICENSE")
   license_text <- paste(
     "Creative Commons Attribution 4.0 International (CC BY 4.0)\n",
     "This work is licensed under the Creative Commons Attribution 4.0",
@@ -82,11 +82,11 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
   # helper for string concatenation
   `%+%` <- function(a, b) paste0(a, b)
 
-  readme_path <- join(root, "readme.md")
+  readme_path <- join(root, "../readme.md")
   readme_text <- paste(
     "# Project Title",
     "",
-    "## Overview.",
+    "## Overview",
     "Add aims, data sources, and reproduction steps.",
     "",
     "## Structure",
@@ -122,8 +122,8 @@ create_project_skeleton <- function(root = ".", overwrite = FALSE) {
 
   # --- empty .Rmd stubs ---
   rmd_files <- c(
-    "code/analysis.qmd",
-    "code/processing.qmd"
+    "analysis.qmd",
+    "processing.qmd"
   )
   qmd_header <- function(title) {
     paste0(
