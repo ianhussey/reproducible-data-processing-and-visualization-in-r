@@ -1,0 +1,158 @@
+---
+title: "Create a project skeleton"
+format:
+  html:
+    toc: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+
+create_project_skeleton <- function(root = ".", overwrite = FALSE) {
+  # minimal dependencies: base R only
+  join <- function(...) file.path(..., fsep = .Platform$file.sep)
+  mkd  <- function(p) if (!dir.exists(p)) dir.create(p, recursive = TRUE, showWarnings = FALSE)
+  write_if_absent <- function(path, text) {
+    if (file.exists(path) && !overwrite) return(invisible(FALSE))
+    cat(text, file = path)
+    invisible(TRUE)
+  }
+  touch <- function(path) {
+    if (file.exists(path) && !overwrite) return(invisible(FALSE))
+    file.create(path)
+    invisible(TRUE)
+  }
+
+  # --- directories (from your structure) ---
+  # dirs <- c(
+  #   "code",
+  #   "code/models",
+  #   "code/plots",
+  #   "communications",
+  #   "data",
+  #   "data/raw",
+  #   "data/processed",
+  #   "data/results",
+  #   "methods",
+  #   "preregistration"
+  # )
+  
+  dirs <- c(
+    "models",
+    "plots",
+    "../communications",
+    "../data",
+    "../data/raw",
+    "../data/processed",
+    "../data/results",
+    "../methods",
+    "../preregistration"
+  )
+
+  # create all directories
+  paths_dir <- file.path(root, dirs)
+  invisible(lapply(paths_dir, mkd))
+
+  # add .gitkeep to keep empty dirs in VCS
+  gitkeep_dirs <- paths_dir
+  invisible(lapply(gitkeep_dirs, function(d) touch(join(d, ".gitkeep"))))
+
+  # --- files: LICENSE (CC BY 4.0) & README ---
+  license_path <- join(root, "LICENSE")
+  license_text <- paste(
+    "Creative Commons Attribution 4.0 International (CC BY 4.0)\n",
+    "This work is licensed under the Creative Commons Attribution 4.0",
+    "International License. You are free to share and adapt the material for",
+    "any purpose, even commercially, under the terms below:",
+    "",
+    "  - Attribution — You must give appropriate credit, provide a link to the",
+    "    license, and indicate if changes were made.",
+    "",
+    "No additional restrictions — You may not apply legal terms or technological",
+    "measures that legally restrict others from doing anything the license permits.",
+    "",
+    "Full license text: https://creativecommons.org/licenses/by/4.0/legalcode",
+    sep = "\n"
+  )
+  write_if_absent(license_path, license_text)
+  
+  # helper for string concatenation
+  `%+%` <- function(a, b) paste0(a, b)
+
+  readme_path <- join(root, "readme.md")
+  readme_text <- paste(
+    "# Project Title",
+    "",
+    "## Overview.",
+    "Add aims, data sources, and reproduction steps.",
+    "",
+    "## Structure",
+    "```\n" %+%
+      "code/                 # analysis and processing scripts (.qmd/.Rmd)\n" %+%
+      "  models/             # fitted model objects (.rds)\n" %+%
+      "  plots/              # generated figures (.png)\n" %+%
+      "communications/       # preprints, slides, etc.\n" %+%
+      "data/\n" %+%
+      "  raw/                # raw data and codebooks/data dictionaries (should be read-only, except for removal of private data)\n" %+%
+      "  processed/          # cleaned datasets and codebooks/data dictionaries\n" %+%
+      "  results/            # derived result tables/matrices\n" %+%
+      "methods/              # measures, implementations (qualtrics, lab.js, psychopy files, etc.), .docx files with items, etc.\n" %+%
+      "preregistration/      # preregistration documents\n" %+%
+      "LICENSE               # suggested: CC BY 4.0\n" %+%
+      "readme.md             # this file\n" %+%
+    "```",
+    "",
+    "## Reproducibility",
+    "- Place raw data in `data/raw/`.",
+    "- Write processing in `code/processing.qmd` and analyses in `code/analyses.qmd`.",
+    "- Re-run data processing with `code/processing.qmd`. This will create `code/processing.html` and files in `data/processed/` and `data/results/`.",
+    "- Re-run analyses with `code/analysis.Rmd`. This will create `code/processing.html`, plots in `code/plots/` and fitted model objects in `code/models/`.",
+    "",
+    "## License",
+    "CC BY 4.0 (see `LICENSE`).",
+    "## Suggested citation",
+    "Authors (Year). Title. URL.",
+    sep = "\n"
+  )
+  
+  write_if_absent(readme_path, readme_text)
+
+  # --- empty .Rmd stubs ---
+  rmd_files <- c(
+    "code/analysis.qmd",
+    "code/processing.qmd"
+  )
+  qmd_header <- function(title) {
+    paste0(
+      "---\n",
+      "title: \"", title, "\"\n",
+      "author: \n",
+      "format: html\n",
+      "---\n\n",
+      "```{r}\n#| echo: false\n# packages and setup here\n```\n\n"
+    )
+  }
+  invisible(lapply(rmd_files, function(rel) {
+    write_if_absent(join(root, rel), qmd_header(gsub("^code/|\\.Rmd$", "", rel)))
+  }))
+
+  # return a summary
+  created <- data.frame(
+    path = c(paths_dir,
+             license_path, readme_path,
+             file.path(root, rmd_files)),
+    type = c(rep("dir", length(paths_dir)),
+             "file","file", rep("file", length(rmd_files)))
+  )
+  invisible(created)
+}
+
+# From the repository root:
+create_project_skeleton(".")
+#create_project_skeleton(".", overwrite = TRUE)
+# or create_project_skeleton("~/path/to/github_repository_name", overwrite = TRUE)
+
+```
