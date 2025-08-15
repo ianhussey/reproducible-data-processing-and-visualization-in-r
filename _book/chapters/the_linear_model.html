@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ian Hussey">
-<meta name="dcterms.date" content="2025-08-14">
 
-<title>Reproducible Data Processing and Visualization</title>
+<title>11&nbsp; Understanding (almost) everything as a Linear Model – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,24 +58,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./chapters/setup.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/license.html" rel="next">
+<link href="../chapters/reporting.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -118,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_linear_model.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -133,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Reproducible Data Processing and Visualization</a> 
+      <a href="../">Reproducible Data Processing and Visualization</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -145,79 +144,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/fundamentals.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/loading_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe (`%&gt;%` and `|&gt;`) and renaming columns</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/joins.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/joins.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/visualization.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/visualization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/reporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/the_linear_model.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/the_linear_model.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/license.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/license.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
   </div>
 </li>
@@ -226,45 +225,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to use this book</a></li>
-  <li><a href="#other-learning-resources" id="toc-other-learning-resources" class="nav-link" data-scroll-target="#other-learning-resources">Other learning resources</a></li>
-  <li><a href="#find-me-elsewhere" id="toc-find-me-elsewhere" class="nav-link" data-scroll-target="#find-me-elsewhere">Find me elsewhere</a></li>
-  <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Reproducible Data Processing and Visualization</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">in R and tidyverse</p>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ian Hussey </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 14, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -274,60 +250,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-
-<section id="introduction" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h2><p><img src="cover.png" title="Reproducible Data Processing and Visualization" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>This <a href="license.qmd">Open Source</a> eBook provides materials for the semester-long Master’s seminar course “Reproducible Data Processing and Visualization in R” that I deliver at the University of Bern’s Institute of Psychology.</p>
-</section>
-<section id="how-to-use-this-book" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
-<p>This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.</p>
-<p>I suggest that you <a href="https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip">download the .zip file</a> of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. <em>If the the .zip file does not contain the most recent versions, please contact me and I’ll updated it.</em> If you’re impatient, you can also <a href="https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r">download the most recent versions from GitHub</a>, along with the other files that create this eBook.</p>
-<p>You can also copy and paste the code for any chapter directly from the website. Click the “&lt;/&gt; Code” button on the top right of each page to see the full .qmd file’s code. You can copy and paste this into a .qmd file. However, it’s probably easier to download all the .qmd files and data as mentioned above.</p>
-<p>Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework (<a href="https://osf.io">osf.io</a>), or <a href="https://declaredesign.org/r/fabricatr/">create simulated data sets</a>, and practice.</p>
-<p><img src="images/practice.png" class="center img-fluid" style="width:60.0%"></p>
-</section>
-<section id="other-learning-resources" class="level2">
-<h2 class="anchored" data-anchor-id="other-learning-resources">Other learning resources</h2>
-<p>There are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:</p>
+<p>TODO</p>
+<p>Ease of reporting via automated reported has to be strongly balanced against thorough understanding of the models themselves.</p>
 <ul>
-<li>Lisa DeBruine et al.’s (2021) Open Source textbook <a href="https://psyteachr.github.io/reprores-v3/">Data Skills for Reproducible Research</a>
+<li>linear model</li>
+<li>(almost) everything is a linear model
 <ul>
-<li><a href="https://psyteachr.github.io/reprores-v3/dplyr.html">Section on {dplyr}</a></li>
-<li><a href="https://psyteachr.github.io/reprores-v3/tidyr.html">Section on {tidyr}</a></li>
-</ul></li>
-<li>Allison Horst’s <a href="https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome">interactive web app for learning {dplyr}</a></li>
-<li>Hadley Wickham’s Open Source textbook R For Data Science (aka <a href="https://r4ds.hadley.nz/">R4DS</a>)
-<ul>
-<li><a href="https://r4ds.hadley.nz/data-transform">Section on data transformation</a></li>
-</ul></li>
-<li>Garrick Aden-Buie’s <a href="https://github.com/gadenbuie/tidyexplain">tidyexplain gifs</a> for understanding how {tidyr}’s pivot functions work</li>
-<li><a href="https://datasciencebox.org">datasciencebox.org</a>
-<ul>
-<li>Interactive tutorials that very useful for practicing processing and visualization skills once you’ve <em>already</em> learned the functions (i.e., don’t start here)
-<ul>
-<li><a href="https://minecr.shinyapps.io/dsbox-01-edibnb">Practice the functions ggplot</a></li>
-<li><a href="https://minecr.shinyapps.io/dsbox-02-accidents">Practice the functions ggplot, pipe, mutate</a></li>
-<li><a href="https://minecr.shinyapps.io/dsbox-03-collegemajors">Practice the functions ggplot, pipe, select, arrange, summarize, count, filter</a></li>
-<li><a href="https://minecr.shinyapps.io/dsbox-04-legosales">Practice the functions count, arrange, summarize</a></li>
-</ul></li>
-<li><a href="https://datasciencebox.org/02-exploring-data">Recorded presentations</a> on many relevant topics</li>
+<li>even means and SDs</li>
+<li>even correlations</li>
+<li>even named tests</li>
+<li>even CFA and path analysis</li>
 </ul></li>
 </ul>
-</section>
-<section id="find-me-elsewhere" class="level1">
-<h1>Find me elsewhere</h1>
-<p>You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website <a href="https://mmmdata.io">mmmdata.io</a>.</p>
-<p>You can find me on Bluesky at <a href="https://bsky.app/profile/ianhussey.mmmdata.io">@ianhussey</a>.</p>
-</section>
-<section id="contributing" class="level1">
-<h1>Contributing</h1>
-<p>If you are interested in contributing to or adapting this eBook, all code and data are available on <a href="https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r">GitHub</a>.</p>
 
 
 <!-- -->
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -782,57 +720,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../chapters/reporting.html" class="pagination-link" aria-label="Reporting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reporting</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapters/setup.html" class="pagination-link" aria-label="Installation and setup">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/license.html" class="pagination-link" aria-label="License and citation">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">License and citation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction {.unnumbered}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This <span class="co">[</span><span class="ot">Open Source</span><span class="co">](license.qmd)</span> eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I deliver at the University of Bern's Institute of Psychology.</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to use this book</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I suggest that you <span class="co">[</span><span class="ot">download the .zip file</span><span class="co">](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip)</span> of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. *If the the .zip file does not contain the most recent versions, please contact me and I'll updated it.* If you're impatient, you can also <span class="co">[</span><span class="ot">download the most recent versions from GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>, along with the other files that create this eBook.</span>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Understanding (almost) everything as a Linear Model"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>You can also copy and paste the code for any chapter directly from the website. Click the "<span class="sc">\&lt;</span>/<span class="sc">\&gt;</span> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework (<span class="co">[</span><span class="ot">osf.io</span><span class="co">](https://osf.io)</span>), or <span class="co">[</span><span class="ot">create simulated data sets</span><span class="co">](https://declaredesign.org/r/fabricatr/)</span>, and practice.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/practice.png)</span>{.center width="60%"}</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other learning resources</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>There are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Lisa DeBruine et al.'s (2021) Open Source textbook <span class="co">[</span><span class="ot">Data Skills for Reproducible Research</span><span class="co">](https://psyteachr.github.io/reprores-v3/)</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {dplyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/dplyr.html)</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {tidyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/tidyr.html)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Allison Horst's <span class="co">[</span><span class="ot">interactive web app for learning {dplyr}</span><span class="co">](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Hadley Wickham's Open Source textbook R For Data Science (aka <span class="co">[</span><span class="ot">R4DS</span><span class="co">](https://r4ds.hadley.nz/)</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on data transformation</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Garrick Aden-Buie's <span class="co">[</span><span class="ot">tidyexplain gifs</span><span class="co">](https://github.com/gadenbuie/tidyexplain)</span> for understanding how {tidyr}'s pivot functions work</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">datasciencebox.org</span><span class="co">](https://datasciencebox.org)</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interactive tutorials that very useful for practicing processing and visualization skills once you've *already* learned the functions (i.e., don't start here)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot</span><span class="co">](https://minecr.shinyapps.io/dsbox-01-edibnb)</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, mutate</span><span class="co">](https://minecr.shinyapps.io/dsbox-02-accidents)</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, select, arrange, summarize, count, filter</span><span class="co">](https://minecr.shinyapps.io/dsbox-03-collegemajors)</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions count, arrange, summarize</span><span class="co">](https://minecr.shinyapps.io/dsbox-04-legosales)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Recorded presentations</span><span class="co">](https://datasciencebox.org/02-exploring-data)</span> on many relevant topics</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Find me elsewhere</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website <span class="co">[</span><span class="ot">mmmdata.io</span><span class="co">](https://mmmdata.io)</span>.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>You can find me on Bluesky at <span class="co">[</span><span class="ot">\@ianhussey</span><span class="co">](https://bsky.app/profile/ianhussey.mmmdata.io)</span>.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># Contributing</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>If you are interested in contributing to or adapting this eBook, all code and data are available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Ease of reporting via automated reported has to be strongly balanced against thorough understanding of the models themselves. </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>linear model</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>(almost) everything is a linear model</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>even means and SDs</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>even correlations</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>even named tests</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>even CFA and path analysis</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

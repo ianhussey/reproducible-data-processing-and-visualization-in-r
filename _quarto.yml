@@ -16,6 +16,7 @@ book:
     - chapters/data_transformation.qmd
     - chapters/reshaping_and_pivots.qmd
     - chapters/joins.qmd
+    - chapters/structuring_projects.qmd
     - chapters/visualization.qmd 
     - chapters/reporting.qmd
     - chapters/the_linear_model.qmd

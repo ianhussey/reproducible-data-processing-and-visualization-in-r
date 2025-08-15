@@ -1,0 +1,115 @@
+---
+title: "Structuring projects"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+## psych-DS
+
+I have contributed a very small amount to the debate around [psych-DS](https://psych-ds.github.io), a data standard for psychological data. 'Standards' are specifications for both what *must* be done or not done, and what *may* be done to provide flexibility. By having a standard, and an (automated) method of checking compliance with it
+
+
+I really like the concept, but also still have to be convinced about some of the choices made in psych-DS. For the moment, I recommend partial compliance with psych-DS: there are high level principles that make for a very well structured project that I try to employ everywhere; but there are also other aspects of psych-DS that are (currently) high-effort-low-reward.
+
+
+
+``` text
+github_repository_name/
+├── code/
+│   ├── analysis.html
+│   ├── analysis.qmd
+│   ├── processing_study_1.html
+│   ├── processing_study_1.qmd
+│   ├── processing_study_2.html
+│   ├── processing_study_2.qmd
+│   ├── models/
+│   │   ├── fit_model_1.rds
+│   │   ├── fit_model_2.rds
+│   │   └── ...
+│   └── plots/
+│       ├── plot_1_self_reports.png
+│       ├── plot_2_behavioral_task.png
+│       └── ...
+├── communications/
+│   ├── preprint/
+│   │   ├── preprint.docx
+│   │   └── ...
+│   └── presentations/
+│       ├── conference_presentation.pptx
+│       └── ...
+├── data/
+│   ├── processed/
+│   │   ├── study_1_processed_data.csv
+│   │   ├── study_1_processed_codebook.xlsx
+│   │   ├── study_2_processed_data.csv
+│   │   ├── study_2_processed_codebook.xlsx
+│   │   └── ...
+│   ├── raw/
+│   │   ├── study_1_raw_behavioraltask_data.csv
+│   │   ├── study_2_raw_behavioraltask_data.csv
+│   │   ├── study_1_raw_codebook.xlsx
+│   │   ├── study_2_raw_codebook.xlsx
+│   │   ├── study_1_raw_demographics_data.csv
+│   │   ├── study_2_raw_demographics_data.csv
+│   │   ├── study_1_raw_selfreports_data.csv
+│   │   ├── study_2_raw_selfreports_data.csv
+│   │   └── ...
+│   └── results/
+│       ├── study_1_correlation_matrix.csv
+│       ├── study_2_correlation_matrix.csv
+│       └── ...
+├── LICENSE
+├── methods/
+│   ├── instructions.docx
+│   ├── study_1/
+│   │   ├── study_1_labjs.json
+│   │   ├── study_1_measures_and_procedure.docx
+│   │   └── ...
+│   └── study_2/
+│       ├── study_2_labjs.json
+│       ├── study_2_measures_and_procedure.docx
+│       └── ...
+├── preregistration/
+│   └── preregistration.docx
+└── readme.md
+```
+
+results folder??
+
+Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them. 
+
+
+psych-DS principles
+
+- The earliest form of data must be preserved
+- Original data should never be modified
+- Different versions of the data should be kept separate
+- All transformations should be documented
+
+## Sharing code and data, making preregistrations
+
+### GitHub
+
+https://ui-research.github.io/reproducibility-at-urban/git-overview.html
+
+## OSF
+
+Linking github repo to OSF
+
+## Licensing
+
+

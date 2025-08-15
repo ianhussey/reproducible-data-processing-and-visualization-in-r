@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; The pipe (%&gt;% and |&gt;) and renaming columns – Reproducible Data Processing and Visualization</title>
+<title>6&nbsp; The pipe and renaming – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_pipe_and_renaming.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe (`%&gt;%` and `|&gt;`) and renaming columns</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_pipe_and_renaming.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -170,38 +170,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe (`%&gt;%` and `|&gt;`) and renaming columns</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -212,8 +212,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
   </div>
 </li>
     </ul>
@@ -226,29 +238,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exploring-data" id="toc-exploring-data" class="nav-link active" data-scroll-target="#exploring-data"><span class="header-section-number">5.1</span> Exploring data</a>
+  <li><a href="#exploring-column-names-and-rows" id="toc-exploring-column-names-and-rows" class="nav-link active" data-scroll-target="#exploring-column-names-and-rows"><span class="header-section-number">6.1</span> Exploring column names and rows</a>
   <ul class="collapse">
-  <li><a href="#count-rows-and-columns-with-nrow-and-ncol" id="toc-count-rows-and-columns-with-nrow-and-ncol" class="nav-link" data-scroll-target="#count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">5.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></a></li>
-  <li><a href="#viewing-column-names-types-and-the-first-few-rows-of-data-with-head" id="toc-viewing-column-names-types-and-the-first-few-rows-of-data-with-head" class="nav-link" data-scroll-target="#viewing-column-names-types-and-the-first-few-rows-of-data-with-head"><span class="header-section-number">5.1.2</span> Viewing column names, types and the first few rows of data with <code>head()</code></a></li>
-  <li><a href="#viewing-column-names-with-colnames" id="toc-viewing-column-names-with-colnames" class="nav-link" data-scroll-target="#viewing-column-names-with-colnames"><span class="header-section-number">5.1.3</span> Viewing column names with <code>colnames()</code></a></li>
+  <li><a href="#count-rows-and-columns-with-nrow-and-ncol" id="toc-count-rows-and-columns-with-nrow-and-ncol" class="nav-link" data-scroll-target="#count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">6.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></a></li>
+  <li><a href="#viewing-column-names-with-colnames" id="toc-viewing-column-names-with-colnames" class="nav-link" data-scroll-target="#viewing-column-names-with-colnames"><span class="header-section-number">6.1.2</span> Viewing column names with <code>colnames()</code></a></li>
   </ul></li>
-  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">5.2</span> The pipe</a>
+  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">6.2</span> The pipe</a>
   <ul class="collapse">
-  <li><a href="#what-is-the-pipe" id="toc-what-is-the-pipe" class="nav-link" data-scroll-target="#what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</a></li>
-  <li><a href="#why-use-the-pipe" id="toc-why-use-the-pipe" class="nav-link" data-scroll-target="#why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</a></li>
+  <li><a href="#what-is-the-pipe" id="toc-what-is-the-pipe" class="nav-link" data-scroll-target="#what-is-the-pipe"><span class="header-section-number">6.2.1</span> What is the pipe?</a></li>
+  <li><a href="#why-use-the-pipe" id="toc-why-use-the-pipe" class="nav-link" data-scroll-target="#why-use-the-pipe"><span class="header-section-number">6.2.2</span> Why use the pipe?</a></li>
   </ul></li>
-  <li><a href="#implicit-arguments-the-pipe" id="toc-implicit-arguments-the-pipe" class="nav-link" data-scroll-target="#implicit-arguments-the-pipe"><span class="header-section-number">5.3</span> Implicit arguments &amp; the pipe</a>
+  <li><a href="#implicit-arguments-the-pipe" id="toc-implicit-arguments-the-pipe" class="nav-link" data-scroll-target="#implicit-arguments-the-pipe"><span class="header-section-number">6.3</span> Implicit arguments &amp; the pipe</a>
   <ul class="collapse">
-  <li><a href="#the-two-pipes-vs." id="toc-the-two-pipes-vs." class="nav-link" data-scroll-target="#the-two-pipes-vs."><span class="header-section-number">5.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></a></li>
+  <li><a href="#the-two-pipes-vs." id="toc-the-two-pipes-vs." class="nav-link" data-scroll-target="#the-two-pipes-vs."><span class="header-section-number">6.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></a></li>
   </ul></li>
-  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns"><span class="header-section-number">5.4</span> Renaming columns</a>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns"><span class="header-section-number">6.4</span> Renaming columns</a>
   <ul class="collapse">
-  <li><a href="#why-rename" id="toc-why-rename" class="nav-link" data-scroll-target="#why-rename"><span class="header-section-number">5.4.1</span> Why rename</a></li>
-  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions"><span class="header-section-number">5.4.2</span> Naming conventions</a></li>
-  <li><a href="#renaming-columns-with-rename-the-pipe" id="toc-renaming-columns-with-rename-the-pipe" class="nav-link" data-scroll-target="#renaming-columns-with-rename-the-pipe"><span class="header-section-number">5.4.3</span> Renaming columns with <code>rename()</code> &amp; the pipe</a></li>
+  <li><a href="#why-rename" id="toc-why-rename" class="nav-link" data-scroll-target="#why-rename"><span class="header-section-number">6.4.1</span> Why rename</a></li>
+  <li><a href="#renaming-with-rename-the-pipe" id="toc-renaming-with-rename-the-pipe" class="nav-link" data-scroll-target="#renaming-with-rename-the-pipe"><span class="header-section-number">6.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</a></li>
   </ul></li>
-  <li><a href="#automatically-cleaning-names-with-clean_names" id="toc-automatically-cleaning-names-with-clean_names" class="nav-link" data-scroll-target="#automatically-cleaning-names-with-clean_names"><span class="header-section-number">5.5</span> Automatically cleaning names with <code>clean_names()</code></a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.6</span> Exercises</a></li>
+  <li><a href="#automatic-renaming-with-janitorclean_names" id="toc-automatic-renaming-with-janitorclean_names" class="nav-link" data-scroll-target="#automatic-renaming-with-janitorclean_names"><span class="header-section-number">6.5</span> Automatic renaming with <code>janitor::clean_names()</code></a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.6</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#what-four-principles-should-column-names-follow" id="toc-what-four-principles-should-column-names-follow" class="nav-link" data-scroll-target="#what-four-principles-should-column-names-follow"><span class="header-section-number">6.6.1</span> What four principles should column names follow?</a></li>
+  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">6.6.2</span> Interactive exercises</a></li>
+  <li><a href="#read-.csv-file-and-rename-columns" id="toc-read-.csv-file-and-rename-columns" class="nav-link" data-scroll-target="#read-.csv-file-and-rename-columns"><span class="header-section-number">6.6.3</span> Read .csv file and rename columns</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -257,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe (<code>%&gt;%</code> and <code>|&gt;</code>) and renaming columns</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -274,10 +289,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exploring-data" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="exploring-data"><span class="header-section-number">5.1</span> Exploring data</h2>
-<p>As in the last chapter, we load data using relative paths and <code>read_csv()</code>.</p>
-<p>We then use <code>head()</code> to view the first few lines, or view the data frame directly to inspect it.</p>
+<section id="exploring-column-names-and-rows" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="exploring-column-names-and-rows"><span class="header-section-number">6.1</span> Exploring column names and rows</h2>
+<p>As in the last chapter, we load data using relative paths and <code>read_csv()</code> and view the first few rows with <code>head()</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -371,7 +385,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>Unfortunately, the ‘data_demographics_raw_messy.csv’ data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. How should you alter the above code to ignore the first two lines when reading the data in to R?</p>
+<p>Unfortunately, the ‘data_demographics_raw_messy.csv’ data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one.</p>
+<p>How should you alter the above code to ignore the first two lines when reading the data in to R?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -476,8 +491,8 @@ Click to show answer
 </div>
 </div>
 </div>
-<section id="count-rows-and-columns-with-nrow-and-ncol" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">5.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></h3>
+<section id="count-rows-and-columns-with-nrow-and-ncol" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">6.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></h3>
 <p>Processing and cleaning any data set requires an understanding what it contains - as well as a thorough understanding of how the data was generated (e.g., the study’s design and specific implementation; what rows represent what measurement and in what way, etc.).</p>
 <p>A rudimentary but important step to understanding what a data set contains is to know how many rows and columns it contains.</p>
 <p>This is useful to check at multiple steps of your data processing to make sure you have not done something wrong by gaining or losing columns or rows that you should not.</p>
@@ -502,36 +517,13 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="viewing-column-names-types-and-the-first-few-rows-of-data-with-head" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="viewing-column-names-types-and-the-first-few-rows-of-data-with-head"><span class="header-section-number">5.1.2</span> Viewing column names, types and the first few rows of data with <code>head()</code></h3>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 8
-  date       `Subject Code` build      block code and trial numbe…¹ `Trial Code`
-  &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                        &lt;chr&gt;       
-1 23.06.2022      548957868 06.06.2000 demographics_2               age         
-2 23.06.2022      548957868 06.06.2000 demographics_3               gender      
-3 23.06.2022      548957868 06.06.2000 demographics_2               psychiatric…
-4 23.06.2022      548957868 06.06.2000 demographics_3               prolific ID 
-5 23.06.2022      504546409 06.06.2000 demographics_2               age         
-6 23.06.2022      504546409 06.06.2000 demographics_3               gender      
-# ℹ abbreviated name: ¹​`block code and trial number`
-# ℹ 3 more variables: `Key response (use this!)` &lt;chr&gt;, correct &lt;dbl&gt;,
-#   `0 ms onset RT` &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="viewing-column-names-with-colnames" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="viewing-column-names-with-colnames"><span class="header-section-number">5.1.3</span> Viewing column names with <code>colnames()</code></h3>
+<section id="viewing-column-names-with-colnames" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="viewing-column-names-with-colnames"><span class="header-section-number">6.1.2</span> Viewing column names with <code>colnames()</code></h3>
 <p>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "date"                        "Subject Code"               
@@ -544,7 +536,7 @@ Click to show answer
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>c("date", "Subject Code", "build", "block code and trial number", 
@@ -555,10 +547,10 @@ Click to show answer
 <p>This takes the output of <code>colnames()</code> and applies <code>dput()</code> to it. When your data processing calls muliple functions in a row, this could get complicated to read and write. It’s therefore time to introduce ‘the pipe’.</p>
 </section>
 </section>
-<section id="the-pipe" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="the-pipe"><span class="header-section-number">5.2</span> The pipe</h2>
-<section id="what-is-the-pipe" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</h3>
+<section id="the-pipe" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-pipe"><span class="header-section-number">6.2</span> The pipe</h2>
+<section id="what-is-the-pipe" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="what-is-the-pipe"><span class="header-section-number">6.2.1</span> What is the pipe?</h3>
 <p>The output of the function to the left of the pipe is used as the input to the function to the right of the pipe.</p>
 <pre class="text"><code>[this function's output...] %&gt;%
   [...becomes this function's input]</code></pre>
@@ -566,8 +558,8 @@ Click to show answer
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - without the pipe</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - without the pipe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>c("date", "Subject Code", "build", "block code and trial number", 
@@ -576,10 +568,10 @@ Click to show answer
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - using the pipe</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - using the pipe</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>c("date", "Subject Code", "build", "block code and trial number", 
@@ -588,8 +580,8 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="why-use-the-pipe" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</h3>
+<section id="why-use-the-pipe" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="why-use-the-pipe"><span class="header-section-number">6.2.2</span> Why use the pipe?</h3>
 <p>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the same way that humans would describe and conduct the steps. Without the pipe, code is written from the inside out in the way that R understands it but humans do not as easily.</p>
 <p>The utility of the pipe becomes more obvious when there are many steps in the workflow.</p>
 <p>The following example uses functions we have not learned yet. We’ll cover them in later chapters. For the moment, the point is to demonstrate the usage of the pipe.</p>
@@ -597,34 +589,34 @@ Click to show answer
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for rename, mutate, select, group_by, summarize</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for round_half_up</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rename</span>(</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">unique_id =</span> subject,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">block =</span> blockcode,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">trial_type =</span> trialcode,</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">rt =</span> latency</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>          ),</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        unique_id</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for the pipe, rename, mutate, select, group_by, summarize</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for round_half_up</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rename</span>(</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">unique_id =</span> subject,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">block =</span> blockcode,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">rt =</span> latency</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>          ),</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        unique_id</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -684,29 +676,29 @@ Click to show answer
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read data from csv</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable from existing ones</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read data from csv</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable from existing ones</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -763,19 +755,19 @@ Click to show answer
 </div>
 </section>
 </section>
-<section id="implicit-arguments-the-pipe" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="implicit-arguments-the-pipe"><span class="header-section-number">5.3</span> Implicit arguments &amp; the pipe</h2>
+<section id="implicit-arguments-the-pipe" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="implicit-arguments-the-pipe"><span class="header-section-number">6.3</span> Implicit arguments &amp; the pipe</h2>
 <p>As in other cases in R, arguments can be passed to functions ‘explicitly’ (by naming the argument) or ‘implicitly’ (without names).</p>
 <p>How the pipe works can be slightly clearer if we use explicit arguments.</p>
 <p>The pipe passes the output of the preceding function on to the next function as ‘.’:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward as '.'</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> .,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward as '.'</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> .,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -860,10 +852,10 @@ Click to show answer
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward to first argument</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward to first argument</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -944,19 +936,19 @@ Click to show answer
 </table>
 </div>
 </div>
-<section id="the-two-pipes-vs." class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="the-two-pipes-vs."><span class="header-section-number">5.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></h3>
+<section id="the-two-pipes-vs." class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="the-two-pipes-vs."><span class="header-section-number">6.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></h3>
 <p><code>%&gt;%</code> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible because it can pass to the ‘.data’ argument.</p>
 <p><code>|&gt;</code> is a version of the pipe added more recently to base-R. It is slightly faster but less flexible. This speed only matters if you’re doing this with much larger data sets or very frequently (e.g., in Monte Carlo simulations).</p>
-<p>The base R pipe (<code>|&gt;</code>) is less intelligent behind the scenes. It always supplies the input as the first argument and can’t handle passing to ‘.data’. If you want to pass its output explicitly, you use ’_’ instead of ‘.’. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe <code>|&gt;</code>:</p>
+<p>The base R pipe (<code>|&gt;</code>) is less intelligent behind the scenes. It always supplies the input as the first argument and can’t handle passing to ‘.data’. If you want to pass its output explicitly, you use ‘_’ instead of ‘.’. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe <code>|&gt;</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> _,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> _,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1041,50 +1033,163 @@ Click to show answer
 <p>I try to use <code>%&gt;%</code> throughout this book, but because I use <code>|&gt;</code> more often in my own code I might slip up.</p>
 </section>
 </section>
-<section id="renaming-columns" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="renaming-columns"><span class="header-section-number">5.4</span> Renaming columns</h2>
-<section id="why-rename" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="why-rename"><span class="header-section-number">5.4.1</span> Why rename</h3>
-<p>TODO</p>
+<section id="renaming-columns" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="renaming-columns"><span class="header-section-number">6.4</span> Renaming columns</h2>
+<section id="why-rename" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="why-rename"><span class="header-section-number">6.4.1</span> Why rename</h3>
+<p>Column names are easiest to work with when they follow four principles: when they’re clear and descriptive, follow a standard convention, are unique, and don’t break R syntax.</p>
+<section id="use-clear-and-descriptive-names" class="level4" data-number="6.4.1.1">
+<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="use-clear-and-descriptive-names"><span class="header-section-number">6.4.1.1</span> Use clear and descriptive names</h4>
+<p>Variable names should help explain what the variable contains. <code>X3</code> tells the user a lot less about the variable than <code>extroversion_sum_score</code>.</p>
+<p>This sounds obvious, but it’s harder than it sounds and it often isn’t done.</p>
+<p><img src="../images/meaningful_variable_name_meme.png" class="center img-fluid" style="width:60.0%"></p>
 </section>
-<section id="naming-conventions" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="naming-conventions"><span class="header-section-number">5.4.2</span> Naming conventions</h3>
-<p>TODO snake case, camel case, etc</p>
+<section id="use-a-naming-convention" class="level4" data-number="6.4.1.2">
+<h4 data-number="6.4.1.2" class="anchored" data-anchor-id="use-a-naming-convention"><span class="header-section-number">6.4.1.2</span> Use a naming convention</h4>
+<p>Various naming conventions exist and are used for both objects (e.g., data frames) and functions.</p>
+<ul>
+<li>snake_case: standard in {tidyverse} code, e.g., <code>write_csv()</code></li>
+<li>lower.dot.case: often used in older functions in base-R, e.g., <code>write.csv()</code></li>
+<li>camelCase: often used in Python</li>
+</ul>
+<p>On the one hand, as long as you’re consitent, it doesn’t matter which one you use.</p>
+<p>On the other hand, snake_case is objectively the best answer and you should use it.</p>
 </section>
-<section id="renaming-columns-with-rename-the-pipe" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="renaming-columns-with-rename-the-pipe"><span class="header-section-number">5.4.3</span> Renaming columns with <code>rename()</code> &amp; the pipe</h3>
-<p>TODO</p>
-<p>simpler rename example</p>
-<p>TODO</p>
-<p>more complex rename example:</p>
+<section id="use-unique-names" class="level4" data-number="6.4.1.3">
+<h4 data-number="6.4.1.3" class="anchored" data-anchor-id="use-unique-names"><span class="header-section-number">6.4.1.3</span> Use unique names</h4>
+<p>If more than one column has the same name, you’ll have issues trying to work with those columns.</p>
+</section>
+<section id="avoid-characters-that-break-r-syntax" class="level4" data-number="6.4.1.4">
+<h4 data-number="6.4.1.4" class="anchored" data-anchor-id="avoid-characters-that-break-r-syntax"><span class="header-section-number">6.4.1.4</span> Avoid characters that break R syntax</h4>
+<p>The following cause problems:</p>
+<ul>
+<li>Column names that begin with a number, e.g., <code>1_to_7_depression</code>.</li>
+<li>Column names that contain spaces, e.g., `depression 1 to 7’.</li>
+<li>Column names that contain characters other than letters and numbers, e.g., <code>depression_1_to_7*</code>.</li>
+<li>Column names that are ‘reserved names’ in R, e.g., <code>TRUE</code>.</li>
+</ul>
+<p>For example, the ‘dat_demographics_raw’ data frame contains a columns named <code>correct</code> and <code>0 ms onset RT</code>.</p>
+<p>If we want to print the rows of <code>correct</code> using base-R we can do this with <code>$</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this won't work, as the spaces and brackets in "Key response (use this!)" break the code unless you tell R that it is all one column name</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dat_demographics_raw %&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   rename(response = Key response (use this!)) %&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   head() %&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable() %&gt;%</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable_classic(full_width = FALSE)</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">response =</span> <span class="st">"Key response (use this!)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span>correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code></pre>
+</div>
+</div>
+<p>This can also be done using the {dplyr} function <code>pull()</code> and the pipe:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(correct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code></pre>
+</div>
+</div>
+<p>This can’t be done as easily for the column <code>0 ms onset RT</code> because the number and spaces break the code and will throw an error:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base-R</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span><span class="dv">0</span> ms onset RT</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="dv">0</span> ms onset RT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<blockquote class="blockquote">
+<p>Error: unexpected numeric constant in “dat_demographics_raw$0” Error during wrapup: not that many frames on the stack Error: no more error handlers available (recursive errors?); invoking ‘abort’ restart</p>
+</blockquote>
+<p>You can make it work by enclosing the column name in backticks (`) or quotes (“):</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base-R</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span><span class="st">"0 ms onset RT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1372  619 1372  619 3946 3724 3946 3724 2576 3050 2576 3050 4311 2793 6887
+[16] 6887</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="st">"0 ms onset RT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1372  619 1372  619 3946 3724 3946 3724 2576 3050 2576 3050 4311 2793 6887
+[16] 6887</code></pre>
+</div>
+</div>
+<p>However this becomes cumbersome and annoying. It’s much easier to rename the variable.</p>
+</section>
+</section>
+<section id="renaming-with-rename-the-pipe" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="renaming-with-rename-the-pipe"><span class="header-section-number">6.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</h3>
+<p>Use <code>dplyr::rename()</code> to change the name of one or more columns. It works like this:</p>
+<pre><code>`df %&gt;% rename(new_name = old_name)`</code></pre>
+<p>Let’s create a data frame called <code>dat_demographics_renamed</code> from <code>dat_demographics_raw</code>, which renames the <code>0 ms onset RT</code> column to timely <code>rt</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view old column names </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "date"                        "Subject Code"               
+[3] "build"                       "block code and trial number"
+[5] "Trial Code"                  "Key response (use this!)"   
+[7] "correct"                     "0 ms onset RT"              </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">rt =</span> <span class="st">"0 ms onset RT"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view new column names </span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_renamed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "date"                        "Subject Code"               
+[3] "build"                       "block code and trial number"
+[5] "Trial Code"                  "Key response (use this!)"   
+[7] "correct"                     "rt"                         </code></pre>
+</div>
+</div>
+<p>If you want to rename multiple columns at once, you can do this in a single call of the <code>rename()</code> function:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> <span class="st">"Subject Code"</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">block_trial =</span> <span class="st">"block code and trial number"</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">question =</span> <span class="st">"Trial Code"</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">response =</span> <span class="st">"Key response (use this!)"</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> <span class="st">"0 ms onset RT"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># view new column names and the first few rows</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_renamed) <span class="sc">%&gt;%</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Subject Code</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">id</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">build</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">block code and trial number</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Trial Code</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">block_trial</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">question</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">response</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">correct</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">0 ms onset RT</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rt</th>
 </tr>
 </thead>
 <tbody>
@@ -1154,21 +1259,22 @@ Click to show answer
 </div>
 </section>
 </section>
-<section id="automatically-cleaning-names-with-clean_names" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="automatically-cleaning-names-with-clean_names"><span class="header-section-number">5.5</span> Automatically cleaning names with <code>clean_names()</code></h2>
-<p>TODO why; mention that across() solutions will come in later chapters</p>
+<section id="automatic-renaming-with-janitorclean_names" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="automatic-renaming-with-janitorclean_names"><span class="header-section-number">6.5</span> Automatic renaming with <code>janitor::clean_names()</code></h2>
+<p>Cleaning names is such a common task that there are functions that rename all columns in a dataset at once, such as <code>janitor::clean_names()</code>.</p>
+<p>However, <code>clean_names()</code> can only rename to a standard naming convention and remove problematic characters, it can’t choose meaningful variable names.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for clean_names()</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw_clean <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw_clean <span class="sc">%&gt;%</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for clean_names()</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1249,14 +1355,162 @@ Click to show answer
 </table>
 </div>
 </div>
+<p>It’s still very useful as part of a tidy workflow:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code you might write to help you write the final varsion below</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_temp <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>dat_demographics_temp <span class="sc">%&gt;%</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>c("date", "subject_code", "build", "block_code_and_trial_number", 
+"trial_code", "key_response_use_this", "correct", "x0_ms_onset_rt"
+)</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># final working version</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> subject_code, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">block_trial =</span> block_code_and_trial_number, </span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">question =</span> trial_code, </span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">response =</span> key_response_use_this, </span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> x0_ms_onset_rt)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="sc">%&gt;%</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">id</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">build</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">block_trial</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">question</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">response</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">correct</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">548957868</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_2</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1372</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">548957868</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_3</td>
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">619</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">548957868</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_2</td>
+<td style="text-align: left;">psychiatric diagnosis</td>
+<td style="text-align: left;">schizophrenia</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1372</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">548957868</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_3</td>
+<td style="text-align: left;">prolific ID</td>
+<td style="text-align: left;">asldkjaao87809</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">619</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">504546409</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_2</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3946</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">23.06.2022</td>
+<td style="text-align: right;">504546409</td>
+<td style="text-align: left;">06.06.2000</td>
+<td style="text-align: left;">demographics_3</td>
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3724</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="exercises" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.6</span> Exercises</h2>
-<p>TODO</p>
+<section id="exercises" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.6</span> Exercises</h2>
+<section id="what-four-principles-should-column-names-follow" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="what-four-principles-should-column-names-follow"><span class="header-section-number">6.6.1</span> What four principles should column names follow?</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use clear and descriptive names</li>
+<li>Use a naming convention such as snake_case</li>
+<li>Use unique names</li>
+<li>Avoid characters that break R syntax, such as spaces, non-alphanumeric characters, or starting column names with a number.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-exercises" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">6.6.2</span> Interactive exercises</h3>
+<p>Complete the interactive <code>rename()</code> exercises <a href="https://errors.shinyapps.io/dplyr-learnr/#section-dplyrrename">here</a>. This web app is written in the {shiny} package and allows you to write and run code in your web browser.</p>
+</section>
+<section id="read-.csv-file-and-rename-columns" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="read-.csv-file-and-rename-columns"><span class="header-section-number">6.6.3</span> Read .csv file and rename columns</h3>
+<p>Download the data and code for this e-Book (see the <a href="../index.html">Introduction</a>).</p>
+<p>In your local version of this .qmd file:</p>
+<ul>
+<li>Create a new data frame called <code>dat_likert_renamed</code> by reading the csv file from ‘../data/data_likert_messy.csv’.</li>
+<li>Use <code>rename()</code> to rename every column so that it conforms to the four principles above.</li>
+</ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1713,303 +1967,435 @@ Click to show answer
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/data_transformation.html" class="pagination-link" aria-label="Data transformation">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The pipe (`%&gt;%` and `|&gt;`) and renaming columns"</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring data</span></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>As in the last chapter, we load data using relative paths and <span class="in">`read_csv()`</span>. </span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>We then use <span class="in">`head()`</span> to view the first few lines, or view the data frame directly to inspect it. </span>
-<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for read_csv()</span></span>
-<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for %&gt;%</span></span>
-<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># for kable()</span></span>
-<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># for kable_extra()</span></span>
-<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw_messy.csv"</span>) </span>
-<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) <span class="sc">%&gt;%</span></span>
-<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. How should you alter the above code to ignore the first two lines when reading the data in to R?</span>
-<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
-<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw_messy.csv"</span>, </span>
-<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">2</span>) <span class="co"># add skip = 2 to ignore the first two lines</span></span>
-<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) <span class="sc">%&gt;%</span></span>
-<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Count rows and columns with `nrow()` and `ncol()`</span></span>
-<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>Processing and cleaning any data set requires an understanding what it contains - as well as a thorough understanding of how the data was generated (e.g., the study's design and specific implementation; what rows represent what measurement and in what way, etc.). </span>
-<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>A rudimentary but important step to understanding what a data set contains is to know how many rows and columns it contains. </span>
-<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a>This is useful to check at multiple steps of your data processing to make sure you have not done something wrong by gaining or losing columns or rows that you should not.</span>
-<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a>Number of rows:</span>
-<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dat_demographics_raw)</span>
-<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a>Number of columns:</span>
-<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(dat_demographics_raw)</span>
-<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Viewing column names, types and the first few rows of data with `head()`</span></span>
-<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) </span>
-<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Viewing column names with `colnames()`</span></span>
-<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</span>
-<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span>
-<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a>Later, when you're used to using functions such as <span class="in">`rename()`</span> and <span class="in">`mutate()`</span>, you will often want a vector of column names that you can easily copy-paste into code, without all the extra white-space and including commas between them. For this, you can use <span class="in">`dput()`</span>:</span>
-<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span>
-<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>This takes the output of <span class="in">`colnames()`</span> and applies <span class="in">`dput()`</span> to it. When your data processing calls muliple functions in a row, this could get complicated to read and write. It's therefore time to introduce 'the pipe'.</span>
-<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## The pipe </span></span>
-<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### What is the pipe?</span></span>
-<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>The output of the function to the left of the pipe is used as the input to the function to the right of the pipe.</span>
-<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">[this function's output...] %&gt;%</span></span>
-<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a><span class="in">  [...becomes this function's input]</span></span>
-<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a>For example, the following code does the same thing with and without the pipe:</span>
-<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - without the pipe</span></span>
-<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span>
-<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - using the pipe</span></span>
-<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>() </span>
-<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why use the pipe?</span></span>
-<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the same way that humans would describe and conduct the steps. Without the pipe, code is written from the inside out in the way that R understands it but humans do not as easily.</span>
-<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>The utility of the pipe becomes more obvious when there are many steps in the workflow.</span>
-<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a>The following example uses functions we have not learned yet. We'll cover them in later chapters. For the moment, the point is to demonstrate the usage of the pipe.</span>
-<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a>Without the pipe:</span>
-<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for rename, mutate, select, group_by, summarize</span></span>
-<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for round_half_up</span></span>
-<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
-<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(</span>
-<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
-<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rename</span>(</span>
-<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>),</span>
-<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a>            <span class="at">unique_id =</span> subject,</span>
-<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>            <span class="at">block =</span> blockcode,</span>
-<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>            <span class="at">trial_type =</span> trialcode,</span>
-<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>            <span class="at">rt =</span> latency</span>
-<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a>          ),</span>
-<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a>          <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a>        unique_id</span>
-<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a>      <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a>Notice how the above code has to be written and read from the middle outwards: data is loaded, and what is loaded is used to <span class="in">`rename()`</span> columns, and what the output is used to <span class="in">`mutate()`</span> (create) a new column, whose output is used to <span class="in">`summarize()`</span> across rows for each participant. </span>
-<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a>This becomes much more linear and human-readable when we use the pipe:</span>
-<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
-<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read data from csv</span></span>
-<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns</span></span>
-<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
-<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
-<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
-<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable from existing ones</span></span>
-<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
-<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
-<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
-<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-209"><a href="#cb25-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-210"><a href="#cb25-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-211"><a href="#cb25-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Implicit arguments &amp; the pipe</span></span>
-<span id="cb25-212"><a href="#cb25-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-213"><a href="#cb25-213" aria-hidden="true" tabindex="-1"></a>As in other cases in R, arguments can be passed to functions 'explicitly' (by naming the argument) or 'implicitly' (without names).</span>
-<span id="cb25-214"><a href="#cb25-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-215"><a href="#cb25-215" aria-hidden="true" tabindex="-1"></a>How the pipe works can be slightly clearer if we use explicit arguments.</span>
-<span id="cb25-216"><a href="#cb25-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-217"><a href="#cb25-217" aria-hidden="true" tabindex="-1"></a>The pipe passes the output of the preceding function on to the next function as '.':</span>
-<span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-222"><a href="#cb25-222" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
-<span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
-<span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward as '.'</span></span>
-<span id="cb25-225"><a href="#cb25-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> .,</span>
-<span id="cb25-226"><a href="#cb25-226" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-227"><a href="#cb25-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-228"><a href="#cb25-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-229"><a href="#cb25-229" aria-hidden="true" tabindex="-1"></a>If not passed explicitly, the input is passed to the next function's *first* argument OR, if the funtion takes the '.data' argument (i.e., most {tidyverse} functions) it is passed to '.data':</span>
-<span id="cb25-230"><a href="#cb25-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-233"><a href="#cb25-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-234"><a href="#cb25-234" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
-<span id="cb25-235"><a href="#cb25-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
-<span id="cb25-236"><a href="#cb25-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward to first argument</span></span>
-<span id="cb25-237"><a href="#cb25-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-238"><a href="#cb25-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-239"><a href="#cb25-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-240"><a href="#cb25-240" aria-hidden="true" tabindex="-1"></a><span class="fu">### The two pipes: `%&gt;%` vs. `|&gt;`</span></span>
-<span id="cb25-241"><a href="#cb25-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-242"><a href="#cb25-242" aria-hidden="true" tabindex="-1"></a><span class="in">`%&gt;%`</span> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible because it can pass to the '.data' argument.</span>
-<span id="cb25-243"><a href="#cb25-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-244"><a href="#cb25-244" aria-hidden="true" tabindex="-1"></a><span class="in">`|&gt;`</span> is a version of the pipe added more recently to base-R. It is slightly faster but less flexible. This speed only matters if you're doing this with much larger data sets or very frequently (e.g., in Monte Carlo simulations).</span>
-<span id="cb25-245"><a href="#cb25-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-246"><a href="#cb25-246" aria-hidden="true" tabindex="-1"></a>The base R pipe (<span class="in">`|&gt;`</span>) is less intelligent behind the scenes. It always supplies the input as the first argument and can't handle passing to '.data'. If you want to pass its output explicitly, you use  '_' instead of '.'. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe <span class="in">`|&gt;`</span>:</span>
-<span id="cb25-247"><a href="#cb25-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-250"><a href="#cb25-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-251"><a href="#cb25-251" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb25-252"><a href="#cb25-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb25-253"><a href="#cb25-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
-<span id="cb25-254"><a href="#cb25-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> _,</span>
-<span id="cb25-255"><a href="#cb25-255" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-256"><a href="#cb25-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-257"><a href="#cb25-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-258"><a href="#cb25-258" aria-hidden="true" tabindex="-1"></a>If you're not sure, it's usually easier to use <span class="in">`%&gt;%`</span>.</span>
-<span id="cb25-259"><a href="#cb25-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-260"><a href="#cb25-260" aria-hidden="true" tabindex="-1"></a>I try to use <span class="in">`%&gt;%`</span> throughout this book, but because I use <span class="in">`|&gt;`</span> more often in my own code I might slip up.</span>
-<span id="cb25-261"><a href="#cb25-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-262"><a href="#cb25-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Renaming columns</span></span>
-<span id="cb25-263"><a href="#cb25-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-264"><a href="#cb25-264" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why rename</span></span>
-<span id="cb25-265"><a href="#cb25-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-266"><a href="#cb25-266" aria-hidden="true" tabindex="-1"></a>TODO</span>
-<span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Naming conventions</span></span>
-<span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a>TODO snake case, camel case, etc</span>
-<span id="cb25-271"><a href="#cb25-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-272"><a href="#cb25-272" aria-hidden="true" tabindex="-1"></a><span class="fu">### Renaming columns with `rename()` &amp; the pipe</span></span>
-<span id="cb25-273"><a href="#cb25-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-274"><a href="#cb25-274" aria-hidden="true" tabindex="-1"></a>TODO</span>
-<span id="cb25-275"><a href="#cb25-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-276"><a href="#cb25-276" aria-hidden="true" tabindex="-1"></a>simpler rename example</span>
-<span id="cb25-277"><a href="#cb25-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-278"><a href="#cb25-278" aria-hidden="true" tabindex="-1"></a>TODO</span>
-<span id="cb25-279"><a href="#cb25-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-280"><a href="#cb25-280" aria-hidden="true" tabindex="-1"></a>more complex rename example:</span>
-<span id="cb25-281"><a href="#cb25-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-284"><a href="#cb25-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-285"><a href="#cb25-285" aria-hidden="true" tabindex="-1"></a><span class="co"># this won't work, as the spaces and brackets in "Key response (use this!)" break the code unless you tell R that it is all one column name</span></span>
-<span id="cb25-286"><a href="#cb25-286" aria-hidden="true" tabindex="-1"></a><span class="co"># dat_demographics_raw %&gt;%</span></span>
-<span id="cb25-287"><a href="#cb25-287" aria-hidden="true" tabindex="-1"></a><span class="co">#   rename(response = Key response (use this!)) %&gt;%</span></span>
-<span id="cb25-288"><a href="#cb25-288" aria-hidden="true" tabindex="-1"></a><span class="co">#   head() %&gt;%</span></span>
-<span id="cb25-289"><a href="#cb25-289" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable() %&gt;%</span></span>
-<span id="cb25-290"><a href="#cb25-290" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable_classic(full_width = FALSE)</span></span>
-<span id="cb25-291"><a href="#cb25-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-292"><a href="#cb25-292" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb25-293"><a href="#cb25-293" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">response =</span> <span class="st">"Key response (use this!)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-294"><a href="#cb25-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-295"><a href="#cb25-295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-296"><a href="#cb25-296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-297"><a href="#cb25-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-298"><a href="#cb25-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-299"><a href="#cb25-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-300"><a href="#cb25-300" aria-hidden="true" tabindex="-1"></a><span class="fu">## Automatically cleaning names with `clean_names()`</span></span>
-<span id="cb25-301"><a href="#cb25-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-302"><a href="#cb25-302" aria-hidden="true" tabindex="-1"></a>TODO why; mention that across() solutions will come in later chapters</span>
-<span id="cb25-303"><a href="#cb25-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-306"><a href="#cb25-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-307"><a href="#cb25-307" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for clean_names()</span></span>
-<span id="cb25-308"><a href="#cb25-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-309"><a href="#cb25-309" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw_clean <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
-<span id="cb25-310"><a href="#cb25-310" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb25-311"><a href="#cb25-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-312"><a href="#cb25-312" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw_clean <span class="sc">%&gt;%</span></span>
-<span id="cb25-313"><a href="#cb25-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-314"><a href="#cb25-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb25-315"><a href="#cb25-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-316"><a href="#cb25-316" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-317"><a href="#cb25-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-318"><a href="#cb25-318" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb25-319"><a href="#cb25-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-320"><a href="#cb25-320" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The pipe and renaming"</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring column names and rows</span></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>As in the last chapter, we load data using relative paths and <span class="in">`read_csv()`</span> and view the first few rows with <span class="in">`head()`</span>.</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for read_csv()</span></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for %&gt;%</span></span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) <span class="co"># for kable()</span></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># for kable_extra()</span></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw_messy.csv"</span>) </span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) <span class="sc">%&gt;%</span></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. </span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a>How should you alter the above code to ignore the first two lines when reading the data in to R?</span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_demographics_raw_messy.csv"</span>, </span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">skip =</span> <span class="dv">2</span>) <span class="co"># add skip = 2 to ignore the first two lines</span></span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_raw) <span class="sc">%&gt;%</span></span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Count rows and columns with `nrow()` and `ncol()`</span></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a>Processing and cleaning any data set requires an understanding what it contains - as well as a thorough understanding of how the data was generated (e.g., the study's design and specific implementation; what rows represent what measurement and in what way, etc.).</span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a>A rudimentary but important step to understanding what a data set contains is to know how many rows and columns it contains.</span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a>This is useful to check at multiple steps of your data processing to make sure you have not done something wrong by gaining or losing columns or rows that you should not.</span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a>Number of rows:</span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dat_demographics_raw)</span>
+<span id="cb40-73"><a href="#cb40-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-75"><a href="#cb40-75" aria-hidden="true" tabindex="-1"></a>Number of columns:</span>
+<span id="cb40-76"><a href="#cb40-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-79"><a href="#cb40-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-80"><a href="#cb40-80" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(dat_demographics_raw)</span>
+<span id="cb40-81"><a href="#cb40-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-82"><a href="#cb40-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-83"><a href="#cb40-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Viewing column names with `colnames()`</span></span>
+<span id="cb40-84"><a href="#cb40-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-85"><a href="#cb40-85" aria-hidden="true" tabindex="-1"></a>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</span>
+<span id="cb40-86"><a href="#cb40-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-89"><a href="#cb40-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-90"><a href="#cb40-90" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span>
+<span id="cb40-91"><a href="#cb40-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-92"><a href="#cb40-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a>Later, when you're used to using functions such as <span class="in">`rename()`</span> and <span class="in">`mutate()`</span>, you will often want a vector of column names that you can easily copy-paste into code, without all the extra white-space and including commas between them. For this, you can use <span class="in">`dput()`</span>:</span>
+<span id="cb40-94"><a href="#cb40-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-97"><a href="#cb40-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-98"><a href="#cb40-98" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span>
+<span id="cb40-99"><a href="#cb40-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-100"><a href="#cb40-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-101"><a href="#cb40-101" aria-hidden="true" tabindex="-1"></a>This takes the output of <span class="in">`colnames()`</span> and applies <span class="in">`dput()`</span> to it. When your data processing calls muliple functions in a row, this could get complicated to read and write. It's therefore time to introduce 'the pipe'.</span>
+<span id="cb40-102"><a href="#cb40-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-103"><a href="#cb40-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## The pipe</span></span>
+<span id="cb40-104"><a href="#cb40-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-105"><a href="#cb40-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### What is the pipe?</span></span>
+<span id="cb40-106"><a href="#cb40-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-107"><a href="#cb40-107" aria-hidden="true" tabindex="-1"></a>The output of the function to the left of the pipe is used as the input to the function to the right of the pipe.</span>
+<span id="cb40-108"><a href="#cb40-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-109"><a href="#cb40-109" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb40-110"><a href="#cb40-110" aria-hidden="true" tabindex="-1"></a><span class="in">[this function's output...] %&gt;%</span></span>
+<span id="cb40-111"><a href="#cb40-111" aria-hidden="true" tabindex="-1"></a><span class="in">  [...becomes this function's input]</span></span>
+<span id="cb40-112"><a href="#cb40-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-113"><a href="#cb40-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-114"><a href="#cb40-114" aria-hidden="true" tabindex="-1"></a>For example, the following code does the same thing with and without the pipe:</span>
+<span id="cb40-115"><a href="#cb40-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-118"><a href="#cb40-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-119"><a href="#cb40-119" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - without the pipe</span></span>
+<span id="cb40-120"><a href="#cb40-120" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_demographics_raw))</span>
+<span id="cb40-121"><a href="#cb40-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-122"><a href="#cb40-122" aria-hidden="true" tabindex="-1"></a><span class="co"># print all column names as a vector - using the pipe</span></span>
+<span id="cb40-123"><a href="#cb40-123" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-124"><a href="#cb40-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb40-125"><a href="#cb40-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>() </span>
+<span id="cb40-126"><a href="#cb40-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-127"><a href="#cb40-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-128"><a href="#cb40-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why use the pipe?</span></span>
+<span id="cb40-129"><a href="#cb40-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-130"><a href="#cb40-130" aria-hidden="true" tabindex="-1"></a>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the same way that humans would describe and conduct the steps. Without the pipe, code is written from the inside out in the way that R understands it but humans do not as easily.</span>
+<span id="cb40-131"><a href="#cb40-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-132"><a href="#cb40-132" aria-hidden="true" tabindex="-1"></a>The utility of the pipe becomes more obvious when there are many steps in the workflow.</span>
+<span id="cb40-133"><a href="#cb40-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-134"><a href="#cb40-134" aria-hidden="true" tabindex="-1"></a>The following example uses functions we have not learned yet. We'll cover them in later chapters. For the moment, the point is to demonstrate the usage of the pipe.</span>
+<span id="cb40-135"><a href="#cb40-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-136"><a href="#cb40-136" aria-hidden="true" tabindex="-1"></a>Without the pipe:</span>
+<span id="cb40-137"><a href="#cb40-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-140"><a href="#cb40-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-141"><a href="#cb40-141" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for the pipe, rename, mutate, select, group_by, summarize</span></span>
+<span id="cb40-142"><a href="#cb40-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for round_half_up</span></span>
+<span id="cb40-143"><a href="#cb40-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-144"><a href="#cb40-144" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
+<span id="cb40-145"><a href="#cb40-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-146"><a href="#cb40-146" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb40-147"><a href="#cb40-147" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(</span>
+<span id="cb40-148"><a href="#cb40-148" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(</span>
+<span id="cb40-149"><a href="#cb40-149" aria-hidden="true" tabindex="-1"></a>          <span class="fu">rename</span>(</span>
+<span id="cb40-150"><a href="#cb40-150" aria-hidden="true" tabindex="-1"></a>            readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>),</span>
+<span id="cb40-151"><a href="#cb40-151" aria-hidden="true" tabindex="-1"></a>            <span class="at">unique_id =</span> subject,</span>
+<span id="cb40-152"><a href="#cb40-152" aria-hidden="true" tabindex="-1"></a>            <span class="at">block =</span> blockcode,</span>
+<span id="cb40-153"><a href="#cb40-153" aria-hidden="true" tabindex="-1"></a>            <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb40-154"><a href="#cb40-154" aria-hidden="true" tabindex="-1"></a>            <span class="at">rt =</span> latency</span>
+<span id="cb40-155"><a href="#cb40-155" aria-hidden="true" tabindex="-1"></a>          ),</span>
+<span id="cb40-156"><a href="#cb40-156" aria-hidden="true" tabindex="-1"></a>          <span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb40-157"><a href="#cb40-157" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb40-158"><a href="#cb40-158" aria-hidden="true" tabindex="-1"></a>        unique_id</span>
+<span id="cb40-159"><a href="#cb40-159" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb40-160"><a href="#cb40-160" aria-hidden="true" tabindex="-1"></a>      <span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb40-161"><a href="#cb40-161" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb40-162"><a href="#cb40-162" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb40-163"><a href="#cb40-163" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-164"><a href="#cb40-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-165"><a href="#cb40-165" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
+<span id="cb40-166"><a href="#cb40-166" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-167"><a href="#cb40-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb40-168"><a href="#cb40-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-169"><a href="#cb40-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-170"><a href="#cb40-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-171"><a href="#cb40-171" aria-hidden="true" tabindex="-1"></a>Notice how the above code has to be written and read from the middle outwards: data is loaded, and what is loaded is used to <span class="in">`rename()`</span> columns, and what the output is used to <span class="in">`mutate()`</span> (create) a new column, whose output is used to <span class="in">`summarize()`</span> across rows for each participant.</span>
+<span id="cb40-172"><a href="#cb40-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-173"><a href="#cb40-173" aria-hidden="true" tabindex="-1"></a>This becomes much more linear and human-readable when we use the pipe:</span>
+<span id="cb40-174"><a href="#cb40-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-177"><a href="#cb40-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-178"><a href="#cb40-178" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> </span>
+<span id="cb40-179"><a href="#cb40-179" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read data from csv</span></span>
+<span id="cb40-180"><a href="#cb40-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_amp_raw.csv"</span>) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb40-181"><a href="#cb40-181" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-182"><a href="#cb40-182" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns</span></span>
+<span id="cb40-183"><a href="#cb40-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">unique_id =</span> subject,</span>
+<span id="cb40-184"><a href="#cb40-184" aria-hidden="true" tabindex="-1"></a>         <span class="at">block =</span> blockcode,</span>
+<span id="cb40-185"><a href="#cb40-185" aria-hidden="true" tabindex="-1"></a>         <span class="at">trial_type =</span> trialcode,</span>
+<span id="cb40-186"><a href="#cb40-186" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> latency) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb40-187"><a href="#cb40-187" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-188"><a href="#cb40-188" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable from existing ones</span></span>
+<span id="cb40-189"><a href="#cb40-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fast_trial =</span> <span class="fu">ifelse</span>(rt <span class="sc">&lt;</span> <span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb40-190"><a href="#cb40-190" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-191"><a href="#cb40-191" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
+<span id="cb40-192"><a href="#cb40-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
+<span id="cb40-193"><a href="#cb40-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-194"><a href="#cb40-194" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
+<span id="cb40-195"><a href="#cb40-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb40-196"><a href="#cb40-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-197"><a href="#cb40-197" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
+<span id="cb40-198"><a href="#cb40-198" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-199"><a href="#cb40-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb40-200"><a href="#cb40-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-201"><a href="#cb40-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-202"><a href="#cb40-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-203"><a href="#cb40-203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Implicit arguments &amp; the pipe</span></span>
+<span id="cb40-204"><a href="#cb40-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-205"><a href="#cb40-205" aria-hidden="true" tabindex="-1"></a>As in other cases in R, arguments can be passed to functions 'explicitly' (by naming the argument) or 'implicitly' (without names).</span>
+<span id="cb40-206"><a href="#cb40-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-207"><a href="#cb40-207" aria-hidden="true" tabindex="-1"></a>How the pipe works can be slightly clearer if we use explicit arguments.</span>
+<span id="cb40-208"><a href="#cb40-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-209"><a href="#cb40-209" aria-hidden="true" tabindex="-1"></a>The pipe passes the output of the preceding function on to the next function as '.':</span>
+<span id="cb40-210"><a href="#cb40-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-213"><a href="#cb40-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-214"><a href="#cb40-214" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
+<span id="cb40-215"><a href="#cb40-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># output passed forward as '.'</span></span>
+<span id="cb40-216"><a href="#cb40-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> .) <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward as '.'</span></span>
+<span id="cb40-217"><a href="#cb40-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> .,</span>
+<span id="cb40-218"><a href="#cb40-218" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-219"><a href="#cb40-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-220"><a href="#cb40-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-221"><a href="#cb40-221" aria-hidden="true" tabindex="-1"></a>If not passed explicitly, the input is passed to the next function's *first* argument OR, if the funtion takes the '.data' argument (i.e., most {tidyverse} functions) it is passed to '.data':</span>
+<span id="cb40-222"><a href="#cb40-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-225"><a href="#cb40-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-226"><a href="#cb40-226" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
+<span id="cb40-227"><a href="#cb40-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> <span class="co"># output passed forward to first argument</span></span>
+<span id="cb40-228"><a href="#cb40-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span> <span class="co"># -&gt; output passed forward to first argument</span></span>
+<span id="cb40-229"><a href="#cb40-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-230"><a href="#cb40-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-231"><a href="#cb40-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-232"><a href="#cb40-232" aria-hidden="true" tabindex="-1"></a><span class="fu">### The two pipes: `%&gt;%` vs. `|&gt;`</span></span>
+<span id="cb40-233"><a href="#cb40-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-234"><a href="#cb40-234" aria-hidden="true" tabindex="-1"></a><span class="in">`%&gt;%`</span> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible because it can pass to the '.data' argument.</span>
+<span id="cb40-235"><a href="#cb40-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-236"><a href="#cb40-236" aria-hidden="true" tabindex="-1"></a><span class="in">`|&gt;`</span> is a version of the pipe added more recently to base-R. It is slightly faster but less flexible. This speed only matters if you're doing this with much larger data sets or very frequently (e.g., in Monte Carlo simulations).</span>
+<span id="cb40-237"><a href="#cb40-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-238"><a href="#cb40-238" aria-hidden="true" tabindex="-1"></a>The base R pipe (<span class="in">`|&gt;`</span>) is less intelligent behind the scenes. It always supplies the input as the first argument and can't handle passing to '.data'. If you want to pass its output explicitly, you use '<span class="sc">\_</span>' instead of '.'. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe <span class="in">`|&gt;`</span>:</span>
+<span id="cb40-239"><a href="#cb40-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-242"><a href="#cb40-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-243"><a href="#cb40-243" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb40-244"><a href="#cb40-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb40-245"><a href="#cb40-245" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">x =</span> _) <span class="sc">|&gt;</span> <span class="co"># output passed forward as '_'</span></span>
+<span id="cb40-246"><a href="#cb40-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">kable_input =</span> _,</span>
+<span id="cb40-247"><a href="#cb40-247" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-248"><a href="#cb40-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-249"><a href="#cb40-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-250"><a href="#cb40-250" aria-hidden="true" tabindex="-1"></a>If you're not sure, it's usually easier to use <span class="in">`%&gt;%`</span>.</span>
+<span id="cb40-251"><a href="#cb40-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-252"><a href="#cb40-252" aria-hidden="true" tabindex="-1"></a>I try to use <span class="in">`%&gt;%`</span> throughout this book, but because I use <span class="in">`|&gt;`</span> more often in my own code I might slip up.</span>
+<span id="cb40-253"><a href="#cb40-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-254"><a href="#cb40-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Renaming columns</span></span>
+<span id="cb40-255"><a href="#cb40-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-256"><a href="#cb40-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why rename</span></span>
+<span id="cb40-257"><a href="#cb40-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-258"><a href="#cb40-258" aria-hidden="true" tabindex="-1"></a>Column names are easiest to work with when they follow four principles: when they're clear and descriptive, follow a standard convention, are unique, and don't break R syntax.</span>
+<span id="cb40-259"><a href="#cb40-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-260"><a href="#cb40-260" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Use clear and descriptive names</span></span>
+<span id="cb40-261"><a href="#cb40-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-262"><a href="#cb40-262" aria-hidden="true" tabindex="-1"></a>Variable names should help explain what the variable contains. <span class="in">`X3`</span> tells the user a lot less about the variable than <span class="in">`extroversion_sum_score`</span>.</span>
+<span id="cb40-263"><a href="#cb40-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-264"><a href="#cb40-264" aria-hidden="true" tabindex="-1"></a>This sounds obvious, but it's harder than it sounds and it often isn't done.</span>
+<span id="cb40-265"><a href="#cb40-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-266"><a href="#cb40-266" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/meaningful_variable_name_meme.png)</span>{.center width="60%"}</span>
+<span id="cb40-267"><a href="#cb40-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-268"><a href="#cb40-268" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Use a naming convention</span></span>
+<span id="cb40-269"><a href="#cb40-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-270"><a href="#cb40-270" aria-hidden="true" tabindex="-1"></a>Various naming conventions exist and are used for both objects (e.g., data frames) and functions.</span>
+<span id="cb40-271"><a href="#cb40-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-272"><a href="#cb40-272" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>snake_case: standard in {tidyverse} code, e.g., <span class="in">`write_csv()`</span></span>
+<span id="cb40-273"><a href="#cb40-273" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>lower.dot.case: often used in older functions in base-R, e.g., <span class="in">`write.csv()`</span></span>
+<span id="cb40-274"><a href="#cb40-274" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>camelCase: often used in Python</span>
+<span id="cb40-275"><a href="#cb40-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-276"><a href="#cb40-276" aria-hidden="true" tabindex="-1"></a>On the one hand, as long as you're consitent, it doesn't matter which one you use.</span>
+<span id="cb40-277"><a href="#cb40-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-278"><a href="#cb40-278" aria-hidden="true" tabindex="-1"></a>On the other hand, snake_case is objectively the best answer and you should use it.</span>
+<span id="cb40-279"><a href="#cb40-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-280"><a href="#cb40-280" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Use unique names</span></span>
+<span id="cb40-281"><a href="#cb40-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-282"><a href="#cb40-282" aria-hidden="true" tabindex="-1"></a>If more than one column has the same name, you'll have issues trying to work with those columns.</span>
+<span id="cb40-283"><a href="#cb40-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-284"><a href="#cb40-284" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Avoid characters that break R syntax</span></span>
+<span id="cb40-285"><a href="#cb40-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-286"><a href="#cb40-286" aria-hidden="true" tabindex="-1"></a>The following cause problems:</span>
+<span id="cb40-287"><a href="#cb40-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-288"><a href="#cb40-288" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Column names that begin with a number, e.g., <span class="in">`1_to_7_depression`</span>.</span>
+<span id="cb40-289"><a href="#cb40-289" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Column names that contain spaces, e.g., <span class="sc">\`</span>depression 1 to 7'.</span>
+<span id="cb40-290"><a href="#cb40-290" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Column names that contain characters other than letters and numbers, e.g., <span class="in">`depression_1_to_7*`</span>.</span>
+<span id="cb40-291"><a href="#cb40-291" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Column names that are 'reserved names' in R, e.g., <span class="in">`TRUE`</span>.</span>
+<span id="cb40-292"><a href="#cb40-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-293"><a href="#cb40-293" aria-hidden="true" tabindex="-1"></a>For example, the 'dat_demographics_raw' data frame contains a columns named <span class="in">`correct`</span> and <span class="in">`0 ms onset RT`</span>.</span>
+<span id="cb40-294"><a href="#cb40-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-295"><a href="#cb40-295" aria-hidden="true" tabindex="-1"></a>If we want to print the rows of <span class="in">`correct`</span> using base-R we can do this with <span class="in">`$`</span>:</span>
+<span id="cb40-296"><a href="#cb40-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-299"><a href="#cb40-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-300"><a href="#cb40-300" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span>correct</span>
+<span id="cb40-301"><a href="#cb40-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-302"><a href="#cb40-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-303"><a href="#cb40-303" aria-hidden="true" tabindex="-1"></a>This can also be done using the {dplyr} function <span class="in">`pull()`</span> and the pipe:</span>
+<span id="cb40-304"><a href="#cb40-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-307"><a href="#cb40-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-308"><a href="#cb40-308" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-309"><a href="#cb40-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(correct)</span>
+<span id="cb40-310"><a href="#cb40-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-311"><a href="#cb40-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-312"><a href="#cb40-312" aria-hidden="true" tabindex="-1"></a>This can't be done as easily for the column <span class="in">`0 ms onset RT`</span> because the number and spaces break the code and will throw an error:</span>
+<span id="cb40-313"><a href="#cb40-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-316"><a href="#cb40-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-317"><a href="#cb40-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # chunk set not to run so that ebook will render, but you can run it in your local .qmd</span></span>
+<span id="cb40-318"><a href="#cb40-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-319"><a href="#cb40-319" aria-hidden="true" tabindex="-1"></a><span class="co"># base-R</span></span>
+<span id="cb40-320"><a href="#cb40-320" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span><span class="dv">0</span> ms onset RT</span>
+<span id="cb40-321"><a href="#cb40-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-322"><a href="#cb40-322" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr</span></span>
+<span id="cb40-323"><a href="#cb40-323" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-324"><a href="#cb40-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="dv">0</span> ms onset RT)</span>
+<span id="cb40-325"><a href="#cb40-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-326"><a href="#cb40-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-327"><a href="#cb40-327" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Error: unexpected numeric constant in "dat_demographics_raw\$0" Error during wrapup: not that many frames on the stack Error: no more error handlers available (recursive errors?); invoking 'abort' restart</span></span>
+<span id="cb40-328"><a href="#cb40-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-329"><a href="#cb40-329" aria-hidden="true" tabindex="-1"></a>You can make it work by enclosing the column name in backticks (<span class="sc">\`</span>) or quotes ("):</span>
+<span id="cb40-330"><a href="#cb40-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-333"><a href="#cb40-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-334"><a href="#cb40-334" aria-hidden="true" tabindex="-1"></a><span class="co"># base-R</span></span>
+<span id="cb40-335"><a href="#cb40-335" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw<span class="sc">$</span><span class="st">"0 ms onset RT"</span></span>
+<span id="cb40-336"><a href="#cb40-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-337"><a href="#cb40-337" aria-hidden="true" tabindex="-1"></a><span class="co"># dplyr</span></span>
+<span id="cb40-338"><a href="#cb40-338" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-339"><a href="#cb40-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="st">"0 ms onset RT"</span>)</span>
+<span id="cb40-340"><a href="#cb40-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-341"><a href="#cb40-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-342"><a href="#cb40-342" aria-hidden="true" tabindex="-1"></a>However this becomes cumbersome and annoying. It's much easier to rename the variable.</span>
+<span id="cb40-343"><a href="#cb40-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-344"><a href="#cb40-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Renaming with `rename()` &amp; the pipe</span></span>
+<span id="cb40-345"><a href="#cb40-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-346"><a href="#cb40-346" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`dplyr::rename()`</span> to change the name of one or more columns. It works like this:</span>
+<span id="cb40-347"><a href="#cb40-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-348"><a href="#cb40-348" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb40-349"><a href="#cb40-349" aria-hidden="true" tabindex="-1"></a><span class="in">`df %&gt;% rename(new_name = old_name)`</span></span>
+<span id="cb40-350"><a href="#cb40-350" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-351"><a href="#cb40-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-352"><a href="#cb40-352" aria-hidden="true" tabindex="-1"></a>Let's create a data frame called <span class="in">`dat_demographics_renamed`</span> from <span class="in">`dat_demographics_raw`</span>, which renames the <span class="in">`0 ms onset RT`</span> column to timely <span class="in">`rt`</span>:</span>
+<span id="cb40-353"><a href="#cb40-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-356"><a href="#cb40-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-357"><a href="#cb40-357" aria-hidden="true" tabindex="-1"></a><span class="co"># view old column names </span></span>
+<span id="cb40-358"><a href="#cb40-358" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_raw)</span>
+<span id="cb40-359"><a href="#cb40-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-360"><a href="#cb40-360" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-361"><a href="#cb40-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">rt =</span> <span class="st">"0 ms onset RT"</span>)</span>
+<span id="cb40-362"><a href="#cb40-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-363"><a href="#cb40-363" aria-hidden="true" tabindex="-1"></a><span class="co"># view new column names </span></span>
+<span id="cb40-364"><a href="#cb40-364" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dat_demographics_renamed)</span>
+<span id="cb40-365"><a href="#cb40-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-366"><a href="#cb40-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-367"><a href="#cb40-367" aria-hidden="true" tabindex="-1"></a>If you want to rename multiple columns at once, you can do this in a single call of the <span class="in">`rename()`</span> function:</span>
+<span id="cb40-368"><a href="#cb40-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-371"><a href="#cb40-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-372"><a href="#cb40-372" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-373"><a href="#cb40-373" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> <span class="st">"Subject Code"</span>,</span>
+<span id="cb40-374"><a href="#cb40-374" aria-hidden="true" tabindex="-1"></a>         <span class="at">block_trial =</span> <span class="st">"block code and trial number"</span>,</span>
+<span id="cb40-375"><a href="#cb40-375" aria-hidden="true" tabindex="-1"></a>         <span class="at">question =</span> <span class="st">"Trial Code"</span>, </span>
+<span id="cb40-376"><a href="#cb40-376" aria-hidden="true" tabindex="-1"></a>         <span class="at">response =</span> <span class="st">"Key response (use this!)"</span>,</span>
+<span id="cb40-377"><a href="#cb40-377" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> <span class="st">"0 ms onset RT"</span>)</span>
+<span id="cb40-378"><a href="#cb40-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-379"><a href="#cb40-379" aria-hidden="true" tabindex="-1"></a><span class="co"># view new column names and the first few rows</span></span>
+<span id="cb40-380"><a href="#cb40-380" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_demographics_renamed) <span class="sc">%&gt;%</span></span>
+<span id="cb40-381"><a href="#cb40-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-382"><a href="#cb40-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-383"><a href="#cb40-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-384"><a href="#cb40-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-385"><a href="#cb40-385" aria-hidden="true" tabindex="-1"></a><span class="fu">## Automatic renaming with `janitor::clean_names()`</span></span>
+<span id="cb40-386"><a href="#cb40-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-387"><a href="#cb40-387" aria-hidden="true" tabindex="-1"></a>Cleaning names is such a common task that there are functions that rename all columns in a dataset at once, such as <span class="in">`janitor::clean_names()`</span>.</span>
+<span id="cb40-388"><a href="#cb40-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-389"><a href="#cb40-389" aria-hidden="true" tabindex="-1"></a>However, <span class="in">`clean_names()`</span> can only rename to a standard naming convention and remove problematic characters, it can't choose meaningful variable names.</span>
+<span id="cb40-390"><a href="#cb40-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-393"><a href="#cb40-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-394"><a href="#cb40-394" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># for clean_names()</span></span>
+<span id="cb40-395"><a href="#cb40-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-396"><a href="#cb40-396" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-397"><a href="#cb40-397" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb40-398"><a href="#cb40-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-399"><a href="#cb40-399" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="sc">%&gt;%</span></span>
+<span id="cb40-400"><a href="#cb40-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-401"><a href="#cb40-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-402"><a href="#cb40-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-403"><a href="#cb40-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-404"><a href="#cb40-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-405"><a href="#cb40-405" aria-hidden="true" tabindex="-1"></a>It's still very useful as part of a tidy workflow:</span>
+<span id="cb40-406"><a href="#cb40-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-409"><a href="#cb40-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-410"><a href="#cb40-410" aria-hidden="true" tabindex="-1"></a><span class="co"># code you might write to help you write the final varsion below</span></span>
+<span id="cb40-411"><a href="#cb40-411" aria-hidden="true" tabindex="-1"></a>dat_demographics_temp <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-412"><a href="#cb40-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb40-413"><a href="#cb40-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-414"><a href="#cb40-414" aria-hidden="true" tabindex="-1"></a>dat_demographics_temp <span class="sc">%&gt;%</span></span>
+<span id="cb40-415"><a href="#cb40-415" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-416"><a href="#cb40-416" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dput</span>()</span>
+<span id="cb40-417"><a href="#cb40-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-418"><a href="#cb40-418" aria-hidden="true" tabindex="-1"></a><span class="co"># final working version</span></span>
+<span id="cb40-419"><a href="#cb40-419" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="ot">&lt;-</span> dat_demographics_raw <span class="sc">%&gt;%</span></span>
+<span id="cb40-420"><a href="#cb40-420" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-421"><a href="#cb40-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> subject_code, </span>
+<span id="cb40-422"><a href="#cb40-422" aria-hidden="true" tabindex="-1"></a>         <span class="at">block_trial =</span> block_code_and_trial_number, </span>
+<span id="cb40-423"><a href="#cb40-423" aria-hidden="true" tabindex="-1"></a>         <span class="at">question =</span> trial_code, </span>
+<span id="cb40-424"><a href="#cb40-424" aria-hidden="true" tabindex="-1"></a>         <span class="at">response =</span> key_response_use_this, </span>
+<span id="cb40-425"><a href="#cb40-425" aria-hidden="true" tabindex="-1"></a>         <span class="at">rt =</span> x0_ms_onset_rt)</span>
+<span id="cb40-426"><a href="#cb40-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-427"><a href="#cb40-427" aria-hidden="true" tabindex="-1"></a>dat_demographics_renamed <span class="sc">%&gt;%</span></span>
+<span id="cb40-428"><a href="#cb40-428" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-429"><a href="#cb40-429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-430"><a href="#cb40-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-431"><a href="#cb40-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-432"><a href="#cb40-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-433"><a href="#cb40-433" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb40-434"><a href="#cb40-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-435"><a href="#cb40-435" aria-hidden="true" tabindex="-1"></a><span class="fu">### What four principles should column names follow?</span></span>
+<span id="cb40-436"><a href="#cb40-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-437"><a href="#cb40-437" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb40-438"><a href="#cb40-438" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Use clear and descriptive names</span>
+<span id="cb40-439"><a href="#cb40-439" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Use a naming convention such as snake_case</span>
+<span id="cb40-440"><a href="#cb40-440" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Use unique names</span>
+<span id="cb40-441"><a href="#cb40-441" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Avoid characters that break R syntax, such as spaces, non-alphanumeric characters, or starting column names with a number.</span>
+<span id="cb40-442"><a href="#cb40-442" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb40-443"><a href="#cb40-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-444"><a href="#cb40-444" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interactive exercises</span></span>
+<span id="cb40-445"><a href="#cb40-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-446"><a href="#cb40-446" aria-hidden="true" tabindex="-1"></a>Complete the interactive <span class="in">`rename()`</span> exercises <span class="co">[</span><span class="ot">here</span><span class="co">](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrrename)</span>. This web app is written in the {shiny} package and allows you to write and run code in your web browser.</span>
+<span id="cb40-447"><a href="#cb40-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-448"><a href="#cb40-448" aria-hidden="true" tabindex="-1"></a><span class="fu">### Read .csv file and rename columns</span></span>
+<span id="cb40-449"><a href="#cb40-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-450"><a href="#cb40-450" aria-hidden="true" tabindex="-1"></a>Download the data and code for this e-Book (see the <span class="co">[</span><span class="ot">Introduction</span><span class="co">](../index.qmd)</span>). </span>
+<span id="cb40-451"><a href="#cb40-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-452"><a href="#cb40-452" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd file:</span>
+<span id="cb40-453"><a href="#cb40-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-454"><a href="#cb40-454" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create a new data frame called <span class="in">`dat_likert_renamed`</span> by reading the csv file from '../data/data_likert_messy.csv'.</span>
+<span id="cb40-455"><a href="#cb40-455" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use <span class="in">`rename()`</span> to rename every column so that it conforms to the four principles above.</span>
+<span id="cb40-456"><a href="#cb40-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-459"><a href="#cb40-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-460"><a href="#cb40-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb40-461"><a href="#cb40-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-462"><a href="#cb40-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-463"><a href="#cb40-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-464"><a href="#cb40-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

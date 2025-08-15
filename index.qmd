@@ -12,7 +12,7 @@ You can also copy and paste the code for any chapter directly from the website. 
 
 Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or [create simulated data sets](https://declaredesign.org/r/fabricatr/), and practice.
 
-![](images/practice.png){.center width="50%"}
+![](images/practice.png){.center width="60%"}
 
 ## Other learning resources
 

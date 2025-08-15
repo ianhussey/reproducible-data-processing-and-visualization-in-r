@@ -64,33 +64,6 @@ data_amp_clean_names <- data_amp_raw %>%
 
 ```
 
-## Renaming columns
-
-Often variable names are not intuitive. An early step in any data wrangling is to make them more intuitive.
-
-Rename the self reports and AMP data too.
-
-```{r}
-
-data_demographics_renamed <- data_demographics_clean_names %>%
-  rename(unique_id = subject,
-         item = trialcode,
-         rt_ms = latency) 
-
-data_selfreport_renamed <- data_selfreport_clean_names %>%
-  rename(unique_id = subject,
-         item = trialcode,
-         rt_ms = latency) 
-
-data_amp_renamed <- data_amp_clean_names %>%
-  rename(unique_id = subject,
-         block_type = blockcode,
-         trial_type = trialcode,
-         trial_id = blocknum_and_trialnum,
-         rt_ms = latency) 
-
-```
-
 ## Selecting columns
 
 Not all variables are useful to you. An early step in any data wrangling is to drop the columns that you don't need.
