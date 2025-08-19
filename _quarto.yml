@@ -13,17 +13,18 @@ book:
     - chapters/reproducible_reports.qmd
     - chapters/loading_data.qmd
     - chapters/the_pipe_and_renaming.qmd
-    - chapters/data_transformation.qmd
+    - chapters/data_transformation_1.qmd
+    - chapters/data_transformation_2.qmd
     - chapters/reshaping_and_pivots.qmd
     - chapters/joins.qmd
     - chapters/structuring_projects.qmd
     - chapters/visualization.qmd 
     - chapters/reporting.qmd
     - chapters/the_linear_model.qmd
+    - chapters/privacy.md
     #- references.qmd
     - chapters/license.qmd
     
-
 bibliography: references.bib
 
 format:

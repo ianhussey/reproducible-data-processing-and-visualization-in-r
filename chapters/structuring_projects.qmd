@@ -29,28 +29,14 @@ I really like the concept, but also still have to be convinced about some of the
 
 ``` text
 github_repository_name/
+├── .gitattributes
+├── .gitignore
 ├── code/
 │   ├── analysis.html
 │   ├── analysis.qmd
 │   ├── processing_study_1.html
-│   ├── processing_study_1.qmd
 │   ├── processing_study_2.html
-│   ├── processing_study_2.qmd
-│   ├── models/
-│   │   ├── fit_model_1.rds
-│   │   ├── fit_model_2.rds
-│   │   └── ...
-│   └── plots/
-│       ├── plot_1_self_reports.png
-│       ├── plot_2_behavioral_task.png
-│       └── ...
-├── communications/
-│   ├── preprint/
-│   │   ├── preprint.docx
-│   │   └── ...
-│   └── presentations/
-│       ├── conference_presentation.pptx
-│       └── ...
+│   └── ...
 ├── data/
 │   ├── processed/
 │   │   ├── study_1_processed_data.csv
@@ -68,27 +54,48 @@ github_repository_name/
 │   │   ├── study_1_raw_selfreports_data.csv
 │   │   ├── study_2_raw_selfreports_data.csv
 │   │   └── ...
-│   └── results/
-│       ├── study_1_correlation_matrix.csv
-│       ├── study_2_correlation_matrix.csv
+│   └── outputs/
+│       ├── plots/
+│       │   ├── plot_1_self_reports.png
+│       │   ├── plot_2_behavioral_task.png
+│       │   └── ...
+│       ├── fitted_models/
+│       │   ├── fit_model_1.rds
+│       │   ├── fit_model_2.rds
+│       │   └── ...
+│       ├── results/
+│       │   ├── cor_matrix_study_1.csv
+│       │   ├── cor_matrix_study_2.csv
+│       │   └── ...
 │       └── ...
 ├── LICENSE
 ├── methods/
-│   ├── instructions.docx
 │   ├── study_1/
+│   │   ├── replication_instructions.docx
 │   │   ├── study_1_labjs.json
 │   │   ├── study_1_measures_and_procedure.docx
 │   │   └── ...
 │   └── study_2/
+│       ├── replication_instructions.docx
 │       ├── study_2_labjs.json
 │       ├── study_2_measures_and_procedure.docx
 │       └── ...
 ├── preregistration/
 │   └── preregistration.docx
-└── readme.md
+├── readme.md
+├── reports/
+│   ├── preprint/
+│   │   ├── preprint.docx
+│   │   └── ...
+│   ├── presentations/
+│   │   ├── conference_presentation.pptx
+│   │   └── ...
+│   └── ...
+└── tools/
+    ├── project_creator.qmd
+    ├── project_validator.qmd
+    └── ...
 ```
-
-results folder??
 
 Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them. 
 

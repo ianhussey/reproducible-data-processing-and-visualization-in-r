@@ -35,7 +35,7 @@ head(dat_demographics_raw) %>%
   kable_classic(full_width = FALSE)
 ```
 
-Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. 
+Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one.
 
 How should you alter the above code to ignore the first two lines when reading the data in to R?
 
@@ -405,7 +405,7 @@ Complete the interactive `rename()` exercises [here](https://errors.shinyapps.io
 
 ### Read .csv file and rename columns
 
-Download the data and code for this e-Book (see the [Introduction](../index.qmd)). 
+Download the data and code for this e-Book (see the [Introduction](../index.qmd)).
 
 In your local version of this .qmd file:
 

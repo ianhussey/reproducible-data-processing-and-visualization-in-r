@@ -1,0 +1,311 @@
+---
+title: "Data transformation II" 
+format: 
+  html: 
+    toc: true 
+    toc_float: true 
+    code-fold: show 
+    code-tools: true 
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+This chapter covers "*aggregating*" functions. They aggregate results across rows to create a new data frame that does not contain any of the rows of the original. For example, to convert the 'age' column that contains participants' ages to 'age_mean', which only has one row containing the average age. 
+
+## Summarizing across rows
+
+It is very common that we need to create summaries across rows. For example, to create the mean and standard deviation of a column like age. This can be done with `summarize()`. Remember: `mutate()` creates new columns or modifies the contents of existing columns, but does not change the number of rows. Whereas `summarize()` reduces a data frame down to one row.
+
+```{r}
+
+# mean
+data_demographics_age_tidy %>%
+  summarize(mean_age = mean(age, na.rm = TRUE))
+
+# SD
+data_demographics_age_tidy %>%
+  summarize(sd_age = sd(age, na.rm = TRUE))
+
+# mean and SD with rounding, illustrating how multiple summarizes can be done in one function call
+data_demographics_age_tidy %>%
+  summarize(mean_age = mean(age, na.rm = TRUE),
+            sd_age = sd(age, na.rm = TRUE)) %>%
+  mutate(mean_age = round_half_up(mean_age, digits = 2),
+         sd_age = round_half_up(sd_age, digits = 2))
+
+```
+
+### `group_by()`
+
+Often, we don't want to reduce a data frame down to a single row / summarize the whole dataset, but instead we want to create a summary for each (sub)group. For example
+
+```{r}
+
+# # this code creates data needed for this example - you can simply load the data from disk and skip over this commented-out code. we will come back to things like 'joins' later
+# data_demographics_unique_participant_codes <- data_demographics_trimmed %>%
+#   count(unique_id) %>%
+#   filter(n == 2)
+# 
+# data_demographics_age_gender_tidy <- data_demographics_trimmed %>%
+#   semi_join(data_demographics_unique_participant_codes, by = "unique_id") %>%
+#   pivot_wider(names_from = "item",
+#               values_from = "response") %>%
+#   mutate(age = ifelse(age == "old", NA, age),
+#          age = as.numeric(age),
+#          gender = tolower(gender),
+#          gender = stringr::str_remove_all(gender, regex("\\W+")), # regex is both very useful and awful to write
+#          gender = case_when(gender == "female" ~ gender,
+#                             gender == "male" ~ gender,
+#                             gender == "nonbinary" ~ gender,
+#                             gender == "woman" ~ "female",
+#                             gender == "man" ~ "male"))
+# 
+# dir.create("../data/processed")
+# write_csv(data_demographics_age_gender_tidy, "../data/processed/data_demographics_age_gender_tidy.csv")
+
+# load suitable example data from disk
+data_demographics_age_gender_tidy <-
+  read_csv("../data/processed/data_demographics_age_gender_tidy.csv")
+
+
+# illustrate use of group_by() and summarize()
+data_demographics_age_gender_tidy %>%
+  summarize(mean_age = mean(age, na.rm = TRUE))
+
+data_demographics_age_gender_tidy %>%
+  group_by(gender) %>%
+  summarize(mean_age = mean(age, na.rm = TRUE))
+
+```
+
+### `n()`
+
+`n()` calculates the number of rows, i.e., the N. It can be useful in summarize.
+
+```{r}
+
+# summarize n
+data_demographics_age_gender_tidy %>%
+  summarize(n_age = n())
+
+# summarize n per gender group
+data_demographics_age_gender_tidy %>%
+  group_by(gender) %>%
+  summarize(n_age = n())
+
+```
+
+Note that `count()` is just the combination of group_by() and summiarize() and n()! they produce the same results as above.
+
+```{r}
+
+# summarize n
+data_demographics_age_gender_tidy %>%
+  count()
+
+# summarize n per gender group
+data_demographics_age_gender_tidy %>%
+  count(gender)
+
+```
+
+### More complex summarizations
+
+Like mutate, the operation you do to summarize can also be more complex, such as finding the mean result of a logical test to calculate a proportion. For example, the proportion of participants who are less than 25 years old:
+
+```{r}
+
+data_demographics_age_tidy %>%
+  summarize(proportion_less_than_25 = mean(age < 25, na.rm = TRUE)) %>%
+  mutate(percent_less_than_25 = round_half_up(proportion_less_than_25 * 100, 1))
+
+```
+
+You can also summarize (or indeed mutate) multiple columns in the same way using `across()`, for do-this-across-columns. We won't cover how to use this here or all the variations that are possible, just know that it can be done. For example:
+
+```{r}
+
+# using the mtcars dataset that is built in to {dplyr}, ... 
+mtcars %>%
+  # ... calculate the mean of every numeric column in the dataset ...
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+  # ... and then round every column to one decimal place
+  mutate(across(everything(), round_half_up, digits = 1))
+
+```
+
+### Realise that `count()` is just a wrapper function for `summarize()`
+
+```{r}
+
+dat <- data.frame(x = c(
+  rnorm(n = 50),
+  rep(NA_integer_, 10)
+))
+
+dat %>%
+  mutate(x_is_na = is.na(x)) %>%
+  count(x_is_na)
+
+dat %>%
+  summarise(n_na = sum(is.na(x)))
+
+```
+
+### Practice using `summarize()`
+
+Calculate the min, max, mean, and SD of all responses on the self report data.
+
+```{r}
+
+data_selfreport_tidy %>%
+  summarize(mean = mean(response, na.rm = TRUE),
+            sd = sd(response, na.rm = TRUE),
+            min = min(response, na.rm = TRUE),
+            max = max(response, na.rm = TRUE))
+
+```
+
+Currently each participant has up to three responses on the self-report scales (three item scale: like, positive, and prefer). Create a new dataframe containing each unique_id's mean score across the items. Also calculate how many items each participant has data for, and whether they have complete data (i.e., data for three items).
+
+```{r}
+
+data_selfreport_scored <- data_selfreport_tidy %>%
+  group_by(unique_id) %>%
+  summarize(mean_self_report = mean(response),
+            n_self_report_items = n()) %>%
+  mutate(self_report_complete = n_self_report_items == 3)
+
+
+# test <- c(3, 5, 7, NA)
+# #test <- c(3, 5, 7)
+# mean(test)
+# mean(test, na.rm = TRUE)
+# 
+# dat %>%
+#   summarize(mean = mean(response, na.rm = TRUE))
+# 
+# dat %>%
+#   filter(!is.na(response)) %>%
+#   summarize(mean = mean(response))
+# 
+# mean_not_dumb <- function(x){mean(x, na.rm = TRUE)}
+
+```
+
+Using only participants with complete, calculate the mean and SD of all participant's mean scores on the self-reports.
+
+```{r}
+
+# data_selfreport_scored %>%
+
+```
+
+Create a new data frame that calculates the proportion of prime-congruent trials for each participant on the AMP (i.e., the mean of the 'correct' column), their proportion of too-fast trials, and their number of trials.
+
+Also add to that data frame a new column called "exclude_amp" and set it to "exclude" if more than 10% of a participant's trials are too-fast trials and "include" if not.
+
+```{r}
+
+# data_amp_scored <- data_amp_tidy %>%
+
+```
+
+Calculate the proportion of participants who are to be excluded.
+
+```{r}
+
+# data_amp_scored %>%
+
+```
+
+## Counting frequencies
+
+After renaming and selecting columns, we know what columns we have. But what rows do we have in each of these? What might we need to exclude, change, work with in some way later on? It is very useful to use `count()` to obtain the frequency of each unique value of a given column
+
+```{r}
+
+data_demographics_trimmed %>%
+  count(item)
+
+data_demographics_trimmed %>%
+  count(response)
+
+```
+
+```{r}
+
+data_selfreport_trimmed %>%
+  count(item)
+
+data_selfreport_trimmed %>%
+  count(response)
+
+```
+
+```{r}
+
+data_amp_trimmed %>%
+  count(trial_type)
+
+data_amp_trimmed %>%
+  count(block_type)
+
+data_amp_trimmed %>%
+  count(correct)
+
+data_amp_trimmed %>%
+  count(rt_ms)
+
+```
+
+### Frequncies of sets of columns
+
+Note that it is also possible to use count to obtain the frequencies of sets of unique values across columns, e.g., unique combinations of item and response.
+
+```{r}
+
+data_demographics_trimmed %>%
+  count(item)
+
+data_demographics_trimmed %>%
+  count(response)
+
+data_demographics_trimmed %>%
+  count(item, response)
+
+```
+
+It can be useful to arrange the output by the frequencies.
+
+```{r}
+
+data_demographics_trimmed %>%
+  count(item, response) %>%
+  arrange(desc(n)) # arrange in descending order
+
+```
+
+## count as summarize+group_by
+
+TODO
+
+## Check your learning
+
+What is the difference between `mutate()` and `summarize()`? If I use the wrong one, will I get the same answer? E.g., mutate(mean_age = mean(age, na.rm = TRUE)) vs. summarize(mean_age = mean(age, na.rm = TRUE))
+
+## Writing data to disk
+
+```{r}
+
+# write_csv(data_processed, "../data/processed/data_processed.csv")
+
+```
