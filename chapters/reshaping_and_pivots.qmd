@@ -1,5 +1,5 @@
 ---
-title: "Reshaping and pivots"
+title: "Reshaping and pivots: {tidyr}"
 format:
   html:
     toc: true
@@ -20,7 +20,21 @@ options(scipen = 999)
 
 ## Resources
 
-See code and gifs [here](https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#pivot-wider-and-longer) which illustrate pivots (and indeed other tidyverse verbs).
+Add alison horsts pics here
+
+![](images/clipboard-1717531637.png)
+
+![](images/clipboard-3657002858.png)
+
+Have students read Hadley's chapter on tidy data. his examples and figures are nice, but the license he uses means i cant bring them into this book, and it seems like a waste to make alternatives.
+
+<https://r4ds.had.co.nz/tidy-data.html#non-tidy-data>
+
+Tidy Data paper <https://vita.had.co.nz/papers/tidy-data.pdf>
+
+TODO
+
+Bring gifs from [here](https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#pivot-wider-and-longer) which illustrate pivots into this book
 
 ## Dependencies
 

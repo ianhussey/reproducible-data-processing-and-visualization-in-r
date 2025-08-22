@@ -1,5 +1,5 @@
 ---
-title: "Joins"
+title: "Binding and joining: {dplyr}'s `join_` functions"
 format:
   html:
     toc: true
@@ -26,6 +26,10 @@ library(dplyr)
 library(readr)
 
 ```
+
+## bind_rows() and bind_cols()
+
+TODO
 
 ## Get data
 

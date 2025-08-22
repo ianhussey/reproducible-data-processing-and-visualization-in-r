@@ -1,0 +1,51 @@
+---
+title: "Project 1: practicing data processing and management"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+Exercise 1: sum score multi item likert scale data with reverse-scored items
+
+Exercise 2: sum score multi item likert scale data with reverse-scored items and missingness
+
+Exercise 2: sum score multi item likert scale data with reverse-scored items and missingness and qualtrics issues
+
+Exercise 2: sum score multi item likert scale data with reverse-scored items and missingness and qualtrics issues and duplicate participants
+
+-   use between to check if sum score is in range
+
+-   use between to check if item level data is in range
+
+show it a few different ways and change them as you go:
+
+-   rowsums
+
+-   means()\*items
+
+-   rowMeans()\*items
+
+0) Define the items once (be explicit so it's reproducible)
+
+item_sel \<- starts_with("phq\_") \# or c(phq_1:phq_9)
+
+1) How many items are on the scale?
+
+n_items \<- df \|\> select({{ item_sel }}) \|\> ncol()
+
+2) Compute prorated sum = row mean of available items × total items
+
+df \<- df \|\> mutate( n_valid = rowSums(!is.na(pick({{ item_sel }}))), score_raw = rowMeans(pick({{ item_sel }}), na.rm = TRUE) \* n_items, score = ifelse(n_valid / n_items \>= 0.8 & n_valid \> 0, score_raw, NA_real\_) )

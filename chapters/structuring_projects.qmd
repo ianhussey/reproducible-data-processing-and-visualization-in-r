@@ -1,5 +1,5 @@
 ---
-title: "Structuring projects"
+title: "Structuring projects: {psychdsish} and GitHub"
 format:
   html:
     toc: true
@@ -22,10 +22,7 @@ options(scipen = 999)
 
 I have contributed a very small amount to the debate around [psych-DS](https://psych-ds.github.io), a data standard for psychological data. 'Standards' are specifications for both what *must* be done or not done, and what *may* be done to provide flexibility. By having a standard, and an (automated) method of checking compliance with it
 
-
 I really like the concept, but also still have to be convinced about some of the choices made in psych-DS. For the moment, I recommend partial compliance with psych-DS: there are high level principles that make for a very well structured project that I try to employ everywhere; but there are also other aspects of psych-DS that are (currently) high-effort-low-reward.
-
-
 
 ``` text
 github_repository_name/
@@ -97,15 +94,14 @@ github_repository_name/
     └── ...
 ```
 
-Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them. 
-
+Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them.
 
 psych-DS principles
 
-- The earliest form of data must be preserved
-- Original data should never be modified
-- Different versions of the data should be kept separate
-- All transformations should be documented
+-   The earliest form of data must be preserved
+-   Original data should never be modified
+-   Different versions of the data should be kept separate
+-   All transformations should be documented
 
 ## Sharing code and data, making preregistrations
 
@@ -118,5 +114,3 @@ https://ui-research.github.io/reproducibility-at-urban/git-overview.html
 Linking github repo to OSF
 
 ## Licensing
-
-

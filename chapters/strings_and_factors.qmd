@@ -1,0 +1,54 @@
+---
+title: "Working with strings and factors using {stringr} and {forcats}"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+TODO
+
+
+
+### String subsearches with `stringr::str_detect()`
+
+TODO 
+
+case, characters etc.
+
+```{r}
+library(stringr)
+
+test <- c("A", "AB", "B")
+
+test == "A"
+str_detect(test, "B")
+
+```
+
+Therefore:
+
+```{r}
+
+# data_amp_test_trials %>%
+#   filter(str_detect(trial_id, "2_")) 
+
+```
+
+
+
+## forcats
+
+## stringr

@@ -29,16 +29,14 @@ Ease of reporting via automated reported has to be strongly balanced against tho
     -   even named tests
     -   even CFA and path analysis
 
-
 notes on what to add from last year:
 
-- it's all a linear model - resources and code
-- slides on relating y = mx + c to regression
-- the estimate for an intercept only model is the mean, that's what a mean is. The error term is the standard deviation; that's what a SD is.
-- meta-analyses are intercept only models with fixed or random effects for site. add code for this.
-- use meta-analysis as the entry point for random effect models and wilkinson notation for it.
-- sum scores are a specific factor model with equal loadings.
-
+-   it's all a linear model - resources and code
+-   slides on relating y = mx + c to regression
+-   the estimate for an intercept only model is the mean, that's what a mean is. The error term is the standard deviation; that's what a SD is.
+-   meta-analyses are intercept only models with fixed or random effects for site. add code for this.
+-   use meta-analysis as the entry point for random effect models and wilkinson notation for it.
+-   sum scores are a specific factor model with equal loadings.
 
 # Dependencies
 
@@ -47,10 +45,13 @@ notes on what to add from last year:
 library(faux)
 library(lme4)
 library(ggplot2)
+library(dplyr)
+library(tidyr)
 library(scales)
 library(modelbased)
 library(see)
 library(lavaan)
+library(semPlot)
 
 ```
 
@@ -66,25 +67,23 @@ Intercepts are specified as 1. E.g., `y ~ 1 + x`. Note that intercepts are often
 
 Understand beta regression coefficients by going back to your high school math for the slope of a line: $y = m \times x + c$. This can be rewritten by swapping the place of the intercept (c) and slope (m), relabeling the variables, and adding the error term: $y \sim \beta_i + \beta_xx + e$.
 
-
 **Multilevel models: Fixed vs random effects**
 
 When categorical, fixed effects variables are typically "exhaustive", in that the levels present in the data are all the possible options (they 'exhaust' the possible options). In contrast, random effects variables are "non-exhaustive", in that other levels might exist in the world. For example, I would be more likely to use 'journal' as a random effect variable because I only have 5 journals per subfield in my data, but many other journals exist in these subfields in the real world.
 
-Additionally, random effects can be used to acknowledge dependencies in data. For example, if participants' positive affect was measured 5 times a day for 1 week, you would have 35 data points per participant. Simple regressions are fixed effects only and assume independence of the data. Mixed effects models allow you to include random effects to acknowledge that the same participant produced these 35 data points. 
+Additionally, random effects can be used to acknowledge dependencies in data. For example, if participants' positive affect was measured 5 times a day for 1 week, you would have 35 data points per participant. Simple regressions are fixed effects only and assume independence of the data. Mixed effects models allow you to include random effects to acknowledge that the same participant produced these 35 data points.
 
-Separately, fixed effects variables assume that there is a single true variable for each parameter in the population, whereas random effects assume that there is a distribution of true population parameters. Random effects estimate the hyperparameters of those distributions. 
+Separately, fixed effects variables assume that there is a single true variable for each parameter in the population, whereas random effects assume that there is a distribution of true population parameters. Random effects estimate the hyperparameters of those distributions.
 
-Packages like {lme4} and {brms} are excellent for fitting multilevel models. Equally importantly, packages such as those in the {easystat} universe of packages, e.g., {modelbased}, {parameters}, and {see} are very useful for extracting, interpreting and plotting results from multilevel models, as is the {marginaleffects} package. 
-
+Packages like {lme4} and {brms} are excellent for fitting multilevel models. Equally importantly, packages such as those in the {easystat} universe of packages, e.g., {modelbased}, {parameters}, and {see} are very useful for extracting, interpreting and plotting results from multilevel models, as is the {marginaleffects} package.
 
 **Latent variable modelling/CFA/SEM**
 
-Packages like {lavaan} are excellent for fitting Confirmatory Factor Analyses, Path Analyses, Structural Equation Models, and also simple regressions. 
+Packages like {lavaan} are excellent for fitting Confirmatory Factor Analyses, Path Analyses, Structural Equation Models, and also simple regressions.
 
-- `~` to specify regressions, as in other Wilkinson notation.
-- `=~` to specify measurement models, i.e., unobserved latent variables defined by observed variables. 
-- `~~` to specify correlated variances, e.g., for items in a measurement model that are known to be correlated or to acknowledge non-independence in data (e.g., between timepoints)
+-   `~` to specify regressions, as in other Wilkinson notation.
+-   `=~` to specify measurement models, i.e., unobserved latent variables defined by observed variables.
+-   `~~` to specify correlated variances, e.g., for items in a measurement model that are known to be correlated or to acknowledge non-independence in data (e.g., between timepoints)
 
 ```{r}
 
@@ -103,7 +102,6 @@ model <- '
          '
 
 ```
-
 
 ```{r}
 
@@ -134,7 +132,7 @@ model <-  '
 
 ```
 
-# Practicing Wilkinson notation 
+# Practicing Wilkinson notation
 
 ## Generate data
 
@@ -183,8 +181,8 @@ Average Marginal Effect for year
 
 predictions <- estimate_expectation(res)
 
-plot(predicted) +
-  theme_linedraw()
+# plot(predictions) +
+#   theme_linedraw()
 
 ```
 
@@ -205,8 +203,8 @@ Average Marginal Effect for year
 
 predictions <- estimate_expectation(res, at = c("subfield", "journal"))
 
-plot(predicted) +
-  theme_linedraw()
+# plot(predictions) +
+#   theme_linedraw()
 
 ```
 
@@ -226,5 +224,3 @@ ggplot(predictions, aes(x = year, y = Predicted)) +
   facet_wrap(subfield ~ journal)
 
 ```
-
-

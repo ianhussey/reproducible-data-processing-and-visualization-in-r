@@ -1,5 +1,5 @@
 ---
-title: "Visualization"
+title: "Visualization: {ggplot2}"
 format:
   html:
     toc: true

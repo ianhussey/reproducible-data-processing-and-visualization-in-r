@@ -33,12 +33,12 @@ There are many excellent Open Source resources to learn R and {tidyverse} for da
         -   [Practice the functions count, arrange, summarize](https://minecr.shinyapps.io/dsbox-04-legosales)
     -   [Recorded presentations](https://datasciencebox.org/02-exploring-data) on many relevant topics
 
-# Find me elsewhere
+## Find me elsewhere
 
 You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website [mmmdata.io](https://mmmdata.io).
 
 You can find me on Bluesky at [\@ianhussey](https://bsky.app/profile/ianhussey.mmmdata.io).
 
-# Contributing
+## Contributing
 
 If you are interested in contributing to or adapting this eBook, all code and data are available on [GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r).

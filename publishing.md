@@ -1,4 +1,9 @@
 https://quartopub.com/
 
   Terminal:
-  `quarto publish quarto-pub`
+
+````
+cd ~/git/reproducible-data-processing-and-visualization-in-r
+quarto publish quarto-pub
+````
+

@@ -179,54 +179,6 @@ It's somewhat less well known, but you can also do "right-assignment" (`->`) ins
 z
 ```
 
-## Rounding: `round()` probably doesn't do what you think
-
-Did you know that R doesn't use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
-
-This is easier to show than explain. The `round()` function rounds each of the numbers passed to it. What do you expect the output to be?
-
-```{r}
-#| eval: false
-round(c(0.5, 
-        1.5, 
-        2.5, 
-        3.5, 
-        4.5, 
-        5.5))
-```
-
-::: {.callout-note collapse="true" title="Click to show result"}
-> \[1\] 0 2 2 4 4 6
-
-Why is this? Because R's `round()` function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.
-:::
-
-In most of your R scripts, you should probably instead use `janitor::round_half_up()` instead, which produces the round-5-upwards behavior you were probably taught in school.
-
-```{r}
-library(janitor)
-
-janitor::round_half_up(c(0.5, 
-                         1.5, 
-                         2.5, 
-                         3.5, 
-                         4.5, 
-                         5.5))
-```
-
-Another great option is `roundwork::round_up()`, which is a package that my PhD student [Lukas Jung](https://bsky.app/profile/lhdjung.bsky.social) wrote before joining our research group.
-
-```{r}
-library(roundwork) 
-
-roundwork::round_up(c(0.5, 
-                      1.5, 
-                      2.5, 
-                      3.5, 
-                      4.5, 
-                      5.5))
-```
-
 ## Exercises
 
 ### Fix indentation / white space

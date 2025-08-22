@@ -1,0 +1,21 @@
+---
+title: "Project 2: practicing data processing and management"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+
+```
+
+process AMP data (requires summarizing), demographics data (requires reshaping), self-report data, combine (requires joining)

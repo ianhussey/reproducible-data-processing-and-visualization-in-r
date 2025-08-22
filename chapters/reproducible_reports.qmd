@@ -1,5 +1,5 @@
 ---
-title: "Reproducible reports"
+title: "Reproducible reports: Quarto and {knitr}"
 format:
   html:
     toc: true
