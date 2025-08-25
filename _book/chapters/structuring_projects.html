@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Structuring projects – Reproducible Data Processing and Visualization</title>
+<title>9&nbsp; Structuring projects: {psychdsish} and GitHub – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/loading_data.html" rel="next">
-<link href="../chapters/reproducible_reports.html" rel="prev">
+<link href="../chapters/visualization.html" rel="next">
+<link href="../chapters/binding_and_joining.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/structuring_projects.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Structuring projects</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/structuring_projects.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects: {psychdsish} and GitHub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,61 +163,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports: Quarto and {knitr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data: {readr} and {readxl}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming: {dplyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
+  <a href="../chapters/data_transformation_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I: {dplyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots: {tidyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Binding and joining: {dplyr}</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects: {psychdsish} and GitHub</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization: {ggplot2}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting: {easystats}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,8 +236,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#psych-ds" id="toc-psych-ds" class="nav-link active" data-scroll-target="#psych-ds"><span class="header-section-number">4.1</span> psych-DS</a></li>
-  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><span class="header-section-number">4.2</span> GitHub</a></li>
+  <li><a href="#psych-ds" id="toc-psych-ds" class="nav-link active" data-scroll-target="#psych-ds"><span class="header-section-number">9.1</span> psych-DS</a></li>
+  <li><a href="#sharing-code-and-data-making-preregistrations" id="toc-sharing-code-and-data-making-preregistrations" class="nav-link" data-scroll-target="#sharing-code-and-data-making-preregistrations"><span class="header-section-number">9.2</span> Sharing code and data, making preregistrations</a>
+  <ul class="collapse">
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><span class="header-section-number">9.2.1</span> GitHub</a></li>
+  </ul></li>
+  <li><a href="#osf" id="toc-osf" class="nav-link" data-scroll-target="#osf"><span class="header-section-number">9.3</span> OSF</a></li>
+  <li><a href="#licensing" id="toc-licensing" class="nav-link" data-scroll-target="#licensing"><span class="header-section-number">9.4</span> Licensing</a></li>
   </ul>
 </nav>
     </div>
@@ -246,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Structuring projects</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects: {psychdsish} and GitHub</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -263,46 +268,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="psych-ds" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="psych-ds"><span class="header-section-number">4.1</span> psych-DS</h2>
-<p>https://psych-ds.github.io</p>
+<section id="psych-ds" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="psych-ds"><span class="header-section-number">9.1</span> psych-DS</h2>
+<p>I have contributed a very small amount to the debate around <a href="https://psych-ds.github.io">psych-DS</a>, a data standard for psychological data. ‘Standards’ are specifications for both what <em>must</em> be done or not done, and what <em>may</em> be done to provide flexibility. By having a standard, and an (automated) method of checking compliance with it</p>
+<p>I really like the concept, but also still have to be convinced about some of the choices made in psych-DS. For the moment, I recommend partial compliance with psych-DS: there are high level principles that make for a very well structured project that I try to employ everywhere; but there are also other aspects of psych-DS that are (currently) high-effort-low-reward.</p>
 <pre class="text"><code>github_repository_name/
+├── .gitattributes
+├── .gitignore
 ├── code/
+│   ├── analysis.html
 │   ├── analysis.qmd
-│   └── processing.qmd
-├── communications/
-│   ├── preprint/
-│   │   └── preprint.docx
-│   └── presentations/
-│       └── conference_presentation.pptx
-├── dataset_description.json
+│   ├── processing_study_1.html
+│   ├── processing_study_2.html
+│   └── ...
 ├── data/
 │   ├── processed/
 │   │   ├── study_1_processed_data.csv
 │   │   ├── study_1_processed_codebook.xlsx
 │   │   ├── study_2_processed_data.csv
-│   │   └── study_2_processed_codebook.xlsx
-│   └── raw/
-│       ├── study_1_raw_behavioraltask_data.csv
-│       ├── study_2_raw_behavioraltask_data.csv
-│       ├── study_1_raw_codebook.xlsx
-│       ├── study_2_raw_codebook.xlsx
-│       ├── study_1_raw_demographics_data.csv
-│       ├── study_2_raw_demographics_data.csv
-│       ├── study_1_raw_selfreports_data.csv
-│       └── study_2_raw_selfreports_data.csv
-├── license
+│   │   ├── study_2_processed_codebook.xlsx
+│   │   └── ...
+│   ├── raw/
+│   │   ├── study_1_raw_behavioraltask_data.csv
+│   │   ├── study_2_raw_behavioraltask_data.csv
+│   │   ├── study_1_raw_codebook.xlsx
+│   │   ├── study_2_raw_codebook.xlsx
+│   │   ├── study_1_raw_demographics_data.csv
+│   │   ├── study_2_raw_demographics_data.csv
+│   │   ├── study_1_raw_selfreports_data.csv
+│   │   ├── study_2_raw_selfreports_data.csv
+│   │   └── ...
+│   └── outputs/
+│       ├── plots/
+│       │   ├── plot_1_self_reports.png
+│       │   ├── plot_2_behavioral_task.png
+│       │   └── ...
+│       ├── fitted_models/
+│       │   ├── fit_model_1.rds
+│       │   ├── fit_model_2.rds
+│       │   └── ...
+│       ├── results/
+│       │   ├── cor_matrix_study_1.csv
+│       │   ├── cor_matrix_study_2.csv
+│       │   └── ...
+│       └── ...
+├── LICENSE
 ├── methods/
-│   ├── instructions.docx
 │   ├── study_1/
-│   │   └── study_1_labjs.json
+│   │   ├── replication_instructions.docx
+│   │   ├── study_1_labjs.json
+│   │   ├── study_1_measures_and_procedure.docx
+│   │   └── ...
 │   └── study_2/
-│       └── study_2_labjs.json
-└── readme.md</code></pre>
+│       ├── replication_instructions.docx
+│       ├── study_2_labjs.json
+│       ├── study_2_measures_and_procedure.docx
+│       └── ...
+├── preregistration/
+│   └── preregistration.docx
+├── readme.md
+├── reports/
+│   ├── preprint/
+│   │   ├── preprint.docx
+│   │   └── ...
+│   ├── presentations/
+│   │   ├── conference_presentation.pptx
+│   │   └── ...
+│   └── ...
+└── tools/
+    ├── project_creator.qmd
+    ├── project_validator.qmd
+    └── ...</code></pre>
+<p>Note that psych-DS specifies that the data dictionary/codebook must be a json file. I’m not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them.</p>
+<p>psych-DS principles</p>
+<ul>
+<li>The earliest form of data must be preserved</li>
+<li>Original data should never be modified</li>
+<li>Different versions of the data should be kept separate</li>
+<li>All transformations should be documented</li>
+</ul>
 </section>
-<section id="github" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="github"><span class="header-section-number">4.2</span> GitHub</h2>
+<section id="sharing-code-and-data-making-preregistrations" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="sharing-code-and-data-making-preregistrations"><span class="header-section-number">9.2</span> Sharing code and data, making preregistrations</h2>
+<section id="github" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="github"><span class="header-section-number">9.2.1</span> GitHub</h3>
 <p>https://ui-research.github.io/reproducibility-at-urban/git-overview.html</p>
+</section>
+</section>
+<section id="osf" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="osf"><span class="header-section-number">9.3</span> OSF</h2>
+<p>Linking github repo to OSF</p>
+</section>
+<section id="licensing" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="licensing"><span class="header-section-number">9.4</span> Licensing</h2>
 
 
 <!-- -->
@@ -762,18 +820,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/reproducible_reports.html" class="pagination-link" aria-label="Reproducible reports">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span>
+      <a href="../chapters/binding_and_joining.html" class="pagination-link" aria-label="Binding and joining: {dplyr}">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Binding and joining: {dplyr}</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/visualization.html" class="pagination-link" aria-label="Visualization: {ggplot2}">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization: {ggplot2}</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Structuring projects"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Structuring projects: {psychdsish} and GitHub"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
@@ -794,47 +852,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## psych-DS</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>https://psych-ds.github.io</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>I have contributed a very small amount to the debate around <span class="co">[</span><span class="ot">psych-DS</span><span class="co">](https://psych-ds.github.io)</span>, a data standard for psychological data. 'Standards' are specifications for both what *must* be done or not done, and what *may* be done to provide flexibility. By having a standard, and an (automated) method of checking compliance with it</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="in">github_repository_name/</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">├── code/</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── analysis.qmd</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── processing.qmd</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">├── communications/</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── preprint/</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── preprint.docx</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── presentations/</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">│       └── conference_presentation.pptx</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">├── dataset_description.json</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">├── data/</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── processed/</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_processed_data.csv</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_processed_codebook.xlsx</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_processed_data.csv</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── study_2_processed_codebook.xlsx</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── raw/</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_1_raw_behavioraltask_data.csv</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_2_raw_behavioraltask_data.csv</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_1_raw_codebook.xlsx</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_2_raw_codebook.xlsx</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_1_raw_demographics_data.csv</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_2_raw_demographics_data.csv</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_1_raw_selfreports_data.csv</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">│       └── study_2_raw_selfreports_data.csv</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">├── license</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">├── methods/</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── instructions.docx</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── study_1/</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── study_1_labjs.json</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── study_2/</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">│       └── study_2_labjs.json</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">└── readme.md</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## GitHub</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>https://ui-research.github.io/reproducibility-at-urban/git-overview.html</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>I really like the concept, but also still have to be convinced about some of the choices made in psych-DS. For the moment, I recommend partial compliance with psych-DS: there are high level principles that make for a very well structured project that I try to employ everywhere; but there are also other aspects of psych-DS that are (currently) high-effort-low-reward.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">github_repository_name/</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">├── .gitattributes</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">├── .gitignore</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">├── code/</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── analysis.html</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── analysis.qmd</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── processing_study_1.html</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── processing_study_2.html</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── ...</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">├── data/</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── processed/</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_processed_data.csv</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_processed_codebook.xlsx</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_processed_data.csv</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_processed_codebook.xlsx</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── ...</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── raw/</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_raw_behavioraltask_data.csv</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_raw_behavioraltask_data.csv</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_raw_codebook.xlsx</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_raw_codebook.xlsx</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_raw_demographics_data.csv</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_raw_demographics_data.csv</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_raw_selfreports_data.csv</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_2_raw_selfreports_data.csv</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── ...</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── outputs/</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── plots/</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── plot_1_self_reports.png</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── plot_2_behavioral_task.png</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   └── ...</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── fitted_models/</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── fit_model_1.rds</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── fit_model_2.rds</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   └── ...</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── results/</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── cor_matrix_study_1.csv</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   ├── cor_matrix_study_2.csv</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">│       │   └── ...</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">│       └── ...</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">├── LICENSE</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">├── methods/</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── study_1/</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── replication_instructions.docx</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_labjs.json</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── study_1_measures_and_procedure.docx</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── ...</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── study_2/</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── replication_instructions.docx</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_2_labjs.json</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">│       ├── study_2_measures_and_procedure.docx</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">│       └── ...</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">├── preregistration/</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── preregistration.docx</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">├── readme.md</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in">├── reports/</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── preprint/</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── preprint.docx</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── ...</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── presentations/</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── conference_presentation.pptx</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── ...</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── ...</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in">└── tools/</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── project_creator.qmd</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── project_validator.qmd</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">    └── ...</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them.</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>psych-DS principles</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The earliest form of data must be preserved</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Original data should never be modified</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Different versions of the data should be kept separate</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>All transformations should be documented</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sharing code and data, making preregistrations</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### GitHub</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>https://ui-research.github.io/reproducibility-at-urban/git-overview.html</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## OSF</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>Linking github repo to OSF</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="fu">## Licensing</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

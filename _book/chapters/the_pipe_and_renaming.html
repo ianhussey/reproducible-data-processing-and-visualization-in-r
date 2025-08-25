@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; The pipe and renaming – Reproducible Data Processing and Visualization</title>
+<title>5&nbsp; The pipe and renaming: {dplyr} – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/data_transformation.html" rel="next">
+<link href="../chapters/data_transformation_1.html" rel="next">
 <link href="../chapters/loading_data.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_pipe_and_renaming.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/the_pipe_and_renaming.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming: {dplyr}</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,61 +165,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports: Quarto and {knitr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data: {readr} and {readxl}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming: {dplyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/data_transformation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation</span></span></a>
+  <a href="../chapters/data_transformation_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I: {dplyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots: {tidyr}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/joins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Joins</span></span></a>
+  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Binding and joining: {dplyr}</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects: {psychdsish} and GitHub</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization: {ggplot2}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting: {easystats}</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,31 +238,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exploring-column-names-and-rows" id="toc-exploring-column-names-and-rows" class="nav-link active" data-scroll-target="#exploring-column-names-and-rows"><span class="header-section-number">6.1</span> Exploring column names and rows</a>
+  <li><a href="#exploring-column-names-and-rows" id="toc-exploring-column-names-and-rows" class="nav-link active" data-scroll-target="#exploring-column-names-and-rows"><span class="header-section-number">5.1</span> Exploring column names and rows</a>
   <ul class="collapse">
-  <li><a href="#count-rows-and-columns-with-nrow-and-ncol" id="toc-count-rows-and-columns-with-nrow-and-ncol" class="nav-link" data-scroll-target="#count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">6.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></a></li>
-  <li><a href="#viewing-column-names-with-colnames" id="toc-viewing-column-names-with-colnames" class="nav-link" data-scroll-target="#viewing-column-names-with-colnames"><span class="header-section-number">6.1.2</span> Viewing column names with <code>colnames()</code></a></li>
+  <li><a href="#count-rows-and-columns-with-nrow-and-ncol" id="toc-count-rows-and-columns-with-nrow-and-ncol" class="nav-link" data-scroll-target="#count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">5.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></a></li>
+  <li><a href="#viewing-column-names-with-colnames" id="toc-viewing-column-names-with-colnames" class="nav-link" data-scroll-target="#viewing-column-names-with-colnames"><span class="header-section-number">5.1.2</span> Viewing column names with <code>colnames()</code></a></li>
   </ul></li>
-  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">6.2</span> The pipe</a>
+  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe"><span class="header-section-number">5.2</span> The pipe</a>
   <ul class="collapse">
-  <li><a href="#what-is-the-pipe" id="toc-what-is-the-pipe" class="nav-link" data-scroll-target="#what-is-the-pipe"><span class="header-section-number">6.2.1</span> What is the pipe?</a></li>
-  <li><a href="#why-use-the-pipe" id="toc-why-use-the-pipe" class="nav-link" data-scroll-target="#why-use-the-pipe"><span class="header-section-number">6.2.2</span> Why use the pipe?</a></li>
+  <li><a href="#what-is-the-pipe" id="toc-what-is-the-pipe" class="nav-link" data-scroll-target="#what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</a></li>
+  <li><a href="#why-use-the-pipe" id="toc-why-use-the-pipe" class="nav-link" data-scroll-target="#why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</a></li>
   </ul></li>
-  <li><a href="#implicit-arguments-the-pipe" id="toc-implicit-arguments-the-pipe" class="nav-link" data-scroll-target="#implicit-arguments-the-pipe"><span class="header-section-number">6.3</span> Implicit arguments &amp; the pipe</a>
+  <li><a href="#implicit-arguments-the-pipe" id="toc-implicit-arguments-the-pipe" class="nav-link" data-scroll-target="#implicit-arguments-the-pipe"><span class="header-section-number">5.3</span> Implicit arguments &amp; the pipe</a>
   <ul class="collapse">
-  <li><a href="#the-two-pipes-vs." id="toc-the-two-pipes-vs." class="nav-link" data-scroll-target="#the-two-pipes-vs."><span class="header-section-number">6.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></a></li>
+  <li><a href="#the-two-pipes-vs." id="toc-the-two-pipes-vs." class="nav-link" data-scroll-target="#the-two-pipes-vs."><span class="header-section-number">5.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></a></li>
   </ul></li>
-  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns"><span class="header-section-number">6.4</span> Renaming columns</a>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns"><span class="header-section-number">5.4</span> Renaming columns</a>
   <ul class="collapse">
-  <li><a href="#why-rename" id="toc-why-rename" class="nav-link" data-scroll-target="#why-rename"><span class="header-section-number">6.4.1</span> Why rename</a></li>
-  <li><a href="#renaming-with-rename-the-pipe" id="toc-renaming-with-rename-the-pipe" class="nav-link" data-scroll-target="#renaming-with-rename-the-pipe"><span class="header-section-number">6.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</a></li>
+  <li><a href="#why-rename" id="toc-why-rename" class="nav-link" data-scroll-target="#why-rename"><span class="header-section-number">5.4.1</span> Why rename</a></li>
+  <li><a href="#renaming-with-rename-the-pipe" id="toc-renaming-with-rename-the-pipe" class="nav-link" data-scroll-target="#renaming-with-rename-the-pipe"><span class="header-section-number">5.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</a></li>
   </ul></li>
-  <li><a href="#automatic-renaming-with-janitorclean_names" id="toc-automatic-renaming-with-janitorclean_names" class="nav-link" data-scroll-target="#automatic-renaming-with-janitorclean_names"><span class="header-section-number">6.5</span> Automatic renaming with <code>janitor::clean_names()</code></a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.6</span> Exercises</a>
+  <li><a href="#automatic-renaming-with-janitorclean_names" id="toc-automatic-renaming-with-janitorclean_names" class="nav-link" data-scroll-target="#automatic-renaming-with-janitorclean_names"><span class="header-section-number">5.5</span> Automatic renaming with <code>janitor::clean_names()</code></a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.6</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#what-four-principles-should-column-names-follow" id="toc-what-four-principles-should-column-names-follow" class="nav-link" data-scroll-target="#what-four-principles-should-column-names-follow"><span class="header-section-number">6.6.1</span> What four principles should column names follow?</a></li>
-  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">6.6.2</span> Interactive exercises</a></li>
-  <li><a href="#read-.csv-file-and-rename-columns" id="toc-read-.csv-file-and-rename-columns" class="nav-link" data-scroll-target="#read-.csv-file-and-rename-columns"><span class="header-section-number">6.6.3</span> Read .csv file and rename columns</a></li>
+  <li><a href="#what-four-principles-should-column-names-follow" id="toc-what-four-principles-should-column-names-follow" class="nav-link" data-scroll-target="#what-four-principles-should-column-names-follow"><span class="header-section-number">5.6.1</span> What four principles should column names follow?</a></li>
+  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">5.6.2</span> Interactive exercises</a></li>
+  <li><a href="#read-.csv-file-and-rename-columns" id="toc-read-.csv-file-and-rename-columns" class="nav-link" data-scroll-target="#read-.csv-file-and-rename-columns"><span class="header-section-number">5.6.3</span> Read .csv file and rename columns</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming: {dplyr}</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -289,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exploring-column-names-and-rows" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="exploring-column-names-and-rows"><span class="header-section-number">6.1</span> Exploring column names and rows</h2>
+<section id="exploring-column-names-and-rows" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="exploring-column-names-and-rows"><span class="header-section-number">5.1</span> Exploring column names and rows</h2>
 <p>As in the last chapter, we load data using relative paths and <code>read_csv()</code> and view the first few rows with <code>head()</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -491,8 +491,8 @@ Click to show answer
 </div>
 </div>
 </div>
-<section id="count-rows-and-columns-with-nrow-and-ncol" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">6.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></h3>
+<section id="count-rows-and-columns-with-nrow-and-ncol" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="count-rows-and-columns-with-nrow-and-ncol"><span class="header-section-number">5.1.1</span> Count rows and columns with <code>nrow()</code> and <code>ncol()</code></h3>
 <p>Processing and cleaning any data set requires an understanding what it contains - as well as a thorough understanding of how the data was generated (e.g., the study’s design and specific implementation; what rows represent what measurement and in what way, etc.).</p>
 <p>A rudimentary but important step to understanding what a data set contains is to know how many rows and columns it contains.</p>
 <p>This is useful to check at multiple steps of your data processing to make sure you have not done something wrong by gaining or losing columns or rows that you should not.</p>
@@ -517,8 +517,8 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="viewing-column-names-with-colnames" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="viewing-column-names-with-colnames"><span class="header-section-number">6.1.2</span> Viewing column names with <code>colnames()</code></h3>
+<section id="viewing-column-names-with-colnames" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="viewing-column-names-with-colnames"><span class="header-section-number">5.1.2</span> Viewing column names with <code>colnames()</code></h3>
 <p>How would you know what variables are in a data frame? You can view the data frame, but it can also be useful to print them. Knowing what you have is one of the first steps to working with it.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -547,10 +547,10 @@ Click to show answer
 <p>This takes the output of <code>colnames()</code> and applies <code>dput()</code> to it. When your data processing calls muliple functions in a row, this could get complicated to read and write. It’s therefore time to introduce ‘the pipe’.</p>
 </section>
 </section>
-<section id="the-pipe" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="the-pipe"><span class="header-section-number">6.2</span> The pipe</h2>
-<section id="what-is-the-pipe" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="what-is-the-pipe"><span class="header-section-number">6.2.1</span> What is the pipe?</h3>
+<section id="the-pipe" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-pipe"><span class="header-section-number">5.2</span> The pipe</h2>
+<section id="what-is-the-pipe" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="what-is-the-pipe"><span class="header-section-number">5.2.1</span> What is the pipe?</h3>
 <p>The output of the function to the left of the pipe is used as the input to the function to the right of the pipe.</p>
 <pre class="text"><code>[this function's output...] %&gt;%
   [...becomes this function's input]</code></pre>
@@ -580,8 +580,8 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="why-use-the-pipe" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="why-use-the-pipe"><span class="header-section-number">6.2.2</span> Why use the pipe?</h3>
+<section id="why-use-the-pipe" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="why-use-the-pipe"><span class="header-section-number">5.2.2</span> Why use the pipe?</h3>
 <p>The pipe allows us to write code that reads from top to bottom, following a series of steps, in the same way that humans would describe and conduct the steps. Without the pipe, code is written from the inside out in the way that R understands it but humans do not as easily.</p>
 <p>The utility of the pipe becomes more obvious when there are many steps in the workflow.</p>
 <p>The following example uses functions we have not learned yet. We’ll cover them in later chapters. For the moment, the point is to demonstrate the usage of the pipe.</p>
@@ -755,8 +755,8 @@ Click to show answer
 </div>
 </section>
 </section>
-<section id="implicit-arguments-the-pipe" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="implicit-arguments-the-pipe"><span class="header-section-number">6.3</span> Implicit arguments &amp; the pipe</h2>
+<section id="implicit-arguments-the-pipe" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="implicit-arguments-the-pipe"><span class="header-section-number">5.3</span> Implicit arguments &amp; the pipe</h2>
 <p>As in other cases in R, arguments can be passed to functions ‘explicitly’ (by naming the argument) or ‘implicitly’ (without names).</p>
 <p>How the pipe works can be slightly clearer if we use explicit arguments.</p>
 <p>The pipe passes the output of the preceding function on to the next function as ‘.’:</p>
@@ -936,8 +936,8 @@ Click to show answer
 </table>
 </div>
 </div>
-<section id="the-two-pipes-vs." class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="the-two-pipes-vs."><span class="header-section-number">6.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></h3>
+<section id="the-two-pipes-vs." class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="the-two-pipes-vs."><span class="header-section-number">5.3.1</span> The two pipes: <code>%&gt;%</code> vs.&nbsp;<code>|&gt;</code></h3>
 <p><code>%&gt;%</code> is the original pipe created for the {magrittr} package and used throughout the tidyverse packages. It is slightly slower but also more flexible because it can pass to the ‘.data’ argument.</p>
 <p><code>|&gt;</code> is a version of the pipe added more recently to base-R. It is slightly faster but less flexible. This speed only matters if you’re doing this with much larger data sets or very frequently (e.g., in Monte Carlo simulations).</p>
 <p>The base R pipe (<code>|&gt;</code>) is less intelligent behind the scenes. It always supplies the input as the first argument and can’t handle passing to ‘.data’. If you want to pass its output explicitly, you use ‘_’ instead of ‘.’. However, in my experience, this works imperfectly and not all functions will accept it. Example of explicit passing with the base R pipe <code>|&gt;</code>:</p>
@@ -1033,19 +1033,19 @@ Click to show answer
 <p>I try to use <code>%&gt;%</code> throughout this book, but because I use <code>|&gt;</code> more often in my own code I might slip up.</p>
 </section>
 </section>
-<section id="renaming-columns" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="renaming-columns"><span class="header-section-number">6.4</span> Renaming columns</h2>
-<section id="why-rename" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="why-rename"><span class="header-section-number">6.4.1</span> Why rename</h3>
+<section id="renaming-columns" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="renaming-columns"><span class="header-section-number">5.4</span> Renaming columns</h2>
+<section id="why-rename" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="why-rename"><span class="header-section-number">5.4.1</span> Why rename</h3>
 <p>Column names are easiest to work with when they follow four principles: when they’re clear and descriptive, follow a standard convention, are unique, and don’t break R syntax.</p>
-<section id="use-clear-and-descriptive-names" class="level4" data-number="6.4.1.1">
-<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="use-clear-and-descriptive-names"><span class="header-section-number">6.4.1.1</span> Use clear and descriptive names</h4>
+<section id="use-clear-and-descriptive-names" class="level4" data-number="5.4.1.1">
+<h4 data-number="5.4.1.1" class="anchored" data-anchor-id="use-clear-and-descriptive-names"><span class="header-section-number">5.4.1.1</span> Use clear and descriptive names</h4>
 <p>Variable names should help explain what the variable contains. <code>X3</code> tells the user a lot less about the variable than <code>extroversion_sum_score</code>.</p>
 <p>This sounds obvious, but it’s harder than it sounds and it often isn’t done.</p>
 <p><img src="../images/meaningful_variable_name_meme.png" class="center img-fluid" style="width:60.0%"></p>
 </section>
-<section id="use-a-naming-convention" class="level4" data-number="6.4.1.2">
-<h4 data-number="6.4.1.2" class="anchored" data-anchor-id="use-a-naming-convention"><span class="header-section-number">6.4.1.2</span> Use a naming convention</h4>
+<section id="use-a-naming-convention" class="level4" data-number="5.4.1.2">
+<h4 data-number="5.4.1.2" class="anchored" data-anchor-id="use-a-naming-convention"><span class="header-section-number">5.4.1.2</span> Use a naming convention</h4>
 <p>Various naming conventions exist and are used for both objects (e.g., data frames) and functions.</p>
 <ul>
 <li>snake_case: standard in {tidyverse} code, e.g., <code>write_csv()</code></li>
@@ -1055,12 +1055,12 @@ Click to show answer
 <p>On the one hand, as long as you’re consitent, it doesn’t matter which one you use.</p>
 <p>On the other hand, snake_case is objectively the best answer and you should use it.</p>
 </section>
-<section id="use-unique-names" class="level4" data-number="6.4.1.3">
-<h4 data-number="6.4.1.3" class="anchored" data-anchor-id="use-unique-names"><span class="header-section-number">6.4.1.3</span> Use unique names</h4>
+<section id="use-unique-names" class="level4" data-number="5.4.1.3">
+<h4 data-number="5.4.1.3" class="anchored" data-anchor-id="use-unique-names"><span class="header-section-number">5.4.1.3</span> Use unique names</h4>
 <p>If more than one column has the same name, you’ll have issues trying to work with those columns.</p>
 </section>
-<section id="avoid-characters-that-break-r-syntax" class="level4" data-number="6.4.1.4">
-<h4 data-number="6.4.1.4" class="anchored" data-anchor-id="avoid-characters-that-break-r-syntax"><span class="header-section-number">6.4.1.4</span> Avoid characters that break R syntax</h4>
+<section id="avoid-characters-that-break-r-syntax" class="level4" data-number="5.4.1.4">
+<h4 data-number="5.4.1.4" class="anchored" data-anchor-id="avoid-characters-that-break-r-syntax"><span class="header-section-number">5.4.1.4</span> Avoid characters that break R syntax</h4>
 <p>The following cause problems:</p>
 <ul>
 <li>Column names that begin with a number, e.g., <code>1_to_7_depression</code>.</li>
@@ -1130,8 +1130,8 @@ Click to show answer
 <p>However this becomes cumbersome and annoying. It’s much easier to rename the variable.</p>
 </section>
 </section>
-<section id="renaming-with-rename-the-pipe" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="renaming-with-rename-the-pipe"><span class="header-section-number">6.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</h3>
+<section id="renaming-with-rename-the-pipe" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="renaming-with-rename-the-pipe"><span class="header-section-number">5.4.2</span> Renaming with <code>rename()</code> &amp; the pipe</h3>
 <p>Use <code>dplyr::rename()</code> to change the name of one or more columns. It works like this:</p>
 <pre><code>`df %&gt;% rename(new_name = old_name)`</code></pre>
 <p>Let’s create a data frame called <code>dat_demographics_renamed</code> from <code>dat_demographics_raw</code>, which renames the <code>0 ms onset RT</code> column to timely <code>rt</code>:</p>
@@ -1259,8 +1259,8 @@ Click to show answer
 </div>
 </section>
 </section>
-<section id="automatic-renaming-with-janitorclean_names" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="automatic-renaming-with-janitorclean_names"><span class="header-section-number">6.5</span> Automatic renaming with <code>janitor::clean_names()</code></h2>
+<section id="automatic-renaming-with-janitorclean_names" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="automatic-renaming-with-janitorclean_names"><span class="header-section-number">5.5</span> Automatic renaming with <code>janitor::clean_names()</code></h2>
 <p>Cleaning names is such a common task that there are functions that rename all columns in a dataset at once, such as <code>janitor::clean_names()</code>.</p>
 <p>However, <code>clean_names()</code> can only rename to a standard naming convention and remove problematic characters, it can’t choose meaningful variable names.</p>
 <div class="cell">
@@ -1468,10 +1468,10 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.6</span> Exercises</h2>
-<section id="what-four-principles-should-column-names-follow" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="what-four-principles-should-column-names-follow"><span class="header-section-number">6.6.1</span> What four principles should column names follow?</h3>
+<section id="exercises" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.6</span> Exercises</h2>
+<section id="what-four-principles-should-column-names-follow" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="what-four-principles-should-column-names-follow"><span class="header-section-number">5.6.1</span> What four principles should column names follow?</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1494,12 +1494,12 @@ Click to show answer
 </div>
 </div>
 </section>
-<section id="interactive-exercises" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">6.6.2</span> Interactive exercises</h3>
+<section id="interactive-exercises" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">5.6.2</span> Interactive exercises</h3>
 <p>Complete the interactive <code>rename()</code> exercises <a href="https://errors.shinyapps.io/dplyr-learnr/#section-dplyrrename">here</a>. This web app is written in the {shiny} package and allows you to write and run code in your web browser.</p>
 </section>
-<section id="read-.csv-file-and-rename-columns" class="level3" data-number="6.6.3">
-<h3 data-number="6.6.3" class="anchored" data-anchor-id="read-.csv-file-and-rename-columns"><span class="header-section-number">6.6.3</span> Read .csv file and rename columns</h3>
+<section id="read-.csv-file-and-rename-columns" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="read-.csv-file-and-rename-columns"><span class="header-section-number">5.6.3</span> Read .csv file and rename columns</h3>
 <p>Download the data and code for this e-Book (see the <a href="../index.html">Introduction</a>).</p>
 <p>In your local version of this .qmd file:</p>
 <ul>
@@ -1966,18 +1966,18 @@ Click to show answer
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span>
+      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data: {readr} and {readxl}">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data: {readr} and {readxl}</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/data_transformation.html" class="pagination-link" aria-label="Data transformation">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/data_transformation_1.html" class="pagination-link" aria-label="Data transformation I: {dplyr}">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I: {dplyr}</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The pipe and renaming"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The pipe and renaming: {dplyr}"</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
@@ -2013,7 +2013,7 @@ Click to show answer
 <span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one. </span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>Unfortunately, the 'data_demographics_raw_messy.csv' data set is, as its name suggests, somewhat messy. The column names are on the third row, not the first one.</span>
 <span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a>How should you alter the above code to ignore the first two lines when reading the data in to R?</span>
 <span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a></span>
@@ -2383,7 +2383,7 @@ Click to show answer
 <span id="cb40-447"><a href="#cb40-447" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-448"><a href="#cb40-448" aria-hidden="true" tabindex="-1"></a><span class="fu">### Read .csv file and rename columns</span></span>
 <span id="cb40-449"><a href="#cb40-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-450"><a href="#cb40-450" aria-hidden="true" tabindex="-1"></a>Download the data and code for this e-Book (see the <span class="co">[</span><span class="ot">Introduction</span><span class="co">](../index.qmd)</span>). </span>
+<span id="cb40-450"><a href="#cb40-450" aria-hidden="true" tabindex="-1"></a>Download the data and code for this e-Book (see the <span class="co">[</span><span class="ot">Introduction</span><span class="co">](../index.qmd)</span>).</span>
 <span id="cb40-451"><a href="#cb40-451" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-452"><a href="#cb40-452" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd file:</span>
 <span id="cb40-453"><a href="#cb40-453" aria-hidden="true" tabindex="-1"></a></span>
