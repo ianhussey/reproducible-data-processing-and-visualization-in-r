@@ -1,0 +1,124 @@
+# generate data
+
+```{r}
+
+library(truffle)
+library(knitr)
+library(kableExtra)
+
+dat_simulated_neuroticism <- 
+  truffle_likert(study_design = "factorial_between2",
+                 n_per_condition = 10,
+                 factors  = "X1_latent",
+                 prefixes = "X1_item",
+                 alpha = .70,
+                 n_items = 5,
+                 n_levels = 5,
+                 approx_d_between_groups = 0.50,
+                 seed = 42) |>
+  truffle_demographics() |>
+  dirt_missingness(prop = .10, dirtier = FALSE) |>
+  dirt_impossible_values(prop = .04, replacement_value = 0) |>
+  rename_with(~ str_replace(.x, "^X1_", "neuroticism_"))
+
+```
+
+# Manual sum scoring
+
+## Method 1
+
+```{r}
+
+dat_simulated_neuroticism |> 
+  # change impossible values to NA
+  mutate(neuroticism_item1 = ifelse(neuroticism_item1 < 1 | neuroticism_item1 > 5, NA, neuroticism_item1),
+         neuroticism_item2 = ifelse(neuroticism_item2 < 1 | neuroticism_item2 > 5, NA, neuroticism_item2), 
+         neuroticism_item3 = ifelse(neuroticism_item3 < 1 | neuroticism_item3 > 5, NA, neuroticism_item3),
+         neuroticism_item4 = ifelse(neuroticism_item4 < 1 | neuroticism_item4 > 5, NA, neuroticism_item4),
+         neuroticism_item5 = ifelse(neuroticism_item5 < 1 | neuroticism_item5 > 5, NA, neuroticism_item5)) |>
+  # calculate sum score
+  mutate(sum_score = neuroticism_item1 + neuroticism_item2 + neuroticism_item3 + neuroticism_item4 + neuroticism_item5) 
+
+```
+
+## Method 2
+
+```{r}
+
+dat_simulated_neuroticism |> 
+  # change impossible values to NA
+  mutate(neuroticism_item1 = ifelse(between(neuroticism_item1, 1, 5), neuroticism_item1, NA),
+         neuroticism_item2 = ifelse(between(neuroticism_item2, 1, 5), neuroticism_item2, NA), 
+         neuroticism_item3 = ifelse(between(neuroticism_item3, 1, 5), neuroticism_item3, NA),
+         neuroticism_item4 = ifelse(between(neuroticism_item4, 1, 5), neuroticism_item4, NA),
+         neuroticism_item5 = ifelse(between(neuroticism_item5, 1, 5), neuroticism_item5, NA)) |>
+  # calculate sum score
+  mutate(sum_score = neuroticism_item1 + neuroticism_item2 + neuroticism_item3 + neuroticism_item4 + neuroticism_item5) 
+
+```
+
+## Method 3
+
+```{r}
+
+dat_simulated_neuroticism |>
+  # check data are within the item's response option limits, change impossible values to NA
+  mutate(across(starts_with("neuroticism"), ~ ifelse(between(.x, 1, 5), .x, NA_real_))) |> 
+  # calculate row sums by picking the columns by name pattern 
+  mutate(sum_score = rowSums(pick(starts_with("neuroticism_")), na.rm = FALSE))
+
+```
+
+## Method 4
+
+```{r}
+
+dat_simulated_neuroticism |> 
+  # calculate row sums by picking the columns by name pattern 
+  mutate(sum_score = rowSums(pick(starts_with("neuroticism_")), na.rm = FALSE)) |>
+  # set sum score to NA if any of the items are impossible
+  mutate(sum_score = case_when(!between(neuroticism_item1, 1, 5) ~ NA,
+                               !between(neuroticism_item2, 1, 5) ~ NA,
+                               !between(neuroticism_item3, 1, 5) ~ NA,
+                               !between(neuroticism_item4, 1, 5) ~ NA,
+                               !between(neuroticism_item5, 1, 5) ~ NA,
+                               TRUE ~ sum_score))
+
+```
+
+## Method 5
+
+```{r}
+
+dat_simulated_neuroticism |> 
+  # check data are within the item's response option limits
+  mutate(across(starts_with("neuroticism"), ~ ifelse(dplyr::between(.x, 1, 5), .x, NA_real_))) |> 
+  # calculate sum scores: mean_scores * n_items, equivalent to imputing missing data from participant means
+  mutate(n_items_present = rowSums(!is.na(across(starts_with("neuroticism")))),
+         complete_data = n_items_present==5,
+         sum_score_imputed = rowMeans(across(starts_with("neuroticism")), na.rm = TRUE) * 5) |>
+  mutate(sum_score = ifelse(complete_data, sum_score_imputed, NA_real_))
+
+```
+
+## Method 6 
+
+`truffle::snuffle_sum_scores()`
+
+```{r}
+
+dat_simulated_neuroticism_sumscores <- dat_simulated_neuroticism |>
+  snuffle_sum_scores("neuroticism_", 
+                     min = 1, 
+                     max = 5, 
+                     impute = FALSE,
+                     id_col = "id")
+
+dat_simulated_neuroticism_sumscores |>
+  head(n = 20) |>
+  kable() |>
+  kable_classic(full_width = FALSE)
+
+```
+
+

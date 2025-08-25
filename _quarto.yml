@@ -13,7 +13,7 @@ book:
     - chapters/reproducible_reports.qmd
     - chapters/loading_data.qmd
     - chapters/the_pipe_and_renaming.qmd
-    #- chapters/data_transformation_1.qmd
+    - chapters/data_transformation_1.qmd
     #- chapters/data_transformation_2.qmd
     #- chapters/project_1.qmd
     #- chapters/data_transformation_3.qmd

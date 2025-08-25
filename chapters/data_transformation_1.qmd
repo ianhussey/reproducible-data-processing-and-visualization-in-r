@@ -1,5 +1,5 @@
 ---
-title: "Data transformation I: {dplyr}'s `select()`, `filter()` and `mutate()`" 
+title: "Data transformation I: {dplyr}" 
 format: 
   html: 
     toc: true 
@@ -210,6 +210,24 @@ Write code to:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
@@ -275,16 +293,34 @@ There are many other {tidyselect} helper functions including:
 -   `all_of()` : Selects all of the column names in a vector e.g., `all_of(c("a", "b"))`
 -   `any_of()` : Selects any of the column names in a vector that are present, silently dropping missing ones. This can be very useful when columns may or may not be present, but has the risk of creating silent errors.
 -   `where()` : Select columns that meet a criterion, e.g., `where(is.numeric)` selects only columns containing numeric data.
--   `everything()` : This will seem redundant right now, but will become useful later on when we cover `pivot_` functions
+-   `everything()` : Selects all columns. This will seem redundant right now, but will become useful later on when we cover `pivot_` functions
 
 **Exercise**
 
-Write code to select all columns for scale 2.
+Write code to select all columns for scale 2 from the 'dat_many_columns' data frame.
 
 ```{r}
 #| include: false
 
-# dat_fewer_columns <- dat_many_columns %>%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -314,7 +350,25 @@ Write code to select from the 'dat_many_columns' data frame the "id", "age" and 
 ```{r}
 #| include: false
 
-# dat_fewer_columns <- dat_many_columns %>%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -392,6 +446,27 @@ Note: no solution provided here as many different ones are possible.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 ### Practicing select and the pipe in a longer chunk
@@ -408,6 +483,27 @@ Note: no solution provided here to reduce the temptation to peek or copy-paste.
 
 ```{r}
 #| include: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -442,7 +538,26 @@ What code is needed to relocate the columns of 'dat_demographics_renamed' so tha
 ```{r}
 #| include: false
 
-# dat_demographics_reordered <- dat_demographics_renamed %>%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -538,8 +653,8 @@ dat_filtered_age %>%
 
 Write code to:
 
--   Take the 'dat_demographics_renamed' data frame
--   Create two data frames called 'dat_filtered_age' and 'dat_filtered_gender'
+-   Take the 'dat_demographics_renamed' data frame.
+-   Create two data frames called 'dat_filtered_age' and 'dat_filtered_gender'.
 -   Retain only the relevant rows of 'question' for each.
 -   Rename the 'response' columns to what variable it now contains.
 -   Drop the 'question' columns since they're now irrelevant.
@@ -547,6 +662,24 @@ Write code to:
 
 ```{r}
 #| include: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -587,25 +720,179 @@ dat_filtered_gender %>%
 You can specify the logical test for filtering in many ways, including:
 
 -   `==` : 'is exactly equal to this one value'
--   `%in%` : 'is exactly equal to one of the following values':
 -   `!=` : 'is not exactly equal to
+-   `%in%` : 'is exactly equal to one of the following values'
 
 Note that equivalence is two equals signs (`==`) whereas setting arguments in functions is one (`=`).
 
-Weirdly, there is no single function that provides the combination of `%in%` and `!=`, i.e., 'is not exactly equal to any of the following values'. This can be achieved with the (relatively unintuitive) `dat %>% filter(!column_name %in% c('value1', 'value2', 'value3'))`.
+```{r}
+# '==' exactly equal to
+dat_filtered_gender %>%
+  filter(gender == "female") %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
 
-Just as with `select()`, it is often better to define what you *do* want (`==` and `%>%`) rather than what you *do not* want (`!=`). This is even more important with `filter()` as unexpected row values are much more common than unexpected column names.
+# '!=' is not exactly equal to
+dat_filtered_gender %>%
+  filter(gender == "female") %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# '%in%' is exactly equal to one of the following
+dat_filtered_gender %>%
+  filter(gender %in% c("female", "male")) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Weirdly, there is no single function that provides the combination of `%in%` and `!=`, i.e., 'is not exactly equal to any of the following values'. This can be achieved with the following, although it is not intuitive:
+
+```{r}
+# '!' and '%in%'
+dat_filtered_gender %>%
+  filter(!gender %in% c("female", "male")) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
 
 You can also combine multiple tests with various operators:
 
-- `&` : AND, i.e., meeting both criterion. 
-- `|` : OR, i.e., meeting either criterion. 
+-   `&` : AND, i.e., meeting both criterion.
+-   `|` : OR, i.e., meeting either criterion.
 
-For example, `dat %>% filter(gender == "male" & age == 22)` returns participants whose gender is set to "male" and age is 22. 
+```{r}
+# & criterion X and Y
+dat_demographics_renamed %>%
+  filter(question == "gender" & response == "female")  %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
 
-In contrast, `dat %>% filter(gender == "male" | age == 22)` returns participants whose gender is set to "male" or their age is 22. Female participants aged 22 will be returned, as will male participants aged 26 etc. Another example: `dat %>% filter(gender == "male" | gender == "female)` returns participants whose gender is set to "male" or "female" but not other responses or NA.
+# | criterion X or Y
+dat_demographics_renamed %>%
+  filter(question == "gender" | response == "female")  %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+**Exercise**
+
+Write code to:
+
+-   Take the 'dat_demographics_renamed' data frame.
+-   Create the data frame 'dat_filtered_rt'.
+-   Retain only rows where where reaction time ('re') is more than 500 ms. 
+-   Print a table of each data frame.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_filtered_rt <- dat_demographics_renamed %>%
+  filter(rt > 500) 
+
+dat_filtered_rt %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+:::
+
+**Exercise**
+
+Write code to:
+
+-   Take the 'dat_demographics_renamed' data frame.
+-   Create the data frame 'dat_filtered_rt'.
+-   Retain only rows where where both reaction time ('rt') is more than 500 ms and gender is either 'male', 'female', or 'non-binary'.
+-   Print a table of each data frame.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_filtered_rt <- dat_demographics_renamed %>%
+  filter(rt > 500 & question == 'gender' & response %in% c('male', 'female', 'non-binary')) 
+
+dat_filtered_rt %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+:::
+
+**Exercise**
+
+In the above answer, why might it be a good idea to include `question == 'gender'`?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Because the requirement was "...and gender is either 'male', 'female', or 'non-binary'". 
+
+If participants responded to another question (e.g., 'age') with 'male', 'female', or 'non-binary', their rows would also be returned. 
+
+Being specific to the requirements makes your code less 'brittle' and more likely to catch weird cases in larger datasets.
+:::
 
 ### Positive vs. negative filters
+
+As with `select()`, it is often better to define what you *do* want (`==` and `%>%`) rather than what you *do not* want (`!=` and `!`+`%in%`). This is even more important with `filter()` as unexpected row values are much more common than unexpected column names.
 
 For example, if you specify a negative filter `dat %>% filter(gender != "non-binary)"` because you wish to filter to return only participants who identify as 'male' or 'female', you have in fact only excluded participants who specified 'non-binary'. This code would also return participants with other response options such as 'non binary', 'Non-Binary', 'NB', etc.
 
@@ -626,191 +913,280 @@ dat_demographics_anonymized %>%
 
 Note that the original 'data_demographics_raw_messy.csv' data file we originally read in to R still contains the Prolific ID codes! Again, see the [Data Privacy](privacy.qmd) chapter for how you would deal with this more thoroughly in your own projects.
 
-## Creating and altering columns with `dplyr::mutate()`
-
-### Understanding `mutate()`
+## Creating and modifying columns with `dplyr::mutate()`
 
 `mutate()` is used to create new columns or to change the contents of existing ones.
 
-```{r}
-
-# mutating new variables
-example_1 <- data_amp_test_trials %>%
-  mutate(latency_plus_1 = rt_ms + 1)
-
-example_2 <- data_amp_test_trials %>%
-  mutate(log_latency = log(rt_ms))
-
-# mutating the contents of existing variables
-example_3 <- data_amp_test_trials %>%
-  mutate(rt_s = rt_ms / 1000) # latency is now in seconds rather than milliseconds
-
-```
-
-The operations inside mutate can range from the very simple, like the above, to much more complex. The below example uses other functions we haven't learned yet. For now, just notice that there can be multiple mutate calls and they can produce a cleaned up gender variable.
+For example, we can create the 'rt_seconds' column by dividing the 'rt' column, which is in milliseconds, by 1000. 
 
 ```{r}
+dat_demographics_mutated <- dat_demographics_renamed %>%
+  mutate(rt_seconds = rt/1000)
 
-# illustrate the problem with the gender responses:
-data_demographics_trimmed %>%
-  # filter only the gender item, not age
-  filter(item == "gender") %>%
-  count(response) %>%
-  arrange(desc(n))
-
-# clean up the gender variable
-data_demographics_gender_tidy_1 <- data_demographics_trimmed %>%
-  # filter only the gender item, not age
-  filter(item == "gender") %>%
-  # change the name of the response variable to what it now represents: gender
-  rename(gender = response) %>%
-  # change or remove weird responses to the gender question
-  mutate(gender = str_to_lower(gender)) %>%
-  mutate(gender = str_remove_all(gender, "[\\d.]")) %>% # remove everything except letters
-  mutate(gender = na_if(gender, "")) %>% 
-  mutate(gender = case_when(gender == "woman" ~ "female",
-                            gender == "man" ~ "male",
-                            gender == "girl" ~ "female",
-                            gender == "yes" ~ NA_character_,
-                            gender == "dude" ~ "male",
-                            gender == "non binary" ~ "non-binary",
-                            TRUE ~ gender)) %>%
-  # select only the columns of interest
-  select(unique_id, gender)
-
-# illustrate the data after cleaning:
-data_demographics_gender_tidy_1 %>%
-  count(gender) %>%
-  arrange(desc(n))
-
+dat_demographics_mutated %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
 ```
+
+We can also alter existing columns through self-assignment, i.e., `mutate()`-ing a column based on itself. For example, modifying 'rt' to be in seconds by overwriting the existing 'rt' column:
+
+```{r}
+dat_demographics_mutated <- dat_demographics_renamed %>%
+  mutate(rt = rt/1000)
+
+dat_demographics_mutated %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+We can also change types, for example, converting the 'correct' column from numeric (0/1) to logical (TRUE/FALSE).
+
+```{r}
+dat_demographics_mutated <- dat_demographics_renamed %>%
+  mutate(correct = as.logical(correct))
+
+dat_demographics_mutated %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+### Longer pipes
 
 A single mutate call can contain multiple mutates. The code from the last chunk could be written more simply like this:
 
 ```{r}
 
-# clean up the gender variable
-data_demographics_gender_tidy_2 <- data_demographics_trimmed %>%
-  # filter only the gender item, not age
-  filter(item == "gender") %>%
-  # change the name of the response variable to what it now represents: gender
+dat_demographics_mutated <- dat_demographics_renamed %>%
+  # select only columns of interest
+  select(id, question, response, rt, correct) %>%
+  # filter only rows of interest
+  filter(question == "age") %>%
+  # rename columns to make them more intuitive
+  rename(age = response) %>%
+  # mutate variables
+  mutate(rt_ms = rt/1000,
+         correct = as.logical(correct)) %>%
+  # select needed columns again
+  select(id, age, rt_ms, correct)
+
+dat_demographics_mutated %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+```
+
+**Exercise**
+
+Write code to:
+
+-   Take the 'dat_demographics_renamed'.
+-   Create a data frame named 'dat_demographics_mutated'.
+-   Retain only the gender question rows. 
+-   Rename 'response' to 'gender'.
+-   Use the `stringr::str_to_lower()` function to convert 'gender' to lower case strings'.
+-   Retain only the id and gender columns.
+-   Print the data frame.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+library(stringr)
+
+dat_demographics_mutated <- dat_demographics_renamed %>%
+  filter(question == 'gender') %>%
   rename(gender = response) %>%
-  # change or remove weird responses to the gender question
+  mutate(gender = stringr::str_to_lower(gender)) %>%
+  select(id, gender)
+
+dat_demographics_mutated %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+:::
+
+### More complex mutates
+
+```{r}
+#| include: false
+# generate some messy demographics data with a larger N
+# devtools::install_github("ianhussey/truffle")
+library(truffle)
+
+set.seed(42)
+
+dat_demographics_messy <- data.frame(id = 1:500) %>%
+  truffle::truffle_demographics() %>%
+  truffle::dirt_demographics()
+```
+
+Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the 'dat_demographics_messy' contains messy age and gender data for 500 participants. 
+
+We'll use `count()` to show every unique response across participants. We'll return to learn to use `count()` properly in the next chapter. For the moment, we're more interested in the output than the code.
+
+```{r}
+dat_demographics_messy %>%
+  # find unique values of 'gender' and the frequency of each
+  count(gender) %>%
+  # arrange these unique cases by descending frequency
+  arrange(desc(n)) %>%
+  # print table
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Note how the data currently contains many misspellings and use of different cases that cause things like 'female' to appear as a different category to 'Female', etc.
+
+#### `mutate()` and working with character strings
+
+Working with character strings using {stringr} and 'regular expressions' (regex) is a large separate topic in itself. 
+
+For the moment, know that you can:
+
+- Use functions like `str_to_lower()` to convert all text to lower case (as in the above example).
+- Use `str_remove_all()` to remove everything except letters (`str_remove_all(x, "[^A-Za-z]")`) or everything except numbers (`str_remove_all(x, "[^0-9\\.]")`).
+
+Above, you used {stringr}'s `str_to_lower()` function to convert all letters to lower case. Let's apply that here to quickly improve things:
+
+```{r}
+dat_demographics_messy %>%
+  # convert to lower case
+  mutate(gender = str_to_lower(gender)) %>%
+  # find unique values of 'gender' and the frequency of each
+  count(gender) %>%
+  # arrange these unique cases by descending frequency
+  arrange(desc(n)) %>%
+  # print table
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Next we'll use `str_remove_all(x, "[^A-Za-z]")` to remove everything except letters:
+
+```{r}
+dat_demographics_messy %>%
+  mutate(
+    # convert to lower case
+    gender = str_to_lower(gender),
+    # remove all non-letters
+    gender = str_remove_all(gender, "[^A-Za-z]")
+  ) %>%
+  # find unique values of 'gender' and the frequency of each
+  count(gender) %>%
+  # arrange these unique cases by descending frequency
+  arrange(desc(n)) %>%
+  # print table
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+#### `mutate()` and conditionals rules
+
+##### Using `dplyr::if_else()`
+
+If we were being somewhat lazy, we could keep just the three most common self-reported responses to the gender, i.e. 'male', 'female' and 'non-binary', and change the other responses to `NA`.
+
+Many forms of data cleaning or 'wrangling' involve applying conditional rules like this to clean up irregular responses, i.e., "if gender is not 'male', 'female' or 'non-binary', then set it to `NA`". 
+
+The simplest of these is `dplyr::if_else()`, which applies just one if-else. Note that there is a similar function in Base-R, `ifelse()`, but for technical reasons this function is much less safe and can cause weird errors. Try to always use `if_else()`.
+
+```{r}
+dat_gender_tidier <- dat_demographics_messy %>%
+  # convert to lower case and remove non-letters
   mutate(gender = str_to_lower(gender),
-         gender = str_remove_all(gender, "[\\d.]"), # remove everything except letters
-         gender = na_if(gender, ""), 
-         gender = case_when(gender == "woman" ~ "female",
-                            gender == "man" ~ "male",
-                            gender == "girl" ~ "female",
-                            gender == "yes" ~ NA_character_,
-                            gender == "dude" ~ "male",
-                            gender == "non binary" ~ "non-binary",
-                            TRUE ~ gender)) %>%
-  # select only the columns of interest
-  select(unique_id, gender)
+         gender = str_remove_all(gender, "[^A-Za-z]")) %>%
+  # tidy up cases
+  mutate(gender = if_else(condition = gender %in% c("female", "male", "nonbinary"), # the logical test applied: is 'gender' one of the following
+                          true = gender, # what to do if the test is passed: keep the original gender response
+                          false = NA_character_)) # what to do if the test is failed: set it to NA
 
-# check they are identical
-identical(data_demographics_gender_tidy_1, data_demographics_gender_tidy_2)
-
+dat_gender_tidier %>%
+  count(gender) %>%
+  arrange(desc(n)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
 ```
 
-### Practice `mutate()`
+This somewhat quick and dirty solution gives us just four gender categories, 'male', 'female', 'non-binary' and missing (`NA`).
 
-When analyzing cognitive behavioral tasks, it is common to employ mastery criteria to exclude participants who have not met or maintained some criterion within the task. We'll do the actual exclusions etc. later on, but for practice using `mutate()` by creating a new `fast_trial` column to indicate trials where the response was implausibly fast (e.g., \< 100 ms).
+Of course, these responses were (mostly) not *really* missing, we removed them to make the responses simpler. This isn't very good practice, as we're throwing away data.
 
-Try doing this with a simple logical test of whether latency \< 100. You can do this with or without using the `ifelse()` function.
+##### Using `dplyr::case_when()`
+
+`case_when()` allows you to check against multiple logical tests. It works like this:
 
 ```{r}
-
-data_amp_test_trials_with_fast_trials <- data_amp_test_trials %>%
-  mutate(fast_trial = ifelse(test = rt_ms < 100,
-                             yes = TRUE,
-                             no = FALSE))
-
-# more briefly but less explicitly
-data_amp_test_trials_with_fast_trials <- data_amp_test_trials %>%
-  mutate(fast_trial = rt_ms < 100)
-
+#| eval: false
+#| include: true
+dat %>%
+  # create the variable variable_to_create based on:
+  mutate(variable_to_create = case_when(
+    # if logical_test_1 is met, set variable_to_create to value_1
+    logical_test_1 ~ value_1, 
+    # if logical_test_2 is met, set variable_to_create to value_2
+    logical_test_2 ~ value_2, 
+    # if logical_test_3 is met, set variable_to_create to value_3
+    logical_test_3 ~ value_3, 
+    # 'if none of the above are met, set to the default value value_4'
+    TRUE ~ value_4
+  ))
 ```
 
-### Conditionals with `ifelse()`
+Note that the logical tests are checked in order, so you often have to consider the order in which they are listed and run.
 
-Use `mutate()` to remove weird values from `data_demographics_trimmed$response`, for the rows referring to age, that aren't numbers.
-
-What function could you use to first determine what values are present in this column, to know which could be retained or changed?
-
-In simple cases like this, you can use `mutate()` and `ifelse()` to change impossible values to `NA`.
+We can apply it like this:
 
 ```{r}
+dat_gender_tidier <- dat_demographics_messy %>%
+  # convert to lower case and remove non-letters
+  mutate(gender = str_to_lower(gender),
+         gender = str_remove_all(gender, "[^A-Za-z]")) %>%
+  # tidy up cases
+  mutate(gender = case_when(gender %in% c("female", "male", "nonbinary") ~ gender, 
+                            gender %in% c("femail", "fem ale", "femle", "femlae") ~ "female",
+                            gender %in% c("malee", "mal", "ma le") ~ "male",
+                            gender %in% c("non binary", "nonbinary") ~ "non-binary",
+                            gender == "" ~ NA_character_, # if an empty character string, change to NA_character_
+                            TRUE ~ gender)) # if none of the above apply, keep original value
 
-# what values are present?
-data_demographics_trimmed %>%
-  filter(item == "age") %>%
-  count(response) 
-
-# fix them with mutate
-data_demographics_age_tidy <- data_demographics_trimmed %>%
-  filter(item == "age") %>%
-  mutate(response = ifelse(test = response == "old",
-                           yes = NA_integer_,
-                           no = response)) %>%
-  mutate(response = as.numeric(response)) %>%
-  rename(age = response)
-
-# check this has fixed the issue
-data_demographics_age_tidy %>%
-  count(age)
-
+dat_gender_tidier %>%
+  count(gender) %>%
+  arrange(desc(n)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
 ```
 
-### Practice `mutate()` & `ifelse()`
-
-Use `mutate()` to remove weird values from `data_selfreport_trials$response` that aren't Likert responses.
-
-First determine what values are present in this column.
-
-Use `ifelse()` and `%in%` inside `mutate()` to change values other than the Likert responses to `NA`.
-
-**If you struggle to do this: practice writing 'pseudocode' here. That is, without knowing the right code, explain in precise logic what you want the computer to do. This can be converted to R more easily.**
-
-```{r}
-
-# what values are present?
-data_selfreport_trials %>%
-  count(response)
-
-# what type of data is the response column?
-class(data_selfreport_trials$response)
-
-# remove non Likert values
-data_selfreport_tidy <- data_selfreport_trials %>%
-  mutate(response = ifelse(response == "Ctrl+'B'", NA_integer_, response),
-         response = as.numeric(response))
-
-
-# show the data after changes
-data_selfreport_tidy %>%
-  count(response)
-
-class(data_selfreport_tidy$response)
-
-```
-
-What other ways are there of implementing this mutate, e.g., without using `%in%`? What are the pros and cons of each?
-
-```{r}
-
-# write examples here
-
-```
-
-### Multiple logical conditions with `case_when()` and `case_match()`
-
-TODO
-
-`case_when()` allows you to compare multiple logical tests or if-else tests.
-
-
+Note that the contents of the `case_when()` conditions have to be constructed iteratively. Use `distinct()` to inspect what cases are present, then write code to merge them as desired.
 
 ## Exercises
 
@@ -824,35 +1200,95 @@ What is the difference between select and filter?
 
 ### {tidyselect} helper functions
 
-TODO
+Name some helper functions from {tidyselect}.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+-   `starts_with()` 
+-   `ends_with()` 
+-   `contains()` 
+-   `all_of()` 
+-   `any_of()` 
+-   `where()` 
+-   `everything()` 
+:::
+
+Explain what each of them do.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+-   `starts_with()` : Selects columns ending in a character string
+-   `ends_with()` : Selects columns ending in a character string
+-   `contains()` : Selects columns containing a character string, not necessarily at the start or end
+-   `all_of()` : Selects all of the column names in a vector e.g., `all_of(c("a", "b"))`
+-   `any_of()` : Selects any of the column names in a vector that are present, silently dropping missing ones. This can be very useful when columns may or may not be present, but has the risk of creating silent errors.
+-   `where()` : Select columns that meet a criterion, e.g., `where(is.numeric)` selects only columns containing numeric data.
+-   `everything()` : Selects all columns.
+:::
 
 ### Positive vs. negative selections and filters
 
-TODO
+Explain the difference between positive and negative selections in `select()` and `filter()` and how they are done in each.
 
-### Set operators 
+::: {.callout-note collapse="true" title="Click to show answer"}
+- In `select()`, positive selections mean *keep* these columns (e.g., `select(mpg, cyl)`), while negative selections mean *drop* these columns (e.g., `select(-mpg, -cyl)`).
+- In `filter()`, conditions act positively by default (e.g., `filter(mpg > 20)` keeps rows with mpg > 20). To "negate" a condition, you use `!` or inequality operators (e.g., `filter(!(mpg > 20))` or `filter(mpg <= 20)`).
+:::
+
+### Set operators
 
 What set operators can be used with `select()` and how?
 
-TODO
+::: {.callout-note collapse="true" title="Click to show answer"}
+`select()` supports set operations on columns using tidyselect helpers:
+
+- `-` : negative selection (drop columns)  
+- `c()` : combine multiple selections (union)  
+- `!` : invert a selection rule  
+- `&` : must meet *both* selection rules (intersection)  
+- `|` : can meet *either* selection rule (union)
+
+Example:  
+
+```r
+select(dat, contains("scale3") & contains("item1") & !ends_with("item1"))
+```
 
 What set operators can be used with `filter()` and how?
 
-TODO
+::: {.callout-note collapse=“true” title=“Click to show answer”}
+With filter(), set operations are expressed with logical operators applied to rows:
+	•	& : keeps rows that satisfy all conditions (intersection)
+	•	| : keeps rows that satisfy any condition (union)
+	•	! : excludes rows that meet a condition (negation/difference)
+	
+Example:
+
+```{r}
+#| eval: false
+#| include: true
+dat %>%
+  filter(gender == "female" & age > 30 & !is.na(income))
+```
+:::
 
 ### Interactive exercises
 
 Complete the interactive exercises for:
 
-- [`select()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrselect)
-- [`relocate()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrrelocate) 
-- [`filter()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrfilter) 
-- [`mutate()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrmutate) 
-- [`case_when()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcase_when) 
+-   [`select()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrselect)
+-   [`relocate()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrrelocate)
+-   [`filter()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrfilter)
+-   [`mutate()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrmutate)
+-   [`case_when()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcase_when)
 
-### ??
+### Practice data transformation using multiple functions 
 
-In your local version of this .qmd file, TODO
+In your local version of this .qmd file:
+
+- Use the 'dat_demographics_messy' to create a new data frame called 'dat_age_tidier'
+- Use `disinct()` to understand what unique responses are present in the 'age' column. 
+- Use the other functions you learned in this chapter to clean the age column so that it contains only numbers. 
+- Convert the age variable to a numeric variable with `as.numeric()`. 
+- Print the unique responses present in the processed 'age' column as a table. 
 
 ```{r}
 #| include: false
@@ -861,24 +1297,4 @@ In your local version of this .qmd file, TODO
 
 ```
 
-### Practice `mutate()` & `case_when()`
 
-TODO
-
-The AMP data needs to be reverse scored. Just like an item on a self-report that is worded negatively (e.g., most items: I am a good person; some items: I am a bad person), the negative prime trials have the opposite 'accuracy' values that they should. Use `mutate()` and `case_when()` to reverse score the negative prime trials, so that what was 0 is now 1 and what was 1 is now 0.
-
-```{r}
-
-# in your own time later, see if you can rewrite this yourself without looking at the answer to practice using case_when
-data_amp_tidy <- data_amp_test_trials_with_fast_trials %>%
-  mutate(correct = case_when(trial_type == "prime_positive" ~ correct,
-                             trial_type == "prime_negative" & correct == 0 ~ 1,
-                             trial_type == "prime_negative" & correct == 1 ~ 0))
-
-# you can also specify a default value to return if none of the logical tests are passed with 'TRUE ~':
-data_amp_tidy <- data_amp_test_trials_with_fast_trials %>%
-  mutate(correct = case_when(trial_type == "prime_negative" & correct == 0 ~ 1,
-                             trial_type == "prime_negative" & correct == 1 ~ 0,
-                             TRUE ~ correct))
-
-```
