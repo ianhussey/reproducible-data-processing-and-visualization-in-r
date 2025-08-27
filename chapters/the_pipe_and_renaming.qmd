@@ -1,5 +1,5 @@
 ---
-title: "The pipe and renaming: {dplyr}"
+title: "The pipe and renaming"
 format:
   html:
     toc: true

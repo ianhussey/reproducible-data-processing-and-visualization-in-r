@@ -1,5 +1,5 @@
 ---
-title: "Reporting: {easystats}"
+title: "Reporting"
 format:
   html:
     toc: true

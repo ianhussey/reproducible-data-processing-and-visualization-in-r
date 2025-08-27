@@ -1,5 +1,5 @@
 ---
-title: "Reshaping and pivots: {tidyr}"
+title: "Reshaping and pivots"
 format:
   html:
     toc: true

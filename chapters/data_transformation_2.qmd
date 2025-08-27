@@ -1,5 +1,5 @@
 ---
-title: "Data transformation II: Advanced {dplyr}" 
+title: "Data transformation II" 
 format: 
   html: 
     toc: true 
@@ -8,33 +8,158 @@ format:
     code-tools: true 
 ---
 
-TODO
-
 ## `arrange()` and `desc()`
 
-TODO
+Arrange (`arrange()`) and descending (`desc()`) allow you to change the order of the rows without changing their contents. `desc()` is almost always used inside `arrange()`, i.e., `arrange(desc(variable))`.
+
+```{r}
+#| include: false
+# generate some messy demographics data with a larger N
+# devtools::install_github("ianhussey/truffle")
+library(truffle)
+
+set.seed(42)
+
+dat_demographics_messy <- data.frame(id = 1:500) %>%
+  truffle::truffle_demographics() %>%
+  truffle::dirt_demographics()
+```
+
+```{r}
+library(dplyr)
+library(readr)
+library(knitr)
+library(kableExtra)
+
+dat_gender_tidier_counts <- dat_demographics_messy %>%
+  # convert to lower case and remove non-letters
+  mutate(gender = str_to_lower(gender),
+         gender = str_remove_all(gender, "[^A-Za-z]")) %>%
+  # tidy up cases
+  mutate(gender = if_else(condition = gender %in% c("female", "male", "nonbinary"), # the logical test applied: is 'gender' one of the following
+                          true = gender, # what to do if the test is passed: keep the original gender response
+                          false = NA_character_))  %>% # what to do if the test is failed: set it to NA
+  # count frequencies of each unique value in the gender column
+  count(gender) 
+
+# arrange by increasing N
+dat_gender_tidier_counts %>%
+  arrange(n) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# arrange by decreasing N
+dat_gender_tidier_counts %>%
+  arrange(desc(n)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# arrange by gender in alphabetical order  
+dat_gender_tidier_counts %>%
+  arrange(gender) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# arrange by gender in reverse alphabetical order  
+dat_gender_tidier_counts %>%
+  arrange(desc(gender)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Note that you can also arrange by multiple columns, e.g., `dat %in% arrange(timepoint, condition, gender)` would arrange timepoint in ascending order (1, 2), then for ties it arranges condition alphabetically ("control", "intervention"), and for ties it would arrange gender alphabetically (e.g., "female", "male", "non-binary").
 
 ## `filter()` derivatives
 
-### `distinct()`
+Sometimes we want to `filter()` for rows not based on their content but their location, eg at the top or the bottom of the data frame. These `filter()` derivatives are therefore related to `arrange()` in that they often relate to row number rather than row contents.
 
-as a form of arrange+filter+!lead
+### `slice_()` functions
 
-### `slice()`
+-   `slice_head(n = 5)` is equivalent to `filter(row_number() <= 5)`
+-   `slice_tail(n = 5)` is equivalent to `filter(row_number() > n() - 5)`
+-   `slice_min()` is equivalent to `filter(min_rank(x) <= 5)`
+-   `slice_max(n = 5)` is equivalent to `filter(min_rank(desc(x)) <= 5)`
 
-slice_min() and slice_max() as filter(min()) and filter(max())
+Sometimes you might want to filter rows randomly rather than at the top or bottom of the data frame. You can do this with `slice_sample()`:
 
-slice_head() and slice_tail() as filter(row_number() == 1) and filter(row_number == n()) - explain n()
-
-slice_sample() by n or prop
+-   `slice_sample(n = 5)` : return 5 random rows
+-   `slice_sample(prop = .05)` : return a random 5% of the rows
 
 ### `drop_na()`
 
+A common negative-`filter()` is to remove rows whose values are `NA`. Because `NA` is a special value, this is not done with `filter(variable != NA)` but instead with its own function: `is.na()`:
+
+```{r}
+dat_gender_tidier_counts %>%
+  # arrange by decreasing N
+  arrange(desc(n)) %>%
+  # negative filter rows where gender is not NA
+  filter(!is.na(gender)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+This negative filter is so common that it has its own helper function: `drop_na()`. Note that there is also a base-R `drop.na()`, which you should avoid for technical reasons.
+
+You can pass one, more than one, or no column names to `drop_na()`. If no column names are specified, it requires that all columns are not `NA`. For example:
+
+```{r}
+# retain all rows
+dat_gender_tidier_counts %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# drop NA rows in 'gender'
+dat_gender_tidier_counts %>%
+  # negative filter rows where !is.na(gender) 
+  drop_na(gender) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# drop NA rows in 'gender' and 'n'
+dat_gender_tidier_counts %>%
+  # negative filter rows where !is.na(gender) & !is.na(n)
+  drop_na(gender, n) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+
+# drop NA rows in all columns in data frame
+dat_gender_tidier_counts %>%
+  # negative filter rows where all columns are not NA
+  drop_na() %>%      # <- note no columns supplied to drop_na()
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
 ## Advanced mutates
+
+### Separating columns with `seperate()`
+
+TODO
+
+### `fill()`
+
+TODO
+
+### `near()`
+
+testing equivalence with floats is weird
+
+sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)
+
+### `between()`
+
+TODO
+
+### `lead()` and `lag()`
+
+TODO
 
 ### Rounding: `round()` probably doesn't do what you think
 
-Did you know that R doesn't use the rounding method most of us are taught in school, where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
+It is extremely common to round statistical results before including them in text and tables.
+
+However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
 
 This is easier to show than explain. The `round()` function rounds each of the numbers passed to it. What do you expect the output to be?
 
@@ -49,7 +174,14 @@ round(c(0.5,
 ```
 
 ::: {.callout-note collapse="true" title="Click to show result"}
-> \[1\] 0 2 2 4 4 6
+```{r}
+round(c(0.5, 
+        1.5, 
+        2.5, 
+        3.5, 
+        4.5, 
+        5.5))
+```
 
 Why is this? Because R's `round()` function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.
 :::
@@ -80,32 +212,95 @@ roundwork::round_up(c(0.5,
                       5.5))
 ```
 
-### Separating columns with `seperate()`
-
-TODO
-
-### `round_half_up()`
+These will typically be used inside a pipe workflow:
 
 ```{r}
+#| eval: true
+#| include: false
+# make up some values to be rounded 
+library(dplyr)
 
-# janitor::round_half_up()
+set.seed(44)
 
+dat_regression_betas <- 
+  data.frame(beta_estimate = rnorm(n = 5, mean = .3, sd = .1)) %>%
+  mutate(beta_ci_lower = beta_estimate - 0.2,
+         beta_ci_upper = beta_estimate + 0.2) %>%
+  mutate(p = runif(n = 5, min = 0.000000001, max = 0.01))
 ```
 
-### `fill()`
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_half_up(beta_estimate, 2),
+         beta_ci_lower = round_half_up(beta_ci_lower, 2),
+         beta_ci_upper = round_half_up(beta_ci_upper, 2)) 
 
-### `near()`
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
 
-testing equivalence with floats is weird
+### 'rounding' of p-values using APA style
 
-sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)
+The one thing that psychologists don't round using the round-half-up rule is *p*-values. These are instead usually truncated using the APA style guide's conventions so that p values smaller than .001 are reported as "\< .001".
 
-### `between()`
+```{r}
+# install.packages("devtools"); devtools::install_github("ianhussey/truffle")
+library(truffle)
+
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_half_up(beta_estimate, 2),
+         beta_ci_lower = round_half_up(beta_ci_lower, 2),
+         beta_ci_upper = round_half_up(beta_ci_upper, 2),
+         p = round_p_value(p)) 
+
+dat_regression_betas_rounded %>%
+  kable(align = 'r') %>%
+  kable_classic(full_width = FALSE)
+```
 
 ## Modifying multiple columns at once with `across()`
 
-across() within rename()
+### `mutate(across())`
 
-across() within mutate()
+TODO
 
-across() within summarize()
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(across(
+    .cols = c(beta_estimate, beta_ci_lower, beta_ci_upper),
+    .fns = ~ round_half_up(.x, digits = 2)
+  ))
+
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(across(
+    .cols = everything(),
+    .fns = ~ round_half_up(.x, digits = 2)
+  ))
+
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(across(
+    .cols = starts_with("beta_"),
+    .fns = ~ round_half_up(.x, digits = 2)
+  ))
+
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+### `rename(across())`
+
+TODO use {truffle}

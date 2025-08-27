@@ -1,5 +1,5 @@
 ---
-title: "Data transformation I: {dplyr}" 
+title: "Data transformation I" 
 format: 
   html: 
     toc: true 
@@ -189,7 +189,7 @@ dat_many_columns %>%
   dput()
 ```
 
-**Exercise**
+#### Exercise
 
 Write code to:
 
@@ -295,7 +295,7 @@ There are many other {tidyselect} helper functions including:
 -   `where()` : Select columns that meet a criterion, e.g., `where(is.numeric)` selects only columns containing numeric data.
 -   `everything()` : Selects all columns. This will seem redundant right now, but will become useful later on when we cover `pivot_` functions
 
-**Exercise**
+#### Exercise
 
 Write code to select all columns for scale 2 from the 'dat_many_columns' data frame.
 
@@ -343,7 +343,7 @@ dat_fewer_columns %>%
 ```
 :::
 
-**Exercise**
+#### Exercise
 
 Write code to select from the 'dat_many_columns' data frame the "id", "age" and "gender" columns AND all columns related to item3.
 
@@ -391,7 +391,7 @@ dat_fewer_columns %>%
 ```
 :::
 
-**Exercise**
+#### Exercise
 
 Write code to select the "id", "age" and "gender" columns AND all columns related to item1.
 
@@ -430,7 +430,7 @@ dat_fewer_columns %>%
   dput()
 ```
 
-**Exercise**
+#### Exercise
 
 To practice {tidyselect} helpers and selection set operations, write code in a creative and unnecessarily complex way to select the columns "id", "gender", and "age", and the items from scale 1 and scale 3 that whose items are \<= 10.
 
@@ -471,7 +471,7 @@ Note: no solution provided here as many different ones are possible.
 
 ### Practicing select and the pipe in a longer chunk
 
-**Exercise**
+#### Exercise
 
 The first chunk in this chapter read in the 'data_demographics_raw_messy.csv' file and renamed columns.
 
@@ -531,7 +531,7 @@ dat_demographics_renamed %>%
   kable_classic(full_width = FALSE)
 ```
 
-**Exercise**
+#### Exercise
 
 What code is needed to relocate the columns of 'dat_demographics_renamed' so that they are in the order "id", "question", "response", and then the remaining columns.
 
@@ -582,7 +582,7 @@ dat_demographics_reordered %>%
 ```
 :::
 
-**Exercise**
+#### Exercise
 
 All three of the solutions below accomplish the goal of making the "id" column the first column:
 
@@ -609,7 +609,7 @@ dat_demographics_renamed %>%
   kable_classic(full_width = FALSE)
 ```
 
-Which of the above solutions is the least 'fragile' solution, i.e., that is robust to changes in the data or elsewhere in your data processing code?
+<br> Which of the above solutions is the least 'fragile' solution, i.e., that is robust to changes in the data or elsewhere in your data processing code?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
 `relocate(id, .before = 1)` does not rely on the name and location of another column and is therefore the least fragile solution.
@@ -649,7 +649,7 @@ dat_filtered_age %>%
   kable_classic(full_width = FALSE)
 ```
 
-**Exercise**
+#### Exercise
 
 Write code to:
 
@@ -774,13 +774,13 @@ dat_demographics_renamed %>%
   kable_classic(full_width = FALSE)
 ```
 
-**Exercise**
+#### Exercise
 
 Write code to:
 
 -   Take the 'dat_demographics_renamed' data frame.
 -   Create the data frame 'dat_filtered_rt'.
--   Retain only rows where where reaction time ('re') is more than 500 ms. 
+-   Retain only rows where where reaction time ('re') is more than 500 ms.
 -   Print a table of each data frame.
 
 ```{r}
@@ -826,7 +826,7 @@ dat_filtered_rt %>%
 ```
 :::
 
-**Exercise**
+#### Exercise
 
 Write code to:
 
@@ -878,14 +878,14 @@ dat_filtered_rt %>%
 ```
 :::
 
-**Exercise**
+#### Exercise
 
 In the above answer, why might it be a good idea to include `question == 'gender'`?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
-Because the requirement was "...and gender is either 'male', 'female', or 'non-binary'". 
+Because the requirement was "...and gender is either 'male', 'female', or 'non-binary'".
 
-If participants responded to another question (e.g., 'age') with 'male', 'female', or 'non-binary', their rows would also be returned. 
+If participants responded to another question (e.g., 'age') with 'male', 'female', or 'non-binary', their rows would also be returned.
 
 Being specific to the requirements makes your code less 'brittle' and more likely to catch weird cases in larger datasets.
 :::
@@ -917,7 +917,7 @@ Note that the original 'data_demographics_raw_messy.csv' data file we originally
 
 `mutate()` is used to create new columns or to change the contents of existing ones.
 
-For example, we can create the 'rt_seconds' column by dividing the 'rt' column, which is in milliseconds, by 1000. 
+For example, we can create the 'rt_seconds' column by dividing the 'rt' column, which is in milliseconds, by 1000.
 
 ```{r}
 dat_demographics_mutated <- dat_demographics_renamed %>%
@@ -975,13 +975,13 @@ dat_demographics_mutated %>%
 
 ```
 
-**Exercise**
+#### Exercise
 
 Write code to:
 
 -   Take the 'dat_demographics_renamed'.
 -   Create a data frame named 'dat_demographics_mutated'.
--   Retain only the gender question rows. 
+-   Retain only the gender question rows.
 -   Rename 'response' to 'gender'.
 -   Use the `stringr::str_to_lower()` function to convert 'gender' to lower case strings'.
 -   Retain only the id and gender columns.
@@ -1050,7 +1050,7 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
   truffle::dirt_demographics()
 ```
 
-Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the 'dat_demographics_messy' contains messy age and gender data for 500 participants. 
+Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the 'dat_demographics_messy' contains messy age and gender data for 500 participants.
 
 We'll use `count()` to show every unique response across participants. We'll return to learn to use `count()` properly in the next chapter. For the moment, we're more interested in the output than the code.
 
@@ -1069,12 +1069,12 @@ Note how the data currently contains many misspellings and use of different case
 
 #### `mutate()` and working with character strings
 
-Working with character strings using {stringr} and 'regular expressions' (regex) is a large separate topic in itself. 
+Working with character strings using {stringr} and 'regular expressions' (regex) is a large separate topic in itself.
 
 For the moment, know that you can:
 
-- Use functions like `str_to_lower()` to convert all text to lower case (as in the above example).
-- Use `str_remove_all()` to remove everything except letters (`str_remove_all(x, "[^A-Za-z]")`) or everything except numbers (`str_remove_all(x, "[^0-9\\.]")`).
+-   Use functions like `str_to_lower()` to convert all text to lower case (as in the above example).
+-   Use `str_remove_all()` to remove everything except letters (`str_remove_all(x, "[^A-Za-z]")`) or everything except numbers (`str_remove_all(x, "[^0-9\\.]")`).
 
 Above, you used {stringr}'s `str_to_lower()` function to convert all letters to lower case. Let's apply that here to quickly improve things:
 
@@ -1116,7 +1116,7 @@ dat_demographics_messy %>%
 
 If we were being somewhat lazy, we could keep just the three most common self-reported responses to the gender, i.e. 'male', 'female' and 'non-binary', and change the other responses to `NA`.
 
-Many forms of data cleaning or 'wrangling' involve applying conditional rules like this to clean up irregular responses, i.e., "if gender is not 'male', 'female' or 'non-binary', then set it to `NA`". 
+Many forms of data cleaning or 'wrangling' involve applying conditional rules like this to clean up irregular responses, i.e., "if gender is not 'male', 'female' or 'non-binary', then set it to `NA`".
 
 The simplest of these is `dplyr::if_else()`, which applies just one if-else. Note that there is a similar function in Base-R, `ifelse()`, but for technical reasons this function is much less safe and can cause weird errors. Try to always use `if_else()`.
 
@@ -1203,13 +1203,13 @@ What is the difference between select and filter?
 Name some helper functions from {tidyselect}.
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
--   `starts_with()` 
--   `ends_with()` 
--   `contains()` 
--   `all_of()` 
--   `any_of()` 
--   `where()` 
--   `everything()` 
+-   `starts_with()`
+-   `ends_with()`
+-   `contains()`
+-   `all_of()`
+-   `any_of()`
+-   `where()`
+-   `everything()`
 :::
 
 Explain what each of them do.
@@ -1229,8 +1229,8 @@ Explain what each of them do.
 Explain the difference between positive and negative selections in `select()` and `filter()` and how they are done in each.
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
-- In `select()`, positive selections mean *keep* these columns (e.g., `select(mpg, cyl)`), while negative selections mean *drop* these columns (e.g., `select(-mpg, -cyl)`).
-- In `filter()`, conditions act positively by default (e.g., `filter(mpg > 20)` keeps rows with mpg > 20). To "negate" a condition, you use `!` or inequality operators (e.g., `filter(!(mpg > 20))` or `filter(mpg <= 20)`).
+-   In `select()`, positive selections mean *keep* these columns (e.g., `select(mpg, cyl)`), while negative selections mean *drop* these columns (e.g., `select(-mpg, -cyl)`).
+-   In `filter()`, conditions act positively by default (e.g., `filter(mpg > 20)` keeps rows with mpg \> 20). To "negate" a condition, you use `!` or inequality operators (e.g., `filter(!(mpg > 20))` or `filter(mpg <= 20)`).
 :::
 
 ### Set operators
@@ -1240,26 +1240,28 @@ What set operators can be used with `select()` and how?
 ::: {.callout-note collapse="true" title="Click to show answer"}
 `select()` supports set operations on columns using tidyselect helpers:
 
-- `-` : negative selection (drop columns)  
-- `c()` : combine multiple selections (union)  
-- `!` : invert a selection rule  
-- `&` : must meet *both* selection rules (intersection)  
-- `|` : can meet *either* selection rule (union)
+-   `-` : negative selection (drop columns)\
+-   `c()` : combine multiple selections (union)\
+-   `!` : invert a selection rule\
+-   `&` : must meet *both* selection rules (intersection)\
+-   `|` : can meet *either* selection rule (union)
 
-Example:  
+Example:
 
-```r
+``` r
 select(dat, contains("scale3") & contains("item1") & !ends_with("item1"))
 ```
+:::
 
 What set operators can be used with `filter()` and how?
 
-::: {.callout-note collapse=“true” title=“Click to show answer”}
-With filter(), set operations are expressed with logical operators applied to rows:
-	•	& : keeps rows that satisfy all conditions (intersection)
-	•	| : keeps rows that satisfy any condition (union)
-	•	! : excludes rows that meet a condition (negation/difference)
-	
+::: {.callout-note collapse="true" title="Click to show answer"}
+With filter(), set operations are expressed with logical operators applied to rows: 
+
+-   `&` : keeps rows that satisfy all conditions (intersection)
+-   `|` : keeps rows that satisfy any condition (union)
+-   `!` : excludes rows that meet a condition (negation/difference)
+
 Example:
 
 ```{r}
@@ -1280,15 +1282,15 @@ Complete the interactive exercises for:
 -   [`mutate()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrmutate)
 -   [`case_when()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcase_when)
 
-### Practice data transformation using multiple functions 
+### Practice data transformation using multiple functions
 
 In your local version of this .qmd file:
 
-- Use the 'dat_demographics_messy' to create a new data frame called 'dat_age_tidier'
-- Use `disinct()` to understand what unique responses are present in the 'age' column. 
-- Use the other functions you learned in this chapter to clean the age column so that it contains only numbers. 
-- Convert the age variable to a numeric variable with `as.numeric()`. 
-- Print the unique responses present in the processed 'age' column as a table. 
+-   Use the 'dat_demographics_messy' to create a new data frame called 'dat_age_tidier'
+-   Use `disinct()` to understand what unique responses are present in the 'age' column.
+-   Use the other functions you learned in this chapter to clean the age column so that it contains only numbers.
+-   Convert the age variable to a numeric variable with `as.numeric()`.
+-   Print the unique responses present in the processed 'age' column as a table.
 
 ```{r}
 #| include: false
@@ -1296,5 +1298,3 @@ In your local version of this .qmd file:
 
 
 ```
-
-

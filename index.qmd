@@ -23,7 +23,8 @@ There are many excellent Open Source resources to learn R and {tidyverse} for da
     -   [Section on {tidyr}](https://psyteachr.github.io/reprores-v3/tidyr.html)
 -   Allison Horst's [interactive web app for learning {dplyr}](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)
 -   Hadley Wickham's Open Source textbook R For Data Science (aka [R4DS](https://r4ds.hadley.nz/))
-    -   [Section on data transformation](https://r4ds.hadley.nz/data-transform)
+    -   Particularly the [section on data transformation](https://r4ds.hadley.nz/data-transform)
+    -   You can complete all the exercises in R4DS with interactive feedback by installing the {r4ds.tutorials} package (`install.packages("r4ds.tutorials")`) loading the library (`library(r4ds.tutorials)`), and going to the "Tutorial" tab in the Environment corner of RStudio. Individual tutorials can be completed alongside the R4DS book, in parallel to this book.
 -   Garrick Aden-Buie's [tidyexplain gifs](https://github.com/gadenbuie/tidyexplain) for understanding how {tidyr}'s pivot functions work
 -   [datasciencebox.org](https://datasciencebox.org)
     -   Interactive tutorials that very useful for practicing processing and visualization skills once you've *already* learned the functions (i.e., don't start here)

@@ -1,5 +1,5 @@
 ---
-title: "Working with strings and factors using {stringr} and {forcats}"
+title: "Working with strings and factors"
 format:
   html:
     toc: true
@@ -20,11 +20,9 @@ options(scipen = 999)
 
 TODO
 
-
-
 ### String subsearches with `stringr::str_detect()`
 
-TODO 
+TODO
 
 case, characters etc.
 
@@ -46,8 +44,6 @@ Therefore:
 #   filter(str_detect(trial_id, "2_")) 
 
 ```
-
-
 
 ## forcats
 

@@ -1,5 +1,5 @@
 ---
-title: "Loading, viewing, and saving data: {readr} and {readxl}"
+title: "Loading, viewing, and saving data"
 format:
   html:
     toc: true
@@ -208,7 +208,7 @@ print(dat_likert)
 
 Printing data frames by calling their name or using `print()` don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.
 
-Note that this code uses the 'pipe' (`%>%`), which we cover in more detail in a [later chapter](chatpers/the_pipe.qmd). You don't need to understand how it works yet, just the output that it creates.
+Note that this code uses the 'pipe' (`%>%`), which we cover in more detail in a [later chapter](the_pipe_and_renaming.qmd). You don't need to understand how it works yet, just the output that it creates.
 
 ```{r}
 library(knitr)
@@ -380,9 +380,9 @@ Following the same file structure as above, there is a file called "data_likert.
 Write R code to:
 
 1.  Load that data file from this .qmd file, which is located in the 'code' directory.
-2.  Assign it to an object called `data_exercise`.
+2.  Assign it to an object called `dat_likert`.
 3.  Load the {kable} and {kableExtra} libraries.
-4.  Print `data_exercise` as nicely formatted table.
+4.  Print `dat_likert` as nicely formatted table.
 
 ::: {.callout-note collapse="true" title="Click to show hint"}
 See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge on loading dependencies/libraries and object assignment.
@@ -392,12 +392,12 @@ Adapt the code used in this chapter for the other steps.
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
 ```{r}
-data_exercise <- read_csv("../data/raw/data_likert.csv")
+dat_likert <- read_csv("../data/raw/data_likert.csv")
 
 library(knitr)
 library(kableExtra)
 
-data_exercise %>%
+dat_likert %>%
   kable(align = "r") %>%
   kable_styling(full_width = FALSE)
 ```

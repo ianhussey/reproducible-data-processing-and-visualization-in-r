@@ -1,5 +1,5 @@
 ---
-title: "Data transformation III: {dplyr}'s `summarize()`" 
+title: "Data transformation III" 
 format: 
   html: 
     toc: true 
@@ -25,6 +25,9 @@ This chapter covers "*aggregating*" functions. They aggregate results across row
 It is very common that we need to create summaries across rows. For example, to create the mean and standard deviation of a column like age. This can be done with `summarize()`. Remember: `mutate()` creates new columns or modifies the contents of existing columns, but does not change the number of rows. Whereas `summarize()` reduces a data frame down to one row.
 
 ```{r}
+
+library(dplyr)
+library(tidyr)
 
 # mean
 data_demographics_age_tidy %>%
@@ -164,6 +167,10 @@ dat %>%
 
 ```
 
+### `distinct()`
+
+Distinct is a variation on `count()` that doesn't return the counts, just the distinct values.
+
 ### Practice using `summarize()`
 
 Calculate the min, max, mean, and SD of all responses on the self report data.
@@ -301,6 +308,10 @@ data_demographics_trimmed %>%
 ### count as summarize()+group_by()
 
 TODO
+
+### `summarize(across())`
+
+TODO here or later in
 
 ## Check your learning
 

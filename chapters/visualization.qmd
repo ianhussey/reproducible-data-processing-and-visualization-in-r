@@ -1,5 +1,5 @@
 ---
-title: "Visualization: {ggplot2}"
+title: "Visualization"
 format:
   html:
     toc: true
@@ -22,6 +22,8 @@ dir.create("plots")
 ```
 
 <https://osf.io/preprints/psyarxiv/73ywp_v3>
+
+<https://intro2r.com/bestiary.html>
 
 # Dependencies
 
@@ -190,7 +192,9 @@ ggplot(data = data_after_exclusions,
 
 ```
 
-## Exercise: Plot for gender
+#### Exercise
+
+Plot for gender
 
 Create a similar plot for the gender variable in `data_processed` (ie before exclusions).
 
@@ -200,7 +204,9 @@ Create a similar plot for the gender variable in `data_processed` (ie before exc
 
 ```
 
-## Exercise: Plot for AMP
+#### Exercise
+
+Plot for AMP
 
 Create a similar plot for the AMP scores in `data_after_exclusions`.
 
@@ -231,7 +237,9 @@ ggsave(plot = plot_amp,
 
 ```
 
--   Exercise: How to add a dashed vertical line at the sample's mean AMP score?
+#### Exercise
+
+How to add a dashed vertical line at the sample's mean AMP score?
 
 # Density plot using `geom_density()`
 
@@ -252,7 +260,9 @@ ggplot(data = data_after_exclusions,
 
 ```
 
-## Exercise: Plot for AMP
+#### Exercise
+
+Plot for AMP
 
 Make a similar density plot for the AMP.
 
@@ -312,7 +322,9 @@ ggplot(data = summary_amp,
 
 ```
 
-## Exercise: Plot for self-reports
+#### Exercise
+
+Plot for self-reports
 
 Make a similar plot for the self-reports.
 
@@ -324,7 +336,9 @@ Make a similar plot for the self-reports.
 
 ```
 
--   Exercise: How to capitalize 'Male' and 'Female' by wrangling the data before plotting?
+#### Exercise
+
+How to capitalize 'Male' and 'Female' by wrangling the data before plotting?
 
 # Combining plots
 
@@ -377,7 +391,7 @@ ggplot(data = data_after_exclusions,
 
 ```
 
-## Exercise
+#### Exercise
 
 Create a plot that assesses the association between self report scores and AMP scores. By wrangling `data_processed` more prior to plotting, and using `facet_grid()`, compare a) men vs women and b) participants who are 30+ years old vs younger than 30.
 

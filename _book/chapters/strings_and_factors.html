@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Installation and setup – Reproducible Data Processing and Visualization</title>
+<title>8&nbsp; Working with strings and factors – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/fundamentals.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../chapters/reshaping_and_pivots.html" rel="next">
+<link href="../chapters/data_transformation_2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/strings_and_factors.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span></a>
   </div>
 </li>
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></span></a>
   </div>
 </li>
@@ -248,14 +248,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#install-the-base-r-language-and-the-rstudio-ide" id="toc-install-the-base-r-language-and-the-rstudio-ide" class="nav-link active" data-scroll-target="#install-the-base-r-language-and-the-rstudio-ide"><span class="header-section-number">1.1</span> Install the base R language and the RStudio IDE</a></li>
-  <li><a href="#rstudio-settings-and-options" id="toc-rstudio-settings-and-options" class="nav-link" data-scroll-target="#rstudio-settings-and-options"><span class="header-section-number">1.2</span> RStudio settings and options</a>
-  <ul class="collapse">
-  <li><a href="#important-settings-to-change-for-reproducibility" id="toc-important-settings-to-change-for-reproducibility" class="nav-link" data-scroll-target="#important-settings-to-change-for-reproducibility"><span class="header-section-number">1.2.1</span> Important settings to change for reproducibility</a></li>
-  <li><a href="#rstudio-themes" id="toc-rstudio-themes" class="nav-link" data-scroll-target="#rstudio-themes"><span class="header-section-number">1.2.2</span> RStudio themes</a></li>
-  <li><a href="#rstudio-fonts" id="toc-rstudio-fonts" class="nav-link" data-scroll-target="#rstudio-fonts"><span class="header-section-number">1.2.3</span> RStudio fonts</a></li>
-  </ul></li>
-  <li><a href="#install-slack-and-github" id="toc-install-slack-and-github" class="nav-link" data-scroll-target="#install-slack-and-github"><span class="header-section-number">1.3</span> Install Slack and GitHub</a></li>
+  <li><a href="#string-subsearches-with-stringrstr_detect" id="toc-string-subsearches-with-stringrstr_detect" class="nav-link active" data-scroll-target="#string-subsearches-with-stringrstr_detect"><span class="header-section-number">8.0.1</span> String subsearches with <code>stringr::str_detect()</code></a></li>
+  <li><a href="#forcats" id="toc-forcats" class="nav-link" data-scroll-target="#forcats"><span class="header-section-number">8.1</span> forcats</a></li>
+  <li><a href="#stringr" id="toc-stringr" class="nav-link" data-scroll-target="#stringr"><span class="header-section-number">8.2</span> stringr</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -281,44 +276,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="install-the-base-r-language-and-the-rstudio-ide" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="install-the-base-r-language-and-the-rstudio-ide"><span class="header-section-number">1.1</span> Install the base R language and the RStudio IDE</h2>
-<p>You should install the base R language and the RStudio IDE from <a href="https://posit.co/download/rstudio-desktop/">here</a>.</p>
-<p>There are detailed steps available for Windows and Mac <a href="https://psyteachr.github.io/RSetGo/">here</a>.</p>
+<p>TODO</p>
+<section id="string-subsearches-with-stringrstr_detect" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="string-subsearches-with-stringrstr_detect"><span class="header-section-number">8.0.1</span> String subsearches with <code>stringr::str_detect()</code></h3>
+<p>TODO</p>
+<p>case, characters etc.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"AB"</span>, <span class="st">"B"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>test <span class="sc">==</span> <span class="st">"A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE FALSE</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(test, <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>Therefore:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data_amp_test_trials %&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(str_detect(trial_id, "2_")) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="rstudio-settings-and-options" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="rstudio-settings-and-options"><span class="header-section-number">1.2</span> RStudio settings and options</h2>
-<section id="important-settings-to-change-for-reproducibility" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="important-settings-to-change-for-reproducibility"><span class="header-section-number">1.2.1</span> Important settings to change for reproducibility</h3>
-<p>For reproducibility, please ensure RStudio’s settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools&gt;Global Options menu, go to General, and untick the following box and set save to ‘Never’.</p>
-<p><img src="../images/rstudio_settings.png" class="img-fluid"></p>
+<section id="forcats" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="forcats"><span class="header-section-number">8.1</span> forcats</h2>
 </section>
-<section id="rstudio-themes" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="rstudio-themes"><span class="header-section-number">1.2.2</span> RStudio themes</h3>
-<p>RStudio can be skinned with different themes, including dark themes that may be easier on your eyes or are, at least, objectively cooler.</p>
-<p>The objectively coolest theme of them all is Synthwave85, which can be installed by running the following line of code in RStudio’s console: <code>rstudioapi::addTheme("https://raw.githubusercontent.com/jnolis/synthwave85/master/Synthwave85.rstheme", TRUE, TRUE, FALSE)</code></p>
-<p>To change themes, click the ‘Tools’ drop down menu, then ‘Global Options’, then ‘Appearance’, then ‘RStudio Theme’.</p>
-<p><img src="../images/synthwave85_theme.png" class="img-fluid"></p>
-</section>
-<section id="rstudio-fonts" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="rstudio-fonts"><span class="header-section-number">1.2.3</span> RStudio fonts</h3>
-<p>Certain monospaced fonts provide the advantage of rendering common R characters or functions more nicely.</p>
-<p>This is the same code displayed using Monaco, a built-in font:</p>
-<p><img src="../images/font_monaco.png" class="img-fluid"></p>
-<p>And using JetBrainsMono, which supports rendering the base-R pipe (<code>|&gt;</code>) and non-equivalence symbols as single characters</p>
-<p><img src="../images/font_jetbrainsmono.png" class="img-fluid"></p>
-<p>If you prefer the latter, you can download JetBrainsMono from <a href="https://www.jetbrains.com/lp/mono/">here</a> and install on your computer. Restart RStudio, then change the font by clicking the ‘Tools’ drop down menu, then ‘Global Options’, then ‘Appearance’, then ‘Editor font’.</p>
-</section>
-</section>
-<section id="install-slack-and-github" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="install-slack-and-github"><span class="header-section-number">1.3</span> Install Slack and GitHub</h2>
-<p>If you are reading this book as part of a course with me at the University of Bern, please:</p>
-<ul>
-<li>Install the Slack app. You can download it <a href="https://slack.com/downloads/windows">for Windows here</a> or <a href="https://slack.com/downloads/mac">for Mac here</a>.</li>
-<li>I will send an invitation to the course’s Slack workspace to all students enrolled in the course. Please check your @students.unibe.ch email address.</li>
-<li>Install the GitHub desktop app. You can download <a href="https://desktop.github.com/download/">here</a>.</li>
-<li>Make an account yourself on https://github.com and log into it on the GitHub desktop app. University of Bern does provide you access to a branded GitHub account, but you’ll lose access to it after you finish your studies, so it’s better to make your own private account.</li>
-</ul>
+<section id="stringr" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="stringr"><span class="header-section-number">8.2</span> stringr</h2>
 
 
 <!-- -->
@@ -778,72 +774,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      <a href="../chapters/data_transformation_2.html" class="pagination-link" aria-label="Data transformation II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/fundamentals.html" class="pagination-link" aria-label="Fundamentals">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/reshaping_and_pivots.html" class="pagination-link" aria-label="Reshaping and pivots">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Installation and setup"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Install the base R language and the RStudio IDE</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>You should install the base R language and the RStudio IDE from <span class="co">[</span><span class="ot">here</span><span class="co">](https://posit.co/download/rstudio-desktop/)</span>.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>There are detailed steps available for Windows and Mac <span class="co">[</span><span class="ot">here</span><span class="co">](https://psyteachr.github.io/RSetGo/)</span>.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## RStudio settings and options</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Important settings to change for reproducibility</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>For reproducibility, please ensure RStudio's settings never save the objects in your environment to disk on exist or load them again when opening RStudio. Open the Tools<span class="sc">\&gt;</span>Global Options menu, go to General, and untick the following box and set save to 'Never'.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/rstudio_settings.png)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio themes</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>RStudio can be skinned with different themes, including dark themes that may be easier on your eyes or are, at least, objectively cooler.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>The objectively coolest theme of them all is Synthwave85, which can be installed by running the following line of code in RStudio's console: <span class="in">`rstudioapi::addTheme("https://raw.githubusercontent.com/jnolis/synthwave85/master/Synthwave85.rstheme", TRUE, TRUE, FALSE)`</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>To change themes, click the 'Tools' drop down menu, then 'Global Options', then 'Appearance', then 'RStudio Theme'.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/synthwave85_theme.png)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### RStudio fonts</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Certain monospaced fonts provide the advantage of rendering common R characters or functions more nicely.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>This is the same code displayed using Monaco, a built-in font:</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/font_monaco.png)</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>And using JetBrainsMono, which supports rendering the base-R pipe (<span class="in">`|&gt;`</span>) and non-equivalence symbols as single characters</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/font_jetbrainsmono.png)</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>If you prefer the latter, you can download JetBrainsMono from <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.jetbrains.com/lp/mono/)</span> and install on your computer. Restart RStudio, then change the font by clicking the 'Tools' drop down menu, then 'Global Options', then 'Appearance', then 'Editor font'.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Install Slack and GitHub</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>If you are reading this book as part of a course with me at the University of Bern, please:</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Install the Slack app. You can download it <span class="co">[</span><span class="ot">for Windows here</span><span class="co">](https://slack.com/downloads/windows)</span> or <span class="co">[</span><span class="ot">for Mac here</span><span class="co">](https://slack.com/downloads/mac)</span>.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>I will send an invitation to the course's Slack workspace to all students enrolled in the course. Please check your \@students.unibe.ch email address.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Install the GitHub desktop app. You can download <span class="co">[</span><span class="ot">here</span><span class="co">](https://desktop.github.com/download/)</span>.</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make an account yourself on https://github.com and log into it on the GitHub desktop app. University of Bern does provide you access to a branded GitHub account, but you'll lose access to it after you finish your studies, so it's better to make your own private account.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Working with strings and factors"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### String subsearches with `stringr::str_detect()`</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>case, characters etc.</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"AB"</span>, <span class="st">"B"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>test <span class="sc">==</span> <span class="st">"A"</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(test, <span class="st">"B"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>Therefore:</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co"># data_amp_test_trials %&gt;%</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(str_detect(trial_id, "2_")) </span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## forcats</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## stringr</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Reshaping and pivots: {tidyr} – Reproducible Data Processing and Visualization</title>
+<title>9&nbsp; Reshaping and pivots – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/binding_and_joining.html" rel="next">
-<link href="../chapters/data_transformation_1.html" rel="prev">
+<link href="../chapters/strings_and_factors.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -146,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/reshaping_and_pivots.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots: {tidyr}</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/reshaping_and_pivots.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,67 +192,79 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reproducible_reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports: Quarto and {knitr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data: {readr} and {readxl}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming: {dplyr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/data_transformation_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I: {dplyr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/data_transformation_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots: {tidyr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Binding and joining: {dplyr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects: {psychdsish} and GitHub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization: {ggplot2}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reporting: {easystats}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
   </div>
 </li>
     </ul>
@@ -265,19 +277,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources"><span class="header-section-number">7.1</span> Resources</a></li>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies"><span class="header-section-number">7.2</span> Dependencies</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">7.3</span> Example</a>
+  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources"><span class="header-section-number">9.1</span> Resources</a></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies"><span class="header-section-number">9.2</span> Dependencies</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">9.3</span> Example</a>
   <ul class="collapse">
-  <li><a href="#simulate-data-in-wide-format" id="toc-simulate-data-in-wide-format" class="nav-link" data-scroll-target="#simulate-data-in-wide-format"><span class="header-section-number">7.3.1</span> Simulate data in wide format</a></li>
-  <li><a href="#cronbachs-alpha" id="toc-cronbachs-alpha" class="nav-link" data-scroll-target="#cronbachs-alpha"><span class="header-section-number">7.3.2</span> Cronbach’s alpha</a></li>
-  <li><a href="#plot-simulated-data" id="toc-plot-simulated-data" class="nav-link" data-scroll-target="#plot-simulated-data"><span class="header-section-number">7.3.3</span> Plot simulated data</a></li>
-  <li><a href="#reshape" id="toc-reshape" class="nav-link" data-scroll-target="#reshape"><span class="header-section-number">7.3.4</span> Reshape</a></li>
-  <li><a href="#convert-this-long-data-back-to-wide" id="toc-convert-this-long-data-back-to-wide" class="nav-link" data-scroll-target="#convert-this-long-data-back-to-wide"><span class="header-section-number">7.3.5</span> Convert this long data back to wide</a></li>
-  <li><a href="#combine-item-and-sum-scores-in-one-data-frame" id="toc-combine-item-and-sum-scores-in-one-data-frame" class="nav-link" data-scroll-target="#combine-item-and-sum-scores-in-one-data-frame"><span class="header-section-number">7.3.6</span> Combine item and sum scores in one data frame</a></li>
+  <li><a href="#simulate-data-in-wide-format" id="toc-simulate-data-in-wide-format" class="nav-link" data-scroll-target="#simulate-data-in-wide-format"><span class="header-section-number">9.3.1</span> Simulate data in wide format</a></li>
+  <li><a href="#cronbachs-alpha" id="toc-cronbachs-alpha" class="nav-link" data-scroll-target="#cronbachs-alpha"><span class="header-section-number">9.3.2</span> Cronbach’s alpha</a></li>
+  <li><a href="#plot-simulated-data" id="toc-plot-simulated-data" class="nav-link" data-scroll-target="#plot-simulated-data"><span class="header-section-number">9.3.3</span> Plot simulated data</a></li>
+  <li><a href="#reshape" id="toc-reshape" class="nav-link" data-scroll-target="#reshape"><span class="header-section-number">9.3.4</span> Reshape</a></li>
+  <li><a href="#convert-this-long-data-back-to-wide" id="toc-convert-this-long-data-back-to-wide" class="nav-link" data-scroll-target="#convert-this-long-data-back-to-wide"><span class="header-section-number">9.3.5</span> Convert this long data back to wide</a></li>
+  <li><a href="#combine-item-and-sum-scores-in-one-data-frame" id="toc-combine-item-and-sum-scores-in-one-data-frame" class="nav-link" data-scroll-target="#combine-item-and-sum-scores-in-one-data-frame"><span class="header-section-number">9.3.6</span> Combine item and sum scores in one data frame</a></li>
   </ul></li>
-  <li><a href="#new-facet-plot-with-items-and-sum-score" id="toc-new-facet-plot-with-items-and-sum-score" class="nav-link" data-scroll-target="#new-facet-plot-with-items-and-sum-score"><span class="header-section-number">7.4</span> New facet plot with items and sum score</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">7.5</span> Practice</a></li>
+  <li><a href="#new-facet-plot-with-items-and-sum-score" id="toc-new-facet-plot-with-items-and-sum-score" class="nav-link" data-scroll-target="#new-facet-plot-with-items-and-sum-score"><span class="header-section-number">9.4</span> New facet plot with items and sum score</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">9.5</span> Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -286,7 +298,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reshaping and pivots: {tidyr}</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -303,8 +315,8 @@ window.Quarto = {
 </header>
 
 
-<section id="resources" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">7.1</span> Resources</h2>
+<section id="resources" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">9.1</span> Resources</h2>
 <p>Add alison horsts pics here</p>
 <p><img src="images/clipboard-1717531637.png" class="img-fluid"></p>
 <p><img src="images/clipboard-3657002858.png" class="img-fluid"></p>
@@ -314,8 +326,8 @@ window.Quarto = {
 <p>TODO</p>
 <p>Bring gifs from <a href="https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#pivot-wider-and-longer">here</a> which illustrate pivots into this book</p>
 </section>
-<section id="dependencies" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="dependencies"><span class="header-section-number">7.2</span> Dependencies</h2>
+<section id="dependencies" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="dependencies"><span class="header-section-number">9.2</span> Dependencies</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -335,10 +347,10 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="example" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="example"><span class="header-section-number">7.3</span> Example</h2>
-<section id="simulate-data-in-wide-format" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="simulate-data-in-wide-format"><span class="header-section-number">7.3.1</span> Simulate data in wide format</h3>
+<section id="example" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="example"><span class="header-section-number">9.3</span> Example</h2>
+<section id="simulate-data-in-wide-format" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="simulate-data-in-wide-format"><span class="header-section-number">9.3.1</span> Simulate data in wide format</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -370,8 +382,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="cronbachs-alpha" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="cronbachs-alpha"><span class="header-section-number">7.3.2</span> Cronbach’s alpha</h3>
+<section id="cronbachs-alpha" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="cronbachs-alpha"><span class="header-section-number">9.3.2</span> Cronbach’s alpha</h3>
 <p>Wide data like this is a) common and b) useful for calculating metrics like internal consistency.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -387,8 +399,8 @@ window.Quarto = {
 </div>
 <p>Cronbach’s <span class="math inline">\(\alpha\)</span> = 0.79</p>
 </section>
-<section id="plot-simulated-data" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="plot-simulated-data"><span class="header-section-number">7.3.3</span> Plot simulated data</h3>
+<section id="plot-simulated-data" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="plot-simulated-data"><span class="header-section-number">9.3.3</span> Plot simulated data</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -460,8 +472,8 @@ window.Quarto = {
 <li>These plots repeat the mortal coding sin of repeating ourselves. If we reshaped the data to ‘long’ format we could use just one ggplot() call that includes facet_wrap().</li>
 </ul>
 </section>
-<section id="reshape" class="level3" data-number="7.3.4">
-<h3 data-number="7.3.4" class="anchored" data-anchor-id="reshape"><span class="header-section-number">7.3.4</span> Reshape</h3>
+<section id="reshape" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="reshape"><span class="header-section-number">9.3.4</span> Reshape</h3>
 <p>Using <code>pivot_longer()</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -502,8 +514,8 @@ window.Quarto = {
 <li>What other ways could you specify this pivot_longer call’s arguments?</li>
 <li><code>facet_wrap()</code> is to {ggplot} as <code>group_by()</code> is to {dplyr}</li>
 </ul>
-<section id="calculate-sum-scores" class="level4" data-number="7.3.4.1">
-<h4 data-number="7.3.4.1" class="anchored" data-anchor-id="calculate-sum-scores"><span class="header-section-number">7.3.4.1</span> Calculate sum scores</h4>
+<section id="calculate-sum-scores" class="level4" data-number="9.3.4.1">
+<h4 data-number="9.3.4.1" class="anchored" data-anchor-id="calculate-sum-scores"><span class="header-section-number">9.3.4.1</span> Calculate sum scores</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -539,8 +551,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="convert-this-long-data-back-to-wide" class="level3" data-number="7.3.5">
-<h3 data-number="7.3.5" class="anchored" data-anchor-id="convert-this-long-data-back-to-wide"><span class="header-section-number">7.3.5</span> Convert this long data back to wide</h3>
+<section id="convert-this-long-data-back-to-wide" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="convert-this-long-data-back-to-wide"><span class="header-section-number">9.3.5</span> Convert this long data back to wide</h3>
 <p>Just to know how to do it.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -552,8 +564,8 @@ window.Quarto = {
 </details>
 </div>
 </section>
-<section id="combine-item-and-sum-scores-in-one-data-frame" class="level3" data-number="7.3.6">
-<h3 data-number="7.3.6" class="anchored" data-anchor-id="combine-item-and-sum-scores-in-one-data-frame"><span class="header-section-number">7.3.6</span> Combine item and sum scores in one data frame</h3>
+<section id="combine-item-and-sum-scores-in-one-data-frame" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="combine-item-and-sum-scores-in-one-data-frame"><span class="header-section-number">9.3.6</span> Combine item and sum scores in one data frame</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -566,8 +578,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="new-facet-plot-with-items-and-sum-score" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="new-facet-plot-with-items-and-sum-score"><span class="header-section-number">7.4</span> New facet plot with items and sum score</h2>
+<section id="new-facet-plot-with-items-and-sum-score" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="new-facet-plot-with-items-and-sum-score"><span class="header-section-number">9.4</span> New facet plot with items and sum score</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -590,8 +602,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="practice" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="practice"><span class="header-section-number">7.5</span> Practice</h2>
+<section id="practice" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="practice"><span class="header-section-number">9.5</span> Practice</h2>
 <p>Wrangle the demographics data included in this exercise more efficiently by reshaping it into wide format. Before, we used filter() to wrangle the age and gender data separately.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -1058,18 +1070,18 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/data_transformation_1.html" class="pagination-link" aria-label="Data transformation I: {dplyr}">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I: {dplyr}</span></span>
+      <a href="../chapters/strings_and_factors.html" class="pagination-link" aria-label="Working with strings and factors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/binding_and_joining.html" class="pagination-link" aria-label="Binding and joining: {dplyr}">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Binding and joining: {dplyr}</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/binding_and_joining.html" class="pagination-link" aria-label="Binding and joining">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Binding and joining</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Reshaping and pivots: {tidyr}"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Reshaping and pivots"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>

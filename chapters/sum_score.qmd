@@ -101,7 +101,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 6 
+## Method 6
 
 `truffle::snuffle_sum_scores()`
 
@@ -120,5 +120,3 @@ dat_simulated_neuroticism_sumscores |>
   kable_classic(full_width = FALSE)
 
 ```
-
-
