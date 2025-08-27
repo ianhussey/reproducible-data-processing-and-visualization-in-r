@@ -132,7 +132,7 @@ You can see if you have two identically named functions loaded by opening the he
 Avoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:
 
 | Function | tidyverse Source | Conflicting Package(s) | Notes |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | filter | dplyr | stats | stats::filter() is for signal processing (time series) |
 | lag | dplyr | stats | Different semantics: dplyr::lag() is simpler |
 | select | dplyr | MASS | MASS::select() is for step-wise regression |
@@ -196,6 +196,25 @@ At this point, many books talk about objects, data types, and data structures. P
 -   [Objects in R](https://intro2r.com/objects-in-r.html)
 -   [Data types in R](https://intro2r.com/data-types.html)
 -   [Data structures in R](https://intro2r.com/data-structures.html)
+
+## Comments
+
+Comments in R start with the hash symbol `#`. Everything to the right of `#` on a line of code is ignored by R when the code is run. 
+
+Comments are used to explain what the code does or leave reminders for future readers, including yourself.
+
+Good comments explain to the reader why this code exists rather than explaining what it does or how. Sometimes, particularly complex code can benefit from explanations of how it works. More often, the code itself can be figured out, but not *why it is needed at all*. Convey why the code exists with your comments. For example, `# remove outliers` is a good comment that tells you the 'why' of the code without getting in to 'how', which the code itself should explain.
+
+```{r}
+#| eval: false
+#| include: true
+# (you can leave comments before chunks of code, like this)
+# load dependencies
+library(dplyr)
+
+# print the first few lines of a data frame
+head(mtcars) # (you can also comment beside individual lines of code, like this)
+```
 
 ## Code styling
 
