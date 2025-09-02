@@ -94,17 +94,27 @@ Base R includes a powerful core of many useful functions, but it doesn’t inclu
 
 Install packages from the most common database of R packages, CRAN, with `install.packages()`. Each package only needs to be installed once for it to be present on your computer, not every time the script runs.
 
+In your local version of this .qmd script, highlight and run the code below to install these packages.
+
 ```{r}
 #| eval: false
-install.packages(tidyverse)
+install.packages(tidyverse) # umbrella package that installs dplyr/tidyr/ggplot2 and others
+install.packages(janitor)
+install.packages(report)
+install.packages(parameters)
+install.packages(knitr)
+install.packages(kableExtra)
 ```
 
 Some packages are instead on GitHub, and can be installed with `devtools::install_github()`. You'll need to install the {devtools} package first to be able to use the `install_github()` function.
 
+In your local version of this .qmd script, highlight and run the code below to install these packages.
+
 ```{r}
 #| eval: false
 install.packages(devtools)
-devtools::install_github("ianhussey/tides") # username/repository
+devtools::install_github("ianhussey/psychdsish") # username/repository
+devtools::install_github("ianhussey/truffle") # username/repository
 ```
 
 Dependencies, i.e., packages that your code requires to run, can be loaded with `library()`. For tidiness, these should usually all be loaded at the start of your script. Some chapters in this book load libraries only when they're used in order to make it clear which functions come from which libraries. Equally, unused libraries should not be loaded.
@@ -199,7 +209,7 @@ At this point, many books talk about objects, data types, and data structures. P
 
 ## Comments
 
-Comments in R start with the hash symbol `#`. Everything to the right of `#` on a line of code is ignored by R when the code is run. 
+Comments in R start with the hash symbol `#`. Everything to the right of `#` on a line of code is ignored by R when the code is run.
 
 Comments are used to explain what the code does or leave reminders for future readers, including yourself.
 

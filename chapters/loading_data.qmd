@@ -1,5 +1,5 @@
 ---
-title: "Loading, viewing, and saving data"
+title: "Loading, viewing and saving data"
 format:
   html:
     toc: true

@@ -1,5 +1,5 @@
 ---
-title: "Working with strings and factors"
+title: "Strings and factors"
 format:
   html:
     toc: true

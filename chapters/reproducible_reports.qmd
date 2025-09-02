@@ -22,9 +22,9 @@ options(scipen = 999)
 
 Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.
 
-### In line code
+### In-line code
 
-Code can be written in 'in line' in the text as follows: `r 1+1`. In the RMarkdown document, you have hover over the in line code and press enter or return to run the code.
+Code can be written in 'in-line' in the text as follows: the code "`` `r 1+1` ``" is run and produces the output "`r 1+1`". In your local .qmd document, you have hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.
 
 ### Code chunks
 
@@ -46,7 +46,7 @@ Output appears below chunks. You can run all code in a chunk by clicking the rig
 
 You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: ![](../images/chunk_run_previous_chunks.png)
 
-For example:
+For example, run this code chunk in the local version of .qmd file. Note that the buttons are only visible in RStudio, not the ebook version of this file.
 
 ```{r}
 
@@ -123,7 +123,11 @@ Levels of heading are extremely useful for structuring your report.
 
 ## Math typesetting via LaTeX
 
-You can include math in line with LaTeX code placed between dollar signs: e.g., "`$\eta_{p}^{2}$` = 0.03" produces "$\eta_{p}^{2}$ = 0.03".
+LaTeX is a typesetting system designed for creating professional-looking documents, especially those containing mathematics, tables, and references. In psychology research, you are likely to encounter LaTeX most often indirectly—because Quarto (which we use throughout this book) relies on LaTeX in the background when generating PDF outputs.
+
+You do not need to learn LaTeX in detail to work reproducibly with R code in Quarto documents, but it is useful to understand what it does and if you want to include math in your Quarto documents: it ensures that your documents are formatted consistently, citations and references are automatically handled, and statistical results or equations are rendered cleanly. In practice, this means you can focus on your analyses and writing in R and Quarto, while LaTeX quietly manages the professional typesetting for you.
+
+You can include math in-line with LaTeX code placed between dollar signs: e.g., "`$\eta_{p}^{2}$` = 0.03" produces "$\eta_{p}^{2}$ = 0.03".
 
 You can also write longer chunks of LaTeX, for example to specify that the mean ($\bar{x}$) is the sum of all elements of the vector $x$ divided by number of elements in the vector ($n$).
 
@@ -140,6 +144,8 @@ Produces this math:
 $$
 \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
 $$
+
+Writing math via LaTeX often sounds like a very advanced skill when you're introduced to it but it can be very useful, especially for Monte Carlo simulation studies, which I teach in a separate course.
 
 ## Reading, processing, and writing data
 
@@ -261,7 +267,15 @@ Use the `install.packages()` function to install the packages {tidyverse}, {jani
 
 ### Inserting a new chunk below this heading
 
-Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some code inside the chunk, e.g., "10 - 5". Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
+Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk: 
+
+- Assign the variable `x` to have the value `5`
+- Assign the variable `y` to have the value `x` minus `3`.
+- Print the value of `y` as output. 
+
+Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
+
+Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](fundamentals.qmd). 
 
 ### Add authorship
 
