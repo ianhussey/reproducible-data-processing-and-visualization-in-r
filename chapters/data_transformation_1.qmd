@@ -1256,7 +1256,7 @@ select(dat, contains("scale3") & contains("item1") & !ends_with("item1"))
 What set operators can be used with `filter()` and how?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
-With filter(), set operations are expressed with logical operators applied to rows: 
+With filter(), set operations are expressed with logical operators applied to rows:
 
 -   `&` : keeps rows that satisfy all conditions (intersection)
 -   `|` : keeps rows that satisfy any condition (union)

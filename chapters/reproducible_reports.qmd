@@ -267,15 +267,15 @@ Use the `install.packages()` function to install the packages {tidyverse}, {jani
 
 ### Inserting a new chunk below this heading
 
-Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk: 
+Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:
 
-- Assign the variable `x` to have the value `5`
-- Assign the variable `y` to have the value `x` minus `3`.
-- Print the value of `y` as output. 
+-   Assign the variable `x` to have the value `5`
+-   Assign the variable `y` to have the value `x` minus `3`.
+-   Print the value of `y` as output.
 
 Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
 
-Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](fundamentals.qmd). 
+Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](fundamentals.qmd).
 
 ### Add authorship
 

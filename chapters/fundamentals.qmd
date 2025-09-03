@@ -32,6 +32,8 @@ A script is a text file that contains R code that can be re-run. Technically, yo
 
 The RStudio interface allows you to view and write code, as well as objects that are loaded and modified by your code such as datasets. Like code scripts, datasets are also stored locally on your machine, such as in .csv and .xlsx files.
 
+Note that you can also have text-only markdown files (.md). These can contain text and markdown formatting (e.g., bold, italics, levels of heading, etc) but not executable code. 'Readme' files for projects are often saved as "README.md". .md files can be opened and edited in RStudio and also other markdown editors such as [typora.io](https://typora.io). You may need to tell your computer how to open .md file (e.g., right click\>'open with'\>RStudio).
+
 ## RStudio IDE basics
 
 Get familiar with the different parts of the RStudio IDE user interface with this cheat-sheet, which you can also download as a pdf [here](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/resources/cheatsheet%20-%20rstudio-ide.pdf).

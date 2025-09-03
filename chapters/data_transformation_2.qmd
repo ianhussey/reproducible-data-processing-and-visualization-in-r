@@ -304,3 +304,9 @@ dat_regression_betas_rounded %>%
 ### `rename(across())`
 
 TODO use {truffle}
+
+## Exercises
+
+TODO
+
+
