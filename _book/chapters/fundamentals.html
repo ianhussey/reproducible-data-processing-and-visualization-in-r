@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -193,25 +193,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -305,6 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="2.2" class="anchored" data-anchor-id="scripts-vs.-data-console-vs.-source"><span class="header-section-number">2.2</span> Scripts vs.&nbsp;data, console vs.&nbsp;source</h2>
 <p>A script is a text file that contains R code that can be re-run. Technically, you can type R code directly into the RStudio ‘Console’ and run it from there. But that would be incredibly difficult, and we want reproducible code that can be rerun, modified, and shared, so we save them in scripts. There are multiple types of scripts, including .R files (R code and comments only) as well as RMarkdown (.Rmd) and Quarto files (.qmd), which can contain code, text, plots, tables, and data. We cover these more in a later chapter on <a href="../chapters/reproducible_reports.html">Reproducible Reports</a>.</p>
 <p>The RStudio interface allows you to view and write code, as well as objects that are loaded and modified by your code such as datasets. Like code scripts, datasets are also stored locally on your machine, such as in .csv and .xlsx files.</p>
+<p>Note that you can also have text-only markdown files (.md). These can contain text and markdown formatting (e.g., bold, italics, levels of heading, etc) but not executable code. ‘Readme’ files for projects are often saved as “README.md”. .md files can be opened and edited in RStudio and also other markdown editors such as <a href="https://typora.io">typora.io</a>. You may need to tell your computer how to open .md file (e.g., right click&gt;‘open with’&gt;RStudio).</p>
 </section>
 <section id="rstudio-ide-basics" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="rstudio-ide-basics"><span class="header-section-number">2.3</span> RStudio IDE basics</h2>
@@ -329,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Windows</p>
 <ul>
 <li>Insert Chunk: Ctrl + Alt + I</li>
-<li>Insert Pipe (<code>|&gt;</code>): shift + Ctrl + M</li>
+<li>Insert Pipe (<code>%&gt;%</code>): shift + Ctrl + M</li>
 <li>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</li>
 <li>Move cursor by word instead of by character: Alt + arrows</li>
 <li>Highlight words: Shift + alt + arrows</li>
@@ -339,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Mac</p>
 <ul>
 <li>Insert Chunk: Cmd + Alt + I</li>
-<li>Insert Pipe (<code>|&gt;</code>): shift + Cmd + M</li>
+<li>Insert Pipe (<code>%&gt;%</code>): shift + Cmd + M</li>
 <li>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</li>
 <li>Move cursor by word instead of by character: Option + arrows</li>
 <li>Highlight words: Shift + option + arrows</li>
@@ -1242,359 +1243,361 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>The RStudio interface allows you to view and write code, as well as objects that are loaded and modified by your code such as datasets. Like code scripts, datasets are also stored locally on your machine, such as in .csv and .xlsx files.</span>
 <span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## RStudio IDE basics</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>Note that you can also have text-only markdown files (.md). These can contain text and markdown formatting (e.g., bold, italics, levels of heading, etc) but not executable code. 'Readme' files for projects are often saved as "README.md". .md files can be opened and edited in RStudio and also other markdown editors such as <span class="co">[</span><span class="ot">typora.io</span><span class="co">](https://typora.io)</span>. You may need to tell your computer how to open .md file (e.g., right click<span class="sc">\&gt;</span>'open with'<span class="sc">\&gt;</span>RStudio).</span>
 <span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>Get familiar with the different parts of the RStudio IDE user interface with this cheat-sheet, which you can also download as a pdf <span class="co">[</span><span class="ot">here</span><span class="co">](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/resources/cheatsheet%20-%20rstudio-ide.pdf)</span>.</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## RStudio IDE basics</span></span>
 <span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/cheatsheet_rstudio_1.png)</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>Get familiar with the different parts of the RStudio IDE user interface with this cheat-sheet, which you can also download as a pdf <span class="co">[</span><span class="ot">here</span><span class="co">](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/resources/cheatsheet%20-%20rstudio-ide.pdf)</span>.</span>
 <span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Source versus Visual editor</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/cheatsheet_rstudio_1.png)</span></span>
 <span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>You can view a .qmd file's raw code in the 'Source' viewer. The button for this appears on the top left above the code in RStudio.</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Source versus Visual editor</span></span>
 <span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>Screenshot of Source editor mode:</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>You can view a .qmd file's raw code in the 'Source' viewer. The button for this appears on the top left above the code in RStudio.</span>
 <span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/source_editor.png)</span>{style="border: 1px solid black;"}</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>Screenshot of Source editor mode:</span>
 <span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>You can also view the a live preview of the rendered file, including tables, plots, math, etc., using 'Visual' editor mode, although there will some simplifications compared to when you render a .html file. We'll cover rendering in a later chapter.</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/source_editor.png)</span>{style="border: 1px solid black;"}</span>
 <span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>Screenshot of Visual editor mode:</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>You can also view the a live preview of the rendered file, including tables, plots, math, etc., using 'Visual' editor mode, although there will some simplifications compared to when you render a .html file. We'll cover rendering in a later chapter.</span>
 <span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/visual_editor.png)</span>{style="border: 1px solid black;"}</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>Screenshot of Visual editor mode:</span>
 <span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Keyboard shortcuts</span></span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/visual_editor.png)</span>{style="border: 1px solid black;"}</span>
 <span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>Once you have learned about some of the concepts mentioned below in later chapters, it can be useful to come back to these cheat-sheets to learn the keyboard shortcuts for them.</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Keyboard shortcuts</span></span>
 <span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/cheatsheet_rstudio_2.png)</span></span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>Once you have learned about some of the concepts mentioned below in later chapters, it can be useful to come back to these cheat-sheets to learn the keyboard shortcuts for them.</span>
 <span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### Particularly useful shortcuts</span></span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/cheatsheet_rstudio_2.png)</span></span>
 <span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>Windows</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Particularly useful shortcuts</span></span>
 <span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Chunk: Ctrl + Alt + I</span>
-<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Pipe (<span class="in">`|&gt;`</span>): shift + Ctrl + M</span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Move cursor by word instead of by character: Alt + arrows</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Highlight words: Shift + alt + arrows</span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fix Indentation: Mouse click-and-highlight multiple lines + Ctrl + I</span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Comment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Ctrl + C</span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>Mac</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>Windows</span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Chunk: Ctrl + Alt + I</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Pipe (<span class="in">`%&gt;%`</span>): shift + Ctrl + M</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Move cursor by word instead of by character: Alt + arrows</span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Highlight words: Shift + alt + arrows</span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fix Indentation: Mouse click-and-highlight multiple lines + Ctrl + I</span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Comment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Ctrl + C</span>
 <span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Chunk: Cmd + Alt + I</span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Pipe (<span class="in">`|&gt;`</span>): shift + Cmd + M</span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Move cursor by word instead of by character: Option + arrows</span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Highlight words: Shift + option + arrows</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fix Indentation: Mouse click-and-highlight multiple lines + Cmd + I</span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Comment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Cmd + C</span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>You can also change or set up additional keyboard shortcuts in the "Tools<span class="sc">\&gt;</span>Modify keyboard shortcuts" drop down menu. For example, I have modified the shortcut to switch between Source viewer vs. Visual viewer to be "Cmd + <span class="sc">\`</span>".</span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>Mac</span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Chunk: Cmd + Alt + I</span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert Pipe (<span class="in">`%&gt;%`</span>): shift + Cmd + M</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type</span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Move cursor by word instead of by character: Option + arrows</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Highlight words: Shift + option + arrows</span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fix Indentation: Mouse click-and-highlight multiple lines + Cmd + I</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Comment out (#) multiple Lines: Mouse click-and-highlight multiple lines, then Shift + Cmd + C</span>
 <span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>Of the above, multi-line typing is the one that reliably gets an audible 'whoa' from audiences. It's easier to see than explain:</span>
+<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>You can also change or set up additional keyboard shortcuts in the "Tools<span class="sc">\&gt;</span>Modify keyboard shortcuts" drop down menu. For example, I have modified the shortcut to switch between Source viewer vs. Visual viewer to be "Cmd + <span class="sc">\`</span>".</span>
 <span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/mutli_line_typing.gif)</span></span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a>Of the above, multi-line typing is the one that reliably gets an audible 'whoa' from audiences. It's easier to see than explain:</span>
 <span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a>When you get a bit more experienced with RStudio, I highly recommend you check out <span class="co">[</span><span class="ot">this</span><span class="co">](https://www.appsilon.com/post/r-studio-shortcuts-and-tips-part-2)</span> blog post on shortcuts to know about more advanced features such as Function/Variable Extraction, Renaming in Scope, Code Snippets, and advanced search and find-and-replace.</span>
+<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/mutli_line_typing.gif)</span></span>
 <span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dependencies</span></span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>When you get a bit more experienced with RStudio, I highly recommend you check out <span class="co">[</span><span class="ot">this</span><span class="co">](https://www.appsilon.com/post/r-studio-shortcuts-and-tips-part-2)</span> blog post on shortcuts to know about more advanced features such as Function/Variable Extraction, Renaming in Scope, Code Snippets, and advanced search and find-and-replace.</span>
 <span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a>Base R includes a powerful core of many useful functions, but it doesn’t include every tool you might need. To do specialized tasks you can install 'packages' that contain other functions and documentation to help you understand them. Once your code makes use of another package, it 'depends' on that that package for the code to run, so we say that the package is a 'dependency' for that script. Packages that can</span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dependencies</span></span>
 <span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a>Install packages from the most common database of R packages, CRAN, with <span class="in">`install.packages()`</span>. Each package only needs to be installed once for it to be present on your computer, not every time the script runs.</span>
+<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a>Base R includes a powerful core of many useful functions, but it doesn’t include every tool you might need. To do specialized tasks you can install 'packages' that contain other functions and documentation to help you understand them. Once your code makes use of another package, it 'depends' on that that package for the code to run, so we say that the package is a 'dependency' for that script. Packages that can</span>
 <span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd script, highlight and run the code below to install these packages.</span>
+<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a>Install packages from the most common database of R packages, CRAN, with <span class="in">`install.packages()`</span>. Each package only needs to be installed once for it to be present on your computer, not every time the script runs.</span>
 <span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(tidyverse) <span class="co"># umbrella package that installs dplyr/tidyr/ggplot2 and others</span></span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(janitor)</span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(report)</span>
-<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(parameters)</span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(knitr)</span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(kableExtra)</span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a>Some packages are instead on GitHub, and can be installed with <span class="in">`devtools::install_github()`</span>. You'll need to install the {devtools} package first to be able to use the <span class="in">`install_github()`</span> function.</span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd script, highlight and run the code below to install these packages.</span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(tidyverse) <span class="co"># umbrella package that installs dplyr/tidyr/ggplot2 and others</span></span>
+<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(janitor)</span>
+<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(report)</span>
+<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(parameters)</span>
+<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(knitr)</span>
+<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(kableExtra)</span>
+<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd script, highlight and run the code below to install these packages.</span>
+<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a>Some packages are instead on GitHub, and can be installed with <span class="in">`devtools::install_github()`</span>. You'll need to install the {devtools} package first to be able to use the <span class="in">`install_github()`</span> function.</span>
 <span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(devtools)</span>
-<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ianhussey/psychdsish"</span>) <span class="co"># username/repository</span></span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ianhussey/truffle"</span>) <span class="co"># username/repository</span></span>
-<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>Dependencies, i.e., packages that your code requires to run, can be loaded with <span class="in">`library()`</span>. For tidiness, these should usually all be loaded at the start of your script. Some chapters in this book load libraries only when they're used in order to make it clear which functions come from which libraries. Equally, unused libraries should not be loaded.</span>
+<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd script, highlight and run the code below to install these packages.</span>
+<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(devtools)</span>
+<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ianhussey/psychdsish"</span>) <span class="co"># username/repository</span></span>
+<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ianhussey/truffle"</span>) <span class="co"># username/repository</span></span>
+<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># umbrella package that loads dplyr/tidyr/ggplot2 and others</span></span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## Accessing the help menu</span></span>
+<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>Dependencies, i.e., packages that your code requires to run, can be loaded with <span class="in">`library()`</span>. For tidiness, these should usually all be loaded at the start of your script. Some chapters in this book load libraries only when they're used in order to make it clear which functions come from which libraries. Equally, unused libraries should not be loaded.</span>
+<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># umbrella package that loads dplyr/tidyr/ggplot2 and others</span></span>
+<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>For any function in a loaded package, simply type <span class="in">`?`</span> before the function's name to bring up the help menu. This helps you understand the function's purpose, its arguments, and outputs.</span>
+<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Accessing the help menu</span></span>
 <span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a>?select</span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a>If you scroll to the bottom of a function's help page, you'll find an 'Index' hyperlink. Clicking this brings you to a list of all the package's functions. Once you get nerdy, this can be a very useful way to discover and learn all a package's functions.</span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>For any function in a loaded package, simply type <span class="in">`?`</span> before the function's name to bring up the help menu. This helps you understand the function's purpose, its arguments, and outputs.</span>
+<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>?select</span>
+<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Namespace collisions: a common source of errors</span></span>
+<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>If you scroll to the bottom of a function's help page, you'll find an 'Index' hyperlink. Clicking this brings you to a list of all the package's functions. Once you get nerdy, this can be a very useful way to discover and learn all a package's functions.</span>
 <span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a>Some common packages have identically named functions with different syntax. For example, if you load both {dplyr} and {MASS}, use of the function <span class="in">`select()`</span> can refer to either <span class="in">`dplyr::select()`</span> or <span class="in">`MASS::select()`</span>, and your code might not run if the other package is loaded.</span>
+<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Namespace collisions: a common source of errors</span></span>
 <span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>You can see if you have two identically named functions loaded by opening the help menu and seeing if more than one entry appears (e.g. with <span class="in">`?select()`</span>).</span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>Some common packages have identically named functions with different syntax. For example, if you load both {dplyr} and {MASS}, use of the function <span class="in">`select()`</span> can refer to either <span class="in">`dplyr::select()`</span> or <span class="in">`MASS::select()`</span>, and your code might not run if the other package is loaded.</span>
 <span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>Avoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:</span>
+<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>You can see if you have two identically named functions loaded by opening the help menu and seeing if more than one entry appears (e.g. with <span class="in">`?select()`</span>).</span>
 <span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Function <span class="pp">|</span> tidyverse Source <span class="pp">|</span> Conflicting Package(s) <span class="pp">|</span> Notes <span class="pp">|</span></span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------|------------------|------------------|------------------|</span></span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> filter <span class="pp">|</span> dplyr <span class="pp">|</span> stats <span class="pp">|</span> stats::filter() is for signal processing (time series) <span class="pp">|</span></span>
-<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> lag <span class="pp">|</span> dplyr <span class="pp">|</span> stats <span class="pp">|</span> Different semantics: dplyr::lag() is simpler <span class="pp">|</span></span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> select <span class="pp">|</span> dplyr <span class="pp">|</span> MASS <span class="pp">|</span> MASS::select() is for step-wise regression <span class="pp">|</span></span>
-<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> slice <span class="pp">|</span> dplyr <span class="pp">|</span> IRanges / S4Vectors <span class="pp">|</span> Common in Bioconductor workflows <span class="pp">|</span></span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> rename <span class="pp">|</span> dplyr <span class="pp">|</span> MASS <span class="pp">|</span> MASS::rename() is deprecated, but may still load <span class="pp">|</span></span>
-<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> summarise <span class="pp">|</span> dplyr <span class="pp">|</span> Hmisc <span class="pp">|</span> Hmisc::summarize() differs in behavior <span class="pp">|</span></span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> intersect <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::intersect() <span class="pp">|</span></span>
-<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> union <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::union() <span class="pp">|</span></span>
-<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> setdiff <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::setdiff() <span class="pp">|</span></span>
-<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> count <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Different behavior/output in plyr::count() <span class="pp">|</span></span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> desc <span class="pp">|</span> dplyr <span class="pp">|</span> IRanges <span class="pp">|</span> Conflicts with IRanges sorting <span class="pp">|</span></span>
-<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> mutate <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Conflicts common when plyr is loaded <span class="pp">|</span></span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> arrange <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Subtle differences; dplyr preferred <span class="pp">|</span></span>
-<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>Solve this issue either by specifying which package should be used each time you use the function (e.g., <span class="in">`dplyr::select()`</span> instead of <span class="in">`select()`</span>) or by specifying below your <span class="in">`library()`</span> calls which version is preferred:</span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>Avoid this by loading only the packages you need. Debug errors by thinking about these common namespace collisions:</span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Function <span class="pp">|</span> tidyverse Source <span class="pp">|</span> Conflicting Package(s) <span class="pp">|</span> Notes <span class="pp">|</span></span>
+<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------|------------------|------------------|------------------|</span></span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> filter <span class="pp">|</span> dplyr <span class="pp">|</span> stats <span class="pp">|</span> stats::filter() is for signal processing (time series) <span class="pp">|</span></span>
+<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> lag <span class="pp">|</span> dplyr <span class="pp">|</span> stats <span class="pp">|</span> Different semantics: dplyr::lag() is simpler <span class="pp">|</span></span>
+<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> select <span class="pp">|</span> dplyr <span class="pp">|</span> MASS <span class="pp">|</span> MASS::select() is for step-wise regression <span class="pp">|</span></span>
+<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> slice <span class="pp">|</span> dplyr <span class="pp">|</span> IRanges / S4Vectors <span class="pp">|</span> Common in Bioconductor workflows <span class="pp">|</span></span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> rename <span class="pp">|</span> dplyr <span class="pp">|</span> MASS <span class="pp">|</span> MASS::rename() is deprecated, but may still load <span class="pp">|</span></span>
+<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> summarise <span class="pp">|</span> dplyr <span class="pp">|</span> Hmisc <span class="pp">|</span> Hmisc::summarize() differs in behavior <span class="pp">|</span></span>
+<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> intersect <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::intersect() <span class="pp">|</span></span>
+<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> union <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::union() <span class="pp">|</span></span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> setdiff <span class="pp">|</span> dplyr <span class="pp">|</span> base <span class="pp">|</span> dplyr re-exports base::setdiff() <span class="pp">|</span></span>
+<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> count <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Different behavior/output in plyr::count() <span class="pp">|</span></span>
+<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> desc <span class="pp">|</span> dplyr <span class="pp">|</span> IRanges <span class="pp">|</span> Conflicts with IRanges sorting <span class="pp">|</span></span>
+<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> mutate <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Conflicts common when plyr is loaded <span class="pp">|</span></span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> arrange <span class="pp">|</span> dplyr <span class="pp">|</span> plyr <span class="pp">|</span> Subtle differences; dplyr preferred <span class="pp">|</span></span>
 <span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: true</span></span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="at">name =</span> <span class="st">"select"</span>, <span class="at">winner =</span> <span class="st">"dplyr"</span>)</span>
-<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assignment of objects</span></span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>Solve this issue either by specifying which package should be used each time you use the function (e.g., <span class="in">`dplyr::select()`</span> instead of <span class="in">`select()`</span>) or by specifying below your <span class="in">`library()`</span> calls which version is preferred:</span>
+<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: true</span></span>
+<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a><span class="fu">conflict_prefer</span>(<span class="at">name =</span> <span class="st">"select"</span>, <span class="at">winner =</span> <span class="st">"dplyr"</span>)</span>
+<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>R/RStudio has access to your computers files, but it only does exactly what you tell it to. If you have a data file ('data.csv') on your computer that you want to analyze in R, you have to first tell R to load that file. We will come back to this in the chapter on <span class="co">[</span><span class="ot">Loading Data</span><span class="co">](loading_data.qmd)</span>.</span>
+<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assignment of objects</span></span>
 <span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>Loading data from files is just one form of assignment: instructing R to create and set an 'object' to a given value or set of values, such as the contents of a file. This can also be much simpler, such as setting the variable <span class="in">`name`</span> to "Ian": <span class="in">`name &lt;- "Ian"`</span>.</span>
+<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>R/RStudio has access to your computers files, but it only does exactly what you tell it to. If you have a data file ('data.csv') on your computer that you want to analyze in R, you have to first tell R to load that file. We will come back to this in the chapter on <span class="co">[</span><span class="ot">Loading Data</span><span class="co">](loading_data.qmd)</span>.</span>
 <span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>Assignment of objects is done via <span class="in">`&lt;-`</span> by convention.</span>
+<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>Loading data from files is just one form of assignment: instructing R to create and set an 'object' to a given value or set of values, such as the contents of a file. This can also be much simpler, such as setting the variable <span class="in">`name`</span> to "Ian": <span class="in">`name &lt;- "Ian"`</span>.</span>
 <span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable x to be the number 5</span></span>
-<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of x</span></span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>Technically you can also use <span class="in">`=`</span>, but it's best to avoid it.</span>
+<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a>Assignment of objects is done via <span class="in">`&lt;-`</span> by convention.</span>
+<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable x to be the number 5</span></span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of x</span></span>
+<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable y to be the string "hello"</span></span>
-<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="st">"hello"</span></span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of y</span></span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a>y</span>
-<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a>It's somewhat less well known, but you can also do "right-assignment" (<span class="in">`-&gt;`</span>) instead of the much more common left assignment (<span class="in">`&lt;-`</span>). You should also avoid this.</span>
+<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>Technically you can also use <span class="in">`=`</span>, but it's best to avoid it.</span>
+<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable y to be the string "hello"</span></span>
+<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="st">"hello"</span></span>
+<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of y</span></span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable y to be the string "really? yes."</span></span>
-<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a><span class="st">"really? yes."</span> <span class="ot">-&gt;</span> z</span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of z</span></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>z</span>
-<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a>At this point, many books talk about objects, data types, and data structures. Personally, I find these to be too abstract for many users. They make more sense once you have some experience with data transformation. If you want to learn about them, here are some external resources from <span class="co">[</span><span class="ot">intro2r.com</span><span class="co">](https://intro2r.com)</span>.</span>
+<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a>It's somewhat less well known, but you can also do "right-assignment" (<span class="in">`-&gt;`</span>) instead of the much more common left assignment (<span class="in">`&lt;-`</span>). You should also avoid this.</span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a><span class="co"># set the variable y to be the string "really? yes."</span></span>
+<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="st">"really? yes."</span> <span class="ot">-&gt;</span> z</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="co"># print the contents of z</span></span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Objects in R</span><span class="co">](https://intro2r.com/objects-in-r.html)</span></span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Data types in R</span><span class="co">](https://intro2r.com/data-types.html)</span></span>
-<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Data structures in R</span><span class="co">](https://intro2r.com/data-structures.html)</span></span>
-<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comments</span></span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a>At this point, many books talk about objects, data types, and data structures. Personally, I find these to be too abstract for many users. They make more sense once you have some experience with data transformation. If you want to learn about them, here are some external resources from <span class="co">[</span><span class="ot">intro2r.com</span><span class="co">](https://intro2r.com)</span>.</span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Objects in R</span><span class="co">](https://intro2r.com/objects-in-r.html)</span></span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Data types in R</span><span class="co">](https://intro2r.com/data-types.html)</span></span>
+<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Data structures in R</span><span class="co">](https://intro2r.com/data-structures.html)</span></span>
 <span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a>Comments in R start with the hash symbol <span class="in">`#`</span>. Everything to the right of <span class="in">`#`</span> on a line of code is ignored by R when the code is run.</span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comments</span></span>
 <span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a>Comments are used to explain what the code does or leave reminders for future readers, including yourself.</span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a>Comments in R start with the hash symbol <span class="in">`#`</span>. Everything to the right of <span class="in">`#`</span> on a line of code is ignored by R when the code is run.</span>
 <span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>Good comments explain to the reader why this code exists rather than explaining what it does or how. Sometimes, particularly complex code can benefit from explanations of how it works. More often, the code itself can be figured out, but not *why it is needed at all*. Convey why the code exists with your comments. For example, <span class="in">`# remove outliers`</span> is a good comment that tells you the 'why' of the code without getting in to 'how', which the code itself should explain.</span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>Comments are used to explain what the code does or leave reminders for future readers, including yourself.</span>
 <span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
-<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a><span class="co"># (you can leave comments before chunks of code, like this)</span></span>
-<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="co"># load dependencies</span></span>
-<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few lines of a data frame</span></span>
-<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars) <span class="co"># (you can also comment beside individual lines of code, like this)</span></span>
-<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code styling</span></span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a>Good comments explain to the reader why this code exists rather than explaining what it does or how. Sometimes, particularly complex code can benefit from explanations of how it works. More often, the code itself can be figured out, but not *why it is needed at all*. Convey why the code exists with your comments. For example, <span class="in">`# remove outliers`</span> is a good comment that tells you the 'why' of the code without getting in to 'how', which the code itself should explain.</span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="co"># (you can leave comments before chunks of code, like this)</span></span>
+<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="co"># load dependencies</span></span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few lines of a data frame</span></span>
+<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars) <span class="co"># (you can also comment beside individual lines of code, like this)</span></span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a>Code can be written many different ways and still run. For example, both of the below code chunks run successfully and produce the same plot. Even without knowing how to read or write this code yet, it should be clear that the first one is much harder to read than the second due to inconsistent formatting and lack of comments:</span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code styling</span></span>
 <span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhusssey/psychdsish")</span></span>
-<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychdsish)</span>
-<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a><span class="fu">print_poorly_styled_code</span>()</span>
-<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter)</span>
-<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">am=</span><span class="fu">ifelse</span>(am<span class="sc">==</span><span class="dv">1</span>,</span>
-<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a><span class="st">"manual"</span>,<span class="st">"automatic"</span>),<span class="at">gear=</span><span class="fu">factor</span>(</span>
-<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a>  gear</span>
-<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a>))<span class="sc">%&gt;%</span></span>
-<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(</span>
-<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a>  cyl,am)<span class="sc">%&gt;%</span></span>
-<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a>                       <span class="at">med_hp=</span><span class="fu">median</span>(hp),</span>
-<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a>                       <span class="at">count=</span><span class="fu">n</span>(),</span>
-<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.groups=</span><span class="st">"drop"</span></span>
-<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a>                       )<span class="sc">%&gt;%</span></span>
-<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">18</span><span class="sc">|</span>med_hp<span class="sc">&gt;</span><span class="dv">100</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flag=</span><span class="fu">ifelse</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">20</span><span class="sc">&amp;</span>med_hp<span class="sc">&gt;</span><span class="dv">110</span>,<span class="cn">TRUE</span>,</span>
-<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a>                   <span class="cn">FALSE</span>),<span class="at">hp_per_cyl=</span>med_hp<span class="sc">/</span>cyl)<span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg))<span class="sc">%&gt;%</span></span>
-<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(</span>
-<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">%&gt;%</span><span class="fu">count</span>(cyl, gear),<span class="at">by=</span><span class="st">"cyl"</span>  )<span class="sc">%&gt;%</span></span>
-<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">label=</span><span class="fu">str_c</span>(<span class="st">"cyl: "</span>,cyl,<span class="st">"; am: "</span>,am))<span class="sc">%&gt;%</span></span>
-<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(</span>
-<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a>  label,</span>
-<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a>  avg_mpg</span>
-<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a>),<span class="at">y=</span>avg_mpg,<span class="at">fill=</span></span>
-<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a>am))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">width  =</span>   <span class="fl">0.7</span>,</span>
-<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a>              <span class="at">color  =</span>   <span class="st">"black"</span>)<span class="sc">+</span><span class="fu">geom_text</span>( <span class="fu">aes</span>( <span class="at">label =</span> <span class="fu">round</span>(avg_mpg,<span class="dv">1</span>)),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,<span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>gear,<span class="at">scales=</span><span class="st">"free_x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>(</span>
-<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">theme</span>(</span>
-<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a><span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>)</span>
-<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">labs</span>(</span>
-<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="st">"Group"</span>,<span class="at">y=</span><span class="st">"Average MPG"</span>)<span class="sc">+</span></span>
-<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Transmission"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
-<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a><span class="co"># take the 'mtcars' dataset</span></span>
-<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert some of the existing data columns</span></span>
-<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">ifelse</span>(am <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"manual"</span>, <span class="st">"automatic"</span>), </span>
-<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a>         <span class="at">gear =</span> <span class="fu">factor</span>(gear)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create summaries</span></span>
-<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, am) <span class="sc">%&gt;%</span></span>
-<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a>            <span class="at">med_hp =</span> <span class="fu">median</span>(hp),</span>
-<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a>            <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only some rows</span></span>
-<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(avg_mpg <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">|</span> med_hp <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create categories and ratios</span></span>
-<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flag =</span> <span class="fu">ifelse</span>(avg_mpg <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> med_hp <span class="sc">&gt;</span> <span class="dv">110</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>), </span>
-<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a>         <span class="at">hp_per_cyl =</span> med_hp <span class="sc">/</span> cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rank the rows</span></span>
-<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join in more columns from the original data set</span></span>
-<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(cyl, gear), <span class="at">by =</span> <span class="st">"cyl"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate some variables</span></span>
-<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">str_c</span>(<span class="st">"cyl: "</span>, cyl, <span class="st">"; am: "</span>, am)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create plot</span></span>
-<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(label, avg_mpg), <span class="at">y =</span> avg_mpg, <span class="at">fill =</span> am)) <span class="sc">+</span></span>
-<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_mpg, <span class="dv">1</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create subplots</span></span>
-<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
-<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add plot theme </span></span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Group"</span>, <span class="at">y =</span> <span class="st">"Average MPG"</span>) <span class="sc">+</span></span>
-<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Transmission"</span>)) <span class="sc">+</span></span>
-<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
-<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a>General guidelines for how to style code are laid out in 'style guides', such as the <span class="co">[</span><span class="ot">Tidyverse Style Guide</span><span class="co">](https://style.tidyverse.org/)</span>. These are conventions rather than strict rules.</span>
+<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a>Code can be written many different ways and still run. For example, both of the below code chunks run successfully and produce the same plot. Even without knowing how to read or write this code yet, it should be clear that the first one is much harder to read than the second due to inconsistent formatting and lack of comments:</span>
+<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhusssey/psychdsish")</span></span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psychdsish)</span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a><span class="fu">print_poorly_styled_code</span>()</span>
+<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter)</span>
+<span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">am=</span><span class="fu">ifelse</span>(am<span class="sc">==</span><span class="dv">1</span>,</span>
+<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a><span class="st">"manual"</span>,<span class="st">"automatic"</span>),<span class="at">gear=</span><span class="fu">factor</span>(</span>
+<span id="cb18-281"><a href="#cb18-281" aria-hidden="true" tabindex="-1"></a>  gear</span>
+<span id="cb18-282"><a href="#cb18-282" aria-hidden="true" tabindex="-1"></a>))<span class="sc">%&gt;%</span></span>
+<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(</span>
+<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a>  cyl,am)<span class="sc">%&gt;%</span></span>
+<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a>                       <span class="at">med_hp=</span><span class="fu">median</span>(hp),</span>
+<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a>                       <span class="at">count=</span><span class="fu">n</span>(),</span>
+<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.groups=</span><span class="st">"drop"</span></span>
+<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a>                       )<span class="sc">%&gt;%</span></span>
+<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">18</span><span class="sc">|</span>med_hp<span class="sc">&gt;</span><span class="dv">100</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flag=</span><span class="fu">ifelse</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">20</span><span class="sc">&amp;</span>med_hp<span class="sc">&gt;</span><span class="dv">110</span>,<span class="cn">TRUE</span>,</span>
+<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a>                   <span class="cn">FALSE</span>),<span class="at">hp_per_cyl=</span>med_hp<span class="sc">/</span>cyl)<span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg))<span class="sc">%&gt;%</span></span>
+<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(</span>
+<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">%&gt;%</span><span class="fu">count</span>(cyl, gear),<span class="at">by=</span><span class="st">"cyl"</span>  )<span class="sc">%&gt;%</span></span>
+<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">label=</span><span class="fu">str_c</span>(<span class="st">"cyl: "</span>,cyl,<span class="st">"; am: "</span>,am))<span class="sc">%&gt;%</span></span>
+<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(</span>
+<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a>  label,</span>
+<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a>  avg_mpg</span>
+<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a>),<span class="at">y=</span>avg_mpg,<span class="at">fill=</span></span>
+<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a>am))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">width  =</span>   <span class="fl">0.7</span>,</span>
+<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a>              <span class="at">color  =</span>   <span class="st">"black"</span>)<span class="sc">+</span><span class="fu">geom_text</span>( <span class="fu">aes</span>( <span class="at">label =</span> <span class="fu">round</span>(avg_mpg,<span class="dv">1</span>)),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,<span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>gear,<span class="at">scales=</span><span class="st">"free_x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>(</span>
+<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">theme</span>(</span>
+<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a><span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>)</span>
+<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">labs</span>(</span>
+<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="st">"Group"</span>,<span class="at">y=</span><span class="st">"Average MPG"</span>)<span class="sc">+</span></span>
+<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Transmission"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
+<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a><span class="co"># take the 'mtcars' dataset</span></span>
+<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert some of the existing data columns</span></span>
+<span id="cb18-320"><a href="#cb18-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">am =</span> <span class="fu">ifelse</span>(am <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"manual"</span>, <span class="st">"automatic"</span>), </span>
+<span id="cb18-321"><a href="#cb18-321" aria-hidden="true" tabindex="-1"></a>         <span class="at">gear =</span> <span class="fu">factor</span>(gear)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create summaries</span></span>
+<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, am) <span class="sc">%&gt;%</span></span>
+<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a>            <span class="at">med_hp =</span> <span class="fu">median</span>(hp),</span>
+<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a>            <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only some rows</span></span>
+<span id="cb18-329"><a href="#cb18-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(avg_mpg <span class="sc">&gt;</span> <span class="dv">18</span> <span class="sc">|</span> med_hp <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-330"><a href="#cb18-330" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create categories and ratios</span></span>
+<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flag =</span> <span class="fu">ifelse</span>(avg_mpg <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> med_hp <span class="sc">&gt;</span> <span class="dv">110</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>), </span>
+<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a>         <span class="at">hp_per_cyl =</span> med_hp <span class="sc">/</span> cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rank the rows</span></span>
+<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join in more columns from the original data set</span></span>
+<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mtcars <span class="sc">%&gt;%</span> <span class="fu">count</span>(cyl, gear), <span class="at">by =</span> <span class="st">"cyl"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate some variables</span></span>
+<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">str_c</span>(<span class="st">"cyl: "</span>, cyl, <span class="st">"; am: "</span>, am)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create plot</span></span>
+<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(label, avg_mpg), <span class="at">y =</span> avg_mpg, <span class="at">fill =</span> am)) <span class="sc">+</span></span>
+<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_mpg, <span class="dv">1</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create subplots</span></span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add plot theme </span></span>
+<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Group"</span>, <span class="at">y =</span> <span class="st">"Average MPG"</span>) <span class="sc">+</span></span>
+<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Transmission"</span>)) <span class="sc">+</span></span>
+<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a>More importantly, there are R packages that will re-style your code to be compliant with the Tidyverse Style Guide. They don't work perfectly if your code starts out as particularly poorly formatted, but they help.</span>
+<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a>General guidelines for how to style code are laid out in 'style guides', such as the <span class="co">[</span><span class="ot">Tidyverse Style Guide</span><span class="co">](https://style.tidyverse.org/)</span>. These are conventions rather than strict rules.</span>
 <span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a>Install the <span class="co">[</span><span class="ot">{styler}</span><span class="co">](https://styler.r-lib.org/)</span> R package:</span>
+<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a>More importantly, there are R packages that will re-style your code to be compliant with the Tidyverse Style Guide. They don't work perfectly if your code starts out as particularly poorly formatted, but they help.</span>
 <span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-359"><a href="#cb18-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-360"><a href="#cb18-360" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
-<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"styler"</span>)</span>
-<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(styler)</span>
-<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a>You can then restyle any code you've written by highlighting the code (click+drag) and clicking "Addins"<span class="sc">\&gt;</span>"STYLER"<span class="sc">\&gt;</span>"Style selection". Or style the whole file with "Style active file".</span>
+<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a>Install the <span class="co">[</span><span class="ot">{styler}</span><span class="co">](https://styler.r-lib.org/)</span> R package:</span>
+<span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-361"><a href="#cb18-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-362"><a href="#cb18-362" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb18-363"><a href="#cb18-363" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
+<span id="cb18-364"><a href="#cb18-364" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"styler"</span>)</span>
+<span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(styler)</span>
+<span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/styler.gif)</span></span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a>You can then restyle any code you've written by highlighting the code (click+drag) and clicking "Addins"<span class="sc">\&gt;</span>"STYLER"<span class="sc">\&gt;</span>"Style selection". Or style the whole file with "Style active file".</span>
 <span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="al">![](../images/styler.gif)</span></span>
 <span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fix style / indentation / white space</span></span>
+<span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a>Edit your local copy of this .qmd file to make the following changes. If you're reading this as an eBook on the website, create a new .R file in RStudio on your computer ('File<span class="sc">\&gt;</span>New File<span class="sc">\&gt;</span>R script'). Copy and paste the code below into that file.</span>
+<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fix style / indentation / white space</span></span>
 <span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a>Restyle the code with the Styler Addin.</span>
+<span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a>Edit your local copy of this .qmd file to make the following changes. If you're reading this as an eBook on the website, create a new .R file in RStudio on your computer ('File<span class="sc">\&gt;</span>New File<span class="sc">\&gt;</span>R script'). Copy and paste the code below into that file.</span>
 <span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a>You can undo this with Ctrl + z (Windows) or Cmd + z (Mac) if you want to see it before/after again.</span>
+<span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a>Restyle the code with the Styler Addin.</span>
 <span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # do not run this chunk, only display the code</span></span>
-<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(styler)</span>
-<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-390"><a href="#cb18-390" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">am=</span><span class="fu">ifelse</span>(am<span class="sc">==</span><span class="dv">1</span>,</span>
-<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a><span class="st">"manual"</span>,<span class="st">"automatic"</span>),<span class="at">gear=</span><span class="fu">factor</span>(</span>
-<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a>  gear</span>
-<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a>))<span class="sc">%&gt;%</span></span>
-<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(</span>
-<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a>  cyl,am)<span class="sc">%&gt;%</span></span>
-<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a>                       <span class="at">med_hp=</span><span class="fu">median</span>(hp),</span>
-<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a>                       <span class="at">count=</span><span class="fu">n</span>(),</span>
-<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.groups=</span><span class="st">"drop"</span></span>
-<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a>                       )<span class="sc">%&gt;%</span></span>
-<span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">18</span><span class="sc">|</span>med_hp<span class="sc">&gt;</span><span class="dv">100</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flag=</span><span class="fu">ifelse</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">20</span><span class="sc">&amp;</span>med_hp<span class="sc">&gt;</span><span class="dv">110</span>,<span class="cn">TRUE</span>,</span>
-<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a>                   <span class="cn">FALSE</span>),<span class="at">hp_per_cyl=</span>med_hp<span class="sc">/</span>cyl)<span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg))<span class="sc">%&gt;%</span></span>
-<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(</span>
-<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">%&gt;%</span><span class="fu">count</span>(cyl, gear),<span class="at">by=</span><span class="st">"cyl"</span>  )<span class="sc">%&gt;%</span></span>
-<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">label=</span><span class="fu">str_c</span>(<span class="st">"cyl: "</span>,cyl,<span class="st">"; am: "</span>,am))<span class="sc">%&gt;%</span></span>
-<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(</span>
-<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a>  label,</span>
-<span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a>  avg_mpg</span>
-<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a>),<span class="at">y=</span>avg_mpg,<span class="at">fill=</span></span>
-<span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a>am))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">width  =</span>   <span class="fl">0.7</span>,</span>
-<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a>              <span class="at">color  =</span>   <span class="st">"black"</span>)<span class="sc">+</span><span class="fu">geom_text</span>( <span class="fu">aes</span>( <span class="at">label =</span> <span class="fu">round</span>(avg_mpg,<span class="dv">1</span>)),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,<span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>gear,<span class="at">scales=</span><span class="st">"free_x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>(</span>
-<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">theme</span>(</span>
-<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a><span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>)</span>
-<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">labs</span>(</span>
-<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="st">"Group"</span>,<span class="at">y=</span><span class="st">"Average MPG"</span>)<span class="sc">+</span></span>
-<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Transmission"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
-<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a>You can undo this with Ctrl + z (Windows) or Cmd + z (Mac) if you want to see it before/after again.</span>
+<span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false # do not run this chunk, only display the code</span></span>
+<span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(styler)</span>
+<span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-388"><a href="#cb18-388" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-389"><a href="#cb18-389" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-390"><a href="#cb18-390" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb18-391"><a href="#cb18-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-392"><a href="#cb18-392" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">am=</span><span class="fu">ifelse</span>(am<span class="sc">==</span><span class="dv">1</span>,</span>
+<span id="cb18-393"><a href="#cb18-393" aria-hidden="true" tabindex="-1"></a><span class="st">"manual"</span>,<span class="st">"automatic"</span>),<span class="at">gear=</span><span class="fu">factor</span>(</span>
+<span id="cb18-394"><a href="#cb18-394" aria-hidden="true" tabindex="-1"></a>  gear</span>
+<span id="cb18-395"><a href="#cb18-395" aria-hidden="true" tabindex="-1"></a>))<span class="sc">%&gt;%</span></span>
+<span id="cb18-396"><a href="#cb18-396" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(</span>
+<span id="cb18-397"><a href="#cb18-397" aria-hidden="true" tabindex="-1"></a>  cyl,am)<span class="sc">%&gt;%</span></span>
+<span id="cb18-398"><a href="#cb18-398" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">avg_mpg=</span><span class="fu">mean</span>(mpg,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb18-399"><a href="#cb18-399" aria-hidden="true" tabindex="-1"></a>                       <span class="at">med_hp=</span><span class="fu">median</span>(hp),</span>
+<span id="cb18-400"><a href="#cb18-400" aria-hidden="true" tabindex="-1"></a>                       <span class="at">count=</span><span class="fu">n</span>(),</span>
+<span id="cb18-401"><a href="#cb18-401" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.groups=</span><span class="st">"drop"</span></span>
+<span id="cb18-402"><a href="#cb18-402" aria-hidden="true" tabindex="-1"></a>                       )<span class="sc">%&gt;%</span></span>
+<span id="cb18-403"><a href="#cb18-403" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">18</span><span class="sc">|</span>med_hp<span class="sc">&gt;</span><span class="dv">100</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb18-404"><a href="#cb18-404" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">flag=</span><span class="fu">ifelse</span>(avg_mpg<span class="sc">&gt;</span><span class="dv">20</span><span class="sc">&amp;</span>med_hp<span class="sc">&gt;</span><span class="dv">110</span>,<span class="cn">TRUE</span>,</span>
+<span id="cb18-405"><a href="#cb18-405" aria-hidden="true" tabindex="-1"></a>                   <span class="cn">FALSE</span>),<span class="at">hp_per_cyl=</span>med_hp<span class="sc">/</span>cyl)<span class="sc">%&gt;%</span><span class="fu">arrange</span>(<span class="fu">desc</span>(avg_mpg))<span class="sc">%&gt;%</span></span>
+<span id="cb18-406"><a href="#cb18-406" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(</span>
+<span id="cb18-407"><a href="#cb18-407" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">%&gt;%</span><span class="fu">count</span>(cyl, gear),<span class="at">by=</span><span class="st">"cyl"</span>  )<span class="sc">%&gt;%</span></span>
+<span id="cb18-408"><a href="#cb18-408" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">label=</span><span class="fu">str_c</span>(<span class="st">"cyl: "</span>,cyl,<span class="st">"; am: "</span>,am))<span class="sc">%&gt;%</span></span>
+<span id="cb18-409"><a href="#cb18-409" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(</span>
+<span id="cb18-410"><a href="#cb18-410" aria-hidden="true" tabindex="-1"></a>  label,</span>
+<span id="cb18-411"><a href="#cb18-411" aria-hidden="true" tabindex="-1"></a>  avg_mpg</span>
+<span id="cb18-412"><a href="#cb18-412" aria-hidden="true" tabindex="-1"></a>),<span class="at">y=</span>avg_mpg,<span class="at">fill=</span></span>
+<span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a>am))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">width  =</span>   <span class="fl">0.7</span>,</span>
+<span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a>              <span class="at">color  =</span>   <span class="st">"black"</span>)<span class="sc">+</span><span class="fu">geom_text</span>( <span class="fu">aes</span>( <span class="at">label =</span> <span class="fu">round</span>(avg_mpg,<span class="dv">1</span>)),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,<span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>gear,<span class="at">scales=</span><span class="st">"free_x"</span>)<span class="sc">+</span><span class="fu">theme_minimal</span>(</span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">theme</span>(</span>
+<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a><span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>)</span>
+<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">labs</span>(</span>
+<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="st">"Group"</span>,<span class="at">y=</span><span class="st">"Average MPG"</span>)<span class="sc">+</span></span>
+<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Transmission"</span>))<span class="sc">+</span><span class="fu">coord_flip</span>()</span>
+<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

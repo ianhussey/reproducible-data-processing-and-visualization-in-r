@@ -65,7 +65,7 @@ Once you have learned about some of the concepts mentioned below in later chapte
 Windows
 
 -   Insert Chunk: Ctrl + Alt + I
--   Insert Pipe (`|>`): shift + Ctrl + M
+-   Insert Pipe (`%>%`): shift + Ctrl + M
 -   Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type
 -   Move cursor by word instead of by character: Alt + arrows
 -   Highlight words: Shift + alt + arrows
@@ -75,7 +75,7 @@ Windows
 Mac
 
 -   Insert Chunk: Cmd + Alt + I
--   Insert Pipe (`|>`): shift + Cmd + M
+-   Insert Pipe (`%>%`): shift + Cmd + M
 -   Multi-line typing: Alt + Mouse click-and-highlight multiple lines, then type
 -   Move cursor by word instead of by character: Option + arrows
 -   Highlight words: Shift + option + arrows

@@ -123,6 +123,7 @@ dat_demographics_selected %>%
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
 ```{r}
+#| eval: true
 #| include: false
 dat_demographics_selected <- dat_demographics_renamed %>%
   select(id, 
@@ -297,7 +298,7 @@ There are many other {tidyselect} helper functions including:
 
 #### Exercise
 
-Write code to select all columns for scale 2 from the 'dat_many_columns' data frame.
+Write code to select all columns belonging to scale 2 from the 'dat_many_columns' data frame.
 
 ```{r}
 #| include: false
@@ -734,7 +735,7 @@ dat_filtered_gender %>%
 
 # '!=' is not exactly equal to
 dat_filtered_gender %>%
-  filter(gender == "female") %>%
+  filter(gender != "female") %>%
   kable() %>%
   kable_classic(full_width = FALSE)
 
@@ -745,7 +746,7 @@ dat_filtered_gender %>%
   kable_classic(full_width = FALSE)
 ```
 
-Weirdly, there is no single function that provides the combination of `%in%` and `!=`, i.e., 'is not exactly equal to any of the following values'. This can be achieved with the following, although it is not intuitive:
+Weirdly, there is no single function that provides the combination of `%in%` and `!=`, i.e., 'is not exactly equal to any of the following values'. This can be achieved with the following, although it is not intuitive. Note that it still returns rows with "Male" because we only told it to exclude rows with "male" (lower case).
 
 ```{r}
 # '!' and '%in%'

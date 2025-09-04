@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Loading, viewing, and saving data – Reproducible Data Processing and Visualization</title>
+<title>4&nbsp; Loading, viewing and saving data – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/loading_data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing &amp; saving data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/loading_data.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing &amp; saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -200,20 +200,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -280,9 +280,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#loading-multiple-data-files-at-once" id="toc-loading-multiple-data-files-at-once" class="nav-link" data-scroll-target="#loading-multiple-data-files-at-once"><span class="header-section-number">4.8</span> Loading multiple data files at once</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.9</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#how-can-you-run-all-all-the-code-chunks-in-this-file-with-a-single-click" id="toc-how-can-you-run-all-all-the-code-chunks-in-this-file-with-a-single-click" class="nav-link" data-scroll-target="#how-can-you-run-all-all-the-code-chunks-in-this-file-with-a-single-click"><span class="header-section-number">4.9.1</span> How can you run all all the code chunks in this file with a single click?</a></li>
+  <li><a href="#how-can-you-run-all-the-code-chunks-in-this-file-with-a-single-click" id="toc-how-can-you-run-all-the-code-chunks-in-this-file-with-a-single-click" class="nav-link" data-scroll-target="#how-can-you-run-all-the-code-chunks-in-this-file-with-a-single-click"><span class="header-section-number">4.9.1</span> How can you run all the code chunks in this file with a single click?</a></li>
   <li><a href="#what-are-three-ways-to-view-the-contents-of-an-object" id="toc-what-are-three-ways-to-view-the-contents-of-an-object" class="nav-link" data-scroll-target="#what-are-three-ways-to-view-the-contents-of-an-object"><span class="header-section-number">4.9.2</span> What are three ways to view the contents of an object?</a></li>
-  <li><a href="#how-would-you-know-what-arguments-readxlread_excel-takes" id="toc-how-would-you-know-what-arguments-readxlread_excel-takes" class="nav-link" data-scroll-target="#how-would-you-know-what-arguments-readxlread_excel-takes"><span class="header-section-number">4.9.3</span> How would you know what arguments <code>readxl::read_excel()</code> takes?</a></li>
+  <li><a href="#how-would-you-know-what-arguments-read_excel-takes" id="toc-how-would-you-know-what-arguments-read_excel-takes" class="nav-link" data-scroll-target="#how-would-you-know-what-arguments-read_excel-takes"><span class="header-section-number">4.9.3</span> How would you know what arguments <code>read_excel()</code> takes?</a></li>
   <li><a href="#how-to-use-relative-paths-to-load-files" id="toc-how-to-use-relative-paths-to-load-files" class="nav-link" data-scroll-target="#how-to-use-relative-paths-to-load-files"><span class="header-section-number">4.9.4</span> How to use relative paths to load files?</a></li>
   <li><a href="#load-and-print-nicely-formatted-table" id="toc-load-and-print-nicely-formatted-table" class="nav-link" data-scroll-target="#load-and-print-nicely-formatted-table"><span class="header-section-number">4.9.5</span> Load and print nicely formatted table</a></li>
   <li><a href="#check-whether-data_likert.rds-exists" id="toc-check-whether-data_likert.rds-exists" class="nav-link" data-scroll-target="#check-whether-data_likert.rds-exists"><span class="header-section-number">4.9.6</span> Check whether ‘data_likert.rds’ exists</a></li>
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -358,12 +358,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 │   └── processing.qmd
 └── data/
     ├── processed/
-    │   └── data_likert.csv
+    │   ├── data_processed.csv
+    │   └── ... (other .csv files)
     └── raw/
-        ├── data_demographics_raw.csv
-        ├── data_selfreports_raw.csv
+        ├── data_likert.csv
         ├── code_shouldnt_usually_go_here.qmd
-        └── data_behavioraltask_raw.csv</code></pre>
+        └── ... (other .csv files)</code></pre>
 <p>Because .qmd files use ‘relative’ paths, to load the ‘data_shouldnt_usually_go_here.csv’ file I only need to do the following, without any <code>setwd()</code> call:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -400,17 +400,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "binding_and_joining.qmd"    "data_transformation_1.qmd" 
  [3] "data_transformation_2.qmd"  "data_transformation_3.qmd" 
- [5] "fundamentals.qmd"           "images"                    
- [7] "license.qmd"                "loading_data_files"        
- [9] "loading_data.qmd"           "loading_data.rmarkdown"    
-[11] "plots"                      "privacy.qmd"               
-[13] "project_1.qmd"              "project_2.qmd"             
-[15] "reporting.qmd"              "reproducible_reports_files"
-[17] "reproducible_reports.qmd"   "reshaping_and_pivots.qmd"  
-[19] "setup.qmd"                  "strings_and_factors.qmd"   
-[21] "structuring_projects.qmd"   "sum_score.qmd"             
-[23] "the_linear_model.html"      "the_linear_model.qmd"      
-[25] "the_pipe_and_renaming.qmd"  "visualization.qmd"         </code></pre>
+ [5] "fundamentals_files"         "fundamentals.html"         
+ [7] "fundamentals.qmd"           "images"                    
+ [9] "license.qmd"                "loading_data_files"        
+[11] "loading_data.qmd"           "loading_data.rmarkdown"    
+[13] "plots"                      "privacy.qmd"               
+[15] "project_1.qmd"              "project_2.qmd"             
+[17] "reporting.qmd"              "reproducible_reports_files"
+[19] "reproducible_reports.html"  "reproducible_reports.qmd"  
+[21] "reshaping_and_pivots.qmd"   "setup.qmd"                 
+[23] "strings_and_factors.qmd"    "structuring_projects.qmd"  
+[25] "sum_score.qmd"              "the_linear_model.html"     
+[27] "the_linear_model.qmd"       "the_pipe_and_renaming.qmd" 
+[29] "visualization.qmd"         </code></pre>
 </div>
 </div>
 <p>Go ‘up’ one directory and list the directories present:</p>
@@ -422,10 +424,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"             ".git"              ".quarto"          
- [4] ".Rproj.user"       "chapters"          "data"             
- [7] "images"            "old"               "project_architype"
-[10] "resources"        </code></pre>
+<pre><code> [1] "_book"            ".git"             ".quarto"          ".Rproj.user"     
+ [5] "chapters"         "data"             "images"           "old"             
+ [9] "project_template" "resources"        "site_libs"        "videos"          </code></pre>
 </div>
 </div>
 <p>From the above we can see that the ‘data’ folder is up one directory level from the current .qmd file. Let’s confirm this with <code>dir.exists()</code> to check the directory does indeed exist:</p>
@@ -509,30 +510,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat_likert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 16
-    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 date  group
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
- 1     1     1     1     1     1     1     1     1     1     1     1 23.0…     1
- 2     2     2     2     2     2     2     2     2     2     2     2 23.0…     2
- 3     3     3     3     3     3     3     3     3     3     3     3 23.0…     2
- 4     4     4     4     4     4     4     4     4     4     4     4 23.0…     1
- 5     5     5     5     5     5     5     5     5     5     5     5 23.0…     1
- 6     6     6     6     6     6     6     6     6     6     6     6 23.0…     2
- 7     7     7     7     7     7     7     7     7     7     7     7 23.0…     1
- 8     8     8     8     8     8     8     8     8     8     8     8 23.0…     1
- 9     9     9     9     9     9     9     9     9     9     9     9 23.0…     1
-10    10    10    10    10    10    10    10    10    10    10    10 23.0…     2
-11    11    11    11    11    11    11    11    11    11    11    11 23.0…     1
-12    12    12    12    12    12    12    12    12    12    12    12 23.0…     2
-13    13    13    13    13    13    13    13    13    13    13    13 23.0…     2
-14    14    14    14    14    14    14    14    14    14    14    14 23.0…     1
-15    15    15    15    15    15    15    15    15    15    15    15 23.0…     1
-16    16    16    16    16    16    16    16    16    16    16    16 23.0…     2
-17    17    17    17    17    17    17    17    17    17    17    17 23.0…     1
-18    18    18    18    18    18    18    18    18    18    18    18 23.0…     1
-19    19    19    19    19    19    19    19    19    19    19    19 23.0…     1
-20    20    20    20    20    20    20    20    20    20    20    20 23.0…     2
-# ℹ 3 more variables: subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;, likert_2 &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 20 × 17
+    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 date 
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1     1     1     1     1     1     1     1     1     1     1     1 23.0…
+ 2     2     2     2     2     2     2     2     2     2     2     2     2 23.0…
+ 3     3     3     3     3     3     3     3     3     3     3     3     3 23.0…
+ 4     4     4     4     4     4     4     4     4     4     4     4     4 23.0…
+ 5     5     5     5     5     5     5     5     5     5     5     5     5 23.0…
+ 6     6     6     6     6     6     6     6     6     6     6     6     6 23.0…
+ 7     7     7     7     7     7     7     7     7     7     7     7     7 23.0…
+ 8     8     8     8     8     8     8     8     8     8     8     8     8 23.0…
+ 9     9     9     9     9     9     9     9     9     9     9     9     9 23.0…
+10    10    10    10    10    10    10    10    10    10    10    10    10 23.0…
+11    11    11    11    11    11    11    11    11    11    11    11    11 23.0…
+12    12    12    12    12    12    12    12    12    12    12    12    12 23.0…
+13    13    13    13    13    13    13    13    13    13    13    13    13 23.0…
+14    14    14    14    14    14    14    14    14    14    14    14    14 23.0…
+15    15    15    15    15    15    15    15    15    15    15    15    15 23.0…
+16    16    16    16    16    16    16    16    16    16    16    16    16 23.0…
+17    17    17    17    17    17    17    17    17    17    17    17    17 23.0…
+18    18    18    18    18    18    18    18    18    18    18    18    18 23.0…
+19    19    19    19    19    19    19    19    19    19    19    19    19 23.0…
+20    20    20    20    20    20    20    20    20    20    20    20    20 23.0…
+# ℹ 4 more variables: group &lt;dbl&gt;, subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;,
+#   likert_2 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>Use <code>print()</code>:</p>
@@ -542,30 +544,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_likert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 16
-    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 date  group
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
- 1     1     1     1     1     1     1     1     1     1     1     1 23.0…     1
- 2     2     2     2     2     2     2     2     2     2     2     2 23.0…     2
- 3     3     3     3     3     3     3     3     3     3     3     3 23.0…     2
- 4     4     4     4     4     4     4     4     4     4     4     4 23.0…     1
- 5     5     5     5     5     5     5     5     5     5     5     5 23.0…     1
- 6     6     6     6     6     6     6     6     6     6     6     6 23.0…     2
- 7     7     7     7     7     7     7     7     7     7     7     7 23.0…     1
- 8     8     8     8     8     8     8     8     8     8     8     8 23.0…     1
- 9     9     9     9     9     9     9     9     9     9     9     9 23.0…     1
-10    10    10    10    10    10    10    10    10    10    10    10 23.0…     2
-11    11    11    11    11    11    11    11    11    11    11    11 23.0…     1
-12    12    12    12    12    12    12    12    12    12    12    12 23.0…     2
-13    13    13    13    13    13    13    13    13    13    13    13 23.0…     2
-14    14    14    14    14    14    14    14    14    14    14    14 23.0…     1
-15    15    15    15    15    15    15    15    15    15    15    15 23.0…     1
-16    16    16    16    16    16    16    16    16    16    16    16 23.0…     2
-17    17    17    17    17    17    17    17    17    17    17    17 23.0…     1
-18    18    18    18    18    18    18    18    18    18    18    18 23.0…     1
-19    19    19    19    19    19    19    19    19    19    19    19 23.0…     1
-20    20    20    20    20    20    20    20    20    20    20    20 23.0…     2
-# ℹ 3 more variables: subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;, likert_2 &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 20 × 17
+    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 date 
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1     1     1     1     1     1     1     1     1     1     1     1 23.0…
+ 2     2     2     2     2     2     2     2     2     2     2     2     2 23.0…
+ 3     3     3     3     3     3     3     3     3     3     3     3     3 23.0…
+ 4     4     4     4     4     4     4     4     4     4     4     4     4 23.0…
+ 5     5     5     5     5     5     5     5     5     5     5     5     5 23.0…
+ 6     6     6     6     6     6     6     6     6     6     6     6     6 23.0…
+ 7     7     7     7     7     7     7     7     7     7     7     7     7 23.0…
+ 8     8     8     8     8     8     8     8     8     8     8     8     8 23.0…
+ 9     9     9     9     9     9     9     9     9     9     9     9     9 23.0…
+10    10    10    10    10    10    10    10    10    10    10    10    10 23.0…
+11    11    11    11    11    11    11    11    11    11    11    11    11 23.0…
+12    12    12    12    12    12    12    12    12    12    12    12    12 23.0…
+13    13    13    13    13    13    13    13    13    13    13    13    13 23.0…
+14    14    14    14    14    14    14    14    14    14    14    14    14 23.0…
+15    15    15    15    15    15    15    15    15    15    15    15    15 23.0…
+16    16    16    16    16    16    16    16    16    16    16    16    16 23.0…
+17    17    17    17    17    17    17    17    17    17    17    17    17 23.0…
+18    18    18    18    18    18    18    18    18    18    18    18    18 23.0…
+19    19    19    19    19    19    19    19    19    19    19    19    19 23.0…
+20    20    20    20    20    20    20    20    20    20    20    20    20 23.0…
+# ℹ 4 more variables: group &lt;dbl&gt;, subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;,
+#   likert_2 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -582,694 +585,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="sc">%&gt;%</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">...1</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...2</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...3</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...4</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...5</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...6</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...7</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...8</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...9</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...10</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">...11</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">group</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">subject</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">likert_1</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">likert_2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">23.06.2022</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">NA</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</section>
-<section id="saving-.csv-files" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="saving-.csv-files"><span class="header-section-number">4.4</span> Saving .csv files</h2>
-<p>Writing .csv files to disk is as easy as loading them.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> dat_likert, <span class="co"># the data frame to save</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../data/raw/data_likert.csv"</span>) <span class="co"># the file to save it to</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="loading-.xlsx-files" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="loading-.xlsx-files"><span class="header-section-number">4.5</span> Loading .xlsx files</h2>
-<p>While .csv files are a good default file format to use for most projects, Excel, SPSS, and other file formats can also be loaded.</p>
-<p>There are several packages available to load Excel files in particular. Any of them are fine <em>except</em> <code>library(xlsx)</code> which requires you to install rJava, which often causes compatibility issues. <code>library(readxl)</code> is a safer bet. Because excel files can contain multiple sheets, the source can be specified with the <code>sheet</code> argument.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="skipping-rows-when-loading" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="skipping-rows-when-loading"><span class="header-section-number">4.5.1</span> Skipping rows when loading</h3>
-<p>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in ‘data_likert.xlsx’ are on the fourth row, causing a mess when you load the file.</p>
-<p>You can view column names, types and the first few rows of data with <code>head()</code>:</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  `Date created: 02/04/2024` ...2  ...3    ...4     ...5    
-  &lt;chr&gt;                      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   
-1 subset: sample 1           &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
-2 &lt;NA&gt;                       &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
-3 date                       group subject likert_1 likert_2
-4 44735                      1     1       1        4       
-5 44735                      2     2       3        3       
-6 44735                      2     3       2        1       </code></pre>
-</div>
-</div>
-<p>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</p>
-<p>It might be tempting to open the .csv file in excel and manually delete those rows - don’t!</p>
-<p>Handle with with code, not by deleting the information in those rows. When using <code>read_csv()</code> or <code>readxl::read_excel()</code> this can be done using the <code>skip</code> argument.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 5
-  date                group subject likert_1 likert_2
-  &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 2022-06-23 00:00:00     1       1        1        4
-2 2022-06-23 00:00:00     2       2        3        3
-3 2022-06-23 00:00:00     2       3        2        1
-4 2022-06-23 00:00:00     1       4        5        5
-5 2022-06-23 00:00:00     1       5        3        3</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="combining-multiple-data-sets" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="combining-multiple-data-sets"><span class="header-section-number">4.6</span> Combining multiple data sets</h2>
-<p>You can combine multiple data sets with (nearly) the same structure using <code>dplyr::bind_rows()</code>. In this case, ‘data_likert.xlsx’ have mostly the same columns, with sheet 1 also having the ‘likert_2’ column. Missing columns are filled with NA when using <code>dplyr::bind_rows()</code>. This has its advantages over base R’s <code>rbind()</code> which requires that column names must match between the objects.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>dat_likert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   date                group subject likert_1 likert_2
-   &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 2022-06-23 00:00:00     1       1        1        4
- 2 2022-06-23 00:00:00     2       2        3        3
- 3 2022-06-23 00:00:00     2       3        2        1
- 4 2022-06-23 00:00:00     1       4        5        5
- 5 2022-06-23 00:00:00     1       5        3        3
- 6 2022-06-23 00:00:00     1       6        1       NA
- 7 2022-06-23 00:00:00     2       7        3       NA
- 8 2022-06-23 00:00:00     2       8        2       NA
- 9 2022-06-23 00:00:00     1       9        5       NA
-10 2022-06-23 00:00:00     1      10        3       NA</code></pre>
-</div>
-</div>
-</section>
-<section id="loading-and-writing-.rda-files" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="loading-and-writing-.rda-files"><span class="header-section-number">4.7</span> Loading and writing .rda files</h2>
-<p>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <code>compress = "gz"</code> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/data_likert.rds"</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_likert.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="loading-multiple-data-files-at-once" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="loading-multiple-data-files-at-once"><span class="header-section-number">4.8</span> Loading multiple data files at once</h2>
-<p>Some psychology software such as PsychoPy often saves each participant’s data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some functions from the {purrr} package not explained here. It’s included here so that you know that it can be done quite easily.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="exercises" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.9</span> Exercises</h2>
-<p>Check your learning with the following questions. Exercises involving running code should be run in your local copy of the .qmd files (see the <a href="../index.html">Introduction</a> to get a copy of them).</p>
-<section id="how-can-you-run-all-all-the-code-chunks-in-this-file-with-a-single-click" class="level3" data-number="4.9.1">
-<h3 data-number="4.9.1" class="anchored" data-anchor-id="how-can-you-run-all-all-the-code-chunks-in-this-file-with-a-single-click"><span class="header-section-number">4.9.1</span> How can you run all all the code chunks in this file with a single click?</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Clicking the green down arrow button in the last chunk.</p>
-<p>See the chapter on <a href="../chapters/reproducible_reports.html">Reproducible Reports</a> to refresh your knowledge.</p>
-</div>
-</div>
-</div>
-<p>Do this in order to load all the objects into your environment so that you can complete the next exercise.</p>
-</section>
-<section id="what-are-three-ways-to-view-the-contents-of-an-object" class="level3" data-number="4.9.2">
-<h3 data-number="4.9.2" class="anchored" data-anchor-id="what-are-three-ways-to-view-the-contents-of-an-object"><span class="header-section-number">4.9.2</span> What are three ways to view the contents of an object?</h3>
-<p>Do all three ways for the <code>dat_likert</code> object.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Clicking the object’s name the ‘Environment’ tab in RStudio</li>
-<li>Running <code>View(object)</code> (where ‘object’ is your object’s name)</li>
-<li>Clicking the object’s name in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows)</li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="how-would-you-know-what-arguments-readxlread_excel-takes" class="level3" data-number="4.9.3">
-<h3 data-number="4.9.3" class="anchored" data-anchor-id="how-would-you-know-what-arguments-readxlread_excel-takes"><span class="header-section-number">4.9.3</span> How would you know what arguments <code>readxl::read_excel()</code> takes?</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>By consulting the help menu with /Users/Ian-Hussey/Library/R/arm64/4.5/library/readxl/help/read_excel.</p>
-<p>See the chapter on <a href="../chapters/fundamentals.html">Fundamentals</a> to refresh your knowledge.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="how-to-use-relative-paths-to-load-files" class="level3" data-number="4.9.4">
-<h3 data-number="4.9.4" class="anchored" data-anchor-id="how-to-use-relative-paths-to-load-files"><span class="header-section-number">4.9.4</span> How to use relative paths to load files?</h3>
-<p>Using the file structure diagram under the <a href="#relative-paths">Relative vs.&nbsp;absolute paths</a> section above, what R code is needed to load the ‘data_shouldnt_usually_go_here.csv’ file from the ‘code_shouldnt_usually_go_here.qmd’?</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You need to understand relative paths and use “../” to go ‘up’ directories.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../code/data_shouldnt_usually_go_here.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="load-and-print-nicely-formatted-table" class="level3" data-number="4.9.5">
-<h3 data-number="4.9.5" class="anchored" data-anchor-id="load-and-print-nicely-formatted-table"><span class="header-section-number">4.9.5</span> Load and print nicely formatted table</h3>
-<p>Following the same file structure as above, there is a file called “data_likert.csv” in the ‘raw’ data directory.</p>
-<p>Write R code to:</p>
-<ol type="1">
-<li>Load that data file from this .qmd file, which is located in the ‘code’ directory.</li>
-<li>Assign it to an object called <code>dat_likert</code>.</li>
-<li>Load the {kable} and {kableExtra} libraries.</li>
-<li>Print <code>dat_likert</code> as nicely formatted table.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>See the chapter on <a href="../chapters/fundamentals.html">Fundamentals</a> to refresh your knowledge on loading dependencies/libraries and object assignment.</p>
-<p>Adapt the code used in this chapter for the other steps.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click to show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/raw/data_likert.csv"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
@@ -1679,6 +994,736 @@ Click to show answer
 </table>
 </div>
 </div>
+</section>
+</section>
+<section id="saving-.csv-files" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="saving-.csv-files"><span class="header-section-number">4.4</span> Saving .csv files</h2>
+<p>Writing .csv files to disk is as easy as loading them.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> dat_likert, <span class="co"># the data frame to save</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../data/raw/data_likert.csv"</span>) <span class="co"># the file to save it to</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="loading-.xlsx-files" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="loading-.xlsx-files"><span class="header-section-number">4.5</span> Loading .xlsx files</h2>
+<p>While .csv files are a good default file format to use for most projects, Excel, SPSS, and other file formats can also be loaded.</p>
+<p>There are several packages available to load Excel files in particular. Any of them are fine <em>except</em> <code>library(xlsx)</code> which requires you to install rJava, which often causes compatibility issues. <code>library(readxl)</code> is a safer bet. Because excel files can contain multiple sheets, the source can be specified with the <code>sheet</code> argument.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="skipping-rows-when-loading" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="skipping-rows-when-loading"><span class="header-section-number">4.5.1</span> Skipping rows when loading</h3>
+<p>Sometimes extra rows etc. make a data file harder to read into R. For example, the column names in ‘data_likert.xlsx’ are on the fourth row, causing a mess when you load the file.</p>
+<p>You can view column names, types and the first few rows of data with <code>head()</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_likert_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  `Date created: 02/04/2024` ...2  ...3    ...4     ...5    
+  &lt;chr&gt;                      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   
+1 subset: sample 1           &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
+2 &lt;NA&gt;                       &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;     &lt;NA&gt;    
+3 date                       group subject likert_1 likert_2
+4 44735                      1     1       1        4       
+5 44735                      2     2       3        3       
+6 44735                      2     3       2        1       </code></pre>
+</div>
+</div>
+<p>With a few exceptions (e.g., removing identifying information before making data public), you should not manually modify raw data.</p>
+<p>It might be tempting to open the .csv file in excel and manually delete those rows - don’t!</p>
+<p>Handle with code, not by deleting the information in those rows. When using <code>read_csv()</code> or <code>readxl::read_excel()</code> this can be done using the <code>skip</code> argument.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">"data1"</span>, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>dat_likert_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  date                group subject likert_1 likert_2
+  &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 2022-06-23 00:00:00     1       1        1        4
+2 2022-06-23 00:00:00     2       2        3        3
+3 2022-06-23 00:00:00     2       3        2        1
+4 2022-06-23 00:00:00     1       4        5        5
+5 2022-06-23 00:00:00     1       5        3        3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="combining-multiple-data-sets" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="combining-multiple-data-sets"><span class="header-section-number">4.6</span> Combining multiple data sets</h2>
+<p>You can combine multiple data sets with (nearly) the same structure using <code>dplyr::bind_rows()</code>. In this case, ‘data_likert.xlsx’ have mostly the same columns, with sheet 1 also having the ‘likert_2’ column. Missing columns are filled with NA when using <code>dplyr::bind_rows()</code>. This has its advantages over base R’s <code>rbind()</code> which requires that column names must match between the objects.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data1"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>dat_likert_2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"../data/raw/data_likert.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data2"</span>, <span class="at">skip =</span> <span class="dv">3</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(dat_likert_1,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                               dat_likert_2)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>dat_likert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   date                group subject likert_1 likert_2
+   &lt;dttm&gt;              &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 2022-06-23 00:00:00     1       1        1        4
+ 2 2022-06-23 00:00:00     2       2        3        3
+ 3 2022-06-23 00:00:00     2       3        2        1
+ 4 2022-06-23 00:00:00     1       4        5        5
+ 5 2022-06-23 00:00:00     1       5        3        3
+ 6 2022-06-23 00:00:00     1       6        1       NA
+ 7 2022-06-23 00:00:00     2       7        3       NA
+ 8 2022-06-23 00:00:00     2       8        2       NA
+ 9 2022-06-23 00:00:00     1       9        5       NA
+10 2022-06-23 00:00:00     1      10        3       NA</code></pre>
+</div>
+</div>
+</section>
+<section id="loading-and-writing-.rda-files" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="loading-and-writing-.rda-files"><span class="header-section-number">4.7</span> Loading and writing .rda files</h2>
+<p>R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the <code>compress = "gz"</code> argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(<span class="at">x =</span> dat_likert, </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="st">"../data/raw/data_likert.rds"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">compress =</span> <span class="st">"gz"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"../data/raw/data_likert.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="loading-multiple-data-files-at-once" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="loading-multiple-data-files-at-once"><span class="header-section-number">4.8</span> Loading multiple data files at once</h2>
+<p>Some psychology software such as PsychoPy often saves each participant’s data as a separate .csv file. FYI you can write code to find all files of a given type (e.g., .csv) in a folder, read them all in, and bind all the data together as a single data frame. Note that this code uses some functions from the {purrr} package not explained here. It’s included here so that you know that it can be done quite easily.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the files in a directory</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"../data/raw/individual_files"</span>, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use (or 'map') the read_csv function onto each of the file names </span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>data_combined <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(<span class="at">.x =</span> file_names, <span class="at">.f =</span> read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.9</span> Exercises</h2>
+<p>Check your learning with the following questions. Exercises involving running code should be run in your local copy of the .qmd files (see the <a href="../index.html">Introduction</a> to get a copy of them).</p>
+<section id="how-can-you-run-all-the-code-chunks-in-this-file-with-a-single-click" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="how-can-you-run-all-the-code-chunks-in-this-file-with-a-single-click"><span class="header-section-number">4.9.1</span> How can you run all the code chunks in this file with a single click?</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Clicking the green down arrow button in the last chunk.</p>
+<p>See the chapter on <a href="../chapters/reproducible_reports.html">Reproducible Reports</a> to refresh your knowledge.</p>
+</div>
+</div>
+</div>
+<p>Do this in order to load all the objects into your environment so that you can complete the next exercise.</p>
+</section>
+<section id="what-are-three-ways-to-view-the-contents-of-an-object" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="what-are-three-ways-to-view-the-contents-of-an-object"><span class="header-section-number">4.9.2</span> What are three ways to view the contents of an object?</h3>
+<p>Do all three ways for the <code>dat_likert</code> object.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Clicking the object’s name the ‘Environment’ tab in RStudio</li>
+<li>Running <code>View(object)</code> (where ‘object’ is your object’s name)</li>
+<li>Clicking the object’s name in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows)</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="how-would-you-know-what-arguments-read_excel-takes" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="how-would-you-know-what-arguments-read_excel-takes"><span class="header-section-number">4.9.3</span> How would you know what arguments <code>read_excel()</code> takes?</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>By consulting the help menu with by running <code>?read_excel()</code> either directly in the console or in a code file.</p>
+<p>Note that you have to either first load the {read_xl} package with <code>library(readxl)</code>, or specify which package the function comes from with <code>?readxl::read_excel()</code>. See the section on dependencies in the chapter on <a href="../chapters/fundamentals.html">Fundamentals</a> to refresh your knowledge.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-use-relative-paths-to-load-files" class="level3" data-number="4.9.4">
+<h3 data-number="4.9.4" class="anchored" data-anchor-id="how-to-use-relative-paths-to-load-files"><span class="header-section-number">4.9.4</span> How to use relative paths to load files?</h3>
+<p>Using the file structure diagram under the <a href="#relative-paths">Relative vs.&nbsp;absolute paths</a> section above, what R code is needed to load the ‘data_shouldnt_usually_go_here.csv’ file from the ‘code_shouldnt_usually_go_here.qmd’?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You need to understand relative paths and use “../” to go ‘up’ directories.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../code/data_shouldnt_usually_go_here.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-and-print-nicely-formatted-table" class="level3" data-number="4.9.5">
+<h3 data-number="4.9.5" class="anchored" data-anchor-id="load-and-print-nicely-formatted-table"><span class="header-section-number">4.9.5</span> Load and print nicely formatted table</h3>
+<p>Following the same file structure as above, there is a file called “data_likert.csv” in the ‘raw’ data directory.</p>
+<p>Write R code to:</p>
+<ol type="1">
+<li>Load that data file from this .qmd file, which is located in the ‘code’ directory.</li>
+<li>Assign it to an object called <code>dat_likert</code>.</li>
+<li>Load the {kable} and {kableExtra} libraries.</li>
+<li>Print <code>dat_likert</code> as nicely formatted table.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>See the chapter on <a href="../chapters/fundamentals.html">Fundamentals</a> to refresh your knowledge on loading dependencies/libraries and object assignment.</p>
+<p>Adapt the code used in this chapter for the other steps.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/raw/data_likert.csv"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">...1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...6</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...7</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...8</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...9</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...10</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...11</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...12</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...13</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">group</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">subject</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">likert_1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">likert_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">23.06.2022</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1707,10 +1752,9 @@ Click to show answer
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"             ".git"              ".quarto"          
- [4] ".Rproj.user"       "chapters"          "data"             
- [7] "images"            "old"               "project_architype"
-[10] "resources"        </code></pre>
+<pre><code> [1] "_book"            ".git"             ".quarto"          ".Rproj.user"     
+ [5] "chapters"         "data"             "images"           "old"             
+ [9] "project_template" "resources"        "site_libs"        "videos"          </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -2213,7 +2257,7 @@ Click to show answer
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb41" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Loading, viewing &amp; saving data"</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Loading, viewing and saving data"</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
@@ -2287,12 +2331,12 @@ Click to show answer
 <span id="cb41-75"><a href="#cb41-75" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── processing.qmd</span></span>
 <span id="cb41-76"><a href="#cb41-76" aria-hidden="true" tabindex="-1"></a><span class="in">└── data/</span></span>
 <span id="cb41-77"><a href="#cb41-77" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── processed/</span></span>
-<span id="cb41-78"><a href="#cb41-78" aria-hidden="true" tabindex="-1"></a><span class="in">    │   └── data_likert.csv</span></span>
-<span id="cb41-79"><a href="#cb41-79" aria-hidden="true" tabindex="-1"></a><span class="in">    └── raw/</span></span>
-<span id="cb41-80"><a href="#cb41-80" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── data_demographics_raw.csv</span></span>
-<span id="cb41-81"><a href="#cb41-81" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── data_selfreports_raw.csv</span></span>
+<span id="cb41-78"><a href="#cb41-78" aria-hidden="true" tabindex="-1"></a><span class="in">    │   ├── data_processed.csv</span></span>
+<span id="cb41-79"><a href="#cb41-79" aria-hidden="true" tabindex="-1"></a><span class="in">    │   └── ... (other .csv files)</span></span>
+<span id="cb41-80"><a href="#cb41-80" aria-hidden="true" tabindex="-1"></a><span class="in">    └── raw/</span></span>
+<span id="cb41-81"><a href="#cb41-81" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── data_likert.csv</span></span>
 <span id="cb41-82"><a href="#cb41-82" aria-hidden="true" tabindex="-1"></a><span class="in">        ├── code_shouldnt_usually_go_here.qmd</span></span>
-<span id="cb41-83"><a href="#cb41-83" aria-hidden="true" tabindex="-1"></a><span class="in">        └── data_behavioraltask_raw.csv</span></span>
+<span id="cb41-83"><a href="#cb41-83" aria-hidden="true" tabindex="-1"></a><span class="in">        └── ... (other .csv files)</span></span>
 <span id="cb41-84"><a href="#cb41-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb41-85"><a href="#cb41-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-86"><a href="#cb41-86" aria-hidden="true" tabindex="-1"></a>Because .qmd files use 'relative' paths, to load the 'data_shouldnt_usually_go_here.csv' file I only need to do the following, without any <span class="in">`setwd()`</span> call:</span>
@@ -2481,7 +2525,7 @@ Click to show answer
 <span id="cb41-303"><a href="#cb41-303" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-304"><a href="#cb41-304" aria-hidden="true" tabindex="-1"></a>It might be tempting to open the .csv file in excel and manually delete those rows - don't!</span>
 <span id="cb41-305"><a href="#cb41-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-306"><a href="#cb41-306" aria-hidden="true" tabindex="-1"></a>Handle with with code, not by deleting the information in those rows. When using <span class="in">`read_csv()`</span> or <span class="in">`readxl::read_excel()`</span> this can be done using the <span class="in">`skip`</span> argument.</span>
+<span id="cb41-306"><a href="#cb41-306" aria-hidden="true" tabindex="-1"></a>Handle with code, not by deleting the information in those rows. When using <span class="in">`read_csv()`</span> or <span class="in">`readxl::read_excel()`</span> this can be done using the <span class="in">`skip`</span> argument.</span>
 <span id="cb41-307"><a href="#cb41-307" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-310"><a href="#cb41-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb41-311"><a href="#cb41-311" aria-hidden="true" tabindex="-1"></a>dat_likert_1 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"../data/raw/data_likert.xlsx"</span>, </span>
@@ -2544,7 +2588,7 @@ Click to show answer
 <span id="cb41-374"><a href="#cb41-374" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-375"><a href="#cb41-375" aria-hidden="true" tabindex="-1"></a>Check your learning with the following questions. Exercises involving running code should be run in your local copy of the .qmd files (see the <span class="co">[</span><span class="ot">Introduction</span><span class="co">](../index.qmd)</span> to get a copy of them).</span>
 <span id="cb41-376"><a href="#cb41-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-377"><a href="#cb41-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### How can you run all all the code chunks in this file with a single click?</span></span>
+<span id="cb41-377"><a href="#cb41-377" aria-hidden="true" tabindex="-1"></a><span class="fu">### How can you run all the code chunks in this file with a single click?</span></span>
 <span id="cb41-378"><a href="#cb41-378" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-379"><a href="#cb41-379" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
 <span id="cb41-380"><a href="#cb41-380" aria-hidden="true" tabindex="-1"></a>Clicking the green down arrow button in the last chunk.</span>
@@ -2564,12 +2608,12 @@ Click to show answer
 <span id="cb41-394"><a href="#cb41-394" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Clicking the object's name in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows)</span>
 <span id="cb41-395"><a href="#cb41-395" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb41-396"><a href="#cb41-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-397"><a href="#cb41-397" aria-hidden="true" tabindex="-1"></a><span class="fu">### How would you know what arguments `readxl::read_excel()` takes?</span></span>
+<span id="cb41-397"><a href="#cb41-397" aria-hidden="true" tabindex="-1"></a><span class="fu">### How would you know what arguments `read_excel()` takes?</span></span>
 <span id="cb41-398"><a href="#cb41-398" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-399"><a href="#cb41-399" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
-<span id="cb41-400"><a href="#cb41-400" aria-hidden="true" tabindex="-1"></a>By consulting the help menu with <span class="in">`r ?readxl::read_excel()`</span>.</span>
+<span id="cb41-400"><a href="#cb41-400" aria-hidden="true" tabindex="-1"></a>By consulting the help menu with by running <span class="in">`?read_excel()`</span> either directly in the console or in a code file.</span>
 <span id="cb41-401"><a href="#cb41-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-402"><a href="#cb41-402" aria-hidden="true" tabindex="-1"></a>See the chapter on <span class="co">[</span><span class="ot">Fundamentals</span><span class="co">](fundamentals.qmd)</span> to refresh your knowledge.</span>
+<span id="cb41-402"><a href="#cb41-402" aria-hidden="true" tabindex="-1"></a>Note that you have to either first load the {read_xl} package with <span class="in">`library(readxl)`</span>, or specify which package the function comes from with <span class="in">`?readxl::read_excel()`</span>. See the section on dependencies in the chapter on <span class="co">[</span><span class="ot">Fundamentals</span><span class="co">](fundamentals.qmd)</span> to refresh your knowledge.</span>
 <span id="cb41-403"><a href="#cb41-403" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb41-404"><a href="#cb41-404" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-405"><a href="#cb41-405" aria-hidden="true" tabindex="-1"></a><span class="fu">### How to use relative paths to load files?</span></span>

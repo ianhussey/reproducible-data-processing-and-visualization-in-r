@@ -15,17 +15,17 @@ book:
     - chapters/the_pipe_and_renaming.qmd
     - chapters/data_transformation_1.qmd
     - chapters/data_transformation_2.qmd
+    - chapters/strings_and_factors.qmd
+    - chapters/structuring_projects.qmd
     #- chapters/project_1.qmd
     #- chapters/data_transformation_3.qmd
-    - chapters/strings_and_factors.qmd
     - chapters/reshaping_and_pivots.qmd
     - chapters/binding_and_joining.qmd
     #- chapters/project_2.qmd
-    - chapters/structuring_projects.qmd
     - chapters/visualization.qmd 
     - chapters/reporting.qmd
+    #- chapters/project_3.qmd
     #- chapters/the_linear_model.qmd
-    # assignment here?
     # add some sort of appendix notice here?
     - chapters/privacy.qmd
     #- references.qmd

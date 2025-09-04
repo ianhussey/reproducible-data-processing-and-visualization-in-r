@@ -200,7 +200,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/loading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -224,25 +224,25 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Working with strings and factors</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -299,10 +299,11 @@ window.Quarto = {
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.11</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#insert-a-new-chunk-and-write-code-to-install-the-following-packages" id="toc-insert-a-new-chunk-and-write-code-to-install-the-following-packages" class="nav-link" data-scroll-target="#insert-a-new-chunk-and-write-code-to-install-the-following-packages"><span class="header-section-number">3.11.1</span> Insert a new chunk and write code to install the following packages</a></li>
-  <li><a href="#inserting-a-new-chunk-below-this-heading" id="toc-inserting-a-new-chunk-below-this-heading" class="nav-link" data-scroll-target="#inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.2</span> Inserting a new chunk below this heading</a></li>
+  <li><a href="#render-the-report" id="toc-render-the-report" class="nav-link" data-scroll-target="#render-the-report"><span class="header-section-number">3.11.2</span> Render the report</a></li>
   <li><a href="#add-authorship" id="toc-add-authorship" class="nav-link" data-scroll-target="#add-authorship"><span class="header-section-number">3.11.3</span> Add authorship</a></li>
   <li><a href="#add-date" id="toc-add-date" class="nav-link" data-scroll-target="#add-date"><span class="header-section-number">3.11.4</span> Add date</a></li>
-  <li><a href="#make-the-plot-more-colorful" id="toc-make-the-plot-more-colorful" class="nav-link" data-scroll-target="#make-the-plot-more-colorful"><span class="header-section-number">3.11.5</span> Make the plot more colorful</a></li>
+  <li><a href="#inserting-a-new-chunk-below-this-heading" id="toc-inserting-a-new-chunk-below-this-heading" class="nav-link" data-scroll-target="#inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.5</span> Inserting a new chunk below this heading</a></li>
+  <li><a href="#make-the-plot-more-colorful" id="toc-make-the-plot-more-colorful" class="nav-link" data-scroll-target="#make-the-plot-more-colorful"><span class="header-section-number">3.11.6</span> Make the plot more colorful</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -612,10 +613,27 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 <p>Edit your local copy of this .qmd file to make the following changes.</p>
 <section id="insert-a-new-chunk-and-write-code-to-install-the-following-packages" class="level3" data-number="3.11.1">
 <h3 data-number="3.11.1" class="anchored" data-anchor-id="insert-a-new-chunk-and-write-code-to-install-the-following-packages"><span class="header-section-number">3.11.1</span> Insert a new chunk and write code to install the following packages</h3>
-<p>Use the <code>install.packages()</code> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names. Run the code to install these packages.</p>
+<ul>
+<li>Insert a new code chunk at the top of this file, just below the YAML header (i.e., below the section that starts and ends with —).</li>
+<li>Use the <code>install.packages()</code> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names.</li>
+<li>Run this chunk to install these packages.</li>
+<li><code>install.packages()</code> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <code>#| eval: false</code> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click “Output&gt;Show nothing (don’t run code)”, which will insert in the chunk both <code>#| eval: false</code> (“don’t run the code”) and <code>#| include: false</code> (“don’t show the code in the .html”).</li>
+</ul>
 </section>
-<section id="inserting-a-new-chunk-below-this-heading" class="level3" data-number="3.11.2">
-<h3 data-number="3.11.2" class="anchored" data-anchor-id="inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.2</span> Inserting a new chunk below this heading</h3>
+<section id="render-the-report" class="level3" data-number="3.11.2">
+<h3 data-number="3.11.2" class="anchored" data-anchor-id="render-the-report"><span class="header-section-number">3.11.2</span> Render the report</h3>
+<p>Click ‘render’ to create a reproducible report as a .html from this .qmd file.</p>
+</section>
+<section id="add-authorship" class="level3" data-number="3.11.3">
+<h3 data-number="3.11.3" class="anchored" data-anchor-id="add-authorship"><span class="header-section-number">3.11.3</span> Add authorship</h3>
+<p>Add the following text to the YAML header on line 3, just under ‘title’: <code>author: "yourname"</code>, and replace ‘yourname’ with your name. Render the report again with the render button. It will now list you as the author.</p>
+</section>
+<section id="add-date" class="level3" data-number="3.11.4">
+<h3 data-number="3.11.4" class="anchored" data-anchor-id="add-date"><span class="header-section-number">3.11.4</span> Add date</h3>
+<p>Add the following text to the YAML header on line 4: <code>date: today</code>. Now when you render again, it will list today’s date so that you know when the report was created.</p>
+</section>
+<section id="inserting-a-new-chunk-below-this-heading" class="level3" data-number="3.11.5">
+<h3 data-number="3.11.5" class="anchored" data-anchor-id="inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.5</span> Inserting a new chunk below this heading</h3>
 <p>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</p>
 <ul>
 <li>Assign the variable <code>x</code> to have the value <code>5</code></li>
@@ -625,16 +643,8 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 <p>Run the code in the chunk by clicking the green right-arrow: <img src="../images/chunk_run_this_chunk.png" class="img-fluid"></p>
 <p>Need a refresher on variable assignment? Go back to the chapter on <img src="fundamentals.qmd" class="img-fluid" alt="Fundamentals">.</p>
 </section>
-<section id="add-authorship" class="level3" data-number="3.11.3">
-<h3 data-number="3.11.3" class="anchored" data-anchor-id="add-authorship"><span class="header-section-number">3.11.3</span> Add authorship</h3>
-<p>Add the following text to the YAML header on line 3, just under ‘title’: <code>author: "yourname"</code>, and replace ‘yourname’ with your name. Click ‘render’ to create a reproducible report as a .html from this .qmd file. It will now list you as the author.</p>
-</section>
-<section id="add-date" class="level3" data-number="3.11.4">
-<h3 data-number="3.11.4" class="anchored" data-anchor-id="add-date"><span class="header-section-number">3.11.4</span> Add date</h3>
-<p>Add the following text to the YAML header on line 4: <code>date: today</code>. Now when you render again, it will list today’s date so that you know when the report was created.</p>
-</section>
-<section id="make-the-plot-more-colorful" class="level3" data-number="3.11.5">
-<h3 data-number="3.11.5" class="anchored" data-anchor-id="make-the-plot-more-colorful"><span class="header-section-number">3.11.5</span> Make the plot more colorful</h3>
+<section id="make-the-plot-more-colorful" class="level3" data-number="3.11.6">
+<h3 data-number="3.11.6" class="anchored" data-anchor-id="make-the-plot-more-colorful"><span class="header-section-number">3.11.6</span> Make the plot more colorful</h3>
 <p>Change the ‘aesthetics’ call from <code>aes(score, race_iat)</code> to <code>aes(score, race_iat, color = subscale)</code>. Run all previous chunks to reload and reprocess the data using this button: <img src="../images/chunk_run_previous_chunks.png" class="img-fluid"> Then, run the plot chunk again using this one to view your more colorful plot: <img src="../images/chunk_run_this_chunk.png" class="img-fluid"></p>
 
 
@@ -1101,8 +1111,8 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing, and saving data">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing, and saving data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/loading_data.html" class="pagination-link" aria-label="Loading, viewing and saving data">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -1369,31 +1379,38 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 <span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### Insert a new chunk and write code to install the following packages</span></span>
 <span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>Use the <span class="in">`install.packages()`</span> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names. Run the code to install these packages.</span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inserting a new chunk below this heading</span></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk: </span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
-<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Print the value of <span class="in">`y`</span> as output. </span>
-<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
-<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="al">![Fundamentals](fundamentals.qmd)</span>. </span>
-<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add authorship</span></span>
-<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 3, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Click 'render' to create a reproducible report as a .html from this .qmd file. It will now list you as the author.</span>
-<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add date</span></span>
-<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 4: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
-<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Make the plot more colorful</span></span>
-<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert a new code chunk at the top of this file, just below the YAML header (i.e., below the section that starts and ends with ---).</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`install.packages()`</span> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names.</span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run this chunk to install these packages.</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`install.packages()`</span> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <span class="in">`#| eval: false`</span> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output<span class="sc">\&gt;</span>Show nothing (don't run code)", which will insert in the chunk both <span class="in">`#| eval: false`</span> ("don't run the code") and <span class="in">`#| include: false`</span> ("don't show the code in the .html").</span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### Render the report</span></span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>Click 'render' to create a reproducible report as a .html from this .qmd file.</span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add authorship</span></span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 3, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.</span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add date</span></span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 4: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inserting a new chunk below this heading</span></span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
+<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the value of <span class="in">`y`</span> as output.</span>
+<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="al">![Fundamentals](fundamentals.qmd)</span>.</span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a><span class="fu">### Make the plot more colorful</span></span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

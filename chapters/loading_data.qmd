@@ -73,12 +73,12 @@ R_course/
 │   └── processing.qmd
 └── data/
     ├── processed/
-    │   └── data_likert.csv
+    │   ├── data_processed.csv
+    │   └── ... (other .csv files)
     └── raw/
-        ├── data_demographics_raw.csv
-        ├── data_selfreports_raw.csv
+        ├── data_likert.csv
         ├── code_shouldnt_usually_go_here.qmd
-        └── data_behavioraltask_raw.csv
+        └── ... (other .csv files)
 ```
 
 Because .qmd files use 'relative' paths, to load the 'data_shouldnt_usually_go_here.csv' file I only need to do the following, without any `setwd()` call:
@@ -267,7 +267,7 @@ With a few exceptions (e.g., removing identifying information before making data
 
 It might be tempting to open the .csv file in excel and manually delete those rows - don't!
 
-Handle with with code, not by deleting the information in those rows. When using `read_csv()` or `readxl::read_excel()` this can be done using the `skip` argument.
+Handle with code, not by deleting the information in those rows. When using `read_csv()` or `readxl::read_excel()` this can be done using the `skip` argument.
 
 ```{r}
 dat_likert_1 <- readxl::read_excel(path = "../data/raw/data_likert.xlsx", 
@@ -330,7 +330,7 @@ data_combined <- purrr::map_dfr(.x = file_names, .f = read_csv)
 
 Check your learning with the following questions. Exercises involving running code should be run in your local copy of the .qmd files (see the [Introduction](../index.qmd) to get a copy of them).
 
-### How can you run all all the code chunks in this file with a single click?
+### How can you run all the code chunks in this file with a single click?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
 Clicking the green down arrow button in the last chunk.
@@ -350,12 +350,12 @@ Do all three ways for the `dat_likert` object.
 3.  Clicking the object's name in the Source window (where code appears) with Cmd+click (on Mac) or Ctrl+click (on Windows)
 :::
 
-### How would you know what arguments `readxl::read_excel()` takes?
+### How would you know what arguments `read_excel()` takes?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
-By consulting the help menu with `r ?readxl::read_excel()`.
+By consulting the help menu with by running `?read_excel()` either directly in the console or in a code file.
 
-See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge.
+Note that you have to either first load the {read_xl} package with `library(readxl)`, or specify which package the function comes from with `?readxl::read_excel()`. See the section on dependencies in the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge.
 :::
 
 ### How to use relative paths to load files?

@@ -263,7 +263,22 @@ Edit your local copy of this .qmd file to make the following changes.
 
 ### Insert a new chunk and write code to install the following packages
 
-Use the `install.packages()` function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names. Run the code to install these packages.
+-   Insert a new code chunk at the top of this file, just below the YAML header (i.e., below the section that starts and ends with ---).
+-   Use the `install.packages()` function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names.
+-   Run this chunk to install these packages.
+-   `install.packages()` calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include `#| eval: false` at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output\>Show nothing (don't run code)", which will insert in the chunk both `#| eval: false` ("don't run the code") and `#| include: false` ("don't show the code in the .html").
+
+### Render the report
+
+Click 'render' to create a reproducible report as a .html from this .qmd file.
+
+### Add authorship
+
+Add the following text to the YAML header on line 3, just under 'title': `author: "yourname"`, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.
+
+### Add date
+
+Add the following text to the YAML header on line 4: `date: today`. Now when you render again, it will list today's date so that you know when the report was created.
 
 ### Inserting a new chunk below this heading
 
@@ -276,14 +291,6 @@ Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt
 Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
 
 Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](fundamentals.qmd).
-
-### Add authorship
-
-Add the following text to the YAML header on line 3, just under 'title': `author: "yourname"`, and replace 'yourname' with your name. Click 'render' to create a reproducible report as a .html from this .qmd file. It will now list you as the author.
-
-### Add date
-
-Add the following text to the YAML header on line 4: `date: today`. Now when you render again, it will list today's date so that you know when the report was created.
 
 ### Make the plot more colorful
 

@@ -180,6 +180,15 @@ head(dat, n = 10) |>
   kable_classic(full_width = FALSE)
 ```
 
+### How to insert a pipe?
+
+You can insert a pipe by typing `%>%` or using the following keyboard shortcuts. 
+
+- Windows: shift + Ctrl + M
+- Mac: shift + Cmd + M
+
+For other keyboard shortcuts in RStudio, see the chapter on [Fundamentals](fundamentals.qmd).
+
 ## Implicit arguments & the pipe
 
 As in other cases in R, arguments can be passed to functions 'explicitly' (by naming the argument) or 'implicitly' (without names).
@@ -409,12 +418,62 @@ Download the data and code for this e-Book (see the [Introduction](../index.qmd)
 
 In your local version of this .qmd file:
 
--   Create a new data frame called `dat_likert_renamed` by reading the csv file from '../data/data_likert_messy.csv'.
--   Use `rename()` to rename every column so that it conforms to the four principles above.
+-   Create a data frame called `dat_likert_messy` by reading the .csv file from '../data/raw/data_likert_messy.csv'.
+-   Print its column names.
+-   Create a new data frame called `dat_likert_renamed` by taking `dat_likert_messy` and using `rename()` and the pipe to rename every column so that it conforms to the four principles above.
+-   Use `head()` to print the first few rows of `dat_likert_renamed` so that you can verify that the renaming was successful. 
+-   Write suitable comments explaining the code.
 
 ```{r}
 #| include: false
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+# read data 
+dat_likert_messy <- read_csv("../data/raw/data_likert_messy.csv")
+
+# print column names
+colnames(dat_likert_messy)
+
+# create new df with renamed columns
+dat_likert_renamed <- dat_likert_messy %>%
+  rename(date = "Date d m y",
+         group  = "Group",
+         subject_code  = "subject code",
+         likert_scale1_item1 = "1 to 7 likert scale item 1",
+         likert_scale1_item2 = "1 to 7 likert scale item 2")
+
+# check renaming was successful 
+head(dat_likert_renamed)
+```
+:::
