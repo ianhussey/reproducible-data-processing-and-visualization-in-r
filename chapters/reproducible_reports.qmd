@@ -24,7 +24,7 @@ Literate programming is the idea that code and text should be written in the sam
 
 ### In-line code
 
-Code can be written in 'in-line' in the text as follows: the code "`` `r 1+1` ``" is run and produces the output "`r 1+1`". In your local .qmd document, you have hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.
+Code can be written in 'in-line' in the text as follows: the code "`` `r 1+1` ``" is run and produces the output "`r 1+1`". In your local .qmd document, you have to hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.
 
 ### Code chunks
 
@@ -198,7 +198,7 @@ dat_processed_long <- dat_processed %>%
 
 Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.
 
-Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, tead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
+Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
 
 ```{r}
 # dependencies
