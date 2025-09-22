@@ -8,3 +8,6 @@
 *.Rproj.user
 .Rproj.user
 old/data_transformation_old.qmd
+*.Rproj
+reproducible-data-processing-and-visualization-in-r.Rproj
+*.Rproj

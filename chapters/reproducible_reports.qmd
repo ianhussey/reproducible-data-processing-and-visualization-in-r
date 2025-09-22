@@ -24,7 +24,7 @@ Literate programming is the idea that code and text should be written in the sam
 
 ### In-line code
 
-Code can be written in 'in-line' in the text as follows: the code "`` `r 1+1` ``" is run and produces the output "`r 1+1`". In your local .qmd document, you have hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.
+Code can be written in 'in-line' in the text as follows: the code "`` `r 1+1` ``" is run and produces the output "`r 1+1`". In your local .qmd document, you have to hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.
 
 ### Code chunks
 
