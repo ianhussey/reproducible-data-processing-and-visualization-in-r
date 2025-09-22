@@ -10,7 +10,7 @@ I suggest that you [download the .zip file](https://raw.githubusercontent.com/ia
 
 You can also copy and paste the code for any chapter directly from the website. Click the "\</\> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.
 
-Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or create simulated messy datasets with my R package [{truffle}](https://github.com/ianhusssey/truffle) and practice.
+Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework ([osf.io](https://osf.io)), or create simulated messy datasets with my R package [{truffle}](https://github.com/ianhussey/truffle) and practice.
 
 ![](images/practice.png){.center width="60%"}
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Strings and factors – Reproducible Data Processing and Visualization</title>
+<title>8&nbsp; Data types – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +104,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 </head>
@@ -117,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/strings_and_factors.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/strings_and_factors.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data types</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -193,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -248,9 +250,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#string-subsearches-with-stringrstr_detect" id="toc-string-subsearches-with-stringrstr_detect" class="nav-link active" data-scroll-target="#string-subsearches-with-stringrstr_detect"><span class="header-section-number">8.0.1</span> String subsearches with <code>stringr::str_detect()</code></a></li>
-  <li><a href="#forcats" id="toc-forcats" class="nav-link" data-scroll-target="#forcats"><span class="header-section-number">8.1</span> forcats</a></li>
-  <li><a href="#stringr" id="toc-stringr" class="nav-link" data-scroll-target="#stringr"><span class="header-section-number">8.2</span> stringr</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link active" data-scroll-target="#data-types"><span class="header-section-number">8.1</span> Data types</a></li>
+  <li><a href="#working-with-numericfloats" id="toc-working-with-numericfloats" class="nav-link" data-scroll-target="#working-with-numericfloats"><span class="header-section-number">8.2</span> Working with numeric/floats</a>
+  <ul class="collapse">
+  <li><a href="#near" id="toc-near" class="nav-link" data-scroll-target="#near"><span class="header-section-number">8.2.1</span> <code>near()</code></a></li>
+  <li><a href="#between" id="toc-between" class="nav-link" data-scroll-target="#between"><span class="header-section-number">8.2.2</span> <code>between()</code></a></li>
+  <li><a href="#rounding-round-probably-doesnt-do-what-you-think" id="toc-rounding-round-probably-doesnt-do-what-you-think" class="nav-link" data-scroll-target="#rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">8.2.3</span> Rounding: <code>round()</code> probably doesn’t do what you think</a></li>
+  <li><a href="#rounding-of-p-values-using-apa-style" id="toc-rounding-of-p-values-using-apa-style" class="nav-link" data-scroll-target="#rounding-of-p-values-using-apa-style"><span class="header-section-number">8.2.4</span> ‘rounding’ of p-values using APA style</a></li>
+  </ul></li>
+  <li><a href="#working-with-strings" id="toc-working-with-strings" class="nav-link" data-scroll-target="#working-with-strings"><span class="header-section-number">8.3</span> Working with strings</a>
+  <ul class="collapse">
+  <li><a href="#case-conversion" id="toc-case-conversion" class="nav-link" data-scroll-target="#case-conversion"><span class="header-section-number">8.3.1</span> Case conversion</a></li>
+  <li><a href="#substring-searches" id="toc-substring-searches" class="nav-link" data-scroll-target="#substring-searches"><span class="header-section-number">8.3.2</span> Substring searches</a></li>
+  <li><a href="#removal" id="toc-removal" class="nav-link" data-scroll-target="#removal"><span class="header-section-number">8.3.3</span> Removal</a></li>
+  <li><a href="#replacement" id="toc-replacement" class="nav-link" data-scroll-target="#replacement"><span class="header-section-number">8.3.4</span> Replacement</a></li>
+  <li><a href="#seperation" id="toc-seperation" class="nav-link" data-scroll-target="#seperation"><span class="header-section-number">8.3.5</span> Seperation</a></li>
+  <li><a href="#extraction" id="toc-extraction" class="nav-link" data-scroll-target="#extraction"><span class="header-section-number">8.3.6</span> Extraction</a></li>
+  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"><span class="header-section-number">8.3.7</span> Regex</a></li>
+  </ul></li>
+  <li><a href="#working-with-factors" id="toc-working-with-factors" class="nav-link" data-scroll-target="#working-with-factors"><span class="header-section-number">8.4</span> Working with factors</a></li>
   </ul>
 </nav>
     </div>
@@ -259,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data types</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -276,45 +294,271 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="data-types" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="data-types"><span class="header-section-number">8.1</span> Data types</h2>
+<ul>
+<li>integers, numeric/floats, factors, strings, booleans/logicals, NA.</li>
+</ul>
+</section>
+<section id="working-with-numericfloats" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="working-with-numericfloats"><span class="header-section-number">8.2</span> Working with numeric/floats</h2>
+<p>floating point math is weird…</p>
+<p>near()</p>
+<section id="near" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="near"><span class="header-section-number">8.2.1</span> <code>near()</code></h3>
+<p>testing equivalence with floats is weird</p>
+<p>sqrt(2) ^ 2 == 2 near(sqrt(2) ^ 2, 2)</p>
+</section>
+<section id="between" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="between"><span class="header-section-number">8.2.2</span> <code>between()</code></h3>
 <p>TODO</p>
-<section id="string-subsearches-with-stringrstr_detect" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="string-subsearches-with-stringrstr_detect"><span class="header-section-number">8.0.1</span> String subsearches with <code>stringr::str_detect()</code></h3>
-<p>TODO</p>
-<p>case, characters etc.</p>
+</section>
+<section id="rounding-round-probably-doesnt-do-what-you-think" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">8.2.3</span> Rounding: <code>round()</code> probably doesn’t do what you think</h3>
+<p>It is extremely common to round statistical results before including them in text and tables.</p>
+<p>However, did you know that R doesn’t use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses “banker’s rounding”, which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.</p>
+<p>This is easier to show than explain. The <code>round()</code> function rounds each of the numbers passed to it. What do you expect the output to be?</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"AB"</span>, <span class="st">"B"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>test <span class="sc">==</span> <span class="st">"A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  TRUE FALSE FALSE</code></pre>
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(test, <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show result">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Click to show result
 </div>
-<p>Therefore:</p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data_amp_test_trials %&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(str_detect(trial_id, "2_")) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 2 2 4 4 6</code></pre>
+</div>
+</div>
+<p>Why is this? Because R’s <code>round()</code> function uses “banker’s rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it’s usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.</p>
+</div>
+</div>
+</div>
+<p>In most of your R scripts, you should probably instead use <code>janitor::round_half_up()</code> instead, which produces the round-5-upwards behavior you were probably taught in school.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">round_half_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">1.5</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">2.5</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">3.5</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">4.5</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">5.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<p>Another great option is <code>roundwork::round_up()</code>, which is a package that my PhD student <a href="https://bsky.app/profile/lhdjung.bsky.social">Lukas Jung</a> wrote before joining our research group.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roundwork) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>roundwork<span class="sc">::</span><span class="fu">round_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">1.5</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">2.5</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">3.5</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">4.5</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">5.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<p>These will typically be used inside a pipe workflow:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_half_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_half_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_half_up</span>(beta_ci_upper, <span class="dv">2</span>)) </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_ci_lower</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_ci_upper</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.0009180</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.0000014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">-0.08</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.0082030</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.0014797</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.0043528</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
-<section id="forcats" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="forcats"><span class="header-section-number">8.1</span> forcats</h2>
+<section id="rounding-of-p-values-using-apa-style" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="rounding-of-p-values-using-apa-style"><span class="header-section-number">8.2.4</span> ‘rounding’ of p-values using APA style</h3>
+<p>The one thing that psychologists don’t round using the round-half-up rule is <em>p</em>-values. These are instead usually truncated using the APA style guide’s conventions so that p values smaller than .001 are reported as “&lt; .001”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhussey/truffle")</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(truffle)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_half_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_half_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_half_up</span>(beta_ci_upper, <span class="dv">2</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">p =</span> <span class="fu">round_p_value</span>(p)) </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_ci_lower</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">beta_ci_upper</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">&lt; .001</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">&lt; .001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">-0.08</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">.008</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">.004</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="stringr" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="stringr"><span class="header-section-number">8.2</span> stringr</h2>
+</section>
+<section id="working-with-strings" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="working-with-strings"><span class="header-section-number">8.3</span> Working with strings</h2>
+<section id="case-conversion" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="case-conversion"><span class="header-section-number">8.3.1</span> Case conversion</h3>
+<p>str_to_lower str_to_upper str_to_sentence str_to_title</p>
+</section>
+<section id="substring-searches" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="substring-searches"><span class="header-section-number">8.3.2</span> Substring searches</h3>
+<p>str_detect() + ignore case str_starts str_ends</p>
+<p>str_locate() str_locate_all()</p>
+</section>
+<section id="removal" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="removal"><span class="header-section-number">8.3.3</span> Removal</h3>
+<p>str_remove() str_remove_all()</p>
+<p>str_squish #remove whitespace</p>
+</section>
+<section id="replacement" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="replacement"><span class="header-section-number">8.3.4</span> Replacement</h3>
+<p>str_replace str_replace_all</p>
+</section>
+<section id="seperation" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="seperation"><span class="header-section-number">8.3.5</span> Seperation</h3>
+<p>str_split, relationship with seperate()</p>
+</section>
+<section id="extraction" class="level3" data-number="8.3.6">
+<h3 data-number="8.3.6" class="anchored" data-anchor-id="extraction"><span class="header-section-number">8.3.6</span> Extraction</h3>
+<p>word()</p>
+</section>
+<section id="regex" class="level3" data-number="8.3.7">
+<h3 data-number="8.3.7" class="anchored" data-anchor-id="regex"><span class="header-section-number">8.3.7</span> Regex</h3>
+<p>TODO</p>
+</section>
+</section>
+<section id="working-with-factors" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="working-with-factors"><span class="header-section-number">8.4</span> Working with factors</h2>
+<p>forcats with plot examples, regression examples</p>
+<p>converting numeric to factor via character or whatever that weird thing is</p>
+<p>fct_rev</p>
+<p>fct_order - contrast with arrange() fct_relevel</p>
+<p>fct_drop</p>
+<p>fct_lump</p>
 
 
 <!-- -->
@@ -784,55 +1028,211 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Strings and factors"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>TODO</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### String subsearches with `stringr::str_detect()`</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>TODO</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>case, characters etc.</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"AB"</span>, <span class="st">"B"</span>)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>test <span class="sc">==</span> <span class="st">"A"</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(test, <span class="st">"B"</span>)</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>Therefore:</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co"># data_amp_test_trials %&gt;%</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(str_detect(trial_id, "2_")) </span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## forcats</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## stringr</span></span>
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data types"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc_float: true</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data types</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>integers, numeric/floats, factors, strings, booleans/logicals, NA.</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with numeric/floats</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>floating point math is weird...</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>near()</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### `near()`</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>testing equivalence with floats is weird</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### `between()`</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rounding: `round()` probably doesn't do what you think</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>It is extremely common to round statistical results before including them in text and tables.</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>This is easier to show than explain. The <span class="in">`round()`</span> function rounds each of the numbers passed to it. What do you expect the output to be?</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show result"}</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>Why is this? Because R's <span class="in">`round()`</span> function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>In most of your R scripts, you should probably instead use <span class="in">`janitor::round_half_up()`</span> instead, which produces the round-5-upwards behavior you were probably taught in school.</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">round_half_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">1.5</span>, </span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">2.5</span>, </span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">3.5</span>, </span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">4.5</span>, </span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">5.5</span>))</span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>Another great option is <span class="in">`roundwork::round_up()`</span>, which is a package that my PhD student <span class="co">[</span><span class="ot">Lukas Jung</span><span class="co">](https://bsky.app/profile/lhdjung.bsky.social)</span> wrote before joining our research group.</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roundwork) </span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>roundwork<span class="sc">::</span><span class="fu">round_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">1.5</span>, </span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">2.5</span>, </span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">3.5</span>, </span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">4.5</span>, </span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">5.5</span>))</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>These will typically be used inside a pipe workflow:</span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a><span class="co"># make up some values to be rounded </span></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">44</span>)</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>dat_regression_betas <span class="ot">&lt;-</span> </span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">beta_estimate =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> .<span class="dv">3</span>, <span class="at">sd =</span> .<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_ci_lower =</span> beta_estimate <span class="sc">-</span> <span class="fl">0.2</span>,</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> beta_estimate <span class="sc">+</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="fl">0.000000001</span>, <span class="at">max =</span> <span class="fl">0.01</span>))</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_half_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_half_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_half_up</span>(beta_ci_upper, <span class="dv">2</span>)) </span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="fu">### 'rounding' of p-values using APA style</span></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>The one thing that psychologists don't round using the round-half-up rule is *p*-values. These are instead usually truncated using the APA style guide's conventions so that p values smaller than .001 are reported as "<span class="sc">\&lt;</span> .001".</span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhussey/truffle")</span></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(truffle)</span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_half_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_half_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_half_up</span>(beta_ci_upper, <span class="dv">2</span>),</span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>         <span class="at">p =</span> <span class="fu">round_p_value</span>(p)) </span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with strings</span></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="fu">### Case conversion</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>str_to_lower</span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>str_to_upper</span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>str_to_sentence</span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>str_to_title</span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### Substring searches</span></span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>str_detect() + ignore case</span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>str_starts</span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>str_ends</span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>str_locate()</span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>str_locate_all()</span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a><span class="fu">### Removal</span></span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a>str_remove()</span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a>str_remove_all()</span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a>str_squish #remove whitespace</span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Replacement</span></span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>str_replace</span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>str_replace_all</span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="fu">### Seperation</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a>str_split, relationship with seperate()</span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extraction </span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>word()</span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### Regex</span></span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with factors</span></span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a>forcats with plot examples, regression examples</span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>converting numeric to factor via character or whatever that weird thing is</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a>fct_rev</span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>fct_order - contrast with arrange()</span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>fct_relevel</span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>fct_drop</span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>fct_lump</span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

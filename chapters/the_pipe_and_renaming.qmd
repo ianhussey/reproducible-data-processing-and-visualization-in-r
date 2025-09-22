@@ -145,8 +145,8 @@ dat <-
   )
 
 # print the first few rows
-head(dat, n = 10) |>
-  kable() |>
+head(dat, n = 10) %>%
+  kable() %>%
   kable_classic(full_width = FALSE)
 ```
 
@@ -170,13 +170,13 @@ dat <-
   
   # summarize across rows, clustered by participant
   group_by(unique_id) %>% # -> pass the output onward to the next function
-  summarise(percent_fast_trials = mean(fast_trial)*100) |>
+  summarise(percent_fast_trials = mean(fast_trial)*100) %>%
   # round the percents to two decimal places
   mutate(percent_fast_trials = round_half_up(percent_fast_trials, digits = 2))
 
 # print the first few rows
-head(dat, n = 10) |>
-  kable() |>
+head(dat, n = 10) %>%
+  kable() %>%
   kable_classic(full_width = FALSE)
 ```
 

@@ -226,8 +226,8 @@ dat_likert %>%
 # This will work when your script runs on your local machine, but won't render on the website version of this book for reasons I can't quite figure out.
 # This chunk is set to not run or show for the book, but you can run the code below directly if you're using the script locally and therefore able to read this.
 
-dat_likert |>
-  knitr::kable(align = "r") |>
+dat_likert %>%
+  knitr::kable(align = "r") %>%
   kableExtra::kable_classic(full_width = FALSE)
 ```
 

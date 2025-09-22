@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -627,8 +627,8 @@ Click to show answer
 <span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -704,13 +704,13 @@ Click to show answer
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -2202,8 +2202,8 @@ Click to show answer
 <span id="cb44-163"><a href="#cb44-163" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb44-164"><a href="#cb44-164" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb44-168"><a href="#cb44-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb44-169"><a href="#cb44-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-170"><a href="#cb44-170" aria-hidden="true" tabindex="-1"></a></span>
@@ -2227,13 +2227,13 @@ Click to show answer
 <span id="cb44-190"><a href="#cb44-190" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb44-191"><a href="#cb44-191" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize across rows, clustered by participant</span></span>
 <span id="cb44-192"><a href="#cb44-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique_id) <span class="sc">%&gt;%</span> <span class="co"># -&gt; pass the output onward to the next function</span></span>
-<span id="cb44-193"><a href="#cb44-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-193"><a href="#cb44-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">percent_fast_trials =</span> <span class="fu">mean</span>(fast_trial)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb44-194"><a href="#cb44-194" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round the percents to two decimal places</span></span>
 <span id="cb44-195"><a href="#cb44-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_fast_trials =</span> <span class="fu">round_half_up</span>(percent_fast_trials, <span class="at">digits =</span> <span class="dv">2</span>))</span>
 <span id="cb44-196"><a href="#cb44-196" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-197"><a href="#cb44-197" aria-hidden="true" tabindex="-1"></a><span class="co"># print the first few rows</span></span>
-<span id="cb44-198"><a href="#cb44-198" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb44-199"><a href="#cb44-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb44-198"><a href="#cb44-198" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-199"><a href="#cb44-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb44-200"><a href="#cb44-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb44-201"><a href="#cb44-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-202"><a href="#cb44-202" aria-hidden="true" tabindex="-1"></a></span>

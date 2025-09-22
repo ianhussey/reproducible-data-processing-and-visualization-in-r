@@ -100,12 +100,12 @@ In your local version of this .qmd script, highlight and run the code below to i
 
 ```{r}
 #| eval: false
-install.packages(tidyverse) # umbrella package that installs dplyr/tidyr/ggplot2 and others
-install.packages(janitor)
-install.packages(report)
-install.packages(parameters)
-install.packages(knitr)
-install.packages(kableExtra)
+install.packages("tidyverse") # umbrella package that installs dplyr/tidyr/ggplot2 and others
+install.packages("janitor")
+install.packages("report")
+install.packages("parameters")
+install.packages("knitr")
+install.packages("kableExtra")
 ```
 
 Some packages are instead on GitHub, and can be installed with `devtools::install_github()`. You'll need to install the {devtools} package first to be able to use the `install_github()` function.
@@ -114,7 +114,7 @@ In your local version of this .qmd script, highlight and run the code below to i
 
 ```{r}
 #| eval: false
-install.packages(devtools)
+install.packages("devtools")
 devtools::install_github("ianhussey/psychdsish") # username/repository
 devtools::install_github("ianhussey/truffle") # username/repository
 ```

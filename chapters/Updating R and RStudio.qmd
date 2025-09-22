@@ -1,0 +1,48 @@
+---
+title: "Updating R and RStudio"
+author: "Jonathan M. Fortune"
+date: today
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+## Updating R and RStudio
+
+### Updating R and transferring packages
+
+**Windows**: Windows users can install `installr` and type:
+
+``` r
+install.packages("installr")
+library(installr)
+updateR()
+```
+
+This will update R and a window will pop up to ask whether you want to transfer your installed packages to the new version.
+
+**MacOS**: Mac users need to update manually:
+
+-   Either using homebrew in the terminal by typing:
+
+``` bash
+brew update
+brew upgrade r
+```
+
+-   or manually by going to CRAN and re-download R.
+
+You can transfer your packages by finding them using
+
+``` r
+.libPaths()
+```
+
+and then looking for the library in your finder (e.g. \~/Library/R/4.3/library/) and copying all downloaded content to the new version’s library folder (e.g. \~/Library/R/4.4/library/).
+
+### Updating RStudio 
+
+Must always be updated manually in both Windows and MacOS by downloading the newest installer from [posit.co](https://posit.co/download/rstudio/).

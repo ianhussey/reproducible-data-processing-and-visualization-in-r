@@ -1,5 +1,5 @@
 ---
-title: "Strings and factors"
+title: "Data types"
 format:
   html:
     toc: true
@@ -18,33 +18,189 @@ options(scipen = 999)
 
 ```
 
+## Data types
+
+-   integers, numeric/floats, factors, strings, booleans/logicals, NA.
+
+## Working with numeric/floats
+
+floating point math is weird...
+
+near()
+
+### `near()`
+
+testing equivalence with floats is weird
+
+sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)
+
+### `between()`
+
 TODO
 
-### String subsearches with `stringr::str_detect()`
+### Rounding: `round()` probably doesn't do what you think
+
+It is extremely common to round statistical results before including them in text and tables.
+
+However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
+
+This is easier to show than explain. The `round()` function rounds each of the numbers passed to it. What do you expect the output to be?
+
+```{r}
+#| eval: false
+round(c(0.5, 
+        1.5, 
+        2.5, 
+        3.5, 
+        4.5, 
+        5.5))
+```
+
+::: {.callout-note collapse="true" title="Click to show result"}
+```{r}
+round(c(0.5, 
+        1.5, 
+        2.5, 
+        3.5, 
+        4.5, 
+        5.5))
+```
+
+Why is this? Because R's `round()` function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.
+:::
+
+In most of your R scripts, you should probably instead use `janitor::round_half_up()` instead, which produces the round-5-upwards behavior you were probably taught in school.
+
+```{r}
+library(janitor)
+
+janitor::round_half_up(c(0.5, 
+                         1.5, 
+                         2.5, 
+                         3.5, 
+                         4.5, 
+                         5.5))
+```
+
+Another great option is `roundwork::round_up()`, which is a package that my PhD student [Lukas Jung](https://bsky.app/profile/lhdjung.bsky.social) wrote before joining our research group.
+
+```{r}
+library(roundwork) 
+
+roundwork::round_up(c(0.5, 
+                      1.5, 
+                      2.5, 
+                      3.5, 
+                      4.5, 
+                      5.5))
+```
+
+These will typically be used inside a pipe workflow:
+
+```{r}
+#| eval: true
+#| include: false
+# make up some values to be rounded 
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+set.seed(44)
+
+dat_regression_betas <- 
+  data.frame(beta_estimate = rnorm(n = 5, mean = .3, sd = .1)) %>%
+  mutate(beta_ci_lower = beta_estimate - 0.2,
+         beta_ci_upper = beta_estimate + 0.2) %>%
+  mutate(p = runif(n = 5, min = 0.000000001, max = 0.01))
+```
+
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_half_up(beta_estimate, 2),
+         beta_ci_lower = round_half_up(beta_ci_lower, 2),
+         beta_ci_upper = round_half_up(beta_ci_upper, 2)) 
+
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+### 'rounding' of p-values using APA style
+
+The one thing that psychologists don't round using the round-half-up rule is *p*-values. These are instead usually truncated using the APA style guide's conventions so that p values smaller than .001 are reported as "\< .001".
+
+```{r}
+# install.packages("devtools"); devtools::install_github("ianhussey/truffle")
+library(truffle)
+
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_half_up(beta_estimate, 2),
+         beta_ci_lower = round_half_up(beta_ci_lower, 2),
+         beta_ci_upper = round_half_up(beta_ci_upper, 2),
+         p = round_p_value(p)) 
+
+dat_regression_betas_rounded %>%
+  kable(align = 'r') %>%
+  kable_classic(full_width = FALSE)
+```
+
+
+## Working with strings
+
+### Case conversion
+
+str_to_lower
+str_to_upper
+str_to_sentence
+str_to_title
+
+### Substring searches
+
+str_detect() + ignore case
+str_starts
+str_ends
+
+str_locate()
+str_locate_all()
+
+### Removal
+
+str_remove()
+str_remove_all()
+
+str_squish #remove whitespace
+
+### Replacement
+
+str_replace
+str_replace_all
+
+### Seperation
+
+str_split, relationship with seperate()
+
+### Extraction 
+
+word()
+
+### Regex
 
 TODO
 
-case, characters etc.
+## Working with factors
 
-```{r}
-library(stringr)
+forcats with plot examples, regression examples
 
-test <- c("A", "AB", "B")
+converting numeric to factor via character or whatever that weird thing is
 
-test == "A"
-str_detect(test, "B")
+fct_rev
 
-```
+fct_order - contrast with arrange()
+fct_relevel
 
-Therefore:
+fct_drop
 
-```{r}
+fct_lump
 
-# data_amp_test_trials %>%
-#   filter(str_detect(trial_id, "2_")) 
 
-```
 
-## forcats
-
-## stringr

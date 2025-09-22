@@ -119,7 +119,7 @@ Display an image in visual editor/on rendering: ![](../images/r_meme.png)
 Levels of heading are extremely useful for structuring your report.
 
 1.  They automatically appear as headings in the "Outline" section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the 'Outline' button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.
-2.  When the file is rendered (.qmd) or knited (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has `toc: true`, as this file does).
+2.  When the file is rendered (.qmd) or knitted (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has `toc: true`, as this file does).
 
 ## Math typesetting via LaTeX
 
@@ -198,7 +198,7 @@ dat_processed_long <- dat_processed %>%
 
 Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.
 
-Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, tead the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
+Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.
 
 ```{r}
 # dependencies

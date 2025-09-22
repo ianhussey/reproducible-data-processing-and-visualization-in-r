@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -402,17 +402,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  [3] "data_transformation_2.qmd"  "data_transformation_3.qmd" 
  [5] "fundamentals_files"         "fundamentals.html"         
  [7] "fundamentals.qmd"           "images"                    
- [9] "license.qmd"                "loading_data_files"        
-[11] "loading_data.qmd"           "loading_data.rmarkdown"    
-[13] "plots"                      "privacy.qmd"               
-[15] "project_1.qmd"              "project_2.qmd"             
-[17] "reporting.qmd"              "reproducible_reports_files"
-[19] "reproducible_reports.html"  "reproducible_reports.qmd"  
-[21] "reshaping_and_pivots.qmd"   "setup.qmd"                 
+ [9] "license.qmd"                "loading_data.qmd"          
+[11] "loading_data.rmarkdown"     "plots"                     
+[13] "privacy.qmd"                "project_1.qmd"             
+[15] "project_2.qmd"              "reporting.qmd"             
+[17] "reproducible_reports_files" "reproducible_reports.html" 
+[19] "reproducible_reports.qmd"   "reshaping_and_pivots.qmd"  
+[21] "setup.html"                 "setup.qmd"                 
 [23] "strings_and_factors.qmd"    "structuring_projects.qmd"  
 [25] "sum_score.qmd"              "the_linear_model.html"     
 [27] "the_linear_model.qmd"       "the_pipe_and_renaming.qmd" 
-[29] "visualization.qmd"         </code></pre>
+[29] "Updating R and RStudio.qmd" "visualization.qmd"         </code></pre>
 </div>
 </div>
 <p>Go ‘up’ one directory and list the directories present:</p>
@@ -426,7 +426,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "_book"            ".git"             ".quarto"          ".Rproj.user"     
  [5] "chapters"         "data"             "images"           "old"             
- [9] "project_template" "resources"        "site_libs"        "videos"          </code></pre>
+ [9] "project_template" "resources"        "site_libs"        "slides"          
+[13] "videos"          </code></pre>
 </div>
 </div>
 <p>From the above we can see that the ‘data’ folder is up one directory level from the current .qmd file. Let’s confirm this with <code>dir.exists()</code> to check the directory does indeed exist:</p>
@@ -510,31 +511,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat_likert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 17
-    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 date 
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
- 1     1     1     1     1     1     1     1     1     1     1     1     1 23.0…
- 2     2     2     2     2     2     2     2     2     2     2     2     2 23.0…
- 3     3     3     3     3     3     3     3     3     3     3     3     3 23.0…
- 4     4     4     4     4     4     4     4     4     4     4     4     4 23.0…
- 5     5     5     5     5     5     5     5     5     5     5     5     5 23.0…
- 6     6     6     6     6     6     6     6     6     6     6     6     6 23.0…
- 7     7     7     7     7     7     7     7     7     7     7     7     7 23.0…
- 8     8     8     8     8     8     8     8     8     8     8     8     8 23.0…
- 9     9     9     9     9     9     9     9     9     9     9     9     9 23.0…
-10    10    10    10    10    10    10    10    10    10    10    10    10 23.0…
-11    11    11    11    11    11    11    11    11    11    11    11    11 23.0…
-12    12    12    12    12    12    12    12    12    12    12    12    12 23.0…
-13    13    13    13    13    13    13    13    13    13    13    13    13 23.0…
-14    14    14    14    14    14    14    14    14    14    14    14    14 23.0…
-15    15    15    15    15    15    15    15    15    15    15    15    15 23.0…
-16    16    16    16    16    16    16    16    16    16    16    16    16 23.0…
-17    17    17    17    17    17    17    17    17    17    17    17    17 23.0…
-18    18    18    18    18    18    18    18    18    18    18    18    18 23.0…
-19    19    19    19    19    19    19    19    19    19    19    19    19 23.0…
-20    20    20    20    20    20    20    20    20    20    20    20    20 23.0…
-# ℹ 4 more variables: group &lt;dbl&gt;, subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;,
-#   likert_2 &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 20 × 20
+    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 ...13
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     1     1     1     1     1     1     1     1     1     1     1     1     1
+ 2     2     2     2     2     2     2     2     2     2     2     2     2     2
+ 3     3     3     3     3     3     3     3     3     3     3     3     3     3
+ 4     4     4     4     4     4     4     4     4     4     4     4     4     4
+ 5     5     5     5     5     5     5     5     5     5     5     5     5     5
+ 6     6     6     6     6     6     6     6     6     6     6     6     6     6
+ 7     7     7     7     7     7     7     7     7     7     7     7     7     7
+ 8     8     8     8     8     8     8     8     8     8     8     8     8     8
+ 9     9     9     9     9     9     9     9     9     9     9     9     9     9
+10    10    10    10    10    10    10    10    10    10    10    10    10    10
+11    11    11    11    11    11    11    11    11    11    11    11    11    11
+12    12    12    12    12    12    12    12    12    12    12    12    12    12
+13    13    13    13    13    13    13    13    13    13    13    13    13    13
+14    14    14    14    14    14    14    14    14    14    14    14    14    14
+15    15    15    15    15    15    15    15    15    15    15    15    15    15
+16    16    16    16    16    16    16    16    16    16    16    16    16    16
+17    17    17    17    17    17    17    17    17    17    17    17    17    17
+18    18    18    18    18    18    18    18    18    18    18    18    18    18
+19    19    19    19    19    19    19    19    19    19    19    19    19    19
+20    20    20    20    20    20    20    20    20    20    20    20    20    20
+# ℹ 7 more variables: ...14 &lt;dbl&gt;, ...15 &lt;dbl&gt;, date &lt;chr&gt;, group &lt;dbl&gt;,
+#   subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;, likert_2 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>Use <code>print()</code>:</p>
@@ -544,31 +545,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_likert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 17
-    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 date 
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
- 1     1     1     1     1     1     1     1     1     1     1     1     1 23.0…
- 2     2     2     2     2     2     2     2     2     2     2     2     2 23.0…
- 3     3     3     3     3     3     3     3     3     3     3     3     3 23.0…
- 4     4     4     4     4     4     4     4     4     4     4     4     4 23.0…
- 5     5     5     5     5     5     5     5     5     5     5     5     5 23.0…
- 6     6     6     6     6     6     6     6     6     6     6     6     6 23.0…
- 7     7     7     7     7     7     7     7     7     7     7     7     7 23.0…
- 8     8     8     8     8     8     8     8     8     8     8     8     8 23.0…
- 9     9     9     9     9     9     9     9     9     9     9     9     9 23.0…
-10    10    10    10    10    10    10    10    10    10    10    10    10 23.0…
-11    11    11    11    11    11    11    11    11    11    11    11    11 23.0…
-12    12    12    12    12    12    12    12    12    12    12    12    12 23.0…
-13    13    13    13    13    13    13    13    13    13    13    13    13 23.0…
-14    14    14    14    14    14    14    14    14    14    14    14    14 23.0…
-15    15    15    15    15    15    15    15    15    15    15    15    15 23.0…
-16    16    16    16    16    16    16    16    16    16    16    16    16 23.0…
-17    17    17    17    17    17    17    17    17    17    17    17    17 23.0…
-18    18    18    18    18    18    18    18    18    18    18    18    18 23.0…
-19    19    19    19    19    19    19    19    19    19    19    19    19 23.0…
-20    20    20    20    20    20    20    20    20    20    20    20    20 23.0…
-# ℹ 4 more variables: group &lt;dbl&gt;, subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;,
-#   likert_2 &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 20 × 20
+    ...1  ...2  ...3  ...4  ...5  ...6  ...7  ...8  ...9 ...10 ...11 ...12 ...13
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     1     1     1     1     1     1     1     1     1     1     1     1     1
+ 2     2     2     2     2     2     2     2     2     2     2     2     2     2
+ 3     3     3     3     3     3     3     3     3     3     3     3     3     3
+ 4     4     4     4     4     4     4     4     4     4     4     4     4     4
+ 5     5     5     5     5     5     5     5     5     5     5     5     5     5
+ 6     6     6     6     6     6     6     6     6     6     6     6     6     6
+ 7     7     7     7     7     7     7     7     7     7     7     7     7     7
+ 8     8     8     8     8     8     8     8     8     8     8     8     8     8
+ 9     9     9     9     9     9     9     9     9     9     9     9     9     9
+10    10    10    10    10    10    10    10    10    10    10    10    10    10
+11    11    11    11    11    11    11    11    11    11    11    11    11    11
+12    12    12    12    12    12    12    12    12    12    12    12    12    12
+13    13    13    13    13    13    13    13    13    13    13    13    13    13
+14    14    14    14    14    14    14    14    14    14    14    14    14    14
+15    15    15    15    15    15    15    15    15    15    15    15    15    15
+16    16    16    16    16    16    16    16    16    16    16    16    16    16
+17    17    17    17    17    17    17    17    17    17    17    17    17    17
+18    18    18    18    18    18    18    18    18    18    18    18    18    18
+19    19    19    19    19    19    19    19    19    19    19    19    19    19
+20    20    20    20    20    20    20    20    20    20    20    20    20    20
+# ℹ 7 more variables: ...14 &lt;dbl&gt;, ...15 &lt;dbl&gt;, date &lt;chr&gt;, group &lt;dbl&gt;,
+#   subject &lt;dbl&gt;, likert_1 &lt;dbl&gt;, likert_2 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -602,6 +603,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th style="text-align: right;" data-quarto-table-cell-role="th">...10</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">...11</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">...12</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...13</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...14</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...15</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">date</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">group</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">subject</th>
@@ -623,6 +627,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
@@ -630,6 +637,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
@@ -661,6 +671,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
@@ -680,6 +693,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">4</td>
@@ -699,6 +715,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">5</td>
@@ -718,6 +737,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
@@ -737,6 +759,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
@@ -756,6 +781,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
@@ -775,6 +803,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">9</td>
@@ -794,6 +825,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">10</td>
@@ -813,6 +847,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">11</td>
@@ -820,6 +857,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
@@ -851,6 +891,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">13</td>
@@ -858,6 +901,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
@@ -889,6 +935,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">15</td>
@@ -908,6 +957,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">16</td>
@@ -927,6 +979,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">17</td>
@@ -934,6 +989,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
@@ -965,6 +1023,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">19</td>
@@ -972,6 +1033,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
@@ -1312,6 +1376,9 @@ Click to show answer
 <th style="text-align: right;" data-quarto-table-cell-role="th">...11</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">...12</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">...13</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...14</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...15</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">...16</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">date</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">group</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">subject</th>
@@ -1334,6 +1401,9 @@ Click to show answer
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
@@ -1341,6 +1411,9 @@ Click to show answer
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
@@ -1374,6 +1447,9 @@ Click to show answer
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
@@ -1394,6 +1470,9 @@ Click to show answer
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">4</td>
@@ -1414,6 +1493,9 @@ Click to show answer
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">5</td>
@@ -1434,6 +1516,9 @@ Click to show answer
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
@@ -1454,6 +1539,9 @@ Click to show answer
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
@@ -1474,6 +1562,9 @@ Click to show answer
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
@@ -1494,6 +1585,9 @@ Click to show answer
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">9</td>
@@ -1514,6 +1608,9 @@ Click to show answer
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">10</td>
@@ -1534,6 +1631,9 @@ Click to show answer
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">11</td>
@@ -1541,6 +1641,9 @@ Click to show answer
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
@@ -1574,6 +1677,9 @@ Click to show answer
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">13</td>
@@ -1581,6 +1687,9 @@ Click to show answer
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">14</td>
@@ -1614,6 +1723,9 @@ Click to show answer
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">15</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">15</td>
@@ -1634,6 +1746,9 @@ Click to show answer
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">16</td>
@@ -1654,6 +1769,9 @@ Click to show answer
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">17</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">17</td>
@@ -1661,6 +1779,9 @@ Click to show answer
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
@@ -1694,6 +1815,9 @@ Click to show answer
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">19</td>
 <td style="text-align: right;">23.06.2022</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">19</td>
@@ -1701,6 +1825,9 @@ Click to show answer
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">20</td>
@@ -1754,7 +1881,8 @@ Click to show answer
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "_book"            ".git"             ".quarto"          ".Rproj.user"     
  [5] "chapters"         "data"             "images"           "old"             
- [9] "project_template" "resources"        "site_libs"        "videos"          </code></pre>
+ [9] "project_template" "resources"        "site_libs"        "slides"          
+[13] "videos"          </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -2484,8 +2612,8 @@ Click to show answer
 <span id="cb41-256"><a href="#cb41-256" aria-hidden="true" tabindex="-1"></a><span class="co"># This will work when your script runs on your local machine, but won't render on the website version of this book for reasons I can't quite figure out.</span></span>
 <span id="cb41-257"><a href="#cb41-257" aria-hidden="true" tabindex="-1"></a><span class="co"># This chunk is set to not run or show for the book, but you can run the code below directly if you're using the script locally and therefore able to read this.</span></span>
 <span id="cb41-258"><a href="#cb41-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-259"><a href="#cb41-259" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="sc">|&gt;</span></span>
-<span id="cb41-260"><a href="#cb41-260" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb41-259"><a href="#cb41-259" aria-hidden="true" tabindex="-1"></a>dat_likert <span class="sc">%&gt;%</span></span>
+<span id="cb41-260"><a href="#cb41-260" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb41-261"><a href="#cb41-261" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb41-262"><a href="#cb41-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb41-263"><a href="#cb41-263" aria-hidden="true" tabindex="-1"></a></span>
