@@ -26,6 +26,7 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
 ```
 
 ```{r}
+
 library(dplyr)
 library(readr)
 library(knitr)

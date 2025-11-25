@@ -34,6 +34,17 @@ testing equivalence with floats is weird
 
 sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)
 
+
+```{r}
+
+2
+
+sqrt(2)^2
+
+2 == sqrt(2)^2
+
+```
+
 ### `between()`
 
 TODO
@@ -53,7 +64,15 @@ round(c(0.5,
         2.5, 
         3.5, 
         4.5, 
-        5.5))
+        5.5), digits = 0)
+
+# round(c(0.05, 
+#         0.15, 
+#         0.25, 
+#         0.35, 
+#         0.45, 
+#         0.55), digits = 1)
+
 ```
 
 ::: {.callout-note collapse="true" title="Click to show result"}

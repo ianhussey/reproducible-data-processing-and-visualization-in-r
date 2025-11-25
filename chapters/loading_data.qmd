@@ -381,8 +381,23 @@ Write R code to:
 
 1.  Load that data file from this .qmd file, which is located in the 'code' directory.
 2.  Assign it to an object called `dat_likert`.
-3.  Load the {kable} and {kableExtra} libraries.
+3.  Load the {knitr} and {kableExtra} libraries.
 4.  Print `dat_likert` as nicely formatted table.
+
+```{r}
+# include: false
+
+
+
+
+
+
+
+
+
+
+
+```
 
 ::: {.callout-note collapse="true" title="Click to show hint"}
 See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge on loading dependencies/libraries and object assignment.
@@ -405,7 +420,7 @@ dat_likert %>%
 
 ### Check whether 'data_likert.rds' exists
 
-Earlier steps in this lesson saved a file called 'data_likert.rds' to the same directory as 'data_csv.csv'.
+Earlier steps in this lesson saved a file called 'data_likert.rds' to the same directory as 'data_likert.csv'.
 
 Use the functions `list.dirs()`, `list.files()`, and `file.exists()` to navigate the file structure, listing directories along the way, to write the `file.exists()` call that confirm that the file exists. It should return `TRUE`.
 

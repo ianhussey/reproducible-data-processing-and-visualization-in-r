@@ -1,0 +1,12 @@
+
+
+# Exercises 1.1
+
+```{r}
+
+dat_combined <- dat_pre %>%
+  left_join(dat_post, by = c("id", "condition")) %>%
+  left_join(dat_demographics, by = "id") %>%
+  anti_join(dat_exclusions, by = "id")
+
+```

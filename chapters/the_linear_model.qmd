@@ -38,6 +38,102 @@ notes on what to add from last year:
 -   use meta-analysis as the entry point for random effect models and wilkinson notation for it.
 -   sum scores are a specific factor model with equal loadings.
 
+# understanding the mean and SD in terms of the linear model and vice versa
+
+```{r}
+
+set.seed(42)
+dat <- data.frame(y = rnorm(n = 46, mean = 1.2, sd = 2.45))
+
+mean(dat$y)
+sd(dat$y)
+
+fit <- lm(data = dat,
+          formula = y ~ 1)
+summary(fit)
+
+coef(fit)["(Intercept)"] # intercept, ie mean when an intercept only model
+sigma(fit) # Residual standard error, ie SD when an intercept only model
+
+dat <- dat |>
+  mutate(intercept = coef(fit)["(Intercept)"],
+         residuals = residuals(fit))
+
+ggplot(dat, aes(residuals)) +
+  geom_density() 
+
+```
+
+# understanding regression fit and residuals
+
+```{r}
+
+# packages
+library(ggplot2)
+library(broom)
+library(dplyr)
+
+set.seed(123)
+
+# 1. Simulate data for y ~ x
+n  <- 100
+x  <- rnorm(n, mean = 0, sd = 1)
+e  <- rnorm(n, mean = 0, sd = 1)       # noise
+y  <- 2 + 0.5 * x + e                  # true model: y = 2 + 0.5x + error
+
+dat <- data.frame(x = x, y = y)
+
+# 2. Fit linear model
+fit <- lm(y ~ x, data = dat)
+
+# 3. Get fitted values and residuals using broom
+dat_aug <- augment(fit) %>%
+  # keep only the relevant columns and give them sensible names
+  transmute(
+    x         = x,
+    y         = y,
+    fitted    = .fitted,
+    resid     = .resid,
+    std_resid = .std.resid,
+    hat       = .hat,
+    cooksd    = .cooksd
+  ) 
+
+# 4. Plot: points + fitted line + vertical segments (residuals)
+p <- ggplot(dat_aug, aes(x = x, y = y)) +
+  # vertical segments from point to fitted value at same x
+  geom_segment(aes(xend = x, yend = fitted),
+               linewidth = 0.3, alpha = 0.6) +
+  # points
+  geom_point() +
+  # fitted regression line
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    x = "x",
+    y = "y",
+    title = "Observed points and vertical residuals from fitted regression line"
+  ) +
+  theme_linedraw()
+
+p
+
+```
+
+
+```{r}
+#| fig-height: 10
+#| fig-width: 10
+# Table of residual diagnostics
+library(performance)
+check_model(fit, panel = FALSE)        # returns individual plots printed
+check_outliers(fit)                    # tests for outliers
+check_normality(fit)                   # Shapiro-Wilk and visual
+check_heteroscedasticity(fit)          # Breusch–Pagan
+check_model(fit)                       # grid of residual and influence plots
+
+```
+
+
 # Dependencies
 
 ```{r}

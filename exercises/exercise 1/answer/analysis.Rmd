@@ -1,0 +1,102 @@
+---
+title: "Implicit-explicit correlations"
+author: "Ian Hussey"
+output:
+  html_document:
+    code_folding: hide
+    highlight: haddock
+    theme: flatly
+    toc: yes
+    toc_float: yes
+---
+
+# Data source
+
+Attitudes 3.0 database (https://osf.io/qf9jx/), used in Bar-Anan and Nosek (2013) "A comparative investigation of seven indirect attitude measures".
+
+Race IAT, Race AMP, and self-reported racial evaluations only.
+
+```{r include=FALSE}
+
+# formatting options
+# set default chunk options
+knitr::opts_chunk$set(message = FALSE, 
+                      warning = FALSE)
+
+# disable scientific notation
+options(scipen = 999) 
+
+```
+
+# Dependencies
+
+```{r}
+
+library(readr)
+library(dplyr)
+library(correlation)
+library(ggplot2)
+library(ggstance)
+library(see)
+
+```
+
+# Load data
+
+```{r}
+
+dat <- read_tsv("simple.txt") |>
+  select(
+    #id = User_ID, 
+    explicit = prfWhtBlk,
+    implicit_iat = iatRace, 
+    implicit_amp = ampRace
+  ) |>
+  filter(!is.na(implicit_iat) | !is.na(implicit_amp) | !is.na(explicit))
+
+```
+
+# Analyses
+
+```{r}
+
+results <- correlation(
+  dat,
+  redundant = FALSE, 
+  partial = FALSE,   
+  method = "pearson" 
+)
+
+# table
+results |>
+  select(Parameter1, Parameter2, r, CI_low, CI_high, n_Obs)
+
+```
+
+
+```{r fig.height=2.5, fig.width=5}
+
+# plot 1
+results |>
+  select(Parameter1, Parameter2, r, CI_low, CI_high, n_Obs) |>
+  mutate(variables = paste(Parameter1, Parameter2, sep = " ~ ")) |>
+  ggplot(aes(r, variables)) +
+  geom_linerangeh(aes(xmin = CI_low, xmax = CI_high)) +
+  geom_point() +
+  xlim(0,.5) +
+  xlab("Correlation (r)") +
+  ylab("") +
+  theme_linedraw()
+
+```
+
+
+```{r fig.height=3, fig.width=4.5}
+
+# plot 2
+results |>
+  summary() |>
+  plot(show_data = "points", stars = FALSE) +
+  theme_linedraw()
+
+```

@@ -104,9 +104,11 @@ It's tempting to think in terms of negative selections, i.e., getting rid of col
 
 In general, tell select what you *do want*, not what you *don't want*.
 
-Check your understanding of positive and negative selections: What would happen if you mix positive and negative selections?
+#### Exercise
 
-1.  What columns will be present in the output when your run the code below?
+Check your understanding of positive and negative selections: 
+
+1. What would happen if you mix positive and negative selections? i.e., What columns will be present in the output when your run the code below?
 
 ```{r}
 #| eval: false
@@ -137,7 +139,7 @@ dat_demographics_selected %>%
 ```
 :::
 
-Why are those columns present and not others?
+2. Why are those columns present and not others?
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
 Once positive selections are present in the select call, the negative ones are redundant. You've already told `select()` what to include, which implies what not to include.
@@ -200,7 +202,6 @@ Write code to:
 
 ```{r}
 #| include: false
-
 
 
 
@@ -302,8 +303,6 @@ Write code to select all columns belonging to scale 2 from the 'dat_many_columns
 
 ```{r}
 #| include: false
-
-
 
 
 
@@ -440,34 +439,39 @@ Note: no solution provided here as many different ones are possible.
 ```{r}
 #| include: false
 
+dat_many_columns %>%
+  select(
+    c(starts_with("i") & ends_with("d") & !ends_with("z")),
+    c(contains("g") & contains("e") & !starts_with("h")),
+    c(
+      (starts_with("depression") & contains("item")) & (contains("scale1") | contains("scale3")) & 
+        !(ends_with("11") | ends_with("12") | ends_with("13") | ends_with("14") | ends_with("15"))
+    )
+  ) |>
+  colnames()
 
 
 
+dat_many_columns %>%
+  select(id, age, gender,
+         # Scale 1 & 3 with Items from 1-10
+         (contains("scale1") | contains("scale3")) & !ends_with(c("11", "12", "13", "14", "15"))) %>%
+  colnames()
+
+dat_many_columns %>%
+  select(id, age, gender,
+         # Scale 1 & 3 with Items from 1-10
+         contains("scale1") | contains("scale3") & !ends_with(c("11", "12", "13", "14", "15"))) %>%
+  colnames()
 
 
+dat_many_columns %>%
+  select(id, age, gender,
+         # Scale 1 & 3 with Items from 1-10
+         contains("scale1") & contains("scale3") & ends_with(c("1", "2", "3"))) %>%
+  colnames()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+           #& ends_with(x <= 10)))
 ```
 
 ### Practicing select and the pipe in a longer chunk
@@ -478,7 +482,7 @@ The first chunk in this chapter read in the 'data_demographics_raw_messy.csv' fi
 
 -   Rewrite that chunk here - as much as possible from memory, without simply copy pasting.
 -   Add another pipe and selecting the "id", "question" and "response" columns.
--   Print a table of the resulting data frame using `kable()` and `kable_class()`
+-   Print a table of the resulting data frame using `kable()` and `kable_classic()`
 
 Note: no solution provided here to reduce the temptation to peek or copy-paste.
 
@@ -990,12 +994,6 @@ Write code to:
 
 ```{r}
 #| include: false
-
-
-
-
-
-
 
 
 

@@ -38,7 +38,7 @@ There are many excellent Open Source resources to learn R and {tidyverse} for da
 
 You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website [mmmdata.io](https://mmmdata.io).
 
-You can find me on Bluesky at [\@ianhussey](https://bsky.app/profile/ianhussey.mmmdata.io).
+You can find me on Bluesky at [\@ianhussey.mmmdata.io](https://bsky.app/profile/ianhussey.mmmdata.io).
 
 ## Contributing
 
