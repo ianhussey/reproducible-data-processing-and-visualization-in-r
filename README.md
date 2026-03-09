@@ -1,2 +1,3 @@
-# dplyr-learnr
-A colorful introduction to some common functions in dplyr, part of the tidyverse.  
+# Reproducible data processing an visualization in R and tidyverse
+
+eBook here: https://ianhussey.quarto.pub/reproducible-data-processing-and-visualization/
