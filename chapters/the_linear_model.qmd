@@ -18,27 +18,48 @@ options(scipen = 999)
 
 ```
 
-TODO
+```{r}
 
-Ease of reporting via automated reported has to be strongly balanced against thorough understanding of the models themselves.
+library(faux)
+library(lme4)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(scales)
+library(modelbased)
+library(see)
+library(lavaan)
+library(semPlot)
 
--   linear model
+```
+
+The ease of automated reporting has to be strongly balanced against thorough understanding of the models themselves.
+
+-   The linear model
 -   (almost) everything is a linear model
     -   even means and SDs
     -   even correlations
     -   even named tests
     -   even CFA and path analysis
 
-notes on what to add from last year:
+Notes on what to add from last year:
 
 -   it's all a linear model - resources and code
 -   slides on relating y = mx + c to regression
 -   the estimate for an intercept only model is the mean, that's what a mean is. The error term is the standard deviation; that's what a SD is.
 -   meta-analyses are intercept only models with fixed or random effects for site. add code for this.
--   use meta-analysis as the entry point for random effect models and wilkinson notation for it.
+-   use meta-analysis as the entry point for random effect models and Wilkinson notation for it.
 -   sum scores are a specific factor model with equal loadings.
 
-# understanding the mean and SD in terms of the linear model and vice versa
+# The linear model
+
+$y = m*x + c$
+
+$y = 1 + \beta_{X1}X_{1} + e$
+
+Which is the slope? The mean? The beta regression coefficient? The error?
+
+# Understanding the mean and SD in terms of the linear model and vice versa
 
 ```{r}
 
@@ -64,7 +85,7 @@ ggplot(dat, aes(residuals)) +
 
 ```
 
-# understanding regression fit and residuals
+# Understanding regression fit and residuals
 
 ```{r}
 
@@ -84,7 +105,7 @@ y  <- 2 + 0.5 * x + e                  # true model: y = 2 + 0.5x + error
 dat <- data.frame(x = x, y = y)
 
 # 2. Fit linear model
-fit <- lm(y ~ x, data = dat)
+fit <- lm(y ~ 1 + x, data = dat)
 
 # 3. Get fitted values and residuals using broom
 dat_aug <- augment(fit) %>%
@@ -119,37 +140,14 @@ p
 
 ```
 
+# Almost everything is a linear model
 
-```{r}
-#| fig-height: 10
-#| fig-width: 10
-# Table of residual diagnostics
-library(performance)
-check_model(fit, panel = FALSE)        # returns individual plots printed
-check_outliers(fit)                    # tests for outliers
-check_normality(fit)                   # Shapiro-Wilk and visual
-check_heteroscedasticity(fit)          # Breusch–Pagan
-check_model(fit)                       # grid of residual and influence plots
+Most named tests are mathematically equivalent to linear models.
 
-```
+https://lindeloev.github.io/tests-as-linear/
 
+![](../images/linear_tests_cheat_sheet.png)
 
-# Dependencies
-
-```{r}
-
-library(faux)
-library(lme4)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(scales)
-library(modelbased)
-library(see)
-library(lavaan)
-library(semPlot)
-
-```
 
 # Wilkinson notation
 
@@ -228,9 +226,9 @@ model <-  '
 
 ```
 
-# Practicing Wilkinson notation
+## Practicing Wilkinson notation
 
-## Generate data
+### Generate data
 
 The below generates some data - understanding it is not the point of the lesson.
 
@@ -260,7 +258,7 @@ dat <-
 
 ```
 
-## Fixed effects only model
+### Fixed effects only model
 
 ```{r}
 
@@ -282,7 +280,7 @@ predictions <- estimate_expectation(res)
 
 ```
 
-## Multi-level model
+### Multi-level model
 
 ```{r}
 
