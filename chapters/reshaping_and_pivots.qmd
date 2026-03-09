@@ -371,16 +371,57 @@ ggplot(dat_likert_long_tidy3, aes(x = response)) +
 ```
 
 ```{r}
-#| eval: false
-#| include: false
-#  # example to add
-# pivot_longer(
-#     cols = c(mean_trt, sd_trt, n_trt, mean_ctrl, sd_ctrl, n_ctrl),
-#     names_to = c(".value", "condition"),
-#     names_pattern = "(mean|sd|n)_(trt|ctrl)"
-#   ) 
+
+dat_meta <- readr::read_csv("../data/processed/dat_meta.csv") |>
+  select(-comparison, -score_range, -min, -max)
+
+dat_meta
+
+dat_meta |>
+  pivot_longer(
+    cols = c(mean_trt, sd_trt, n_trt, mean_ctrl, sd_ctrl, n_ctrl),
+    names_to = c(".value", "condition"),
+    names_pattern = "(mean|sd|n)_(trt|ctrl)"
+  )
+
+
+dat_meta_trt <- dat_meta |>
+  select(study, mean = mean_trt, sd = sd_trt, n = n_trt) |>
+  mutate(condition = "trt")
+
+dat_meta_ctrl <- dat_meta |>
+  select(study, mean = mean_ctrl, sd = sd_ctrl, n = n_ctrl) |>
+  mutate(condition = "ctrl")
+
+dat_binded <- bind_rows(
+  dat_meta_trt,
+  dat_meta_ctrl
+) |>
+  arrange(study)
+
+dat_binded |>
+  count(study, name = "conditions_per_study") |>
+  count(conditions_per_study) |>
+  arrange(desc(n))
+
+check1 <- dat_binded |>
+  group_by(study) |>
+  summarize(conditions_per_study = n()) |>
+  mutate(check = conditions_per_study == 2) |>
+  summarize(all_ok = mean(check)) |>
+  pull(all_ok)
+
+  summarize(check = mean(conditions_per_study == 2))
+
+full_join(
+  dat_meta_trt,
+  dat_meta_ctrl,
+  by = c("study", "mean", "sd", "n", "condition")
+)
 
 ```
+
+Do all studies have 2 conditions? `r as.logical(check1)`
 
 ### Practice `pivot_longer()` and other functions to calculate sum scores
 
