@@ -35,7 +35,7 @@ book:
     # add some sort of appendix notice here?
     #- chapters/privacy.qmd
     #- references.qmd
-    - chapters/license.qmd
+    - license.qmd
     
 # bibliography: references.bib
 
