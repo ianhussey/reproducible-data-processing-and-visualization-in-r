@@ -3,3 +3,12 @@
 *.html linguist-detectable=false
 *.js linguist-detectable=false
 *.css linguist-detectable=false
+
+# Mark the Quarto-generated TeX directory as generated
+*_files/** linguist-generated=true
+*_cache/** linguist-generated=true
+
+# Specifically target .tex files if they are in the root or subfolders
+*.tex linguist-generated=true
+*.sty linguist-generated=true
+*.cls linguist-generated=true
