@@ -4,7 +4,13 @@ project:
 book:
   title: "Reproducible Data Processing and Visualization"
   subtitle: "in R and tidyverse"
-  author: "Ian Hussey"
+  author:
+    - name: Ian Hussey
+      orcid: 0000-0001-8906-7559
+      email: ian.hussey@unibe.ch
+      affiliations:
+        - University of Bern
+      url: https://bsky.app/profile/ianhussey.mmmdata.io
   date: today
   chapters:
     - index.qmd
@@ -25,7 +31,7 @@ book:
     - chapters/visualization.qmd 
     - chapters/reporting.qmd
     #- chapters/project_3.qmd
-    #- chapters/the_linear_model.qmd
+    - chapters/the_linear_model.qmd
     # add some sort of appendix notice here?
     #- chapters/privacy.qmd
     #- references.qmd
