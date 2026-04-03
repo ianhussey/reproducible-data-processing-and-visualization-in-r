@@ -1,0 +1,39 @@
+---
+title: "Data privacy and anonymity"
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-fold: show
+    code-tools: true
+---
+
+```{r}
+#| include: false
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE) 
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)  
+```
+
+TODO
+
+## Data privacy laws, ethical responsibilties, and 'Private Data'
+
+\<Prolific.com\> is a website that many researchers use to collect data online and where the public go to be paid to complete studies in psychology and other fields. Prolific ID codes are needed to identify which accounts participated and should be paid. However, Prolific IDs can also contain a lot of Personal Data (in the legal and data privacy sense of the phrase), and are **essential** to remove from dataset before sharing them (e.g., making them public or sharing with other researchers).
+
+Other forms of Personal Data which we all have legal responsibilities to remove before sharing data include, but are not limited to: names, addresses, telephone numbers, email addresses, and other personally identifying information. Note that the rows referring to "psychiatric diagnosis" certainly *appear* to be sensitive information, but they *might* not be if the other data is suitably anonymized. Note that data de-anonymization/re-identification is for more possible than most researchers appreciate (e.g., knowing your age, gender, diagnosis, and region might allow a third party to link your data to your identity). This course is not on data privacy laws, compliance, or de-anonymization/re-identification risks, which are complex topics, it is only on the code methods you might use to make your project compliant and safe for participants.
+
+## Negative filters for Private Data
+
+TODO
+
+## saving anonymized data to disk
+
+TODO
+
+## Excluding raw unanonymized data from subsequent sharing, e.g., on github via gitignore or directory seperation; acknowledgement of encryption requirements.
+
+TODO
+
+Purging git histories that contain sensitive information if it was accidentally committed.
