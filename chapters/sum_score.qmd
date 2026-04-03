@@ -1,4 +1,6 @@
-# generate data
+# Sum scores
+
+## Generate data
 
 ```{r}
 
@@ -23,9 +25,9 @@ dat_simulated_neuroticism <-
 
 ```
 
-# Manual sum scoring
+## Manual sum scoring
 
-## Method 1
+### Method 1
 
 ```{r}
 
@@ -41,7 +43,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 2
+### Method 2
 
 ```{r}
 
@@ -57,7 +59,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 3
+### Method 3
 
 ```{r}
 
@@ -69,7 +71,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 4
+### Method 4
 
 ```{r}
 
@@ -86,7 +88,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 5
+### Method 5
 
 ```{r}
 
@@ -101,7 +103,7 @@ dat_simulated_neuroticism |>
 
 ```
 
-## Method 6
+### Method 6
 
 `truffle::snuffle_sum_scores()`
 

@@ -1,0 +1,23 @@
+study,comparison,mean_trt,sd_trt,n_trt,mean_ctrl,sd_ctrl,n_ctrl,score_range,min,max
+"Ahmadi, 2019",Behavioral techniques vs TAU (routine infertility treatment),41.58,10.21,6,63.16,12.95,6,0 to 84,0,84
+"Anker,2009",Eclectic couple therapy with feedback vs  TAU (ecl CT without feedback),26.35,10.02,206,21.69,8.69,204,0 to 40,0,40
+"Aubin,2009",viagra + sex therapy vs viagra,8,4,24,7.2,4.4,20,0 to 36,0,36
+"Baucom, 1986",CBT vs WL,274.75,23.02,8,275,16.34,8,100 to 500,100,500
+"Beach,1992",CBM vs WL,8.4,6.22,15,20.47,10.68,14,0 to 63,0,63
+"Cohen,2010",Brief Problem Focused vs WL,20.34,13.48,16,25.28,13.86,14,0 to 63,0,63
+"Couper,2015",Cognitive Existential vs TAU,11.18,3.33,29,9.24,3.72,32,0 to 24,0,24
+"Denton,2012",EFT+medication management vs medication alone,3.5,1.9,4,16.9,17,9,0 to 84,0,84
+"Lee,2014",Congruence Couple Therapy vs TAU,0.31,0.34,16,0.88,0.49,13,0 to 4,0,4
+"Manne,2019 (a)",General health and wellness vs TAU,4.84,4.23,78,3.82,0.45,70,0 to 27,0,27
+"Manne,2019 (b)",IET vs TAU,3.14,3.88,78,3.82,3.76,70,0 to 27,0,27
+"Mclean,2012",Emotionally Focused Therapy vs SC,15,6.4,22,12.94,7.6,18,0 to 63,0,63
+"Monson,2012",CBCT vs WL,12.16,13.24,16,20.32,12.61,19,0 to 63,0,63
+"Najafi,2015",Emotionally Focused Therapy vs WL,31.67,2.26,15,16.9,3.35,15,7 to 35,7,35
+"Nicolaisen,2017",Hand in Hand vs SC,20,16.1,88,21.6,16,77,0 to 70,0,70
+"Robertson,2016",Couple-Based Psychosexual Support vs TAU,4.06,3.42,18,5.72,4.11,18,0 to 21,0,21
+"Ussher, 2017 (a)",CBT tehniques indiv vs WL,7.78,3.25,19,9.31,5.48,21,0 to 21,0,21
+"Ussher,2017 (b)",Couples Dialogue techniques vs WL,5.84,2.93,19,9.31,5.48,21,0 to 21,0,21
+"Gremore,2021",Couple-based supportive communication (CSC) vs TAU,19.1,9.7,20,13.5,9.9,20,0 to 60,0,60
+"Forouzani, 2024",CBT vs unspecified control group,39.24,5.32,16,29.68,4.78,16,0 to 60,0,60
+"Pasha, 2024",Schema Therapy vs nothing,65.66,4.63,15,25.2,5.91,15,18 to 90,18,90
+"Wang, 2023",Caring for Couples Coping with Colorectal Cance vs. TAU,4,2.1,45,5.5,1.8,43,0 to 21,0,21

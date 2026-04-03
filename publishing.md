@@ -1,16 +1,19 @@
-https://quartopub.com/
-
-  Terminal:
+Terminal:
 
 ````
 cd ~/git/reproducible-data-processing-and-visualization-in-r
-quarto publish quarto-pub
+quarto publish gh-pages
 ````
 
+or
 
+```
+quarto publish gh-pages --no-render
+```
 
+preview
 
+```
+quarto preview
+```
 
-updating reproducible-data-processing-and-visualization-in-r.zip:
-
-include chapters/ images/ data/ index.qmd 

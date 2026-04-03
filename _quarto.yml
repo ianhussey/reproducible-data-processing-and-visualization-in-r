@@ -8,34 +8,48 @@ book:
     - name: Ian Hussey
       orcid: 0000-0001-8906-7559
       email: ian.hussey@unibe.ch
-      affiliations:
-        - University of Bern
-      url: https://bsky.app/profile/ianhussey.mmmdata.io
   date: today
   chapters:
     - index.qmd
-    - chapters/setup.qmd
-    - chapters/fundamentals.qmd
-    - chapters/reproducible_reports.qmd
-    - chapters/loading_data.qmd
-    - chapters/the_pipe_and_renaming.qmd
-    - chapters/data_transformation_1.qmd
-    - chapters/data_transformation_2.qmd
-    - chapters/data_transformation_3.qmd
-    - chapters/structuring_projects.qmd
-    - chapters/strings_and_factors.qmd
-    #- chapters/project_1.qmd
-    - chapters/reshaping_and_pivots.qmd
-    - chapters/binding_and_joining.qmd
-    #- chapters/project_2.qmd
-    - chapters/visualization.qmd 
-    - chapters/reporting.qmd
-    #- chapters/project_3.qmd
-    - chapters/the_linear_model.qmd
-    # add some sort of appendix notice here?
-    #- chapters/privacy.qmd
-    #- references.qmd
-    - license.qmd
+    
+    - part: "Part I: Setup"
+      chapters:
+      - chapters/1_setup.qmd
+      # - chapters/updating.qmd
+      - chapters/2_fundamentals.qmd
+      
+    - part: "Part II: Wrangling"
+      chapters:
+      - chapters/3_reproducible_reports.qmd
+      - chapters/4_loading_data.qmd
+      - chapters/5_the_pipe_and_renaming.qmd
+      - chapters/6_data_transformation_1.qmd
+      - chapters/7_data_transformation_2.qmd
+      - chapters/8_data_transformation_3.qmd
+      # - chapters/sum_scores.qmd
+      - chapters/9_structuring_projects.qmd
+      - chapters/10_strings_and_factors.qmd
+      - chapters/11_reshaping_and_pivots.qmd
+      - chapters/12_binding_and_joining.qmd
+      - chapters/13_sharing_and_privacy.qmd
+      
+      
+    - part: "Part III: Visualization and reporting"
+      chapters:
+      - chapters/14_visualization.qmd 
+      - chapters/15_reporting.qmd
+      - chapters/16_the_linear_model.qmd
+      
+    # - part: "Exercises"
+    #   chapters:
+    #   - chapters/project_1.qmd
+    #   - chapters/project_2.qmd
+    #   - chapters/project_3.qmd
+    
+    - part: "Appendices"
+      chapters:
+      #- references.qmd
+      - license.qmd
     
 # bibliography: references.bib
 
@@ -43,12 +57,17 @@ format:
   html:
     toc: true
     toc_float: true
-    code-fold: show
+    code-fold: false
+    code-overflow: wrap
     code-tools: true
     warning: false
-    theme: cosmo
-    #embed-resources: false
-    #highlight: haddock
+    df-print: kable
+    theme:
+      light: cosmo
+      dark: darkly
+    highlight-style:
+      light: breeze
+      dark: dracula
 
 editor: visual
 
