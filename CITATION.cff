@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Reproducible data processing and visualization in R and tidyverse"
+message: "Website: https://wrangling.tidyver.se/"
+type: software
+authors:
+  - family-names: Hussey
+    given-names: Ian
+    orcid: "https://orcid.org/0000-0001-8906-7559"
+date-released: "2026-04-05"
+url: "https://wrangling.tidyver.se/"
+repository-code: "https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r"
+license: CC-BY-4.0
+keywords:
+  - wrangling
+  - visualization
+  - R
+  - tidyverse
