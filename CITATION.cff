@@ -7,6 +7,7 @@ authors:
     given-names: Ian
     orcid: "https://orcid.org/0000-0001-8906-7559"
 date-released: "2026-04-05"
+doi: "10.5281/zenodo.19427859"
 url: "https://wrangling.tidyver.se/"
 repository-code: "https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r"
 license: CC-BY-4.0
