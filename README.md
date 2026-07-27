@@ -1,4 +1,4 @@
-# Reproducible data processing an visualization in R and tidyverse
+# Reproducible data processing and visualization in R and tidyverse
 
 eBook here: https://wrangling.tidyver.se
 
