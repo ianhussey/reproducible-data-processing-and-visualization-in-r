@@ -228,8 +228,17 @@ dat_likert %>%
 Writing .csv files to disk is as easy as loading them.
 
 ```{r}
-write.csv(x = dat_likert, # the data frame to save
-          file = "../data/raw/data_likert.csv") # the file to save it to
+readr::write_csv(x = dat_likert, # the data frame to save
+                 file = "../data/raw/data_likert.csv") # the file to save it to
+```
+
+Note that base R's equivalent, `write.csv()`, writes the data frame's row names as an extra unnamed column by default. If you then load that file with `read_csv()`, this unnamed column is read back in as a column called `...1`, and saving it again adds yet another one. Repeatedly rendering a script that both loads and saves the same file therefore slowly fills it with junk columns. If you do use `write.csv()`, always set `row.names = FALSE`:
+
+```{r}
+#| eval: false
+write.csv(x = dat_likert,
+          file = "../data/raw/data_likert.csv",
+          row.names = FALSE) # don't write row names as an extra column
 ```
 
 ## Loading .xlsx files
@@ -285,9 +294,9 @@ dat_likert <- dplyr::bind_rows(dat_likert_1,
 dat_likert
 ```
 
-## Loading and writing .rda files
+## Loading and writing .rds files
 
-R objects can also be saved and loaded as .rda files. This can be very useful if you want to a) compress the data to make it smaller (using the `compress = "gz"` argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.
+R objects can also be saved and loaded as .rds files. This can be very useful if you want to a) compress the data to make it smaller (using the `compress = "gz"` argument) or b) to preserve things like column types and factor levels. However, it does slightly reduce the interoperability of the data as not everyone else uses R.
 
 ```{r}
 library(readr)
