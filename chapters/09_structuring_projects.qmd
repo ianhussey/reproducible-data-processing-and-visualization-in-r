@@ -1,4 +1,4 @@
-# Structuring projects
+# Structuring projects <span class="badge badge-draft3">✎ Small TODOs</span>
 
 ```{r}
 #| include: false
@@ -86,6 +86,19 @@ github_repository_name/
     └── ...
 ```
 
+![](../images/psychdsish_logo.png){width="15%"}
+
+Since first writing this chapter, I've turned this recommended structure into an R package, [{psychdsish}](https://github.com/ianhussey/psychdsish) ('psych-DS-ish'). It provides `create_project_skeleton()` to scaffold the folder structure above (with Quarto templates, a readme template, a CC BY licence, and a sensible `.gitignore` included), and `validator()` to check whether an existing project already complies with it. You can install the development version from GitHub:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("ianhussey/psychdsish")
+```
+
+Here's a demo of the project creator tool in action:
+
+{{< video ../videos/psychdsish_project_creator.mov >}}
+
 Note that psych-DS specifies that the data dictionary/codebook must be a json file. I'm not yet convinced it is worth the effort of creating these for many users, as there are few R workflows that make use of them.
 
 psych-DS principles
@@ -108,3 +121,5 @@ https://intro2r.com/github_r.html
 Linking github repo to OSF
 
 ## Licensing
+
+TODO
