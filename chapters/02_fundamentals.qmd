@@ -20,7 +20,7 @@ There is a long-standing debate about whether base R (alone) or R+{tidyverse} is
 
 ## Scripts vs. data, console vs. source
 
-A script is a text file that contains R code that can be re-run. Technically, you can type R code directly into the RStudio 'Console' and run it from there. But that would be incredibly difficult, and we want reproducible code that can be rerun, modified, and shared, so we save them in scripts. There are multiple types of scripts, including .R files (R code and comments only) as well as RMarkdown (.Rmd) and Quarto files (.qmd), which can contain code, text, plots, tables, and data. We cover these more in a later chapter on [Reproducible Reports](reproducible_reports.qmd).
+A script is a text file that contains R code that can be re-run. Technically, you can type R code directly into the RStudio 'Console' and run it from there. But that would be incredibly difficult, and we want reproducible code that can be rerun, modified, and shared, so we save them in scripts. There are multiple types of scripts, including .R files (R code and comments only) as well as RMarkdown (.Rmd) and Quarto files (.qmd), which can contain code, text, plots, tables, and data. We cover these more in a later chapter on [Reproducible Reports](03_reproducible_reports.qmd).
 
 The RStudio interface allows you to view and write code, as well as objects that are loaded and modified by your code such as datasets. Like code scripts, datasets are also stored locally on your machine, such as in .csv and .xlsx files.
 
@@ -161,7 +161,7 @@ conflict_prefer(name = "select", winner = "dplyr")
 
 ## Assignment of objects
 
-R/RStudio has access to your computers files, but it only does exactly what you tell it to. If you have a data file ('data.csv') on your computer that you want to analyze in R, you have to first tell R to load that file. We will come back to this in the chapter on [Loading Data](loading_data.qmd).
+R/RStudio has access to your computers files, but it only does exactly what you tell it to. If you have a data file ('data.csv') on your computer that you want to analyze in R, you have to first tell R to load that file. We will come back to this in the chapter on [Loading Data](04_loading_data.qmd).
 
 Loading data from files is just one form of assignment: instructing R to create and set an 'object' to a given value or set of values, such as the contents of a file. This can also be much simpler, such as setting the variable `name` to "Ian": `name <- "Ian"`.
 

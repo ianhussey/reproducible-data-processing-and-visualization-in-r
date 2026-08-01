@@ -282,7 +282,7 @@ Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt
 
 Run the code in the chunk by clicking the green right-arrow: ![](../images/chunk_run_this_chunk.png)
 
-Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](fundamentals.qmd).
+Need a refresher on variable assignment? Go back to the chapter on ![Fundamentals](02_fundamentals.qmd).
 
 ### Make the plot more colorful
 

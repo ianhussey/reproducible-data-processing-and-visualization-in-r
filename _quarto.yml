@@ -14,20 +14,20 @@ book:
     
     - part: "Part I: Setup"
       chapters:
-      - chapters/1_setup.qmd
+      - chapters/01_setup.qmd
       # - chapters/updating.qmd
-      - chapters/2_fundamentals.qmd
-      
+      - chapters/02_fundamentals.qmd
+
     - part: "Part II: Wrangling"
       chapters:
-      - chapters/3_reproducible_reports.qmd
-      - chapters/4_loading_data.qmd
-      - chapters/5_the_pipe_and_renaming.qmd
-      - chapters/6_data_transformation_1.qmd
-      - chapters/7_data_transformation_2.qmd
-      - chapters/8_data_transformation_3.qmd
+      - chapters/03_reproducible_reports.qmd
+      - chapters/04_loading_data.qmd
+      - chapters/05_the_pipe_and_renaming.qmd
+      - chapters/06_data_transformation_1.qmd
+      - chapters/07_data_transformation_2.qmd
+      - chapters/08_data_transformation_3.qmd
       # - chapters/sum_scores.qmd
-      - chapters/9_structuring_projects.qmd
+      - chapters/09_structuring_projects.qmd
       - chapters/10_strings_and_factors.qmd
       - chapters/11_reshaping_and_pivots.qmd
       - chapters/12_binding_and_joining.qmd
@@ -70,6 +70,13 @@ format:
     include-in-header:
       text: |
         <style>
+          /* more breathing room before section headings.
+             scoped to main.content so the sidebar/TOC headings are left alone.
+             this <style> block is emitted after the bootstrap theme css, so these
+             win without needing !important. */
+          main.content h2 { margin-top: 3rem; }
+          main.content h3 { margin-top: 2rem; }
+          main.content h4 { margin-top: 1.5rem; }
           .kable-table table { width: 70%; margin: 0 auto; }
           .badge {
             display: inline-flex; align-items: center; gap: 0.3em;

@@ -1,6 +1,6 @@
 ## Introduction {.unnumbered}
 
-This [Open Source](license.qmd) eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.
+This Open Source eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.
 
 ## How to use this book
 

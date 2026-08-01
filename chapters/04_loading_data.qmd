@@ -200,7 +200,7 @@ print(dat_likert)
 
 Printing data frames by calling their name or using `print()` don't produce very attractive tables. You can improve this using a combination of the {knitr} and {kableExtra} packages.
 
-Note that this code uses the 'pipe' (`%>%`), which we cover in more detail in a [later chapter](the_pipe_and_renaming.qmd). You don't need to understand how it works yet, just the output that it creates.
+Note that this code uses the 'pipe' (`%>%`), which we cover in more detail in a [later chapter](05_the_pipe_and_renaming.qmd). You don't need to understand how it works yet, just the output that it creates.
 
 ```{r}
 library(knitr)
@@ -336,7 +336,7 @@ Check your learning with the following questions. Exercises involving running co
 ::: {.callout-note collapse="true" title="Click to show answer"}
 Clicking the green down arrow button in the last chunk.
 
-See the chapter on [Reproducible Reports](reproducible_reports.qmd) to refresh your knowledge.
+See the chapter on [Reproducible Reports](03_reproducible_reports.qmd) to refresh your knowledge.
 :::
 
 Do this in order to load all the objects into your environment so that you can complete the next exercise.
@@ -356,7 +356,7 @@ Do all three ways for the `dat_likert` object.
 ::: {.callout-note collapse="true" title="Click to show answer"}
 By consulting the help menu with by running `?read_excel()` either directly in the console or in a code file.
 
-Note that you have to either first load the {read_xl} package with `library(readxl)`, or specify which package the function comes from with `?readxl::read_excel()`. See the section on dependencies in the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge.
+Note that you have to either first load the {read_xl} package with `library(readxl)`, or specify which package the function comes from with `?readxl::read_excel()`. See the section on dependencies in the chapter on [Fundamentals](02_fundamentals.qmd) to refresh your knowledge.
 :::
 
 ### How to use relative paths to load files?
@@ -401,7 +401,7 @@ Write R code to:
 ```
 
 ::: {.callout-note collapse="true" title="Click to show hint"}
-See the chapter on [Fundamentals](fundamentals.qmd) to refresh your knowledge on loading dependencies/libraries and object assignment.
+See the chapter on [Fundamentals](02_fundamentals.qmd) to refresh your knowledge on loading dependencies/libraries and object assignment.
 
 Adapt the code used in this chapter for the other steps.
 :::

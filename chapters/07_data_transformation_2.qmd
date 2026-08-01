@@ -22,6 +22,7 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
 
 library(dplyr)
 library(readr)
+library(stringr)
 library(knitr)
 library(kableExtra)
 

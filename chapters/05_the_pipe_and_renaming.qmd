@@ -179,7 +179,7 @@ You can insert a pipe by typing `%>%` or using the following keyboard shortcuts.
 - Windows: shift + Ctrl + M
 - Mac: shift + Cmd + M
 
-For other keyboard shortcuts in RStudio, see the chapter on [Fundamentals](fundamentals.qmd).
+For other keyboard shortcuts in RStudio, see the chapter on [Fundamentals](02_fundamentals.qmd).
 
 ## Implicit arguments & the pipe
 
