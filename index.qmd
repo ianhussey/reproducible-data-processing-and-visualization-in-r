@@ -1,12 +1,12 @@
 ## Introduction {.unnumbered}
 
-This [Open Source](license.qmd) eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I deliver at the University of Bern's Institute of Psychology.
+This [Open Source](license.qmd) eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.
 
 ## How to use this book
 
 This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.
 
-I suggest that you [download the .zip file](https://raw.githubusercontent.com/ianhussey/reproducible-data-processing-and-visualization-in-r/main/reproducible-data-processing-and-visualization-in-r.zip) of all the .qmd files and their supporting data and cheatsheets and use the eBook as a reference book. *If the the .zip file does not contain the most recent versions, please contact me and I'll updated it.* If I'm slow or you're feeling impatient, you can also [download the most recent versions from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r), along with the other files that create this eBook.
+I suggest that you [download a .zip of the contents of this book's code and data from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r) to run the code locally, complete the exercises, etc.
 
 You can also copy and paste the code for any chapter directly from the website. Click the "\</\> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.
 
@@ -34,11 +34,23 @@ There are many excellent Open Source resources to learn R and {tidyverse} for da
         -   [Practice the functions count, arrange, summarize](https://minecr.shinyapps.io/dsbox-04-legosales)
     -   [Recorded presentations](https://datasciencebox.org/02-exploring-data) on many relevant topics
 
-## Find me elsewhere
+## License
 
-You can find my recent and current research interests, a summary of the courses I teach, and occasional blog posts on my personal website [mmmdata.io](https://mmmdata.io).
+&copy; Ian Hussey (2025-2026) 
 
-You can find me on Bluesky at [\@ianhussey.mmmdata.io](https://bsky.app/profile/ianhussey.mmmdata.io).
+Text and figures are licensed under a [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+
+Code is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite its source. See suggested citation below.
+
+## Citation
+
+If you use this book, please cite it as:
+
+> Hussey, I. (2026). *Reproducible data processing and visualization in R and tidyverse*. [wrangling.tidyver.se](https://wrangling.tidyver.se) doi: [10.5281/zenodo.19427859](https://doi.org/10.5281/zenodo.19427859)
+
+<a href="https://doi.org/10.5281/zenodo.19427859"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19427859.svg" alt="DOI"></a>
 
 ## Contributing
 
