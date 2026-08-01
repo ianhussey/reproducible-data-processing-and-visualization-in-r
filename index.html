@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ian Hussey">
-<meta name="dcterms.date" content="2026-04-05">
+<meta name="dcterms.date" content="2026-08-01">
 
 <title>Reproducible Data Processing and Visualization</title>
 <style>
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapters/1_setup.html" rel="next">
+<link href="./chapters/01_setup.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -110,6 +110,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+  /* more breathing room before section headings.
+     scoped to main.content so the sidebar/TOC headings are left alone.
+     this <style> block is emitted after the bootstrap theme css, so these
+     win without needing !important. */
+  main.content h2 { margin-top: 3rem; }
+  main.content h3 { margin-top: 2rem; }
+  main.content h4 { margin-top: 1.5rem; }
+  .kable-table table { width: 70%; margin: 0 auto; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.3em;
+    padding: 0.2em 0.65em; border-radius: 20px;
+    font-size: 0.72em; font-weight: 500; font-family: monospace;
+    vertical-align: middle; position: relative; top: -0.1em;
+  }
+  .badge-draft1   { background: #fdecea; color: #8b2a2a; border: 1px solid #f5b8b8; }
+  .badge-draft2   { background: #fef0e6; color: #8b4a1a; border: 1px solid #f5cfa0; }
+  .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
+  .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
+  .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+</style>
 
 
 </head>
@@ -330,13 +351,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/1_setup.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/01_setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/2_fundamentals.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/02_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
   </div>
 </li>
@@ -353,50 +374,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/3_reproducible_reports.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/03_reproducible_reports.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/4_loading_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/04_loading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/5_the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/05_the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/6_data_transformation_1.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/06_data_transformation_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/7_data_transformation_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/07_data_transformation_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation II</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/8_data_transformation_3.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapters/08_data_transformation_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data transformation III</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/9_structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  <a href="./chapters/09_structuring_projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -414,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -448,23 +469,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -478,6 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to use this book</a></li>
   <li><a href="#other-learning-resources" id="toc-other-learning-resources" class="nav-link" data-scroll-target="#other-learning-resources">Other learning resources</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
   <li><a href="#contributing" id="toc-contributing" class="nav-link" data-scroll-target="#contributing">Contributing</a></li>
   </ul>
@@ -507,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 5, 2026</p>
+      <p class="date">August 1, 2026</p>
     </div>
   </div>
   
@@ -522,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h2><p><img src="cover.png" title="Reproducible Data Processing and Visualization" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>This <a href="./license.html">Open Source</a> eBook provides materials for the semester-long Master’s seminar course “Reproducible Data Processing and Visualization in R” that I teach at the University of Bern’s Institute of Psychology.</p>
+<p>This Open Source eBook provides materials for the semester-long Master’s seminar course “Reproducible Data Processing and Visualization in R” that I teach at the University of Bern’s Institute of Psychology.</p>
 </section>
 <section id="how-to-use-this-book" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
@@ -561,13 +566,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>© Ian Hussey (2025-2026)</p>
+<p>Text and figures are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a> license.</p>
+<p>Code is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+<p>You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite its source. See suggested citation below.</p>
+</section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
 <p>If you use this book, please cite it as:</p>
 <blockquote class="blockquote">
-<p>Hussey, I. (2026). <em>Reproducible data processing and visualization in R and tidyverse</em>. <a href="https://wrangling.tidyver.se">wrangling.tidyver.se</a> doi: <a href="https://doi.org/10.5281/zenodo.19427860">10.5281/zenodo.19427860</a></p>
+<p>Hussey, I. (2026). <em>Reproducible data processing and visualization in R and tidyverse</em>. <a href="https://wrangling.tidyver.se">wrangling.tidyver.se</a> doi: <a href="https://doi.org/10.5281/zenodo.19427859">10.5281/zenodo.19427859</a></p>
 </blockquote>
-<p><a href="https://doi.org/10.5281/zenodo.19427860"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19427860.svg" alt="DOI"></a></p>
+<p><a href="https://doi.org/10.5281/zenodo.19427859"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19427859.svg" alt="DOI"></a></p>
 </section>
 <section id="contributing" class="level2">
 <h2 class="anchored" data-anchor-id="contributing">Contributing</h2>
@@ -1047,14 +1059,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapters/1_setup.html" class="pagination-link" aria-label="Installation and setup">
+      <a href="./chapters/01_setup.html" class="pagination-link" aria-label="Installation and setup">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction {.unnumbered}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This <span class="co">[</span><span class="ot">Open Source</span><span class="co">](license.qmd)</span> eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This Open Source eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to use this book</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -1088,17 +1100,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions count, arrange, summarize</span><span class="co">](https://minecr.shinyapps.io/dsbox-04-legosales)</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Recorded presentations</span><span class="co">](https://datasciencebox.org/02-exploring-data)</span> on many relevant topics</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## License</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>If you use this book, please cite it as:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="dv">&amp;copy;</span> Ian Hussey (2025-2026) </span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Hussey, I. (2026). *Reproducible data processing and visualization in R and tidyverse*. </span><span class="co">[</span><span class="ot">wrangling.tidyver.se</span><span class="co">](https://wrangling.tidyver.se)</span><span class="at"> doi: </span><span class="co">[</span><span class="ot">10.5281/zenodo.19427860</span><span class="co">](https://doi.org/10.5281/zenodo.19427860)</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Text and figures are licensed under a <span class="co">[</span><span class="ot">Creative Commons Attribution 4.0 (CC BY 4.0)</span><span class="co">](https://creativecommons.org/licenses/by/4.0/)</span> license.</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://doi.org/10.5281/zenodo.19427860"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://zenodo.org/badge/DOI/10.5281/zenodo.19427860.svg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"DOI"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Code is licensed under the <span class="co">[</span><span class="ot">MIT License</span><span class="co">](https://opensource.org/licenses/MIT)</span>.</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contributing</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite its source. See suggested citation below.</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>If you are interested in contributing to or adapting this eBook, all code and data are available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>If you use this book, please cite it as:</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Hussey, I. (2026). *Reproducible data processing and visualization in R and tidyverse*. </span><span class="co">[</span><span class="ot">wrangling.tidyver.se</span><span class="co">](https://wrangling.tidyver.se)</span><span class="at"> doi: </span><span class="co">[</span><span class="ot">10.5281/zenodo.19427859</span><span class="co">](https://doi.org/10.5281/zenodo.19427859)</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://doi.org/10.5281/zenodo.19427859"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://zenodo.org/badge/DOI/10.5281/zenodo.19427859.svg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"DOI"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contributing</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>If you are interested in contributing to or adapting this eBook, all code and data are available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

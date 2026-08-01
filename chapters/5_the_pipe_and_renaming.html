@@ -111,6 +111,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<style>
+  /* more breathing room before section headings.
+     scoped to main.content so the sidebar/TOC headings are left alone.
+     this <style> block is emitted after the bootstrap theme css, so these
+     win without needing !important. */
+  main.content h2 { margin-top: 3rem; }
+  main.content h3 { margin-top: 2rem; }
+  main.content h4 { margin-top: 1.5rem; }
+  .kable-table table { width: 70%; margin: 0 auto; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.3em;
+    padding: 0.2em 0.65em; border-radius: 20px;
+    font-size: 0.72em; font-weight: 500; font-family: monospace;
+    vertical-align: middle; position: relative; top: -0.1em;
+  }
+  .badge-draft1   { background: #fdecea; color: #8b2a2a; border: 1px solid #f5b8b8; }
+  .badge-draft2   { background: #fef0e6; color: #8b4a1a; border: 1px solid #f5cfa0; }
+  .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
+  .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
+  .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+</style>
 
 
 </head>
@@ -445,23 +466,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../chapters/16_the_linear_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
   </div>
 </li>
       </ul>

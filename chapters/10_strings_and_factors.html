@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Data types – Reproducible Data Processing and Visualization</title>
+<title>10&nbsp; Data types ✎ TODO – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/11_reshaping_and_pivots.html" rel="next">
-<link href="../chapters/9_structuring_projects.html" rel="prev">
+<link href="../chapters/09_structuring_projects.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,6 +111,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<style>
+  /* more breathing room before section headings.
+     scoped to main.content so the sidebar/TOC headings are left alone.
+     this <style> block is emitted after the bootstrap theme css, so these
+     win without needing !important. */
+  main.content h2 { margin-top: 3rem; }
+  main.content h3 { margin-top: 2rem; }
+  main.content h4 { margin-top: 1.5rem; }
+  .kable-table table { width: 70%; margin: 0 auto; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.3em;
+    padding: 0.2em 0.65em; border-radius: 20px;
+    font-size: 0.72em; font-weight: 500; font-family: monospace;
+    vertical-align: middle; position: relative; top: -0.1em;
+  }
+  .badge-draft1   { background: #fdecea; color: #8b2a2a; border: 1px solid #f5b8b8; }
+  .badge-draft2   { background: #fef0e6; color: #8b4a1a; border: 1px solid #f5cfa0; }
+  .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
+  .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
+  .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+</style>
 
 
 </head>
@@ -286,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/3_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/10_strings_and_factors.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/10_strings_and_factors.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,13 +352,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/1_setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/01_setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installation and setup</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/2_fundamentals.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/02_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fundamentals</span></span></a>
   </div>
 </li>
@@ -354,50 +375,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/3_reproducible_reports.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/03_reproducible_reports.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/4_loading_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/04_loading_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Loading, viewing and saving data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/5_the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/05_the_pipe_and_renaming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe and renaming</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/6_data_transformation_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/06_data_transformation_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data transformation I</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/7_data_transformation_2.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/07_data_transformation_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data transformation II</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/8_data_transformation_3.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/08_data_transformation_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Data transformation III</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/9_structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
+  <a href="../chapters/09_structuring_projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -415,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -449,23 +470,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../license.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">License and citation</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -476,25 +480,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link active" data-scroll-target="#data-types"><span class="header-section-number">10.1</span> Data types</a></li>
-  <li><a href="#working-with-numericfloats" id="toc-working-with-numericfloats" class="nav-link" data-scroll-target="#working-with-numericfloats"><span class="header-section-number">10.2</span> Working with numeric/floats</a>
-  <ul class="collapse">
-  <li><a href="#near" id="toc-near" class="nav-link" data-scroll-target="#near"><span class="header-section-number">10.2.1</span> <code>near()</code></a></li>
-  <li><a href="#between" id="toc-between" class="nav-link" data-scroll-target="#between"><span class="header-section-number">10.2.2</span> <code>between()</code></a></li>
-  <li><a href="#rounding-round-probably-doesnt-do-what-you-think" id="toc-rounding-round-probably-doesnt-do-what-you-think" class="nav-link" data-scroll-target="#rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">10.2.3</span> Rounding: <code>round()</code> probably doesn’t do what you think</a></li>
-  <li><a href="#rounding-of-p-values-using-apa-style" id="toc-rounding-of-p-values-using-apa-style" class="nav-link" data-scroll-target="#rounding-of-p-values-using-apa-style"><span class="header-section-number">10.2.4</span> ‘rounding’ of p-values using APA style</a></li>
-  </ul></li>
-  <li><a href="#working-with-strings" id="toc-working-with-strings" class="nav-link" data-scroll-target="#working-with-strings"><span class="header-section-number">10.3</span> Working with strings</a>
-  <ul class="collapse">
-  <li><a href="#case-conversion" id="toc-case-conversion" class="nav-link" data-scroll-target="#case-conversion"><span class="header-section-number">10.3.1</span> Case conversion</a></li>
-  <li><a href="#substring-searches" id="toc-substring-searches" class="nav-link" data-scroll-target="#substring-searches"><span class="header-section-number">10.3.2</span> Substring searches</a></li>
-  <li><a href="#removal" id="toc-removal" class="nav-link" data-scroll-target="#removal"><span class="header-section-number">10.3.3</span> Removal</a></li>
-  <li><a href="#replacement" id="toc-replacement" class="nav-link" data-scroll-target="#replacement"><span class="header-section-number">10.3.4</span> Replacement</a></li>
-  <li><a href="#seperation" id="toc-seperation" class="nav-link" data-scroll-target="#seperation"><span class="header-section-number">10.3.5</span> Seperation</a></li>
-  <li><a href="#extraction" id="toc-extraction" class="nav-link" data-scroll-target="#extraction"><span class="header-section-number">10.3.6</span> Extraction</a></li>
-  <li><a href="#regex" id="toc-regex" class="nav-link" data-scroll-target="#regex"><span class="header-section-number">10.3.7</span> Regex</a></li>
-  </ul></li>
-  <li><a href="#working-with-factors" id="toc-working-with-factors" class="nav-link" data-scroll-target="#working-with-factors"><span class="header-section-number">10.4</span> Working with factors</a></li>
+  <li><a href="#near" id="toc-near" class="nav-link active" data-scroll-target="#near"><span class="header-section-number">10.0.1</span> <code>near()</code></a></li>
+  <li><a href="#rounding-round-probably-doesnt-do-what-you-think" id="toc-rounding-round-probably-doesnt-do-what-you-think" class="nav-link" data-scroll-target="#rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">10.0.2</span> Rounding: <code>round()</code> probably doesn’t do what you think</a></li>
+  <li><a href="#rounding-of-p-values-using-apa-style" id="toc-rounding-of-p-values-using-apa-style" class="nav-link" data-scroll-target="#rounding-of-p-values-using-apa-style"><span class="header-section-number">10.0.3</span> ‘rounding’ of p-values using APA style</a></li>
   </ul>
 </nav>
     </div>
@@ -502,9 +490,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/3_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/10_strings_and_factors.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/10_strings_and_factors.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -521,18 +509,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-types" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="data-types"><span class="header-section-number">10.1</span> Data types</h2>
-<ul>
-<li>integers, numeric/floats, factors, strings, booleans/logicals, NA.</li>
-</ul>
-</section>
-<section id="working-with-numericfloats" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="working-with-numericfloats"><span class="header-section-number">10.2</span> Working with numeric/floats</h2>
-<p>floating point math is weird…</p>
-<p>near()</p>
-<section id="near" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="near"><span class="header-section-number">10.2.1</span> <code>near()</code></h3>
+<!-- ## Data types -->
+<!-- -   integers, numeric/floats, factors, strings, booleans/logicals, NA. -->
+<!-- ## Working with numeric/floats -->
+<!-- floating point math is weird... -->
+<section id="near" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="near"><span class="header-section-number">10.0.1</span> <code>near()</code></h3>
 <p>testing equivalence with floats is weird</p>
 <p>sqrt(2) ^ 2 == 2 near(sqrt(2) ^ 2, 2)</p>
 <div class="cell">
@@ -549,13 +531,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
+<!-- ### `between()` -->
+<!-- TODO -->
 </section>
-<section id="between" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="between"><span class="header-section-number">10.2.2</span> <code>between()</code></h3>
-<p>TODO</p>
-</section>
-<section id="rounding-round-probably-doesnt-do-what-you-think" class="level3" data-number="10.2.3">
-<h3 data-number="10.2.3" class="anchored" data-anchor-id="rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">10.2.3</span> Rounding: <code>round()</code> probably doesn’t do what you think</h3>
+<section id="rounding-round-probably-doesnt-do-what-you-think" class="level3" data-number="10.0.2">
+<h3 data-number="10.0.2" class="anchored" data-anchor-id="rounding-round-probably-doesnt-do-what-you-think"><span class="header-section-number">10.0.2</span> Rounding: <code>round()</code> probably doesn’t do what you think</h3>
 <p>It is extremely common to round statistical results before including them in text and tables.</p>
 <p>However, did you know that R doesn’t use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses “banker’s rounding”, which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.</p>
 <p>This is easier to show than explain. The <code>round()</code> function rounds each of the numbers passed to it. What do you expect the output to be?</p>
@@ -664,8 +644,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="rounding-of-p-values-using-apa-style" class="level3" data-number="10.2.4">
-<h3 data-number="10.2.4" class="anchored" data-anchor-id="rounding-of-p-values-using-apa-style"><span class="header-section-number">10.2.4</span> ‘rounding’ of p-values using APA style</h3>
+<section id="rounding-of-p-values-using-apa-style" class="level3" data-number="10.0.3">
+<h3 data-number="10.0.3" class="anchored" data-anchor-id="rounding-of-p-values-using-apa-style"><span class="header-section-number">10.0.3</span> ‘rounding’ of p-values using APA style</h3>
 <p>The one thing that psychologists don’t round using the round-half-up rule is <em>p</em>-values. These are instead usually truncated using the APA style guide’s conventions so that p values smaller than .001 are reported as “&lt; .001”.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhussey/truffle")</span></span>
@@ -725,49 +705,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section>
-</section>
-<section id="working-with-strings" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="working-with-strings"><span class="header-section-number">10.3</span> Working with strings</h2>
-<section id="case-conversion" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="case-conversion"><span class="header-section-number">10.3.1</span> Case conversion</h3>
-<p>str_to_lower str_to_upper str_to_sentence str_to_title</p>
-</section>
-<section id="substring-searches" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="substring-searches"><span class="header-section-number">10.3.2</span> Substring searches</h3>
-<p>str_detect() + ignore case str_starts str_ends</p>
-<p>str_locate() str_locate_all()</p>
-</section>
-<section id="removal" class="level3" data-number="10.3.3">
-<h3 data-number="10.3.3" class="anchored" data-anchor-id="removal"><span class="header-section-number">10.3.3</span> Removal</h3>
-<p>str_remove() str_remove_all()</p>
-<p>str_squish #remove whitespace</p>
-</section>
-<section id="replacement" class="level3" data-number="10.3.4">
-<h3 data-number="10.3.4" class="anchored" data-anchor-id="replacement"><span class="header-section-number">10.3.4</span> Replacement</h3>
-<p>str_replace str_replace_all</p>
-</section>
-<section id="seperation" class="level3" data-number="10.3.5">
-<h3 data-number="10.3.5" class="anchored" data-anchor-id="seperation"><span class="header-section-number">10.3.5</span> Seperation</h3>
-<p>str_split, relationship with seperate()</p>
-</section>
-<section id="extraction" class="level3" data-number="10.3.6">
-<h3 data-number="10.3.6" class="anchored" data-anchor-id="extraction"><span class="header-section-number">10.3.6</span> Extraction</h3>
-<p>word()</p>
-</section>
-<section id="regex" class="level3" data-number="10.3.7">
-<h3 data-number="10.3.7" class="anchored" data-anchor-id="regex"><span class="header-section-number">10.3.7</span> Regex</h3>
-<p>TODO</p>
-</section>
-</section>
-<section id="working-with-factors" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="working-with-factors"><span class="header-section-number">10.4</span> Working with factors</h2>
-<p>forcats with plot examples, regression examples</p>
-<p>converting numeric to factor via character or whatever that weird thing is</p>
-<p>fct_rev</p>
-<p>fct_order - contrast with arrange() fct_relevel</p>
-<p>fct_drop</p>
-<p>fct_lump</p>
+<!-- ## Working with strings -->
+<!-- ### Case conversion -->
+<!-- str_to_lower -->
+<!-- str_to_upper -->
+<!-- str_to_sentence -->
+<!-- str_to_title -->
+<!-- ### Substring searches -->
+<!-- str_detect() + ignore case -->
+<!-- str_starts -->
+<!-- str_ends -->
+<!-- str_locate() -->
+<!-- str_locate_all() -->
+<!-- ### Removal -->
+<!-- str_remove() -->
+<!-- str_remove_all() -->
+<!-- str_squish #remove whitespace -->
+<!-- ### Replacement -->
+<!-- str_replace -->
+<!-- str_replace_all -->
+<!-- ### Seperation -->
+<!-- str_split, relationship with seperate() -->
+<!-- ### Extraction  -->
+<!-- word() -->
+<!-- ### Regex -->
+<!-- TODO -->
+<!-- ## Working with factors -->
+<!-- forcats with plot examples, regression examples -->
+<!-- converting numeric to factor via character or whatever that weird thing is -->
+<!-- fct_rev -->
+<!-- fct_order - contrast with arrange() -->
+<!-- fct_relevel -->
+<!-- fct_drop -->
+<!-- fct_lump -->
 
 
 <!-- -->
@@ -1241,8 +1211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/9_structuring_projects.html" class="pagination-link" aria-label="Structuring projects">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span>
+      <a href="../chapters/09_structuring_projects.html" class="pagination-link" aria-label="Structuring projects <span class=&quot;badge badge-draft3&quot;>✎ Small TODOs</span>">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft3">✎ Small TODOs</span></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1251,7 +1221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data types</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data types &lt;span class="badge badge-draft2"&gt;✎ TODO&lt;/span&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
@@ -1263,188 +1233,186 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data types</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Data types --&gt;</span></span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>integers, numeric/floats, factors, strings, booleans/logicals, NA.</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   integers, numeric/floats, factors, strings, booleans/logicals, NA. --&gt;</span></span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with numeric/floats</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Working with numeric/floats --&gt;</span></span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>floating point math is weird...</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- floating point math is weird... --&gt;</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>near()</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### `near()`</span></span>
 <span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### `near()`</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>testing equivalence with floats is weird</span>
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>testing equivalence with floats is weird</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)</span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>sqrt(2) \^ 2 == 2 near(sqrt(2) \^ 2, 2)</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> `between()` --&gt;</span></span>
 <span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### `between()`</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">TODO</span><span class="co"> --&gt;</span></span>
 <span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rounding: `round()` probably doesn't do what you think</span></span>
 <span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rounding: `round()` probably doesn't do what you think</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>It is extremely common to round statistical results before including them in text and tables.</span>
 <span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>It is extremely common to round statistical results before including them in text and tables.</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.</span>
 <span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>This is easier to show than explain. The <span class="in">`round()`</span> function rounds each of the numbers passed to it. What do you expect the output to be?</span>
 <span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>This is easier to show than explain. The <span class="in">`round()`</span> function rounds each of the numbers passed to it. What do you expect the output to be?</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
-<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
-<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show result"}</span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
-<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
-<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span>
-<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>Why is this? Because R's <span class="in">`round()`</span> function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.</span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show result"}</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>        <span class="fl">1.5</span>, </span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>        <span class="fl">2.5</span>, </span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.5</span>, </span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>        <span class="fl">4.5</span>, </span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>        <span class="fl">5.5</span>))</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>Why is this? Because R's <span class="in">`round()`</span> function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>In most of your R scripts, you should instead use the {roundwork} package's <span class="in">`round_up()`</span>, written by <span class="co">[</span><span class="ot">Lukas Jung</span><span class="co">](https://bsky.app/profile/lhdjung.bsky.social)</span>, which produces the round-.5-upwards behavior most of us expect. </span>
 <span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>In most of your R scripts, you should instead use the {roundwork} package's <span class="in">`round_up()`</span>, written by <span class="co">[</span><span class="ot">Lukas Jung</span><span class="co">](https://bsky.app/profile/lhdjung.bsky.social)</span>, which produces the round-.5-upwards behavior most of us expect. </span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roundwork) </span>
-<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>roundwork<span class="sc">::</span><span class="fu">round_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
-<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">1.5</span>, </span>
-<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">2.5</span>, </span>
-<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">3.5</span>, </span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">4.5</span>, </span>
-<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">5.5</span>))</span>
-<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roundwork) </span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>roundwork<span class="sc">::</span><span class="fu">round_up</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, </span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">1.5</span>, </span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">2.5</span>, </span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">3.5</span>, </span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">4.5</span>, </span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>                      <span class="fl">5.5</span>))</span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>These will typically be used inside a pipe workflow:</span>
 <span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>These will typically be used inside a pipe workflow:</span>
-<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="co"># make up some values to be rounded </span></span>
-<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="co"># make up some values to be rounded </span></span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">44</span>)</span>
 <span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">44</span>)</span>
-<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>dat_regression_betas <span class="ot">&lt;-</span> </span>
-<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">beta_estimate =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> .<span class="dv">3</span>, <span class="at">sd =</span> .<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_ci_lower =</span> beta_estimate <span class="sc">-</span> <span class="fl">0.2</span>,</span>
-<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> beta_estimate <span class="sc">+</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="fl">0.000000001</span>, <span class="at">max =</span> <span class="fl">0.01</span>))</span>
-<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
-<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_up</span>(beta_estimate, <span class="dv">2</span>),</span>
-<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
-<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_up</span>(beta_ci_upper, <span class="dv">2</span>)) </span>
-<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
-<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>dat_regression_betas <span class="ot">&lt;-</span> </span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">beta_estimate =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> .<span class="dv">3</span>, <span class="at">sd =</span> .<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_ci_lower =</span> beta_estimate <span class="sc">-</span> <span class="fl">0.2</span>,</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> beta_estimate <span class="sc">+</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">min =</span> <span class="fl">0.000000001</span>, <span class="at">max =</span> <span class="fl">0.01</span>))</span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_up</span>(beta_ci_upper, <span class="dv">2</span>)) </span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="fu">### 'rounding' of p-values using APA style</span></span>
 <span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### 'rounding' of p-values using APA style</span></span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>The one thing that psychologists don't round using the round-half-up rule is *p*-values. These are instead usually truncated using the APA style guide's conventions so that p values smaller than .001 are reported as "<span class="sc">\&lt;</span> .001".</span>
 <span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a>The one thing that psychologists don't round using the round-half-up rule is *p*-values. These are instead usually truncated using the APA style guide's conventions so that p values smaller than .001 are reported as "<span class="sc">\&lt;</span> .001".</span>
-<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhussey/truffle")</span></span>
-<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(truffle)</span>
-<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
-<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_up</span>(beta_estimate, <span class="dv">2</span>),</span>
-<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
-<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_up</span>(beta_ci_upper, <span class="dv">2</span>),</span>
-<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a>         <span class="at">p =</span> <span class="fu">round_p_value</span>(p)) </span>
-<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
-<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("devtools"); devtools::install_github("ianhussey/truffle")</span></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(truffle)</span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="ot">&lt;-</span> dat_regression_betas <span class="sc">%&gt;%</span></span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_estimate =</span> <span class="fu">round_up</span>(beta_estimate, <span class="dv">2</span>),</span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_lower =</span> <span class="fu">round_up</span>(beta_ci_lower, <span class="dv">2</span>),</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_ci_upper =</span> <span class="fu">round_up</span>(beta_ci_upper, <span class="dv">2</span>),</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>         <span class="at">p =</span> <span class="fu">round_p_value</span>(p)) </span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a>dat_regression_betas_rounded <span class="sc">%&gt;%</span></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Working with strings --&gt;</span></span>
 <span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with strings</span></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Case conversion --&gt;</span></span>
 <span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="fu">### Case conversion</span></span>
-<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a>str_to_lower</span>
-<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>str_to_upper</span>
-<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>str_to_sentence</span>
-<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>str_to_title</span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_to_lower --&gt;</span></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_to_upper --&gt;</span></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_to_sentence --&gt;</span></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_to_title --&gt;</span></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Substring searches --&gt;</span></span>
 <span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a><span class="fu">### Substring searches</span></span>
-<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a>str_detect() + ignore case</span>
-<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>str_starts</span>
-<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>str_ends</span>
-<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a>str_locate()</span>
-<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>str_locate_all()</span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_detect() + ignore case --&gt;</span></span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_starts --&gt;</span></span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_ends --&gt;</span></span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_locate() --&gt;</span></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_locate_all() --&gt;</span></span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Removal --&gt;</span></span>
 <span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### Removal</span></span>
-<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a>str_remove()</span>
-<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>str_remove_all()</span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_remove() --&gt;</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_remove_all() --&gt;</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_squish #remove whitespace --&gt;</span></span>
 <span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>str_squish #remove whitespace</span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Replacement --&gt;</span></span>
 <span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### Replacement</span></span>
-<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a>str_replace</span>
-<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>str_replace_all</span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_replace --&gt;</span></span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_replace_all --&gt;</span></span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Seperation --&gt;</span></span>
 <span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="fu">### Seperation</span></span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- str_split, relationship with seperate() --&gt;</span></span>
 <span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>str_split, relationship with seperate()</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Extraction  --&gt;</span></span>
 <span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extraction </span></span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- word() --&gt;</span></span>
 <span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>word()</span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">###</span><span class="co"> Regex --&gt;</span></span>
 <span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="fu">### Regex</span></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">TODO</span><span class="co"> --&gt;</span></span>
 <span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a>TODO</span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Working with factors --&gt;</span></span>
 <span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with factors</span></span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- forcats with plot examples, regression examples --&gt;</span></span>
 <span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a>forcats with plot examples, regression examples</span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- converting numeric to factor via character or whatever that weird thing is --&gt;</span></span>
 <span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>converting numeric to factor via character or whatever that weird thing is</span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fct_rev --&gt;</span></span>
 <span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a>fct_rev</span>
-<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>fct_order - contrast with arrange()</span>
-<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a>fct_relevel</span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fct_order - contrast with arrange() --&gt;</span></span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fct_relevel --&gt;</span></span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fct_drop --&gt;</span></span>
 <span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a>fct_drop</span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fct_lump --&gt;</span></span>
 <span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a>fct_lump</span>
-<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
