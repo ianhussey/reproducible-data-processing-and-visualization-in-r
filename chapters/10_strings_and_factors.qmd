@@ -1,4 +1,4 @@
-# Data types
+# Data types <span class="badge badge-draft2">✎ TODO</span>
 
 ```{r}
 #| include: false
@@ -10,15 +10,13 @@ options(scipen = 999)
 
 ```
 
-## Data types
+<!-- ## Data types -->
 
--   integers, numeric/floats, factors, strings, booleans/logicals, NA.
+<!-- -   integers, numeric/floats, factors, strings, booleans/logicals, NA. -->
 
-## Working with numeric/floats
+<!-- ## Working with numeric/floats -->
 
-floating point math is weird...
-
-near()
+<!-- floating point math is weird... -->
 
 ### `near()`
 
@@ -37,9 +35,9 @@ sqrt(2)^2
 
 ```
 
-### `between()`
+<!-- ### `between()` -->
 
-TODO
+<!-- TODO -->
 
 ### Rounding: `round()` probably doesn't do what you think
 
@@ -135,62 +133,62 @@ dat_regression_betas_rounded %>%
 ```
 
 
-## Working with strings
+<!-- ## Working with strings -->
 
-### Case conversion
+<!-- ### Case conversion -->
 
-str_to_lower
-str_to_upper
-str_to_sentence
-str_to_title
+<!-- str_to_lower -->
+<!-- str_to_upper -->
+<!-- str_to_sentence -->
+<!-- str_to_title -->
 
-### Substring searches
+<!-- ### Substring searches -->
 
-str_detect() + ignore case
-str_starts
-str_ends
+<!-- str_detect() + ignore case -->
+<!-- str_starts -->
+<!-- str_ends -->
 
-str_locate()
-str_locate_all()
+<!-- str_locate() -->
+<!-- str_locate_all() -->
 
-### Removal
+<!-- ### Removal -->
 
-str_remove()
-str_remove_all()
+<!-- str_remove() -->
+<!-- str_remove_all() -->
 
-str_squish #remove whitespace
+<!-- str_squish #remove whitespace -->
 
-### Replacement
+<!-- ### Replacement -->
 
-str_replace
-str_replace_all
+<!-- str_replace -->
+<!-- str_replace_all -->
 
-### Seperation
+<!-- ### Seperation -->
 
-str_split, relationship with seperate()
+<!-- str_split, relationship with seperate() -->
 
-### Extraction 
+<!-- ### Extraction  -->
 
-word()
+<!-- word() -->
 
-### Regex
+<!-- ### Regex -->
 
-TODO
+<!-- TODO -->
 
-## Working with factors
+<!-- ## Working with factors -->
 
-forcats with plot examples, regression examples
+<!-- forcats with plot examples, regression examples -->
 
-converting numeric to factor via character or whatever that weird thing is
+<!-- converting numeric to factor via character or whatever that weird thing is -->
 
-fct_rev
+<!-- fct_rev -->
 
-fct_order - contrast with arrange()
-fct_relevel
+<!-- fct_order - contrast with arrange() -->
+<!-- fct_relevel -->
 
-fct_drop
+<!-- fct_drop -->
 
-fct_lump
+<!-- fct_lump -->
 
 
 

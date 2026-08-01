@@ -20,6 +20,8 @@ It is very common that we need to create summaries across rows. For example, to 
 
 # code to generated and clean data from data_transformation_1:
 library(truffle)
+library(dplyr)
+library(stringr)
 
 set.seed(42)
 
@@ -101,9 +103,9 @@ dat  %>%
 
 Grouping is an invisible property of a data frame or tibble. You can't find a value inside it that tells you it's grouped, but the grouping *can* persist unless you `ungroup()`. This can cause unexpected behavior, so watch out for it.
 
-#### group_by() applied to filter and slice functions
+<!-- #### group_by() applied to filter and slice functions -->
 
-TODO
+<!-- TODO -->
 
 ### `n()`
 
@@ -231,19 +233,14 @@ dat_gender_tidier %>%
   summarize(percent_below_25 = mean(less_than_25, na.rm = TRUE)*100)
 
 dat_gender_tidier %>%
-  mutate(less_than_25 = age < 25)
-
-
-vec <- c(TRUE, FALSE, FALSE, FALSE, FALSE)
-vec <- c(1, 0, 0, 0, 0)
-
-mean(vec)*100
+  mutate(less_than_25 = age < 25) %>%
+  head()
 
 ```
 
 ### Practice using `summarize()`
 
-#### 1
+<!-- #### 1 -->
 
 Calculate the N, min, max, mean, and SD of age in `dat_gender_tidier`.
 
@@ -270,47 +267,47 @@ dat_gender_tidier %>%
 
 ```
 
-#### 2 TODO
+<!-- #### 2 TODO -->
 
-Currently each participant has up to three responses on the self-report scales (three item scale: like, positive, and prefer). Create a new dataframe containing each unique_id's mean score across the items. Also calculate how many items each participant has data for, and whether they have complete data (i.e., data for three items).
+<!-- Currently each participant has up to three responses on the self-report scales (three item scale: like, positive, and prefer). Create a new dataframe containing each unique_id's mean score across the items. Also calculate how many items each participant has data for, and whether they have complete data (i.e., data for three items). -->
 
-```{r}
-
-
-
-```
-
-#### 3 TODO
-
-Using only participants with complete, calculate the mean and SD of all participant's mean scores on the self-reports.
-
-```{r}
+<!-- ```{r} -->
 
 
 
-```
+<!-- ``` -->
 
-#### 4 TODO
+<!-- #### 3 TODO -->
 
-Create a new data frame that calculates the proportion of prime-congruent trials for each participant on the AMP (i.e., the mean of the 'correct' column), their proportion of too-fast trials, and their number of trials.
+<!-- Using only participants with complete, calculate the mean and SD of all participant's mean scores on the self-reports. -->
 
-Also add to that data frame a new column called "exclude_amp" and set it to "exclude" if more than 10% of a participant's trials are too-fast trials and "include" if not.
-
-```{r}
+<!-- ```{r} -->
 
 
 
-```
+<!-- ``` -->
 
-#### 5 TODO
+<!-- #### 4 TODO -->
 
-Calculate the proportion of participants who are to be excluded.
+<!-- Create a new data frame that calculates the proportion of prime-congruent trials for each participant on the AMP (i.e., the mean of the 'correct' column), their proportion of too-fast trials, and their number of trials. -->
 
-```{r}
+<!-- Also add to that data frame a new column called "exclude_amp" and set it to "exclude" if more than 10% of a participant's trials are too-fast trials and "include" if not. -->
 
-# data_amp_scored %>%
+<!-- ```{r} -->
 
-```
+
+
+<!-- ``` -->
+
+<!-- #### 5 TODO -->
+
+<!-- Calculate the proportion of participants who are to be excluded. -->
+
+<!-- ```{r} -->
+
+<!-- # data_amp_scored %>% -->
+
+<!-- ``` -->
 
 
 
@@ -343,7 +340,7 @@ It can be useful to arrange the output by the frequencies.
 
 ### `summarize(across())`
 
-TODO here or later in
+<!-- TODO here or later in -->
 
 ## Check your learning
 

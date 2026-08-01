@@ -21,6 +21,7 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
 ```{r}
 
 library(dplyr)
+library(tidyr)
 library(readr)
 library(stringr)
 library(knitr)
@@ -128,85 +129,85 @@ dat_gender_tidier_counts %>%
 
 ## Advanced mutates
 
-### Separating columns with `seperate()`
+<!-- ### Separating columns with `seperate()` -->
 
-TODO
+<!-- TODO -->
 
-### `lead()` and `lag()`
+<!-- ### `lead()` and `lag()` -->
 
-TODO
+<!-- TODO -->
 
-### `fill()`
+<!-- ### `fill()` -->
 
-TODO
+<!-- TODO -->
 
 
-## Modifying multiple columns at once with `across()`
+<!-- ## Modifying multiple columns at once with `across()` -->
 
-### `mutate(across())`
+<!-- ### `mutate(across())` -->
 
-TODO
+<!-- TODO -->
 
-```{r}
-#| eval: true
-#| include: false
-# make up some values to be rounded 
-library(dplyr)
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| include: false -->
+<!-- # make up some values to be rounded  -->
+<!-- library(dplyr) -->
 
-set.seed(44)
+<!-- set.seed(44) -->
 
-dat_regression_betas <- 
-  data.frame(beta_estimate = rnorm(n = 5, mean = .3, sd = .1)) %>%
-  mutate(beta_ci_lower = beta_estimate - 0.2,
-         beta_ci_upper = beta_estimate + 0.2) %>%
-  mutate(p = runif(n = 5, min = 0.000000001, max = 0.01))
-```
+<!-- dat_regression_betas <-  -->
+<!--   data.frame(beta_estimate = rnorm(n = 5, mean = .3, sd = .1)) %>% -->
+<!--   mutate(beta_ci_lower = beta_estimate - 0.2, -->
+<!--          beta_ci_upper = beta_estimate + 0.2) %>% -->
+<!--   mutate(p = runif(n = 5, min = 0.000000001, max = 0.01)) -->
+<!-- ``` -->
 
-```{r}
-library(dplyr)
-library(knitr)
-library(kableExtra)
-library(janitor)
+<!-- ```{r} -->
+<!-- library(dplyr) -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- library(janitor) -->
 
-dat_regression_betas_rounded <- dat_regression_betas %>%
-  mutate(across(
-    .cols = c(beta_estimate, beta_ci_lower, beta_ci_upper),
-    .fns = ~ round_half_up(.x, digits = 2)
-  ))
+<!-- dat_regression_betas_rounded <- dat_regression_betas %>% -->
+<!--   mutate(across( -->
+<!--     .cols = c(beta_estimate, beta_ci_lower, beta_ci_upper), -->
+<!--     .fns = ~ round_half_up(.x, digits = 2) -->
+<!--   )) -->
 
-dat_regression_betas_rounded %>%
-  kable() %>%
-  kable_classic(full_width = FALSE)
-```
+<!-- dat_regression_betas_rounded %>% -->
+<!--   kable() %>% -->
+<!--   kable_classic(full_width = FALSE) -->
+<!-- ``` -->
 
-```{r}
-dat_regression_betas_rounded <- dat_regression_betas %>%
-  mutate(across(
-    .cols = everything(),
-    .fns = ~ round_half_up(.x, digits = 2)
-  ))
+<!-- ```{r} -->
+<!-- dat_regression_betas_rounded <- dat_regression_betas %>% -->
+<!--   mutate(across( -->
+<!--     .cols = everything(), -->
+<!--     .fns = ~ round_half_up(.x, digits = 2) -->
+<!--   )) -->
 
-dat_regression_betas_rounded %>%
-  kable() %>%
-  kable_classic(full_width = FALSE)
-```
+<!-- dat_regression_betas_rounded %>% -->
+<!--   kable() %>% -->
+<!--   kable_classic(full_width = FALSE) -->
+<!-- ``` -->
 
-```{r}
-dat_regression_betas_rounded <- dat_regression_betas %>%
-  mutate(across(
-    .cols = starts_with("beta_"),
-    .fns = ~ round_half_up(.x, digits = 2)
-  ))
+<!-- ```{r} -->
+<!-- dat_regression_betas_rounded <- dat_regression_betas %>% -->
+<!--   mutate(across( -->
+<!--     .cols = starts_with("beta_"), -->
+<!--     .fns = ~ round_half_up(.x, digits = 2) -->
+<!--   )) -->
 
-dat_regression_betas_rounded %>%
-  kable() %>%
-  kable_classic(full_width = FALSE)
-```
+<!-- dat_regression_betas_rounded %>% -->
+<!--   kable() %>% -->
+<!--   kable_classic(full_width = FALSE) -->
+<!-- ``` -->
 
-### `rename(across())`
+<!-- ### `rename(across())` -->
 
-TODO use {truffle}
+<!-- TODO use {truffle} -->
 
-## Exercises
+<!-- ## Exercises -->
 
-TODO
+<!-- TODO -->
