@@ -9,6 +9,7 @@ Arrange (`arrange()`) and descending (`desc()`) allow you to change the order of
 # generate some messy demographics data with a larger N
 # devtools::install_github("ianhussey/truffle")
 library(truffle)
+library(dplyr)
 
 set.seed(42)
 
