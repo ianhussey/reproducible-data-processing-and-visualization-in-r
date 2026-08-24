@@ -1,0 +1,160 @@
+# Lesson plan {.unnumbered}
+
+If delivered as a semester-long course, we suggest the following lesson plan.
+
+### Week 1
+
+Before class:
+
+- [Chapter 1: Setup](chapters/01_setup.qmd)
+- [Chapter 2: Fundamentals](chapters/02_fundamentals.qmd)
+
+In class:
+
+- Discussion of course structure
+- Questions about setup, fundamentals
+- [Chapter 3: Reproducible reports](chapters/03_reproducible_reports.qmd)
+
+### Week 2
+
+Before class:
+
+- [Chapter 4: Loading, viewing and saving data](chapters/04_loading_data.qmd) 
+<!-- add parquet file content? -->
+- [Chapter 5: The pipe and renaming](chapters/05_the_pipe_and_renaming.qmd)
+
+In class:
+
+- Questions about reproducible reports
+- Questions about loading data
+- Questions about the pipe and renaming
+
+### Week 3
+
+Before class:
+
+- [Chapter 6: Data transformation I](chapters/06_data_transformation_1.qmd) 
+
+In class:
+
+- Questions about Data transformation I
+
+### Week 4
+
+Before class:
+
+- [Chapter 7: Data transformation II](chapters/07_data_transformation_2.qmd)
+
+In class:
+
+- Questions about Data transformation II
+
+### Week 5
+
+Before class:
+
+- [Chapter 8: Data transformation III](chapters/08_data_transformation_3.qmd)
+<!-- - [Chapter XX: Calculating sum scores](chapters/sum_scores.qmd) -->
+
+In class:
+
+- Questions about Data transformation III
+<!-- - Questions about calculating sum scores -->
+- Overview of assignment 1
+
+### Week 6
+
+Before class:
+
+- [Chapter 9: Structuring projects](chapters/09_structuring_projects.qmd)
+- [Chapter 10: Data types](chapters/10_strings_and_factors.qmd)
+
+In class:
+
+- Questions about structuring projects
+- Questions about strings and factors
+
+### Week 7
+
+Before class:
+
+- [Chapter 11: Reshaping and pivots](chapters/11_reshaping_and_pivots.qmd)
+
+In class:
+
+- Questions about reshaping and pivots
+
+### Week 8
+
+Before class:
+
+- [Chapter 12: Binding and joining](chapters/12_binding_and_joining.qmd)
+
+In class:
+
+- Questions about binding and joining
+
+### Week 9
+
+Before class:
+
+- [Chapter 13: Sharing and privacy](chapters/13_sharing_and_privacy.qmd)
+
+In class:
+
+- Questions about sharing and privacy
+- Lecture and exercise: Intro to github
+
+<!-- where to talk about diffs more explicitly? -->
+
+### Week 10
+
+Before class:
+
+- [Chapter 14: Visualization](chapters/14_visualization.qmd)
+
+In class:
+
+- Questions about Visualization
+- Overview of assignment 2
+
+### Week 11
+
+Before class:
+
+- [Chapter 15: Reporting](chapters/15_reporting.qmd)
+
+In class:
+
+- Questions about reporting
+- Overview of assignment 3
+
+<!-- style guides and linters? but practical, not nerdy. -->
+<!-- Using llms to write manuscripts and have reproducible results, where numbers reported in text are dynamic, and we produce PDFs rather than htmls? -->
+
+### Week 12
+
+Before class:
+
+- [Chapter 16: The linear model](chapters/16_the_linear_model.qmd)
+
+In class:
+
+- Questions about the linear model
+- Questions about the assignments
+
+### Week 13
+
+In class:
+
+- Either questions about previous topics, or room to allow a previous topic take an extra week if it needs more time.
+- Questions about the assignments
+
+### Week 14
+
+(floating empty week, given that there is often a holiday or conference etc that means we dont meet one week)
+
+In class:
+
+- Questions about the assignments
+
