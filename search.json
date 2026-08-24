@@ -60,6 +60,16 @@
     ]
   },
   {
+    "objectID": "lesson_plan.html",
+    "href": "lesson_plan.html",
+    "title": "Lesson plan",
+    "section": "",
+    "text": "If delivered as a semester-long course, we suggest the following lesson plan.\n\nWeek 1\nBefore class:\n\nChapter 1: Setup\nChapter 2: Fundamentals\n\nIn class:\n\nDiscussion of course structure\nQuestions about setup, fundamentals\nChapter 3: Reproducible reports\n\n\n\nWeek 2\nBefore class:\n\nChapter 4: Loading data\nChapter 5: The pipe and renaming\n\nIn class:\n\nQuestions about reproducible reports\nQuestions about loading data\nQuestions about the pipe and renaming\n\n\n\nWeek 3\nBefore class:\n\nChapter 6: Data transformation I\n\nIn class:\n\nQuestions about Data transformation I\n\n\n\nWeek 4\nBefore class:\n\nChapter 7: Data transformation II\n\nIn class:\n\nQuestions about Data transformation II\n\n\n\nWeek 5\nBefore class:\n\nChapter 8: Data transformation III \n\nIn class:\n\nQuestions about Data transformation III \nOverview of assignment 1\n\n\n\nWeek 6\nBefore class:\n\nChapter 9: Structuring projects\nChapter 10: Strings and factors\n\nIn class:\n\nQuestions about structuring projects\nQuestions about strings and factors\n\n\n\nWeek 7\nBefore class:\n\nChapter 11: Reshaping and pivots\n\nIn class:\n\nQuestions about reshaping and pivots\n\n\n\nWeek 8\nBefore class:\n\nChapter 12: Binding and joining\n\nIn class:\n\nQuestions about binding and joining\n\n\n\nWeek 9\nBefore class:\n\nChapter 13: Sharing and privacy\n\nIn class:\n\nQuestions about sharing and privacy\nLecture and exercise: Intro to github\n\n\n\n\nWeek 10\nBefore class:\n\nChapter 14: Visualization\n\nIn class:\n\nQuestions about Visualization\nOverview of assignment 2\n\n\n\nWeek 11\nBefore class:\n\nChapter 15: Reporting\n\nIn class:\n\nQuestions about reporting\nOverview of assignment 3\n\n\n\n\n\nWeek 12\nBefore class:\n\nChapter 16: The linear model\n\nIn class:\n\nQuestions about the linear model\nQuestions about the assignments\n\n\n\nWeek 13\nIn class:\n\nEither questions about previous topics, or room to allow a previous topic take an extra week if it needs more time.\nQuestions about the assignments\n\n\n\nWeek 14\n(floating empty week, given that there is often a holiday or conference etc that means we dont meet one week)\nIn class:\n\nQuestions about the assignments",
+    "crumbs": [
+      "Lesson plan"
+    ]
+  },
+  {
     "objectID": "chapters/01_setup.html",
     "href": "chapters/01_setup.html",
     "title": "1  Installation and setup",
