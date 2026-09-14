@@ -836,9 +836,10 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 <section id="insert-a-new-chunk-and-write-code-to-install-the-following-packages" class="level3" data-number="3.11.1">
 <h3 data-number="3.11.1" class="anchored" data-anchor-id="insert-a-new-chunk-and-write-code-to-install-the-following-packages"><span class="header-section-number">3.11.1</span> Insert a new chunk and write code to install the following packages</h3>
 <ul>
-<li>Insert a new code chunk at the top of this file, just below the YAML header (i.e., below the section that starts and ends with —).</li>
+<li>Insert a new code chunk at the top of this file.</li>
 <li>Use the <code>install.packages()</code> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names.</li>
 <li>Run this chunk to install these packages.</li>
+<li>Try to render the file. It should fail.</li>
 <li><code>install.packages()</code> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <code>#| eval: false</code> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click “Output&gt;Show nothing (don’t run code)”, which will insert in the chunk both <code>#| eval: false</code> (“don’t run the code”) and <code>#| include: false</code> (“don’t show the code in the .html”).</li>
 </ul>
 </section>
@@ -1607,38 +1608,39 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 <span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Insert a new chunk and write code to install the following packages</span></span>
 <span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert a new code chunk at the top of this file, just below the YAML header (i.e., below the section that starts and ends with ---).</span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert a new code chunk at the top of this file.</span>
 <span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`install.packages()`</span> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names.</span>
 <span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run this chunk to install these packages.</span>
-<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`install.packages()`</span> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <span class="in">`#| eval: false`</span> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output<span class="sc">\&gt;</span>Show nothing (don't run code)", which will insert in the chunk both <span class="in">`#| eval: false`</span> ("don't run the code") and <span class="in">`#| include: false`</span> ("don't show the code in the .html").</span>
-<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a><span class="fu">### Render the report</span></span>
-<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a>Click 'render' to create a reproducible report as a .html from this .qmd file.</span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add authorship</span></span>
-<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 3, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.</span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add date</span></span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 4: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
-<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inserting a new chunk below this heading</span></span>
-<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</span>
-<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
-<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
-<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the value of <span class="in">`y`</span> as output.</span>
-<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
-<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="al">![Fundamentals](02_fundamentals.qmd)</span>.</span>
-<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a><span class="fu">### Make the plot more colorful</span></span>
-<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Try to render the file. It should fail.</span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`install.packages()`</span> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <span class="in">`#| eval: false`</span> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output<span class="sc">\&gt;</span>Show nothing (don't run code)", which will insert in the chunk both <span class="in">`#| eval: false`</span> ("don't run the code") and <span class="in">`#| include: false`</span> ("don't show the code in the .html").</span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### Render the report</span></span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>Click 'render' to create a reproducible report as a .html from this .qmd file.</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add authorship</span></span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 3, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.</span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add date</span></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 4: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inserting a new chunk below this heading</span></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the value of <span class="in">`y`</span> as output.</span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="al">![Fundamentals](02_fundamentals.qmd)</span>.</span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Make the plot more colorful</span></span>
+<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
