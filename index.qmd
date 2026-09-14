@@ -6,7 +6,7 @@ This Open Source eBook provides materials for the semester-long Master's seminar
 
 This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.
 
-I suggest that you [download a .zip of the contents of this book's code and data from GitHub](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r) to run the code locally, complete the exercises, etc.
+To run the code locally, I suggest that you download a copy of this book's code and data from [the GitHub repository](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r). If you're already familiar with GitHub, just clone the repository to your local machine. If you're not, on the repository page, click the green 'Code' button, and then 'Download ZIP'. Find the .zip file on your hard drive (e.g., Downloads folder) and unzip/decompress the zip files. You'll find the .qmd files in the `chapters/`, `exercises/` and `solutions/` folders.
 
 You can also copy and paste the code for any chapter directly from the website. Click the "\</\> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.
 

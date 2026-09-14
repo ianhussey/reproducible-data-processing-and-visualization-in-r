@@ -11,7 +11,7 @@ Before class:
 
 In class:
 
-- Discussion of course structure
+- [Discussion of course structure](slides/slides_week_1.pdf)
 - Questions about setup, fundamentals
 - [Chapter 3: Reproducible reports](chapters/03_reproducible_reports.qmd)
 
