@@ -20,7 +20,6 @@ In class:
 Before class:
 
 - [Chapter 4: Loading, viewing and saving data](chapters/04_loading_data.qmd) 
-<!-- add parquet file content? -->
 - [Chapter 5: The pipe and renaming](chapters/05_the_pipe_and_renaming.qmd)
 
 In class:
@@ -60,7 +59,6 @@ In class:
 
 - Questions about Data transformation III
 <!-- - Questions about calculating sum scores -->
-- Overview of assignment 1
 
 ### Week 6
 
@@ -73,6 +71,7 @@ In class:
 
 - Questions about structuring projects
 - Questions about strings and factors
+- Overview of assignment 1 (wrangling)
 
 ### Week 7
 
@@ -103,34 +102,35 @@ Before class:
 In class:
 
 - Questions about sharing and privacy
-- Lecture and exercise: Intro to github
-
-<!-- where to talk about diffs more explicitly? -->
+- Lecture and exercise: Intro to GitHub, diffs
 
 ### Week 10
 
 Before class:
 
-- [Chapter 14: Visualization](chapters/14_visualization.qmd)
+- Dattani, S. (2025) Saloni's guide to data visualization. https://www.scientificdiscovery.dev/p/salonis-guide-to-data-visualization
+- Saloni's data visualizations while working at *Our World In Data*: https://ourworldindata.org/team/saloni-dattani
 
 In class:
 
-- Questions about Visualization
-- Overview of assignment 2
-
+- Lecture: Principles of visualization
+- In this course, this is often a guest lecture by Dr. Saloni Dattani.
+  - Founding editor of [Works in Progress](https://worksinprogress.co/our-authors/saloni-dattani/)
+  - See her TED talk [here](https://www.youtube.com/watch?v=6eYEi9tN6Og)
+  - Her podcast, [Hard Drugs](https://harddrugs.worksinprogress.co/), is a show about "medical innovation, how to speed it up, how to scale it up, and how to make sure lifesaving tools reach the people who need them the most". 
+  
 ### Week 11
 
 Before class:
 
+- [Chapter 14: Visualization](chapters/14_visualization.qmd)
 - [Chapter 15: Reporting](chapters/15_reporting.qmd)
 
 In class:
 
 - Questions about reporting
-- Overview of assignment 3
-
-<!-- style guides and linters? but practical, not nerdy. -->
-<!-- Using llms to write manuscripts and have reproducible results, where numbers reported in text are dynamic, and we produce PDFs rather than htmls? -->
+- Questions about ggplot2 for visualization
+- Overview of assignment 2 (plotting)
 
 ### Week 12
 
@@ -143,18 +143,7 @@ In class:
 - Questions about the linear model
 - Questions about the assignments
 
-### Week 13
+### Week 13 + 14
 
-In class:
-
-- Either questions about previous topics, or room to allow a previous topic take an extra week if it needs more time.
-- Questions about the assignments
-
-### Week 14
-
-(floating empty week, given that there is often a holiday or conference etc that means we dont meet one week)
-
-In class:
-
-- Questions about the assignments
+Oral examinations
 

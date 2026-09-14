@@ -1,4 +1,8 @@
-# Reporting
+# Reporting <span class="badge badge-draft3">✎ Small TODOs</span>
+
+## TODO
+
+add content on in-text results reporting and using LLMs to aid writing them. 
 
 ```{r}
 #| include: false

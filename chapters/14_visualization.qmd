@@ -14,7 +14,11 @@ dir.create("plots")
 
 This chapter covers the basics of {ggplot2}, the tidyverse plotting library, which is based on Hadley Wickam's [The Grammar of Graphics](https://vita.had.co.nz/papers/layered-grammar.html). 
 
-Wickham, Navarro, and Lin Pedersen have written an entire open source ebook about ggplot, the [ggplot2 book](https://ggplot2-book.org/), that is far more detailed than this chapter. I recommend you start with the [The Grammar](https://ggplot2-book.org/mastery.html) chapter.
+## Other resources
+
+- Wickham, Navarro, and Lin Pedersen have written an entire open source ebook about ggplot, the [ggplot2 book](https://ggplot2-book.org/), that is far more detailed than this chapter. I recommend you start with the [The Grammar](https://ggplot2-book.org/mastery.html) chapter.
+- Franconeri et al. (2021) The Science of Visual Data Communication: What Works. doi: [10.1177/15291006211051956](https://doi.org/10.1177/15291006211051956)
+- Allen et al. (2021) Raincloud plots: a multi-platform tool for robust data visualization. doi: [10.12688/wellcomeopenres.15191.2](https://doi.org/10.12688/wellcomeopenres.15191.2)
 
 ## Why plot data?
 

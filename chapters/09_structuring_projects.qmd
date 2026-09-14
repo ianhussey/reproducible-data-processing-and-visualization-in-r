@@ -108,22 +108,4 @@ psych-DS principles
 -   Different versions of the data should be kept separate
 -   All transformations should be documented
 
-## Sharing code and data, making preregistrations
 
-### GitHub
-
-https://ui-research.github.io/reproducibility-at-urban/git-overview.html
-
-https://intro2r.com/github_r.html
-
-Pablo Mosteiro & Hanne Oberman's open source course materials [Markup Languages and Reproducible Programming in Statistics](https://mlarpis.github.io/)
-
-https://bes-guide.github.io/reproducible-code/version-control.html
-
-## OSF
-
-Linking github repo to OSF
-
-## Licensing
-
-TODO
