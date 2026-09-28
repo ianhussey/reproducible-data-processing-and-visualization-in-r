@@ -11,3 +11,4 @@ old/data_transformation_old.qmd
 _book/*
 
 **/*.quarto_ipynb
+*_in_class_solutions.qmd
