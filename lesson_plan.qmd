@@ -11,6 +11,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_1_in_class.qmd) -->
 - [Discussion of course structure](slides/slides_week_1.pdf)
 - Questions about setup, fundamentals
 - [Chapter 3: Reproducible reports](chapters/03_reproducible_reports.qmd)
@@ -24,6 +25,7 @@ Before class:
 
 In class:
 
+- [In-class exercises](exercises/week_2_in_class.qmd)
 - Questions about reproducible reports
 - Questions about loading data
 - Questions about the pipe and renaming
@@ -36,6 +38,7 @@ Before class:
 
 In class:
 
+- [In-class exercises](exercises/week_3_in_class.qmd)
 - Questions about Data transformation I
 
 ### Week 4
@@ -46,6 +49,7 @@ Before class:
 
 In class:
 
+- [In-class exercises](exercises/week_4_in_class.qmd)
 - Questions about Data transformation II
 
 ### Week 5
@@ -53,12 +57,11 @@ In class:
 Before class:
 
 - [Chapter 8: Data transformation III](chapters/08_data_transformation_3.qmd)
-<!-- - [Chapter XX: Calculating sum scores](chapters/sum_scores.qmd) -->
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_5_in_class.qmd) -->
 - Questions about Data transformation III
-<!-- - Questions about calculating sum scores -->
 
 ### Week 6
 
@@ -69,6 +72,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_6_in_class.qmd) -->
 - Questions about structuring projects
 - Questions about strings and factors
 - Overview of assignment 1 (wrangling)
@@ -81,6 +85,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_7_in_class.qmd) -->
 - Questions about reshaping and pivots
 
 ### Week 8
@@ -91,6 +96,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_8_in_class.qmd) -->
 - Questions about binding and joining
 
 ### Week 9
@@ -101,6 +107,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_9_in_class.qmd) -->
 - Questions about sharing and privacy
 - Lecture and exercise: Intro to GitHub, diffs
 
@@ -113,6 +120,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_10_in_class.qmd) -->
 - Lecture: Principles of visualization
 - In this course, this is often a guest lecture by Dr. Saloni Dattani.
   - Founding editor of [Works in Progress](https://worksinprogress.co/our-authors/saloni-dattani/)
@@ -128,6 +136,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_11_in_class.qmd) -->
 - Questions about reporting
 - Questions about ggplot2 for visualization
 - Overview of assignment 2 (plotting)
@@ -140,6 +149,7 @@ Before class:
 
 In class:
 
+<!-- - [In-class exercises](exercises/week_12_in_class.qmd) -->
 - Questions about the linear model
 - Questions about the assignments
 
