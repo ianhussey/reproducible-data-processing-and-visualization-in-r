@@ -492,48 +492,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#slice_-functions" id="toc-slice_-functions" class="nav-link" data-scroll-target="#slice_-functions"><span class="header-section-number">7.2.1</span> <code>slice_()</code> functions</a></li>
   <li><a href="#drop_na" id="toc-drop_na" class="nav-link" data-scroll-target="#drop_na"><span class="header-section-number">7.2.2</span> <code>drop_na()</code></a></li>
   </ul></li>
-  <li><a href="#missing-data-codes-na_if" id="toc-missing-data-codes-na_if" class="nav-link" data-scroll-target="#missing-data-codes-na_if"><span class="header-section-number">7.3</span> Missing data codes: <code>na_if()</code></a></li>
-  <li><a href="#the-reverse-replace_na" id="toc-the-reverse-replace_na" class="nav-link" data-scroll-target="#the-reverse-replace_na"><span class="header-section-number">7.4</span> The reverse: <code>replace_na()</code></a>
+  <li><a href="#missing-data-codes-na_if" id="toc-missing-data-codes-na_if" class="nav-link" data-scroll-target="#missing-data-codes-na_if"><span class="header-section-number">7.3</span> Missing data codes: <code>na_if()</code></a>
   <ul class="collapse">
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">7.4.1</span> Exercise</a></li>
+  <li><a href="#the-reverse-replace_na" id="toc-the-reverse-replace_na" class="nav-link" data-scroll-target="#the-reverse-replace_na"><span class="header-section-number">7.3.1</span> The reverse: <code>replace_na()</code></a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">7.3.2</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#modifying-multiple-columns-at-once-with-across" id="toc-modifying-multiple-columns-at-once-with-across" class="nav-link" data-scroll-target="#modifying-multiple-columns-at-once-with-across"><span class="header-section-number">7.5</span> Modifying multiple columns at once with <code>across()</code></a>
+  <li><a href="#modifying-multiple-columns-at-once-with-across" id="toc-modifying-multiple-columns-at-once-with-across" class="nav-link" data-scroll-target="#modifying-multiple-columns-at-once-with-across"><span class="header-section-number">7.4</span> Modifying multiple columns at once with <code>across()</code></a>
   <ul class="collapse">
-  <li><a href="#selecting-columns-with-across" id="toc-selecting-columns-with-across" class="nav-link" data-scroll-target="#selecting-columns-with-across"><span class="header-section-number">7.5.1</span> Selecting columns with <code>across()</code></a></li>
-  <li><a href="#creating-new-columns-with-.names" id="toc-creating-new-columns-with-.names" class="nav-link" data-scroll-target="#creating-new-columns-with-.names"><span class="header-section-number">7.5.2</span> Creating new columns with <code>.names</code></a></li>
-  <li><a href="#checking-for-impossible-values-with-if_any-and-if_all" id="toc-checking-for-impossible-values-with-if_any-and-if_all" class="nav-link" data-scroll-target="#checking-for-impossible-values-with-if_any-and-if_all"><span class="header-section-number">7.5.3</span> Checking for impossible values with <code>if_any()</code> and <code>if_all()</code></a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">7.5.4</span> Exercise</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4"><span class="header-section-number">7.5.5</span> Exercise</a></li>
+  <li><a href="#selecting-columns-with-across" id="toc-selecting-columns-with-across" class="nav-link" data-scroll-target="#selecting-columns-with-across"><span class="header-section-number">7.4.1</span> Selecting columns with <code>across()</code></a></li>
+  <li><a href="#creating-new-columns-with-.names" id="toc-creating-new-columns-with-.names" class="nav-link" data-scroll-target="#creating-new-columns-with-.names"><span class="header-section-number">7.4.2</span> Creating new columns with <code>.names</code></a></li>
+  <li><a href="#checking-for-impossible-values-with-if_any-and-if_all" id="toc-checking-for-impossible-values-with-if_any-and-if_all" class="nav-link" data-scroll-target="#checking-for-impossible-values-with-if_any-and-if_all"><span class="header-section-number">7.4.3</span> Checking for impossible values with <code>if_any()</code> and <code>if_all()</code></a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">7.4.4</span> Exercise</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4"><span class="header-section-number">7.4.5</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#calculating-scores-across-columns-rowmeans-rowsums-and-pick" id="toc-calculating-scores-across-columns-rowmeans-rowsums-and-pick" class="nav-link" data-scroll-target="#calculating-scores-across-columns-rowmeans-rowsums-and-pick"><span class="header-section-number">7.6</span> Calculating scores across columns: <code>rowMeans()</code>, <code>rowSums()</code>, and <code>pick()</code></a>
+  <li><a href="#calculating-scores-across-columns-rowmeans-rowsums-and-pick" id="toc-calculating-scores-across-columns-rowmeans-rowsums-and-pick" class="nav-link" data-scroll-target="#calculating-scores-across-columns-rowmeans-rowsums-and-pick"><span class="header-section-number">7.5</span> Calculating scores across columns: <code>rowMeans()</code>, <code>rowSums()</code>, and <code>pick()</code></a>
   <ul class="collapse">
-  <li><a href="#missing-data-in-scores" id="toc-missing-data-in-scores" class="nav-link" data-scroll-target="#missing-data-in-scores"><span class="header-section-number">7.6.1</span> Missing data in scores</a></li>
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5"><span class="header-section-number">7.6.2</span> Exercise</a></li>
+  <li><a href="#missing-data-in-scores" id="toc-missing-data-in-scores" class="nav-link" data-scroll-target="#missing-data-in-scores"><span class="header-section-number">7.5.1</span> Missing data in scores</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5"><span class="header-section-number">7.5.2</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#using-values-from-other-rows-lag-and-lead" id="toc-using-values-from-other-rows-lag-and-lead" class="nav-link" data-scroll-target="#using-values-from-other-rows-lag-and-lead"><span class="header-section-number">7.7</span> Using values from other rows: <code>lag()</code> and <code>lead()</code></a>
+  <li><a href="#using-values-from-other-rows-lag-and-lead" id="toc-using-values-from-other-rows-lag-and-lead" class="nav-link" data-scroll-target="#using-values-from-other-rows-lag-and-lead"><span class="header-section-number">7.6</span> Using values from other rows: <code>lag()</code> and <code>lead()</code></a>
   <ul class="collapse">
-  <li><a href="#row-order-matters" id="toc-row-order-matters" class="nav-link" data-scroll-target="#row-order-matters"><span class="header-section-number">7.7.1</span> Row order matters</a></li>
-  <li><a href="#watch-out-when-there-are-multiple-participants" id="toc-watch-out-when-there-are-multiple-participants" class="nav-link" data-scroll-target="#watch-out-when-there-are-multiple-participants"><span class="header-section-number">7.7.2</span> Watch out when there are multiple participants</a></li>
-  <li><a href="#running-counts-row_number-and-cumsum" id="toc-running-counts-row_number-and-cumsum" class="nav-link" data-scroll-target="#running-counts-row_number-and-cumsum"><span class="header-section-number">7.7.3</span> Running counts: <code>row_number()</code> and <code>cumsum()</code></a></li>
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6"><span class="header-section-number">7.7.4</span> Exercise</a></li>
+  <li><a href="#row-order-matters" id="toc-row-order-matters" class="nav-link" data-scroll-target="#row-order-matters"><span class="header-section-number">7.6.1</span> Row order matters</a></li>
+  <li><a href="#watch-out-when-there-are-multiple-participants" id="toc-watch-out-when-there-are-multiple-participants" class="nav-link" data-scroll-target="#watch-out-when-there-are-multiple-participants"><span class="header-section-number">7.6.2</span> Watch out when there are multiple participants</a></li>
+  <li><a href="#running-counts-row_number-and-cumsum" id="toc-running-counts-row_number-and-cumsum" class="nav-link" data-scroll-target="#running-counts-row_number-and-cumsum"><span class="header-section-number">7.6.3</span> Running counts: <code>row_number()</code> and <code>cumsum()</code></a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6"><span class="header-section-number">7.6.4</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#filling-in-empty-cells-with-fill" id="toc-filling-in-empty-cells-with-fill" class="nav-link" data-scroll-target="#filling-in-empty-cells-with-fill"><span class="header-section-number">7.8</span> Filling in empty cells with <code>fill()</code></a>
+  <li><a href="#filling-in-empty-cells-with-fill" id="toc-filling-in-empty-cells-with-fill" class="nav-link" data-scroll-target="#filling-in-empty-cells-with-fill"><span class="header-section-number">7.7</span> Filling in empty cells with <code>fill()</code></a>
   <ul class="collapse">
-  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7"><span class="header-section-number">7.8.1</span> Exercise</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7"><span class="header-section-number">7.7.1</span> Exercise</a></li>
   </ul></li>
-  <li><a href="#separating-one-column-into-several-or-coalescing-several-columns-into-one" id="toc-separating-one-column-into-several-or-coalescing-several-columns-into-one" class="nav-link" data-scroll-target="#separating-one-column-into-several-or-coalescing-several-columns-into-one"><span class="header-section-number">7.9</span> Separating one column into several or coalescing several columns into one</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.10</span> Exercises</a>
+  <li><a href="#separating-one-column-into-several-or-coalescing-several-columns-into-one" id="toc-separating-one-column-into-several-or-coalescing-several-columns-into-one" class="nav-link" data-scroll-target="#separating-one-column-into-several-or-coalescing-several-columns-into-one"><span class="header-section-number">7.8</span> Separating one column into several or coalescing several columns into one</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.9</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#arrange-and-missing-values" id="toc-arrange-and-missing-values" class="nav-link" data-scroll-target="#arrange-and-missing-values"><span class="header-section-number">7.10.1</span> <code>arrange()</code> and missing values</a></li>
-  <li><a href="#slice_max-and-ties" id="toc-slice_max-and-ties" class="nav-link" data-scroll-target="#slice_max-and-ties"><span class="header-section-number">7.10.2</span> <code>slice_max()</code> and ties</a></li>
-  <li><a href="#drop_na-1" id="toc-drop_na-1" class="nav-link" data-scroll-target="#drop_na-1"><span class="header-section-number">7.10.3</span> <code>drop_na()</code></a></li>
-  <li><a href="#missing-data-codes" id="toc-missing-data-codes" class="nav-link" data-scroll-target="#missing-data-codes"><span class="header-section-number">7.10.4</span> Missing data codes</a></li>
-  <li><a href="#across" id="toc-across" class="nav-link" data-scroll-target="#across"><span class="header-section-number">7.10.5</span> <code>across()</code></a></li>
-  <li><a href="#scores-across-columns" id="toc-scores-across-columns" class="nav-link" data-scroll-target="#scores-across-columns"><span class="header-section-number">7.10.6</span> Scores across columns</a></li>
-  <li><a href="#lag-and-lead" id="toc-lag-and-lead" class="nav-link" data-scroll-target="#lag-and-lead"><span class="header-section-number">7.10.7</span> <code>lag()</code> and <code>lead()</code></a></li>
-  <li><a href="#fill" id="toc-fill" class="nav-link" data-scroll-target="#fill"><span class="header-section-number">7.10.8</span> <code>fill()</code></a></li>
-  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">7.10.9</span> Interactive exercises</a></li>
-  <li><a href="#practice-data-transformation-using-multiple-functions" id="toc-practice-data-transformation-using-multiple-functions" class="nav-link" data-scroll-target="#practice-data-transformation-using-multiple-functions"><span class="header-section-number">7.10.10</span> Practice data transformation using multiple functions</a></li>
+  <li><a href="#arrange-and-missing-values" id="toc-arrange-and-missing-values" class="nav-link" data-scroll-target="#arrange-and-missing-values"><span class="header-section-number">7.9.1</span> <code>arrange()</code> and missing values</a></li>
+  <li><a href="#slice_max-and-ties" id="toc-slice_max-and-ties" class="nav-link" data-scroll-target="#slice_max-and-ties"><span class="header-section-number">7.9.2</span> <code>slice_max()</code> and ties</a></li>
+  <li><a href="#drop_na-1" id="toc-drop_na-1" class="nav-link" data-scroll-target="#drop_na-1"><span class="header-section-number">7.9.3</span> <code>drop_na()</code></a></li>
+  <li><a href="#missing-data-codes" id="toc-missing-data-codes" class="nav-link" data-scroll-target="#missing-data-codes"><span class="header-section-number">7.9.4</span> Missing data codes</a></li>
+  <li><a href="#across" id="toc-across" class="nav-link" data-scroll-target="#across"><span class="header-section-number">7.9.5</span> <code>across()</code></a></li>
+  <li><a href="#scores-across-columns" id="toc-scores-across-columns" class="nav-link" data-scroll-target="#scores-across-columns"><span class="header-section-number">7.9.6</span> Scores across columns</a></li>
+  <li><a href="#lag-and-lead" id="toc-lag-and-lead" class="nav-link" data-scroll-target="#lag-and-lead"><span class="header-section-number">7.9.7</span> <code>lag()</code> and <code>lead()</code></a></li>
+  <li><a href="#fill" id="toc-fill" class="nav-link" data-scroll-target="#fill"><span class="header-section-number">7.9.8</span> <code>fill()</code></a></li>
+  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">7.9.9</span> Interactive exercises</a></li>
+  <li><a href="#practice-data-transformation-using-multiple-functions" id="toc-practice-data-transformation-using-multiple-functions" class="nav-link" data-scroll-target="#practice-data-transformation-using-multiple-functions"><span class="header-section-number">7.9.10</span> Practice data transformation using multiple functions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1560,9 +1560,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section>
-<section id="the-reverse-replace_na" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="the-reverse-replace_na"><span class="header-section-number">7.4</span> The reverse: <code>replace_na()</code></h2>
+<section id="the-reverse-replace_na" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-reverse-replace_na"><span class="header-section-number">7.3.1</span> The reverse: <code>replace_na()</code></h3>
 <p>Occasionally you need to go the other direction, and replace <code>NA</code> with a value. {tidyr}’s <code>replace_na()</code> does this. However, it should be used with care: <code>NA</code> means “we don’t know”, and replacing it with a value is a claim that you do know.</p>
 <p>A legitimate example is where a question was skipped because of the answer to a previous question. For example, participants who answered “no” to “Do you smoke?” were never shown the question “How many cigarettes do you smoke per day?”, so their missing answer really means 0.</p>
 <div class="cell">
@@ -1632,8 +1631,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Notice participant 4. They smoke but did not answer the question. <code>replace_na()</code> blindly set them to 0, which is wrong: they are a smoker with a genuinely missing answer. The <code>if_else()</code> version only sets non-smokers to 0, and leaves participant 4 as <code>NA</code>. Being specific about <em>why</em> a value should be replaced usually leads to code that is more correct.</p>
-<section id="exercise-2" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">7.4.1</span> Exercise</h3>
+</section>
+<section id="exercise-2" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">7.3.2</span> Exercise</h3>
 <p>Write code that takes ‘dat_survey’ and converts the <code>-99</code> values to <code>NA</code> in the ‘age’ column and in the ‘anx_3’ column, using <code>na_if()</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1752,8 +1752,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="modifying-multiple-columns-at-once-with-across" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="modifying-multiple-columns-at-once-with-across"><span class="header-section-number">7.5</span> Modifying multiple columns at once with <code>across()</code></h2>
+<section id="modifying-multiple-columns-at-once-with-across" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="modifying-multiple-columns-at-once-with-across"><span class="header-section-number">7.4</span> Modifying multiple columns at once with <code>across()</code></h2>
 <p>Very often we want to do the same thing to many columns. Writing out a separate line for each column is tedious and error-prone: it is easy to copy-paste a line and forget to change one of the column names.</p>
 <p><code>across()</code> lets you apply a function to many columns in a single <code>mutate()</code>. It has two main arguments:</p>
 <ul>
@@ -1863,8 +1863,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The syntax <code>~ na_if(.x, -99)</code> probably looks strange. The <code>~</code> (tilde) means “here is a function I am writing on the fly”. <code>.x</code> is a placeholder that stands for “the current column”. So <code>across()</code> takes each of the selected columns in turn and runs <code>na_if(anx_1, -99)</code>, then <code>na_if(anx_2, -99)</code>, and so on.</p>
 <p>You will also see this written as <code>\(x) na_if(x, -99)</code> in newer code. This does exactly the same thing. We’ll use the <code>~ .x</code> style throughout this book.</p>
 <p>If the function doesn’t need any extra arguments, you can pass just its name without <code>~</code> or <code>.x</code>, e.g., <code>mutate(across(starts_with("anx_"), as.numeric))</code> converts all the anxiety item columns to numeric.</p>
-<section id="selecting-columns-with-across" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="selecting-columns-with-across"><span class="header-section-number">7.5.1</span> Selecting columns with <code>across()</code></h3>
+<section id="selecting-columns-with-across" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="selecting-columns-with-across"><span class="header-section-number">7.4.1</span> Selecting columns with <code>across()</code></h3>
 <p>Because <code>.cols</code> uses the same syntax as <code>select()</code>, you have the same options, and the same risks. For example, we could convert <code>-99</code> to <code>NA</code> in all numeric columns using <code>where(is.numeric)</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dat_survey_na <span class="ot">&lt;-</span> dat_survey <span class="sc">%&gt;%</span></span>
@@ -1969,8 +1969,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This also dealt with the <code>-99</code> in the ‘age’ column. It also applied <code>na_if()</code> to the ‘id’ column. That happens to be harmless here, as no one has the id -99, but it’s a good example of how broad selections like <code>where(is.numeric)</code> or <code>everything()</code> can affect columns you didn’t intend. As with <code>select()</code>, it’s usually safer to specify the columns you <em>do</em> want.</p>
 </section>
-<section id="creating-new-columns-with-.names" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="creating-new-columns-with-.names"><span class="header-section-number">7.5.2</span> Creating new columns with <code>.names</code></h3>
+<section id="creating-new-columns-with-.names" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="creating-new-columns-with-.names"><span class="header-section-number">7.4.2</span> Creating new columns with <code>.names</code></h3>
 <p>By default, <code>across()</code> overwrites the columns it modifies. Sometimes you want to keep the originals and create new columns instead. You can do this with the <code>.names</code> argument, where <code>{.col}</code> stands for the original column name.</p>
 <p>A very common use case is reverse scoring. Items 2 and 4 of the anxiety scale are reverse-keyed. On a 1-5 scale, a reverse-scored response is <code>6 - response</code> (1 becomes 5, 2 becomes 4, etc.).</p>
 <div class="cell">
@@ -2057,8 +2057,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Keeping both the original and the reverse-scored columns, with clear names, makes it much easier to check that the reverse scoring was done correctly. It also avoids a common and serious error: if you overwrite ‘anx_2’ with its reversed scores and then accidentally run the code a second time, it will be reversed back again, and nothing in the column name will tell you.</p>
 </section>
-<section id="checking-for-impossible-values-with-if_any-and-if_all" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="checking-for-impossible-values-with-if_any-and-if_all"><span class="header-section-number">7.5.3</span> Checking for impossible values with <code>if_any()</code> and <code>if_all()</code></h3>
+<section id="checking-for-impossible-values-with-if_any-and-if_all" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="checking-for-impossible-values-with-if_any-and-if_all"><span class="header-section-number">7.4.3</span> Checking for impossible values with <code>if_any()</code> and <code>if_all()</code></h3>
 <p><code>across()</code> has two siblings that are useful for logical tests across many columns:</p>
 <ul>
 <li><code>if_any()</code> : is the test TRUE in <em>any</em> of the columns?</li>
@@ -2146,8 +2146,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>These are also very useful inside <code>filter()</code>, e.g., <code>filter(if_all(starts_with("anx_"), ~ .x &gt;= 1 &amp; .x &lt;= 5))</code> keeps only participants whose responses are all within the possible range of the scale.</p>
 </section>
-<section id="exercise-3" class="level3" data-number="7.5.4">
-<h3 data-number="7.5.4" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">7.5.4</span> Exercise</h3>
+<section id="exercise-3" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">7.4.4</span> Exercise</h3>
 <p>Using ‘dat_survey’, write code that:</p>
 <ul>
 <li>Converts <code>-99</code> to <code>NA</code> in the ‘age’ column and all of the item columns, but not the ‘id’ column, using a single <code>across()</code> call.</li>
@@ -2295,8 +2295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exercise-4" class="level3" data-number="7.5.5">
-<h3 data-number="7.5.5" class="anchored" data-anchor-id="exercise-4"><span class="header-section-number">7.5.5</span> Exercise</h3>
+<section id="exercise-4" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="exercise-4"><span class="header-section-number">7.4.5</span> Exercise</h3>
 <p>What will this code do? Predict first, then run it to check.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dat_survey <span class="sc">%&gt;%</span></span>
@@ -2334,8 +2334,8 @@ Caused by error in `na_if()`:
 </div>
 </section>
 </section>
-<section id="calculating-scores-across-columns-rowmeans-rowsums-and-pick" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="calculating-scores-across-columns-rowmeans-rowsums-and-pick"><span class="header-section-number">7.6</span> Calculating scores across columns: <code>rowMeans()</code>, <code>rowSums()</code>, and <code>pick()</code></h2>
+<section id="calculating-scores-across-columns-rowmeans-rowsums-and-pick" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="calculating-scores-across-columns-rowmeans-rowsums-and-pick"><span class="header-section-number">7.5</span> Calculating scores across columns: <code>rowMeans()</code>, <code>rowSums()</code>, and <code>pick()</code></h2>
 <p>Psychology data very often requires calculating a score for each participant from several item columns, e.g., the mean or sum of the items of a scale. This is calculated <em>within each row, across columns</em>.</p>
 <p>You might expect this to work:</p>
 <div class="cell">
@@ -2547,8 +2547,8 @@ Caused by error in `na_if()`:
 </div>
 <p>Note that the anxiety scores must be calculated from the reverse-scored items. <code>pick(starts_with("anx_"))</code> would have included both the original <em>and</em> the reversed versions of items 2 and 4, producing scores that are silently wrong. Always check which columns your selection actually picks up, e.g., with <code>select(starts_with("anx_")) %&gt;% colnames()</code>.</p>
 <p>You may also come across <code>rowwise()</code> combined with <code>c_across()</code>, as used in the <a href="../chapters/03_reproducible_reports.html">Reproducible reports</a> chapter. This produces the same result but is much slower on large data sets, so we’ll use <code>rowSums()</code> and <code>rowMeans()</code>.</p>
-<section id="missing-data-in-scores" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="missing-data-in-scores"><span class="header-section-number">7.6.1</span> Missing data in scores</h3>
+<section id="missing-data-in-scores" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="missing-data-in-scores"><span class="header-section-number">7.5.1</span> Missing data in scores</h3>
 <p>By default, <code>rowSums()</code> and <code>rowMeans()</code> return <code>NA</code> if any of the values are <code>NA</code>, which is usually the safest behavior. Like <code>sum()</code> and <code>mean()</code>, they have an argument <code>na.rm = TRUE</code> that removes the missing values first. But be careful, especially with sum scores:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dat_survey_reversed <span class="sc">%&gt;%</span></span>
@@ -2630,8 +2630,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 <p>Participant 2’s sum score with <code>na.rm = TRUE</code> is the sum of only three items, so it is not comparable to everyone else’s sum of four items. It is effectively treating the missing response as a 0, which is not even a possible response on a 1-5 scale. Their mean score is calculated from three items, which is at least on the same scale as everyone else’s.</p>
-<section id="quantifying-missingness-for-each-participant" class="level4" data-number="7.6.1.1">
-<h4 data-number="7.6.1.1" class="anchored" data-anchor-id="quantifying-missingness-for-each-participant"><span class="header-section-number">7.6.1.1</span> Quantifying missingness for each participant</h4>
+<section id="quantifying-missingness-for-each-participant" class="level4" data-number="7.5.1.1">
+<h4 data-number="7.5.1.1" class="anchored" data-anchor-id="quantifying-missingness-for-each-participant"><span class="header-section-number">7.5.1.1</span> Quantifying missingness for each participant</h4>
 <p>To make an informed decision about how to handle missing data, you first need to know how much of it there is for each participant. <code>is.na()</code> returns TRUE/FALSE for each value. When used with <code>pick()</code>, it does this for every cell of the picked columns. Because TRUE counts as 1 and FALSE as 0, <code>rowSums()</code> of this gives the <em>number</em> of missing items for each participant, and <code>rowMeans()</code> gives the <em>proportion</em> of missing items:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dat_survey_missingness <span class="ot">&lt;-</span> dat_survey_reversed <span class="sc">%&gt;%</span></span>
@@ -2712,8 +2712,8 @@ Caused by error in `na_if()`:
 </div>
 <p>Notice that the depression items are listed by name here, rather than with <code>pick(starts_with("dep_"))</code>. Within a single <code>mutate()</code>, each new column is available to the lines below it. Once ‘dep_n_missing’ has been created, <code>starts_with("dep_")</code> would pick it up too, and the proportion on the next line would be calculated from four columns rather than three, without any error or warning. Naming new columns so that they don’t match your item selections (e.g., ‘n_missing_dep’ rather than ‘dep_n_missing’), or listing the item columns explicitly, avoids this.</p>
 </section>
-<section id="quantifying-missingness-with-naniar" class="level4" data-number="7.6.1.2">
-<h4 data-number="7.6.1.2" class="anchored" data-anchor-id="quantifying-missingness-with-naniar"><span class="header-section-number">7.6.1.2</span> Quantifying missingness with {naniar}</h4>
+<section id="quantifying-missingness-with-naniar" class="level4" data-number="7.5.1.2">
+<h4 data-number="7.5.1.2" class="anchored" data-anchor-id="quantifying-missingness-with-naniar"><span class="header-section-number">7.5.1.2</span> Quantifying missingness with {naniar}</h4>
 <p>Because exploring missing data is such a common task, there are packages designed specifically for it. {naniar} provides functions to quantify and visualize missingness. Many of them are wrappers for the logic above, e.g., <code>add_n_miss()</code> and <code>add_prop_miss()</code> add columns containing the number and proportion of missing values in each row:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
@@ -2888,8 +2888,8 @@ Caused by error in `na_if()`:
 </div>
 <p>In a real data set with hundreds of participants, this can quickly reveal patterns, e.g., if missingness is concentrated in one scale, one item, or a subset of participants who dropped out partway through the study.</p>
 </section>
-<section id="deciding-how-to-handle-missing-data" class="level4" data-number="7.6.1.3">
-<h4 data-number="7.6.1.3" class="anchored" data-anchor-id="deciding-how-to-handle-missing-data"><span class="header-section-number">7.6.1.3</span> Deciding how to handle missing data</h4>
+<section id="deciding-how-to-handle-missing-data" class="level4" data-number="7.5.1.3">
+<h4 data-number="7.5.1.3" class="anchored" data-anchor-id="deciding-how-to-handle-missing-data"><span class="header-section-number">7.5.1.3</span> Deciding how to handle missing data</h4>
 <p>A common rule, which should ideally be stated in your preregistration, is to calculate a participant’s score only if they have <em>no</em> missing data. This is what <code>rowSums()</code> and <code>rowMeans()</code> do by default, but it can be useful to make the rule explicit in your code:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dat_survey_missingness <span class="sc">%&gt;%</span></span>
@@ -3010,8 +3010,8 @@ Caused by error in `na_if()`:
 <p><strong>Requiring responses to every item.</strong> Many survey platforms let you make every item mandatory, so that there is no item-level missing data to deal with in the first place. This makes processing simpler, but has downsides: participants who don’t want to answer an item may give a random or false response instead, or quit the study entirely, which just moves the missing data from the item level to the participant level, where it’s harder to deal with. Ethics committees may also require that participants be allowed to skip questions they don’t want to answer. A common compromise is to require a response but include a “prefer not to answer” option, which of course then needs to be converted to <code>NA</code> during processing.</p>
 <p>Whichever approach you choose, decide on it before seeing the data, state it in your preregistration, and implement it explicitly in your code.</p>
 </section>
-<section id="doing-it-all-at-once-with-a-wrapper-snuffle_sum_scores" class="level4" data-number="7.6.1.4">
-<h4 data-number="7.6.1.4" class="anchored" data-anchor-id="doing-it-all-at-once-with-a-wrapper-snuffle_sum_scores"><span class="header-section-number">7.6.1.4</span> Doing it all at once with a wrapper: <code>snuffle_sum_scores()</code></h4>
+<section id="doing-it-all-at-once-with-a-wrapper-snuffle_sum_scores" class="level4" data-number="7.5.1.4">
+<h4 data-number="7.5.1.4" class="anchored" data-anchor-id="doing-it-all-at-once-with-a-wrapper-snuffle_sum_scores"><span class="header-section-number">7.5.1.4</span> Doing it all at once with a wrapper: <code>snuffle_sum_scores()</code></h4>
 <p>Everything in this section, i.e., setting impossible values to <code>NA</code>, reverse scoring, counting missing items, and calculating (optionally imputed) sum scores, is so commonly needed that the {truffle} package provides a wrapper function that does all of it: <code>snuffle_sum_scores()</code>.</p>
 <p>Note that it is applied to the raw ‘dat_survey’ data: the <code>-99</code> codes are outside the 1-5 range of the scale (<code>min</code> and <code>max</code>), so they are treated as impossible values and set to <code>NA</code>.</p>
 <div class="cell">
@@ -3139,8 +3139,8 @@ Caused by error in `na_if()`:
 <p>Two things to note. First, <code>impute = TRUE</code> imputes sum scores for participants missing <em>any</em> number of items, so you would still need to apply your own rule about how many missing items are acceptable, e.g., using ‘anx_nonmissing_n’. Second, it overwrites the reverse-keyed item columns with their reversed scores, which, as discussed above, makes it harder to check that reversing was done correctly. As with any wrapper, it’s worth understanding the logic it implements, which you now do, so that you can check that it does what you need.</p>
 </section>
 </section>
-<section id="exercise-5" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="exercise-5"><span class="header-section-number">7.6.2</span> Exercise</h3>
+<section id="exercise-5" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="exercise-5"><span class="header-section-number">7.5.2</span> Exercise</h3>
 <p>Using ‘dat_survey_na’ (where the <code>-99</code>s have already been converted to <code>NA</code>), write code that:</p>
 <ul>
 <li>Calculates each participant’s mean depression score, using only the items they responded to.</li>
@@ -3225,8 +3225,8 @@ Caused by error in `na_if()`:
 </div>
 </section>
 </section>
-<section id="using-values-from-other-rows-lag-and-lead" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="using-values-from-other-rows-lag-and-lead"><span class="header-section-number">7.7</span> Using values from other rows: <code>lag()</code> and <code>lead()</code></h2>
+<section id="using-values-from-other-rows-lag-and-lead" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="using-values-from-other-rows-lag-and-lead"><span class="header-section-number">7.6</span> Using values from other rows: <code>lag()</code> and <code>lead()</code></h2>
 <p>So far, every <code>mutate()</code> has calculated a value using other values in the <em>same row</em>. Sometimes we need values from <em>other rows</em>. This is common in trial-level data from experiments, where each row is a trial and the order of the trials matters.</p>
 <ul>
 <li><code>lag(x)</code> returns the value of x in the <em>previous</em> row.</li>
@@ -3422,8 +3422,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 <p>Trials 4 and 7 came after an error, and indeed have longer RTs. Trial 1 is <code>NA</code> as it has no previous trial.</p>
-<section id="row-order-matters" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="row-order-matters"><span class="header-section-number">7.7.1</span> Row order matters</h3>
+<section id="row-order-matters" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="row-order-matters"><span class="header-section-number">7.6.1</span> Row order matters</h3>
 <p><code>lag()</code> and <code>lead()</code> use the order of the rows in the data frame, not the trial number. If the data are not in the correct order, the results will be silently wrong. It’s therefore good practice to <code>arrange()</code> the data before using them:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dat_trials <span class="sc">%&gt;%</span></span>
@@ -3507,8 +3507,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="watch-out-when-there-are-multiple-participants" class="level3" data-number="7.7.2">
-<h3 data-number="7.7.2" class="anchored" data-anchor-id="watch-out-when-there-are-multiple-participants"><span class="header-section-number">7.7.2</span> Watch out when there are multiple participants</h3>
+<section id="watch-out-when-there-are-multiple-participants" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="watch-out-when-there-are-multiple-participants"><span class="header-section-number">7.6.2</span> Watch out when there are multiple participants</h3>
 <p><code>lag()</code> and <code>lead()</code> don’t know anything about participants. If a data frame contains several participants’ data, the first trial of participant 2 will be given the last trial of participant 1 as its “previous” trial:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dat_trials_two_participants <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -3586,8 +3586,8 @@ Caused by error in `na_if()`:
 </div>
 <p>Participant 2’s first trial should be <code>NA</code>, but it has been given the value of participant 1’s last trial. In the next chapter, you’ll learn about <code>group_by()</code>, which solves this problem by making functions like <code>lag()</code> operate separately within each participant.</p>
 </section>
-<section id="running-counts-row_number-and-cumsum" class="level3" data-number="7.7.3">
-<h3 data-number="7.7.3" class="anchored" data-anchor-id="running-counts-row_number-and-cumsum"><span class="header-section-number">7.7.3</span> Running counts: <code>row_number()</code> and <code>cumsum()</code></h3>
+<section id="running-counts-row_number-and-cumsum" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="running-counts-row_number-and-cumsum"><span class="header-section-number">7.6.3</span> Running counts: <code>row_number()</code> and <code>cumsum()</code></h3>
 <p>Two other functions that depend on row order are also useful here:</p>
 <ul>
 <li><code>row_number()</code> returns the row number, 1, 2, 3, etc. This is useful when a data set doesn’t contain a trial number column.</li>
@@ -3681,8 +3681,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="exercise-6" class="level3" data-number="7.7.4">
-<h3 data-number="7.7.4" class="anchored" data-anchor-id="exercise-6"><span class="header-section-number">7.7.4</span> Exercise</h3>
+<section id="exercise-6" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="exercise-6"><span class="header-section-number">7.6.4</span> Exercise</h3>
 <p>Using ‘dat_trials’, write code that creates:</p>
 <ul>
 <li>‘rt_change’ : the difference between the RT on each trial and the RT on the previous trial.</li>
@@ -3793,8 +3793,8 @@ Caused by error in `na_if()`:
 </div>
 </section>
 </section>
-<section id="filling-in-empty-cells-with-fill" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="filling-in-empty-cells-with-fill"><span class="header-section-number">7.8</span> Filling in empty cells with <code>fill()</code></h2>
+<section id="filling-in-empty-cells-with-fill" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="filling-in-empty-cells-with-fill"><span class="header-section-number">7.7</span> Filling in empty cells with <code>fill()</code></h2>
 <p>Data that has been entered or edited by hand, e.g., in Excel, often only writes a value the first time it appears, leaving the cells below it empty to make it easier to read. For example, the participant id and block are only written on the first row they apply to:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dat_excel <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -3947,8 +3947,8 @@ Caused by error in `na_if()`:
 </div>
 <p>By default <code>fill()</code> fills downwards. You can change this with the <code>.direction</code> argument, e.g., <code>.direction = "up"</code> if the value is written on the last row of each set rather than the first.</p>
 <p><code>fill()</code> should only be used when you know that <code>NA</code> means “same as the row above”. If a value is genuinely missing, e.g., participant 2’s first block label was never recorded, <code>fill()</code> would silently give it participant 1’s block label. As with <code>lag()</code>, <code>fill()</code> doesn’t know about participants on its own; <code>group_by()</code>, covered in the next chapter, can be used to make it fill within each participant only.</p>
-<section id="exercise-7" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="exercise-7"><span class="header-section-number">7.8.1</span> Exercise</h3>
+<section id="exercise-7" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="exercise-7"><span class="header-section-number">7.7.1</span> Exercise</h3>
 <p>The following data has one row per item of a questionnaire, but the ‘scale’ column is only filled in on the last row of each scale. Use <code>fill()</code> to fill in the ‘scale’ column correctly.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dat_items <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -4027,16 +4027,16 @@ Caused by error in `na_if()`:
 </div>
 </section>
 </section>
-<section id="separating-one-column-into-several-or-coalescing-several-columns-into-one" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="separating-one-column-into-several-or-coalescing-several-columns-into-one"><span class="header-section-number">7.9</span> Separating one column into several or coalescing several columns into one</h2>
+<section id="separating-one-column-into-several-or-coalescing-several-columns-into-one" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="separating-one-column-into-several-or-coalescing-several-columns-into-one"><span class="header-section-number">7.8</span> Separating one column into several or coalescing several columns into one</h2>
 <p>Another common task is splitting one column into several, e.g., a column containing “anx_1” into a column for the scale (“anx”) and one for the item number (“1”). This is done with <code>separate()</code>.</p>
 <p>The opposite task is combining several columns into one, e.g., when age was saved in a different column in each version of a survey, and you want a single ‘age’ column containing whichever value is not missing. This is done with <code>coalesce()</code>.</p>
 <p>Both are covered in the <a href="../chapters/11_reshaping_and_pivots.html">Reshaping and pivots</a> chapter, as they are about changing the structure of the data rather than just its contents.</p>
 </section>
-<section id="exercises" class="level2" data-number="7.10">
-<h2 data-number="7.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.10</span> Exercises</h2>
-<section id="arrange-and-missing-values" class="level3" data-number="7.10.1">
-<h3 data-number="7.10.1" class="anchored" data-anchor-id="arrange-and-missing-values"><span class="header-section-number">7.10.1</span> <code>arrange()</code> and missing values</h3>
+<section id="exercises" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.9</span> Exercises</h2>
+<section id="arrange-and-missing-values" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="arrange-and-missing-values"><span class="header-section-number">7.9.1</span> <code>arrange()</code> and missing values</h3>
 <p>When you use <code>arrange(desc(x))</code> on a column containing <code>NA</code>s, where do the <code>NA</code>s go?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -4055,8 +4055,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="slice_max-and-ties" class="level3" data-number="7.10.2">
-<h3 data-number="7.10.2" class="anchored" data-anchor-id="slice_max-and-ties"><span class="header-section-number">7.10.2</span> <code>slice_max()</code> and ties</h3>
+<section id="slice_max-and-ties" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="slice_max-and-ties"><span class="header-section-number">7.9.2</span> <code>slice_max()</code> and ties</h3>
 <p>You run <code>slice_max(score, n = 3)</code> and get four rows back. Why?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -4075,8 +4075,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="drop_na-1" class="level3" data-number="7.10.3">
-<h3 data-number="7.10.3" class="anchored" data-anchor-id="drop_na-1"><span class="header-section-number">7.10.3</span> <code>drop_na()</code></h3>
+<section id="drop_na-1" class="level3" data-number="7.9.3">
+<h3 data-number="7.9.3" class="anchored" data-anchor-id="drop_na-1"><span class="header-section-number">7.9.3</span> <code>drop_na()</code></h3>
 <p>What is the difference between <code>drop_na()</code> and <code>drop_na(age)</code>? Which should you usually use and why?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -4095,8 +4095,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="missing-data-codes" class="level3" data-number="7.10.4">
-<h3 data-number="7.10.4" class="anchored" data-anchor-id="missing-data-codes"><span class="header-section-number">7.10.4</span> Missing data codes</h3>
+<section id="missing-data-codes" class="level3" data-number="7.9.4">
+<h3 data-number="7.9.4" class="anchored" data-anchor-id="missing-data-codes"><span class="header-section-number">7.9.4</span> Missing data codes</h3>
 <p>What functions could you use to convert a missing data code like <code>-99</code> into <code>NA</code>? Why must this be done before any calculations?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -4115,8 +4115,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="across" class="level3" data-number="7.10.5">
-<h3 data-number="7.10.5" class="anchored" data-anchor-id="across"><span class="header-section-number">7.10.5</span> <code>across()</code></h3>
+<section id="across" class="level3" data-number="7.9.5">
+<h3 data-number="7.9.5" class="anchored" data-anchor-id="across"><span class="header-section-number">7.9.5</span> <code>across()</code></h3>
 <p>What are the two main arguments of <code>across()</code>, and what does each one do? What do <code>~</code> and <code>.x</code> mean?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
@@ -4156,8 +4156,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="scores-across-columns" class="level3" data-number="7.10.6">
-<h3 data-number="7.10.6" class="anchored" data-anchor-id="scores-across-columns"><span class="header-section-number">7.10.6</span> Scores across columns</h3>
+<section id="scores-across-columns" class="level3" data-number="7.9.6">
+<h3 data-number="7.9.6" class="anchored" data-anchor-id="scores-across-columns"><span class="header-section-number">7.9.6</span> Scores across columns</h3>
 <p>Why does <code>mutate(total = sum(item_1, item_2, item_3))</code> not calculate each participant’s total score? What could you use instead?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
@@ -4193,8 +4193,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="lag-and-lead" class="level3" data-number="7.10.7">
-<h3 data-number="7.10.7" class="anchored" data-anchor-id="lag-and-lead"><span class="header-section-number">7.10.7</span> <code>lag()</code> and <code>lead()</code></h3>
+<section id="lag-and-lead" class="level3" data-number="7.9.7">
+<h3 data-number="7.9.7" class="anchored" data-anchor-id="lag-and-lead"><span class="header-section-number">7.9.7</span> <code>lag()</code> and <code>lead()</code></h3>
 <p>What do <code>lag()</code> and <code>lead()</code> do? Name two things that can make their results silently wrong.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
@@ -4217,8 +4217,8 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="fill" class="level3" data-number="7.10.8">
-<h3 data-number="7.10.8" class="anchored" data-anchor-id="fill"><span class="header-section-number">7.10.8</span> <code>fill()</code></h3>
+<section id="fill" class="level3" data-number="7.9.8">
+<h3 data-number="7.9.8" class="anchored" data-anchor-id="fill"><span class="header-section-number">7.9.8</span> <code>fill()</code></h3>
 <p>When is it appropriate to use <code>fill()</code>, and when is it not?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
@@ -4237,15 +4237,15 @@ Caused by error in `na_if()`:
 </div>
 </div>
 </section>
-<section id="interactive-exercises" class="level3" data-number="7.10.9">
-<h3 data-number="7.10.9" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">7.10.9</span> Interactive exercises</h3>
+<section id="interactive-exercises" class="level3" data-number="7.9.9">
+<h3 data-number="7.9.9" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">7.9.9</span> Interactive exercises</h3>
 <p>Complete the interactive exercises for:</p>
 <ul>
 <li><a href="https://errors.shinyapps.io/dplyr-learnr/#section-dplyracross"><code>across()</code></a></li>
 </ul>
 </section>
-<section id="practice-data-transformation-using-multiple-functions" class="level3" data-number="7.10.10">
-<h3 data-number="7.10.10" class="anchored" data-anchor-id="practice-data-transformation-using-multiple-functions"><span class="header-section-number">7.10.10</span> Practice data transformation using multiple functions</h3>
+<section id="practice-data-transformation-using-multiple-functions" class="level3" data-number="7.9.10">
+<h3 data-number="7.9.10" class="anchored" data-anchor-id="practice-data-transformation-using-multiple-functions"><span class="header-section-number">7.9.10</span> Practice data transformation using multiple functions</h3>
 <p>In your local version of this .qmd file:</p>
 <ul>
 <li>Use ‘dat_survey’ to create a new data frame called ‘dat_survey_processed’.</li>
@@ -5018,7 +5018,7 @@ Caused by error in `na_if()`:
 <span id="cb49-303"><a href="#cb49-303" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb49-304"><a href="#cb49-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-305"><a href="#cb49-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-306"><a href="#cb49-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## The reverse: `replace_na()`</span></span>
+<span id="cb49-306"><a href="#cb49-306" aria-hidden="true" tabindex="-1"></a><span class="fu">### The reverse: `replace_na()`</span></span>
 <span id="cb49-307"><a href="#cb49-307" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-308"><a href="#cb49-308" aria-hidden="true" tabindex="-1"></a>Occasionally you need to go the other direction, and replace <span class="in">`NA`</span> with a value. {tidyr}'s <span class="in">`replace_na()`</span> does this. However, it should be used with care: <span class="in">`NA`</span> means "we don't know", and replacing it with a value is a claim that you do know.</span>
 <span id="cb49-309"><a href="#cb49-309" aria-hidden="true" tabindex="-1"></a></span>
