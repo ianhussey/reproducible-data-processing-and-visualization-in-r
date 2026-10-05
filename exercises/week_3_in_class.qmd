@@ -21,6 +21,23 @@ format:
     embed-resources: true
     fig-width: 7
     fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
 execute:
   message: false
   warning: false
@@ -96,7 +113,6 @@ dput(colnames(select(dat_selfreport, id, age, gender)))
 ```{r}
 
 
-
 ```
 
 # `select()` vs. `filter()`
@@ -110,7 +126,10 @@ In one sentence each: what does `select()` do, and what does `filter()` do, and 
 
 For each chunk below, *before running it*, write down: how many rows? how many columns? or will it throw an error? Then run it and check.
 
+You can look in the data frame (e.g., using `View()`), or run *other* code to figure out what the code will return.
+
 ```{r}
+#| error: true
 
 dat_selfreport %>%
   select(id, age)
@@ -118,6 +137,7 @@ dat_selfreport %>%
 ```
 
 ```{r}
+#| error: true
 
 dat_selfreport %>%
   filter(age > 18)
@@ -125,6 +145,7 @@ dat_selfreport %>%
 ```
 
 ```{r}
+#| error: true
 
 dat_selfreport %>%
   filter(condition == "control") %>%
@@ -157,6 +178,9 @@ dat_selfreport %>%
 
 ```
 
+
+ADD GOTCHA WITH FLOATING POINTS AND ==
+
 ```{r}
 
 dat_selfreport %>%
@@ -164,9 +188,7 @@ dat_selfreport %>%
 
 ```
 
-## Swap the order
-
-How could you fix the code below so that it runs and returns only the id and age of consenting participants?
+## Why does this code not run? How would you modify it to run as probably intended?
 
 ```{r}
 #| eval: false
@@ -201,11 +223,17 @@ dat_selfreport %>%
 
 ## Rename with `select()`
 
-In a single `select()` call, keep `id`, `condition`, and `age`, in that order, and rename `condition` to `group`.
+Using the `dat_selfreport` tibble, and a single `select()` call, keep `id`, `condition`, and `age`, in that order, and rename `condition` to `group`.
 
 ```{r}
 
-
+dat_selfreport |>
+  # keep variables of interest
+  select(id, age, condition) |>
+  # clarify variable names
+  rename(group = condition) |>
+  # reorder cols to make more intuitive
+  relocate(group, .before = age)
 
 ```
 
@@ -259,7 +287,7 @@ dat_selfreport %>%
 
 ```
 
-What happened to participant 8?
+What happened to participant 7?
 
 # `mutate()`
 
@@ -269,7 +297,9 @@ Create a column `age_decades` that contains age divided by 10.
 
 ```{r}
 
-
+dat_selfreport |>
+  mutate(age_decades = floor(age/10)) |>
+  select(id, age, age_decades)
 
 ```
 
@@ -290,6 +320,7 @@ Item 3 of the anxiety scale is reverse-keyed. On a 1-5 scale, a reversed score i
 Create a new column `anx_3` that is the reverse-scored version of `anx_3_r`. Then create `anx_sum`, the sum score of all four items (using the reverse-scored item). Can you do both in one `mutate()` call?
 
 ```{r}
+
 
 
 

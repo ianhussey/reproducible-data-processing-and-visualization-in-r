@@ -320,6 +320,74 @@ ggplot(dat_likert_long_tidy, aes(x = response)) +
   facet_grid(item ~ scale)
 ```
 
+### `coalesce()`
+
+`separate()` splits one column into several. Sometimes we need the opposite: combining several columns into one. For example, if a survey was changed partway through data collection and age was saved in a different column in each version:
+
+```{r}
+library(tibble) # for tribble()
+
+dat_versions <- tribble(
+  ~id, ~age_v1, ~age_v2,
+  1,   23,      NA,
+  2,   31,      NA,
+  3,   NA,      27,
+  4,   NA,      45,
+  5,   NA,      NA
+)
+
+dat_versions %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+We want a single 'age' column. You already know how to do this with `mutate()` and `if_else()`: "if 'age_v1' is not missing, use it; otherwise, use 'age_v2'".
+
+```{r}
+dat_versions %>%
+  mutate(age = if_else(condition = !is.na(age_v1), # the logical test applied: is age_v1 not missing?
+                       true = age_v1, # if so, use age_v1
+                       false = age_v2)) %>% # if not, use age_v2 (which may itself be NA)
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+This works, but it gets clumsy quickly. If there were a third version of the survey, you would need to nest one `if_else()` inside another, or write a `case_when()`:
+
+```{r}
+#| eval: false
+dat_versions %>%
+  mutate(age = case_when(!is.na(age_v1) ~ age_v1,
+                         !is.na(age_v2) ~ age_v2,
+                         !is.na(age_v3) ~ age_v3,
+                         TRUE ~ NA_real_))
+```
+
+Because this is such a common task, {dplyr} provides `coalesce()`, which does exactly the same thing: it takes several columns and returns, for each row, the first value that is not `NA`.
+
+```{r}
+dat_versions %>%
+  mutate(age = coalesce(age_v1, age_v2)) %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+The result is identical to the `if_else()` version, and `coalesce(age_v1, age_v2, age_v3)` would extend to a third column without any extra logic.
+
+Participant 5 has no age in either column, so their age remains `NA`.
+
+Note that if a participant had values in *both* columns, `coalesce()` would silently use the first one. It's worth checking whether this ever happens, e.g., with `filter(!is.na(age_v1) & !is.na(age_v2))`, before relying on it.
+
+This is a general pattern worth noticing. Many {tidyverse} functions are "*wrappers*": shortcuts for logic that you could already write yourself with more general functions. You have already seen several in the [Data transformation I](06_data_transformation_1.qmd) and [Data transformation II](07_data_transformation_2.qmd) chapters:
+
+-   Renaming and relocating columns inside `select()` does the work of `rename()` and `relocate()`.
+-   `na_if(age, -99)` is a shortcut for `if_else(age == -99, NA, age)`.
+-   `slice_head(n = 5)` is a shortcut for `filter(row_number() <= 5)`.
+-   `drop_na(gender)` is a shortcut for `filter(!is.na(gender))`.
+-   `coalesce(age_v1, age_v2)` is a shortcut for `if_else(!is.na(age_v1), age_v1, age_v2)`.
+
+Wrappers make code shorter and easier to read, and are often less error-prone. But it is useful to understand the logic they wrap: it helps you know exactly what a function will do in unusual cases (e.g., what happens when both columns contain a value), and when no wrapper exists for your problem, you can fall back on writing the logic yourself with `mutate()`, `if_else()`, and `case_when()`.
+
 ## Practice `mutate()`
 
 The above plot does not order the items correctly (item1, item10, item2, etc).

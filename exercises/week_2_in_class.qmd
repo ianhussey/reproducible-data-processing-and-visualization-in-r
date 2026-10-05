@@ -21,6 +21,23 @@ format:
     embed-resources: true
     fig-width: 7
     fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
 execute:
   message: false
   warning: false

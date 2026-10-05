@@ -2,6 +2,7 @@ project:
   type: book
   resources:
     - slides/*.pdf
+    - exercises/week_*_in_class.qmd
 
 book:
   title: "Reproducible Data Processing and Visualization"
@@ -29,7 +30,6 @@ book:
       - chapters/06_data_transformation_1.qmd
       - chapters/07_data_transformation_2.qmd
       - chapters/08_data_transformation_3.qmd
-      # - chapters/sum_scores.qmd
       - chapters/09_structuring_projects.qmd
       - chapters/10_strings_and_factors.qmd
       - chapters/11_reshaping_and_pivots.qmd

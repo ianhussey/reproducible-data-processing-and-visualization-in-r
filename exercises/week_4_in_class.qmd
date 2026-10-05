@@ -1,0 +1,401 @@
+---
+title: "Week 4 - in class"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, arrange, desc, slice_, mutate, if_else, na_if, across, if_any, pick, lag, lead
+library(tidyr) # for drop_na, replace_na, fill
+library(tibble) # for tribble
+
+```
+
+# Today's data
+
+Two small made-up data sets. Run this chunk, then look at both data frames.
+
+`dat_survey`: one row per participant. Missing ages are coded as `999`. At the end of the survey, participants could optionally leave `comments`. Participants completed the 4-item Perceived Stress Scale (`pss_`, responses 1-5), where items 2 and 3 are reverse-keyed. Missing item responses are coded as `-99`.
+
+`dat_stroop`: one row per trial of a Stroop task, typed up by hand in Excel. To make it easier to read, the `id` and `block` are only written on the first row they apply to. `rt` is in milliseconds, `correct` is 0/1.
+
+```{r}
+
+dat_survey <- tribble(
+  ~id, ~age, ~condition,     ~comments,         ~pss_1, ~pss_2, ~pss_3, ~pss_4,
+  1,   23,   "control",      NA,                2,      4,      3,      1,
+  2,   31,   "intervention", NA,                4,      2,      -99,    3,
+  3,   999,  "control",      "fun study!",      1,      5,      4,      2,
+  4,   45,   "intervention", NA,                5,      1,      2,      6,
+  5,   28,   "control",      NA,                3,      3,      3,      3,
+  6,   19,   "intervention", NA,                -99,    -99,    4,      2,
+  7,   NA,   "control",      NA,                2,      5,      5,      1,
+  8,   36,   "intervention", "it was too long", 4,      2,      1,      4
+)
+
+dat_stroop <- tribble(
+  ~id, ~block,     ~trial, ~rt,  ~correct,
+  1,   "practice", 1,      812,  1,
+  NA,  NA,         2,      1043, 0,
+  NA,  "test",     1,      612,  1,
+  NA,  NA,         2,      588,  0,
+  NA,  NA,         3,      845,  1,
+  NA,  NA,         4,      570,  1,
+  NA,  NA,         5,      903,  0,
+  2,   "practice", 1,      1150, 1,
+  NA,  NA,         2,      1320, 1,
+  NA,  "test",     1,      760,  1,
+  NA,  NA,         2,      655,  0,
+  NA,  NA,         3,      871,  1,
+  NA,  NA,         4,      598,  1,
+  NA,  NA,         5,      640,  1
+)
+
+```
+
+# `arrange()`
+
+## Predict before you run
+
+Before running it: which participant will be in the first row? Which will be in the last rows? Why?
+
+```{r}
+
+dat_survey %>%
+  arrange(desc(age))
+
+```
+
+## Arrange by more than one column
+
+Arrange `dat_survey` by condition (alphabetically), and within each condition from the highest to the lowest response on `pss_1`.
+
+```{r}
+
+
+
+```
+
+# `slice_()` functions
+
+## Predict before you run
+
+Before running it: how many rows will this return?
+
+```{r}
+
+dat_survey %>%
+  slice_max(pss_1, n = 2)
+
+```
+
+## Random rows
+
+Run this chunk several times. What happens? Then add `set.seed(42)` on the line before it, and run it several times again. What changes? Why does this matter for reproducibility?
+
+```{r}
+
+dat_survey %>%
+  slice_sample(n = 3)
+
+```
+
+# `drop_na()`
+
+## Predict before you run
+
+Before running each chunk: how many rows will be returned?
+
+```{r}
+
+dat_survey %>%
+  drop_na(age)
+
+```
+
+```{r}
+
+dat_survey %>%
+  drop_na()
+
+```
+
+Participant 6 has two missing responses on the stress scale. Why were they *not* dropped by `drop_na()` because of this?
+
+
+# Missing data codes
+
+## `na_if()`
+
+Using `na_if()`, convert the missing data code in `age` to `NA`.
+
+```{r}
+
+
+
+```
+
+## `replace_na()`
+
+A colleague suggests using `replace_na(pss_1, 0)` after converting `-99` to `NA`, "so that the sum scores can be calculated for everyone". What do you think about this suggestion?
+
+
+# `across()`
+
+## Many columns at once
+
+Using a single `across()` call, convert `-99` to `NA` in all four stress items.
+
+```{r}
+
+
+
+```
+
+## Two different missing data codes
+
+Write a single pipe that converts `999` to `NA` in the age column, and `-99` to `NA` in all the stress items.
+
+Why not just use `mutate(across(where(is.numeric), ~ na_if(.x, -99)))`?
+
+```{r}
+
+
+
+```
+
+## Reverse scoring with `.names`
+
+Items 2 and 3 are reverse-keyed. On a 1-5 scale, a reversed score is `6 - score`. Using `across()`, create *new* columns with the reverse-scored items, named `pss_2_reversed` and `pss_3_reversed`.
+
+```{r}
+
+
+
+```
+
+## Predict before you run
+
+Before running it: what will the value of `pss_2` be for participant 1? Why is this a risk with overwriting columns?
+
+```{r}
+
+dat_survey %>%
+  mutate(across(c(pss_2, pss_3), ~ 6 - .x)) %>%
+  mutate(across(c(pss_2, pss_3), ~ 6 - .x)) %>%
+  select(id, pss_2, pss_3)
+
+```
+
+## `if_any()`: checking for impossible values
+
+The scale's responses can only be 1-5. Create a column `pss_impossible` that is TRUE if *any* of the participant's stress item responses are outside of this range (ignoring `NA`s). Which participant(s) have impossible values? What should you do about them?
+
+```{r}
+
+
+
+```
+
+# Scores across columns
+
+## Predict before you run
+
+Before running it: what will `pss_total` contain? There are two separate problems with this code. What are they?
+
+```{r}
+
+dat_survey %>%
+  mutate(pss_total = sum(pss_1, pss_2, pss_3, pss_4)) %>%
+  select(id, starts_with("pss_"))
+
+```
+
+## Sum scores with `rowSums()` and `pick()`
+
+Starting from your code that converts `-99` to `NA` and reverse scores items 2 and 3, calculate each participant's sum score `pss_sum` using `rowSums()` and `pick()`. Make sure to use the reverse-scored items!
+
+```{r}
+
+
+
+```
+
+## Spot the bug
+
+This code runs without an error, but the mean scores are wrong. Why?
+
+```{r}
+
+dat_survey %>%
+  mutate(across(starts_with("pss_"), ~ na_if(.x, -99))) %>%
+  mutate(across(c(pss_2, pss_3), ~ 6 - .x, .names = "{.col}_reversed")) %>%
+  mutate(pss_mean = rowMeans(pick(starts_with("pss_")))) %>%
+  select(id, starts_with("pss_"))
+
+```
+
+## Missing items
+
+Our preregistration says: "Participants' stress scores will be calculated as the mean of the four items. Scores will be calculated for participants who are missing no more than one item, and set to missing otherwise."
+
+Create `pss_n_missing` and `pss_mean` that implement this. Which participants get a score?
+
+```{r}
+
+
+
+```
+
+# `fill()`
+
+## Fill in the hand-entered data
+
+Using `fill()`, fill in the `id` and `block` columns of `dat_stroop`. Save the result as `dat_stroop_filled`.
+
+```{r}
+
+
+
+```
+
+What would go wrong if participant 2's `block` had accidentally been left empty on their first row?
+
+# `lag()`, `lead()`, and `cumsum()`
+
+## Post-error slowing
+
+Using `dat_stroop_filled`, keep only the test block, and create a column `after_error` that is "post-error" if the previous trial was an error, and "post-correct" otherwise.
+
+```{r}
+
+
+
+```
+
+## Spot the problem
+
+Look closely at participant 2's first test trial in your output. What is its value of `after_error`? What should it be, and why did this happen?
+
+Using only the functions you know so far, how could you fix it? (Hint: `lag()` can be used on any column, including `id`.)
+
+```{r}
+
+
+
+```
+
+## Running count of errors
+
+Create a column `n_errors_so_far` that counts how many errors the participant has made up to and including the current trial, across both blocks. Does this have the same problem as the previous question?
+
+```{r}
+
+
+
+```
+
+# Fix the broken pipe
+
+This code is meant to convert missing data codes, reverse score items 2 and 3, and calculate a mean score for each participant. It has (at least) four bugs. Find and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_survey_broken <- dat_survey %>%
+  mutate(across(starts_with("pss_"), na_if(.x, -99)) %>%
+  mutate(across(c(pss_2, pss_3), ~ 6 - .x, .names = {.col}_reversed)) %>%
+  mutate(pss_mean = mean(pss_1, pss_2_reversed, pss_3_reversed, pss_4)) %>%
+  drop_na()
+
+```
+
+# Put it all together
+
+## Process the survey data
+
+Write a single pipe that creates `dat_survey_processed` from `dat_survey`. Add a comment above each step explaining what it does.
+
+1. Convert the missing data codes to `NA` in the age column and the stress items.
+2. Set any impossible stress item responses (i.e., outside 1-5) to `NA`.
+3. Reverse score items 2 and 3 into new columns.
+4. Calculate `pss_n_missing` and `pss_mean`, using the rule from the preregistration above.
+5. Keep only `id`, `age`, `condition`, `pss_n_missing`, and `pss_mean`.
+6. Arrange from the highest to the lowest stress score.
+
+```{r}
+
+
+
+```
+
+Discuss:
+
+- In step 2, is setting impossible values to `NA` the right decision? What else could you do? Where should this decision be documented?
+- Would the result be different if step 2 came *after* step 3?
+
+## Process the Stroop data
+
+Write a single pipe that creates `dat_stroop_processed` from `dat_stroop`.
+
+1. Fill in the `id` and `block` columns.
+2. Keep only the test block.
+3. Make sure the rows are in the right order.
+4. Create `after_error`, making sure that each participant's first test trial is `NA`.
+5. Create `rt_change`, the difference between the RT on the current trial and the previous trial (again, `NA` for each participant's first test trial).
+
+```{r}
+
+
+
+```
+
+# Looking ahead
+
+We now have a trial-level `dat_stroop_processed` that tells us whether each trial came after an error. To test for post-error slowing, we want each participant's **mean** RT on post-error trials vs. their **mean** RT on post-correct trials.
+
+All the functions in this and last week's chapters are *non-aggregating*: they never reduce the number of rows to a summary. What kind of function would we need? And how could we make `lag()` respect the boundaries between participants without the workaround we used above?
