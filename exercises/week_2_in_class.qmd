@@ -1,0 +1,127 @@
+---
+title: "Week 2 - in class"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# How to do multi-line typing?
+
+Write "file_1" to "file_5" quickly, one line each, using multi line typing
+
+
+# How to insert a code chunk below this heading?
+
+
+
+# What is the difference between each of the below?
+
+x \<- 10
+
+```{r}
+x <- 10
+```
+
+# How would you find out which of `readr::read_csv()`'s arguments allows you to ignore the first N lines when reading a file?
+
+```{r}
+
+
+
+```
+
+# What do each of these do? When I run it and print `x` and `y` what will their values be?
+
+```{r}
+
+x <- 5
+y = 10
+y -> x
+
+x
+y
+
+```
+
+# What does a styler do?
+
+# Why might this not run? How would you make it run?
+
+```{r}
+#| eval: false
+
+library(dplyr)
+library(MASS)
+
+mtcars |>
+  select(mpg, cyl)
+
+```
+
+# How to change the date at the top of the html file this qmd renders to always be today's date?
+
+
+# What are three different ways to view the contents of the `mtcars` data frame?
+
+```{r}
+
+mtcars
+
+```
+
+# Find the `data_processed_chocolatepoop.csv` file and load it, using only code written in the below chunk
+
+Ensure this .qmd file is in `exercises/`!
+
+```{r}
+
+
+
+```
+
+# Explain why you don't need `setwd()` for the previous question
+
+
+
+
+

@@ -1,0 +1,450 @@
+---
+title: "Week 3 - in class"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, rename, select, relocate, filter, mutate, if_else, case_when
+library(tibble) # for tribble
+
+```
+
+# Today's data
+
+Two small made-up data sets. Run this chunk, then look at both data frames (three ways: print, `View()`, click in Environment).
+
+`dat_selfreport`: one row per participant. Consent, demographics, an attention check, and a 4-item anxiety scale (1-5) where item 3 is reverse-keyed.
+
+`dat_stroop`: one row per trial. A Stroop task with practice and test blocks. `rt` is in milliseconds, `correct` is 0/1.
+
+```{r}
+
+dat_selfreport <- tribble(
+  ~id, ~prolific_id, ~consent, ~age, ~gender,      ~condition,     ~attention_check, ~anx_1, ~anx_2, ~anx_3_r, ~anx_4,
+  1,   "5f3a9c",     TRUE,     23,   "female",     "control",      "pass",           2,      3,      4,        2,
+  2,   "61b0e2",     TRUE,     31,   "Male",       "intervention", "pass",           4,      4,      2,        5,
+  3,   "5e8d11",     FALSE,    19,   "female",     "control",      "pass",           3,      2,      3,        3,
+  4,   "60aa47",     TRUE,     999,  "non-binary", "intervention", "pass",           1,      2,      5,        1,
+  5,   "5c7f02",     TRUE,     17,   "f",          "control",      "pass",           5,      4,      1,        4,
+  6,   "63d9b8",     TRUE,     45,   "male",       "intervention", "fail",           3,      3,      3,        3,
+  7,   "5a1e6d",     TRUE,     28,   "Female",     "control",      "passed",         2,      1,      5,        2,
+  8,   "62f4c0",     TRUE,     36,   "woman",      "intervention", NA,               4,      5,      2,        4,
+  9,   "5d2b93",     TRUE,     22,   "M",          "control",      "pass",           1,      1,      4,        2,
+  10,  "64c8a5",     TRUE,     27,   "",           "intervention", "pass",           3,      4,      2,        3
+)
+
+dat_stroop <- tribble(
+  ~id, ~block,     ~trial, ~word,   ~ink_colour, ~rt,  ~correct,
+  1,   "practice", 1,      "red",   "red",       812,  1,
+  1,   "practice", 2,      "blue",  "green",     1043, 0,
+  1,   "test",     1,      "red",   "red",       612,  1,
+  1,   "test",     2,      "green", "red",       788,  1,
+  1,   "test",     3,      "blue",  "blue",      95,   1,
+  1,   "test",     4,      "red",   "blue",      845,  0,
+  1,   "test",     5,      "green", "green",     570,  1,
+  1,   "test",     6,      "blue",  "red",       903,  1,
+  2,   "practice", 1,      "green", "green",     1150, 1,
+  2,   "practice", 2,      "red",   "blue",      1320, 1,
+  2,   "test",     1,      "blue",  "green",     760,  1,
+  2,   "test",     2,      "green", "green",     655,  1,
+  2,   "test",     3,      "red",   "red",       3540, 1,
+  2,   "test",     4,      "red",   "green",     820,  1,
+  2,   "test",     5,      "blue",  "blue",      598,  0,
+  2,   "test",     6,      "green", "blue",      871,  1
+)
+
+```
+
+# Warm up: rewrite this with the pipe
+
+What does this code do? Read it out loud. Then rewrite it using `%>%` so it reads top to bottom.
+
+```{r}
+
+dput(colnames(select(dat_selfreport, id, age, gender)))
+
+```
+
+```{r}
+
+
+```
+
+# `select()` vs. `filter()`
+
+In one sentence each: what does `select()` do, and what does `filter()` do, and how do they differ?
+
+
+## Predict before you run
+
+`dat_selfreport` has `r nrow(dat_selfreport)` rows and `r ncol(dat_selfreport)` columns.
+
+For each chunk below, *before running it*, write down: how many rows? how many columns? or will it throw an error? Then run it and check.
+
+You can look in the data frame (e.g., using `View()`), or run *other* code to figure out what the code will return.
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  select(id, age)
+
+```
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  filter(age > 18)
+
+```
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  filter(condition == "control") %>%
+  select(id, condition)
+
+```
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  select(id, age) %>%
+  filter(consent == TRUE)
+
+```
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  select(age > 18)
+
+```
+
+```{r}
+#| error: true
+
+dat_selfreport %>%
+  filter(gender = "female")
+
+```
+
+
+ADD GOTCHA WITH FLOATING POINTS AND ==
+
+```{r}
+
+dat_selfreport %>%
+  filter(gender == "female")
+
+```
+
+## Why does this code not run? How would you modify it to run as probably intended?
+
+```{r}
+#| eval: false
+
+dat_selfreport %>%
+  select(id, age) %>%
+  filter(consent == TRUE)
+
+```
+
+# `select()` with {tidyselect} helpers
+
+Select `id` and all the anxiety items using a helper function rather than typing each column name.
+
+```{r}
+
+
+
+```
+
+
+Which columns does this return, and why?
+
+```{r}
+
+dat_selfreport %>%
+  select(where(is.numeric))
+
+```
+
+# Rename, relocate, and select
+
+## Rename with `select()`
+
+Using the `dat_selfreport` tibble, and a single `select()` call, keep `id`, `condition`, and `age`, in that order, and rename `condition` to `group`.
+
+```{r}
+
+dat_selfreport |>
+  # keep variables of interest
+  select(id, age, condition) |>
+  # clarify variable names
+  rename(group = condition) |>
+  # reorder cols to make more intuitive
+  relocate(group, .before = age)
+
+```
+
+## `relocate()`
+
+Using `relocate()` (not `select()`), make `condition` the second column, and move `prolific_id` to be the last column. All other columns should be retained.
+
+```{r}
+
+
+
+```
+
+
+When would you use `relocate()` rather than `select()`?
+
+
+# `filter()`: applying exclusion criteria
+
+Our preregistration says we will exclude participants who:
+
+1. Did not consent.
+2. Are under 18 (or whose age is missing).
+3. Did not pass the attention check.
+
+## One step at a time
+
+Apply each exclusion as a separate `filter()` call, and use `nrow()` to count how many participants remain after each step. How many are left at the end?
+
+```{r}
+
+
+
+```
+
+## Positive vs. negative filters
+
+What is the difference between the output of these two chunks? Which participants differ, and why? Which one would you put in your analysis code?
+
+```{r}
+
+dat_selfreport %>%
+  filter(attention_check == "pass")
+
+```
+
+```{r}
+
+dat_selfreport %>%
+  filter(attention_check != "fail")
+
+```
+
+What happened to participant 7?
+
+# `mutate()`
+
+## Create a new column
+
+Create a column `age_decades` that contains age divided by 10.
+
+```{r}
+
+dat_selfreport |>
+  mutate(age_decades = floor(age/10)) |>
+  select(id, age, age_decades)
+
+```
+
+## `if_else()`: recode missing data codes
+
+`999` is a missing data code, not a real age. Overwrite the `age` column so that `999` becomes `NA`, and all other ages stay the same.
+
+```{r}
+
+
+
+```
+
+## `if_else()`: reverse scoring
+
+Item 3 of the anxiety scale is reverse-keyed. On a 1-5 scale, a reversed score is `6 - score` (1 becomes 5, 2 becomes 4, etc.).
+
+Create a new column `anx_3` that is the reverse-scored version of `anx_3_r`. Then create `anx_sum`, the sum score of all four items (using the reverse-scored item). Can you do both in one `mutate()` call?
+
+```{r}
+
+
+
+
+```
+
+## `case_when()`: tidying self-reported gender
+
+First, look at the unique values that are present:
+
+```{r}
+
+dat_selfreport %>%
+  distinct(gender)
+
+```
+
+Now use `case_when()` to recode `gender` so that it only contains "female", "male", "non-binary", or `NA`.
+
+```{r}
+
+
+
+```
+
+What does `TRUE ~ gender` do as the last line of a `case_when()`? What would happen without it if a new participant wrote "Woman"?
+
+## `case_when()`: order matters
+
+Before running it: what category will a trial with an rt of 95 ms get? What about 3540 ms?
+
+```{r}
+
+dat_stroop %>%
+  mutate(rt_category = case_when(rt < 3000 ~ "ok",
+                                 rt < 200 ~ "too fast",
+                                 rt >= 3000 ~ "too slow")) %>%
+  select(id, block, trial, rt, rt_category)
+
+```
+
+## `if_else()` with two columns
+
+In the Stroop task, a trial is "congruent" when the word and the ink colour match (e.g., "red" written in red ink), and "incongruent" when they don't.
+
+Create a `congruency` column using `if_else()`.
+
+```{r}
+
+
+
+```
+
+# Longer pipes
+
+## Build a pipe one line at a time
+
+Process `dat_stroop` into a data frame called `dat_stroop_processed`. Add one step at a time, run it, and check the output before adding the next step.
+
+1. Keep only the test block trials.
+2. Create `congruency` (as above).
+3. Convert `correct` from 0/1 to TRUE/FALSE.
+4. Create a column `rt_exclude` that is TRUE if the rt is faster than 200 ms or slower than 3000 ms, and FALSE otherwise.
+5. Rename `rt` to `rt_ms`.
+6. Keep only the columns `id`, `trial`, `congruency`, `rt_ms`, `correct`, `rt_exclude`.
+7. Move `congruency` to be the last column.
+
+How many rows and columns should the final data frame have? Predict first, then check.
+
+```{r}
+
+
+
+```
+
+Why might it be better to flag trials with `rt_exclude` rather than filtering them out straight away?
+
+## Fix the broken pipe
+
+This code is meant to do something similar to the above, but it has (at least) four bugs. Find and fix them. Try running it to see the error messages, and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_broken <- dat_stroop %>%
+  rename(reaction_time = rt) %>%
+  filter(block = "test") %>%
+  mutate(congruency = if_else(word == ink_colour, "congruent", "incongruent"))
+  select(id, trial, congruency, rt, correct) %>%
+  relocate(congruency, .before = id) %>%
+
+```
+
+## Put it all together: process the self-report data
+
+Write a single pipe that creates `dat_selfreport_processed` from `dat_selfreport`. Add a comment above each step explaining what it does.
+
+1. Fix the "passed" attention check value so it is "pass".
+2. Apply the three exclusion criteria (consent, age 18+ and not missing, passed attention check).
+3. Tidy `gender` using `case_when()`.
+4. Reverse score item 3 and calculate the `anx_sum` score.
+5. Remove the `prolific_id` column: it is potentially identifiable, so it should not be in data we share.
+6. Keep only `id`, `condition`, `age`, `gender`, and `anx_sum`, in that order.
+
+```{r}
+
+
+
+```
+
+Discuss:
+
+- Would the result be different if you fixed "passed" *after* the attention check `filter()`?
+- Steps 5 and 6 can both be done by one `select()`. Is an explicit `select(-prolific_id)` step still worth having?
+- What happened to participant 4 (age 999)? Is that what the preregistration intended?
+
+# Report your N using in-line code
+
+Write a sentence below that reports the final sample size and how many participants were excluded, using in-line R code rather than typing the numbers. Render the document to check it.
+
+...
+
+
+# Looking ahead
+
+We now have a tidy, trial-level `dat_stroop_processed`. What we usually want to analyse is one number per participant per condition, e.g., each participant's **mean** RT on congruent vs. **mean** RT incongruent trials. Somewhat difficult question: Which of the functions we've learned so far can do that? Why? What is common to all these functions? 
+
+
