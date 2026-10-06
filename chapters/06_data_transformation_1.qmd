@@ -281,7 +281,7 @@ dat_fewer_columns %>%
 
 There are many other {tidyselect} helper functions including:
 
--   `starts_with()` : Selects columns ending in a character string
+-   `starts_with()` : Selects columns starting with a character string
 -   `ends_with()` : Selects columns ending in a character string
 -   `contains()` : Selects columns containing a character string, not necessarily at the start or end
 -   `all_of()` : Selects all of the column names in a vector e.g., `all_of(c("a", "b"))`
@@ -777,7 +777,7 @@ Write code to:
 
 -   Take the 'dat_demographics_renamed' data frame.
 -   Create the data frame 'dat_filtered_rt'.
--   Retain only rows where where reaction time ('re') is more than 500 ms.
+-   Retain only rows where reaction time ('rt') is more than 500 ms.
 -   Print a table of each data frame.
 
 ```{r}
@@ -829,7 +829,7 @@ Write code to:
 
 -   Take the 'dat_demographics_renamed' data frame.
 -   Create the data frame 'dat_filtered_rt'.
--   Retain only rows where where both reaction time ('rt') is more than 500 ms and gender is either 'male', 'female', or 'non-binary'.
+-   Retain only rows where both reaction time ('rt') is more than 500 ms and gender is either 'male', 'female', or 'non-binary'.
 -   Print a table of each data frame.
 
 ```{r}
@@ -891,7 +891,7 @@ Being specific to the requirements makes your code less 'brittle' and more likel
 
 As with `select()`, it is often better to define what you *do* want (`==` and `%>%`) rather than what you *do not* want (`!=` and `!`+`%in%`). This is even more important with `filter()` as unexpected row values are much more common than unexpected column names.
 
-For example, if you specify a negative filter `dat %>% filter(gender != "non-binary)"` because you wish to filter to return only participants who identify as 'male' or 'female', you have in fact only excluded participants who specified 'non-binary'. This code would also return participants with other response options such as 'non binary', 'Non-Binary', 'NB', etc.
+For example, if you specify a negative filter `dat %>% filter(gender != "non-binary")` because you wish to filter to return only participants who identify as 'male' or 'female', you have in fact only excluded participants who specified 'non-binary'. This code would also return participants with other response options such as 'non binary', 'Non-Binary', 'NB', etc.
 
 However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.
 
@@ -961,10 +961,10 @@ dat_demographics_mutated <- dat_demographics_renamed %>%
   # rename columns to make them more intuitive
   rename(age = response) %>%
   # mutate variables
-  mutate(rt_ms = rt/1000,
+  mutate(rt_seconds = rt/1000,
          correct = as.logical(correct)) %>%
   # select needed columns again
-  select(id, age, rt_ms, correct)
+  select(id, age, rt_seconds, correct)
 
 dat_demographics_mutated %>%
   kable() %>%
@@ -1043,7 +1043,7 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
 
 Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the 'dat_demographics_messy' contains messy age and gender data for 500 participants.
 
-We'll use `count()` to show every unique response across participants. We'll return to learn to use `count()` properly in the next chapter. For the moment, we're more interested in the output than the code.
+We'll use `count()` to show every unique response across participants. We'll return to learn to use `count()` properly in the [Data transformation III](08_data_transformation_3.qmd) chapter. For the moment, we're more interested in the output than the code.
 
 ```{r}
 dat_demographics_messy %>%
@@ -1128,7 +1128,7 @@ dat_gender_tidier %>%
   kable_classic(full_width = FALSE)
 ```
 
-This somewhat quick and dirty solution gives us just four gender categories, 'male', 'female', 'non-binary' and missing (`NA`).
+This somewhat quick and dirty solution gives us just four gender categories, 'male', 'female', 'nonbinary' and missing (`NA`).
 
 Of course, these responses were (mostly) not *really* missing, we removed them to make the responses simpler. This isn't very good practice, as we're throwing away data.
 
@@ -1162,11 +1162,11 @@ dat_gender_tidier <- dat_demographics_messy %>%
   # convert to lower case and remove non-letters
   mutate(gender = str_to_lower(gender),
          gender = str_remove_all(gender, "[^A-Za-z]")) %>%
-  # tidy up cases
-  mutate(gender = case_when(gender %in% c("female", "male", "nonbinary") ~ gender, 
-                            gender %in% c("femail", "fem ale", "femle", "femlae") ~ "female",
-                            gender %in% c("malee", "mal", "ma le") ~ "male",
-                            gender %in% c("non binary", "nonbinary") ~ "non-binary",
+  # tidy up cases. 
+  # note that spaces were already removed above, so the misspellings here contain no spaces.
+  mutate(gender = case_when(gender %in% c("female", "femail", "femle", "femlae") ~ "female",
+                            gender %in% c("male", "malee", "mal") ~ "male",
+                            gender == "nonbinary" ~ "non-binary",
                             gender == "" ~ NA_character_, # if an empty character string, change to NA_character_
                             TRUE ~ gender)) # if none of the above apply, keep original value
 
@@ -1206,7 +1206,7 @@ Name some helper functions from {tidyselect}.
 Explain what each of them do.
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
--   `starts_with()` : Selects columns ending in a character string
+-   `starts_with()` : Selects columns starting with a character string
 -   `ends_with()` : Selects columns ending in a character string
 -   `contains()` : Selects columns containing a character string, not necessarily at the start or end
 -   `all_of()` : Selects all of the column names in a vector e.g., `all_of(c("a", "b"))`
@@ -1278,7 +1278,7 @@ Complete the interactive exercises for:
 In your local version of this .qmd file:
 
 -   Use the 'dat_demographics_messy' to create a new data frame called 'dat_age_tidier'
--   Use `disinct()` to understand what unique responses are present in the 'age' column.
+-   Use `distinct()` to understand what unique responses are present in the 'age' column.
 -   Use the other functions you learned in this chapter to clean the age column so that it contains only numbers.
 -   Convert the age variable to a numeric variable with `as.numeric()`.
 -   Print the unique responses present in the processed 'age' column as a table.
