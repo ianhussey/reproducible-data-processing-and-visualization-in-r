@@ -299,8 +299,6 @@ Which of these steps must come first? Why?
 
 ```
 
-What would H4's *p*-value look like in the table? Is there anything about it that might confuse a reader?
-
 # Fix the broken pipe
 
 This code is meant to clean `dat_survey`, then calculate the mean age and mean RT, rounded to 2 decimal places. It has (at least) four bugs. Find and fix them one at a time.
