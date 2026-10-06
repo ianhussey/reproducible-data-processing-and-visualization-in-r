@@ -805,8 +805,122 @@ It can be useful to arrange the output by the frequencies.
 
 <!-- TODO here or later in -->
 
-## Check your learning
+## Exercises
 
-What is the difference between `mutate()` and `summarize()`? If I use the wrong one, will I get the same answer? E.g., mutate(mean_age = mean(age, na.rm = TRUE)) vs. summarize(mean_age = mean(age, na.rm = TRUE))
+### `mutate()` vs. `summarize()`
+
+What is the difference between `mutate()` and `summarize()`? If you use the wrong one, will you get the same answer? E.g., `mutate(mean_age = mean(age, na.rm = TRUE))` vs. `summarize(mean_age = mean(age, na.rm = TRUE))`.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Both calculate the same mean age, but they return it differently. `summarize()` reduces the data frame to one row (or one row per group) containing only the summary (and any grouping columns). `mutate()` keeps every row and every column, and adds the mean as a new column, repeated on every row (or on every row of each group).
+
+So the *value* is the same, but the *shape* of the result is very different. If you use `mutate()` when you meant `summarize()`, any later step that assumes one row per participant or group, e.g., calculating an N with `n()` or a mean of means, will be wrong.
+:::
+
+### `group_by()`
+
+What does `group_by()` change about how `summarize()`, `mutate()`, `filter()`, and the `slice_()` functions work?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+They all do their calculations separately within each group:
+
+-   `summarize()` returns one row per group rather than one row in total.
+-   `mutate()` calculates aggregating functions (e.g., `mean()`) and functions that use other rows (e.g., `lag()`, `cumsum()`) within each group.
+-   `filter()` keeps or drops rows based on calculations within each group, e.g., `filter(n() == 60)` keeps groups with exactly 60 rows.
+-   `slice_()` functions return rows from each group, e.g., `slice_head(n = 3)` returns the first 3 rows of each group.
+:::
+
+### `ungroup()` and `.by`
+
+Why is it important to `ungroup()`? What is an alternative that avoids the problem?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Grouping persists until it is removed, and it's easy to miss because it isn't visible in the data itself. Later functions in the pipe, or in later code using the saved data frame, will silently operate within groups, e.g., `slice_min(age, n = 3)` returns three rows per group rather than three rows in total. 
+
+Using the `.by` argument (e.g., `summarize(..., .by = gender)`) groups the data for that one function call only, so the result is never left grouped.
+:::
+
+### Counting
+
+What is the difference between `n()` and `sum(!is.na(age))` inside `summarize()`? Which should you report alongside `mean(age, na.rm = TRUE)`?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`n()` counts rows, including those where 'age' is `NA`. `sum(!is.na(age))` counts only the non-missing values of 'age'. The mean is calculated only from the non-missing values, so `sum(!is.na(age))` is the N it is based on.
+:::
+
+`count(gender)` is a wrapper for which other functions?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`group_by(gender) %>% summarize(n = n())`.
+:::
+
+How can you calculate a proportion inside `summarize()`, e.g., the proportion of participants younger than 25?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Take the mean of a logical test, e.g., `mean(age < 25, na.rm = TRUE)`. TRUE counts as 1 and FALSE as 0, so the mean is the proportion of TRUEs.
+:::
+
+### Duplicates
+
+What is the difference between `distinct()` and `distinct(id, .keep_all = TRUE)` when removing duplicate rows? Which is safer?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`distinct()` only removes rows that are identical in every column. `distinct(id, .keep_all = TRUE)` keeps the first row for each id, regardless of whether that participant's rows contain different values in other columns. You don't control which row is kept, and conflicting values are silently discarded. `distinct()` is safer because any remaining duplicate ids reveal conflicts that you need to look at and resolve deliberately.
+:::
+
+### Exclusions
+
+What is the difference between a trial-level and a participant-level exclusion rule? How is each implemented?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+A trial-level rule removes individual trials, e.g., `filter(rt >= 200)` removes all trials faster than 200 ms, from any participant. A participant-level rule removes all of a participant's trials based on a calculation across their trials, e.g., `group_by(id) %>% filter(mean(rt < 200) <= 0.10)` removes participants with more than 10% too-fast trials. Participant-level rules require grouping.
+:::
+
+Why does the order of processing steps matter when using `lag()` or participant-level exclusion rules?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`lag()` refers to the previous *row*, so if trials are removed first, it refers to the previous remaining trial rather than the actual previous trial. Similarly, a participant-level rule like "more than 10% too-fast trials" should usually be calculated on all of the participant's trials. If the too-fast trials are removed first, no participant would have any too-fast trials left, and no one would be excluded. In general, calculate values that depend on the full trial sequence, and apply participant-level rules, before removing any trials.
+:::
+
+### Interactive exercises
+
+Complete the interactive exercises for:
+
+-   [`group_by()` and `summarize()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrgroup_by-summarize)
+-   [`count()`](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcount)
+
+### Practice summarizing a demographics table
+
+In your local version of this .qmd file:
+
+-   Use 'dat_gender_tidier' to create a table with one row per gender.
+-   Include the number of participants, the percentage of participants, and the mean and SD of age, rounded to 1 decimal place.
+-   Make sure the N reported for the mean age only includes participants with a known age.
+-   Arrange the table from the most to the least common gender.
+
+Note: no solution provided here as many different ones are possible.
+
+```{r}
+#| include: false
 
 
+
+```
+
+### Practice processing trial-level data
+
+In your local version of this .qmd file:
+
+-   Use 'dat_rt' to create a data frame called 'dat_rt_participants', with one row per participant.
+-   Calculate each participant's number of trials, proportion of correct responses, proportion of too-fast trials (< 200 ms), and mean RT on correct trials only. Hint: all of these can be calculated in one `summarize()` if you first use `mutate()` and `if_else()` to create a column containing the RT on correct trials and `NA` on error trials.
+-   Add a column 'exclude' that is "exclude" if the participant has more than 10% too-fast trials *or* did not complete all 60 trials, and "include" otherwise.
+-   Then, using 'dat_rt_participants', calculate the number and percentage of participants who are excluded, and the mean and SD of the included participants' mean RTs.
+
+Note: no solution provided here to reduce the temptation to peek or copy-paste.
+
+```{r}
+#| include: false
+
+
+
+```
