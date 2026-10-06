@@ -13,7 +13,6 @@ options(scipen = 999)
 This chapter continues with "*non-aggregating*" functions, i.e., functions that do not reduce many rows down to fewer summary rows. It covers changing the order of rows with `arrange()`, keeping rows based on their position with the `slice_()` functions, dropping rows with missing values with `drop_na()`, and a set of more advanced ways of using `mutate()`: handling missing values, modifying many columns at once, calculating scores across columns, using values from other rows, and filling in empty cells.
 
 ## `arrange()` and `desc()`
-
 Arrange (`arrange()`) and descending (`desc()`) allow you to change the order of the rows without changing their contents. `desc()` is almost always used inside `arrange()`, i.e., `arrange(desc(variable))`.
 
 ```{r}
@@ -343,6 +342,11 @@ Very often we want to do the same thing to many columns. Writing out a separate 
 For example, to convert `-99` to `NA` in all the anxiety and depression items:
 
 ```{r}
+dat_survey |>
+  mutate(anx_1 = na_if(anx_1, -99),
+         anx_2 = na_if(anx_2, -99),
+         anx_3 = na_if(anx_3, -99))
+
 dat_survey %>%
   mutate(across(.cols = c(starts_with("anx_"), starts_with("dep_")),
                 .fns = ~ na_if(.x, -99))) %>%
