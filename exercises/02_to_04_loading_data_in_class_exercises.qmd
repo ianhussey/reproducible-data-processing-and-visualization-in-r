@@ -1,5 +1,5 @@
 ---
-title: "Week 2 - in class"
+title: "Chapters 2-4: Fundamentals, reproducible reports, and loading data - in-class exercises"
 author: "Ian Hussey"
 date: today
 editor: source

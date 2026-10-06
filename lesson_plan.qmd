@@ -11,7 +11,6 @@ Before class:
 
 In class:
 
-<!-- - [In-class exercises](exercises/week_1_in_class.qmd) -->
 - [Discussion of course structure](slides/slides_week_1.pdf)
 - Questions about setup, fundamentals
 - [Chapter 3: Reproducible reports](chapters/03_reproducible_reports.qmd)
@@ -28,7 +27,7 @@ In class:
 - Questions about reproducible reports
 - Questions about loading data
 - Questions about the pipe and renaming
-- In-class exercises - [click to download .qmd](exercises/week_2_in_class.qmd)
+- In-class exercises - [click to download .qmd](exercises/02_to_04_loading_data_in_class_exercises.qmd)
 
 ### Week 3
 
@@ -39,7 +38,7 @@ Before class:
 In class:
 
 - Questions about Data transformation I
-- In-class exercises - [click to download .qmd](exercises/week_3_in_class.qmd)
+- In-class exercises - [click to download .qmd](exercises/06_data_transformation_1_in_class_exercises.qmd)
 
 ### Week 4
 
@@ -50,7 +49,7 @@ Before class:
 In class:
 
 - Questions about Data transformation II
-- In-class exercises - [click to download .qmd](exercises/week_4_in_class.qmd)
+- In-class exercises - [click to download .qmd](exercises/07_data_transformation_2_in_class_exercises.qmd)
 
 ### Week 5
 
@@ -61,7 +60,7 @@ Before class:
 In class:
 
 - Questions about Data transformation III
-- In-class exercises - [click to download .qmd](exercises/week_5_in_class.qmd)
+- In-class exercises - [click to download .qmd](exercises/08_data_transformation_3_in_class_exercises.qmd)
 
 ### Week 6
 
@@ -75,7 +74,7 @@ In class:
 - Questions about structuring projects
 - Questions about strings and factors
 - Overview of assignment 1 (wrangling)
-<!-- - In-class exercises - [click to download .qmd](exercises/week_6_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/09_to_10_strings_and_factors_in_class_exercises.qmd) -->
 
 ### Week 7
 
@@ -86,7 +85,7 @@ Before class:
 In class:
 
 - Questions about reshaping and pivots
-<!-- - In-class exercises - [click to download .qmd](exercises/week_7_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/11_reshaping_and_pivots_in_class_exercises.qmd) -->
 
 ### Week 8
 
@@ -97,7 +96,7 @@ Before class:
 In class:
 
 - Questions about binding and joining
-<!-- - In-class exercises - [click to download .qmd](exercises/week_8_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/12_binding_and_joining_in_class_exercises.qmd) -->
 
 ### Week 9
 
@@ -109,7 +108,7 @@ In class:
 
 - Questions about sharing and privacy
 - Lecture and exercise: Intro to GitHub, diffs
-<!-- - In-class exercises - [click to download .qmd](exercises/week_9_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/13_sharing_and_privacy_in_class_exercises.qmd) -->
 
 ### Week 10
 
@@ -126,7 +125,6 @@ In class:
   - See her TED talk [here](https://www.youtube.com/watch?v=6eYEi9tN6Og)
   - Her podcast, [Hard Drugs](https://harddrugs.worksinprogress.co/), is a show about "medical innovation, how to speed it up, how to scale it up, and how to make sure lifesaving tools reach the people who need them the most". 
   
-<!-- - In-class exercises - [click to download .qmd](exercises/week_10_in_class.qmd) -->
 
 ### Week 11
 
@@ -140,7 +138,7 @@ In class:
 - Questions about reporting
 - Questions about ggplot2 for visualization
 - Overview of assignment 2 (plotting)
-<!-- - In-class exercises - [click to download .qmd](exercises/week_11_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/14_to_15_reporting_in_class_exercises.qmd) -->
 
 ### Week 12
 
@@ -152,7 +150,7 @@ In class:
 
 - Questions about the linear model
 - Questions about the assignments
-<!-- - In-class exercises - [click to download .qmd](exercises/week_12_in_class.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/16_the_linear_model_in_class_exercises.qmd) -->
 
 ### Week 13 + 14
 
