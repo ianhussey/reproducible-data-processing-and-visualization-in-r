@@ -423,26 +423,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/10_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  <a href="../chapters/11_strings_and_factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12_binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  <a href="../chapters/12_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/13_binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -458,20 +464,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -4147,7 +4153,7 @@ Caused by error in `na_if()`:
 <h2 data-number="7.8" class="anchored" data-anchor-id="separating-one-column-into-several-or-coalescing-several-columns-into-one"><span class="header-section-number">7.8</span> Separating one column into several or coalescing several columns into one</h2>
 <p>Another common task is splitting one column into several, e.g., a column containing “anx_1” into a column for the scale (“anx”) and one for the item number (“1”). This is done with <code>separate()</code>.</p>
 <p>The opposite task is combining several columns into one, e.g., when age was saved in a different column in each version of a survey, and you want a single ‘age’ column containing whichever value is not missing. This is done with <code>coalesce()</code>.</p>
-<p>Both are covered in the <a href="../chapters/11_reshaping_and_pivots.html">Reshaping and pivots</a> chapter, as they are about changing the structure of the data rather than just its contents.</p>
+<p>Both are covered in the <a href="../chapters/12_reshaping_and_pivots.html">Reshaping and pivots</a> chapter, as they are about changing the structure of the data rather than just its contents.</p>
 </section>
 <section id="exercises" class="level2" data-number="7.9">
 <h2 data-number="7.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.9</span> Exercises</h2>
@@ -5762,7 +5768,7 @@ Caused by error in `na_if()`:
 <span id="cb50-1003"><a href="#cb50-1003" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-1004"><a href="#cb50-1004" aria-hidden="true" tabindex="-1"></a>The opposite task is combining several columns into one, e.g., when age was saved in a different column in each version of a survey, and you want a single 'age' column containing whichever value is not missing. This is done with <span class="in">`coalesce()`</span>.</span>
 <span id="cb50-1005"><a href="#cb50-1005" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-1006"><a href="#cb50-1006" aria-hidden="true" tabindex="-1"></a>Both are covered in the <span class="co">[</span><span class="ot">Reshaping and pivots</span><span class="co">](11_reshaping_and_pivots.qmd)</span> chapter, as they are about changing the structure of the data rather than just its contents.</span>
+<span id="cb50-1006"><a href="#cb50-1006" aria-hidden="true" tabindex="-1"></a>Both are covered in the <span class="co">[</span><span class="ot">Reshaping and pivots</span><span class="co">](12_reshaping_and_pivots.qmd)</span> chapter, as they are about changing the structure of the data rather than just its contents.</span>
 <span id="cb50-1007"><a href="#cb50-1007" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-1008"><a href="#cb50-1008" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb50-1009"><a href="#cb50-1009" aria-hidden="true" tabindex="-1"></a></span>

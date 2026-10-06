@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Reshaping and pivots – Reproducible Data Processing and Visualization</title>
+<title>12&nbsp; Reshaping and pivots – Reproducible Data Processing and Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,8 +85,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/12_binding_and_joining.html" rel="next">
-<link href="../chapters/10_strings_and_factors.html" rel="prev">
+<link href="../chapters/13_binding_and_joining.html" rel="next">
+<link href="../chapters/11_strings_and_factors.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -356,7 +356,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/11_reshaping_and_pivots.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/12_reshaping_and_pivots.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -472,26 +472,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/10_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  <a href="../chapters/11_strings_and_factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12_binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  <a href="../chapters/12_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/13_binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -507,20 +513,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -541,30 +547,30 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tidy-data-explainer" id="toc-tidy-data-explainer" class="nav-link active" data-scroll-target="#tidy-data-explainer"><span class="header-section-number">11.1</span> Tidy data explainer</a></li>
-  <li><a href="#examples-of-more-and-less-tidy-data" id="toc-examples-of-more-and-less-tidy-data" class="nav-link" data-scroll-target="#examples-of-more-and-less-tidy-data"><span class="header-section-number">11.2</span> Examples of more and less Tidy Data</a></li>
-  <li><a href="#non-tidy-data" id="toc-non-tidy-data" class="nav-link" data-scroll-target="#non-tidy-data"><span class="header-section-number">11.3</span> Non-tidy data</a></li>
-  <li><a href="#there-is-no-one-tidy-to-rule-them-all" id="toc-there-is-no-one-tidy-to-rule-them-all" class="nav-link" data-scroll-target="#there-is-no-one-tidy-to-rule-them-all"><span class="header-section-number">11.4</span> There is no one Tidy to rule them all</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">11.5</span> Example</a>
+  <li><a href="#tidy-data-explainer" id="toc-tidy-data-explainer" class="nav-link active" data-scroll-target="#tidy-data-explainer"><span class="header-section-number">12.1</span> Tidy data explainer</a></li>
+  <li><a href="#examples-of-more-and-less-tidy-data" id="toc-examples-of-more-and-less-tidy-data" class="nav-link" data-scroll-target="#examples-of-more-and-less-tidy-data"><span class="header-section-number">12.2</span> Examples of more and less Tidy Data</a></li>
+  <li><a href="#non-tidy-data" id="toc-non-tidy-data" class="nav-link" data-scroll-target="#non-tidy-data"><span class="header-section-number">12.3</span> Non-tidy data</a></li>
+  <li><a href="#there-is-no-one-tidy-to-rule-them-all" id="toc-there-is-no-one-tidy-to-rule-them-all" class="nav-link" data-scroll-target="#there-is-no-one-tidy-to-rule-them-all"><span class="header-section-number">12.4</span> There is no one Tidy to rule them all</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">12.5</span> Example</a>
   <ul class="collapse">
-  <li><a href="#simulate-data-in-wide-format" id="toc-simulate-data-in-wide-format" class="nav-link" data-scroll-target="#simulate-data-in-wide-format"><span class="header-section-number">11.5.1</span> Simulate data in wide format</a></li>
-  <li><a href="#cronbachs-alpha" id="toc-cronbachs-alpha" class="nav-link" data-scroll-target="#cronbachs-alpha"><span class="header-section-number">11.5.2</span> Cronbach’s alpha</a></li>
-  <li><a href="#plot-simulated-data" id="toc-plot-simulated-data" class="nav-link" data-scroll-target="#plot-simulated-data"><span class="header-section-number">11.5.3</span> Plot simulated data</a></li>
-  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"><span class="header-section-number">11.5.4</span> <code>pivot_longer()</code></a></li>
-  <li><a href="#seperate" id="toc-seperate" class="nav-link" data-scroll-target="#seperate"><span class="header-section-number">11.5.5</span> <code>seperate()</code></a></li>
-  <li><a href="#coalesce" id="toc-coalesce" class="nav-link" data-scroll-target="#coalesce"><span class="header-section-number">11.5.6</span> <code>coalesce()</code></a></li>
+  <li><a href="#simulate-data-in-wide-format" id="toc-simulate-data-in-wide-format" class="nav-link" data-scroll-target="#simulate-data-in-wide-format"><span class="header-section-number">12.5.1</span> Simulate data in wide format</a></li>
+  <li><a href="#cronbachs-alpha" id="toc-cronbachs-alpha" class="nav-link" data-scroll-target="#cronbachs-alpha"><span class="header-section-number">12.5.2</span> Cronbach’s alpha</a></li>
+  <li><a href="#plot-simulated-data" id="toc-plot-simulated-data" class="nav-link" data-scroll-target="#plot-simulated-data"><span class="header-section-number">12.5.3</span> Plot simulated data</a></li>
+  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"><span class="header-section-number">12.5.4</span> <code>pivot_longer()</code></a></li>
+  <li><a href="#seperate" id="toc-seperate" class="nav-link" data-scroll-target="#seperate"><span class="header-section-number">12.5.5</span> <code>seperate()</code></a></li>
+  <li><a href="#coalesce" id="toc-coalesce" class="nav-link" data-scroll-target="#coalesce"><span class="header-section-number">12.5.6</span> <code>coalesce()</code></a></li>
   </ul></li>
-  <li><a href="#practice-mutate" id="toc-practice-mutate" class="nav-link" data-scroll-target="#practice-mutate"><span class="header-section-number">11.6</span> Practice <code>mutate()</code></a>
+  <li><a href="#practice-mutate" id="toc-practice-mutate" class="nav-link" data-scroll-target="#practice-mutate"><span class="header-section-number">12.6</span> Practice <code>mutate()</code></a>
   <ul class="collapse">
-  <li><a href="#more-advanced-pivot_longer" id="toc-more-advanced-pivot_longer" class="nav-link" data-scroll-target="#more-advanced-pivot_longer"><span class="header-section-number">11.6.1</span> More advanced <code>pivot_longer()</code></a></li>
-  <li><a href="#practice-pivot_longer-and-other-functions-to-calculate-sum-scores" id="toc-practice-pivot_longer-and-other-functions-to-calculate-sum-scores" class="nav-link" data-scroll-target="#practice-pivot_longer-and-other-functions-to-calculate-sum-scores"><span class="header-section-number">11.6.2</span> Practice <code>pivot_longer()</code> and other functions to calculate sum scores</a></li>
+  <li><a href="#more-advanced-pivot_longer" id="toc-more-advanced-pivot_longer" class="nav-link" data-scroll-target="#more-advanced-pivot_longer"><span class="header-section-number">12.6.1</span> More advanced <code>pivot_longer()</code></a></li>
+  <li><a href="#practice-pivot_longer-and-other-functions-to-calculate-sum-scores" id="toc-practice-pivot_longer-and-other-functions-to-calculate-sum-scores" class="nav-link" data-scroll-target="#practice-pivot_longer-and-other-functions-to-calculate-sum-scores"><span class="header-section-number">12.6.2</span> Practice <code>pivot_longer()</code> and other functions to calculate sum scores</a></li>
   </ul></li>
-  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"><span class="header-section-number">11.7</span> <code>pivot_wider()</code></a></li>
-  <li><a href="#practice-pivot_wider-more" id="toc-practice-pivot_wider-more" class="nav-link" data-scroll-target="#practice-pivot_wider-more"><span class="header-section-number">11.8</span> Practice <code>pivot_wider()</code> more</a>
+  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"><span class="header-section-number">12.7</span> <code>pivot_wider()</code></a></li>
+  <li><a href="#practice-pivot_wider-more" id="toc-practice-pivot_wider-more" class="nav-link" data-scroll-target="#practice-pivot_wider-more"><span class="header-section-number">12.8</span> Practice <code>pivot_wider()</code> more</a>
   <ul class="collapse">
-  <li><a href="#practice-pivot_wider-and-other-functions" id="toc-practice-pivot_wider-and-other-functions" class="nav-link" data-scroll-target="#practice-pivot_wider-and-other-functions"><span class="header-section-number">11.8.1</span> Practice <code>pivot_wider()</code> and other functions</a></li>
+  <li><a href="#practice-pivot_wider-and-other-functions" id="toc-practice-pivot_wider-and-other-functions" class="nav-link" data-scroll-target="#practice-pivot_wider-and-other-functions"><span class="header-section-number">12.8.1</span> Practice <code>pivot_wider()</code> and other functions</a></li>
   </ul></li>
-  <li><a href="#advanced-pivot_longer" id="toc-advanced-pivot_longer" class="nav-link" data-scroll-target="#advanced-pivot_longer"><span class="header-section-number">11.9</span> Advanced <code>pivot_longer()</code></a></li>
+  <li><a href="#advanced-pivot_longer" id="toc-advanced-pivot_longer" class="nav-link" data-scroll-target="#advanced-pivot_longer"><span class="header-section-number">12.9</span> Advanced <code>pivot_longer()</code></a></li>
   </ul>
 </nav>
     </div>
@@ -572,9 +578,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/11_reshaping_and_pivots.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03_reproducible_reports.html">Part II: Wrangling</a></li><li class="breadcrumb-item"><a href="../chapters/12_reshaping_and_pivots.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -591,8 +597,8 @@ window.Quarto = {
 </header>
 
 
-<section id="tidy-data-explainer" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="tidy-data-explainer"><span class="header-section-number">11.1</span> Tidy data explainer</h2>
+<section id="tidy-data-explainer" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="tidy-data-explainer"><span class="header-section-number">12.1</span> Tidy data explainer</h2>
 <p>‘Tidy Data’ is a set of technical ideas about how data should be structured <span class="citation" data-cites="wickham2014">(<a href="../references.html#ref-wickham2014" role="doc-biblioref">Wickham, 2014</a>)</span>. The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.</p>
 <p>There are three rules that make a dataset tidy according to the <a href="https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data">Tidy Data chapter</a> of R for Data Science <span class="citation" data-cites="wickham2023r4ds">(<a href="../references.html#ref-wickham2023r4ds" role="doc-biblioref">Wickham et al., 2023</a>)</span>:</p>
 <ul>
@@ -607,8 +613,8 @@ window.Quarto = {
 <p><img src="../images/tidy data 3.jpg" class="img-fluid"></p>
 <p><img src="../images/tidy data 4.jpg" class="img-fluid"></p>
 </section>
-<section id="examples-of-more-and-less-tidy-data" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="examples-of-more-and-less-tidy-data"><span class="header-section-number">11.2</span> Examples of more and less Tidy Data</h2>
+<section id="examples-of-more-and-less-tidy-data" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="examples-of-more-and-less-tidy-data"><span class="header-section-number">12.2</span> Examples of more and less Tidy Data</h2>
 <p><code>table1</code> is tidiest, and therefore easiest to work with within many workflows, because it adheres to the above rules. To see this in action, try to calculate a percentage prevalence (cases/population) using each dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -804,17 +810,17 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<section id="check-your-learning" class="level4" data-number="11.2.0.1">
-<h4 data-number="11.2.0.1" class="anchored" data-anchor-id="check-your-learning"><span class="header-section-number">11.2.0.1</span> Check your learning</h4>
+<section id="check-your-learning" class="level4" data-number="12.2.0.1">
+<h4 data-number="12.2.0.1" class="anchored" data-anchor-id="check-your-learning"><span class="header-section-number">12.2.0.1</span> Check your learning</h4>
 <p>Why do table2 and table3 not as Tidy as table1?</p>
 </section>
 </section>
-<section id="non-tidy-data" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="non-tidy-data"><span class="header-section-number">11.3</span> Non-tidy data</h2>
+<section id="non-tidy-data" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="non-tidy-data"><span class="header-section-number">12.3</span> Non-tidy data</h2>
 <p>There are many forms of data that are non-tidy without being messy. A proper understanding of Tidy Data requires that you understand this distinction. See <a href="https://r4ds.had.co.nz/tidy-data.html#non-tidy-data">Wickham’s description</a> in the first edition of the R4DS book.</p>
 </section>
-<section id="there-is-no-one-tidy-to-rule-them-all" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="there-is-no-one-tidy-to-rule-them-all"><span class="header-section-number">11.4</span> There is no one Tidy to rule them all</h2>
+<section id="there-is-no-one-tidy-to-rule-them-all" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="there-is-no-one-tidy-to-rule-them-all"><span class="header-section-number">12.4</span> There is no one Tidy to rule them all</h2>
 <p>The same data can be represented in many different ways and still be Tidy: it can be wider or longer.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot table2 to a wider format to create table1</span></span>
@@ -931,13 +937,13 @@ window.Quarto = {
 <p>This gif helps illustrate what’s happening when you pivot data to be wider or longer (<a href="https://github.com/gadenbuie/tidyexplain?tab=readme-ov-file#pivot-wider-and-longer">source</a>):</p>
 <p><img src="../images/pivot longer.gif" class="img-fluid"></p>
 </section>
-<section id="example" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="example"><span class="header-section-number">11.5</span> Example</h2>
-<section id="simulate-data-in-wide-format" class="level3" data-number="11.5.1">
-<h3 data-number="11.5.1" class="anchored" data-anchor-id="simulate-data-in-wide-format"><span class="header-section-number">11.5.1</span> Simulate data in wide format</h3>
+<section id="example" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="example"><span class="header-section-number">12.5</span> Example</h2>
+<section id="simulate-data-in-wide-format" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="simulate-data-in-wide-format"><span class="header-section-number">12.5.1</span> Simulate data in wide format</h3>
 </section>
-<section id="cronbachs-alpha" class="level3" data-number="11.5.2">
-<h3 data-number="11.5.2" class="anchored" data-anchor-id="cronbachs-alpha"><span class="header-section-number">11.5.2</span> Cronbach’s alpha</h3>
+<section id="cronbachs-alpha" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="cronbachs-alpha"><span class="header-section-number">12.5.2</span> Cronbach’s alpha</h3>
 <p>Wide data like this is a) common and b) useful for calculating metrics like internal consistency.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>res_alpha_depression1 <span class="ot">&lt;-</span> dat_likert_wide <span class="sc">%&gt;%</span></span>
@@ -961,8 +967,8 @@ window.Quarto = {
 <li>Depression1 scale: 0.78</li>
 </ul>
 </section>
-<section id="plot-simulated-data" class="level3" data-number="11.5.3">
-<h3 data-number="11.5.3" class="anchored" data-anchor-id="plot-simulated-data"><span class="header-section-number">11.5.3</span> Plot simulated data</h3>
+<section id="plot-simulated-data" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="plot-simulated-data"><span class="header-section-number">12.5.3</span> Plot simulated data</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_likert_wide, <span class="fu">aes</span>(<span class="at">x =</span> depression1_item1)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
@@ -970,7 +976,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -980,7 +986,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -990,7 +996,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1000,7 +1006,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1010,7 +1016,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1020,7 +1026,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1030,7 +1036,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-7.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-7.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1040,7 +1046,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-8.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-8.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1050,7 +1056,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-9.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-9.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1060,7 +1066,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-10.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-10.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1070,7 +1076,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-11.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-11.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1080,7 +1086,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-12.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-12.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1090,7 +1096,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-13.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-13.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1100,7 +1106,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-14.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-14.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1110,7 +1116,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-15.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-15.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1120,7 +1126,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-16.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-16.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1130,7 +1136,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-17.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-6-17.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1139,8 +1145,8 @@ window.Quarto = {
 <li>These plots repeat the mortal coding sin of repeating ourselves. If we reshaped the data to ‘long’ format we could use just one ggplot() call that includes facet_wrap().</li>
 </ul>
 </section>
-<section id="pivot_longer" class="level3" data-number="11.5.4">
-<h3 data-number="11.5.4" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">11.5.4</span> <code>pivot_longer()</code></h3>
+<section id="pivot_longer" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="pivot_longer"><span class="header-section-number">12.5.4</span> <code>pivot_longer()</code></h3>
 <p>Using <code>pivot_longer()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dat_likert_long <span class="ot">&lt;-</span> dat_likert_wide <span class="sc">%&gt;%</span></span>
@@ -1155,7 +1161,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1175,13 +1181,13 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="check-your-learning-1" class="level4" data-number="11.5.4.1">
-<h4 data-number="11.5.4.1" class="anchored" data-anchor-id="check-your-learning-1"><span class="header-section-number">11.5.4.1</span> Check your learning</h4>
+<section id="check-your-learning-1" class="level4" data-number="12.5.4.1">
+<h4 data-number="12.5.4.1" class="anchored" data-anchor-id="check-your-learning-1"><span class="header-section-number">12.5.4.1</span> Check your learning</h4>
 <p>Why is dat_likert_long not as tidy as it could be?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dat_likert_long </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -7155,8 +7161,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="seperate" class="level3" data-number="11.5.5">
-<h3 data-number="11.5.5" class="anchored" data-anchor-id="seperate"><span class="header-section-number">11.5.5</span> <code>seperate()</code></h3>
+<section id="seperate" class="level3" data-number="12.5.5">
+<h3 data-number="12.5.5" class="anchored" data-anchor-id="seperate"><span class="header-section-number">12.5.5</span> <code>seperate()</code></h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -7173,14 +7179,14 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="coalesce" class="level3" data-number="11.5.6">
-<h3 data-number="11.5.6" class="anchored" data-anchor-id="coalesce"><span class="header-section-number">11.5.6</span> <code>coalesce()</code></h3>
+<section id="coalesce" class="level3" data-number="12.5.6">
+<h3 data-number="12.5.6" class="anchored" data-anchor-id="coalesce"><span class="header-section-number">12.5.6</span> <code>coalesce()</code></h3>
 <p><code>separate()</code> splits one column into several. Sometimes we need the opposite: combining several columns into one. For example, if a survey was changed partway through data collection and age was saved in a different column in each version:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) <span class="co"># for tribble()</span></span>
@@ -7362,12 +7368,12 @@ window.Quarto = {
 <p>Wrappers make code shorter and easier to read, and are often less error-prone. But it is useful to understand the logic they wrap: it helps you know exactly what a function will do in unusual cases (e.g., what happens when both columns contain a value), and when no wrapper exists for your problem, you can fall back on writing the logic yourself with <code>mutate()</code>, <code>if_else()</code>, and <code>case_when()</code>.</p>
 </section>
 </section>
-<section id="practice-mutate" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="practice-mutate"><span class="header-section-number">11.6</span> Practice <code>mutate()</code></h2>
+<section id="practice-mutate" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="practice-mutate"><span class="header-section-number">12.6</span> Practice <code>mutate()</code></h2>
 <p>The above plot does not order the items correctly (item1, item10, item2, etc).</p>
 <p>Use <code>mutate()</code> to remove ‘depression’ and ‘item’ from the column contents and plot it again.</p>
-<section id="more-advanced-pivot_longer" class="level3" data-number="11.6.1">
-<h3 data-number="11.6.1" class="anchored" data-anchor-id="more-advanced-pivot_longer"><span class="header-section-number">11.6.1</span> More advanced <code>pivot_longer()</code></h3>
+<section id="more-advanced-pivot_longer" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="more-advanced-pivot_longer"><span class="header-section-number">12.6.1</span> More advanced <code>pivot_longer()</code></h3>
 <p>Separation can be done inside pivots.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dat_likert_long_tidy3 <span class="ot">&lt;-</span> dat_likert_wide <span class="sc">%&gt;%</span></span>
@@ -7384,7 +7390,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11_reshaping_and_pivots_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="12_reshaping_and_pivots_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -8320,8 +8326,8 @@ window.Quarto = {
 </div>
 <p>Do all studies have 2 conditions? TRUE</p>
 </section>
-<section id="practice-pivot_longer-and-other-functions-to-calculate-sum-scores" class="level3" data-number="11.6.2">
-<h3 data-number="11.6.2" class="anchored" data-anchor-id="practice-pivot_longer-and-other-functions-to-calculate-sum-scores"><span class="header-section-number">11.6.2</span> Practice <code>pivot_longer()</code> and other functions to calculate sum scores</h3>
+<section id="practice-pivot_longer-and-other-functions-to-calculate-sum-scores" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="practice-pivot_longer-and-other-functions-to-calculate-sum-scores"><span class="header-section-number">12.6.2</span> Practice <code>pivot_longer()</code> and other functions to calculate sum scores</h3>
 <p>Calculate the mean and SD of each item. Do not repeat your code: use pivot_longer and other functions.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dput</span>(<span class="fu">colnames</span>(dat_likert_wide))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -8594,8 +8600,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="pivot_wider" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="pivot_wider"><span class="header-section-number">11.7</span> <code>pivot_wider()</code></h2>
+<section id="pivot_wider" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="pivot_wider"><span class="header-section-number">12.7</span> <code>pivot_wider()</code></h2>
 <p>pivot_wider is the opposite to pivot_longer. Note that it requires an id column(s) to know which rows below to the same participants.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># built in dataset, long format</span></span>
@@ -18657,15 +18663,15 @@ window.Quarto = {
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#               values_from = meanscore)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="practice-pivot_wider-more" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="practice-pivot_wider-more"><span class="header-section-number">11.8</span> Practice <code>pivot_wider()</code> more</h2>
+<section id="practice-pivot_wider-more" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="practice-pivot_wider-more"><span class="header-section-number">12.8</span> Practice <code>pivot_wider()</code> more</h2>
 <p>Wrangle the demographics data from one of the early chapters to calculate the sample size, the M and SD age, and the counts of each gender.</p>
 <p>Before, we used filter() to wrangle the age and gender data separately. This time, reshape it using a pivot.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/raw/data_demographics_raw.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="practice-pivot_wider-and-other-functions" class="level3" data-number="11.8.1">
-<h3 data-number="11.8.1" class="anchored" data-anchor-id="practice-pivot_wider-and-other-functions"><span class="header-section-number">11.8.1</span> Practice <code>pivot_wider()</code> and other functions</h3>
+<section id="practice-pivot_wider-and-other-functions" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="practice-pivot_wider-and-other-functions"><span class="header-section-number">12.8.1</span> Practice <code>pivot_wider()</code> and other functions</h3>
 <p>The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness <span class="citation" data-cites="payne2013">(<a href="../references.html#ref-payne2013" role="doc-biblioref">Payne et al., 2013</a>)</span>. This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs.&nbsp;the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.</p>
 <ul>
 <li>Remove the instructions trials and the practice trials.</li>
@@ -18680,8 +18686,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="advanced-pivot_longer" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="advanced-pivot_longer"><span class="header-section-number">11.9</span> Advanced <code>pivot_longer()</code></h2>
+<section id="advanced-pivot_longer" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="advanced-pivot_longer"><span class="header-section-number">12.9</span> Advanced <code>pivot_longer()</code></h2>
 <p>Sometimes we want to pivot multiple columns at once. This too is possible.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wider data</span></span>
@@ -19301,13 +19307,13 @@ Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for data s
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/10_strings_and_factors.html" class="pagination-link" aria-label="Data types <span class=&quot;badge badge-draft2&quot;>✎ TODO</span>">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span>
+      <a href="../chapters/11_strings_and_factors.html" class="pagination-link" aria-label="Strings and factors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings and factors</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/12_binding_and_joining.html" class="pagination-link" aria-label="Binding and joining">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binding and joining</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/13_binding_and_joining.html" class="pagination-link" aria-label="Binding and joining">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binding and joining</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

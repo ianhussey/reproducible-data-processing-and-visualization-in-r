@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10_strings_and_factors.html" rel="next">
+<link href="../chapters/10_data_types.html" rel="next">
 <link href="../chapters/08_data_transformation_3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -446,26 +446,32 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/10_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  <a href="../chapters/11_strings_and_factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12_binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  <a href="../chapters/12_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/13_binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -481,20 +487,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -679,7 +685,7 @@ div.csl-indent {
 <section id="raw-data-is-read-only" class="level3" data-number="9.2.3">
 <h3 data-number="9.2.3" class="anchored" data-anchor-id="raw-data-is-read-only"><span class="header-section-number">9.2.3</span> 3. Raw data is read-only</h3>
 <p>The earliest form of the data you have access to must be preserved exactly as it was received. Never edit it by hand, never overwrite it with code, and never save over it after opening it in Excel. Every change to the data is instead made by code that reads the raw data and writes a <em>new</em> file somewhere else.</p>
-<p>The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on <a href="../chapters/13_sharing_and_privacy.html">Sharing and privacy</a>. Even then, the original is kept (securely, and not shared) and the removal is done with code.</p>
+<p>The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on <a href="../chapters/14_sharing_and_privacy.html">Sharing and privacy</a>. Even then, the original is kept (securely, and not shared) and the removal is done with code.</p>
 </section>
 <section id="data-flows-in-one-direction-and-only-code-moves-it" class="level3" data-number="9.2.4">
 <h3 data-number="9.2.4" class="anchored" data-anchor-id="data-flows-in-one-direction-and-only-code-moves-it"><span class="header-section-number">9.2.4</span> 4. Data flows in one direction, and only code moves it</h3>
@@ -745,7 +751,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>Note that “final”, “v2”, and “NEW” in file names are attempts to do version control by hand. They reliably fail, because there is always a “final_v3”. Version control with git and GitHub, covered in the chapter on <a href="../chapters/13_sharing_and_privacy.html">Sharing and privacy</a>, solves this properly: there is only ever one <code>analysis.qmd</code>, and git remembers every previous version of it.</p>
+<p>Note that “final”, “v2”, and “NEW” in file names are attempts to do version control by hand. They reliably fail, because there is always a “final_v3”. Version control with git and GitHub, covered in the chapter on <a href="../chapters/14_sharing_and_privacy.html">Sharing and privacy</a>, solves this properly: there is only ever one <code>analysis.qmd</code>, and git remembers every previous version of it.</p>
 <p>See Jenny Bryan’s <a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name files</a> for more on this.</p>
 </section>
 <section id="document-the-project" class="level3" data-number="9.2.7">
@@ -856,7 +862,7 @@ div.csl-indent {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(project, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//RtmpJZRtUV/my_project
+<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//RtmpLiPBkh/my_project
 ├── .gitattributes
 ├── .gitignore
 ├── CITATION.cff
@@ -1360,7 +1366,7 @@ $n_skip
 <li>The README has been customised.</li>
 <li>Raw data hasn’t been changed since it was first committed to git.</li>
 </ul>
-<p>The last check is only possible if the project uses git, which records every version of every file. If the project isn’t a git repository, the check is reported as <code>SKIP</code>. We’ll cover git and GitHub in the chapter on <a href="../chapters/13_sharing_and_privacy.html">Sharing and privacy</a>; from then on, this check enforces the rule that raw data is read-only.</p>
+<p>The last check is only possible if the project uses git, which records every version of every file. If the project isn’t a git repository, the check is reported as <code>SKIP</code>. We’ll cover git and GitHub in the chapter on <a href="../chapters/14_sharing_and_privacy.html">Sharing and privacy</a>; from then on, this check enforces the rule that raw data is read-only.</p>
 </section>
 <section id="when-to-validate" class="level4" data-number="9.4.7.5">
 <h4 data-number="9.4.7.5" class="anchored" data-anchor-id="when-to-validate"><span class="header-section-number">9.4.7.5</span> When to validate</h4>
@@ -2107,8 +2113,8 @@ Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10_strings_and_factors.html" class="pagination-link" aria-label="Data types <span class=&quot;badge badge-draft2&quot;>✎ TODO</span>">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/10_data_types.html" class="pagination-link" aria-label="Data types">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -2199,7 +2205,7 @@ Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. 
 <span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a>The earliest form of the data you have access to must be preserved exactly as it was received. Never edit it by hand, never overwrite it with code, and never save over it after opening it in Excel. Every change to the data is instead made by code that reads the raw data and writes a *new* file somewhere else.</span>
 <span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a>The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](13_sharing_and_privacy.qmd)</span>. Even then, the original is kept (securely, and not shared) and the removal is done with code.</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a>The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span>. Even then, the original is kept (securely, and not shared) and the removal is done with code.</span>
 <span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Data flows in one direction, and only code moves it</span></span>
 <span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a></span>
@@ -2236,7 +2242,7 @@ Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. 
 <span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`Figure1.png`</span>, <span class="in">`fig1_revised.png`</span> <span class="pp">|</span> <span class="in">`plot_01_self_reports.png`</span> <span class="pp">|</span></span>
 <span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`23.9.26 pilot.csv`</span> <span class="pp">|</span> <span class="in">`2026-09-23_pilot_data.csv`</span> <span class="pp">|</span></span>
 <span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a>Note that "final", "v2", and "NEW" in file names are attempts to do version control by hand. They reliably fail, because there is always a "final_v3". Version control with git and GitHub, covered in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](13_sharing_and_privacy.qmd)</span>, solves this properly: there is only ever one <span class="in">`analysis.qmd`</span>, and git remembers every previous version of it.</span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a>Note that "final", "v2", and "NEW" in file names are attempts to do version control by hand. They reliably fail, because there is always a "final_v3". Version control with git and GitHub, covered in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span>, solves this properly: there is only ever one <span class="in">`analysis.qmd`</span>, and git remembers every previous version of it.</span>
 <span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a>See Jenny Bryan's <span class="co">[</span><span class="ot">How to name files</span><span class="co">](https://speakerdeck.com/jennybc/how-to-name-files)</span> for more on this.</span>
 <span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a></span>
@@ -2619,7 +2625,7 @@ Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. 
 <span id="cb22-531"><a href="#cb22-531" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The README has been customised.</span>
 <span id="cb22-532"><a href="#cb22-532" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Raw data hasn't been changed since it was first committed to git.</span>
 <span id="cb22-533"><a href="#cb22-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-534"><a href="#cb22-534" aria-hidden="true" tabindex="-1"></a>The last check is only possible if the project uses git, which records every version of every file. If the project isn't a git repository, the check is reported as <span class="in">`SKIP`</span>. We'll cover git and GitHub in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](13_sharing_and_privacy.qmd)</span>; from then on, this check enforces the rule that raw data is read-only.</span>
+<span id="cb22-534"><a href="#cb22-534" aria-hidden="true" tabindex="-1"></a>The last check is only possible if the project uses git, which records every version of every file. If the project isn't a git repository, the check is reported as <span class="in">`SKIP`</span>. We'll cover git and GitHub in the chapter on <span class="co">[</span><span class="ot">Sharing and privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span>; from then on, this check enforces the rule that raw data is read-only.</span>
 <span id="cb22-535"><a href="#cb22-535" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-536"><a href="#cb22-536" aria-hidden="true" tabindex="-1"></a><span class="fu">#### When to validate</span></span>
 <span id="cb22-537"><a href="#cb22-537" aria-hidden="true" tabindex="-1"></a></span>

@@ -1,0 +1,321 @@
+---
+title: "Data types - in-class exercises"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, mutate, filter, summarize, group_by, if_else, case_when, near, between
+library(readr) # for read_csv
+library(tibble) # for tribble
+library(roundwork) # for round_up
+library(truffle) # for round_p_value
+
+```
+
+# Today's data
+
+Run this chunk, then look at the data frames.
+
+`dat_survey` is read from a small .csv-style text, so that `read_csv()` has to guess each column's type, just as it does with real data files. Missing ages were coded as `999`.
+
+`dat_rt` contains trial-level data from a reaction time task.
+
+`dat_results` contains the results of some hypothesis tests.
+
+```{r}
+
+dat_survey <- read_csv(I("id,age,consent,mean_rt,comments
+1,23,yes,512.5,
+2,twenty,yes,498.25,
+3,999,no,,
+4,,yes,601,
+5,35,yes,550.75,"),
+show_col_types = FALSE)
+
+dat_rt <- tribble(
+  ~id, ~trial, ~rt, ~correct,
+  1,   1,      512, 1,
+  1,   2,      604, 1,
+  1,   3,      488, 0,
+  2,   1,      701, 0,
+  2,   2,      655, 0,
+  2,   3,      690, 0,
+  3,   1,      530, 1,
+  3,   2,      575, 1,
+  3,   3,      549, 1
+)
+
+dat_results <- tribble(
+  ~hypothesis, ~estimate, ~p,
+  "H1",        0.2345,    0.2346,
+  "H2",        0.1250,    0.0340,
+  "H3",        0.5125,    0.0000004,
+  "H4",        0.0875,    0.04999
+)
+
+```
+
+# Types
+
+## What types did `read_csv()` guess?
+
+Use `glimpse()` to see the type of each column in `dat_survey`. For each column, explain why `read_csv()` chose that type. Which type would you expect for 'comments'? Why?
+
+```{r}
+
+
+
+```
+
+## Predict before you run
+
+Before running each line: what will the result be, and what type?
+
+```{r}
+
+c(1, 2, "3")
+c(TRUE, FALSE, 2)
+c(1, NA, 3)
+as.numeric(c("23", "twenty", "999"))
+
+```
+
+## Fix the age column
+
+Clean the 'age' column of `dat_survey` so that it is numeric, the missing data code is `NA`, and "twenty" is converted to 20 rather than lost. Check how many ages are `NA` before and after your cleaning.
+
+```{r}
+
+
+
+```
+
+# `NA`
+
+## Predict before you run
+
+Before running each line: what will the result be?
+
+```{r}
+
+NA > 5
+NA == NA
+sum(c(1, 2, NA))
+mean(c(NA, NA), na.rm = TRUE)
+NA & FALSE
+
+```
+
+## A filter that drops too much
+
+The code below is meant to remove participants with the missing data code `999`. How many rows do you expect it to return? How many does it return? Why? Fix it.
+
+```{r}
+
+dat_survey %>%
+  mutate(age = as.numeric(age)) %>%
+  filter(age != 999)
+
+```
+
+```{r}
+
+
+
+```
+
+## Typed `NA`s
+
+Which of these chunks will throw an error? Why? Fix the one(s) that do.
+
+```{r}
+#| error: true
+
+dat_survey %>%
+  mutate(consent = case_when(consent == "yes" ~ TRUE,
+                             consent == "no" ~ FALSE,
+                             TRUE ~ NA))
+
+```
+
+```{r}
+#| error: true
+
+dat_survey %>%
+  mutate(comments = if_else(id == 3, "withdrew consent", NA_real_))
+
+```
+
+```{r}
+#| error: true
+
+dat_survey %>%
+  mutate(comments = if_else(id == 3, "withdrew consent", comments))
+
+```
+
+## Summaries when everything is missing
+
+Calculate each participant's mean RT on correct trials only in `dat_rt`, along with the number of correct trials. Hint: first create a column containing the RT on correct trials and `NA` on error trials.
+
+What do you get for participant 2? Why? Modify your code so that participant 2 gets `NA` instead.
+
+```{r}
+
+
+
+```
+
+# Floating point
+
+## Predict before you run
+
+Before running each line: TRUE or FALSE?
+
+```{r}
+
+0.1 * 3 == 0.3
+1 - 0.4 == 0.6
+near(0.1 * 3, 0.3)
+(1 - 0.95) < 0.05
+
+```
+
+Why do some of these give the "wrong" answer? How would you check what number is really stored?
+
+## Proportions
+
+Calculate each participant's proportion of correct trials in `dat_rt`. Then filter for participants who made exactly one error, i.e., whose proportion correct is `1 - 1/3`. Do it with `==` and with `near()`. Do they give the same result? Why?
+
+```{r}
+
+
+
+```
+
+## Checking ranges with `between()`
+
+Use `between()` to create a column in `dat_rt` that is TRUE if the RT is between 200 and 600 ms (inclusive).
+
+```{r}
+
+
+
+```
+
+# Rounding and reporting
+
+## Predict before you run
+
+Before running: what will each of these return?
+
+```{r}
+
+round(2.5)
+round(0.125, digits = 2)
+round_up(2.5)
+round_up(0.125, digits = 2)
+
+```
+
+## Spot the bug
+
+This code is meant to flag significant results and report APA-style *p*-values. Run it. Which hypotheses are marked as significant? Is that correct? What went wrong?
+
+```{r}
+
+dat_results %>%
+  mutate(p = round_p_value(p),
+         significant = p < .05)
+
+```
+
+Fix it.
+
+```{r}
+
+
+
+```
+
+## A results table
+
+Using `dat_results`, create a table suitable for a manuscript:
+
+1. A column `significant` that is TRUE if *p* < .05.
+2. The estimate rounded to 2 decimal places using round-half-up.
+3. The *p*-value in APA format.
+
+Which of these steps must come first? Why?
+
+```{r}
+
+
+
+```
+
+# Fix the broken pipe
+
+This code is meant to clean `dat_survey`, then calculate the mean age and mean RT, rounded to 2 decimal places. It has (at least) four bugs. Find and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_survey %>%
+  mutate(age = if_else(age == "twenty", "20", age),
+         age = as.numeric(age),
+         age = if_else(age == 999, NA_character_, age)) %>%
+  summarize(mean_age = mean(age),
+            mean_rt = mean(mean_rt, na.rm = TRUE)) %>%
+  mutate(across(everything(), round))
+
+```
+
+# Looking ahead
+
+In this session, we converted "twenty" to 20 by hand. Imagine a data set with hundreds of ages written as words, e.g., "thirty five", "forty-two", "Twenty One". What tools would you need to convert them all? What problems might you run into?

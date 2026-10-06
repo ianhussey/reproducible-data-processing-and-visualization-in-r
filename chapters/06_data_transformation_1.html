@@ -423,26 +423,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10_strings_and_factors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/10_data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
+  <a href="../chapters/11_strings_and_factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings and factors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12_binding_and_joining.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  <a href="../chapters/12_reshaping_and_pivots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Reshaping and pivots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/13_binding_and_joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binding and joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -458,20 +464,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -2807,7 +2813,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As with <code>select()</code>, it is often better to define what you <em>do</em> want (<code>==</code> and <code>%&gt;%</code>) rather than what you <em>do not</em> want (<code>!=</code> and <code>!</code>+<code>%in%</code>). This is even more important with <code>filter()</code> as unexpected row values are much more common than unexpected column names.</p>
 <p>For example, if you specify a negative filter <code>dat %&gt;% filter(gender != "non-binary")</code> because you wish to filter to return only participants who identify as ‘male’ or ‘female’, you have in fact only excluded participants who specified ‘non-binary’. This code would also return participants with other response options such as ‘non binary’, ‘Non-Binary’, ‘NB’, etc.</p>
 <p>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</p>
-<p>Some rows of the ‘dat_demographics_renamed’ data frame contain “prolific ID” values, which could be linked back to the individual’s Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <a href="../chapters/13_sharing_and_privacy.html">Data Privacy</a>.</p>
+<p>Some rows of the ‘dat_demographics_renamed’ data frame contain “prolific ID” values, which could be linked back to the individual’s Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <a href="../chapters/14_sharing_and_privacy.html">Data Privacy</a>.</p>
 <p>In this case, you would likely need to remove all rows referring to Prolific ID with a negative filter:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_anonymized <span class="ot">&lt;-</span> dat_demographics_renamed <span class="sc">%&gt;%</span></span>
@@ -2955,7 +2961,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>Note that the original ‘data_demographics_raw_messy.csv’ data file we originally read in to R still contains the Prolific ID codes! Again, see the <a href="../chapters/13_sharing_and_privacy.html">Data Privacy</a> chapter for how you would deal with this more thoroughly in your own projects.</p>
+<p>Note that the original ‘data_demographics_raw_messy.csv’ data file we originally read in to R still contains the Prolific ID codes! Again, see the <a href="../chapters/14_sharing_and_privacy.html">Data Privacy</a> chapter for how you would deal with this more thoroughly in your own projects.</p>
 </section>
 </section>
 <section id="creating-and-modifying-columns-with-dplyrmutate" class="level2" data-number="6.5">
@@ -3821,7 +3827,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Note how the data currently contains many misspellings and use of different cases that cause things like ‘female’ to appear as a different category to ‘Female’, etc.</p>
 <section id="mutate-and-working-with-character-strings" class="level4" data-number="6.5.2.1">
 <h4 data-number="6.5.2.1" class="anchored" data-anchor-id="mutate-and-working-with-character-strings"><span class="header-section-number">6.5.2.1</span> <code>mutate()</code> and working with character strings</h4>
-<p>Working with character strings using {stringr} and ‘regular expressions’ (regex) is a large separate topic in itself.</p>
+<p>Working with character strings using {stringr} and ‘regular expressions’ (regex) is a large separate topic in itself, covered in the <a href="../chapters/11_strings_and_factors.html">Strings and factors</a> chapter.</p>
 <p>For the moment, know that you can:</p>
 <ul>
 <li>Use functions like <code>str_to_lower()</code> to convert all text to lower case (as in the above example).</li>
@@ -5711,7 +5717,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb54-967"><a href="#cb54-967" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-968"><a href="#cb54-968" aria-hidden="true" tabindex="-1"></a>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</span>
 <span id="cb54-969"><a href="#cb54-969" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-970"><a href="#cb54-970" aria-hidden="true" tabindex="-1"></a>Some rows of the 'dat_demographics_renamed' data frame contain "prolific ID" values, which could be linked back to the individual's Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](13_sharing_and_privacy.qmd)</span>.</span>
+<span id="cb54-970"><a href="#cb54-970" aria-hidden="true" tabindex="-1"></a>Some rows of the 'dat_demographics_renamed' data frame contain "prolific ID" values, which could be linked back to the individual's Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span>.</span>
 <span id="cb54-971"><a href="#cb54-971" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-972"><a href="#cb54-972" aria-hidden="true" tabindex="-1"></a>In this case, you would likely need to remove all rows referring to Prolific ID with a negative filter:</span>
 <span id="cb54-973"><a href="#cb54-973" aria-hidden="true" tabindex="-1"></a></span>
@@ -5724,7 +5730,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb54-982"><a href="#cb54-982" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb54-983"><a href="#cb54-983" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-984"><a href="#cb54-984" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-985"><a href="#cb54-985" aria-hidden="true" tabindex="-1"></a>Note that the original 'data_demographics_raw_messy.csv' data file we originally read in to R still contains the Prolific ID codes! Again, see the <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](13_sharing_and_privacy.qmd)</span> chapter for how you would deal with this more thoroughly in your own projects.</span>
+<span id="cb54-985"><a href="#cb54-985" aria-hidden="true" tabindex="-1"></a>Note that the original 'data_demographics_raw_messy.csv' data file we originally read in to R still contains the Prolific ID codes! Again, see the <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span> chapter for how you would deal with this more thoroughly in your own projects.</span>
 <span id="cb54-986"><a href="#cb54-986" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-987"><a href="#cb54-987" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and modifying columns with `dplyr::mutate()`</span></span>
 <span id="cb54-988"><a href="#cb54-988" aria-hidden="true" tabindex="-1"></a></span>
@@ -5875,7 +5881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb54-1149"><a href="#cb54-1149" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-1150"><a href="#cb54-1150" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `mutate()` and working with character strings</span></span>
 <span id="cb54-1151"><a href="#cb54-1151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-1152"><a href="#cb54-1152" aria-hidden="true" tabindex="-1"></a>Working with character strings using {stringr} and 'regular expressions' (regex) is a large separate topic in itself.</span>
+<span id="cb54-1152"><a href="#cb54-1152" aria-hidden="true" tabindex="-1"></a>Working with character strings using {stringr} and 'regular expressions' (regex) is a large separate topic in itself, covered in the <span class="co">[</span><span class="ot">Strings and factors</span><span class="co">](11_strings_and_factors.qmd)</span> chapter.</span>
 <span id="cb54-1153"><a href="#cb54-1153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-1154"><a href="#cb54-1154" aria-hidden="true" tabindex="-1"></a>For the moment, know that you can:</span>
 <span id="cb54-1155"><a href="#cb54-1155" aria-hidden="true" tabindex="-1"></a></span>
