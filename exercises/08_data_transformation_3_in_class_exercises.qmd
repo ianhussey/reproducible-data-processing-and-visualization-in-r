@@ -1,5 +1,5 @@
 ---
-title: "Week 5 - in class"
+title: "Data transformation III - in-class exercises"
 author: "Ian Hussey"
 date: today
 editor: source
@@ -269,9 +269,9 @@ dat_stroop %>%
 
 # Grouped `mutate()`
 
-## Fixing last week's problem
+## Fixing a problem from the Data transformation II exercises
 
-Last week, we found that `lag()` and `cumsum()` leak from one participant into the next. Using `dat_stroop`, create these columns *within each participant*:
+In the Data transformation II exercises, we found that `lag()` and `cumsum()` leak from one participant into the next. Using `dat_stroop`, create these columns *within each participant*:
 
 - `after_error`: "post-error" if the previous trial was an error, "post-correct" otherwise, and `NA` for each participant's first trial.
 - `n_errors_so_far`: the number of errors the participant has made up to and including the current trial.
@@ -282,7 +282,7 @@ Last week, we found that `lag()` and `cumsum()` leak from one participant into t
 
 ```
 
-Compare your code to the workaround from last week (`if_else(id == lag(id), ...)`). Which is easier to read? Which is less likely to contain a mistake?
+Compare your code to the workaround from the Data transformation II exercises (`if_else(id == lag(id), ...)`). Which is easier to read? Which is less likely to contain a mistake?
 
 ## Relative to each participant's own data
 

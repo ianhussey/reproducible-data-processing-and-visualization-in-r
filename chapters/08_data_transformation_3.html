@@ -517,7 +517,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#summarizeacross" id="toc-summarizeacross" class="nav-link" data-scroll-target="#summarizeacross"><span class="header-section-number">8.6.1</span> <code>summarize(across())</code></a></li>
   </ul></li>
-  <li><a href="#check-your-learning" id="toc-check-your-learning" class="nav-link" data-scroll-target="#check-your-learning"><span class="header-section-number">8.7</span> Check your learning</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.7</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#mutate-vs.-summarize" id="toc-mutate-vs.-summarize" class="nav-link" data-scroll-target="#mutate-vs.-summarize"><span class="header-section-number">8.7.1</span> <code>mutate()</code> vs.&nbsp;<code>summarize()</code></a></li>
+  <li><a href="#group_by-1" id="toc-group_by-1" class="nav-link" data-scroll-target="#group_by-1"><span class="header-section-number">8.7.2</span> <code>group_by()</code></a></li>
+  <li><a href="#ungroup-and-.by" id="toc-ungroup-and-.by" class="nav-link" data-scroll-target="#ungroup-and-.by"><span class="header-section-number">8.7.3</span> <code>ungroup()</code> and <code>.by</code></a></li>
+  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting"><span class="header-section-number">8.7.4</span> Counting</a></li>
+  <li><a href="#duplicates" id="toc-duplicates" class="nav-link" data-scroll-target="#duplicates"><span class="header-section-number">8.7.5</span> Duplicates</a></li>
+  <li><a href="#exclusions" id="toc-exclusions" class="nav-link" data-scroll-target="#exclusions"><span class="header-section-number">8.7.6</span> Exclusions</a></li>
+  <li><a href="#interactive-exercises" id="toc-interactive-exercises" class="nav-link" data-scroll-target="#interactive-exercises"><span class="header-section-number">8.7.7</span> Interactive exercises</a></li>
+  <li><a href="#practice-summarizing-a-demographics-table" id="toc-practice-summarizing-a-demographics-table" class="nav-link" data-scroll-target="#practice-summarizing-a-demographics-table"><span class="header-section-number">8.7.8</span> Practice summarizing a demographics table</a></li>
+  <li><a href="#practice-processing-trial-level-data" id="toc-practice-processing-trial-level-data" class="nav-link" data-scroll-target="#practice-processing-trial-level-data"><span class="header-section-number">8.7.9</span> Practice processing trial-level data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -5466,13 +5477,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- TODO here or later in -->
 </section>
 </section>
-<section id="check-your-learning" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="check-your-learning"><span class="header-section-number">8.7</span> Check your learning</h2>
-<p>What is the difference between <code>mutate()</code> and <code>summarize()</code>? If I use the wrong one, will I get the same answer? E.g., mutate(mean_age = mean(age, na.rm = TRUE)) vs.&nbsp;summarize(mean_age = mean(age, na.rm = TRUE))</p>
+<section id="exercises" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.7</span> Exercises</h2>
+<section id="mutate-vs.-summarize" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="mutate-vs.-summarize"><span class="header-section-number">8.7.1</span> <code>mutate()</code> vs.&nbsp;<code>summarize()</code></h3>
+<p>What is the difference between <code>mutate()</code> and <code>summarize()</code>? If you use the wrong one, will you get the same answer? E.g., <code>mutate(mean_age = mean(age, na.rm = TRUE))</code> vs.&nbsp;<code>summarize(mean_age = mean(age, na.rm = TRUE))</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Both calculate the same mean age, but they return it differently. <code>summarize()</code> reduces the data frame to one row (or one row per group) containing only the summary (and any grouping columns). <code>mutate()</code> keeps every row and every column, and adds the mean as a new column, repeated on every row (or on every row of each group).</p>
+<p>So the <em>value</em> is the same, but the <em>shape</em> of the result is very different. If you use <code>mutate()</code> when you meant <code>summarize()</code>, any later step that assumes one row per participant or group, e.g., calculating an N with <code>n()</code> or a mean of means, will be wrong.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="group_by-1" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="group_by-1"><span class="header-section-number">8.7.2</span> <code>group_by()</code></h3>
+<p>What does <code>group_by()</code> change about how <code>summarize()</code>, <code>mutate()</code>, <code>filter()</code>, and the <code>slice_()</code> functions work?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>They all do their calculations separately within each group:</p>
+<ul>
+<li><code>summarize()</code> returns one row per group rather than one row in total.</li>
+<li><code>mutate()</code> calculates aggregating functions (e.g., <code>mean()</code>) and functions that use other rows (e.g., <code>lag()</code>, <code>cumsum()</code>) within each group.</li>
+<li><code>filter()</code> keeps or drops rows based on calculations within each group, e.g., <code>filter(n() == 60)</code> keeps groups with exactly 60 rows.</li>
+<li><code>slice_()</code> functions return rows from each group, e.g., <code>slice_head(n = 3)</code> returns the first 3 rows of each group.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="ungroup-and-.by" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="ungroup-and-.by"><span class="header-section-number">8.7.3</span> <code>ungroup()</code> and <code>.by</code></h3>
+<p>Why is it important to <code>ungroup()</code>? What is an alternative that avoids the problem?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Grouping persists until it is removed, and it’s easy to miss because it isn’t visible in the data itself. Later functions in the pipe, or in later code using the saved data frame, will silently operate within groups, e.g., <code>slice_min(age, n = 3)</code> returns three rows per group rather than three rows in total.</p>
+<p>Using the <code>.by</code> argument (e.g., <code>summarize(..., .by = gender)</code>) groups the data for that one function call only, so the result is never left grouped.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="counting" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="counting"><span class="header-section-number">8.7.4</span> Counting</h3>
+<p>What is the difference between <code>n()</code> and <code>sum(!is.na(age))</code> inside <code>summarize()</code>? Which should you report alongside <code>mean(age, na.rm = TRUE)</code>?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>n()</code> counts rows, including those where ‘age’ is <code>NA</code>. <code>sum(!is.na(age))</code> counts only the non-missing values of ‘age’. The mean is calculated only from the non-missing values, so <code>sum(!is.na(age))</code> is the N it is based on.</p>
+</div>
+</div>
+</div>
+<p><code>count(gender)</code> is a wrapper for which other functions?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>group_by(gender) %&gt;% summarize(n = n())</code>.</p>
+</div>
+</div>
+</div>
+<p>How can you calculate a proportion inside <code>summarize()</code>, e.g., the proportion of participants younger than 25?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Take the mean of a logical test, e.g., <code>mean(age &lt; 25, na.rm = TRUE)</code>. TRUE counts as 1 and FALSE as 0, so the mean is the proportion of TRUEs.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="duplicates" class="level3" data-number="8.7.5">
+<h3 data-number="8.7.5" class="anchored" data-anchor-id="duplicates"><span class="header-section-number">8.7.5</span> Duplicates</h3>
+<p>What is the difference between <code>distinct()</code> and <code>distinct(id, .keep_all = TRUE)</code> when removing duplicate rows? Which is safer?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>distinct()</code> only removes rows that are identical in every column. <code>distinct(id, .keep_all = TRUE)</code> keeps the first row for each id, regardless of whether that participant’s rows contain different values in other columns. You don’t control which row is kept, and conflicting values are silently discarded. <code>distinct()</code> is safer because any remaining duplicate ids reveal conflicts that you need to look at and resolve deliberately.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exclusions" class="level3" data-number="8.7.6">
+<h3 data-number="8.7.6" class="anchored" data-anchor-id="exclusions"><span class="header-section-number">8.7.6</span> Exclusions</h3>
+<p>What is the difference between a trial-level and a participant-level exclusion rule? How is each implemented?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A trial-level rule removes individual trials, e.g., <code>filter(rt &gt;= 200)</code> removes all trials faster than 200 ms, from any participant. A participant-level rule removes all of a participant’s trials based on a calculation across their trials, e.g., <code>group_by(id) %&gt;% filter(mean(rt &lt; 200) &lt;= 0.10)</code> removes participants with more than 10% too-fast trials. Participant-level rules require grouping.</p>
+</div>
+</div>
+</div>
+<p>Why does the order of processing steps matter when using <code>lag()</code> or participant-level exclusion rules?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>lag()</code> refers to the previous <em>row</em>, so if trials are removed first, it refers to the previous remaining trial rather than the actual previous trial. Similarly, a participant-level rule like “more than 10% too-fast trials” should usually be calculated on all of the participant’s trials. If the too-fast trials are removed first, no participant would have any too-fast trials left, and no one would be excluded. In general, calculate values that depend on the full trial sequence, and apply participant-level rules, before removing any trials.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-exercises" class="level3" data-number="8.7.7">
+<h3 data-number="8.7.7" class="anchored" data-anchor-id="interactive-exercises"><span class="header-section-number">8.7.7</span> Interactive exercises</h3>
+<p>Complete the interactive exercises for:</p>
+<ul>
+<li><a href="https://errors.shinyapps.io/dplyr-learnr/#section-dplyrgroup_by-summarize"><code>group_by()</code> and <code>summarize()</code></a></li>
+<li><a href="https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcount"><code>count()</code></a></li>
+</ul>
+</section>
+<section id="practice-summarizing-a-demographics-table" class="level3" data-number="8.7.8">
+<h3 data-number="8.7.8" class="anchored" data-anchor-id="practice-summarizing-a-demographics-table"><span class="header-section-number">8.7.8</span> Practice summarizing a demographics table</h3>
+<p>In your local version of this .qmd file:</p>
+<ul>
+<li>Use ‘dat_gender_tidier’ to create a table with one row per gender.</li>
+<li>Include the number of participants, the percentage of participants, and the mean and SD of age, rounded to 1 decimal place.</li>
+<li>Make sure the N reported for the mean age only includes participants with a known age.</li>
+<li>Arrange the table from the most to the least common gender.</li>
+</ul>
+<p>Note: no solution provided here as many different ones are possible.</p>
+</section>
+<section id="practice-processing-trial-level-data" class="level3" data-number="8.7.9">
+<h3 data-number="8.7.9" class="anchored" data-anchor-id="practice-processing-trial-level-data"><span class="header-section-number">8.7.9</span> Practice processing trial-level data</h3>
+<p>In your local version of this .qmd file:</p>
+<ul>
+<li>Use ‘dat_rt’ to create a data frame called ‘dat_rt_participants’, with one row per participant.</li>
+<li>Calculate each participant’s number of trials, proportion of correct responses, proportion of too-fast trials (&lt; 200 ms), and mean RT on correct trials only. Hint: all of these can be calculated in one <code>summarize()</code> if you first use <code>mutate()</code> and <code>if_else()</code> to create a column containing the RT on correct trials and <code>NA</code> on error trials.</li>
+<li>Add a column ‘exclude’ that is “exclude” if the participant has more than 10% too-fast trials <em>or</em> did not complete all 60 trials, and “include” otherwise.</li>
+<li>Then, using ‘dat_rt_participants’, calculate the number and percentage of participants who are excluded, and the mean and SD of the included participants’ mean RTs.</li>
+</ul>
+<p>Note: no solution provided here to reduce the temptation to peek or copy-paste.</p>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -6746,10 +6965,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb56-872"><a href="#cb56-872" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-873"><a href="#cb56-873" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- </span><span class="al">TODO</span><span class="co"> here or later in --&gt;</span></span>
 <span id="cb56-874"><a href="#cb56-874" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-875"><a href="#cb56-875" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check your learning</span></span>
+<span id="cb56-875"><a href="#cb56-875" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb56-876"><a href="#cb56-876" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-877"><a href="#cb56-877" aria-hidden="true" tabindex="-1"></a>What is the difference between <span class="in">`mutate()`</span> and <span class="in">`summarize()`</span>? If I use the wrong one, will I get the same answer? E.g., mutate(mean_age = mean(age, na.rm = TRUE)) vs. summarize(mean_age = mean(age, na.rm = TRUE))</span>
+<span id="cb56-877"><a href="#cb56-877" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mutate()` vs. `summarize()`</span></span>
 <span id="cb56-878"><a href="#cb56-878" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-879"><a href="#cb56-879" aria-hidden="true" tabindex="-1"></a>What is the difference between <span class="in">`mutate()`</span> and <span class="in">`summarize()`</span>? If you use the wrong one, will you get the same answer? E.g., <span class="in">`mutate(mean_age = mean(age, na.rm = TRUE))`</span> vs. <span class="in">`summarize(mean_age = mean(age, na.rm = TRUE))`</span>.</span>
+<span id="cb56-880"><a href="#cb56-880" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-881"><a href="#cb56-881" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-882"><a href="#cb56-882" aria-hidden="true" tabindex="-1"></a>Both calculate the same mean age, but they return it differently. <span class="in">`summarize()`</span> reduces the data frame to one row (or one row per group) containing only the summary (and any grouping columns). <span class="in">`mutate()`</span> keeps every row and every column, and adds the mean as a new column, repeated on every row (or on every row of each group).</span>
+<span id="cb56-883"><a href="#cb56-883" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-884"><a href="#cb56-884" aria-hidden="true" tabindex="-1"></a>So the *value* is the same, but the *shape* of the result is very different. If you use <span class="in">`mutate()`</span> when you meant <span class="in">`summarize()`</span>, any later step that assumes one row per participant or group, e.g., calculating an N with <span class="in">`n()`</span> or a mean of means, will be wrong.</span>
+<span id="cb56-885"><a href="#cb56-885" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-886"><a href="#cb56-886" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-887"><a href="#cb56-887" aria-hidden="true" tabindex="-1"></a><span class="fu">### `group_by()`</span></span>
+<span id="cb56-888"><a href="#cb56-888" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-889"><a href="#cb56-889" aria-hidden="true" tabindex="-1"></a>What does <span class="in">`group_by()`</span> change about how <span class="in">`summarize()`</span>, <span class="in">`mutate()`</span>, <span class="in">`filter()`</span>, and the <span class="in">`slice_()`</span> functions work?</span>
+<span id="cb56-890"><a href="#cb56-890" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-891"><a href="#cb56-891" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-892"><a href="#cb56-892" aria-hidden="true" tabindex="-1"></a>They all do their calculations separately within each group:</span>
+<span id="cb56-893"><a href="#cb56-893" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-894"><a href="#cb56-894" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`summarize()`</span> returns one row per group rather than one row in total.</span>
+<span id="cb56-895"><a href="#cb56-895" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`mutate()`</span> calculates aggregating functions (e.g., <span class="in">`mean()`</span>) and functions that use other rows (e.g., <span class="in">`lag()`</span>, <span class="in">`cumsum()`</span>) within each group.</span>
+<span id="cb56-896"><a href="#cb56-896" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`filter()`</span> keeps or drops rows based on calculations within each group, e.g., <span class="in">`filter(n() == 60)`</span> keeps groups with exactly 60 rows.</span>
+<span id="cb56-897"><a href="#cb56-897" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`slice_()`</span> functions return rows from each group, e.g., <span class="in">`slice_head(n = 3)`</span> returns the first 3 rows of each group.</span>
+<span id="cb56-898"><a href="#cb56-898" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-899"><a href="#cb56-899" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-900"><a href="#cb56-900" aria-hidden="true" tabindex="-1"></a><span class="fu">### `ungroup()` and `.by`</span></span>
+<span id="cb56-901"><a href="#cb56-901" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-902"><a href="#cb56-902" aria-hidden="true" tabindex="-1"></a>Why is it important to <span class="in">`ungroup()`</span>? What is an alternative that avoids the problem?</span>
+<span id="cb56-903"><a href="#cb56-903" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-904"><a href="#cb56-904" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-905"><a href="#cb56-905" aria-hidden="true" tabindex="-1"></a>Grouping persists until it is removed, and it's easy to miss because it isn't visible in the data itself. Later functions in the pipe, or in later code using the saved data frame, will silently operate within groups, e.g., <span class="in">`slice_min(age, n = 3)`</span> returns three rows per group rather than three rows in total. </span>
+<span id="cb56-906"><a href="#cb56-906" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-907"><a href="#cb56-907" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`.by`</span> argument (e.g., <span class="in">`summarize(..., .by = gender)`</span>) groups the data for that one function call only, so the result is never left grouped.</span>
+<span id="cb56-908"><a href="#cb56-908" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-909"><a href="#cb56-909" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-910"><a href="#cb56-910" aria-hidden="true" tabindex="-1"></a><span class="fu">### Counting</span></span>
+<span id="cb56-911"><a href="#cb56-911" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-912"><a href="#cb56-912" aria-hidden="true" tabindex="-1"></a>What is the difference between <span class="in">`n()`</span> and <span class="in">`sum(!is.na(age))`</span> inside <span class="in">`summarize()`</span>? Which should you report alongside <span class="in">`mean(age, na.rm = TRUE)`</span>?</span>
+<span id="cb56-913"><a href="#cb56-913" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-914"><a href="#cb56-914" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-915"><a href="#cb56-915" aria-hidden="true" tabindex="-1"></a><span class="in">`n()`</span> counts rows, including those where 'age' is <span class="in">`NA`</span>. <span class="in">`sum(!is.na(age))`</span> counts only the non-missing values of 'age'. The mean is calculated only from the non-missing values, so <span class="in">`sum(!is.na(age))`</span> is the N it is based on.</span>
+<span id="cb56-916"><a href="#cb56-916" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-917"><a href="#cb56-917" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-918"><a href="#cb56-918" aria-hidden="true" tabindex="-1"></a><span class="in">`count(gender)`</span> is a wrapper for which other functions?</span>
+<span id="cb56-919"><a href="#cb56-919" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-920"><a href="#cb56-920" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-921"><a href="#cb56-921" aria-hidden="true" tabindex="-1"></a><span class="in">`group_by(gender) %&gt;% summarize(n = n())`</span>.</span>
+<span id="cb56-922"><a href="#cb56-922" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-923"><a href="#cb56-923" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-924"><a href="#cb56-924" aria-hidden="true" tabindex="-1"></a>How can you calculate a proportion inside <span class="in">`summarize()`</span>, e.g., the proportion of participants younger than 25?</span>
+<span id="cb56-925"><a href="#cb56-925" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-926"><a href="#cb56-926" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-927"><a href="#cb56-927" aria-hidden="true" tabindex="-1"></a>Take the mean of a logical test, e.g., <span class="in">`mean(age &lt; 25, na.rm = TRUE)`</span>. TRUE counts as 1 and FALSE as 0, so the mean is the proportion of TRUEs.</span>
+<span id="cb56-928"><a href="#cb56-928" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-929"><a href="#cb56-929" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-930"><a href="#cb56-930" aria-hidden="true" tabindex="-1"></a><span class="fu">### Duplicates</span></span>
+<span id="cb56-931"><a href="#cb56-931" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-932"><a href="#cb56-932" aria-hidden="true" tabindex="-1"></a>What is the difference between <span class="in">`distinct()`</span> and <span class="in">`distinct(id, .keep_all = TRUE)`</span> when removing duplicate rows? Which is safer?</span>
+<span id="cb56-933"><a href="#cb56-933" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-934"><a href="#cb56-934" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-935"><a href="#cb56-935" aria-hidden="true" tabindex="-1"></a><span class="in">`distinct()`</span> only removes rows that are identical in every column. <span class="in">`distinct(id, .keep_all = TRUE)`</span> keeps the first row for each id, regardless of whether that participant's rows contain different values in other columns. You don't control which row is kept, and conflicting values are silently discarded. <span class="in">`distinct()`</span> is safer because any remaining duplicate ids reveal conflicts that you need to look at and resolve deliberately.</span>
+<span id="cb56-936"><a href="#cb56-936" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-937"><a href="#cb56-937" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-938"><a href="#cb56-938" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exclusions</span></span>
+<span id="cb56-939"><a href="#cb56-939" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-940"><a href="#cb56-940" aria-hidden="true" tabindex="-1"></a>What is the difference between a trial-level and a participant-level exclusion rule? How is each implemented?</span>
+<span id="cb56-941"><a href="#cb56-941" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-942"><a href="#cb56-942" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-943"><a href="#cb56-943" aria-hidden="true" tabindex="-1"></a>A trial-level rule removes individual trials, e.g., <span class="in">`filter(rt &gt;= 200)`</span> removes all trials faster than 200 ms, from any participant. A participant-level rule removes all of a participant's trials based on a calculation across their trials, e.g., <span class="in">`group_by(id) %&gt;% filter(mean(rt &lt; 200) &lt;= 0.10)`</span> removes participants with more than 10% too-fast trials. Participant-level rules require grouping.</span>
+<span id="cb56-944"><a href="#cb56-944" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-945"><a href="#cb56-945" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-946"><a href="#cb56-946" aria-hidden="true" tabindex="-1"></a>Why does the order of processing steps matter when using <span class="in">`lag()`</span> or participant-level exclusion rules?</span>
+<span id="cb56-947"><a href="#cb56-947" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-948"><a href="#cb56-948" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb56-949"><a href="#cb56-949" aria-hidden="true" tabindex="-1"></a><span class="in">`lag()`</span> refers to the previous *row*, so if trials are removed first, it refers to the previous remaining trial rather than the actual previous trial. Similarly, a participant-level rule like "more than 10% too-fast trials" should usually be calculated on all of the participant's trials. If the too-fast trials are removed first, no participant would have any too-fast trials left, and no one would be excluded. In general, calculate values that depend on the full trial sequence, and apply participant-level rules, before removing any trials.</span>
+<span id="cb56-950"><a href="#cb56-950" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb56-951"><a href="#cb56-951" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-952"><a href="#cb56-952" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interactive exercises</span></span>
+<span id="cb56-953"><a href="#cb56-953" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-954"><a href="#cb56-954" aria-hidden="true" tabindex="-1"></a>Complete the interactive exercises for:</span>
+<span id="cb56-955"><a href="#cb56-955" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-956"><a href="#cb56-956" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`group_by()` and `summarize()`</span><span class="co">](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrgroup_by-summarize)</span></span>
+<span id="cb56-957"><a href="#cb56-957" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`count()`</span><span class="co">](https://errors.shinyapps.io/dplyr-learnr/#section-dplyrcount)</span></span>
+<span id="cb56-958"><a href="#cb56-958" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-959"><a href="#cb56-959" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practice summarizing a demographics table</span></span>
+<span id="cb56-960"><a href="#cb56-960" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-961"><a href="#cb56-961" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd file:</span>
+<span id="cb56-962"><a href="#cb56-962" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-963"><a href="#cb56-963" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use 'dat_gender_tidier' to create a table with one row per gender.</span>
+<span id="cb56-964"><a href="#cb56-964" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Include the number of participants, the percentage of participants, and the mean and SD of age, rounded to 1 decimal place.</span>
+<span id="cb56-965"><a href="#cb56-965" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make sure the N reported for the mean age only includes participants with a known age.</span>
+<span id="cb56-966"><a href="#cb56-966" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Arrange the table from the most to the least common gender.</span>
+<span id="cb56-967"><a href="#cb56-967" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-968"><a href="#cb56-968" aria-hidden="true" tabindex="-1"></a>Note: no solution provided here as many different ones are possible.</span>
+<span id="cb56-969"><a href="#cb56-969" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-972"><a href="#cb56-972" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb56-973"><a href="#cb56-973" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb56-974"><a href="#cb56-974" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-975"><a href="#cb56-975" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-976"><a href="#cb56-976" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-977"><a href="#cb56-977" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb56-978"><a href="#cb56-978" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-979"><a href="#cb56-979" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practice processing trial-level data</span></span>
+<span id="cb56-980"><a href="#cb56-980" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-981"><a href="#cb56-981" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd file:</span>
+<span id="cb56-982"><a href="#cb56-982" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-983"><a href="#cb56-983" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use 'dat_rt' to create a data frame called 'dat_rt_participants', with one row per participant.</span>
+<span id="cb56-984"><a href="#cb56-984" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Calculate each participant's number of trials, proportion of correct responses, proportion of too-fast trials (&lt; 200 ms), and mean RT on correct trials only. Hint: all of these can be calculated in one <span class="in">`summarize()`</span> if you first use <span class="in">`mutate()`</span> and <span class="in">`if_else()`</span> to create a column containing the RT on correct trials and <span class="in">`NA`</span> on error trials.</span>
+<span id="cb56-985"><a href="#cb56-985" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Add a column 'exclude' that is "exclude" if the participant has more than 10% too-fast trials *or* did not complete all 60 trials, and "include" otherwise.</span>
+<span id="cb56-986"><a href="#cb56-986" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Then, using 'dat_rt_participants', calculate the number and percentage of participants who are excluded, and the mean and SD of the included participants' mean RTs.</span>
+<span id="cb56-987"><a href="#cb56-987" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-988"><a href="#cb56-988" aria-hidden="true" tabindex="-1"></a>Note: no solution provided here to reduce the temptation to peek or copy-paste.</span>
+<span id="cb56-989"><a href="#cb56-989" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-992"><a href="#cb56-992" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb56-993"><a href="#cb56-993" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb56-994"><a href="#cb56-994" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-995"><a href="#cb56-995" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-996"><a href="#cb56-996" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-997"><a href="#cb56-997" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

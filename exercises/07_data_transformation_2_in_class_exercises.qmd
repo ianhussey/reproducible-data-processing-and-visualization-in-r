@@ -1,5 +1,5 @@
 ---
-title: "Week 4 - in class"
+title: "Data transformation II - in-class exercises"
 author: "Ian Hussey"
 date: today
 editor: source
@@ -398,4 +398,4 @@ Write a single pipe that creates `dat_stroop_processed` from `dat_stroop`.
 
 We now have a trial-level `dat_stroop_processed` that tells us whether each trial came after an error. To test for post-error slowing, we want each participant's **mean** RT on post-error trials vs. their **mean** RT on post-correct trials.
 
-All the functions in this and last week's chapters are *non-aggregating*: they never reduce the number of rows to a summary. What kind of function would we need? And how could we make `lag()` respect the boundaries between participants without the workaround we used above?
+All the functions in this and the previous chapter are *non-aggregating*: they never reduce the number of rows to a summary. What kind of function would we need? And how could we make `lag()` respect the boundaries between participants without the workaround we used above?

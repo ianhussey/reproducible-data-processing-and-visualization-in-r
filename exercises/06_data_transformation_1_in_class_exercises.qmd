@@ -1,5 +1,5 @@
 ---
-title: "Week 3 - in class"
+title: "Data transformation I - in-class exercises"
 author: "Ian Hussey"
 date: today
 editor: source
