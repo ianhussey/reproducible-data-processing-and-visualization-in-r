@@ -476,6 +476,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -1184,7 +1190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>There are many other {tidyselect} helper functions including:</p>
 <ul>
-<li><code>starts_with()</code> : Selects columns ending in a character string</li>
+<li><code>starts_with()</code> : Selects columns starting with a character string</li>
 <li><code>ends_with()</code> : Selects columns ending in a character string</li>
 <li><code>contains()</code> : Selects columns containing a character string, not necessarily at the start or end</li>
 <li><code>all_of()</code> : Selects all of the column names in a vector e.g., <code>all_of(c("a", "b"))</code></li>
@@ -2393,7 +2399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Take the ‘dat_demographics_renamed’ data frame.</li>
 <li>Create the data frame ‘dat_filtered_rt’.</li>
-<li>Retain only rows where where reaction time (‘re’) is more than 500 ms.</li>
+<li>Retain only rows where reaction time (‘rt’) is more than 500 ms.</li>
 <li>Print a table of each data frame.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
@@ -2604,7 +2610,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Take the ‘dat_demographics_renamed’ data frame.</li>
 <li>Create the data frame ‘dat_filtered_rt’.</li>
-<li>Retain only rows where where both reaction time (‘rt’) is more than 500 ms and gender is either ‘male’, ‘female’, or ‘non-binary’.</li>
+<li>Retain only rows where both reaction time (‘rt’) is more than 500 ms and gender is either ‘male’, ‘female’, or ‘non-binary’.</li>
 <li>Print a table of each data frame.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
@@ -2695,7 +2701,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="positive-vs.-negative-filters" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="positive-vs.-negative-filters"><span class="header-section-number">6.4.2</span> Positive vs.&nbsp;negative filters</h3>
 <p>As with <code>select()</code>, it is often better to define what you <em>do</em> want (<code>==</code> and <code>%&gt;%</code>) rather than what you <em>do not</em> want (<code>!=</code> and <code>!</code>+<code>%in%</code>). This is even more important with <code>filter()</code> as unexpected row values are much more common than unexpected column names.</p>
-<p>For example, if you specify a negative filter <code>dat %&gt;% filter(gender != "non-binary)"</code> because you wish to filter to return only participants who identify as ‘male’ or ‘female’, you have in fact only excluded participants who specified ‘non-binary’. This code would also return participants with other response options such as ‘non binary’, ‘Non-Binary’, ‘NB’, etc.</p>
+<p>For example, if you specify a negative filter <code>dat %&gt;% filter(gender != "non-binary")</code> because you wish to filter to return only participants who identify as ‘male’ or ‘female’, you have in fact only excluded participants who specified ‘non-binary’. This code would also return participants with other response options such as ‘non binary’, ‘Non-Binary’, ‘NB’, etc.</p>
 <p>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</p>
 <p>Some rows of the ‘dat_demographics_renamed’ data frame contain “prolific ID” values, which could be linked back to the individual’s Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <a href="../chapters/13_sharing_and_privacy.html">Data Privacy</a>.</p>
 <p>In this case, you would likely need to remove all rows referring to Prolific ID with a negative filter:</p>
@@ -3441,10 +3447,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns to make them more intuitive</span></span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">age =</span> response) <span class="sc">%&gt;%</span></span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate variables</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rt_ms =</span> rt<span class="sc">/</span><span class="dv">1000</span>,</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rt_seconds =</span> rt<span class="sc">/</span><span class="dv">1000</span>,</span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">correct =</span> <span class="fu">as.logical</span>(correct)) <span class="sc">%&gt;%</span></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select needed columns again</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age, rt_ms, correct)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age, rt_seconds, correct)</span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>dat_demographics_mutated <span class="sc">%&gt;%</span></span>
 <span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
@@ -3455,7 +3461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">id</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">age</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">rt_ms</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rt_seconds</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">correct</th>
 </tr>
 </thead>
@@ -3561,7 +3567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="more-complex-mutates" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="more-complex-mutates"><span class="header-section-number">6.5.2</span> More complex mutates</h3>
 <p>Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the ‘dat_demographics_messy’ contains messy age and gender data for 500 participants.</p>
-<p>We’ll use <code>count()</code> to show every unique response across participants. We’ll return to learn to use <code>count()</code> properly in the next chapter. For the moment, we’re more interested in the output than the code.</p>
+<p>We’ll use <code>count()</code> to show every unique response across participants. We’ll return to learn to use <code>count()</code> properly in the <a href="../chapters/08_data_transformation_3.html">Data transformation III</a> chapter. For the moment, we’re more interested in the output than the code.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_messy <span class="sc">%&gt;%</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># find unique values of 'gender' and the frequency of each</span></span>
@@ -3967,7 +3973,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>This somewhat quick and dirty solution gives us just four gender categories, ‘male’, ‘female’, ‘non-binary’ and missing (<code>NA</code>).</p>
+<p>This somewhat quick and dirty solution gives us just four gender categories, ‘male’, ‘female’, ‘nonbinary’ and missing (<code>NA</code>).</p>
 <p>Of course, these responses were (mostly) not <em>really</em> missing, we removed them to make the responses simpler. This isn’t very good practice, as we’re throwing away data.</p>
 </section>
 <section id="using-dplyrcase_when" class="level5" data-number="6.5.2.2.2">
@@ -3994,11 +4000,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert to lower case and remove non-letters</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">str_to_lower</span>(gender),</span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">gender =</span> <span class="fu">str_remove_all</span>(gender, <span class="st">"[^A-Za-z]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidy up cases</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"nonbinary"</span>) <span class="sc">~</span> gender, </span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"femail"</span>, <span class="st">"fem ale"</span>, <span class="st">"femle"</span>, <span class="st">"femlae"</span>) <span class="sc">~</span> <span class="st">"female"</span>,</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"malee"</span>, <span class="st">"mal"</span>, <span class="st">"ma le"</span>) <span class="sc">~</span> <span class="st">"male"</span>,</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"non binary"</span>, <span class="st">"nonbinary"</span>) <span class="sc">~</span> <span class="st">"non-binary"</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidy up cases. </span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note that spaces were already removed above, so the misspellings here contain no spaces.</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"femail"</span>, <span class="st">"femle"</span>, <span class="st">"femlae"</span>) <span class="sc">~</span> <span class="st">"female"</span>,</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"malee"</span>, <span class="st">"mal"</span>) <span class="sc">~</span> <span class="st">"male"</span>,</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">==</span> <span class="st">"nonbinary"</span> <span class="sc">~</span> <span class="st">"non-binary"</span>,</span>
 <span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">==</span> <span class="st">""</span> <span class="sc">~</span> <span class="cn">NA_character_</span>, <span class="co"># if an empty character string, change to NA_character_</span></span>
 <span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> gender)) <span class="co"># if none of the above apply, keep original value</span></span>
 <span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -4029,7 +4035,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">30</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">nonbinary</td>
+<td style="text-align: left;">non-binary</td>
 <td style="text-align: right;">16</td>
 </tr>
 </tbody>
@@ -4104,7 +4110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><code>starts_with()</code> : Selects columns ending in a character string</li>
+<li><code>starts_with()</code> : Selects columns starting with a character string</li>
 <li><code>ends_with()</code> : Selects columns ending in a character string</li>
 <li><code>contains()</code> : Selects columns containing a character string, not necessarily at the start or end</li>
 <li><code>all_of()</code> : Selects all of the column names in a vector e.g., <code>all_of(c("a", "b"))</code></li>
@@ -4215,7 +4221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In your local version of this .qmd file:</p>
 <ul>
 <li>Use the ‘dat_demographics_messy’ to create a new data frame called ‘dat_age_tidier’</li>
-<li>Use <code>disinct()</code> to understand what unique responses are present in the ‘age’ column.</li>
+<li>Use <code>distinct()</code> to understand what unique responses are present in the ‘age’ column.</li>
 <li>Use the other functions you learned in this chapter to clean the age column so that it contains only numbers.</li>
 <li>Convert the age variable to a numeric variable with <code>as.numeric()</code>.</li>
 <li>Print the unique responses present in the processed ‘age’ column as a table.</li>
@@ -4987,7 +4993,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-307"><a href="#cb53-307" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-308"><a href="#cb53-308" aria-hidden="true" tabindex="-1"></a>There are many other {tidyselect} helper functions including:</span>
 <span id="cb53-309"><a href="#cb53-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-310"><a href="#cb53-310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`starts_with()`</span> : Selects columns ending in a character string</span>
+<span id="cb53-310"><a href="#cb53-310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`starts_with()`</span> : Selects columns starting with a character string</span>
 <span id="cb53-311"><a href="#cb53-311" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ends_with()`</span> : Selects columns ending in a character string</span>
 <span id="cb53-312"><a href="#cb53-312" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`contains()`</span> : Selects columns containing a character string, not necessarily at the start or end</span>
 <span id="cb53-313"><a href="#cb53-313" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`all_of()`</span> : Selects all of the column names in a vector e.g., <span class="in">`all_of(c("a", "b"))`</span></span>
@@ -5483,7 +5489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-841"><a href="#cb53-841" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-842"><a href="#cb53-842" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Take the 'dat_demographics_renamed' data frame.</span>
 <span id="cb53-843"><a href="#cb53-843" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the data frame 'dat_filtered_rt'.</span>
-<span id="cb53-844"><a href="#cb53-844" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Retain only rows where where reaction time ('re') is more than 500 ms.</span>
+<span id="cb53-844"><a href="#cb53-844" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Retain only rows where reaction time ('rt') is more than 500 ms.</span>
 <span id="cb53-845"><a href="#cb53-845" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print a table of each data frame.</span>
 <span id="cb53-846"><a href="#cb53-846" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-849"><a href="#cb53-849" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -5535,7 +5541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-897"><a href="#cb53-897" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-898"><a href="#cb53-898" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Take the 'dat_demographics_renamed' data frame.</span>
 <span id="cb53-899"><a href="#cb53-899" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the data frame 'dat_filtered_rt'.</span>
-<span id="cb53-900"><a href="#cb53-900" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Retain only rows where where both reaction time ('rt') is more than 500 ms and gender is either 'male', 'female', or 'non-binary'.</span>
+<span id="cb53-900"><a href="#cb53-900" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Retain only rows where both reaction time ('rt') is more than 500 ms and gender is either 'male', 'female', or 'non-binary'.</span>
 <span id="cb53-901"><a href="#cb53-901" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print a table of each data frame.</span>
 <span id="cb53-902"><a href="#cb53-902" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-905"><a href="#cb53-905" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -5597,7 +5603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-963"><a href="#cb53-963" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-964"><a href="#cb53-964" aria-hidden="true" tabindex="-1"></a>As with <span class="in">`select()`</span>, it is often better to define what you *do* want (`==` and `%&gt;%`) rather than what you *do not* want (<span class="in">`!=`</span> and <span class="in">`!`</span>+<span class="in">`%in%`</span>). This is even more important with <span class="in">`filter()`</span> as unexpected row values are much more common than unexpected column names.</span>
 <span id="cb53-965"><a href="#cb53-965" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-966"><a href="#cb53-966" aria-hidden="true" tabindex="-1"></a>For example, if you specify a negative filter <span class="in">`dat %&gt;% filter(gender != "non-binary)"`</span> because you wish to filter to return only participants who identify as 'male' or 'female', you have in fact only excluded participants who specified 'non-binary'. This code would also return participants with other response options such as 'non binary', 'Non-Binary', 'NB', etc.</span>
+<span id="cb53-966"><a href="#cb53-966" aria-hidden="true" tabindex="-1"></a>For example, if you specify a negative filter <span class="in">`dat %&gt;% filter(gender != "non-binary")`</span> because you wish to filter to return only participants who identify as 'male' or 'female', you have in fact only excluded participants who specified 'non-binary'. This code would also return participants with other response options such as 'non binary', 'Non-Binary', 'NB', etc.</span>
 <span id="cb53-967"><a href="#cb53-967" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-968"><a href="#cb53-968" aria-hidden="true" tabindex="-1"></a>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</span>
 <span id="cb53-969"><a href="#cb53-969" aria-hidden="true" tabindex="-1"></a></span>
@@ -5666,10 +5672,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1042"><a href="#cb53-1042" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename columns to make them more intuitive</span></span>
 <span id="cb53-1043"><a href="#cb53-1043" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">age =</span> response) <span class="sc">%&gt;%</span></span>
 <span id="cb53-1044"><a href="#cb53-1044" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate variables</span></span>
-<span id="cb53-1045"><a href="#cb53-1045" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rt_ms =</span> rt<span class="sc">/</span><span class="dv">1000</span>,</span>
+<span id="cb53-1045"><a href="#cb53-1045" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rt_seconds =</span> rt<span class="sc">/</span><span class="dv">1000</span>,</span>
 <span id="cb53-1046"><a href="#cb53-1046" aria-hidden="true" tabindex="-1"></a>         <span class="at">correct =</span> <span class="fu">as.logical</span>(correct)) <span class="sc">%&gt;%</span></span>
 <span id="cb53-1047"><a href="#cb53-1047" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select needed columns again</span></span>
-<span id="cb53-1048"><a href="#cb53-1048" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age, rt_ms, correct)</span>
+<span id="cb53-1048"><a href="#cb53-1048" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, age, rt_seconds, correct)</span>
 <span id="cb53-1049"><a href="#cb53-1049" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1050"><a href="#cb53-1050" aria-hidden="true" tabindex="-1"></a>dat_demographics_mutated <span class="sc">%&gt;%</span></span>
 <span id="cb53-1051"><a href="#cb53-1051" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
@@ -5748,7 +5754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1130"><a href="#cb53-1130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1131"><a href="#cb53-1131" aria-hidden="true" tabindex="-1"></a>Most research reports (theses, articles, etc.) report the percentage of the sample that was male, female, etc. For example, the 'dat_demographics_messy' contains messy age and gender data for 500 participants.</span>
 <span id="cb53-1132"><a href="#cb53-1132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-1133"><a href="#cb53-1133" aria-hidden="true" tabindex="-1"></a>We'll use <span class="in">`count()`</span> to show every unique response across participants. We'll return to learn to use <span class="in">`count()`</span> properly in the next chapter. For the moment, we're more interested in the output than the code.</span>
+<span id="cb53-1133"><a href="#cb53-1133" aria-hidden="true" tabindex="-1"></a>We'll use <span class="in">`count()`</span> to show every unique response across participants. We'll return to learn to use <span class="in">`count()`</span> properly in the <span class="co">[</span><span class="ot">Data transformation III</span><span class="co">](08_data_transformation_3.qmd)</span> chapter. For the moment, we're more interested in the output than the code.</span>
 <span id="cb53-1134"><a href="#cb53-1134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1137"><a href="#cb53-1137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-1138"><a href="#cb53-1138" aria-hidden="true" tabindex="-1"></a>dat_demographics_messy <span class="sc">%&gt;%</span></span>
@@ -5833,7 +5839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1223"><a href="#cb53-1223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb53-1224"><a href="#cb53-1224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-1225"><a href="#cb53-1225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-1226"><a href="#cb53-1226" aria-hidden="true" tabindex="-1"></a>This somewhat quick and dirty solution gives us just four gender categories, 'male', 'female', 'non-binary' and missing (<span class="in">`NA`</span>).</span>
+<span id="cb53-1226"><a href="#cb53-1226" aria-hidden="true" tabindex="-1"></a>This somewhat quick and dirty solution gives us just four gender categories, 'male', 'female', 'nonbinary' and missing (<span class="in">`NA`</span>).</span>
 <span id="cb53-1227"><a href="#cb53-1227" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1228"><a href="#cb53-1228" aria-hidden="true" tabindex="-1"></a>Of course, these responses were (mostly) not *really* missing, we removed them to make the responses simpler. This isn't very good practice, as we're throwing away data.</span>
 <span id="cb53-1229"><a href="#cb53-1229" aria-hidden="true" tabindex="-1"></a></span>
@@ -5867,11 +5873,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1261"><a href="#cb53-1261" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert to lower case and remove non-letters</span></span>
 <span id="cb53-1262"><a href="#cb53-1262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">str_to_lower</span>(gender),</span>
 <span id="cb53-1263"><a href="#cb53-1263" aria-hidden="true" tabindex="-1"></a>         <span class="at">gender =</span> <span class="fu">str_remove_all</span>(gender, <span class="st">"[^A-Za-z]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb53-1264"><a href="#cb53-1264" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidy up cases</span></span>
-<span id="cb53-1265"><a href="#cb53-1265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"nonbinary"</span>) <span class="sc">~</span> gender, </span>
-<span id="cb53-1266"><a href="#cb53-1266" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"femail"</span>, <span class="st">"fem ale"</span>, <span class="st">"femle"</span>, <span class="st">"femlae"</span>) <span class="sc">~</span> <span class="st">"female"</span>,</span>
-<span id="cb53-1267"><a href="#cb53-1267" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"malee"</span>, <span class="st">"mal"</span>, <span class="st">"ma le"</span>) <span class="sc">~</span> <span class="st">"male"</span>,</span>
-<span id="cb53-1268"><a href="#cb53-1268" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"non binary"</span>, <span class="st">"nonbinary"</span>) <span class="sc">~</span> <span class="st">"non-binary"</span>,</span>
+<span id="cb53-1264"><a href="#cb53-1264" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidy up cases. </span></span>
+<span id="cb53-1265"><a href="#cb53-1265" aria-hidden="true" tabindex="-1"></a>  <span class="co"># note that spaces were already removed above, so the misspellings here contain no spaces.</span></span>
+<span id="cb53-1266"><a href="#cb53-1266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">case_when</span>(gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"femail"</span>, <span class="st">"femle"</span>, <span class="st">"femlae"</span>) <span class="sc">~</span> <span class="st">"female"</span>,</span>
+<span id="cb53-1267"><a href="#cb53-1267" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"malee"</span>, <span class="st">"mal"</span>) <span class="sc">~</span> <span class="st">"male"</span>,</span>
+<span id="cb53-1268"><a href="#cb53-1268" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">==</span> <span class="st">"nonbinary"</span> <span class="sc">~</span> <span class="st">"non-binary"</span>,</span>
 <span id="cb53-1269"><a href="#cb53-1269" aria-hidden="true" tabindex="-1"></a>                            gender <span class="sc">==</span> <span class="st">""</span> <span class="sc">~</span> <span class="cn">NA_character_</span>, <span class="co"># if an empty character string, change to NA_character_</span></span>
 <span id="cb53-1270"><a href="#cb53-1270" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> gender)) <span class="co"># if none of the above apply, keep original value</span></span>
 <span id="cb53-1271"><a href="#cb53-1271" aria-hidden="true" tabindex="-1"></a></span>
@@ -5911,7 +5917,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1305"><a href="#cb53-1305" aria-hidden="true" tabindex="-1"></a>Explain what each of them do.</span>
 <span id="cb53-1306"><a href="#cb53-1306" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1307"><a href="#cb53-1307" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
-<span id="cb53-1308"><a href="#cb53-1308" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`starts_with()`</span> : Selects columns ending in a character string</span>
+<span id="cb53-1308"><a href="#cb53-1308" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`starts_with()`</span> : Selects columns starting with a character string</span>
 <span id="cb53-1309"><a href="#cb53-1309" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ends_with()`</span> : Selects columns ending in a character string</span>
 <span id="cb53-1310"><a href="#cb53-1310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`contains()`</span> : Selects columns containing a character string, not necessarily at the start or end</span>
 <span id="cb53-1311"><a href="#cb53-1311" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`all_of()`</span> : Selects all of the column names in a vector e.g., <span class="in">`all_of(c("a", "b"))`</span></span>
@@ -5983,7 +5989,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb53-1379"><a href="#cb53-1379" aria-hidden="true" tabindex="-1"></a>In your local version of this .qmd file:</span>
 <span id="cb53-1380"><a href="#cb53-1380" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-1381"><a href="#cb53-1381" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the 'dat_demographics_messy' to create a new data frame called 'dat_age_tidier'</span>
-<span id="cb53-1382"><a href="#cb53-1382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use <span class="in">`disinct()`</span> to understand what unique responses are present in the 'age' column.</span>
+<span id="cb53-1382"><a href="#cb53-1382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use <span class="in">`distinct()`</span> to understand what unique responses are present in the 'age' column.</span>
 <span id="cb53-1383"><a href="#cb53-1383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the other functions you learned in this chapter to clean the age column so that it contains only numbers.</span>
 <span id="cb53-1384"><a href="#cb53-1384" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Convert the age variable to a numeric variable with <span class="in">`as.numeric()`</span>.</span>
 <span id="cb53-1385"><a href="#cb53-1385" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the unique responses present in the processed 'age' column as a table.</span>

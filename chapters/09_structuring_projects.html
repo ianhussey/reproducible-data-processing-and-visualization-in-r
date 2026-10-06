@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -479,6 +499,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -592,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="general-principles" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="general-principles"><span class="header-section-number">9.2</span> General principles</h2>
-<p>The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as Wilson et al.’s (2017) <a href="https://doi.org/10.1371/journal.pcbi.1005510">Good enough practices in scientific computing</a>.</p>
+<p>The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as <em>Good enough practices in scientific computing</em> <span class="citation" data-cites="wilson2017">(<a href="../references.html#ref-wilson2017" role="doc-biblioref">Wilson et al., 2017</a>)</span>.</p>
 <section id="one-project-one-folder" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="one-project-one-folder"><span class="header-section-number">9.2.1</span> 1. One project, one folder</h3>
 <p>Everything needed to understand and reproduce a project lives in a single folder, and nothing outside that folder is needed. That folder can be moved anywhere on your computer, zipped and emailed, or uploaded to GitHub or OSF, and it will still work.</p>
@@ -830,7 +856,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(project, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//Rtmpwgj7Cp/my_project
+<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//RtmpIw1J7k/my_project
 ├── .gitattributes
 ├── .gitignore
 ├── CITATION.cff
@@ -1601,6 +1627,11 @@ $n_skip
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-wilson2017" class="csl-entry" role="listitem">
+Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &amp; Teal, T. K. (2017). Good enough practices in scientific computing. <em>PLOS Computational Biology</em>, <em>13</em>(6), e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>
+</div>
+</div>
 </section>
 </section>
 
@@ -2139,7 +2170,7 @@ $n_skip
 <span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## General principles</span></span>
 <span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as Wilson et al.'s (2017) <span class="co">[</span><span class="ot">Good enough practices in scientific computing</span><span class="co">](https://doi.org/10.1371/journal.pcbi.1005510)</span>.</span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as *Good enough practices in scientific computing* <span class="co">[</span><span class="ot">@wilson2017</span><span class="co">]</span>.</span>
 <span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. One project, one folder</span></span>
 <span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a></span>

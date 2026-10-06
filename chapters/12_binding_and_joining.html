@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -474,6 +494,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -2371,7 +2397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>data_combined should also include age and gender data, but without introducing duplicates.</li>
 <li>data_combined should also <strong>not</strong> include participant IDs that are present in dat_exclusions.</li>
 </ul>
-<p>If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using Morris’ (2008) version of Cohen’s d, d_ppc2 and its 95% Confidence Intervals.</p>
+<p>If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using the version of Cohen’s d described by <span class="citation" data-cites="morris2008">Morris (<a href="../references.html#ref-morris2008" role="doc-biblioref">2008</a>)</span>, d_ppc2 and its 95% Confidence Intervals.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> socialmediause_post <span class="sc">~</span> socialmediause_pre <span class="sc">+</span> condition,</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> dat_combined)</span>
@@ -2424,6 +2450,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-morris2008" class="csl-entry" role="listitem">
+Morris, S. B. (2008). Estimating effect sizes from pretest-posttest-control group designs. <em>Organizational Research Methods</em>, <em>11</em>(2), 364–386. <a href="https://doi.org/10.1177/1094428106291059">https://doi.org/10.1177/1094428106291059</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -3400,7 +3431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb44-559"><a href="#cb44-559" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb44-560"><a href="#cb44-560" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb44-561"><a href="#cb44-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-562"><a href="#cb44-562" aria-hidden="true" tabindex="-1"></a>If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using Morris' (2008) version of Cohen's d, d_ppc2 and its 95% Confidence Intervals.</span>
+<span id="cb44-562"><a href="#cb44-562" aria-hidden="true" tabindex="-1"></a>If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using the version of Cohen's d described by @morris2008, d_ppc2 and its 95% Confidence Intervals.</span>
 <span id="cb44-563"><a href="#cb44-563" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-566"><a href="#cb44-566" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb44-567"><a href="#cb44-567" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>

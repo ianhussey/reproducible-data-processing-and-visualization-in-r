@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -476,6 +496,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -545,13 +571,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This chapter covers the basics of {ggplot2}, the tidyverse plotting library, which is based on Hadley Wickam’s <a href="https://vita.had.co.nz/papers/layered-grammar.html">The Grammar of Graphics</a>.</p>
+<p>This chapter covers the basics of {ggplot2}, the tidyverse plotting library, which is based on Hadley Wickham’s layered grammar of graphics <span class="citation" data-cites="wickham2010">(<a href="../references.html#ref-wickham2010" role="doc-biblioref">Wickham, 2010</a>)</span>.</p>
 <section id="other-resources" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="other-resources"><span class="header-section-number">14.1</span> Other resources</h2>
 <ul>
 <li>Wickham, Navarro, and Lin Pedersen have written an entire open source ebook about ggplot, the <a href="https://ggplot2-book.org/">ggplot2 book</a>, that is far more detailed than this chapter. I recommend you start with the <a href="https://ggplot2-book.org/mastery.html">The Grammar</a> chapter.</li>
-<li>Franconeri et al.&nbsp;(2021) The Science of Visual Data Communication: What Works. doi: <a href="https://doi.org/10.1177/15291006211051956">10.1177/15291006211051956</a></li>
-<li>Allen et al.&nbsp;(2021) Raincloud plots: a multi-platform tool for robust data visualization. doi: <a href="https://doi.org/10.12688/wellcomeopenres.15191.2">10.12688/wellcomeopenres.15191.2</a></li>
+<li><em>The science of visual data communication: What works</em> <span class="citation" data-cites="franconeri2021">(<a href="../references.html#ref-franconeri2021" role="doc-biblioref">Franconeri et al., 2021</a>)</span></li>
+<li><em>Raincloud plots: A multi-platform tool for robust data visualization</em> <span class="citation" data-cites="allen2021">(<a href="../references.html#ref-allen2021" role="doc-biblioref">Allen et al., 2021</a>)</span></li>
 </ul>
 </section>
 <section id="why-plot-data" class="level2" data-number="14.2">
@@ -1588,6 +1614,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-allen2021" class="csl-entry" role="listitem">
+Allen, M., Poggiali, D., Whitaker, K., Marshall, T. R., Langen, J. van, &amp; Kievit, R. A. (2021). Raincloud plots: A multi-platform tool for robust data visualization. <em>Wellcome Open Research</em>, <em>4</em>, 63. <a href="https://doi.org/10.12688/wellcomeopenres.15191.2">https://doi.org/10.12688/wellcomeopenres.15191.2</a>
+</div>
+<div id="ref-franconeri2021" class="csl-entry" role="listitem">
+Franconeri, S. L., Padilla, L. M., Shah, P., Zacks, J. M., &amp; Hullman, J. (2021). The science of visual data communication: What works. <em>Psychological Science in the Public Interest</em>, <em>22</em>(3), 110–161. <a href="https://doi.org/10.1177/15291006211051956">https://doi.org/10.1177/15291006211051956</a>
+</div>
+<div id="ref-wickham2010" class="csl-entry" role="listitem">
+Wickham, H. (2010). A layered grammar of graphics. <em>Journal of Computational and Graphical Statistics</em>, <em>19</em>(1), 3–28. <a href="https://doi.org/10.1198/jcgs.2009.07098">https://doi.org/10.1198/jcgs.2009.07098</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -2081,13 +2118,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"plots"</span>)</span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>This chapter covers the basics of {ggplot2}, the tidyverse plotting library, which is based on Hadley Wickam's <span class="co">[</span><span class="ot">The Grammar of Graphics</span><span class="co">](https://vita.had.co.nz/papers/layered-grammar.html)</span>. </span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>This chapter covers the basics of {ggplot2}, the tidyverse plotting library, which is based on Hadley Wickham's layered grammar of graphics <span class="co">[</span><span class="ot">@wickham2010</span><span class="co">]</span>. </span>
 <span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other resources</span></span>
 <span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Wickham, Navarro, and Lin Pedersen have written an entire open source ebook about ggplot, the <span class="co">[</span><span class="ot">ggplot2 book</span><span class="co">](https://ggplot2-book.org/)</span>, that is far more detailed than this chapter. I recommend you start with the <span class="co">[</span><span class="ot">The Grammar</span><span class="co">](https://ggplot2-book.org/mastery.html)</span> chapter.</span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Franconeri et al. (2021) The Science of Visual Data Communication: What Works. doi: <span class="co">[</span><span class="ot">10.1177/15291006211051956</span><span class="co">](https://doi.org/10.1177/15291006211051956)</span></span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Allen et al. (2021) Raincloud plots: a multi-platform tool for robust data visualization. doi: <span class="co">[</span><span class="ot">10.12688/wellcomeopenres.15191.2</span><span class="co">](https://doi.org/10.12688/wellcomeopenres.15191.2)</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*The science of visual data communication: What works* <span class="co">[</span><span class="ot">@franconeri2021</span><span class="co">]</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*Raincloud plots: A multi-platform tool for robust data visualization* <span class="co">[</span><span class="ot">@allen2021</span><span class="co">]</span></span>
 <span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why plot data?</span></span>
 <span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>

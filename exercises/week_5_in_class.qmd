@@ -1,0 +1,417 @@
+---
+title: "Week 5 - in class"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, mutate, summarize, group_by, ungroup, n, count, distinct, lag, filter, slice_
+library(tidyr) # for drop_na
+library(tibble) # for tribble
+library(janitor) # for round_half_up
+
+```
+
+# Today's data
+
+Three small made-up data sets. Run this chunk, then look at all three data frames.
+
+`dat_demographics`: one row per participant.
+
+`dat_demographics_duplicated`: the same data, but the export from the survey software went wrong and some participants appear more than once.
+
+`dat_stroop`: one row per trial of a Stroop task. `congruency` is whether the word and ink colour matched. `rt` is in milliseconds, `correct` is 0/1. Participants were meant to complete 8 trials each.
+
+```{r}
+
+dat_demographics <- tribble(
+  ~id, ~age, ~gender,      ~condition,
+  1,   23,   "female",     "control",
+  2,   31,   "male",       "intervention",
+  3,   NA,   "female",     "control",
+  4,   45,   "non-binary", "intervention",
+  5,   28,   "female",     "control",
+  6,   19,   "male",       "intervention",
+  7,   36,   "female",     "control",
+  8,   NA,   NA,           "intervention",
+  9,   22,   "female",     "control",
+  10,  27,   "male",       "intervention"
+)
+
+dat_demographics_duplicated <- tribble(
+  ~id, ~age, ~gender,      ~condition,
+  1,   23,   "female",     "control",
+  2,   31,   "male",       "intervention",
+  2,   31,   "male",       "intervention",
+  3,   NA,   "female",     "control",
+  4,   45,   "non-binary", "intervention",
+  5,   28,   "female",     "control",
+  5,   82,   "female",     "control",
+  6,   19,   "male",       "intervention"
+)
+
+dat_stroop <- tribble(
+  ~id, ~trial, ~congruency,    ~rt,  ~correct,
+  1,   1,      "congruent",    610,  1,
+  1,   2,      "incongruent",  720,  1,
+  1,   3,      "congruent",    580,  1,
+  1,   4,      "incongruent",  790,  0,
+  1,   5,      "incongruent",  840,  1,
+  1,   6,      "congruent",    600,  1,
+  1,   7,      "incongruent",  760,  1,
+  1,   8,      "congruent",    590,  1,
+  2,   1,      "congruent",    700,  1,
+  2,   2,      "incongruent",  850,  1,
+  2,   3,      "congruent",    690,  0,
+  2,   4,      "incongruent",  930,  1,
+  2,   5,      "incongruent",  880,  1,
+  2,   6,      "congruent",    720,  1,
+  2,   7,      "incongruent",  905,  1,
+  2,   8,      "congruent",    710,  1,
+  3,   1,      "congruent",    650,  1,
+  3,   2,      "incongruent",  780,  1,
+  3,   3,      "congruent",    640,  1,
+  3,   4,      "incongruent",  800,  0,
+  3,   5,      "incongruent",  815,  1,
+  4,   1,      "congruent",    150,  1,
+  4,   2,      "incongruent",  620,  0,
+  4,   3,      "congruent",    140,  0,
+  4,   4,      "incongruent",  160,  1,
+  4,   5,      "incongruent",  700,  1,
+  4,   6,      "congruent",    560,  1,
+  4,   7,      "incongruent",  130,  0,
+  4,   8,      "congruent",    590,  1
+)
+
+```
+
+# `mutate()` vs. `summarize()`
+
+## Predict before you run
+
+Before running each chunk: how many rows and columns will it return? What values will `mean_rt` contain?
+
+```{r}
+
+dat_stroop %>%
+  summarize(mean_rt = mean(rt))
+
+```
+
+```{r}
+
+dat_stroop %>%
+  mutate(mean_rt = mean(rt))
+
+```
+
+```{r}
+
+dat_stroop %>%
+  group_by(id) %>%
+  summarize(mean_rt = mean(rt))
+
+```
+
+```{r}
+
+dat_stroop %>%
+  group_by(id) %>%
+  mutate(mean_rt = mean(rt))
+
+```
+
+In your own words: what is the difference between `mutate()` and `summarize()`, and what does `group_by()` change about each of them?
+
+
+# Summarizing
+
+## Describe the sample
+
+Using `dat_demographics`, calculate the N, mean age, and SD of age, rounded to 2 decimal places.
+
+```{r}
+
+
+
+```
+
+## Which N?
+
+What's the difference between the `N` columns in these two chunks? Which one would you report alongside the mean age? Why?
+
+```{r}
+
+dat_demographics %>%
+  summarize(N = n(),
+            mean_age = mean(age, na.rm = TRUE))
+
+```
+
+```{r}
+
+dat_demographics %>%
+  summarize(N = sum(!is.na(age)),
+            mean_age = mean(age, na.rm = TRUE))
+
+```
+
+## By group
+
+Calculate the same summary statistics for each condition, using `group_by()`. Then do it again using the `.by` argument instead. Are the results the same?
+
+```{r}
+
+
+
+```
+
+## A demographics table
+
+Most articles report how many participants of each gender there were, as both counts and percentages. Create a table with one row per gender, with the columns `n` and `percent`.
+
+Hint: `count()` creates the `n` column. What does `sum(n)` return inside a `mutate()`?
+
+```{r}
+
+
+
+```
+
+How did you handle the participant with missing gender? Is the percentage of "female" participants out of all participants or out of those who reported their gender? Which would you report?
+
+
+# `group_by()` and `ungroup()`
+
+## Predict before you run
+
+Before running it: how many rows will this return? Why?
+
+```{r}
+
+dat_stroop_grouped <- dat_stroop %>%
+  group_by(id)
+
+dat_stroop_grouped %>%
+  slice_head(n = 3)
+
+```
+
+Modify the code so that it returns the first three rows of the whole data frame.
+
+```{r}
+
+
+
+```
+
+## Is it still grouped?
+
+Before running it: is the output grouped? If so, by which column(s)? Run it, then check your answer with `group_vars()`.
+
+```{r}
+
+dat_stroop %>%
+  group_by(id, congruency) %>%
+  summarize(mean_rt = mean(rt))
+
+```
+
+```{r}
+
+
+
+```
+
+# Grouped `mutate()`
+
+## Fixing last week's problem
+
+Last week, we found that `lag()` and `cumsum()` leak from one participant into the next. Using `dat_stroop`, create these columns *within each participant*:
+
+- `after_error`: "post-error" if the previous trial was an error, "post-correct" otherwise, and `NA` for each participant's first trial.
+- `n_errors_so_far`: the number of errors the participant has made up to and including the current trial.
+
+```{r}
+
+
+
+```
+
+Compare your code to the workaround from last week (`if_else(id == lag(id), ...)`). Which is easier to read? Which is less likely to contain a mistake?
+
+## Relative to each participant's own data
+
+Create these columns within each participant:
+
+- `rt_mean`: the participant's mean RT.
+- `rt_centered`: the trial's RT minus the participant's mean RT.
+- `proportion_correct`: the participant's proportion of correct trials.
+
+```{r}
+
+
+
+```
+
+Participant 2 is slower than participant 1 overall. Looking at `rt_centered`, is that also true of their incongruent trials? Why might researchers want to center RTs within participants?
+
+# Grouped `filter()`: exclusions
+
+## Trial vs. participant exclusions
+
+Our preregistration says:
+
+1. Trials with RTs faster than 200 ms will be excluded.
+2. Participants who responded faster than 200 ms on more than 25% of trials will be excluded.
+3. Participants who did not complete all 8 trials will be excluded.
+
+Before writing any code: which of these rules apply to trials and which to participants? Which need `group_by()`?
+
+Apply each rule separately, and check how many trials and participants remain after each.
+
+```{r}
+
+
+
+```
+
+## Does the order matter?
+
+Apply rules 1 and 2 in both orders: rule 1 then rule 2, and rule 2 then rule 1. Do you get the same result? Why or why not? Which order is correct?
+
+```{r}
+
+
+
+```
+
+# Duplicates
+
+## Find the duplicates
+
+Using `dat_demographics_duplicated`, write code that shows how many rows each participant has, and then only the participants who have more than one.
+
+```{r}
+
+
+
+```
+
+## Remove the duplicates
+
+What is the difference between the output of these two chunks? Which one is safer?
+
+```{r}
+
+dat_demographics_duplicated %>%
+  distinct(id, .keep_all = TRUE)
+
+```
+
+```{r}
+
+dat_demographics_duplicated %>%
+  distinct()
+
+```
+
+What should you do about participant 5?
+
+# Fix the broken pipe
+
+This code is meant to calculate each participant's proportion of correct responses and mean RT, then the mean of these across participants. It has (at least) four bugs. Find and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_stroop %>%
+  group_by(ID) %>%
+  mutate(proportion_correct = mean(correct),
+         mean_rt = mean(rt)) %>%
+  summarize(mean_proportion_correct = mean(proportion_correct),
+            mean_rt = mean(mean_rt)
+            n_participants = n())
+
+```
+
+# Put it all together: the Stroop effect
+
+The Stroop effect is the finding that people respond more slowly on incongruent trials than congruent trials.
+
+Write code that creates `dat_stroop_participants`, with one row per participant per congruency condition. Add a comment above each step.
+
+1. Apply the three exclusion rules from the preregistration above.
+2. Keep only correct trials.
+3. Calculate each participant's mean RT and number of trials on congruent and incongruent trials.
+4. Make sure the result is not grouped.
+
+```{r}
+
+
+
+```
+
+Then, using `dat_stroop_participants`, calculate the mean and SD of the participants' mean RTs for congruent and incongruent trials, and the number of participants, rounded to 1 decimal place.
+
+```{r}
+
+
+
+```
+
+Discuss:
+
+- How many participants and trials are the final results based on? Would you be comfortable drawing conclusions from them?
+- Why might it be important that error trials are removed *after* the participant-level exclusion rule about too-fast responses?
+- Is a "mean of the participants' means" the same as the mean of all the trials pooled together? When could they differ?
+
+# Looking ahead
+
+We have each participant's mean RT on congruent and incongruent trials, in two separate rows. To test the Stroop effect, we usually want one number per participant: their Stroop effect, i.e., their incongruent mean RT minus their congruent mean RT.
+
+Why is this hard to calculate with the functions we know so far? How would the data need to be structured to make it easy?

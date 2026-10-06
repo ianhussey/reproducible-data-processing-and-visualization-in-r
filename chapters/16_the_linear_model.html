@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,6 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
 <link href="../chapters/15_reporting.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -502,6 +523,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -1292,7 +1319,7 @@ y 0.3596644 1.0000000</code></pre>
 </section>
 <section id="meta-analyses-are-linear-regression-models" class="level4" data-number="16.4.0.4">
 <h4 data-number="16.4.0.4" class="anchored" data-anchor-id="meta-analyses-are-linear-regression-models"><span class="header-section-number">16.4.0.4</span> Meta-analyses are linear regression models</h4>
-<p>Specifically, linear models that weight by the sample size (in much older studies) or the effect size’s variance (in modern meta analyses) so that larger studies with more precisely estimated effect sizes influence the meta-analysis estimate more. You can see in the forest plot below that the more precise estimates - those with narrower Confidence Intervals - have larger weights, represented by the larger squares. Psychology doesn’t use regression weightings in non-meta-analysis contexts very often, but <a href="https://doi.org/10.1525/collabra.155850">perhaps we should (Alsalti, Hussey, Elson and Arslan, 2026)</a>.</p>
+<p>Specifically, linear models that weight by the sample size (in much older studies) or the effect size’s variance (in modern meta analyses) so that larger studies with more precisely estimated effect sizes influence the meta-analysis estimate more. You can see in the forest plot below that the more precise estimates - those with narrower Confidence Intervals - have larger weights, represented by the larger squares. Psychology doesn’t use regression weightings in non-meta-analysis contexts very often, but perhaps we should <span class="citation" data-cites="alsalti2026">(<a href="../references.html#ref-alsalti2026" role="doc-biblioref">Alsalti et al., 2026</a>)</span>.</p>
 <p>The other main conceptual difference between meta-analyses and original analyses is that meta-analyses typically use the results of original studies as their data (i.e., effect size estimates), rather than the underlying original data itself. However, this is still something we can use the linear regression functions for, simply by supplying it with effect size estimates rather than participant-level data.</p>
 <p>See <a href="https://www.metafor-project.org/doku.php/tips:rma_vs_lm_lme_lmer">this helpful blog post</a> by the developer of the {metafor} package for meta-analysis for more details of this underlying equivalence and the small implementation differences between R packages and methods.</p>
 <p>Note equivalent estimates of the meta-analysis effect size (<em>r</em> = .13).</p>
@@ -1660,6 +1687,11 @@ boundary (singular) fit: see help('isSingular')</code></pre>
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-alsalti2026" class="csl-entry" role="listitem">
+Alsalti, T., Hussey, I., Elson, M., &amp; Arslan, R. (2026). A case study on norming an intelligence test using regularised prediction and poststratification. <em>Collabra: Psychology</em>, <em>12</em>(1). <a href="https://doi.org/10.1525/collabra.155850">https://doi.org/10.1525/collabra.155850</a>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -2136,6 +2168,9 @@ boundary (singular) fit: see help('isSingular')</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Understanding (almost) everything as a Linear Model</span></span>
@@ -2476,7 +2511,7 @@ boundary (singular) fit: see help('isSingular')</code></pre>
 <span id="cb44-370"><a href="#cb44-370" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-371"><a href="#cb44-371" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Meta-analyses are linear regression models</span></span>
 <span id="cb44-372"><a href="#cb44-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-373"><a href="#cb44-373" aria-hidden="true" tabindex="-1"></a>Specifically, linear models that weight by the sample size (in much older studies) or the effect size's variance (in modern meta analyses) so that larger studies with more precisely estimated effect sizes influence the meta-analysis estimate more. You can see in the forest plot below that the more precise estimates - those with narrower Confidence Intervals - have larger weights, represented by the larger squares. Psychology doesn't use regression weightings in non-meta-analysis contexts very often, but <span class="co">[</span><span class="ot">perhaps we should (Alsalti, Hussey, Elson and Arslan, 2026)</span><span class="co">](https://doi.org/10.1525/collabra.155850)</span>.</span>
+<span id="cb44-373"><a href="#cb44-373" aria-hidden="true" tabindex="-1"></a>Specifically, linear models that weight by the sample size (in much older studies) or the effect size's variance (in modern meta analyses) so that larger studies with more precisely estimated effect sizes influence the meta-analysis estimate more. You can see in the forest plot below that the more precise estimates - those with narrower Confidence Intervals - have larger weights, represented by the larger squares. Psychology doesn't use regression weightings in non-meta-analysis contexts very often, but perhaps we should <span class="co">[</span><span class="ot">@alsalti2026</span><span class="co">]</span>.</span>
 <span id="cb44-374"><a href="#cb44-374" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-375"><a href="#cb44-375" aria-hidden="true" tabindex="-1"></a>The other main conceptual difference between meta-analyses and original analyses is that meta-analyses typically use the results of original studies as their data (i.e., effect size estimates), rather than the underlying original data itself. However, this is still something we can use the linear regression functions for, simply by supplying it with effect size estimates rather than participant-level data.  </span>
 <span id="cb44-376"><a href="#cb44-376" aria-hidden="true" tabindex="-1"></a></span>

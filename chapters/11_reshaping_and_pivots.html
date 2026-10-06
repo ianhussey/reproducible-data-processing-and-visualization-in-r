@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -505,6 +525,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -567,8 +593,8 @@ window.Quarto = {
 
 <section id="tidy-data-explainer" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="tidy-data-explainer"><span class="header-section-number">11.1</span> Tidy data explainer</h2>
-<p>‘Tidy Data’ is a set of technical ideas about how data should be structured (<a href="https://www.jstatsoft.org/article/view/v059i10/0">Wickham, 2014</a>). The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.</p>
-<p>There are three rules that make a dataset tidy according to <a href="https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data">Wickham (2023)</a>:</p>
+<p>‘Tidy Data’ is a set of technical ideas about how data should be structured <span class="citation" data-cites="wickham2014">(<a href="../references.html#ref-wickham2014" role="doc-biblioref">Wickham, 2014</a>)</span>. The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.</p>
+<p>There are three rules that make a dataset tidy according to the <a href="https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data">Tidy Data chapter</a> of R for Data Science <span class="citation" data-cites="wickham2023r4ds">(<a href="../references.html#ref-wickham2023r4ds" role="doc-biblioref">Wickham et al., 2023</a>)</span>:</p>
 <ul>
 <li>Each variable is a column; each column is a variable.</li>
 <li>Each observation is a row; each row is an observation.</li>
@@ -18640,7 +18666,7 @@ window.Quarto = {
 </div>
 <section id="practice-pivot_wider-and-other-functions" class="level3" data-number="11.8.1">
 <h3 data-number="11.8.1" class="anchored" data-anchor-id="practice-pivot_wider-and-other-functions"><span class="header-section-number">11.8.1</span> Practice <code>pivot_wider()</code> and other functions</h3>
-<p>The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness (Payne et al., 2013). This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs.&nbsp;the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.</p>
+<p>The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness <span class="citation" data-cites="payne2013">(<a href="../references.html#ref-payne2013" role="doc-biblioref">Payne et al., 2013</a>)</span>. This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs.&nbsp;the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.</p>
 <ul>
 <li>Remove the instructions trials and the practice trials.</li>
 <li>Create an ‘evaluation’ variable. When the stimulus was prime_positive, ‘evaluation’ = ‘correct’. When stimulus was prime_negative, ‘evaluation’ is ‘correct’ reverse scored.</li>
@@ -18795,6 +18821,17 @@ window.Quarto = {
 
 <!-- -->
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-payne2013" class="csl-entry" role="listitem">
+Payne, B. K., Brown-Iannuzzi, J., Burkley, M., Arbuckle, N. L., Cooley, E., Cameron, C. D., &amp; Lundberg, K. B. (2013). Intention invention and the <span>Affect Misattribution Procedure</span>: Reply to <span>Bar-Anan</span> and <span>Nosek</span> (2012). <em>Personality and Social Psychology Bulletin</em>, <em>39</em>(3), 375–386. <a href="https://doi.org/10.1177/0146167212475225">https://doi.org/10.1177/0146167212475225</a>
+</div>
+<div id="ref-wickham2014" class="csl-entry" role="listitem">
+Wickham, H. (2014). Tidy data. <em>Journal of Statistical Software</em>, <em>59</em>(10). <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>
+</div>
+<div id="ref-wickham2023r4ds" class="csl-entry" role="listitem">
+Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for data science</em> (2nd ed.). O’Reilly. <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -19288,9 +19325,9 @@ window.Quarto = {
 <span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tidy data explainer</span></span>
 <span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>'Tidy Data' is a set of technical ideas about how data should be structured (<span class="co">[</span><span class="ot">Wickham, 2014</span><span class="co">](https://www.jstatsoft.org/article/view/v059i10/0)</span>). The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>'Tidy Data' is a set of technical ideas about how data should be structured <span class="co">[</span><span class="ot">@wickham2014</span><span class="co">]</span>. The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.</span>
 <span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>There are three rules that make a dataset tidy according to <span class="co">[</span><span class="ot">Wickham (2023)</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data)</span>:</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>There are three rules that make a dataset tidy according to the <span class="co">[</span><span class="ot">Tidy Data chapter</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data)</span> of R for Data Science <span class="co">[</span><span class="ot">@wickham2023r4ds</span><span class="co">]</span>:</span>
 <span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Each variable is a column; each column is a variable.</span>
 <span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Each observation is a row; each row is an observation.</span>
@@ -19869,7 +19906,7 @@ window.Quarto = {
 <span id="cb50-639"><a href="#cb50-639" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-640"><a href="#cb50-640" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practice `pivot_wider()` and other functions</span></span>
 <span id="cb50-641"><a href="#cb50-641" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-642"><a href="#cb50-642" aria-hidden="true" tabindex="-1"></a>The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness (Payne et al., 2013). This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs. the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.  </span>
+<span id="cb50-642"><a href="#cb50-642" aria-hidden="true" tabindex="-1"></a>The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness <span class="co">[</span><span class="ot">@payne2013</span><span class="co">]</span>. This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs. the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.  </span>
 <span id="cb50-643"><a href="#cb50-643" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-644"><a href="#cb50-644" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Remove the instructions trials and the practice trials.</span>
 <span id="cb50-645"><a href="#cb50-645" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create an 'evaluation' variable. When the stimulus was prime_positive, 'evaluation' = 'correct'. When stimulus was prime_negative, 'evaluation' is 'correct' reverse scored.</span>
