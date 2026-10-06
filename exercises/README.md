@@ -1,0 +1,1 @@
+Note that in-class exercises' solutions are not distributed as part of the book, to prevent students from peeking at the answers. Please contact ian.hussey /at/ unibe.ch if you want copies of the solutions (e.g., if you are teaching using this book).
