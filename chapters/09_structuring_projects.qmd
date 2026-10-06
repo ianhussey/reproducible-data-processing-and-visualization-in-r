@@ -56,7 +56,7 @@ This matters for more than tidiness. A project that can't be understood can't be
 
 ## General principles
 
-The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as Wilson et al.'s (2017) [Good enough practices in scientific computing](https://doi.org/10.1371/journal.pcbi.1005510).
+The following principles are not specific to R, psych-DS, or any particular tool. They are distilled from standards like psych-DS (discussed below) and from guides such as *Good enough practices in scientific computing* [@wilson2017].
 
 ### 1. One project, one folder
 

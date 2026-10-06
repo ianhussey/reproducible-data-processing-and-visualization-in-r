@@ -18,9 +18,9 @@ Excel allows the user to write formula to process and analyze data. However, Exc
 
 This isn't merely speculation:
 
-### Case study 1: Reinhard & Rogoff (2010)
+### Case study 1: Reinhart & Rogoff (2010)
 
-In the immediate aftermath of the 2008 Financial Crisis, an article by then-Harvard Professor and previously Chief Economist of the International Monetary Fund, Kenneth Rogoff, was heavily referenced by economists as part of the rationale to dramatically cut state spending ([Reinhart & Rogoff (2010)](https://doi.org/10.1257/aer.100.2.573)). Countries including my own, Ireland, the U.K. and others adopted radical austerity policies and slashed funding to education and healthcare, from which we have not yet fully recovered from. Thomas Herndon, then a first year PhD student, found serious errors in Reinhart and Rogoff's Excel formula ([Herndon et al. (2014)](https://doi.org/10.1093/cje/bet075)). When corrected, the results indicated that austerity policies were harmful rather than helpful. Global economic history was changed by this data processing error.
+In the immediate aftermath of the 2008 Financial Crisis, an article by then-Harvard Professor and previously Chief Economist of the International Monetary Fund, Kenneth Rogoff, was heavily referenced by economists as part of the rationale to dramatically cut state spending [@reinhart2010]. Countries including my own, Ireland, the U.K. and others adopted radical austerity policies and slashed funding to education and healthcare, from which we have not yet fully recovered from. Thomas Herndon, then a first year PhD student, found serious errors in Reinhart and Rogoff's Excel formula [@herndon2014]. When corrected, the results indicated that austerity policies were harmful rather than helpful. Global economic history was changed by this data processing error.
 
 ![](../images/osborne_austerity_error.png)
 
@@ -33,7 +33,7 @@ For coverage of this fascinating and horrifying story:
 
 ### Case study 2: Excel corrupts the genomics literature
 
-Excel's automatic data conversion 'feature' turns certain text strings that also happen to refer to identifiers for genes (e.g., SEPT2, MARCH1) into dates or numbers. When genetics data is opened in Excel, automatically converted, and then saved, these silent changes propagated into data analyses. [Ziemann et al. (2016)](https://doi.org/10.1186/s13059-016-1044-7) estimated that \~20% of papers with Excel gene lists contained such errors, demonstrating field-wide contamination of results and reproducibility risks (see [coverage in Science News](https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel)). Subsequent audits showed the problem persisted years later, despite awareness of the problem and guidance on how to prevent it, underscoring how Excel can corrupt bioinformatics workflows (see [Abeysooriya et al., 2021](https://doi.org/10.1371/journal.pcbi.1008984)).
+Excel's automatic data conversion 'feature' turns certain text strings that also happen to refer to identifiers for genes (e.g., SEPT2, MARCH1) into dates or numbers. When genetics data is opened in Excel, automatically converted, and then saved, these silent changes propagated into data analyses. @ziemann2016 estimated that \~20% of papers with Excel gene lists contained such errors, demonstrating field-wide contamination of results and reproducibility risks (see [coverage in Science News](https://www.science.org/content/article/one-five-genetics-papers-contains-errors-thanks-microsoft-excel)). Subsequent audits showed the problem persisted years later, despite awareness of the problem and guidance on how to prevent it, underscoring how Excel can corrupt bioinformatics workflows (see @abeysooriya2021).
 
 ### Other reasons to avoid Excel
 

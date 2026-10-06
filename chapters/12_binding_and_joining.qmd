@@ -536,7 +536,7 @@ dat_exclusions <- tibble(id = c(3, 11, 12))
 
 ```
 
-If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using Morris' (2008) version of Cohen's d, d_ppc2 and its 95% Confidence Intervals.
+If correctly joined, you could be able to run the next chunk to analyze the RCT data following best practices for RCTs, i.e., an ANCOVA comparing differences at post controlling for differences at pre, estimating the effect size using the version of Cohen's d described by @morris2008, d_ppc2 and its 95% Confidence Intervals.
 
 ```{r}
 #| eval: false

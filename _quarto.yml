@@ -43,6 +43,8 @@ book:
       - chapters/15_reporting.qmd
       - chapters/16_the_linear_model.qmd
       
+    - references.qmd
+      
     # - part: "Exercises"
     #   chapters:
     #   - chapters/project_1.qmd
@@ -51,9 +53,9 @@ book:
     
     # - part: "Appendices"
     #   chapters:
-    #- references.qmd
     
-# bibliography: references.bib
+bibliography: references.bib
+csl: apa.csl
 
 format:
   html:

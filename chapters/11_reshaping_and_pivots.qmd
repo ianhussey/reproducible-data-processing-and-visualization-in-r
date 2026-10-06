@@ -12,9 +12,9 @@ options(scipen = 999)
 
 ## Tidy data explainer
 
-'Tidy Data' is a set of technical ideas about how data should be structured ([Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10/0)). The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.
+'Tidy Data' is a set of technical ideas about how data should be structured [@wickham2014]. The original article is very much worth reading, as it emphasizes that data processing is part of the data analysis workflow - not only in a procedural sense, but in the cognitive sense that data processing and shaping is a representation of what research questions and analyses can be conducted.
 
-There are three rules that make a dataset tidy according to [Wickham (2023)](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data):
+There are three rules that make a dataset tidy according to the [Tidy Data chapter](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) of R for Data Science [@wickham2023r4ds]:
 
 - Each variable is a column; each column is a variable.
 - Each observation is a row; each row is an observation.
@@ -617,7 +617,7 @@ dat_demographics_raw <- read_csv("../data/raw/data_demographics_raw.csv")
 
 ### Practice `pivot_wider()` and other functions
 
-The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness (Payne et al., 2013). This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs. the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.  
+The Affect Misattribution Procedure (AMP) claims to be a measure of automatic evaluations of stimuli without the participants intention or awareness [@payne2013]. This data comes from an AMP study where participants are asked to evaluate Chinese characters and ignore the picture stimuli that are briefly presented before each Chinese character. The AMP effect is quantified as the difference in the ratings of the Chinese characters preceeded by one stimulus type (positive) vs. the other (negative). The idea is that participants should not evaluate the images, only the Chinese characters, but the images nonetheless influence their evaluations.  
 
 - Remove the instructions trials and the practice trials.
 - Create an 'evaluation' variable. When the stimulus was prime_positive, 'evaluation' = 'correct'. When stimulus was prime_negative, 'evaluation' is 'correct' reverse scored.
