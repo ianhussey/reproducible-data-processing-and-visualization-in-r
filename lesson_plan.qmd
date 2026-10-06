@@ -81,37 +81,36 @@ In class:
 Before class:
 
 - [Chapter 11: Strings and factors](chapters/11_strings_and_factors.qmd)
-- [Chapter 12: Reshaping and pivots](chapters/12_reshaping_and_pivots.qmd)
 
 In class:
 
 - Questions about strings and factors
-- Questions about reshaping and pivots
 - In-class exercises - [click to download .qmd](exercises/11_strings_and_factors_in_class_exercises.qmd)
-<!-- - In-class exercises - [click to download .qmd](exercises/12_reshaping_and_pivots_in_class_exercises.qmd) -->
 
 ### Week 8
 
 Before class:
 
-- [Chapter 13: Binding and joining](chapters/13_binding_and_joining.qmd)
+- [Chapter 12: Reshaping and pivots](chapters/12_reshaping_and_pivots.qmd)
 
 In class:
 
-- Questions about binding and joining
-<!-- - In-class exercises - [click to download .qmd](exercises/13_binding_and_joining_in_class_exercises.qmd) -->
+- Questions about reshaping and pivots
+<!-- - In-class exercises - [click to download .qmd](exercises/12_reshaping_and_pivots_in_class_exercises.qmd) -->
 
 ### Week 9
 
 Before class:
 
+- [Chapter 13: Binding and joining](chapters/13_binding_and_joining.qmd)
 - [Chapter 14: Sharing and privacy](chapters/14_sharing_and_privacy.qmd)
 
 In class:
 
+- Questions about binding and joining
 - Questions about sharing and privacy
 - Lecture and exercise: Intro to GitHub, diffs
-<!-- - In-class exercises - [click to download .qmd](exercises/14_sharing_and_privacy_in_class_exercises.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/13_to_14_sharing_and_privacy_in_class_exercises.qmd) -->
 
 ### Week 10
 
