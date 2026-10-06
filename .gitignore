@@ -12,3 +12,4 @@ _book/*
 
 **/*.quarto_ipynb
 *_in_class_solutions.qmd
+/exercises_solutions
