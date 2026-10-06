@@ -85,7 +85,7 @@ The final column is the most important one. Files that cannot be regenerated mus
 
 The earliest form of the data you have access to must be preserved exactly as it was received. Never edit it by hand, never overwrite it with code, and never save over it after opening it in Excel. Every change to the data is instead made by code that reads the raw data and writes a *new* file somewhere else.
 
-The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on [Sharing and privacy](13_sharing_and_privacy.qmd). Even then, the original is kept (securely, and not shared) and the removal is done with code.
+The only exception is the removal of private or identifying information before sharing, which is covered in the chapter on [Sharing and privacy](14_sharing_and_privacy.qmd). Even then, the original is kept (securely, and not shared) and the removal is done with code.
 
 ### 4. Data flows in one direction, and only code moves it
 
@@ -122,7 +122,7 @@ File names should be:
 | `Figure1.png`, `fig1_revised.png` | `plot_01_self_reports.png` |
 | `23.9.26 pilot.csv` | `2026-09-23_pilot_data.csv` |
 
-Note that "final", "v2", and "NEW" in file names are attempts to do version control by hand. They reliably fail, because there is always a "final_v3". Version control with git and GitHub, covered in the chapter on [Sharing and privacy](13_sharing_and_privacy.qmd), solves this properly: there is only ever one `analysis.qmd`, and git remembers every previous version of it.
+Note that "final", "v2", and "NEW" in file names are attempts to do version control by hand. They reliably fail, because there is always a "final_v3". Version control with git and GitHub, covered in the chapter on [Sharing and privacy](14_sharing_and_privacy.qmd), solves this properly: there is only ever one `analysis.qmd`, and git remembers every previous version of it.
 
 See Jenny Bryan's [How to name files](https://speakerdeck.com/jennybc/how-to-name-files) for more on this.
 
@@ -505,7 +505,7 @@ The full list of rules is given in the [psychdsish README](https://github.com/ia
 -   The README has been customised.
 -   Raw data hasn't been changed since it was first committed to git.
 
-The last check is only possible if the project uses git, which records every version of every file. If the project isn't a git repository, the check is reported as `SKIP`. We'll cover git and GitHub in the chapter on [Sharing and privacy](13_sharing_and_privacy.qmd); from then on, this check enforces the rule that raw data is read-only.
+The last check is only possible if the project uses git, which records every version of every file. If the project isn't a git repository, the check is reported as `SKIP`. We'll cover git and GitHub in the chapter on [Sharing and privacy](14_sharing_and_privacy.qmd); from then on, this check enforces the rule that raw data is read-only.
 
 #### When to validate
 

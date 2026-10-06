@@ -1,0 +1,764 @@
+# Strings and factors
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE)
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)
+```
+
+This chapter covers two data types that are especially common in psychology data: character strings (text), using the {stringr} package, and factors (categorical variables), using the {forcats} package. Both packages are part of the {tidyverse}.
+
+The previous chapters have already used a few {stringr} functions, such as `str_to_lower()` and `str_remove_all()`, along with some cryptic-looking patterns like `"[^A-Za-z]"`. This chapter explains how they work.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(stringr)
+library(forcats)
+library(knitr)
+library(kableExtra)
+```
+
+## Strings with {stringr}
+
+A string is any text value, written between quotation marks, e.g., `"female"`, `"23"`, or `"I enjoyed the study!"`. Note that `"23"` is a string, not a number, because of the quotation marks.
+
+All {stringr} functions start with `str_`, which makes them easy to find with auto-complete: type `str_` in RStudio and wait for the list of functions to appear. They all take the string(s) as their first argument, so they work well inside `mutate()`.
+
+We'll use some made-up free-text responses to illustrate:
+
+```{r}
+dat_text <- tribble(
+  ~id, ~gender,          ~age,           ~handedness,
+  1,   "Female",         "23",           "right",
+  2,   " male",          "31 years",     "Right-handed",
+  3,   "FEMALE ",        "about 40",     "left",
+  4,   "non  binary",    "19",           "RIGHT",
+  5,   "Woman",          "twenty-eight", "ambidextrous",
+  6,   "m",              "27",           "R"
+)
+
+dat_text %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+### Case
+
+`str_to_lower()`, `str_to_upper()`, `str_to_title()`, and `str_to_sentence()` change the case of letters. Converting to lower case is usually the first step in cleaning free-text responses, so that "Female", "FEMALE", and "female" are treated as the same value:
+
+```{r}
+dat_text %>%
+  mutate(gender_lower = str_to_lower(gender),
+         gender_title = str_to_title(gender)) %>%
+  select(id, gender, gender_lower, gender_title)
+```
+
+### Whitespace
+
+Free-text responses often contain extra spaces, which are hard to see but make values different. `str_trim()` removes spaces at the start and end, and `str_squish()` also reduces repeated spaces in the middle to a single space:
+
+```{r}
+dat_text %>%
+  mutate(gender_trimmed = str_trim(gender),
+         gender_squished = str_squish(gender)) %>%
+  # spaces are hard to see when printed, so count the number of characters with str_length() to make them visible
+  mutate(length_original = str_length(gender),
+         length_trimmed = str_length(gender_trimmed),
+         length_squished = str_length(gender_squished)) %>%
+  select(id, gender, length_original, length_trimmed, length_squished)
+```
+
+For example, " male" has 5 characters because of the leading space, and "non  binary" has 11 because of the double space. After `str_squish()`, they have 4 and 10.
+
+### Combining strings
+
+`str_c()` combines strings, e.g., to create labels for tables and plots. Base R's `paste0()` does the same thing, and you'll see both in other people's code.
+
+```{r}
+dat_text %>%
+  mutate(label = str_c("Participant ", id, ": ", str_to_lower(str_squish(gender)))) %>%
+  select(id, label)
+```
+
+### Padding
+
+Participant ids that are stored as text sort alphabetically, not numerically, so "p10" comes before "p2":
+
+```{r}
+sort(c("p1", "p2", "p10"))
+```
+
+`str_pad()` adds characters to make strings a fixed width, e.g., adding leading zeros to ids so that they sort correctly:
+
+```{r}
+str_pad(c("1", "2", "10"), width = 3, side = "left", pad = "0")
+
+sort(str_c("p", str_pad(c("1", "2", "10"), width = 3, side = "left", pad = "0")))
+```
+
+### Detecting patterns
+
+`str_detect()` returns TRUE or FALSE for whether each string contains a pattern. This makes it useful inside `filter()`, `if_else()`, and `case_when()`. `str_starts()` and `str_ends()` check only the start or end of the string.
+
+```{r}
+dat_text %>%
+  mutate(handedness_lower = str_to_lower(handedness),
+         right_handed = str_detect(handedness_lower, "right"),
+         starts_with_r = str_starts(handedness_lower, "r")) %>%
+  select(id, handedness, right_handed, starts_with_r)
+```
+
+Note that pattern matching is case sensitive, which is why the responses were converted to lower case first.
+
+Be careful with `str_detect()`: it matches the pattern *anywhere* in the string. For example, `str_detect(gender, "male")` is also TRUE for "female"! Patterns need to be specific enough to match only what you intend, which is what the next section on regular expressions is about.
+
+### Removing and replacing
+
+`str_remove()` removes the first match of a pattern, and `str_remove_all()` removes every match. `str_replace()` and `str_replace_all()` replace matches with something else.
+
+```{r}
+dat_text %>%
+  mutate(age_no_years = str_remove(age, " years"),
+         handedness_clean = str_replace(str_to_lower(handedness), "-handed", "")) %>%
+  select(id, age, age_no_years, handedness, handedness_clean)
+```
+
+### Extracting
+
+`str_extract()` returns the part of each string that matches a pattern, and `NA` if there is no match. For example, extracting the number from age responses (the pattern `"[0-9]+"` means "one or more digits", explained below):
+
+```{r}
+dat_text %>%
+  mutate(age_number = str_extract(age, "[0-9]+"),
+         age_number = as.numeric(age_number)) %>%
+  select(id, age, age_number)
+```
+
+Note that this extracts 40 from "about 40", which might or might not be what you want, and can't handle "twenty-eight". Always check the results of extractions.
+
+`str_sub()` extracts characters by position, e.g., `str_sub(x, start = 1, end = 3)` returns the first three characters.
+
+### Splitting
+
+`str_split()` splits strings into pieces at a separator. In data frames, it's usually easier to use {tidyr}'s `separate_wider_delim()` or `separate()`, which split one column into several columns. These are covered in the [Reshaping and pivots](12_reshaping_and_pivots.qmd) chapter.
+
+#### Exercise
+
+Using 'dat_text', write code to clean the 'gender' column so that it contains only "female", "male", or "non-binary". Use {stringr} functions to deal with case and whitespace first, then `case_when()` for the rest.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_text %>%
+  mutate(gender = str_to_lower(gender),
+         gender = str_squish(gender),
+         gender = case_when(gender %in% c("female", "woman", "f") ~ "female",
+                            gender %in% c("male", "man", "m") ~ "male",
+                            gender %in% c("non binary", "nonbinary", "non-binary") ~ "non-binary",
+                            TRUE ~ gender)) %>%
+  select(id, gender)
+```
+
+Note that the order of the cleaning steps matters: "non  binary" (two spaces) only matches "non binary" after `str_squish()`.
+:::
+
+## Regular expressions
+
+The patterns used by {stringr} functions are "regular expressions", or "regex". A regular expression is a small language for describing patterns in text, which is then called by other languages including R. 
+
+regex is notoriously difficult to write. I suggest you make use of AI to help you write (and then validate!) complex regex searches! Nonetheless, I provide an introduction here.
+
+Most characters simply match themselves, e.g., the pattern `"male"` matches the letters m, a, l, e in that order. Some characters have special meanings.
+
+`str_view()` is very useful for learning regex: it shows exactly which parts of each string match a pattern, highlighted with `<>`:
+
+```{r}
+str_view(c("female", "male", "Male"), "male")
+```
+
+### Character classes
+
+Square brackets match *any one* of the characters inside them:
+
+-   `[abc]` : a, b, or c.
+-   `[a-z]` : any lower case letter. `[A-Z]` is any upper case letter, and `[A-Za-z]` is any letter.
+-   `[0-9]` : any digit.
+-   `[^...]` : a `^` *inside* the brackets means "not", e.g., `[^0-9]` is any character that is not a digit.
+
+This explains the patterns used in previous chapters:
+
+-   `str_remove_all(gender, "[^A-Za-z]")` removes every character that is not a letter, e.g., spaces, hyphens, and numbers.
+-   `str_remove_all(age, "[^0-9\\.]")` removes every character that is not a digit or a decimal point.
+
+```{r}
+str_remove_all(c("non-binary", "fe male", "male!"), "[^A-Za-z]")
+
+str_remove_all(c("23 years", "about 40", "31.5"), "[^0-9\\.]")
+```
+
+There are also shortcuts for common classes, e.g., `\\d` for any digit and `\\s` for any whitespace.
+
+### Quantifiers
+
+Quantifiers say how many times the previous character or class should be matched:
+
+-   `+` : one or more times, e.g., `[0-9]+` matches "4", "40", and "400".
+-   `*` : zero or more times.
+-   `?` : zero or one times, i.e., optional, e.g., `"non-?binary"` matches both "nonbinary" and "non-binary".
+-   `{n}` : exactly n times, e.g., `[0-9]{4}` matches four digits in a row.
+
+```{r}
+str_view(c("nonbinary", "non-binary", "non binary"), "non-?binary")
+```
+
+### Anchors
+
+Anchors match positions rather than characters:
+
+-   `^` : the start of the string (when *outside* square brackets).
+-   `$` : the end of the string.
+
+Anchors are the solution to the "female contains male" problem above. `"^male$"` only matches strings that are exactly "male", from start to end:
+
+```{r}
+str_detect(c("male", "female", "male "), "male")
+
+str_detect(c("male", "female", "male "), "^male$")
+```
+
+### Special characters
+
+Characters that have special meanings, such as `.` (which matches *any* character), `?`, `+`, `(`, and `$`, need to be "escaped" with two backslashes if you want to match them literally. For example, `"\\."` matches a full stop, and `"\\?"` matches a question mark.
+
+```{r}
+str_view(c("3.5", "305"), "3.5")
+
+str_view(c("3.5", "305"), "3\\.5")
+```
+
+Regex can become very complicated very quickly. Keep your patterns as simple as possible, test them on small examples with `str_view()` before using them on your data, and add a comment explaining what each pattern is meant to match.
+
+#### Exercise
+
+Write a regular expression that matches strings that start with "p" followed by exactly three digits, and nothing else, e.g., "p001" and "p123" but not "p12", "p1234", or "xp001". Test it on the vector below with `str_detect()`.
+
+```{r}
+ids <- c("p001", "p123", "p12", "p1234", "xp001", "P001")
+```
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+str_detect(ids, "^p[0-9]{3}$")
+```
+
+`^` anchors the match to the start, `p` matches a literal "p", `[0-9]{3}` matches exactly three digits, and `$` anchors to the end. "P001" doesn't match because regex is case sensitive.
+:::
+
+### A more complex example: extracting *p*-values from text
+
+The real power of regular expressions is that a single pattern can match many *variations* of the same thing. For example, imagine you are conducting a meta-analysis or checking the results reported in a set of articles, and you have extracted the results sentences into a data frame. You want to extract the *p*-value from each one. Authors report *p*-values in many slightly different ways:
+
+-   With or without spaces, e.g., "p = .025" vs. "p=.025".
+-   With or without a leading zero, e.g., ".025" vs. "0.025".
+-   With upper or lower case, e.g., "p" vs. "P".
+-   With different comparison operators, e.g., "=", "<", ">", "<=".
+-   Different numbers of decimal places, e.g., ".05" vs. ".050".
+
+```{r}
+dat_results_text <- tibble(
+  result = c("t(48) = 2.31, p = .025",
+             "F(1, 120) = 8.45, p<0.01",
+             "r = .12, p = 0.21",
+             "chi2(2) = 15.20, P < .001",
+             "z = 1.20, p=.230",
+             "t(30) = 1.70, p > .05",
+             "b = 0.31, SE = 0.10, p <= .002",
+             "Step 2 was significant, p = .041")
+)
+```
+
+Without regex, you would need to anticipate every combination of these variations and write a separate condition for each, e.g., in `case_when()` or with many `str_detect()` calls:
+
+```{r}
+#| eval: false
+# don't do this!
+case_when(str_detect(result, "p = .") ~ ...,
+          str_detect(result, "p=.") ~ ...,
+          str_detect(result, "p = 0.") ~ ...,
+          str_detect(result, "p=0.") ~ ...,
+          str_detect(result, "P = .") ~ ...,
+          str_detect(result, "p < .") ~ ...,
+          str_detect(result, "p<.") ~ ...,
+          # ... and so on, for every combination of case, spacing, leading zero, and operator
+          )
+```
+
+Even with just the five variations listed above, there are dozens of combinations, and it's easy to miss one. A regular expression can describe all of them in a single pattern. 
+
+Long patterns are hard to read, so {stringr}'s `regex()` function has a `comments = TRUE` option, which allows you to spread the pattern over several lines and add a comment explaining each part (spaces in the pattern itself are then ignored, so spaces you want to match have to be written as `\\s`). `ignore_case = TRUE` makes the pattern match both upper and lower case:
+
+```{r}
+pattern_p <- regex("
+  \\b p           # the letter p (or P) as a separate word, so not the p in 'Step'
+  \\s*            # zero or more spaces
+  ([<>=]{1,2})    # the comparison: =, <, >, <=, or >= (group 1)
+  \\s*            # zero or more spaces
+  (               # the value (group 2), made up of:
+    0?            #   an optional leading zero
+    \\.           #   a decimal point
+    ([0-9]+)      #   one or more digits, i.e., the decimal places (group 3)
+  )
+", ignore_case = TRUE, comments = TRUE)
+
+str_view(dat_results_text$result, pattern_p)
+```
+
+Two new features are used here:
+
+-   `\\b` matches a "word boundary", i.e., the start or end of a word. Without it, the pattern could match the "p" at the end of a word like "Step" if it happened to be followed by "=" and a number.
+-   Parentheses create "groups": parts of the match that can be extracted separately. `str_extract()`'s `group` argument returns just that part of the match. Groups can be nested inside each other, and are numbered in the order of their opening brackets. Here, group 3 (the decimal places) is inside group 2 (the whole value).
+
+```{r}
+dat_results_text %>%
+  mutate(p_text = str_extract(result, pattern_p),
+         p_operator = str_extract(result, pattern_p, group = 1),
+         p_value = as.numeric(str_extract(result, pattern_p, group = 2)))
+```
+
+One pattern has correctly extracted the operator and value from every variation.
+
+### Extracting the precision of reported *p*-values
+
+The decimal places in group 3 also tell us the *precision* with which each *p*-value was reported. This matters because a reported *p*-value is a rounded version of the true one, and the number of decimals determines which true values it could have been rounded from. For example, "p = .05" could have been rounded from any value from .045 up to (but not including) .055, which includes both significant and non-significant results. "p = .050" narrows this down to .0495 to .0505.
+
+This range is useful when checking whether reported results are internally consistent, e.g., whether a reported *p*-value could have come from the reported test statistic and degrees of freedom. The range is only meaningful for exact *p*-values, i.e., when the operator is "=":
+
+```{r}
+dat_results_text %>%
+  mutate(p_operator = str_extract(result, pattern_p, group = 1),
+         p_value = as.numeric(str_extract(result, pattern_p, group = 2)),
+         # the number of decimal places reported
+         p_decimals = str_length(str_extract(result, pattern_p, group = 3)),
+         # the range of values that would round to the reported value
+         p_min = if_else(p_operator == "=", p_value - 0.5 / 10^p_decimals, NA_real_),
+         p_max = if_else(p_operator == "=", p_value + 0.5 / 10^p_decimals, NA_real_)) %>%
+  select(-result)
+```
+
+Note that the precision has to be extracted from the *text*. Once a value has been converted to a number, ".05" and ".050" are identical, and the information about how precisely it was reported is lost.
+
+Note what the pattern does *not* handle, though: symbols such as "≤" (which can be added inside the square brackets, although non-English characters can behave differently depending on your computer's language settings), *p*-values reported in scientific notation (e.g., "p = 1.2e-5"), *p*-values of exactly 1, or plural forms such as "ps < .001". This is typical of regex: always check the results, e.g., by counting how many rows returned `NA`, and inspecting the text of those that did.
+
+### Worked example: recovering ages written as words
+
+In the [Data transformation III](08_data_transformation_3.qmd) chapter, some participants' ages were written as words, e.g., "thirty five", and these became `NA` when age was converted to numeric. With {stringr}, we can recover them.
+
+```{r}
+library(truffle)
+
+set.seed(42)
+
+dat_demographics_messy <- data.frame(id = 1:500) %>%
+  truffle_demographics() %>%
+  dirt_demographics()
+
+# which age responses contain letters?
+dat_demographics_messy %>%
+  filter(str_detect(age, "[A-Za-z]")) %>%
+  count(age)
+```
+
+Most of these are a "tens" word (e.g., "thirty") optionally followed by a "units" word (e.g., "five"). {stringr}'s `word()` extracts words by position: `word(x, 1)` returns the first word and `word(x, 2)` the second (or `NA` if there is no second word). We can convert each word to a number with `case_when()`, and add them up:
+
+```{r}
+dat_age_tidier <- dat_demographics_messy %>%
+  mutate(age_raw = str_squish(str_to_lower(age)),
+         # ages written as numbers
+         age_from_numbers = as.numeric(str_extract(age_raw, "^[0-9]+$")),
+         # ages written as words
+         tens_word = word(age_raw, 1),
+         units_word = word(age_raw, 2),
+         tens = case_when(tens_word == "twenty" ~ 20,
+                          tens_word == "thirty" ~ 30,
+                          tens_word == "forty" ~ 40,
+                          TRUE ~ NA_real_),
+         units = case_when(is.na(units_word) ~ 0,
+                           units_word == "one" ~ 1,
+                           units_word == "two" ~ 2,
+                           units_word == "three" ~ 3,
+                           units_word == "four" ~ 4,
+                           units_word == "five" ~ 5,
+                           units_word == "six" ~ 6,
+                           units_word == "seven" ~ 7,
+                           units_word == "eight" ~ 8,
+                           units_word == "nine" ~ 9,
+                           TRUE ~ NA_real_),
+         # special cases that don't follow the tens + units pattern
+         age_from_words = case_when(age_raw == "nineteen" ~ 19,
+                                    TRUE ~ tens + units),
+         # use the number if there is one, otherwise the value from the words
+         age = if_else(!is.na(age_from_numbers), age_from_numbers, age_from_words))
+
+# check the conversions of the word responses
+dat_age_tidier %>%
+  filter(str_detect(age_raw, "[a-z]")) %>%
+  count(age_raw, tens, units, age)
+```
+
+All of the ages written as words have been recovered, except "female", which was presumably entered in the wrong field and remains `NA`. Note that the code only handles the words that are actually present in the data. If new data were added, you would need to check for new cases, e.g., "fifty", which would currently become `NA`. This is why the last line checks the result.
+
+```{r}
+# how many ages are missing before vs. after?
+dat_age_tidier %>%
+  summarize(n_missing_numbers_only = sum(is.na(age_from_numbers)),
+            n_missing_after_recovery = sum(is.na(age)))
+```
+
+#### Exercise
+
+Some participants in 'dat_demographics_messy' typed numbers into the gender question. Use `str_detect()` to find how many 'gender' responses contain digits. What do you think happened?
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_demographics_messy %>%
+  filter(str_detect(gender, "[0-9]")) %>%
+  count(gender)
+
+dat_demographics_messy %>%
+  filter(str_detect(gender, "[0-9]")) %>%
+  nrow()
+```
+
+These look like ages. These participants probably typed their age into the gender question. In the previous chapters, these values were removed by `str_remove_all(gender, "[^A-Za-z]")` and ended up as `NA`. Whether you could recover their gender depends on whether their age column contains it (only one 'age' response, "female", does).
+:::
+
+## Factors with {forcats}
+
+### What factors are and why they matter
+
+A factor is R's type for categorical variables. It looks like a character variable, but it also stores the set of possible values, called "levels", in a specific order.
+
+The order matters because many functions use it. By default, character variables are sorted alphabetically. For example, condition names sort as "control", "intervention", "waitlist". That might be fine, but it's often not the order you want, e.g., for timepoints ("baseline", "followup", "post") or Likert responses ("agree", "disagree", "neutral").
+
+Factor levels control:
+
+-   The order of rows in tables made with `count()` and `summarize()`.
+-   The order of categories in plots, e.g., the bars of a bar chart. See the [Visualization](15_visualization.qmd) chapter.
+-   The reference category in regression models, i.e., which group the others are compared to. See [The linear model](17_the_linear_model.qmd) chapter.
+
+```{r}
+dat_timepoints <- tribble(
+  ~id, ~timepoint, ~score,
+  1,   "baseline", 10,
+  1,   "post",     14,
+  1,   "followup", 13,
+  2,   "baseline", 12,
+  2,   "post",     15,
+  2,   "followup", 15
+)
+
+# character: alphabetical order
+dat_timepoints %>%
+  group_by(timepoint) %>%
+  summarize(mean_score = mean(score))
+
+# factor: the order of the levels
+dat_timepoints %>%
+  mutate(timepoint = factor(timepoint, levels = c("baseline", "post", "followup"))) %>%
+  group_by(timepoint) %>%
+  summarize(mean_score = mean(score))
+```
+
+You can see the levels of a factor with `levels()`.
+
+### Creating factors safely: `factor()` vs. `fct()`
+
+Base R's `factor()` has a dangerous behavior: values that aren't in the levels you specify silently become `NA`.
+
+```{r}
+gender <- c("female", "male", "non-binary", "female")
+
+factor(gender, levels = c("female", "male"))
+```
+
+"non-binary" has silently become `NA`, perhaps because of a typo in the levels or because a category was forgotten. {forcats}' `fct()` instead throws an error if any values are not in the levels:
+
+```{r}
+#| error: true
+fct(gender, levels = c("female", "male"))
+```
+
+```{r}
+fct(gender, levels = c("female", "male", "non-binary"))
+```
+
+As with the typed `NA`s in the [Data types](10_data_types.qmd) chapter, this error protects you from silent mistakes. Prefer `fct()` over `factor()`.
+
+### Changing the order of levels
+
+-   `fct_relevel()` moves one or more levels to the front, e.g., to make "control" the reference category.
+-   `fct_infreq()` orders levels from most to least frequent, which is useful for tables and bar charts.
+-   `fct_rev()` reverses the order of the levels.
+
+```{r}
+dat_conditions <- tibble(condition = c("waitlist", "intervention", "control", "intervention", "control", "intervention"))
+
+dat_conditions %>%
+  mutate(condition = fct(condition)) %>%
+  pull(condition) %>%
+  levels()
+
+dat_conditions %>%
+  mutate(condition = fct_relevel(condition, "control")) %>%
+  pull(condition) %>%
+  levels()
+
+dat_conditions %>%
+  mutate(condition = fct_infreq(condition)) %>%
+  count(condition)
+```
+
+Note that `fct()` without specified levels uses the order in which the values first appear in the data, whereas `factor()` sorts them alphabetically. `pull()` extracts a single column from a data frame as a vector.
+
+### Changing the values of levels
+
+-   `fct_recode()` renames levels, written as `new_name = "old name"` (the same direction as `rename()`).
+-   `fct_collapse()` combines several levels into one.
+-   `fct_lump_n()` and `fct_lump_min()` combine rare levels into an "Other" category, keeping the n most frequent levels, or the levels with at least `min` observations.
+
+```{r}
+dat_handedness <- tibble(handedness = c("right", "right", "left", "right", "ambidextrous", "right", "left", "unsure"))
+
+dat_handedness %>%
+  mutate(handedness = fct_recode(handedness, "Right-handed" = "right", "Left-handed" = "left")) %>%
+  count(handedness)
+
+dat_handedness %>%
+  mutate(handedness = fct_collapse(handedness, "not right" = c("left", "ambidextrous", "unsure"))) %>%
+  count(handedness)
+
+dat_handedness %>%
+  mutate(handedness = fct_lump_min(handedness, min = 2)) %>%
+  count(handedness)
+```
+
+Be careful with lumping categories together, especially for demographic variables like gender and ethnicity. It can be useful for analyses with small cell sizes, but it can also erase participants' identities. Report what was combined and why.
+
+### Missing values as a level
+
+`NA` is not a level of a factor, so it is dropped from some outputs, e.g., the legends of plots. `fct_na_value_to_level()` turns `NA` into an explicit level:
+
+```{r}
+dat_gender <- tibble(gender = fct(c("female", "male", NA, "female"), levels = c("female", "male")))
+
+levels(dat_gender$gender)
+
+dat_gender %>%
+  mutate(gender = fct_na_value_to_level(gender, level = "Not reported")) %>%
+  count(gender)
+```
+
+### Unused levels
+
+Levels remain even when there are no longer any observations with that value, e.g., after `filter()`. Some functions, such as `count()` with `.drop = FALSE` and many plotting functions, will show these empty levels. `fct_drop()` removes unused levels:
+
+```{r}
+dat_conditions_filtered <- dat_conditions %>%
+  mutate(condition = fct(condition)) %>%
+  filter(condition != "waitlist")
+
+levels(dat_conditions_filtered$condition)
+
+dat_conditions_filtered %>%
+  count(condition, .drop = FALSE)
+
+dat_conditions_filtered %>%
+  mutate(condition = fct_drop(condition)) %>%
+  pull(condition) %>%
+  levels()
+```
+
+Whether you want empty levels depends on the context. Showing that no participants were in a category can be informative in a table, but for a filtered analysis they usually should be dropped.
+
+### Ordered factors
+
+Ordered factors are factors whose levels have a meaningful order, e.g., Likert responses. They allow comparisons like `<` and `>` between levels:
+
+```{r}
+likert <- factor(c("disagree", "agree", "neutral", "agree"),
+                 levels = c("disagree", "neutral", "agree"),
+                 ordered = TRUE)
+
+likert
+
+likert > "neutral"
+```
+
+Note that ordered factors are treated differently by some functions, e.g., `lm()` uses a different coding scheme for them, so only use them when you specifically need ordering comparisons. For most purposes, a regular factor with levels in the right order is enough.
+
+### Converting factors to numbers
+
+A very common and dangerous mistake is converting a factor to a number with `as.numeric()`. Internally, factors are stored as integer codes (1 for the first level, 2 for the second, etc.), and `as.numeric()` returns these codes rather than the values you see:
+
+```{r}
+response <- factor(c("10", "20", "30", "10"))
+
+response
+
+as.numeric(response)
+```
+
+To get the actual values, convert to character first:
+
+```{r}
+as.numeric(as.character(response))
+```
+
+This mostly happens when numbers have been stored as a factor, e.g., when a data file was read with older code that converted all text to factors, or when a stray non-numeric value made a numeric column character and it was then converted to a factor. In general, keep numbers as numbers, and only use factors for categorical variables.
+
+#### Exercise
+
+Using 'dat_timepoints':
+
+-   Convert 'timepoint' to a factor with the levels in the order "baseline", "post", "followup", using `fct()`.
+-   Rename the levels to "Baseline", "Post-intervention", and "Follow-up".
+-   Calculate the mean score at each timepoint.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_timepoints %>%
+  mutate(timepoint = fct(timepoint, levels = c("baseline", "post", "followup")),
+         timepoint = fct_recode(timepoint,
+                                "Baseline" = "baseline",
+                                "Post-intervention" = "post",
+                                "Follow-up" = "followup")) %>%
+  group_by(timepoint) %>%
+  summarize(mean_score = mean(score))
+```
+:::
+
+## Exercises
+
+### {stringr}
+
+What is the difference between `str_trim()` and `str_squish()`?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`str_trim()` removes whitespace from the start and end of strings. `str_squish()` does the same, and also replaces repeated whitespace inside the string with a single space.
+:::
+
+Why is `filter(str_detect(gender, "male"))` a bad way to find male participants? What would be better?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`str_detect()` matches the pattern anywhere in the string, so it also returns "female". Better options are an exact comparison, `filter(gender == "male")`, after cleaning the column, or an anchored pattern, `str_detect(gender, "^male$")`.
+:::
+
+### Regular expressions
+
+What does each of these patterns match? `"[^A-Za-z]"`, `"[0-9]+"`, `"^p"`, `"\\."`.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+-   `"[^A-Za-z]"` : any single character that is not a letter.
+-   `"[0-9]+"` : one or more digits in a row.
+-   `"^p"` : a "p" at the start of the string.
+-   `"\\."` : a literal full stop. Without the backslashes, `.` matches any character.
+:::
+
+### Factors
+
+What is the difference between a character variable and a factor? Name two things that the order of factor levels affects.
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+A factor stores a defined set of possible values (levels) in a specific order, whereas a character variable is just text, which is sorted alphabetically. The order of levels affects the order of rows in tables (e.g., from `count()` and `summarize()`), the order of categories in plots, and the reference category in regression models.
+:::
+
+Why should you prefer `fct()` over `factor()`?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`factor()` silently converts any values that are not in the specified levels to `NA`. `fct()` throws an error instead, so that you notice typos in the levels or categories you forgot.
+:::
+
+What does `as.numeric()` return when applied to a factor? How do you get the values instead?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+It returns the internal integer codes of the levels (1, 2, 3, ...), not the values that are displayed. Use `as.numeric(as.character(x))` to get the values.
+:::
+
+### Practice
+
+In your local version of this .qmd file:
+
+-   Use 'dat_demographics_messy' to create 'dat_demographics_clean'.
+-   Clean the 'gender' column using {stringr} functions and `case_when()`, so that it contains only "female", "male", "non-binary", or `NA`.
+-   Clean the 'age' column, including recovering ages written as words, as in the worked example above.
+-   Convert 'gender' to a factor using `fct()`, with the levels ordered from most to least frequent and missing values as an explicit "Not reported" level.
+-   Create a table of the number of participants and mean age for each gender.
+
+Note: no solution provided here to reduce the temptation to peek or copy-paste.
+
+```{r}
+#| include: false
+
+
+
+```

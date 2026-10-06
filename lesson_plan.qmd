@@ -67,48 +67,51 @@ In class:
 Before class:
 
 - [Chapter 9: Structuring projects](chapters/09_structuring_projects.qmd)
-- [Chapter 10: Data types](chapters/10_strings_and_factors.qmd)
+- [Chapter 10: Data types](chapters/10_data_types.qmd)
 
 In class:
 
 - Questions about structuring projects
-- Questions about strings and factors
+- Questions about data types
 - Overview of assignment 1 (wrangling)
-<!-- - In-class exercises - [click to download .qmd](exercises/09_to_10_strings_and_factors_in_class_exercises.qmd) -->
+- In-class exercises - [click to download .qmd](exercises/10_data_types_in_class_exercises.qmd)
 
 ### Week 7
 
 Before class:
 
-- [Chapter 11: Reshaping and pivots](chapters/11_reshaping_and_pivots.qmd)
+- [Chapter 11: Strings and factors](chapters/11_strings_and_factors.qmd)
+- [Chapter 12: Reshaping and pivots](chapters/12_reshaping_and_pivots.qmd)
 
 In class:
 
+- Questions about strings and factors
 - Questions about reshaping and pivots
-<!-- - In-class exercises - [click to download .qmd](exercises/11_reshaping_and_pivots_in_class_exercises.qmd) -->
+- In-class exercises - [click to download .qmd](exercises/11_strings_and_factors_in_class_exercises.qmd)
+<!-- - In-class exercises - [click to download .qmd](exercises/12_reshaping_and_pivots_in_class_exercises.qmd) -->
 
 ### Week 8
 
 Before class:
 
-- [Chapter 12: Binding and joining](chapters/12_binding_and_joining.qmd)
+- [Chapter 13: Binding and joining](chapters/13_binding_and_joining.qmd)
 
 In class:
 
 - Questions about binding and joining
-<!-- - In-class exercises - [click to download .qmd](exercises/12_binding_and_joining_in_class_exercises.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/13_binding_and_joining_in_class_exercises.qmd) -->
 
 ### Week 9
 
 Before class:
 
-- [Chapter 13: Sharing and privacy](chapters/13_sharing_and_privacy.qmd)
+- [Chapter 14: Sharing and privacy](chapters/14_sharing_and_privacy.qmd)
 
 In class:
 
 - Questions about sharing and privacy
 - Lecture and exercise: Intro to GitHub, diffs
-<!-- - In-class exercises - [click to download .qmd](exercises/13_sharing_and_privacy_in_class_exercises.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/14_sharing_and_privacy_in_class_exercises.qmd) -->
 
 ### Week 10
 
@@ -130,27 +133,27 @@ In class:
 
 Before class:
 
-- [Chapter 14: Visualization](chapters/14_visualization.qmd)
-- [Chapter 15: Reporting](chapters/15_reporting.qmd)
+- [Chapter 15: Visualization](chapters/15_visualization.qmd)
+- [Chapter 16: Reporting](chapters/16_reporting.qmd)
 
 In class:
 
 - Questions about reporting
 - Questions about ggplot2 for visualization
 - Overview of assignment 2 (plotting)
-<!-- - In-class exercises - [click to download .qmd](exercises/14_to_15_reporting_in_class_exercises.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/15_to_16_reporting_in_class_exercises.qmd) -->
 
 ### Week 12
 
 Before class:
 
-- [Chapter 16: The linear model](chapters/16_the_linear_model.qmd)
+- [Chapter 17: The linear model](chapters/17_the_linear_model.qmd)
 
 In class:
 
 - Questions about the linear model
 - Questions about the assignments
-<!-- - In-class exercises - [click to download .qmd](exercises/16_the_linear_model_in_class_exercises.qmd) -->
+<!-- - In-class exercises - [click to download .qmd](exercises/17_the_linear_model_in_class_exercises.qmd) -->
 
 ### Week 13 + 14
 

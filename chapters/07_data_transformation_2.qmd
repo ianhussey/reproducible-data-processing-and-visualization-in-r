@@ -904,7 +904,7 @@ Another common task is splitting one column into several, e.g., a column contain
 
 The opposite task is combining several columns into one, e.g., when age was saved in a different column in each version of a survey, and you want a single 'age' column containing whichever value is not missing. This is done with `coalesce()`.
 
-Both are covered in the [Reshaping and pivots](11_reshaping_and_pivots.qmd) chapter, as they are about changing the structure of the data rather than just its contents.
+Both are covered in the [Reshaping and pivots](12_reshaping_and_pivots.qmd) chapter, as they are about changing the structure of the data rather than just its contents.
 
 ## Exercises
 

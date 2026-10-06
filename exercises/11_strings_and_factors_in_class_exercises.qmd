@@ -1,0 +1,319 @@
+---
+title: "Strings and factors - in-class exercises"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, mutate, filter, count, summarize, group_by, case_when
+library(tibble) # for tribble
+library(stringr) # for str_ functions
+library(forcats) # for fct and fct_ functions
+
+```
+
+# Today's data
+
+`dat_survey`: one row per participant, with free-text responses typed by participants. `id` was exported as text.
+
+`dat_scores`: one row per participant per timepoint, with scores on a wellbeing scale.
+
+```{r}
+
+dat_survey <- tribble(
+  ~id,  ~gender,        ~age,           ~country,          ~education,
+  "1",  "Female",       "24",           "UK",              "Bachelor's degree",
+  "2",  "male ",        "31 years",     "U.K.",            "Master's degree",
+  "3",  "F",            "twenty-two",   "Switzerland",     "Secondary school",
+  "4",  "Non-binary",   "45",           "switzerland",     "PhD",
+  "5",  "MALE",         "about 30",     "United Kingdom",  "Bachelor's degree",
+  "6",  "female",       "19",           "Schweiz",         "Secondary school",
+  "7",  "woman",        "27",           "Ireland",         "Master's degree",
+  "8",  "Man",          "38",           "uk",              "Bachelor's degree",
+  "9",  "non binary",   "22",           "Germany",         "Bachelor's degree",
+  "10", NA,             "29",           "Switzerland",     "Prefer not to say"
+)
+
+dat_scores <- tribble(
+  ~id, ~condition,     ~timepoint,  ~wellbeing,
+  1,   "control",      "baseline",  12,
+  1,   "control",      "post",      13,
+  1,   "control",      "follow-up", 12,
+  2,   "intervention", "baseline",  11,
+  2,   "intervention", "post",      16,
+  2,   "intervention", "follow-up", 15,
+  3,   "waitlist",     "baseline",  13,
+  3,   "waitlist",     "post",      13,
+  3,   "waitlist",     "follow-up", 14
+)
+
+```
+
+# Strings
+
+## Predict before you run
+
+Before running: in what order will the ids be printed? Why? How could you make them sort numerically while keeping them as text?
+
+```{r}
+
+dat_survey %>%
+  arrange(id) %>%
+  pull(id)
+
+```
+
+```{r}
+
+
+
+```
+
+## Clean the gender column
+
+Clean 'gender' so that it contains only "female", "male", "non-binary", or `NA`. Use {stringr} functions to deal with case and whitespace before using `case_when()`. Check your result with `count()`.
+
+```{r}
+
+
+
+```
+
+## The "female contains male" problem
+
+Before running: how many rows will each of these return? Why are they different?
+
+```{r}
+
+dat_survey %>%
+  filter(str_detect(str_to_lower(gender), "male"))
+
+dat_survey %>%
+  filter(str_detect(str_to_lower(gender), "^male"))
+
+```
+
+## Clean the country column
+
+Clean 'country' so that it contains one consistent name per country, e.g., "UK" and "Switzerland". Hint: converting to lower case and removing everything that isn't a letter will reduce the number of cases `case_when()` needs to handle. Check how many participants are from each country.
+
+```{r}
+
+
+
+```
+
+# Regular expressions
+
+## What does it match?
+
+For each pattern, predict which of the strings will match, then check with `str_view()` or `str_detect()`.
+
+```{r}
+
+strings <- c("24", "31 years", "about 30", "twenty-two", "3.5", "305")
+
+str_detect(strings, "[0-9]")
+str_detect(strings, "^[0-9]+$")
+str_detect(strings, "[a-z]")
+str_detect(strings, "3.5")
+str_detect(strings, "3\\.5")
+
+```
+
+## Extracting ages
+
+Create a numeric age column from 'age' in `dat_survey`, using `str_extract()` with a regular expression. Which ages are recovered? Which are not, and what would you need to do to recover them? Is "about 30" a valid age to keep?
+
+```{r}
+
+
+
+```
+
+## Recover the age written as words
+
+Using `str_replace()` and `case_when()`, convert "twenty-two" to 22. Then combine it with your previous answer to create a complete age column.
+
+```{r}
+
+
+
+```
+
+# Factors
+
+## Predict before you run
+
+Before running: in what order will the timepoints appear? Is that the order you want?
+
+```{r}
+
+dat_scores %>%
+  group_by(timepoint) %>%
+  summarize(mean_wellbeing = mean(wellbeing))
+
+```
+
+Fix the order by converting 'timepoint' to a factor.
+
+```{r}
+
+
+
+```
+
+## `factor()` vs. `fct()`
+
+Before running each chunk: what will happen to "follow-up"? Which behavior is safer?
+
+```{r}
+#| error: true
+
+factor(dat_scores$timepoint, levels = c("baseline", "post", "followup"))
+
+```
+
+```{r}
+#| error: true
+
+fct(dat_scores$timepoint, levels = c("baseline", "post", "followup"))
+
+```
+
+## Reference level
+
+The conditions will be compared in a regression model, and the preregistration says that the other conditions should be compared to the waitlist condition. Convert 'condition' to a factor and check its levels. Then make "waitlist" the first level, and rename the levels to "Waitlist control", "Active control", and "Intervention".
+
+```{r}
+
+
+
+```
+
+## Collapsing and lumping
+
+Using the 'education' column of `dat_survey`:
+
+1. Create a factor with levels ordered from most to least frequent, and count the responses.
+2. Collapse the responses into "Secondary", "Undergraduate", "Postgraduate", and "Not reported".
+3. Try `fct_lump_min()` with `min = 2`. What happens to the rare categories? When might this be a problem?
+
+```{r}
+
+
+
+```
+
+## Missing values as a level
+
+Using your cleaned gender column from earlier, convert gender to a factor with an explicit "Not reported" level for missing values, and count the participants in each category.
+
+```{r}
+
+
+
+```
+
+## Predict before you run
+
+Participants rated their satisfaction on a scale of 1 to 5, but the column was stored as a factor. Before running: what will the mean satisfaction be? Is that correct? Fix it.
+
+```{r}
+
+satisfaction <- factor(c("5", "3", "4", "5", "1"), levels = c("5", "4", "3", "2", "1"))
+
+mean(as.numeric(satisfaction))
+
+```
+
+```{r}
+
+
+
+```
+
+# Fix the broken pipe
+
+This code is meant to clean the gender column, make it a factor with "female" as the first level, and count the participants in each category. It has (at least) four bugs. Find and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_survey %>%
+  mutate(gender = str_to_lower(gender),
+         gender = case_when(str_detect(gender, "male") ~ "male",
+                            str_detect(gender, "female") ~ "female",
+                            gender == "f" ~ "female",
+                            gender %in% c("non-binary", "non binary") ~ "non-binary",
+                            TRUE ~ gender),
+         gender = factor(gender, levels = c("female", "male", "nonbinary"))) %>%
+  count(gender)
+
+```
+
+# Put it all together
+
+Write a single pipe that creates `dat_survey_clean` from `dat_survey`, with a comment above each step:
+
+1. Pad 'id' with leading zeros to three characters, e.g., "001".
+2. Clean 'gender', and convert it to a factor with "Not reported" for missing values.
+3. Create a numeric 'age' column, recovering as many ages as you can justify.
+4. Clean 'country'.
+5. Convert 'education' to a factor with the levels in a meaningful order (not alphabetical or by frequency).
+
+Then create a table with the number of participants and mean age by gender.
+
+```{r}
+
+
+
+```
+
+# Looking ahead
+
+`dat_scores` has one row per participant per timepoint. Imagine you wanted to calculate each participant's change in wellbeing from baseline to post. Why is this awkward with the data in its current shape? What shape would make it easy?

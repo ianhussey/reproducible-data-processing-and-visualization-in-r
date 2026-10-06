@@ -1,0 +1,742 @@
+# Data types
+
+```{r}
+#| include: false
+
+# settings, placed in a chunk that will not show in the .html file (because include=FALSE)
+
+# disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"
+options(scipen = 999)
+
+```
+
+Every column in a data frame has a *type*, e.g., numbers, text, or TRUE/FALSE values. Most of the time you don't need to think about types. But many of the most confusing errors, and some of the most dangerous silent errors, in data processing come from types behaving in ways you didn't expect.
+
+This chapter covers the main data types in R, missing values (`NA`), the surprising behavior of decimal numbers, and rounding and reporting numbers, including *p*-values. Two other types, character strings and factors, are covered in the [next chapter](11_strings_and_factors.qmd).
+
+## Types of data in R
+
+The most common types you will encounter are:
+
+| Type | Example values | Abbreviation in tibbles | Notes |
+|---|---|---|---|
+| logical | `TRUE`, `FALSE`, `NA` | `<lgl>` | Also called booleans |
+| integer | `1L`, `2L`, `-5L` | `<int>` | Whole numbers. The `L` forces a number to be stored as an integer |
+| double | `1`, `2.5`, `-0.001` | `<dbl>` | Numbers with or without decimals. Also called "numeric" or "floats" |
+| character | `"female"`, `"23"`, `"p < .001"` | `<chr>` | Text, also called strings |
+| factor | `control`, `intervention` | `<fct>` | Categorical variables with a defined set of levels. See the [next chapter](11_strings_and_factors.qmd) |
+| date | `2025-06-23` | `<date>` | See the section on dates below |
+
+You can check the type of an object or column with `class()`, or see the types of all columns in a data frame with `glimpse()`. Tibbles also show each column's type under its name when printed.
+
+```{r}
+library(dplyr)
+library(tibble)
+
+dat_example <- tibble(
+  id = c(1L, 2L, 3L),
+  age = c(23, 31.5, 19),
+  gender = c("female", "male", "non-binary"),
+  consent = c(TRUE, TRUE, FALSE)
+)
+
+class(dat_example$age)
+
+class(dat_example$gender)
+
+glimpse(dat_example)
+```
+
+### Types are converted automatically when they are combined
+
+A column, like any vector, can only contain one type. If you combine values of different types, R silently converts them all to the most flexible type, in the order logical → integer → double → character.
+
+```{r}
+# numbers and logicals become numbers: TRUE becomes 1 and FALSE becomes 0
+c(1, TRUE, FALSE)
+
+# anything combined with a character string becomes a character string
+c(1, "a", TRUE)
+```
+
+This is why a single stray value can change the type of a whole column. If one participant typed "twenty" in the age question, the entire 'age' column is read in as character, and you can no longer calculate its mean. You saw this in the previous chapters, where 'age' in 'dat_demographics_messy' was a character column.
+
+### Converting between types
+
+You can convert between types with the `as.` functions, e.g., `as.numeric()`, `as.character()`, `as.logical()`, and `as.integer()`. When a value can't be converted, it becomes `NA`, and R gives a warning:
+
+```{r}
+#| warning: true
+as.numeric(c("23", "31", "twenty"))
+```
+
+Don't ignore this warning! It tells you that information was lost. In the [Data transformation III](08_data_transformation_3.qmd) chapter, ages written as words (e.g., "thirty") became `NA` in exactly this way.
+
+#### Exercise
+
+Before running it: what type will each of these be? Check with `class()`.
+
+```{r}
+#| eval: false
+c(1, 2, 3)
+c(1L, 2L, 3L)
+c(1, 2, "3")
+c(TRUE, FALSE, 1)
+c(TRUE, FALSE, NA)
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+class(c(1, 2, 3))
+class(c(1L, 2L, 3L))
+class(c(1, 2, "3"))
+class(c(TRUE, FALSE, 1))
+class(c(TRUE, FALSE, NA))
+```
+
+Note that numbers are stored as doubles ("numeric") unless you specifically ask for integers with `L`, and that `NA` on its own is logical.
+:::
+
+## Decimal numbers are not what they seem
+
+### Floating point numbers
+
+What do you expect the result of this to be?
+
+```{r}
+#| eval: false
+0.1 + 0.2 == 0.3
+```
+
+::: {.callout-note collapse="true" title="Click to show result"}
+```{r}
+0.1 + 0.2 == 0.3
+```
+:::
+
+Computers store numbers in binary (base 2). Many decimal numbers can't be stored exactly in binary, in the same way that 1/3 can't be written exactly as a decimal (0.333...). Instead, the computer stores the closest value it can, which is very slightly off. These are called "floating point" numbers. R hides this by rounding numbers when it prints them, but you can see the stored values by asking for more digits:
+
+```{r}
+sprintf("%.20f", c(0.1, 0.1 + 0.2, 0.3))
+```
+
+`0.1 + 0.2` and `0.3` are stored as two very slightly different numbers, so `==`, which tests for *exact* equality, returns FALSE.
+
+This is not specific to R. It is how almost all software stores decimal numbers, including Excel, Python, and SPSS.
+
+### Why this matters for data processing
+
+This might seem like an obscure curiosity, but it can silently break code that looks correct. For example, `seq()` creates a sequence of numbers. The fourth value is printed as 0.3, but `filter()` can't find it:
+
+```{r}
+dat_seq <- tibble(x = seq(from = 0, to = 1, by = 0.1))
+
+# the fourth value looks like 0.3
+dat_seq$x[4]
+
+# but filtering for 0.3 returns zero rows
+dat_seq %>%
+  filter(x == 0.3)
+```
+
+There's no error or warning: the row is simply missing from your results. The same thing can happen with any number that is the result of a calculation, e.g., means, proportions, and scores calculated from other columns.
+
+Another example:
+
+```{r}
+sqrt(2)^2 == 2
+```
+
+### *p*-values and floating point
+
+Floating point numbers also cause problems with *p*-values, where the difference between two very close numbers can change your conclusions.
+
+For example, *p*-values are often calculated as 1 minus a cumulative probability. Imagine a *p*-value that is calculated as `1 - 0.95`:
+
+```{r}
+p <- 1 - 0.95
+
+p
+
+p < 0.05
+
+p == 0.05
+```
+
+R prints *p* as 0.05, but it is neither less than nor equal to 0.05! Its stored value is slightly *larger* than 0.05:
+
+```{r}
+sprintf("%.20f", p)
+```
+
+So a decision rule like `if_else(p <= .05, "significant", "non-significant")` would label this result as non-significant.
+
+Very small *p*-values have the opposite problem. Floating point numbers can only distinguish numbers that differ by more than a certain amount. Near 1, that is about 2.2 × 10^-16^. When you subtract a number that is very close to 1 from 1, the tiny difference can be lost completely. For example, here are two ways of calculating the *p*-value for a *z*-score of 8.3:
+
+```{r}
+# 1 minus the cumulative probability
+1 - pnorm(8.3)
+
+# asking pnorm() for the upper tail directly
+pnorm(8.3, lower.tail = FALSE)
+```
+
+The first method returns exactly 0, which is impossible for a *p*-value. The second is calculated in a way that avoids the problem. This is also why R's statistical tests print very small *p*-values as `p-value < 2.2e-16` rather than an exact value. If you ever see a *p*-value of exactly 0, it's a sign of this problem, and it should never be reported as "*p* = 0".
+
+### Testing equality with `near()`
+
+The solution is to never test whether decimal numbers are *exactly* equal with `==`. Instead, use {dplyr}'s `near()`, which tests whether two numbers are equal within a very small tolerance:
+
+```{r}
+near(0.1 + 0.2, 0.3)
+
+near(sqrt(2)^2, 2)
+
+dat_seq %>%
+  filter(near(x, 0.3))
+```
+
+You can change the tolerance with the `tol` argument, e.g., `near(x, 0.3, tol = 0.001)`.
+
+A related function is `between()`, which tests whether values are within a range, including the boundaries. It is a more readable version of `x >= left & x <= right`, e.g., for checking that responses are within the range of a scale:
+
+```{r}
+between(c(0, 1, 3, 5, 6), left = 1, right = 5)
+```
+
+Integers don't have this problem, as whole numbers can be stored exactly. It's only decimal numbers that need care.
+
+#### Exercise
+
+Predict how many rows each of these will return, then run them to check.
+
+```{r}
+#| eval: false
+dat_proportions <- tibble(id = 1:3,
+                          n_correct = c(7, 3, 6),
+                          n_trials = c(10, 10, 10)) %>%
+  mutate(proportion_correct = n_correct / n_trials)
+
+dat_proportions %>%
+  filter(proportion_correct == 0.7)
+
+dat_proportions %>%
+  filter(proportion_correct - 0.4 == 0.3)
+
+dat_proportions %>%
+  filter(near(proportion_correct - 0.4, 0.3))
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_proportions <- tibble(id = 1:3,
+                          n_correct = c(7, 3, 6),
+                          n_trials = c(10, 10, 10)) %>%
+  mutate(proportion_correct = n_correct / n_trials)
+
+dat_proportions %>%
+  filter(proportion_correct == 0.7)
+
+dat_proportions %>%
+  filter(proportion_correct - 0.4 == 0.3)
+
+dat_proportions %>%
+  filter(near(proportion_correct - 0.4, 0.3))
+```
+
+The first returns 1 row: 7/10 and 0.7 happen to be stored as the same closest binary value. The second returns 0 rows: 0.7 - 0.4 is stored as a slightly different value to 0.3. The third uses `near()` and returns 1 row. The first one working is luck, not a reason to use `==`: it's hard to predict which calculations will produce exactly the same stored value, so it's best to always use `near()` with decimals.
+:::
+
+## Rounding: `round()` probably doesn't do what you think
+
+It is extremely common to round statistical results before including them in text and tables.
+
+However, did you know that R doesn't use the rounding method most of us are taught in school where .5 is rounded up to the next integer? Instead it uses "banker's rounding", which is better when you round a very large number of numbers, but worse for reporting the results of specific analyses.
+
+This is easier to show than explain. The `round()` function rounds each of the numbers passed to it. What do you expect the output to be?
+
+```{r}
+#| eval: false
+round(c(0.5,
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5), digits = 0)
+```
+
+::: {.callout-note collapse="true" title="Click to show result"}
+```{r}
+round(c(0.5,
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5))
+```
+
+Why is this? Because R's `round()` function uses "banker's rounding, which rounds 5s based on whether the preceding digit is odd or even. This is a good thing in many contexts like accounting, but it's usually not what we want or expect when rounding specific statistical results for inclusion in a report or manuscript.
+:::
+
+Floating point numbers make this even less predictable. Because many decimals are stored as very slightly smaller or larger values than they appear, `round()` sometimes rounds a 5 down even when banker's rounding would round it up:
+
+```{r}
+round(2.675, digits = 2)
+
+sprintf("%.20f", 2.675)
+```
+
+2.675 is actually stored as 2.67499999..., so it is rounded down to 2.67.
+
+In most of your R scripts, you should instead use the {roundwork} package's `round_up()`, written by [Lukas Jung](https://bsky.app/profile/lhdjung.bsky.social), which produces the round-.5-upwards behavior most of us expect, and accounts for floating point representation.
+
+```{r}
+library(roundwork)
+
+roundwork::round_up(c(0.5,
+                      1.5,
+                      2.5,
+                      3.5,
+                      4.5,
+                      5.5))
+
+roundwork::round_up(2.675, digits = 2)
+```
+
+These will typically be used inside a pipe workflow:
+
+```{r}
+#| eval: true
+#| include: false
+# make up some values to be rounded
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+set.seed(44)
+
+dat_regression_betas <-
+  data.frame(beta_estimate = rnorm(n = 5, mean = .3, sd = .1)) %>%
+  mutate(beta_ci_lower = beta_estimate - 0.2,
+         beta_ci_upper = beta_estimate + 0.2) %>%
+  mutate(p = runif(n = 5, min = 0.000000001, max = 0.01))
+```
+
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_up(beta_estimate, 2),
+         beta_ci_lower = round_up(beta_ci_lower, 2),
+         beta_ci_upper = round_up(beta_ci_upper, 2))
+
+dat_regression_betas_rounded %>%
+  kable() %>%
+  kable_classic(full_width = FALSE)
+```
+
+Rounding should be one of the very last steps, just before results are reported. Calculations done on rounded numbers accumulate rounding error, and decisions such as whether *p* < .05 should always be made on the unrounded values.
+
+## Reporting *p*-values in APA style
+
+The one thing that psychologists don't round using the round-half-up rule is *p*-values. Instead, the APA style guide's conventions for reporting *p*-values combine several different steps:
+
+1.  Report exact *p*-values to two or three decimal places, e.g., *p* = .023.
+2.  *p*-values smaller than .001 are reported as *p* < .001, rather than being rounded. *p* = .000 is never reported, because a *p*-value can never be exactly 0.
+3.  No leading zero is used, because *p*-values can never be larger than 1, i.e., .023 rather than 0.023.
+4.  The result is text, not a number: "< .001" can't be stored as a number.
+
+So "APA rounding" isn't really rounding at all. It is a mix of rounding, thresholding, and text formatting. This also means that it has to be the very last step: once *p*-values have been converted to text, you can no longer compare them to .05 or do any other calculations with them.
+
+There are also edge cases that need thought. For example, *p* = .0499 would be rounded to .050, which looks non-significant even though it is below .05. Decisions should always be made on the unrounded values, and when rounding would move a *p*-value to the other side of the significance threshold, it is better to report enough decimal places to keep it on the correct side, i.e., *p* = .0499. Similarly, a *p*-value can never be exactly 1, so values that would round to 1.000 are better reported as *p* > .999.
+
+### Existing functions
+
+Surprisingly, most of the functions in common R packages for formatting *p*-values don't follow APA style. For example, here is how several of them format the *p*-values .2346, .04999, and .0004:
+
+| Function | .2346 | .04999 | .0004 | Issue |
+|---|---|---|---|---|
+| base R `format.pval(p, digits = 3, eps = .001)` | 0.235 | 0.050 | <0.001 | Leading zeros |
+| `scales::label_pvalue()` | 0.235 | 0.050 | <0.001 | Leading zeros |
+| `insight::format_p()` | p = 0.235 | p = 0.050 | p < .001 | Inconsistent leading zeros |
+| `rstatix::p_format()` | 0.2346 | 0.05 | 0.0004 | Not rounded to 3 decimals |
+| `papaja::printp()` | .235 | .050 | < .001 | Follows APA style, but rounds .04999 across .05 |
+| `truffle::round_p_value()` | .235 | .04999 | < .001 | Follows APA style, and adds decimals rather than rounding across .05 |
+
+{papaja} does follow APA style, but it is a large package designed for writing entire manuscripts in R Markdown, so it's a heavy dependency if you only want to format *p*-values. The {truffle} package therefore provides a lightweight function for this, `round_p_value()`, which:
+
+-   Rounds half up, in a way that isn't affected by floating point representation (like `roundwork::round_up()`), e.g., .1235 becomes .124.
+-   Reports values below .001 as "< .001".
+-   Removes the leading zero.
+-   Adds extra decimal places when rounding would move a *p*-value to the other side of .05, e.g., .04999 becomes .04999 rather than .050. The threshold can be changed with the `alpha` argument, or this behavior turned off with `alpha = NULL`.
+-   Reports values that would round to 1 as "> .999".
+-   Throws an error for values below 0 or above 1, which can't be *p*-values.
+
+```{r}
+# install.packages("devtools"); devtools::install_github("ianhussey/truffle")
+library(truffle)
+
+round_p_value(c(0.1235, 0.0499, 0.0501, 0.0004, 0.9996))
+
+round_p_value(c(0.1235, 0.0499, 0.0501, 0.0004, 0.9996), alpha = NULL)
+```
+
+It is typically used as the last step before a results table is printed:
+
+```{r}
+dat_regression_betas_rounded <- dat_regression_betas %>%
+  mutate(beta_estimate = round_up(beta_estimate, 2),
+         beta_ci_lower = round_up(beta_ci_lower, 2),
+         beta_ci_upper = round_up(beta_ci_upper, 2),
+         p = round_p_value(p))
+
+dat_regression_betas_rounded %>%
+  kable(align = 'r') %>%
+  kable_classic(full_width = FALSE)
+```
+
+Notice that, after this, the 'p' column is character rather than numeric.
+
+#### Exercise
+
+The *p*-values below were calculated in an analysis. Write code that:
+
+-   Creates a column 'significant' that is TRUE if *p* < .05 and FALSE otherwise.
+-   Creates a column 'p_apa' that contains the *p*-value formatted in APA style.
+-   Does these two steps in the right order.
+
+```{r}
+dat_p_values <- tibble(test = c("H1", "H2", "H3", "H4"),
+                       p = c(0.2345, 0.04999, 0.0004, 0.00000003))
+```
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_p_values %>%
+  mutate(significant = p < .05,
+         p_apa = round_p_value(p))
+```
+
+The significance decision must be made on the unrounded *p*-values. If 'p' had been overwritten with the formatted text first, `p < .05` would compare text rather than numbers, and give the wrong answers. Note that H2's *p*-value is formatted as .04999 rather than .050: rounding it to three decimal places would put it on the other side of .05, so `round_p_value()` reports more decimal places.
+:::
+
+## Missing values: `NA`
+
+`NA` stands for "Not Available". It is R's way of saying "there should be a value here, but we don't know what it is".
+
+### `NA` is contagious
+
+Because `NA` means "unknown", any calculation involving `NA` is also unknown:
+
+```{r}
+NA + 1
+
+NA > 18
+
+sum(c(25, 31, NA))
+```
+
+This is why many functions have an `na.rm = TRUE` argument, which removes the `NA`s before calculating:
+
+```{r}
+sum(c(25, 31, NA), na.rm = TRUE)
+```
+
+It is also why you can't test whether something is missing with `== NA`. Is an unknown value equal to another unknown value? We don't know, so the answer is `NA`, not TRUE or FALSE:
+
+```{r}
+NA == NA
+
+x <- c(25, NA, 31)
+
+x == NA
+
+is.na(x)
+```
+
+This is why the previous chapters used `is.na()` and `drop_na()` rather than `== NA`.
+
+There are a few exceptions where the answer is known even though one value is not. For example, `NA & FALSE` is FALSE (both must be TRUE for `&` to be TRUE, and one of them already isn't), and `NA | TRUE` is TRUE.
+
+### `NA`, `NaN`, `Inf`, and `NULL`
+
+R has a few other special values that are easily confused with `NA`:
+
+-   `NaN` ("Not a Number") is the result of an impossible calculation, like `0/0`.
+-   `Inf` and `-Inf` are positive and negative infinity, e.g., the result of `1/0`.
+-   `NULL` means "nothing at all", rather than "a missing value". It has length 0, so it disappears when combined with other values.
+
+```{r}
+0/0
+
+1/0
+
+c(1, NA, 3)   # NA is kept as a missing value
+
+c(1, NULL, 3) # NULL disappears
+
+is.na(NaN)    # note that is.na() also returns TRUE for NaN
+```
+
+### Summaries when everything is missing
+
+Things get strange when you summarize a set of values that are *all* missing, even with `na.rm = TRUE`. After removing the `NA`s, there is nothing left to summarize, and different functions return different things:
+
+```{r}
+#| warning: true
+x <- c(NA, NA, NA)
+
+sum(x, na.rm = TRUE)
+
+mean(x, na.rm = TRUE)
+
+max(x, na.rm = TRUE)
+```
+
+The sum of nothing is 0, the mean of nothing is `NaN`, and the maximum of nothing is `-Inf` (with a warning). None of these are the number you want.
+
+This rarely happens with a whole column, but it happens surprisingly often within groups in `group_by()` and `summarize()`, e.g., when one participant, condition, or item has no valid data:
+
+```{r}
+#| warning: true
+dat_scores <- tribble(
+  ~id, ~condition,     ~score,
+  1,   "control",      4,
+  2,   "control",      5,
+  3,   "intervention", NA,
+  4,   "intervention", NA
+)
+
+dat_scores %>%
+  group_by(condition) %>%
+  summarize(n_scores = sum(!is.na(score)),
+            sum_score = sum(score, na.rm = TRUE),
+            mean_score = mean(score, na.rm = TRUE),
+            max_score = max(score, na.rm = TRUE))
+```
+
+The intervention group's sum score of 0 looks like a real value, but it's not. It's always worth calculating the number of non-missing values alongside summaries, as in the 'n_scores' column, so that you can spot this.
+
+### `NA` has types too
+
+Because every column can only contain one type, `NA` also has types:
+
+| Missing value | Type |
+|---|---|
+| `NA` | logical |
+| `NA_integer_` | integer |
+| `NA_real_` | double |
+| `NA_character_` | character |
+
+A plain `NA` is logical. A column that contains *only* `NA`s, e.g., an optional free-text question that no one answered, is therefore also logical:
+
+```{r}
+dat_comments <- tibble(id = 1:3,
+                       comments = c(NA, NA, NA))
+
+dat_comments
+```
+
+{dplyr} is fairly lenient with plain `NA`s: if a logical column of `NA`s needs to be combined with character strings, it is converted automatically. For example, this works:
+
+```{r}
+dat_comments %>%
+  mutate(comments = if_else(id == 2, "it was too long", comments))
+```
+
+However, this leniency does not apply to the typed versions. Once you use a typed `NA`, you are making a claim about the column's type, and {dplyr} will refuse to combine it with a different type. For example, imagine you created a placeholder column to be filled in later, but used `NA_real_`:
+
+```{r}
+#| error: true
+dat_comments <- tibble(id = 1:3) %>%
+  mutate(comments = NA_real_)
+
+dat_comments %>%
+  mutate(comments = if_else(id == 2, "it was too long", comments))
+```
+
+The column is now a numeric column that happens to be empty, and character strings can't be added to it. The same thing happens when combining data frames, e.g., if a column is a numeric column of `NA`s in one data set and character in another:
+
+```{r}
+#| error: true
+library(dplyr)
+
+dat_site_1 <- tibble(id = 1:2, notes = NA_real_)
+dat_site_2 <- tibble(id = 3:4, notes = c("late start", "fire alarm"))
+
+bind_rows(dat_site_1, dat_site_2)
+```
+
+Typed `NA`s also restrict which operations can be done, even when every value is `NA`. For example, a character column of `NA`s can't be used in arithmetic, even though the result would just be `NA`s anyway:
+
+```{r}
+#| error: true
+tibble(x = c(NA_character_, NA_character_)) %>%
+  mutate(y = x + 1)
+```
+
+These errors are a feature, not a bug. They catch mistakes where a column contains something other than what you think it does. This is why the previous chapters wrote, e.g., `if_else(condition, gender, NA_character_)` rather than `if_else(condition, gender, NA)`: it makes the intended type of the column explicit. The rule is simple: when you write a missing value into a column, use the `NA` that matches the type the column *should* have.
+
+#### Exercise
+
+Which of these chunks will throw an error, and why? Predict first, then run them to check.
+
+```{r}
+#| eval: false
+tibble(age = c(23, 31, 999)) %>%
+  mutate(age = if_else(age == 999, NA_real_, age))
+
+tibble(age = c(23, 31, 999)) %>%
+  mutate(age = if_else(age == 999, NA_character_, age))
+
+tibble(gender = c("female", "male", "")) %>%
+  mutate(gender = if_else(gender == "", NA, gender))
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+#| error: true
+tibble(age = c(23, 31, 999)) %>%
+  mutate(age = if_else(age == 999, NA_real_, age))
+
+tibble(age = c(23, 31, 999)) %>%
+  mutate(age = if_else(age == 999, NA_character_, age))
+
+tibble(gender = c("female", "male", "")) %>%
+  mutate(gender = if_else(gender == "", NA, gender))
+```
+
+Only the second one fails: 'age' is numeric, and `NA_character_` is character, so `if_else()` can't combine them. The first uses the matching typed `NA`. The third uses a plain logical `NA`, which {dplyr} converts to character automatically, but `NA_character_` would make the intention clearer.
+:::
+
+#### Exercise
+
+Using 'dat_scores', calculate the mean and maximum score for each condition, but return `NA` rather than `NaN` or `-Inf` for conditions with no non-missing scores.
+
+Hint: calculate the number of non-missing scores first, and use it in `if_else()`.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_scores %>%
+  group_by(condition) %>%
+  summarize(n_scores = sum(!is.na(score)),
+            mean_score = if_else(n_scores > 0, mean(score, na.rm = TRUE), NA_real_),
+            max_score = if_else(n_scores > 0, suppressWarnings(max(score, na.rm = TRUE)), NA_real_))
+```
+
+`suppressWarnings()` hides the warning from `max()` for the group with no data. That is reasonable here only because we deal with that case explicitly with `if_else()`.
+:::
+
+## Dates
+
+Dates are their own type in R, and they are notoriously difficult to work with in any coding language. Data files often store dates as text in many different formats, e.g., "23.06.22", "06/23/2022", or "2022-06-23", and some of these are ambiguous: is "03.06.22" the 3rd of June or the 6th of March? Spreadsheet software like Excel also often silently converts values that look like dates, and stores dates internally as numbers.
+
+This book doesn't cover dates in any detail. If you need to work with them, the {lubridate} package provides functions for parsing dates from text in a known order, e.g., `dmy("23.06.22")` for day-month-year. See the [{lubridate} documentation](https://lubridate.tidyverse.org/) and the [Dates and times chapter](https://r4ds.hadley.nz/datetimes.html) of R for Data Science [@wickham2023r4ds].
+
+## Exercises
+
+### Types
+
+What are the main data types in R? How can you check what type a column is?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Logical, integer, double (numeric), character, factor, and date. You can check with `class()`, see all columns' types with `glimpse()`, or look at the abbreviations (e.g., `<dbl>`, `<chr>`) printed under the column names of a tibble.
+:::
+
+Why might a column of ages be read into R as character rather than numeric? How would you find and fix the problem?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+A column can only contain one type, so a single non-numeric value (e.g., "twenty", "25 years", or "female" entered in the wrong field) makes the whole column character. Use `distinct()` or `count()` to find the problematic values, then clean them with `mutate()` before converting with `as.numeric()`. Pay attention to the "NAs introduced by coercion" warning, which tells you that some values could not be converted.
+:::
+
+### `NA`
+
+Why does `x == NA` not work for finding missing values? What should you use instead?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`NA` means "unknown", and whether an unknown value is equal to something is also unknown, so `x == NA` returns `NA` for every value. Use `is.na(x)` instead.
+:::
+
+What do `sum()`, `mean()`, and `max()` return for a set of values that are all `NA`, with `na.rm = TRUE`? Why does this matter?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`sum()` returns 0, `mean()` returns `NaN`, and `max()` returns `-Inf` with a warning. This matters most in grouped summaries, where a group with no valid data can get a value (e.g., a sum score of 0) that looks real. Calculating the number of non-missing values, e.g., `sum(!is.na(x))`, alongside summaries helps you spot this.
+:::
+
+What is the difference between `NA`, `NA_real_`, and `NA_character_`? When should you use the typed versions?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`NA` is logical, `NA_real_` is numeric (double), and `NA_character_` is character. A plain `NA` can usually be converted automatically to the type needed, but the typed versions fix the column's type, and {dplyr} will throw an error if they are combined with values of a different type. Use the typed `NA` that matches the type the column should have, e.g., `NA_character_` when recoding a character column with `if_else()` or `case_when()`. This makes your intentions explicit and catches mistakes.
+:::
+
+### Floating point
+
+Why is `0.1 + 0.2 == 0.3` FALSE? What should you use instead of `==` to compare decimal numbers?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+Most decimal numbers can't be stored exactly in binary, so the computer stores the closest possible value, which is very slightly off. `0.1 + 0.2` and `0.3` are stored as slightly different values, so they are not *exactly* equal. Use `near()` instead, which tests for equality within a small tolerance.
+:::
+
+Why should you never report *p* = 0? What does a *p*-value of exactly 0 tell you?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+A *p*-value can never be exactly 0. A *p*-value of exactly 0 is a sign that the true value was too small to be represented, e.g., because it was calculated as 1 minus a number very close to 1. Report it as *p* < .001.
+:::
+
+### Rounding and reporting
+
+Why should you usually use `roundwork::round_up()` rather than `round()`?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+`round()` uses banker's rounding, which rounds .5 to the nearest even number (e.g., 2.5 becomes 2), and is also affected by floating point representation (e.g., 2.675 becomes 2.67). `round_up()` rounds .5 upwards, which is what readers expect when results are reported.
+:::
+
+How is APA-style reporting of *p*-values different from ordinary rounding? Why should it be the last step?
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+It combines rounding to two or three decimals, reporting values below .001 as "< .001", and removing the leading zero. The result is text rather than a number, so any comparisons (e.g., *p* < .05) and calculations must be done before formatting.
+:::
+
+### Practice
+
+In your local version of this .qmd file:
+
+-   Use 'dat_regression_betas' to create a table suitable for a manuscript.
+-   Create a column 'significant' based on the unrounded *p*-values.
+-   Round the beta estimates and confidence intervals to 2 decimal places using `round_up()`.
+-   Combine the confidence intervals into a single column 'beta_ci' formatted like "[0.12, 0.52]". Hint: use `paste0()`, which is covered in more detail in the next chapter.
+-   Format the *p*-values in APA style.
+-   Keep only the columns 'beta_estimate', 'beta_ci', 'p', and 'significant', and print the table.
+
+```{r}
+#| include: false
+
+
+
+```

@@ -31,17 +31,18 @@ book:
       - chapters/07_data_transformation_2.qmd
       - chapters/08_data_transformation_3.qmd
       - chapters/09_structuring_projects.qmd
-      - chapters/10_strings_and_factors.qmd
-      - chapters/11_reshaping_and_pivots.qmd
-      - chapters/12_binding_and_joining.qmd
-      - chapters/13_sharing_and_privacy.qmd
+      - chapters/10_data_types.qmd
+      - chapters/11_strings_and_factors.qmd
+      - chapters/12_reshaping_and_pivots.qmd
+      - chapters/13_binding_and_joining.qmd
+      - chapters/14_sharing_and_privacy.qmd
       
       
     - part: "Part III: Visualization and reporting"
       chapters:
-      - chapters/14_visualization.qmd 
-      - chapters/15_reporting.qmd
-      - chapters/16_the_linear_model.qmd
+      - chapters/15_visualization.qmd 
+      - chapters/16_reporting.qmd
+      - chapters/17_the_linear_model.qmd
       
     - references.qmd
       

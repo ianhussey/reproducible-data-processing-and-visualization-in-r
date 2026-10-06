@@ -35,7 +35,7 @@ dat_gender_tidier <- dat_demographics_messy %>%
          gender = str_remove_all(gender, "[^A-Za-z]")) %>%
   # remove everything except numbers and decimal points from age.
   # note that ages written as words (e.g., "thirty") become empty strings, and therefore NA below. 
-  # these could be recovered, but we accept losing them for now.
+  # these could be recovered (see the Strings and factors chapter), but we accept losing them for now.
   mutate(age = str_remove_all(age, "[^0-9\\.]"),
          age = na_if(age, ""),
          age = as.numeric(age)) %>%
@@ -231,9 +231,10 @@ dat_gender_tidier_with_duplicates <- dat_gender_tidier %>%
 dat_gender_tidier_with_duplicates %>%
   count()
 
-# unique participant ids
+# number of rows for each participant id (first 10 shown)
 dat_gender_tidier_with_duplicates %>%
-  count(id, name = "n_rows")
+  count(id, name = "n_rows") %>%
+  head(10)
 
 ```
 
@@ -680,7 +681,9 @@ Using 'dat_rt', write code that keeps each participant's three slowest trials.
 dat_rt %>%
   group_by(id) %>%
   slice_max(rt, n = 3, with_ties = FALSE) %>%
-  ungroup()
+  ungroup() %>%
+  # show only the first three participants' rows
+  head(9)
 ```
 :::
 
@@ -729,7 +732,7 @@ A few things to note about this pipe:
 -   The participant-level exclusion is done with a grouped `filter()`, while the trial-level exclusions are done with ungrouped `filter()`s.
 -   The 'n_trials' column shows that some participants' mean post-error RTs are based on very few trials, because errors were rare. Means based on few trials are much noisier, and it is common to report this or to set a minimum number of trials.
 -   The sample-level results are a "mean of means": each participant's mean counts equally, regardless of how many trials it is based on. This is usually what you want, but it is not the same as the mean of all trials pooled together.
--   To calculate each participant's post-error slowing as a single difference score (post-error minus post-correct), the data would need to be reshaped so that the two means are in separate columns. This is covered in the [Reshaping and pivots](11_reshaping_and_pivots.qmd) chapter.
+-   To calculate each participant's post-error slowing as a single difference score (post-error minus post-correct), the data would need to be reshaped so that the two means are in separate columns. This is covered in the [Reshaping and pivots](12_reshaping_and_pivots.qmd) chapter.
 
 #### Exercise
 
