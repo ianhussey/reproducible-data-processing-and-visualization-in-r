@@ -203,6 +203,148 @@ p
 
 ```
 
+The vertical lines are the residuals: the difference between each observed value of y and the value predicted by the regression line. The regression line is the line that makes the sum of the *squared* residuals as small as possible, which is why it is called "ordinary least squares" regression.
+
+### Interactive: how points affect the regression line
+
+The plot below lets you explore this yourself, with a smaller set of 15 points from the same model.
+
+-   **Click on an empty part of the plot** to add a point there.
+-   **Click on an existing point** to remove it.
+
+The regression line, residuals, and fit statistics update immediately. Some things to try:
+
+-   Add a point far above or below the line, near the *middle* of the x-axis. Then add one the same distance from the line at the far *left or right* of the plot. Which one moves the line more? Points with extreme x values have more "leverage".
+-   Remove all the points, then add them back one at a time. What happens with only one point? With two?
+-   Add a cluster of points that follow a different pattern, and watch the slope and R² change.
+-   Show the intercept-only model. This is the model `lm(y ~ 1)`, whose prediction for every point is simply the mean of y. R² is the proportion by which the regression line reduces the sum of squared residuals compared with this model.
+
+```{r}
+#| include: false
+# simulate a small data set from the same model, to pass to the interactive plot below
+set.seed(42)
+
+dat_interactive <- data.frame(x = rnorm(n = 15, mean = 0, sd = 1)) %>%
+  mutate(y = 2 + 0.5 * x + rnorm(n = 15, mean = 0, sd = 1))
+
+ojs_define(dat_interactive_init = dat_interactive)
+```
+
+```{ojs}
+//| echo: false
+viewof show = Inputs.checkbox(["Residuals", "Intercept-only model (mean of y)"], {label: "Show", value: ["Residuals"]})
+viewof reset_points = Inputs.button("Reset to the original points")
+viewof clear_points = Inputs.button("Remove all points")
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// points currently in the plot
+initial_points = transpose(dat_interactive_init).map(d => ({x: d.x, y: d.y}))
+mutable points = initial_points
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// buttons: value counts the number of clicks, so only act after the first click
+{ if (reset_points > 0) mutable points = initial_points }
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+{ if (clear_points > 0) mutable points = [] }
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+// ordinary least squares regression of y on x
+show_residuals = show.includes("Residuals")
+show_mean = show.includes("Intercept-only model (mean of y)")
+fit = {
+  const n = points.length
+  if (n === 0) return {n, ok: false}
+  const mean_x = d3.mean(points, d => d.x)
+  const mean_y = d3.mean(points, d => d.y)
+  const ss_x = d3.sum(points, d => (d.x - mean_x) ** 2)
+  const ss_total = d3.sum(points, d => (d.y - mean_y) ** 2)
+  if (n < 2 || ss_x === 0) return {n, ok: false, mean_y, ss_total}
+  const slope = d3.sum(points, d => (d.x - mean_x) * (d.y - mean_y)) / ss_x
+  const intercept = mean_y - slope * mean_x
+  const residuals = points.map(d => ({...d, fitted: intercept + slope * d.x, resid: d.y - (intercept + slope * d.x)}))
+  const ss_resid = d3.sum(residuals, d => d.resid ** 2)
+  const r_squared = ss_total > 0 ? 1 - ss_resid / ss_total : NaN
+  return {n, ok: true, slope, intercept, mean_y, residuals, ss_resid, ss_total, r_squared}
+}
+```
+
+```{ojs}
+//| echo: false
+regression_plot = {
+  const x_domain = [-3, 3]
+  const y_domain = [-1, 5]
+
+  const plot = Plot.plot({
+    width: Math.min(width, 640),
+    height: 420,
+    marginLeft: 45,
+    x: {label: "x", domain: x_domain, grid: true},
+    y: {label: "y", domain: y_domain, grid: true},
+    clip: true,
+    marks: [
+      Plot.frame({stroke: "currentColor"}),
+      // intercept-only model: the mean of y, and residuals from it (offset slightly so they don't overlap the regression residuals)
+      show_mean && points.length > 0 ? Plot.ruleY([fit.mean_y], {stroke: "#e67e22", strokeWidth: 2, strokeDasharray: "6,4"}) : null,
+      show_mean && points.length > 0 ? Plot.ruleX(points, {x: "x", y1: "y", y2: () => fit.mean_y, stroke: "#e67e22", strokeOpacity: 0.6, dx: 4}) : null,
+      // residuals: vertical lines from each point to the regression line
+      show_residuals && fit.ok ? Plot.ruleX(fit.residuals, {x: "x", y1: "y", y2: "fitted", stroke: d => d.resid > 0 ? "#2780e3" : "#e74c3c", strokeOpacity: 0.8}) : null,
+      // regression line
+      fit.ok ? Plot.line(x_domain.map(x => ({x, y: fit.intercept + fit.slope * x})), {x: "x", y: "y", stroke: "currentColor", strokeWidth: 2.5}) : null,
+      // points
+      Plot.dot(points, {x: "x", y: "y", r: 5, fill: "currentColor", stroke: "white", strokeWidth: 1})
+    ]
+  })
+
+  // convert between data values and pixels using the plot's scales
+  const x_scale = plot.scale("x")
+  const y_scale = plot.scale("y")
+  const to_data = (value, scale) => scale.domain[0] + (value - scale.range[0]) / (scale.range[1] - scale.range[0]) * (scale.domain[1] - scale.domain[0])
+  const to_pixel = (value, scale) => scale.range[0] + (value - scale.domain[0]) / (scale.domain[1] - scale.domain[0]) * (scale.range[1] - scale.range[0])
+
+  plot.style.cursor = "crosshair"
+  plot.addEventListener("click", event => {
+    const [px, py] = d3.pointer(event, plot)
+    // ignore clicks outside the plotting area
+    const [x_min, x_max] = d3.extent(x_scale.range)
+    const [y_min, y_max] = d3.extent(y_scale.range)
+    if (px < x_min || px > x_max || py < y_min || py > y_max) return
+    // if the click is on (or very near) an existing point, remove it; otherwise add a new point
+    const distances = points.map(d => Math.hypot(to_pixel(d.x, x_scale) - px, to_pixel(d.y, y_scale) - py))
+    const nearest = d3.minIndex(distances)
+    if (points.length > 0 && distances[nearest] < 10) {
+      mutable points = points.filter((d, i) => i !== nearest)
+    } else {
+      mutable points = [...points, {x: to_data(px, x_scale), y: to_data(py, y_scale)}]
+    }
+  })
+
+  return plot
+}
+```
+
+```{ojs}
+//| echo: false
+md`${fit.ok
+  ? `**Regression line:** y = ${fit.intercept.toFixed(2)} + ${fit.slope.toFixed(2)} × x  
+**Number of points:** ${fit.n}  
+**Sum of squared residuals:** ${fit.ss_resid.toFixed(2)} (intercept-only model: ${fit.ss_total.toFixed(2)})  
+**R²:** ${isNaN(fit.r_squared) ? "undefined" : fit.r_squared.toFixed(2)}`
+  : `**Number of points:** ${fit.n}. A regression line needs at least two points with different x values.`}`
+```
+
 ## Almost everything is a linear regression model
 
 One of the most important insights we had when learning statistics is that most common analyses are just a linear regression model. In our opinion, this idea should be introduced when we start learning statistical inference rather than years into our education.

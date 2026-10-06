@@ -84,6 +84,9 @@ format:
           main.content h3 { margin-top: 2rem; }
           main.content h4 { margin-top: 1.5rem; }
           .kable-table table { width: 70%; margin: 0 auto; }
+          /* Observable Inputs.button uses .btn-quarto: give it the plots' blue (the default text colour matched its background), and space between stacked buttons */
+          .btn.btn-quarto { color: #fff; background-color: #2780e3; border-color: #2780e3; margin: 0.4rem 0; }
+          .btn.btn-quarto:hover { background-color: #1f6ab8; border-color: #1f6ab8; }
           .badge {
             display: inline-flex; align-items: center; gap: 0.3em;
             padding: 0.2em 0.65em; border-radius: 20px;
