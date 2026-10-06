@@ -32,15 +32,18 @@ dat_demographics_messy <- data.frame(id = 1:500) %>%
 dat_gender_tidier <- dat_demographics_messy %>%
   # convert to lower case and remove non-letters
   mutate(gender = str_to_lower(gender),
-         gender = str_remove_all(gender, "[^A-Za-z]"),
-         # added age processing
-         age = str_remove_all(age, "![^A-Za-z]"),
-         age = if_else(age == "", NA_integer_, as.numeric(age))) %>%
-  # tidy up cases
-  mutate(gender = case_when(gender %in% c("female", "male", "nonbinary") ~ gender, 
-                            gender %in% c("femail", "fem ale", "femle", "femlae") ~ "female",
-                            gender %in% c("malee", "mal", "ma le") ~ "male",
-                            gender %in% c("non binary", "nonbinary") ~ "non-binary",
+         gender = str_remove_all(gender, "[^A-Za-z]")) %>%
+  # remove everything except numbers and decimal points from age.
+  # note that ages written as words (e.g., "thirty") become empty strings, and therefore NA below. 
+  # these could be recovered, but we accept losing them for now.
+  mutate(age = str_remove_all(age, "[^0-9\\.]"),
+         age = na_if(age, ""),
+         age = as.numeric(age)) %>%
+  # tidy up cases. 
+  # note that spaces were already removed above, so the misspellings here contain no spaces.
+  mutate(gender = case_when(gender %in% c("female", "femail", "femle", "femlae") ~ "female",
+                            gender %in% c("male", "malee", "mal") ~ "male",
+                            gender == "nonbinary" ~ "non-binary",
                             gender == "" ~ NA_character_, # if an empty character string, change to NA_character_
                             TRUE ~ gender)) # if none of the above apply, keep original value
 
@@ -99,13 +102,61 @@ dat  %>%
 
 ```
 
-### ungroup()
+### `ungroup()`
 
-Grouping is an invisible property of a data frame or tibble. You can't find a value inside it that tells you it's grouped, but the grouping *can* persist unless you `ungroup()`. This can cause unexpected behavior, so watch out for it.
+Grouping is an invisible property of a data frame or tibble. You can't find a value inside it that tells you it's grouped, but the grouping persists until you `ungroup()`. This can cause unexpected behavior, so watch out for it.
 
-<!-- #### group_by() applied to filter and slice functions -->
+For example, imagine that earlier in your script you grouped the data by gender, and saved the result:
 
-<!-- TODO -->
+```{r}
+dat_grouped <- dat_gender_tidier %>%
+  group_by(gender)
+```
+
+Later in your script, you want to find the three youngest participants in the whole sample:
+
+```{r}
+dat_grouped %>%
+  slice_min(age, n = 3, with_ties = FALSE)
+```
+
+Instead of three rows, you get three rows *per gender group*, because the data frame is still grouped. `slice_min()`, like many other functions, operates within each group when the data is grouped. To get the intended result, `ungroup()` first:
+
+```{r}
+dat_grouped %>%
+  ungroup() %>%
+  slice_min(age, n = 3, with_ties = FALSE)
+```
+
+When a grouped tibble is printed in the console, the first line of the output tells you about its groups, e.g., `# Groups: gender [4]`. However, this is easy to miss, and it isn't shown at all when you print a table with `kable()`. You can also check with `group_vars()`, which returns the names of the grouping columns (or nothing if there are none):
+
+```{r}
+dat_grouped %>%
+  group_vars()
+
+dat_grouped %>%
+  ungroup() %>%
+  group_vars()
+```
+
+Note also that `summarize()` removes only the *last* level of grouping. If you `group_by(gender, condition)` and then `summarize()`, the result is still grouped by gender. {dplyr} prints a message telling you this. You can avoid it with `summarize(..., .groups = "drop")`, which removes all grouping.
+
+A good habit is to `ungroup()` at the end of any pipe that uses `group_by()`.
+
+#### The `.by` argument
+
+Newer versions of {dplyr} offer an alternative that avoids this problem entirely: the `.by` argument. Instead of a separate `group_by()` step, you specify the grouping inside the function itself. The grouping only applies to that one function call, and the result is never grouped:
+
+```{r}
+dat_gender_tidier %>%
+  summarize(mean_age = mean(age, na.rm = TRUE),
+            sd_age = sd(age, na.rm = TRUE),
+            .by = gender)
+```
+
+`.by` works with `summarize()`, `mutate()`, `filter()`, and the `slice_()` functions (where it is called `by`, without the dot). One small difference is that `group_by()` sorts the output by the groups, whereas `.by` keeps the groups in the order they first appear in the data.
+
+You will see both styles in other people's code. This book mostly uses `group_by()` because it makes the grouping step easy to see in a pipe, but `.by` is a good choice when you only need grouping for a single step.
 
 ### `n()`
 
@@ -245,6 +296,23 @@ dat_gender_tidier %>%
 Calculate the N, min, max, mean, and SD of age in `dat_gender_tidier`.
 
 ```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+There are two ways to deal with the missing ages: remove the rows with missing ages first with `drop_na(age)`, or use `na.rm = TRUE` in each function. Both are shown below, combined into one table with `bind_rows()` so they can be compared.
+
+```{r}
 
 bind_rows(
 dat_gender_tidier %>%
@@ -266,6 +334,11 @@ dat_gender_tidier %>%
 )
 
 ```
+
+The min, max, mean, and SD are identical, but the N is not. `n()` counts *rows*, not non-missing values, and it has no `na.rm` argument. In the second version, the participants with missing ages are still in the data frame, so they are counted in the N even though they don't contribute to any of the other statistics. If you report this N alongside this mean, you would be overstating the sample size the mean is based on.
+
+To count the non-missing values in a column without dropping rows, use `sum(!is.na(age))`. Remember from the previous chapter that TRUE counts as 1 when summed.
+:::
 
 <!-- #### 2 TODO -->
 
@@ -310,6 +383,396 @@ dat_gender_tidier %>%
 <!-- ``` -->
 
 
+
+## Grouped `mutate()`
+
+`group_by()` doesn't only change how `summarize()` works. It also changes how `mutate()` works: calculations are done separately within each group. 
+
+The key difference between the two is the same as without grouping: `summarize()` reduces each group down to one row, whereas `mutate()` keeps every row. If you use an aggregating function such as `mean()` inside a grouped `mutate()`, the group's mean is calculated and then repeated in every row of that group:
+
+```{r}
+dat_gender_tidier %>%
+  group_by(gender) %>%
+  mutate(mean_age_gender = mean(age, na.rm = TRUE),
+         # how much older or younger is each participant than the mean of their gender group?
+         age_relative_to_gender = age - mean_age_gender) %>%
+  ungroup() %>%
+  head(10)
+```
+
+Compare this to the `summarize()` version in the `group_by()` section above, which returned one row per gender.
+
+### Calculations within each participant
+
+Grouped `mutate()` is especially useful for trial-level data, where each participant has many rows. In the previous chapter, we saw that `lag()`, `lead()`, `cumsum()`, and `fill()` don't know anything about participants, so their results can leak from one participant into the next. `group_by(id)` solves this.
+
+```{r}
+library(tibble) # for tribble()
+
+dat_trials <- tribble(
+  ~id, ~trial, ~rt,  ~correct,
+  1,   1,      650,  1,
+  1,   2,      590,  1,
+  1,   3,      720,  0,
+  1,   4,      810,  1,
+  2,   1,      880,  1,
+  2,   2,      910,  0,
+  2,   3,      1020, 1,
+  2,   4,      870,  0
+)
+
+# without grouping: participant 2's first trial is given participant 1's last trial as its "previous" trial
+dat_trials %>%
+  arrange(id, trial) %>%
+  mutate(correct_previous = lag(correct),
+         n_errors_so_far = cumsum(correct == 0))
+
+# with grouping: lag() and cumsum() start again for each participant
+dat_trials %>%
+  arrange(id, trial) %>%
+  group_by(id) %>%
+  mutate(correct_previous = lag(correct),
+         n_errors_so_far = cumsum(correct == 0)) %>%
+  ungroup()
+```
+
+In the grouped version, each participant's first trial correctly has `NA` for 'correct_previous', and each participant's error count starts from 0.
+
+Grouping also allows you to calculate values relative to each participant's own data. For example, each participant's proportion of correct responses, and each trial's RT relative to that participant's mean RT. This is often called "within-participant centering", and the z-score version is often called "within-participant standardization":
+
+```{r}
+dat_trials %>%
+  group_by(id) %>%
+  mutate(proportion_correct = mean(correct),
+         rt_mean = mean(rt),
+         rt_centered = rt - rt_mean,
+         rt_z = (rt - rt_mean) / sd(rt)) %>%
+  ungroup()
+```
+
+Participant 2 is slower overall than participant 1, but centering shows which of each participant's trials were fast or slow *for them*.
+
+### Grouped `fill()`
+
+`fill()` also respects grouping. In the example below, participant 2's first block label was never recorded. Without grouping, `fill()` gives it participant 1's last block label, "test". With grouping, it correctly remains `NA`:
+
+```{r}
+dat_blocks <- tribble(
+  ~id, ~block,     ~trial, ~rt,
+  1,   "practice", 1,      812,
+  1,   NA,         2,      1043,
+  1,   "test",     1,      612,
+  1,   NA,         2,      788,
+  2,   NA,         1,      1150,
+  2,   NA,         2,      1320,
+  2,   "test",     1,      760,
+  2,   NA,         2,      655
+)
+
+# without grouping
+dat_blocks %>%
+  fill(block)
+
+# with grouping
+dat_blocks %>%
+  group_by(id) %>%
+  fill(block) %>%
+  ungroup()
+```
+
+Note that you can't group by a column that itself still needs to be filled. If 'id' is also only written on the first row of each participant's data, as in the previous chapter, fill 'id' first without grouping, and then `group_by(id)` to fill the other columns.
+
+#### Exercise
+
+Using 'dat_trials', write code that creates the following columns, calculated within each participant:
+
+-   'trial_check' : the row number of each trial within each participant, using `row_number()`.
+-   'rt_change' : the difference between the RT on each trial and the RT on the participant's previous trial.
+-   'rt_slower_than_own_mean' : TRUE if the trial's RT is slower than the participant's mean RT, and FALSE otherwise.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_trials %>%
+  arrange(id, trial) %>%
+  group_by(id) %>%
+  mutate(trial_check = row_number(),
+         rt_change = rt - lag(rt),
+         rt_slower_than_own_mean = rt > mean(rt)) %>%
+  ungroup()
+```
+:::
+
+#### Exercise
+
+What is the difference between the outputs of these two chunks? How many rows does each return? Predict first, then run them to check.
+
+```{r}
+#| eval: false
+dat_trials %>%
+  group_by(id) %>%
+  summarize(mean_rt = mean(rt))
+
+dat_trials %>%
+  group_by(id) %>%
+  mutate(mean_rt = mean(rt))
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_trials %>%
+  group_by(id) %>%
+  summarize(mean_rt = mean(rt))
+
+dat_trials %>%
+  group_by(id) %>%
+  mutate(mean_rt = mean(rt))
+```
+
+Both calculate the same mean RT for each participant. `summarize()` returns one row per participant (2 rows) containing only the grouping column and the summary. `mutate()` returns all of the original rows and columns (8 rows), with each participant's mean repeated on each of their rows. Note also that the `mutate()` version is still grouped by id.
+:::
+
+## Grouped `filter()` and `slice_()`
+
+`filter()` and the `slice_()` functions also work within groups. This lets you keep or drop rows based on calculations done within each group, e.g., based on a participant's data as a whole rather than one trial at a time.
+
+To illustrate this, we'll use a larger simulated data set from a reaction time task. Each row is one trial. There are 20 participants who each completed up to 60 trials.
+
+```{r}
+#| include: false
+# simulate trial-level reaction time data
+library(tidyr)
+
+set.seed(42)
+
+dat_rt <- expand_grid(id = 1:20, trial = 1:60) %>%
+  mutate(correct = rbinom(n(), size = 1, prob = 0.90),
+         rt = round(250 + rlnorm(n(), meanlog = 6, sdlog = 0.35))) %>%
+  # post-error slowing: slower responses on trials after an error
+  mutate(rt = if_else(lag(correct, default = 1) == 0 & trial > 1, rt + 60, rt)) %>%
+  # participants 7 and 15 often responded implausibly fast, i.e., without paying attention
+  mutate(rt = if_else(id %in% c(7, 15) & runif(n()) < 0.25, round(runif(n(), 100, 190)), rt)) %>%
+  # participant 12 dropped out partway through
+  filter(!(id == 12 & trial > 25))
+```
+
+```{r}
+dat_rt %>%
+  head(10)
+```
+
+Some examples of grouped filters:
+
+```{r}
+# keep only participants who completed all 60 trials
+dat_rt %>%
+  group_by(id) %>%
+  filter(n() == 60) %>%
+  ungroup() %>%
+  distinct(id)
+
+# keep each participant's single fastest trial
+dat_rt %>%
+  group_by(id) %>%
+  slice_min(rt, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+# drop each participant's first 5 trials, e.g., to remove 'warm up' trials
+dat_rt %>%
+  group_by(id) %>%
+  filter(row_number() > 5) %>%
+  ungroup() %>%
+  head(10)
+```
+
+Note that the last example assumes that the rows are already in trial order within each participant. If you're not sure, `arrange(id, trial)` first, or use `filter(trial > 5)`, which doesn't depend on row order at all.
+
+### Participant-level exclusions
+
+A very common use of grouped filters is applying exclusion criteria that are defined at the participant level but applied to trial-level data. For example, a preregistration might state: "Participants who responded faster than 200 ms on more than 10% of trials will be excluded, as this suggests they were not paying attention".
+
+Remember from the previous chapter that the mean of a logical test is a proportion. So `mean(rt < 200)` is the proportion of a participant's trials that were too fast:
+
+```{r}
+# inspect the proportion of too-fast trials for each participant
+dat_rt %>%
+  group_by(id) %>%
+  summarize(proportion_too_fast = mean(rt < 200)) %>%
+  arrange(desc(proportion_too_fast)) %>%
+  head()
+
+# apply the exclusion
+dat_rt_exclusions_applied <- dat_rt %>%
+  group_by(id) %>%
+  filter(mean(rt < 200) <= 0.10) %>%
+  ungroup()
+
+# check how many participants remain
+dat_rt_exclusions_applied %>%
+  distinct(id) %>%
+  count()
+```
+
+This removes *all* the trials of participants 7 and 15, not just their too-fast trials. Compare this to an ungrouped `filter(rt >= 200)`, which would remove the too-fast trials of every participant but keep all participants. These are different exclusion rules, and preregistrations often contain both: one applied to trials and one to participants. It's important to implement each one at the correct level.
+
+#### Exercise
+
+Using 'dat_rt', write code that excludes participants whose proportion of correct responses is lower than 0.85. How many participants remain?
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_rt %>%
+  group_by(id) %>%
+  filter(mean(correct) >= 0.85) %>%
+  ungroup() %>%
+  distinct(id) %>%
+  count()
+```
+:::
+
+#### Exercise
+
+Using 'dat_rt', write code that keeps each participant's three slowest trials.
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_rt %>%
+  group_by(id) %>%
+  slice_max(rt, n = 3, with_ties = FALSE) %>%
+  ungroup()
+```
+:::
+
+## Putting it together: post-error slowing
+
+The previous chapter introduced "post-error slowing": people tend to respond more slowly on the trial immediately after making an error. We now have all the tools needed to test this in 'dat_rt'. This requires processing at three levels: trials, participants, and the sample.
+
+```{r}
+dat_post_error_participants <- dat_rt %>%
+  # trial level: was the previous trial an error? 
+  # this must be done *before* any trials are removed, otherwise lag() would refer to the wrong trial
+  arrange(id, trial) %>%
+  group_by(id) %>%
+  mutate(after_error = if_else(lag(correct) == 0, "post-error", "post-correct")) %>%
+  # participant level: exclude participants with more than 10% too-fast trials
+  filter(mean(rt < 200) <= 0.10) %>%
+  ungroup() %>%
+  # trial level: exclude implausible RTs, errors, and each participant's first trial (which has no previous trial)
+  filter(rt >= 200 & rt <= 3000) %>%
+  filter(correct == 1) %>%
+  drop_na(after_error) %>%
+  # participant level: mean RT for each participant on each type of trial
+  group_by(id, after_error) %>%
+  summarize(mean_rt = mean(rt),
+            n_trials = n(),
+            .groups = "drop")
+
+dat_post_error_participants %>%
+  head(10)
+```
+
+```{r}
+# sample level: mean and SD of the participants' mean RTs on each type of trial
+dat_post_error_participants %>%
+  group_by(after_error) %>%
+  summarize(n_participants = n(),
+            mean_of_mean_rts = round_half_up(mean(mean_rt), 1),
+            sd_of_mean_rts = round_half_up(sd(mean_rt), 1))
+```
+
+On average, participants responded more slowly on trials after an error than after a correct response.
+
+A few things to note about this pipe:
+
+-   The order of the steps matters. `lag()` is applied before any trials are excluded. If error trials were removed first, `lag()` would compare each trial to the previous *remaining* trial, and no trial could ever follow an error.
+-   The participant-level exclusion is done with a grouped `filter()`, while the trial-level exclusions are done with ungrouped `filter()`s.
+-   The 'n_trials' column shows that some participants' mean post-error RTs are based on very few trials, because errors were rare. Means based on few trials are much noisier, and it is common to report this or to set a minimum number of trials.
+-   The sample-level results are a "mean of means": each participant's mean counts equally, regardless of how many trials it is based on. This is usually what you want, but it is not the same as the mean of all trials pooled together.
+-   To calculate each participant's post-error slowing as a single difference score (post-error minus post-correct), the data would need to be reshaped so that the two means are in separate columns. This is covered in the [Reshaping and pivots](11_reshaping_and_pivots.qmd) chapter.
+
+#### Exercise
+
+Modify the pipe above so that, in addition to excluding participants with more than 10% too-fast trials, it also excludes participants who did not complete all 60 trials. How many participants are included in the final results?
+
+```{r}
+#| include: false
+
+
+
+
+
+
+
+
+
+
+```
+
+::: {.callout-note collapse="true" title="Click to show answer"}
+```{r}
+dat_rt %>%
+  arrange(id, trial) %>%
+  group_by(id) %>%
+  mutate(after_error = if_else(lag(correct) == 0, "post-error", "post-correct")) %>%
+  filter(mean(rt < 200) <= 0.10,
+         n() == 60) %>%
+  ungroup() %>%
+  filter(rt >= 200 & rt <= 3000) %>%
+  filter(correct == 1) %>%
+  drop_na(after_error) %>%
+  group_by(id, after_error) %>%
+  summarize(mean_rt = mean(rt),
+            n_trials = n(),
+            .groups = "drop") %>%
+  group_by(after_error) %>%
+  summarize(n_participants = n(),
+            mean_of_mean_rts = round_half_up(mean(mean_rt), 1),
+            sd_of_mean_rts = round_half_up(sd(mean_rt), 1))
+```
+
+17 participants: participants 7 and 15 are excluded for too-fast responding, and participant 12 for not completing all trials. Note that the participant-level exclusions are applied before any trials are removed, so `n()` counts all the trials each participant completed.
+:::
 
 ## Frequncies of sets of columns
 
