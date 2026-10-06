@@ -116,9 +116,9 @@ dat_demographics_selected %>%
 ```
 
 ::: {.callout-note collapse="true" title="Click to show answer"}
+Only the 'id', 'question', and 'response' columns:
+
 ```{r}
-#| eval: true
-#| include: false
 dat_demographics_selected <- dat_demographics_renamed %>%
   select(id, 
          question, 
