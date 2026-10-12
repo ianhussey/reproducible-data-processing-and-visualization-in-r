@@ -140,6 +140,9 @@ div.csl-indent {
   main.content h3 { margin-top: 2rem; }
   main.content h4 { margin-top: 1.5rem; }
   .kable-table table { width: 70%; margin: 0 auto; }
+  /* Observable Inputs.button uses .btn-quarto: give it the plots' blue (the default text colour matched its background), and space between stacked buttons */
+  .btn.btn-quarto { color: #fff; background-color: #2780e3; border-color: #2780e3; margin: 0.4rem 0; }
+  .btn.btn-quarto:hover { background-color: #1f6ab8; border-color: #1f6ab8; }
   .badge {
     display: inline-flex; align-items: center; gap: 0.3em;
     padding: 0.2em 0.65em; border-radius: 20px;
@@ -680,12 +683,12 @@ div.csl-indent {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"               ".git"                ".quarto"            
- [4] ".Rproj.user"         "chapters"            "data"               
- [7] "exercises"           "exercises_solutions" "images"             
-[10] "old"                 "project_template"    "R"                  
-[13] "resources"           "site_libs"           "slides"             
-[16] "videos"             </code></pre>
+<pre><code> [1] "_book"               ".claude"             ".git"               
+ [4] ".quarto"             ".Rproj.user"         "chapters"           
+ [7] "data"                "exercises"           "exercises_solutions"
+[10] "images"              "old"                 "project_template"   
+[13] "R"                   "resources"           "site_libs"          
+[16] "slides"              "videos"             </code></pre>
 </div>
 </div>
 <p>From the above we can see that the ‘data’ folder is up one directory level from the current .qmd file. Let’s confirm this with <code>dir.exists()</code> to check the directory does indeed exist:</p>
@@ -1731,12 +1734,12 @@ div.csl-indent {
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"               ".git"                ".quarto"            
- [4] ".Rproj.user"         "chapters"            "data"               
- [7] "exercises"           "exercises_solutions" "images"             
-[10] "old"                 "project_template"    "R"                  
-[13] "resources"           "site_libs"           "slides"             
-[16] "videos"             </code></pre>
+<pre><code> [1] "_book"               ".claude"             ".git"               
+ [4] ".quarto"             ".Rproj.user"         "chapters"           
+ [7] "data"                "exercises"           "exercises_solutions"
+[10] "images"              "old"                 "project_template"   
+[13] "R"                   "resources"           "site_libs"          
+[16] "slides"              "videos"             </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path =</span> <span class="st">"../data"</span>, <span class="co"># 'up' one directory level, down one into 'data'</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
