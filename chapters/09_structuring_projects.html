@@ -157,6 +157,8 @@ div.csl-indent {
   .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
   .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
   .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+  /* thin black border around the book's cover image */
+  .quarto-cover-image { border: 1px solid #000; }
 </style>
 
 
@@ -865,39 +867,39 @@ div.csl-indent {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(project, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//RtmpRLpaq7/my_project
-├── .gitattributes
-├── .gitignore
-├── CITATION.cff
-├── LICENSE
-├── README.md
-├── _quarto.yml
-├── code
-│   ├── analysis.qmd
-│   └── processing.qmd
-├── data
-│   ├── outputs
-│   │   ├── fitted_models
-│   │   │   └── .gitkeep
-│   │   ├── plots
-│   │   │   └── .gitkeep
-│   │   └── results
-│   │       └── .gitkeep
-│   ├── processed
-│   │   └── .gitkeep
-│   └── raw
-│       └── .gitkeep
-├── methods
-│   └── .gitkeep
-├── my_project.Rproj
-├── preregistration
-│   └── .gitkeep
-├── reports
-│   └── .gitkeep
-└── tools
-    ├── project_creator.qmd
-    ├── project_validator.qmd
-    └── style_all_files.qmd</code></pre>
+<pre><code>/var/folders/45/d07jd4jn4756zs6q38rgl4xw0000gp/T//RtmpJD42jS/my_project
++-- .gitattributes
++-- .gitignore
++-- CITATION.cff
++-- LICENSE
++-- README.md
++-- _quarto.yml
++-- code
+|   +-- analysis.qmd
+|   \-- processing.qmd
++-- data
+|   +-- outputs
+|   |   +-- fitted_models
+|   |   |   \-- .gitkeep
+|   |   +-- plots
+|   |   |   \-- .gitkeep
+|   |   \-- results
+|   |       \-- .gitkeep
+|   +-- processed
+|   |   \-- .gitkeep
+|   \-- raw
+|       \-- .gitkeep
++-- methods
+|   \-- .gitkeep
++-- my_project.Rproj
++-- preregistration
+|   \-- .gitkeep
++-- reports
+|   \-- .gitkeep
+\-- tools
+    +-- project_creator.qmd
+    +-- project_validator.qmd
+    \-- style_all_files.qmd</code></pre>
 </div>
 </div>
 <p>(The first line is the location of the temporary folder on the computer that rendered this book. Yours will be wherever you created the project.)</p>

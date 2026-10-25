@@ -154,6 +154,8 @@ div.csl-indent {
   .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
   .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
   .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+  /* thin black border around the book's cover image */
+  .quarto-cover-image { border: 1px solid #000; }
 </style>
 
 
@@ -662,9 +664,9 @@ div.csl-indent {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "01_setup.html"                 "01_setup.qmd"                 
- [3] "02_fundamentals_files"         "02_fundamentals.html"         
- [5] "02_fundamentals.qmd"           "03_reproducible_reports_files"
- [7] "03_reproducible_reports.html"  "03_reproducible_reports.qmd"  
+ [3] "02_fundamentals.html"          "02_fundamentals.qmd"          
+ [5] "02_fundamentals_files"         "03_reproducible_reports.html" 
+ [7] "03_reproducible_reports.qmd"   "03_reproducible_reports_files"
  [9] "04_loading_data.qmd"           "04_loading_data.rmarkdown"    
 [11] "05_the_pipe_and_renaming.qmd"  "06_data_transformation_1.qmd" 
 [13] "07_data_transformation_2.qmd"  "08_data_transformation_3.qmd" 
@@ -683,11 +685,11 @@ div.csl-indent {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"               ".claude"             ".git"               
- [4] ".quarto"             ".Rproj.user"         "chapters"           
- [7] "data"                "exercises"           "exercises_solutions"
-[10] "images"              "old"                 "project_template"   
-[13] "R"                   "resources"           "site_libs"          
+<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
+ [4] ".quarto"             "R"                   "_book"              
+ [7] "chapters"            "data"                "exercises"          
+[10] "exercises_solutions" "images"              "old"                
+[13] "project_template"    "resources"           "site_libs"          
 [16] "slides"              "videos"             </code></pre>
 </div>
 </div>
@@ -712,10 +714,10 @@ div.csl-indent {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"../data/raw"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "data_age_gender_subset.csv"         "data_amp_raw.csv"                  
- [3] "data_amp_summary_subset.csv"        "data_demographics_raw_messy.csv"   
- [5] "data_demographics_raw.csv"          "data_likert_messy.csv"             
- [7] "data_likert.csv"                    "data_likert.rds"                   
- [9] "data_likert.xlsx"                   "data_raw_bfi.csv"                  
+ [3] "data_amp_summary_subset.csv"        "data_demographics_raw.csv"         
+ [5] "data_demographics_raw_messy.csv"    "data_likert.csv"                   
+ [7] "data_likert.rds"                    "data_likert.xlsx"                  
+ [9] "data_likert_messy.csv"              "data_raw_bfi.csv"                  
 [11] "data_selfreport_raw.csv"            "data_selfreport_summary_subset.csv"
 [13] "data_unique_id_subset.csv"         </code></pre>
 </div>
@@ -915,7 +917,7 @@ div.csl-indent {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_likert)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 × 5
+<pre><code># A tibble: 20 x 5
    date       group subject likert_1 likert_2
    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
  1 23.06.2022     1       1        1        4
@@ -1734,11 +1736,11 @@ div.csl-indent {
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"               ".claude"             ".git"               
- [4] ".quarto"             ".Rproj.user"         "chapters"           
- [7] "data"                "exercises"           "exercises_solutions"
-[10] "images"              "old"                 "project_template"   
-[13] "R"                   "resources"           "site_libs"          
+<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
+ [4] ".quarto"             "R"                   "_book"              
+ [7] "chapters"            "data"                "exercises"          
+[10] "exercises_solutions" "images"              "old"                
+[13] "project_template"    "resources"           "site_libs"          
 [16] "slides"              "videos"             </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path =</span> <span class="st">"../data"</span>, <span class="co"># 'up' one directory level, down one into 'data'</span></span>

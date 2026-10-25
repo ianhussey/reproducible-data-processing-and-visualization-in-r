@@ -154,6 +154,8 @@ div.csl-indent {
   .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
   .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
   .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+  /* thin black border around the book's cover image */
+  .quarto-cover-image { border: 1px solid #000; }
 </style>
 
 
@@ -1491,8 +1493,8 @@ $ consent &lt;lgl&gt; TRUE, TRUE, FALSE</code></pre>
 <span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_score =</span> <span class="fu">max</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `summarize()`.
-ℹ In argument: `max_score = max(score, na.rm = TRUE)`.
-ℹ In group 2: `condition = "intervention"`.
+i In argument: `max_score = max(score, na.rm = TRUE)`.
+i In group 2: `condition = "intervention"`.
 Caused by warning in `max()`:
 ! no non-missing arguments to max; returning -Inf</code></pre>
 </div>
@@ -1632,7 +1634,7 @@ Caused by warning in `max()`:
 <span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comments =</span> <span class="fu">if_else</span>(id <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"it was too long"</span>, comments))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
-ℹ In argument: `comments = if_else(id == 2, "it was too long",
+i In argument: `comments = if_else(id == 2, "it was too long",
   comments)`.
 Caused by error in `if_else()`:
 ! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.</code></pre>
@@ -1657,7 +1659,7 @@ Caused by error in `if_else()`:
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> x <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
-ℹ In argument: `y = x + 1`.
+i In argument: `y = x + 1`.
 Caused by error in `x + 1`:
 ! non-numeric argument to binary operator</code></pre>
 </div>
@@ -1717,7 +1719,7 @@ Caused by error in `x + 1`:
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">if_else</span>(age <span class="sc">==</span> <span class="dv">999</span>, <span class="cn">NA_character_</span>, age))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
-ℹ In argument: `age = if_else(age == 999, NA_character_, age)`.
+i In argument: `age = if_else(age == 999, NA_character_, age)`.
 Caused by error in `if_else()`:
 ! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.</code></pre>
 </div>

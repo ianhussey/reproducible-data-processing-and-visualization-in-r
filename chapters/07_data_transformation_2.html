@@ -134,6 +134,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   .badge-draft3   { background: #fef9e7; color: #7a5c00; border: 1px solid #f5d97a; }
   .badge-complete { background: #e6f4ea; color: #1e6e3a; border: 1px solid #b7dfbe; }
   .quarto-color-scheme-toggle::after { content: " Dark mode"; font-family: sans-serif; font-size: 0.85em; }
+  /* thin black border around the book's cover image */
+  .quarto-cover-image { border: 1px solid #000; }
 </style>
 
 
@@ -2446,7 +2448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">na_if</span>(.x, <span class="sc">-</span><span class="dv">99</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
-ℹ In argument: `across(.cols = everything(), .fns = ~na_if(.x, -99))`.
+i In argument: `across(.cols = everything(), .fns = ~na_if(.x, -99))`.
 Caused by error in `across()`:
 ! Can't compute column `condition`.
 Caused by error in `na_if()`:
