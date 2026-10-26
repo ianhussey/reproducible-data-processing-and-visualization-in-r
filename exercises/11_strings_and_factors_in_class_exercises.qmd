@@ -149,6 +149,10 @@ Clean 'country' so that it contains one consistent name per country, e.g., "UK" 
 
 # Regular expressions
 
+::: {.callout-note title="You don't need to master regex"}
+The point of these exercises is to show you how powerful regex is, not to make you an expert in it. Most of us never need to master regex. LLMs are exceptionally good at writing and testing complex regex patterns, and I recommend that you use them to save yourself time. Do still check that a pattern does what you want, e.g., with `str_view()` on examples that should and should not match.
+:::
+
 ## What does it match?
 
 For each pattern, predict which of the strings will match, then check with `str_view()` or `str_detect()`.
@@ -228,6 +232,16 @@ fct(dat_scores$timepoint, levels = c("baseline", "post", "followup"))
 ## Reference level
 
 The conditions will be compared in a regression model, and the preregistration says that the other conditions should be compared to the waitlist condition. Convert 'condition' to a factor and check its levels. Then make "waitlist" the first level, and rename the levels to "Waitlist control", "Active control", and "Intervention".
+
+```{r}
+
+
+
+```
+
+## Ordering by another variable
+
+Use `fct_reorder()` to order the levels of 'condition' from the highest to the lowest mean wellbeing, then calculate the mean wellbeing in each condition. When would this order be useful? Why would it be a bad way to choose the reference level for the regression model above?
 
 ```{r}
 
