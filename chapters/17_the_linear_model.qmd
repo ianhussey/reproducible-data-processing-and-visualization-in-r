@@ -150,6 +150,8 @@ ggplot(dat, aes(residuals)) +
 
 ## Understanding regression fit and residuals
 
+The vertical lines are the residuals: the difference between each observed value of y and the value predicted by the regression line. The regression line is the line that makes the sum of the *squared* residuals as small as possible, which is why it is called "ordinary least squares" regression.
+
 ```{r}
 
 # packages
@@ -203,14 +205,10 @@ p
 
 ```
 
-The vertical lines are the residuals: the difference between each observed value of y and the value predicted by the regression line. The regression line is the line that makes the sum of the *squared* residuals as small as possible, which is why it is called "ordinary least squares" regression.
-
-### Interactive: how points affect the regression line
-
 The plot below lets you explore this yourself, with a smaller set of 15 points from the same model.
 
--   **Click on an empty part of the plot** to add a point there.
--   **Click on an existing point** to remove it.
+-   Click on an empty part of the plot to add a point there.
+-   Click on an existing point to remove it.
 
 The regression line, residuals, and fit statistics update immediately. Some things to try:
 
