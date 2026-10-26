@@ -184,7 +184,9 @@ Note that the order of the cleaning steps matters: "non  binary" (two spaces) on
 
 The patterns used by {stringr} functions are "regular expressions", or "regex". A regular expression is a small language for describing patterns in text, which is then called by other languages including R. 
 
-regex is notoriously difficult to write. I suggest you make use of AI to help you write (and then validate!) complex regex searches! Nonetheless, I provide an introduction here.
+::: {.callout-note title="You don't need to master regex"}
+The point of this section and its exercises is to show you how powerful regex is, not to make you an expert in it. Most of us never need to master regex, which is notoriously difficult to write and read. LLMs are exceptionally good at writing and testing complex regex patterns, and I recommend that you use them to save yourself time. Do still check that a pattern does what you want, e.g., with `str_view()` on examples that should and should not match.
+:::
 
 Most characters simply match themselves, e.g., the pattern `"male"` matches the letters m, a, l, e in that order. Some characters have special meanings.
 
@@ -544,6 +546,7 @@ As with the typed `NA`s in the [Data types](10_data_types.qmd) chapter, this err
 
 -   `fct_relevel()` moves one or more levels to the front, e.g., to make "control" the reference category.
 -   `fct_infreq()` orders levels from most to least frequent, which is useful for tables and bar charts.
+-   `fct_reorder()` orders levels by the values of another variable, e.g., by each group's mean score.
 -   `fct_rev()` reverses the order of the levels.
 
 ```{r}
@@ -565,6 +568,27 @@ dat_conditions %>%
 ```
 
 Note that `fct()` without specified levels uses the order in which the values first appear in the data, whereas `factor()` sorts them alphabetically. `pull()` extracts a single column from a data frame as a vector.
+
+`fct_reorder()` takes the factor to reorder, the variable to order it by, and a function to summarize that variable within each level (`.fun`, which is `median()` by default). Levels are ordered from the lowest to the highest summary value, or the reverse with `.desc = TRUE`:
+
+```{r}
+dat_scores <- tibble(
+  condition = c("waitlist", "intervention", "control", "intervention", "control", "waitlist"),
+  score     = c(11, 18, 12, 16, 10, 13)
+)
+
+dat_scores %>%
+  mutate(condition = fct_reorder(condition, score, .fun = mean)) %>%
+  group_by(condition) %>%
+  summarize(mean_score = mean(score))
+
+dat_scores %>%
+  mutate(condition = fct_reorder(condition, score, .fun = mean, .desc = TRUE)) %>%
+  group_by(condition) %>%
+  summarize(mean_score = mean(score))
+```
+
+This is most useful for plots, where ordering the categories by their values makes them much easier to compare than alphabetical order (see the [Visualization](15_visualization.qmd) chapter). Be aware that the order is then determined by the data, so it can change when the data changes. When the categories have a meaningful order of their own, e.g., timepoints, set it explicitly with `fct()` or `fct_relevel()` instead.
 
 ### Changing the values of levels
 
