@@ -191,6 +191,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../include/webex.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1897,6 +1898,212 @@ Alsalti, T., Hussey, I., Elson, M., &amp; Arslan, R. (2026). A case study on nor
 </section>
 
 </main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzaG93ID0gSW5wdXRzLmNoZWNrYm94KFtcIlJlc2lkdWFsc1wiLCBcIkludGVyY2VwdC1vbmx5IG1vZGVsIChtZWFuIG9mIHkpXCJdLCB7bGFiZWw6IFwiU2hvd1wiLCB2YWx1ZTogW1wiUmVzaWR1YWxzXCJdfSlcbnZpZXdvZiByZXNldF9wb2ludHMgPSBJbnB1dHMuYnV0dG9uKFwiUmVzZXQgdG8gdGhlIG9yaWdpbmFsIHBvaW50c1wiKVxudmlld29mIGNsZWFyX3BvaW50cyA9IElucHV0cy5idXR0b24oXCJSZW1vdmUgYWxsIHBvaW50c1wiKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gcG9pbnRzIGN1cnJlbnRseSBpbiB0aGUgcGxvdFxuaW5pdGlhbF9wb2ludHMgPSB0cmFuc3Bvc2UoZGF0X2ludGVyYWN0aXZlX2luaXQpLm1hcChkID0+ICh7eDogZC54LCB5OiBkLnl9KSlcbm11dGFibGUgcG9pbnRzID0gaW5pdGlhbF9wb2ludHNcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGJ1dHRvbnM6IHZhbHVlIGNvdW50cyB0aGUgbnVtYmVyIG9mIGNsaWNrcywgc28gb25seSBhY3QgYWZ0ZXIgdGhlIGZpcnN0IGNsaWNrXG57IGlmIChyZXNldF9wb2ludHMgPiAwKSBtdXRhYmxlIHBvaW50cyA9IGluaXRpYWxfcG9pbnRzIH1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InsgaWYgKGNsZWFyX3BvaW50cyA+IDApIG11dGFibGUgcG9pbnRzID0gW10gfVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiLy8gb3JkaW5hcnkgbGVhc3Qgc3F1YXJlcyByZWdyZXNzaW9uIG9mIHkgb24geFxuc2hvd19yZXNpZHVhbHMgPSBzaG93LmluY2x1ZGVzKFwiUmVzaWR1YWxzXCIpXG5zaG93X21lYW4gPSBzaG93LmluY2x1ZGVzKFwiSW50ZXJjZXB0LW9ubHkgbW9kZWwgKG1lYW4gb2YgeSlcIilcbmZpdCA9IHtcbiAgY29uc3QgbiA9IHBvaW50cy5sZW5ndGhcbiAgaWYgKG4gPT09IDApIHJldHVybiB7biwgb2s6IGZhbHNlfVxuICBjb25zdCBtZWFuX3ggPSBkMy5tZWFuKHBvaW50cywgZCA9PiBkLngpXG4gIGNvbnN0IG1lYW5feSA9IGQzLm1lYW4ocG9pbnRzLCBkID0+IGQueSlcbiAgY29uc3Qgc3NfeCA9IGQzLnN1bShwb2ludHMsIGQgPT4gKGQueCAtIG1lYW5feCkgKiogMilcbiAgY29uc3Qgc3NfdG90YWwgPSBkMy5zdW0ocG9pbnRzLCBkID0+IChkLnkgLSBtZWFuX3kpICoqIDIpXG4gIGlmIChuIDwgMiB8fCBzc194ID09PSAwKSByZXR1cm4ge24sIG9rOiBmYWxzZSwgbWVhbl95LCBzc190b3RhbH1cbiAgY29uc3Qgc2xvcGUgPSBkMy5zdW0ocG9pbnRzLCBkID0+IChkLnggLSBtZWFuX3gpICogKGQueSAtIG1lYW5feSkpIC8gc3NfeFxuICBjb25zdCBpbnRlcmNlcHQgPSBtZWFuX3kgLSBzbG9wZSAqIG1lYW5feFxuICBjb25zdCByZXNpZHVhbHMgPSBwb2ludHMubWFwKGQgPT4gKHsuLi5kLCBmaXR0ZWQ6IGludGVyY2VwdCArIHNsb3BlICogZC54LCByZXNpZDogZC55IC0gKGludGVyY2VwdCArIHNsb3BlICogZC54KX0pKVxuICBjb25zdCBzc19yZXNpZCA9IGQzLnN1bShyZXNpZHVhbHMsIGQgPT4gZC5yZXNpZCAqKiAyKVxuICBjb25zdCByX3NxdWFyZWQgPSBzc190b3RhbCA+IDAgPyAxIC0gc3NfcmVzaWQgLyBzc190b3RhbCA6IE5hTlxuICByZXR1cm4ge24sIG9rOiB0cnVlLCBzbG9wZSwgaW50ZXJjZXB0LCBtZWFuX3ksIHJlc2lkdWFscywgc3NfcmVzaWQsIHNzX3RvdGFsLCByX3NxdWFyZWR9XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyZWdyZXNzaW9uX3Bsb3QgPSB7XG4gIGNvbnN0IHhfZG9tYWluID0gWy0zLCAzXVxuICBjb25zdCB5X2RvbWFpbiA9IFstMSwgNV1cblxuICBjb25zdCBwbG90ID0gUGxvdC5wbG90KHtcbiAgICB3aWR0aDogTWF0aC5taW4od2lkdGgsIDY0MCksXG4gICAgaGVpZ2h0OiA0MjAsXG4gICAgbWFyZ2luTGVmdDogNDUsXG4gICAgeDoge2xhYmVsOiBcInhcIiwgZG9tYWluOiB4X2RvbWFpbiwgZ3JpZDogdHJ1ZX0sXG4gICAgeToge2xhYmVsOiBcInlcIiwgZG9tYWluOiB5X2RvbWFpbiwgZ3JpZDogdHJ1ZX0sXG4gICAgY2xpcDogdHJ1ZSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5mcmFtZSh7c3Ryb2tlOiBcImN1cnJlbnRDb2xvclwifSksXG4gICAgICAvLyBpbnRlcmNlcHQtb25seSBtb2RlbDogdGhlIG1lYW4gb2YgeSwgYW5kIHJlc2lkdWFscyBmcm9tIGl0IChvZmZzZXQgc2xpZ2h0bHkgc28gdGhleSBkb24ndCBvdmVybGFwIHRoZSByZWdyZXNzaW9uIHJlc2lkdWFscylcbiAgICAgIHNob3dfbWVhbiAmJiBwb2ludHMubGVuZ3RoID4gMCA/IFBsb3QucnVsZVkoW2ZpdC5tZWFuX3ldLCB7c3Ryb2tlOiBcIiNlNjdlMjJcIiwgc3Ryb2tlV2lkdGg6IDIsIHN0cm9rZURhc2hhcnJheTogXCI2LDRcIn0pIDogbnVsbCxcbiAgICAgIHNob3dfbWVhbiAmJiBwb2ludHMubGVuZ3RoID4gMCA/IFBsb3QucnVsZVgocG9pbnRzLCB7eDogXCJ4XCIsIHkxOiBcInlcIiwgeTI6ICgpID0+IGZpdC5tZWFuX3ksIHN0cm9rZTogXCIjZTY3ZTIyXCIsIHN0cm9rZU9wYWNpdHk6IDAuNiwgZHg6IDR9KSA6IG51bGwsXG4gICAgICAvLyByZXNpZHVhbHM6IHZlcnRpY2FsIGxpbmVzIGZyb20gZWFjaCBwb2ludCB0byB0aGUgcmVncmVzc2lvbiBsaW5lXG4gICAgICBzaG93X3Jlc2lkdWFscyAmJiBmaXQub2sgPyBQbG90LnJ1bGVYKGZpdC5yZXNpZHVhbHMsIHt4OiBcInhcIiwgeTE6IFwieVwiLCB5MjogXCJmaXR0ZWRcIiwgc3Ryb2tlOiBkID0+IGQucmVzaWQgPiAwID8gXCIjMjc4MGUzXCIgOiBcIiNlNzRjM2NcIiwgc3Ryb2tlT3BhY2l0eTogMC44fSkgOiBudWxsLFxuICAgICAgLy8gcmVncmVzc2lvbiBsaW5lXG4gICAgICBmaXQub2sgPyBQbG90LmxpbmUoeF9kb21haW4ubWFwKHggPT4gKHt4LCB5OiBmaXQuaW50ZXJjZXB0ICsgZml0LnNsb3BlICogeH0pKSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcImN1cnJlbnRDb2xvclwiLCBzdHJva2VXaWR0aDogMi41fSkgOiBudWxsLFxuICAgICAgLy8gcG9pbnRzXG4gICAgICBQbG90LmRvdChwb2ludHMsIHt4OiBcInhcIiwgeTogXCJ5XCIsIHI6IDUsIGZpbGw6IFwiY3VycmVudENvbG9yXCIsIHN0cm9rZTogXCJ3aGl0ZVwiLCBzdHJva2VXaWR0aDogMX0pXG4gICAgXVxuICB9KVxuXG4gIC8vIGNvbnZlcnQgYmV0d2VlbiBkYXRhIHZhbHVlcyBhbmQgcGl4ZWxzIHVzaW5nIHRoZSBwbG90J3Mgc2NhbGVzXG4gIGNvbnN0IHhfc2NhbGUgPSBwbG90LnNjYWxlKFwieFwiKVxuICBjb25zdCB5X3NjYWxlID0gcGxvdC5zY2FsZShcInlcIilcbiAgY29uc3QgdG9fZGF0YSA9ICh2YWx1ZSwgc2NhbGUpID0+IHNjYWxlLmRvbWFpblswXSArICh2YWx1ZSAtIHNjYWxlLnJhbmdlWzBdKSAvIChzY2FsZS5yYW5nZVsxXSAtIHNjYWxlLnJhbmdlWzBdKSAqIChzY2FsZS5kb21haW5bMV0gLSBzY2FsZS5kb21haW5bMF0pXG4gIGNvbnN0IHRvX3BpeGVsID0gKHZhbHVlLCBzY2FsZSkgPT4gc2NhbGUucmFuZ2VbMF0gKyAodmFsdWUgLSBzY2FsZS5kb21haW5bMF0pIC8gKHNjYWxlLmRvbWFpblsxXSAtIHNjYWxlLmRvbWFpblswXSkgKiAoc2NhbGUucmFuZ2VbMV0gLSBzY2FsZS5yYW5nZVswXSlcblxuICBwbG90LnN0eWxlLmN1cnNvciA9IFwiY3Jvc3NoYWlyXCJcbiAgcGxvdC5hZGRFdmVudExpc3RlbmVyKFwiY2xpY2tcIiwgZXZlbnQgPT4ge1xuICAgIGNvbnN0IFtweCwgcHldID0gZDMucG9pbnRlcihldmVudCwgcGxvdClcbiAgICAvLyBpZ25vcmUgY2xpY2tzIG91dHNpZGUgdGhlIHBsb3R0aW5nIGFyZWFcbiAgICBjb25zdCBbeF9taW4sIHhfbWF4XSA9IGQzLmV4dGVudCh4X3NjYWxlLnJhbmdlKVxuICAgIGNvbnN0IFt5X21pbiwgeV9tYXhdID0gZDMuZXh0ZW50KHlfc2NhbGUucmFuZ2UpXG4gICAgaWYgKHB4IDwgeF9taW4gfHwgcHggPiB4X21heCB8fCBweSA8IHlfbWluIHx8IHB5ID4geV9tYXgpIHJldHVyblxuICAgIC8vIGlmIHRoZSBjbGljayBpcyBvbiAob3IgdmVyeSBuZWFyKSBhbiBleGlzdGluZyBwb2ludCwgcmVtb3ZlIGl0OyBvdGhlcndpc2UgYWRkIGEgbmV3IHBvaW50XG4gICAgY29uc3QgZGlzdGFuY2VzID0gcG9pbnRzLm1hcChkID0+IE1hdGguaHlwb3QodG9fcGl4ZWwoZC54LCB4X3NjYWxlKSAtIHB4LCB0b19waXhlbChkLnksIHlfc2NhbGUpIC0gcHkpKVxuICAgIGNvbnN0IG5lYXJlc3QgPSBkMy5taW5JbmRleChkaXN0YW5jZXMpXG4gICAgaWYgKHBvaW50cy5sZW5ndGggPiAwICYmIGRpc3RhbmNlc1tuZWFyZXN0XSA8IDEwKSB7XG4gICAgICBtdXRhYmxlIHBvaW50cyA9IHBvaW50cy5maWx0ZXIoKGQsIGkpID0+IGkgIT09IG5lYXJlc3QpXG4gICAgfSBlbHNlIHtcbiAgICAgIG11dGFibGUgcG9pbnRzID0gWy4uLnBvaW50cywge3g6IHRvX2RhdGEocHgsIHhfc2NhbGUpLCB5OiB0b19kYXRhKHB5LCB5X3NjYWxlKX1dXG4gICAgfVxuICB9KVxuXG4gIHJldHVybiBwbG90XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJtZGAke2ZpdC5va1xuICA/IGAqKlJlZ3Jlc3Npb24gbGluZToqKiB5ID0gJHtmaXQuaW50ZXJjZXB0LnRvRml4ZWQoMil9ICsgJHtmaXQuc2xvcGUudG9GaXhlZCgyKX0gw5cgeCAgXG4qKk51bWJlciBvZiBwb2ludHM6KiogJHtmaXQubn0gIFxuKipTdW0gb2Ygc3F1YXJlZCByZXNpZHVhbHM6KiogJHtmaXQuc3NfcmVzaWQudG9GaXhlZCgyKX0gKGludGVyY2VwdC1vbmx5IG1vZGVsOiAke2ZpdC5zc190b3RhbC50b0ZpeGVkKDIpfSkgIFxuKipSwrI6KiogJHtpc05hTihmaXQucl9zcXVhcmVkKSA/IFwidW5kZWZpbmVkXCIgOiBmaXQucl9zcXVhcmVkLnRvRml4ZWQoMil9YFxuICA6IGAqKk51bWJlciBvZiBwb2ludHM6KiogJHtmaXQubn0uIEEgcmVncmVzc2lvbiBsaW5lIG5lZWRzIGF0IGxlYXN0IHR3byBwb2ludHMgd2l0aCBkaWZmZXJlbnQgeCB2YWx1ZXMuYH1gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3Nob3cnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncmVzZXRfcG9pbnRzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NsZWFyX3BvaW50cycpIn1dfQ==
 </script>

@@ -109,8 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <style>
   /* more breathing room before section headings.
      scoped to main.content so the sidebar/TOC headings are left alone.
@@ -168,6 +166,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../include/webex.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -537,7 +536,7 @@ window.Quarto = {
   <li><a href="#in-line-code" id="toc-in-line-code" class="nav-link" data-scroll-target="#in-line-code"><span class="header-section-number">3.1.1</span> In-line code</a></li>
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">3.1.2</span> Code chunks</a></li>
   </ul></li>
-  <li><a href="#rendering-and-reproducibilty" id="toc-rendering-and-reproducibilty" class="nav-link" data-scroll-target="#rendering-and-reproducibilty"><span class="header-section-number">3.2</span> Rendering and reproducibilty</a></li>
+  <li><a href="#rendering-and-reproducibility" id="toc-rendering-and-reproducibility" class="nav-link" data-scroll-target="#rendering-and-reproducibility"><span class="header-section-number">3.2</span> Rendering and reproducibility</a></li>
   <li><a href="#markdown-formatting-and-levels-of-heading" id="toc-markdown-formatting-and-levels-of-heading" class="nav-link" data-scroll-target="#markdown-formatting-and-levels-of-heading"><span class="header-section-number">3.3</span> Markdown formatting and levels of heading</a></li>
   <li><a href="#level-1-heading" id="toc-level-1-heading" class="nav-link" data-scroll-target="#level-1-heading"><span class="header-section-number">3.4</span> Level 1 heading</a>
   <ul class="collapse">
@@ -549,14 +548,11 @@ window.Quarto = {
   <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">3.8</span> Tables</a></li>
   <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">3.9</span> Plots</a></li>
   <li><a href="#analyses" id="toc-analyses" class="nav-link" data-scroll-target="#analyses"><span class="header-section-number">3.10</span> Analyses</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.11</span> Exercises</a>
+  <li><a href="#key-functions" id="toc-key-functions" class="nav-link" data-scroll-target="#key-functions"><span class="header-section-number">3.11</span> Key functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.12</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#insert-a-new-chunk-and-write-code-to-install-the-following-packages" id="toc-insert-a-new-chunk-and-write-code-to-install-the-following-packages" class="nav-link" data-scroll-target="#insert-a-new-chunk-and-write-code-to-install-the-following-packages"><span class="header-section-number">3.11.1</span> Insert a new chunk and write code to install the following packages</a></li>
-  <li><a href="#render-the-report" id="toc-render-the-report" class="nav-link" data-scroll-target="#render-the-report"><span class="header-section-number">3.11.2</span> Render the report</a></li>
-  <li><a href="#add-authorship" id="toc-add-authorship" class="nav-link" data-scroll-target="#add-authorship"><span class="header-section-number">3.11.3</span> Add authorship</a></li>
-  <li><a href="#add-date" id="toc-add-date" class="nav-link" data-scroll-target="#add-date"><span class="header-section-number">3.11.4</span> Add date</a></li>
-  <li><a href="#inserting-a-new-chunk-below-this-heading" id="toc-inserting-a-new-chunk-below-this-heading" class="nav-link" data-scroll-target="#inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.5</span> Inserting a new chunk below this heading</a></li>
-  <li><a href="#make-the-plot-more-colorful" id="toc-make-the-plot-more-colorful" class="nav-link" data-scroll-target="#make-the-plot-more-colorful"><span class="header-section-number">3.11.6</span> Make the plot more colorful</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">3.12.1</span> Check your understanding</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">3.12.2</span> Practice</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -584,12 +580,21 @@ window.Quarto = {
 </header>
 
 
+<p>This chapter introduces Quarto (.qmd) files, which let you write text and R code in the same document and turn them into a report, such as a .html file. Every chapter of this book is a Quarto file, and you will use them for all the exercises.</p>
+<p>Writing your data processing and analysis this way makes it reproducible: each time the report is rendered, all the code runs again from the start, so the numbers, tables, and plots in the report always match the data and code that produced them. The chapter covers code chunks, rendering, markdown formatting, and math, and then gives a quick preview of what a full workflow looks like, from loading raw data to tables, plots, and analyses. You don’t need to understand that code yet: the later chapters teach it step by step. It builds on the <a href="../chapters/02_fundamentals.html">Fundamentals</a> chapter, especially on loading packages.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for %&gt;%, rename(), filter(), mutate(), select(), group_by(), summarize()</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># for pivot_longer()</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for read_csv(), write_csv()</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># for ggplot()</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report) <span class="co"># for report_text()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <section id="literate-programming" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="literate-programming"><span class="header-section-number">3.1</span> Literate programming</h2>
 <p>Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.</p>
 <section id="in-line-code" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="in-line-code"><span class="header-section-number">3.1.1</span> In-line code</h3>
-<p>Code can be written in ‘in-line’ in the text as follows: the code “<code>2</code>” is run and produces the output “2”. In your local .qmd document, you have hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.</p>
+<p>Code can be written ‘in-line’ in the text as follows: the code “<code>`r 1+1`</code>” is run and produces the output “2”. In your local .qmd document, you can hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.</p>
 </section>
 <section id="code-chunks" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">3.1.2</span> Code chunks</h3>
@@ -600,15 +605,15 @@ window.Quarto = {
 <p>You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: <img src="../images/chunk_run_previous_chunks.png" class="img-fluid"></p>
 <p>For example, run this code chunk in the local version of .qmd file. Note that the buttons are only visible in RStudio, not the ebook version of this file.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="rendering-and-reproducibilty" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="rendering-and-reproducibilty"><span class="header-section-number">3.2</span> Rendering and reproducibilty</h2>
+<section id="rendering-and-reproducibility" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="rendering-and-reproducibility"><span class="header-section-number">3.2</span> Rendering and reproducibility</h2>
 <p>Quarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:</p>
 <ol type="1">
 <li>It allows you to make more attractive outputs with tables, plots, and results.</li>
@@ -668,7 +673,7 @@ Display an image in visual editor/on rendering:
 <p>Levels of heading are extremely useful for structuring your report.</p>
 <ol type="1">
 <li>They automatically appear as headings in the “Outline” section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the ‘Outline’ button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.</li>
-<li>When the file is rendered (.qmd) or knitted (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has <code>toc: true</code>, as this file does).</li>
+<li>When the file is rendered (.qmd) or knitted (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has <code>toc: true</code>; this book sets this for every chapter).</li>
 </ol>
 </section>
 <section id="math-typesetting-via-latex" class="level2" data-number="3.6">
@@ -693,42 +698,37 @@ $$</code></pre>
 <p>We will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.</p>
 <p>Read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load raw data</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>dat_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../data/raw/data_raw_bfi.csv"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># process data</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> dat_raw <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename variable to make it clearer</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">race_iat =</span> IAT_score) <span class="sc">%&gt;%</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># exclude participants with missing data or who did not meet performance criteria</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(complete_individual_differences_data <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> exclude_iat <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate sum scores for the BFI personality subscales</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">openness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_o"</span>))),</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">conscientiousness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_c"</span>))),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">extroversion =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_e"</span>))),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">agreeableness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_a"</span>))),</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">neuroticism =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_n"</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only the columns needed</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory to save processed data to </span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"../data/processed"</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># save data</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(dat_processed, <span class="st">"../data/processed/data_processed_bfi_race_iat.csv"</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape to long format for tables and plots</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="ot">&lt;-</span> dat_processed <span class="sc">%&gt;%</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(openness, conscientiousness, extroversion, agreeableness, neuroticism),</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"subscale"</span>,</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load raw data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../data/raw/data_raw_bfi.csv"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># process data</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> dat_raw <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename variable to make it clearer</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">race_iat =</span> IAT_score) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># exclude participants with missing data or who did not meet performance criteria</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(complete_individual_differences_data <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> exclude_iat <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate mean scores for the BFI personality subscales</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">openness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_o"</span>))),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">conscientiousness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_c"</span>))),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">extroversion =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_e"</span>))),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">agreeableness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_a"</span>))),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">neuroticism =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_n"</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only the columns needed</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory to save processed data to </span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"../data/processed"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># save data</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(dat_processed, <span class="st">"../data/processed/data_processed_bfi_race_iat.csv"</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape to long format for tables and plots</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="ot">&lt;-</span> dat_processed <span class="sc">%&gt;%</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(openness, conscientiousness, extroversion, agreeableness, neuroticism),</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"subscale"</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tables" class="level2" data-number="3.8">
@@ -736,61 +736,54 @@ $$</code></pre>
 <p>Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.</p>
 <p>Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># table</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize mean and SD by subscale</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(subscale) <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(),</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">m =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round estimates </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">m =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(m, <span class="at">digits =</span> <span class="dv">2</span>),</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">sd =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(sd, <span class="at">digits =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print nicer table</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize mean and SD by subscale</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(subscale) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">m =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round estimates </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">m =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(m, <span class="at">digits =</span> <span class="dv">2</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">sd =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(sd, <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">subscale</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">m</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sd</th>
+<th style="text-align: left;">subscale</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">m</th>
+<th style="text-align: right;">sd</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">agreeableness</td>
+<td style="text-align: left;">agreeableness</td>
 <td style="text-align: right;">167</td>
 <td style="text-align: right;">4.00</td>
 <td style="text-align: right;">0.38</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">conscientiousness</td>
+<td style="text-align: left;">conscientiousness</td>
 <td style="text-align: right;">167</td>
 <td style="text-align: right;">4.24</td>
 <td style="text-align: right;">0.48</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">extroversion</td>
+<td style="text-align: left;">extroversion</td>
 <td style="text-align: right;">167</td>
 <td style="text-align: right;">4.18</td>
 <td style="text-align: right;">0.49</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">neuroticism</td>
+<td style="text-align: left;">neuroticism</td>
 <td style="text-align: right;">167</td>
 <td style="text-align: right;">3.91</td>
 <td style="text-align: right;">0.50</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">openness</td>
+<td style="text-align: left;">openness</td>
 <td style="text-align: right;">167</td>
 <td style="text-align: right;">4.37</td>
 <td style="text-align: right;">0.48</td>
@@ -799,26 +792,24 @@ $$</code></pre>
 </table>
 </div>
 </div>
+</div>
 </section>
 <section id="plots" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="plots"><span class="header-section-number">3.9</span> Plots</h2>
 <p>Plots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.</p>
 <p>As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_processed_long, <span class="fu">aes</span>(score, race_iat)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subscale) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Implicit racial bias"</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Personality subscale score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_processed_long, <span class="fu">aes</span>(score, race_iat)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subscale) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Implicit racial bias"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Personality subscale score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03_reproducible_reports_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="03_reproducible_reports_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -826,18 +817,15 @@ $$</code></pre>
 </section>
 <section id="analyses" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="analyses"><span class="header-section-number">3.10</span> Analyses</h2>
-<p>Analyses can be run, and even their results extracted an interpreted, with the help of R packages such as {report} and {parameters} from the <a href="https://easystats.github.io/easystats/">easystats</a> cluster of packages.</p>
+<p>Analyses can be run, and even their results extracted and interpreted, with the help of R packages such as {report} and {parameters} from the <a href="https://easystats.github.io/easystats/">easystats</a> cluster of packages.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit correlation test</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> race_iat <span class="sc">+</span> extroversion, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dat_processed, </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create standard report of results</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report_text</span>(res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit correlation test</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> race_iat <span class="sc">+</span> extroversion, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dat_processed, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create standard report of results</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report_text</span>(res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Effect sizes were labelled following Funder's (2019) recommendations.
 
@@ -847,53 +835,520 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.11</span> Exercises</h2>
-<p>Edit your local copy of this .qmd file to make the following changes.</p>
-<section id="insert-a-new-chunk-and-write-code-to-install-the-following-packages" class="level3" data-number="3.11.1">
-<h3 data-number="3.11.1" class="anchored" data-anchor-id="insert-a-new-chunk-and-write-code-to-install-the-following-packages"><span class="header-section-number">3.11.1</span> Insert a new chunk and write code to install the following packages</h3>
+<section id="key-functions" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="key-functions"><span class="header-section-number">3.11</span> Key functions</h2>
+<p>The main tools covered in this chapter:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 21%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function or tool</th>
+<th>Package</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>In-line code: <code>`r `</code></td>
+<td>Quarto</td>
+<td>Runs a short piece of R code inside the text and shows its result there.</td>
+</tr>
+<tr class="even">
+<td>Code chunk: <code>```{r}</code></td>
+<td>Quarto</td>
+<td>A block of R code whose output appears below it.</td>
+</tr>
+<tr class="odd">
+<td>Ctrl/Cmd + Alt + I</td>
+<td>RStudio</td>
+<td>Inserts a new code chunk.</td>
+</tr>
+<tr class="even">
+<td>Run current chunk / run all previous chunks buttons</td>
+<td>RStudio</td>
+<td>Run the code in this chunk, or in all chunks above it.</td>
+</tr>
+<tr class="odd">
+<td>Render button</td>
+<td>Quarto</td>
+<td>Runs all the code in a fresh R session and creates the .html report.</td>
+</tr>
+<tr class="even">
+<td><code>#| eval: false</code></td>
+<td>Quarto</td>
+<td>Chunk option: shows the code but does not run it.</td>
+</tr>
+<tr class="odd">
+<td><code>#| include: false</code></td>
+<td>Quarto</td>
+<td>Chunk option: runs the code but hides both code and output in the report.</td>
+</tr>
+<tr class="even">
+<td><code>#</code>, <code>##</code>, <code>###</code></td>
+<td>Markdown</td>
+<td>Levels of heading, used for the Outline and the table of contents.</td>
+</tr>
+<tr class="odd">
+<td><code>*italic*</code>, <code>**bold**</code>, <code>-</code></td>
+<td>Markdown</td>
+<td>Italic and bold text, and bullet points.</td>
+</tr>
+<tr class="even">
+<td><code>$...$</code> and <code>$$...$$</code></td>
+<td>LaTeX</td>
+<td>In-line and displayed math.</td>
+</tr>
+<tr class="odd">
+<td>YAML header: <code>title:</code>, <code>author:</code>, <code>date:</code>, <code>toc:</code></td>
+<td>Quarto</td>
+<td>Settings for the whole document, at the top of the file between two <code>---</code> lines.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercises" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.12</span> Exercises</h2>
+<p>Check your learning with the following questions. Exercises that involve running code should be done in your local copy of this chapter’s .qmd file (see the <a href="../index.html">Introduction</a> for how to get a copy).</p>
+<section id="check-your-understanding" class="level3" data-number="3.12.1">
+<h3 data-number="3.12.1" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">3.12.1</span> Check your understanding</h3>
+<div class="webex-check webex-box">
+<p>Answer the questions, then click the button at the bottom to check your answers.</p>
+<ol type="1">
+<li>Which chunk option runs a chunk’s code but hides both the code and its output in the rendered .html file? <select class="webex-select"><option value="blank"></option><option value="">#| eval: false</option><option value="answer">#| include: false</option><option value="">#| warning: false</option><option value="">#| toc: true</option></select></li>
+<li>When you render a .qmd file, its code runs in a new R session, so objects in your current Environment are not available to it. <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="NA">FALSE</option></select></li>
+<li>If a .qmd file renders successfully, its code is free of errors. <select class="webex-select"><option value="blank"></option><option value="NA">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>Which line of markdown creates a level 2 heading? <select class="webex-select"><option value="blank"></option><option value="">#Heading</option><option value="">Heading</option><option value="answer">## Heading</option><option value="">2. Heading</option></select></li>
+<li>What do you put around LaTeX math to show it in-line in the text? <select class="webex-select"><option value="blank"></option><option value="">Backticks</option><option value="">Curly braces</option><option value="">Quotation marks</option><option value="answer">Single dollar signs</option></select></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show explanations">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show explanations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><code>#| include: false</code> runs the code but leaves it and its output out of the report. <code>#| eval: false</code> does the opposite: it shows the code but does not run it.</li>
+<li>True. This is what makes rendering useful for reproducibility: the report can only use what the file itself creates and loads.</li>
+<li>False. Rendering shows that the code runs, not that it does the right thing. Code can run and still contain mistakes, or load packages it doesn’t need.</li>
+<li><code>## Heading</code>. The number of <code>#</code> symbols sets the level of the heading, and the space after them is required: <code>#Heading</code> is not a heading.</li>
+<li>Single dollar signs, e.g., <code>$\bar{x}$</code>. Double dollar signs (<code>$$</code>) put the math on its own line.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>What is literate programming, and why is it useful for writing scientific reports?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Literate programming means writing the code and the text that explains it in the same document. The results in the text, tables, and plots are produced directly by the code, so they can’t drift out of sync with the analysis or be copied across incorrectly. Anyone with the file and the data can rerun it and check how each result was produced.</p>
+</div>
+</div>
+</div>
+<p>Your code runs fine when you run the chunks one by one in RStudio, but the file fails to render. What are some likely reasons?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Rendering runs all the code from top to bottom in a fresh R session. Common reasons for a failed render are: the code relies on an object you created in the console or in a chunk you later deleted; a package was loaded in the console but not with <code>library()</code> in the file; chunks only work when run in a different order from the one they appear in the file; or the file contains <code>install.packages()</code> calls that should not run.</p>
+</div>
+</div>
+</div>
+<p>Why shouldn’t <code>install.packages()</code> calls run every time a file is rendered? How can you keep them in the file without them running?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Packages only need to be installed once per computer, so reinstalling them on every render is slow and unnecessary, and it can make the render fail. Add <code>#| eval: false</code> at the top of the chunk, so the code is shown but not run.</p>
+</div>
+</div>
+</div>
+<p>When would you use in-line code rather than a code chunk?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In-line code is for short results that you want to report in a sentence, such as the sample size or a mean, e.g., by writing <code>nrow(dat)</code> as in-line R code in the sentence “We recruited … participants”. The number then updates automatically if the data change. Anything longer, such as processing data, making tables or plots, or fitting models, belongs in code chunks.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="practice" class="level3" data-number="3.12.2">
+<h3 data-number="3.12.2" class="anchored" data-anchor-id="practice"><span class="header-section-number">3.12.2</span> Practice</h3>
+<p>In your local copy of this chapter’s .qmd file, complete the tasks below. No solutions are provided for these tasks, to reduce the temptation to peek or copy-paste. Use the hints if you get stuck.</p>
+<section id="insert-a-new-chunk-and-write-code-to-install-packages" class="level4" data-number="3.12.2.1">
+<h4 data-number="3.12.2.1" class="anchored" data-anchor-id="insert-a-new-chunk-and-write-code-to-install-packages"><span class="header-section-number">3.12.2.1</span> Insert a new chunk and write code to install packages</h4>
 <ul>
 <li>Insert a new code chunk at the top of this file.</li>
-<li>Use the <code>install.packages()</code> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names.</li>
+<li>Use the <code>install.packages()</code> function to install the packages {tidyverse}, {janitor}, and {report}. Remember to exclude the “{}” and use quotation marks around the package names.</li>
 <li>Run this chunk to install these packages.</li>
 <li>Try to render the file. It should fail.</li>
 <li><code>install.packages()</code> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <code>#| eval: false</code> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click “Output&gt;Show nothing (don’t run code)”, which will insert in the chunk both <code>#| eval: false</code> (“don’t run the code”) and <code>#| include: false</code> (“don’t show the code in the .html”).</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can install several packages with one call by giving <code>install.packages()</code> a vector of names, made with <code>c()</code>. Chunk options start with <code>#|</code> and go on the first lines of the chunk, before any code.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="render-the-report" class="level3" data-number="3.11.2">
-<h3 data-number="3.11.2" class="anchored" data-anchor-id="render-the-report"><span class="header-section-number">3.11.2</span> Render the report</h3>
+<section id="render-the-report" class="level4" data-number="3.12.2.2">
+<h4 data-number="3.12.2.2" class="anchored" data-anchor-id="render-the-report"><span class="header-section-number">3.12.2.2</span> Render the report</h4>
 <p>Click ‘render’ to create a reproducible report as a .html from this .qmd file.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The ‘Render’ button is in the toolbar above the file in RStudio. If the render fails, read the error message in the ‘Background Jobs’ or ‘Render’ pane: it tells you which chunk failed.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="add-authorship" class="level3" data-number="3.11.3">
-<h3 data-number="3.11.3" class="anchored" data-anchor-id="add-authorship"><span class="header-section-number">3.11.3</span> Add authorship</h3>
-<p>Add the following text to the YAML header on line 3, just under ‘title’: <code>author: "yourname"</code>, and replace ‘yourname’ with your name. Render the report again with the render button. It will now list you as the author.</p>
+<section id="add-authorship-and-date" class="level4" data-number="3.12.2.3">
+<h4 data-number="3.12.2.3" class="anchored" data-anchor-id="add-authorship-and-date"><span class="header-section-number">3.12.2.3</span> Add authorship and date</h4>
+<ul>
+<li>Add the following text to the YAML header, just under ‘title’: <code>author: "yourname"</code>, and replace ‘yourname’ with your name. Render the report again with the render button. It will now list you as the author.</li>
+<li>Add the following text to the YAML header on the next line: <code>date: today</code>. Now when you render again, it will list today’s date so that you know when the report was created.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The YAML header is the block at the very top of the file between two lines containing only <code>---</code>. If your file doesn’t have one, add it as the first lines of the file, e.g., a <code>---</code> line, then <code>title: "Reproducible reports"</code>, then another <code>---</code> line. Each setting goes on its own line.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="add-date" class="level3" data-number="3.11.4">
-<h3 data-number="3.11.4" class="anchored" data-anchor-id="add-date"><span class="header-section-number">3.11.4</span> Add date</h3>
-<p>Add the following text to the YAML header on line 4: <code>date: today</code>. Now when you render again, it will list today’s date so that you know when the report was created.</p>
-</section>
-<section id="inserting-a-new-chunk-below-this-heading" class="level3" data-number="3.11.5">
-<h3 data-number="3.11.5" class="anchored" data-anchor-id="inserting-a-new-chunk-below-this-heading"><span class="header-section-number">3.11.5</span> Inserting a new chunk below this heading</h3>
-<p>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</p>
+<section id="insert-a-new-chunk" class="level4" data-number="3.12.2.4">
+<h4 data-number="3.12.2.4" class="anchored" data-anchor-id="insert-a-new-chunk"><span class="header-section-number">3.12.2.4</span> Insert a new chunk</h4>
+<p>Insert a new chunk below this heading. Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</p>
 <ul>
 <li>Assign the variable <code>x</code> to have the value <code>5</code></li>
 <li>Assign the variable <code>y</code> to have the value <code>x</code> minus <code>3</code>.</li>
 <li>Print the value of <code>y</code> as output.</li>
 </ul>
 <p>Run the code in the chunk by clicking the green right-arrow: <img src="../images/chunk_run_this_chunk.png" class="img-fluid"></p>
-<p>Need a refresher on variable assignment? Go back to the chapter on <img src="02_fundamentals.qmd" class="img-fluid" alt="Fundamentals">.</p>
+<p>Need a refresher on variable assignment? Go back to the chapter on <a href="../chapters/02_fundamentals.html">Fundamentals</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use <code>&lt;-</code> for assignment. You can use <code>x</code> on the right-hand side when creating <code>y</code>, because it already exists. Typing an object’s name on its own line prints it.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="make-the-plot-more-colorful" class="level3" data-number="3.11.6">
-<h3 data-number="3.11.6" class="anchored" data-anchor-id="make-the-plot-more-colorful"><span class="header-section-number">3.11.6</span> Make the plot more colorful</h3>
+<section id="make-the-plot-more-colorful" class="level4" data-number="3.12.2.5">
+<h4 data-number="3.12.2.5" class="anchored" data-anchor-id="make-the-plot-more-colorful"><span class="header-section-number">3.12.2.5</span> Make the plot more colorful</h4>
 <p>Change the ‘aesthetics’ call from <code>aes(score, race_iat)</code> to <code>aes(score, race_iat, color = subscale)</code>. Run all previous chunks to reload and reprocess the data using this button: <img src="../images/chunk_run_previous_chunks.png" class="img-fluid"> Then, run the plot chunk again using this one to view your more colorful plot: <img src="../images/chunk_run_this_chunk.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Click to show hint">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to show hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The plot is made in the chunk in the Plots section. The data it uses (‘dat_processed_long’) is created in an earlier chunk, so if you get an error saying the object can’t be found, run the previous chunks first.</p>
+</div>
+</div>
+</div>
 
 
 <!-- -->
 
 </section>
 </section>
+</section>
 
 </main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1370,294 +1825,370 @@ negative, statistically not significant, and small (r = -0.18, 95% CI [-0.39,
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reproducible reports</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literate programming</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-line code</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>Code can be written in 'in-line' in the text as follows: the code "`<span class="in">` `</span>r 1+1` `<span class="in">`" is run and produces the output "`</span>r 1+1`". In your local .qmd document, you have hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code chunks</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>For any code that isn't extremely short, you should write it in code chunks.</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>These are written as follows: three backticks followed by "{r}" specifies that it is a chunk of R code, then the code, then three more backticks to end the chunk. Note that backticks are not apostrophes! (<span class="sc">\`</span> vs ').</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="in">````{=markdown}</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="in"># code goes here</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>You can also insert a code chunk with Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac).</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>Output appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: <span class="al">![](../images/chunk_run_previous_chunks.png)</span></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>For example, run this code chunk in the local version of .qmd file. Note that the buttons are only visible in RStudio, not the ebook version of this file.</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rendering and reproducibilty</span></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>Quarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>It allows you to make more attractive outputs with tables, plots, and results.</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>It can greatly increase reproducibility. Each time you 'render' a .html file from a .qmd/.Rmd, the code is run in a new R session in the background. The .html file is only created if all the code runs. This is extremely useful for ensuring that your code does indeed run, that you have all necessary packages loaded, etc. Note however that it does not ensure that your code is error free, that there are not unnecessary packages loaded, etc.</span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Markdown formatting and levels of heading</span></span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>Quarto (.qmd) and RMarkdown files (.Rmd) allow you to use markdown formatting. This is a very simple way to do basic formatting, such as headings, emphasis, bullet points and lists.</span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>Markdown formatting can be used as follows.</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>**Don't forget the space after the #, or spaces between lines to separate sections of different types!**</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="in"># Level 1 heading</span></span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="in">## Level 2 heading</span></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="in">### Level 3 heading</span></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">Normal text.</span></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="in">*italic text*</span></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="in">**bold text**</span></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="in">- bullet points</span></span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="in">- bullet points</span></span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="in">1. numbered list</span></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="in">2. numbered list</span></span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="in">Display an image in visual editor/on rendering:</span></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="in">![](../images/r_meme.png)</span></span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>Each of the above are rendered as follows in the .html file once rendered:</span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Level 1 heading</span></span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="fu">### Level 2 heading</span></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Level 3 heading</span></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>Normal text.</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>*italic text*</span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>**bold text**</span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bullet points</span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bullet points</span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>numbered list</span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>numbered list</span>
-<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>Display an image in visual editor/on rendering: <span class="al">![](../images/r_meme.png)</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## Table of contents and outline</span></span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>Levels of heading are extremely useful for structuring your report.</span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>They automatically appear as headings in the "Outline" section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the 'Outline' button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.</span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>When the file is rendered (.qmd) or knitted (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has <span class="in">`toc: true`</span>, as this file does).</span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Math typesetting via LaTeX</span></span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>LaTeX is a typesetting system designed for creating professional-looking documents, especially those containing mathematics, tables, and references. In psychology research, you are likely to encounter LaTeX most often indirectly—because Quarto (which we use throughout this book) relies on LaTeX in the background when generating PDF outputs.</span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>You do not need to learn LaTeX in detail to work reproducibly with R code in Quarto documents, but it is useful to understand what it does and if you want to include math in your Quarto documents: it ensures that your documents are formatted consistently, citations and references are automatically handled, and statistical results or equations are rendered cleanly. In practice, this means you can focus on your analyses and writing in R and Quarto, while LaTeX quietly manages the professional typesetting for you.</span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>You can include math in-line with LaTeX code placed between dollar signs: e.g., "<span class="in">`$\eta_{p}^{2}$`</span> = 0.03" produces "$\eta_{p}^{2}$ = 0.03".</span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>You can also write longer chunks of LaTeX, for example to specify that the mean ($\bar{x}$) is the sum of all elements of the vector $x$ divided by number of elements in the vector ($n$).</span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>This code:</span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="in">$$</span></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="in">\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.</span></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="in">$$</span></span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>Produces this math:</span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.</span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>Writing math via LaTeX often sounds like a very advanced skill when you're introduced to it but it can be very useful, especially for Monte Carlo simulation studies, which I teach in a separate course.</span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading, processing, and writing data</span></span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>Raw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.</span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a>We will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.</span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>Read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a><span class="co"># load raw data</span></span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>dat_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../data/raw/data_raw_bfi.csv"</span>)</span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="co"># process data</span></span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> dat_raw <span class="sc">%&gt;%</span></span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename variable to make it clearer</span></span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">race_iat =</span> IAT_score) <span class="sc">%&gt;%</span></span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>  <span class="co"># exclude participants with missing data or who did not meet performance criteria</span></span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(complete_individual_differences_data <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> exclude_iat <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate sum scores for the BFI personality subscales</span></span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">openness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_o"</span>))),</span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>                <span class="at">conscientiousness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_c"</span>))),</span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>                <span class="at">extroversion =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_e"</span>))),</span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>                <span class="at">agreeableness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_a"</span>))),</span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>                <span class="at">neuroticism =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_n"</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only the columns needed</span></span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)</span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory to save processed data to </span></span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"../data/processed"</span>)</span>
-<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="co"># save data</span></span>
-<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(dat_processed, <span class="st">"../data/processed/data_processed_bfi_race_iat.csv"</span>)</span>
-<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape to long format for tables and plots</span></span>
-<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="ot">&lt;-</span> dat_processed <span class="sc">%&gt;%</span></span>
-<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(openness, conscientiousness, extroversion, agreeableness, neuroticism),</span>
-<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"subscale"</span>,</span>
-<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"score"</span>)</span>
-<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tables</span></span>
-<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a>Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.</span>
-<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a>Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
-<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a><span class="co"># table</span></span>
-<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="sc">%&gt;%</span></span>
-<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize mean and SD by subscale</span></span>
-<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(subscale) <span class="sc">%&gt;%</span></span>
-<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(),</span>
-<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>                   <span class="at">m =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round estimates </span></span>
-<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">m =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(m, <span class="at">digits =</span> <span class="dv">2</span>),</span>
-<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>                <span class="at">sd =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(sd, <span class="at">digits =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print nicer table</span></span>
-<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">align =</span> <span class="st">'r'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span>
-<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plots</span></span>
-<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a>Plots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.</span>
-<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a>As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
-<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_processed_long, <span class="fu">aes</span>(score, race_iat)) <span class="sc">+</span></span>
-<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subscale) <span class="sc">+</span></span>
-<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Implicit racial bias"</span>) <span class="sc">+</span></span>
-<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Personality subscale score"</span>)</span>
-<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analyses</span></span>
-<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a>Analyses can be run, and even their results extracted an interpreted, with the help of R packages such as {report} and {parameters} from the <span class="co">[</span><span class="ot">easystats</span><span class="co">](https://easystats.github.io/easystats/)</span> cluster of packages.</span>
-<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a><span class="co"># dependencies</span></span>
-<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report)</span>
-<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a><span class="co"># fit correlation test</span></span>
-<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> race_iat <span class="sc">+</span> extroversion, </span>
-<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dat_processed, </span>
-<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a>                <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
-<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a><span class="co"># create standard report of results</span></span>
-<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report_text</span>(res)</span>
-<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a>Edit your local copy of this .qmd file to make the following changes.</span>
-<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### Insert a new chunk and write code to install the following packages</span></span>
-<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert a new code chunk at the top of this file.</span>
-<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`install.packages()`</span> function to install the packages {tidyverse}, {janitor}, {knitr}, {kableExtra}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names.</span>
-<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run this chunk to install these packages.</span>
-<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Try to render the file. It should fail.</span>
-<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`install.packages()`</span> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <span class="in">`#| eval: false`</span> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output<span class="sc">\&gt;</span>Show nothing (don't run code)", which will insert in the chunk both <span class="in">`#| eval: false`</span> ("don't run the code") and <span class="in">`#| include: false`</span> ("don't show the code in the .html").</span>
-<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### Render the report</span></span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>Click 'render' to create a reproducible report as a .html from this .qmd file.</span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add authorship</span></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 3, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.</span>
-<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### Add date</span></span>
-<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>Add the following text to the YAML header on line 4: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
-<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inserting a new chunk below this heading</span></span>
-<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</span>
-<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
-<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
-<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the value of <span class="in">`y`</span> as output.</span>
-<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
-<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="al">![Fundamentals](02_fundamentals.qmd)</span>.</span>
-<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Make the plot more colorful</span></span>
-<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reproducible reports</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># settings, placed in a chunk that will not show in the .html file (because include=FALSE) </span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># disables scientific notation so that small numbers appear as eg "0.00001" rather than "1e-05"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)  </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>This chapter introduces Quarto (.qmd) files, which let you write text and R code in the same document and turn them into a report, such as a .html file. Every chapter of this book is a Quarto file, and you will use them for all the exercises.</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>Writing your data processing and analysis this way makes it reproducible: each time the report is rendered, all the code runs again from the start, so the numbers, tables, and plots in the report always match the data and code that produced them. The chapter covers code chunks, rendering, markdown formatting, and math, and then gives a quick preview of what a full workflow looks like, from loading raw data to tables, plots, and analyses. You don't need to understand that code yet: the later chapters teach it step by step. It builds on the <span class="co">[</span><span class="ot">Fundamentals</span><span class="co">](02_fundamentals.qmd)</span> chapter, especially on loading packages.</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># for %&gt;%, rename(), filter(), mutate(), select(), group_by(), summarize()</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># for pivot_longer()</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) <span class="co"># for read_csv(), write_csv()</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># for ggplot()</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(report) <span class="co"># for report_text()</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Literate programming</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>Literate programming is the idea that code and text should be written in the same document to produce a narrative with reproducible results. It is therefore very suited to writing scientific reports and manuscripts.</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-line code</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>Code can be written 'in-line' in the text as follows: the code "`<span class="in">` `</span>r knitr::inline_expr("1+1")` `<span class="in">`" is run and produces the output "`</span>r 1+1`". In your local .qmd document, you can hover over the in-line code and press cmd-enter or cmd-return (Mac) / ctrl-enter or ctrl-return (Windows) to run the code.</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code chunks</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>For any code that isn't extremely short, you should write it in code chunks.</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>These are written as follows: three backticks followed by "{r}" specifies that it is a chunk of R code, then the code, then three more backticks to end the chunk. Note that backticks are not apostrophes! (<span class="sc">\`</span> vs ').</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="in">````{=markdown}</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="in"># code goes here</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>You can also insert a code chunk with Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac).</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>Output appears below chunks. You can run all code in a chunk by clicking the right-arrow button to the right of the chunk: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>You can also run all previous chunks in a document not including the current chunk by clicking the downward arrow button to the right of the chunk: <span class="al">![](../images/chunk_run_previous_chunks.png)</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>For example, run this code chunk in the local version of .qmd file. Note that the buttons are only visible in RStudio, not the ebook version of this file.</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Rendering and reproducibility</span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>Quarto (.qmd) and RMarkdown (.Rmd) files can produce .html files that can be viewed in any web browser. This has two key functions:</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>It allows you to make more attractive outputs with tables, plots, and results.</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>It can greatly increase reproducibility. Each time you 'render' a .html file from a .qmd/.Rmd, the code is run in a new R session in the background. The .html file is only created if all the code runs. This is extremely useful for ensuring that your code does indeed run, that you have all necessary packages loaded, etc. Note however that it does not ensure that your code is error free, that there are not unnecessary packages loaded, etc.</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Markdown formatting and levels of heading</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>Quarto (.qmd) and RMarkdown files (.Rmd) allow you to use markdown formatting. This is a very simple way to do basic formatting, such as headings, emphasis, bullet points and lists.</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>Markdown formatting can be used as follows.</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>**Don't forget the space after the #, or spaces between lines to separate sections of different types!**</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="in"># Level 1 heading</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">## Level 2 heading</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">### Level 3 heading</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">Normal text.</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="in">*italic text*</span></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="in">**bold text**</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="in">- bullet points</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="in">- bullet points</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="in">1. numbered list</span></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">2. numbered list</span></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="in">Display an image in visual editor/on rendering:</span></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="in">![](../images/r_meme.png)</span></span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>Each of the above are rendered as follows in the .html file once rendered:</span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Level 1 heading</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="fu">### Level 2 heading</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Level 3 heading</span></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>Normal text.</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>*italic text*</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>**bold text**</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bullet points</span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bullet points</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>numbered list</span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>numbered list</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>Display an image in visual editor/on rendering: <span class="al">![](../images/r_meme.png)</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Table of contents and outline</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>Levels of heading are extremely useful for structuring your report.</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>They automatically appear as headings in the "Outline" section in RStudio, therefore allowing you to navigate your document easily. When you have a .qmd or .Rmd file open in RStudio, click the 'Outline' button to the top-right of the source file window, where this text appears, to see all the headings in your file. Click any of them to go to that heading in the document.</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>When the file is rendered (.qmd) or knitted (.Rmd) to a .html file, the levels of heading will appear as clickable links in the table of contents (assuming that your YAML header at the top of your file has <span class="in">`toc: true`</span>; this book sets this for every chapter).</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## Math typesetting via LaTeX</span></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>LaTeX is a typesetting system designed for creating professional-looking documents, especially those containing mathematics, tables, and references. In psychology research, you are likely to encounter LaTeX most often indirectly—because Quarto (which we use throughout this book) relies on LaTeX in the background when generating PDF outputs.</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>You do not need to learn LaTeX in detail to work reproducibly with R code in Quarto documents, but it is useful to understand what it does and if you want to include math in your Quarto documents: it ensures that your documents are formatted consistently, citations and references are automatically handled, and statistical results or equations are rendered cleanly. In practice, this means you can focus on your analyses and writing in R and Quarto, while LaTeX quietly manages the professional typesetting for you.</span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>You can include math in-line with LaTeX code placed between dollar signs: e.g., "<span class="in">`$\eta_{p}^{2}$`</span> = 0.03" produces "$\eta_{p}^{2}$ = 0.03".</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>You can also write longer chunks of LaTeX, for example to specify that the mean ($\bar{x}$) is the sum of all elements of the vector $x$ divided by number of elements in the vector ($n$).</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>This code:</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="in">$$</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="in">\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="in">$$</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>Produces this math:</span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.</span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>Writing math via LaTeX often sounds like a very advanced skill when you're introduced to it but it can be very useful, especially for Monte Carlo simulation studies, which I teach in a separate course.</span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading, processing, and writing data</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>Raw data can be read in from .csv, .xlsx, SPSS .sav, and many other types of files. Raw data can be processed and tidied into analyzable data and saved to disk.</span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>We will cover these functions in later chapters. For the moment, the point to appreciate is that clear, reproducible workflows are easy to write in R+tidyverse.</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>Read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="co"># load raw data</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>dat_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"../data/raw/data_raw_bfi.csv"</span>)</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="co"># process data</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>dat_processed <span class="ot">&lt;-</span> dat_raw <span class="sc">%&gt;%</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename variable to make it clearer</span></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">race_iat =</span> IAT_score) <span class="sc">%&gt;%</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>  <span class="co"># exclude participants with missing data or who did not meet performance criteria</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(complete_individual_differences_data <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> exclude_iat <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate mean scores for the BFI personality subscales</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">openness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_o"</span>))),</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>                <span class="at">conscientiousness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_c"</span>))),</span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>                <span class="at">extroversion =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_e"</span>))),</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>                <span class="at">agreeableness =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_a"</span>))),</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>                <span class="at">neuroticism =</span> <span class="fu">mean</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"bfi_n"</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>  <span class="co"># retain only the columns needed</span></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(race_iat, openness, conscientiousness, extroversion, agreeableness, neuroticism)</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory to save processed data to </span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"../data/processed"</span>)</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a><span class="co"># save data</span></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(dat_processed, <span class="st">"../data/processed/data_processed_bfi_race_iat.csv"</span>)</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape to long format for tables and plots</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="ot">&lt;-</span> dat_processed <span class="sc">%&gt;%</span></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(openness, conscientiousness, extroversion, agreeableness, neuroticism),</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"subscale"</span>,</span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"score"</span>)</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tables</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>Summary statistics such as sample sizes, means and Standard Deviations can be calculated, rounded, and presented in tables.</span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a>Again, we will cover these functions in later chapters. For the moment, simply notice that this is quite simple to do. As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a><span class="co"># table</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>dat_processed_long <span class="sc">%&gt;%</span></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize mean and SD by subscale</span></span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(subscale) <span class="sc">%&gt;%</span></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n =</span> dplyr<span class="sc">::</span><span class="fu">n</span>(),</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a>                   <span class="at">m =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd =</span> <span class="fu">sd</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a>  <span class="co"># round estimates </span></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">m =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(m, <span class="at">digits =</span> <span class="dv">2</span>),</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a>                <span class="at">sd =</span> janitor<span class="sc">::</span><span class="fu">round_half_up</span>(sd, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plots</span></span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>Plots can be made in {ggplot2}, e.g., scatter plots of the association between personality subscales and implicit racial bias.</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>As before, read the comments and code below to see if you can understand the general flow of what is being done, even without knowing these functions yet.</span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_processed_long, <span class="fu">aes</span>(score, race_iat)) <span class="sc">+</span></span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> subscale) <span class="sc">+</span></span>
+<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Implicit racial bias"</span>) <span class="sc">+</span></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Personality subscale score"</span>)</span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analyses</span></span>
+<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a>Analyses can be run, and even their results extracted and interpreted, with the help of R packages such as {report} and {parameters} from the <span class="co">[</span><span class="ot">easystats</span><span class="co">](https://easystats.github.io/easystats/)</span> cluster of packages.</span>
+<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a><span class="co"># fit correlation test</span></span>
+<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> race_iat <span class="sc">+</span> extroversion, </span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dat_processed, </span>
+<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a>                <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a><span class="co"># create standard report of results</span></span>
+<span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report_text</span>(res)</span>
+<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key functions</span></span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a>The main tools covered in this chapter:</span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Function or tool <span class="pp">|</span> Package <span class="pp">|</span> What it does <span class="pp">|</span></span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------|---------|--------------|</span></span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> In-line code: `<span class="in">` `</span>r ` `` <span class="pp">|</span> Quarto <span class="pp">|</span> Runs a short piece of R code inside the text and shows its result there. <span class="pp">|</span></span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Code chunk: `<span class="in">``` ```</span>{r} ```` <span class="pp">|</span> Quarto <span class="pp">|</span> A block of R code whose output appears below it. <span class="pp">|</span></span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Ctrl/Cmd + Alt + I <span class="pp">|</span> RStudio <span class="pp">|</span> Inserts a new code chunk. <span class="pp">|</span></span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Run current chunk / run all previous chunks buttons <span class="pp">|</span> RStudio <span class="pp">|</span> Run the code in this chunk, or in all chunks above it. <span class="pp">|</span></span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Render button <span class="pp">|</span> Quarto <span class="pp">|</span> Runs all the code in a fresh R session and creates the .html report. <span class="pp">|</span></span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`#| eval: false`</span> <span class="pp">|</span> Quarto <span class="pp">|</span> Chunk option: shows the code but does not run it. <span class="pp">|</span></span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`#| include: false`</span> <span class="pp">|</span> Quarto <span class="pp">|</span> Chunk option: runs the code but hides both code and output in the report. <span class="pp">|</span></span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`#`</span>, <span class="in">`##`</span>, <span class="in">`###`</span> <span class="pp">|</span> Markdown <span class="pp">|</span> Levels of heading, used for the Outline and the table of contents. <span class="pp">|</span></span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`*italic*`</span>, <span class="in">`**bold**`</span>, <span class="in">`-`</span> <span class="pp">|</span> Markdown <span class="pp">|</span> Italic and bold text, and bullet points. <span class="pp">|</span></span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$...$`</span> and <span class="in">`$$...$$`</span> <span class="pp">|</span> LaTeX <span class="pp">|</span> In-line and displayed math. <span class="pp">|</span></span>
+<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> YAML header: <span class="in">`title:`</span>, <span class="in">`author:`</span>, <span class="in">`date:`</span>, <span class="in">`toc:`</span> <span class="pp">|</span> Quarto <span class="pp">|</span> Settings for the whole document, at the top of the file between two <span class="in">`---`</span> lines. <span class="pp">|</span></span>
+<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>Check your learning with the following questions. Exercises that involve running code should be done in your local copy of this chapter's .qmd file (see the <span class="co">[</span><span class="ot">Introduction</span><span class="co">](../index.qmd)</span> for how to get a copy).</span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a><span class="fu">### Check your understanding</span></span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a>::: {.webex-check .webex-box}</span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a>Answer the questions, then click the button at the bottom to check your answers.</span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Which chunk option runs a chunk's code but hides both the code and its output in the rendered .html file? <span class="in">`r webexercises::mcq(c("#| eval: false", answer = "#| include: false", "#| warning: false", "#| toc: true"))`</span></span>
+<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>When you render a .qmd file, its code runs in a new R session, so objects in your current Environment are not available to it. <span class="in">`r webexercises::torf(TRUE)`</span></span>
+<span id="cb11-288"><a href="#cb11-288" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>If a .qmd file renders successfully, its code is free of errors. <span class="in">`r webexercises::torf(FALSE)`</span></span>
+<span id="cb11-289"><a href="#cb11-289" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Which line of markdown creates a level 2 heading? <span class="in">`r webexercises::mcq(c("#Heading", "**Heading**", answer = "## Heading", "2. Heading"))`</span></span>
+<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>What do you put around LaTeX math to show it in-line in the text? <span class="in">`r webexercises::mcq(c("Backticks", "Curly braces", "Quotation marks", answer = "Single dollar signs"))`</span></span>
+<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show explanations"}</span>
+<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="in">`#| include: false`</span> runs the code but leaves it and its output out of the report. <span class="in">`#| eval: false`</span> does the opposite: it shows the code but does not run it.</span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>True. This is what makes rendering useful for reproducibility: the report can only use what the file itself creates and loads.</span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>False. Rendering shows that the code runs, not that it does the right thing. Code can run and still contain mistakes, or load packages it doesn't need.</span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span><span class="in">`## Heading`</span>. The number of <span class="in">`#`</span> symbols sets the level of the heading, and the space after them is required: <span class="in">`#Heading`</span> is not a heading.</span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Single dollar signs, e.g., <span class="in">`$\bar{x}$`</span>. Double dollar signs (<span class="in">`$$`</span>) put the math on its own line.</span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>What is literate programming, and why is it useful for writing scientific reports?</span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>Literate programming means writing the code and the text that explains it in the same document. The results in the text, tables, and plots are produced directly by the code, so they can't drift out of sync with the analysis or be copied across incorrectly. Anyone with the file and the data can rerun it and check how each result was produced.</span>
+<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a>Your code runs fine when you run the chunks one by one in RStudio, but the file fails to render. What are some likely reasons?</span>
+<span id="cb11-308"><a href="#cb11-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-309"><a href="#cb11-309" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb11-310"><a href="#cb11-310" aria-hidden="true" tabindex="-1"></a>Rendering runs all the code from top to bottom in a fresh R session. Common reasons for a failed render are: the code relies on an object you created in the console or in a chunk you later deleted; a package was loaded in the console but not with <span class="in">`library()`</span> in the file; chunks only work when run in a different order from the one they appear in the file; or the file contains <span class="in">`install.packages()`</span> calls that should not run.</span>
+<span id="cb11-311"><a href="#cb11-311" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-312"><a href="#cb11-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-313"><a href="#cb11-313" aria-hidden="true" tabindex="-1"></a>Why shouldn't <span class="in">`install.packages()`</span> calls run every time a file is rendered? How can you keep them in the file without them running?</span>
+<span id="cb11-314"><a href="#cb11-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-315"><a href="#cb11-315" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb11-316"><a href="#cb11-316" aria-hidden="true" tabindex="-1"></a>Packages only need to be installed once per computer, so reinstalling them on every render is slow and unnecessary, and it can make the render fail. Add <span class="in">`#| eval: false`</span> at the top of the chunk, so the code is shown but not run.</span>
+<span id="cb11-317"><a href="#cb11-317" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-318"><a href="#cb11-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-319"><a href="#cb11-319" aria-hidden="true" tabindex="-1"></a>When would you use in-line code rather than a code chunk?</span>
+<span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show answer"}</span>
+<span id="cb11-322"><a href="#cb11-322" aria-hidden="true" tabindex="-1"></a>In-line code is for short results that you want to report in a sentence, such as the sample size or a mean, e.g., by writing <span class="in">`nrow(dat)`</span> as in-line R code in the sentence "We recruited ... participants". The number then updates automatically if the data change. Anything longer, such as processing data, making tables or plots, or fitting models, belongs in code chunks.</span>
+<span id="cb11-323"><a href="#cb11-323" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a><span class="fu">### Practice</span></span>
+<span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-327"><a href="#cb11-327" aria-hidden="true" tabindex="-1"></a>In your local copy of this chapter's .qmd file, complete the tasks below. No solutions are provided for these tasks, to reduce the temptation to peek or copy-paste. Use the hints if you get stuck.</span>
+<span id="cb11-328"><a href="#cb11-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-329"><a href="#cb11-329" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Insert a new chunk and write code to install packages</span></span>
+<span id="cb11-330"><a href="#cb11-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Insert a new code chunk at the top of this file.</span>
+<span id="cb11-332"><a href="#cb11-332" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`install.packages()`</span> function to install the packages {tidyverse}, {janitor}, and {report}. Remember to exclude the "{}" and use quotation marks around the package names.</span>
+<span id="cb11-333"><a href="#cb11-333" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run this chunk to install these packages.</span>
+<span id="cb11-334"><a href="#cb11-334" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Try to render the file. It should fail.</span>
+<span id="cb11-335"><a href="#cb11-335" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`install.packages()`</span> calls will cause the render to fail, so we have to set the code in that chunk to not run. You could comment out this code, but the better option is to use chunk settings: include <span class="in">`#| eval: false`</span> at the top of the chunk. Or, click the settings/gear icon on the top-right of the code chunk and click "Output<span class="sc">\&gt;</span>Show nothing (don't run code)", which will insert in the chunk both <span class="in">`#| eval: false`</span> ("don't run the code") and <span class="in">`#| include: false`</span> ("don't show the code in the .html").</span>
+<span id="cb11-336"><a href="#cb11-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-337"><a href="#cb11-337" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show hint"}</span>
+<span id="cb11-338"><a href="#cb11-338" aria-hidden="true" tabindex="-1"></a>You can install several packages with one call by giving <span class="in">`install.packages()`</span> a vector of names, made with <span class="in">`c()`</span>. Chunk options start with <span class="in">`#|`</span> and go on the first lines of the chunk, before any code.</span>
+<span id="cb11-339"><a href="#cb11-339" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-340"><a href="#cb11-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-341"><a href="#cb11-341" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Render the report</span></span>
+<span id="cb11-342"><a href="#cb11-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-343"><a href="#cb11-343" aria-hidden="true" tabindex="-1"></a>Click 'render' to create a reproducible report as a .html from this .qmd file.</span>
+<span id="cb11-344"><a href="#cb11-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-345"><a href="#cb11-345" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show hint"}</span>
+<span id="cb11-346"><a href="#cb11-346" aria-hidden="true" tabindex="-1"></a>The 'Render' button is in the toolbar above the file in RStudio. If the render fails, read the error message in the 'Background Jobs' or 'Render' pane: it tells you which chunk failed.</span>
+<span id="cb11-347"><a href="#cb11-347" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-348"><a href="#cb11-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Add authorship and date</span></span>
+<span id="cb11-350"><a href="#cb11-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-351"><a href="#cb11-351" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Add the following text to the YAML header, just under 'title': <span class="in">`author: "yourname"`</span>, and replace 'yourname' with your name. Render the report again with the render button. It will now list you as the author.</span>
+<span id="cb11-352"><a href="#cb11-352" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Add the following text to the YAML header on the next line: <span class="in">`date: today`</span>. Now when you render again, it will list today's date so that you know when the report was created.</span>
+<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show hint"}</span>
+<span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a>The YAML header is the block at the very top of the file between two lines containing only <span class="in">`---`</span>. If your file doesn't have one, add it as the first lines of the file, e.g., a <span class="in">`---`</span> line, then <span class="in">`title: "Reproducible reports"`</span>, then another <span class="in">`---`</span> line. Each setting goes on its own line.</span>
+<span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-357"><a href="#cb11-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-358"><a href="#cb11-358" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Insert a new chunk</span></span>
+<span id="cb11-359"><a href="#cb11-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-360"><a href="#cb11-360" aria-hidden="true" tabindex="-1"></a>Insert a new chunk below this heading. Either type it yourself using backticks or use the keyboard shortcut: Ctrl + Alt + I (Windows) or Cmd + Alt + I (Mac). Enter some simple working code inside the chunk:</span>
+<span id="cb11-361"><a href="#cb11-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-362"><a href="#cb11-362" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`x`</span> to have the value <span class="in">`5`</span></span>
+<span id="cb11-363"><a href="#cb11-363" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Assign the variable <span class="in">`y`</span> to have the value <span class="in">`x`</span> minus <span class="in">`3`</span>.</span>
+<span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Print the value of <span class="in">`y`</span> as output.</span>
+<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-366"><a href="#cb11-366" aria-hidden="true" tabindex="-1"></a>Run the code in the chunk by clicking the green right-arrow: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb11-367"><a href="#cb11-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-368"><a href="#cb11-368" aria-hidden="true" tabindex="-1"></a>Need a refresher on variable assignment? Go back to the chapter on <span class="co">[</span><span class="ot">Fundamentals</span><span class="co">](02_fundamentals.qmd)</span>.</span>
+<span id="cb11-369"><a href="#cb11-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-370"><a href="#cb11-370" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show hint"}</span>
+<span id="cb11-371"><a href="#cb11-371" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`&lt;-`</span> for assignment. You can use <span class="in">`x`</span> on the right-hand side when creating <span class="in">`y`</span>, because it already exists. Typing an object's name on its own line prints it.</span>
+<span id="cb11-372"><a href="#cb11-372" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-373"><a href="#cb11-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-374"><a href="#cb11-374" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Make the plot more colorful</span></span>
+<span id="cb11-375"><a href="#cb11-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-376"><a href="#cb11-376" aria-hidden="true" tabindex="-1"></a>Change the 'aesthetics' call from <span class="in">`aes(score, race_iat)`</span> to <span class="in">`aes(score, race_iat, color = subscale)`</span>. Run all previous chunks to reload and reprocess the data using this button: <span class="al">![](../images/chunk_run_previous_chunks.png)</span> Then, run the plot chunk again using this one to view your more colorful plot: <span class="al">![](../images/chunk_run_this_chunk.png)</span></span>
+<span id="cb11-377"><a href="#cb11-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-378"><a href="#cb11-378" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse="true" title="Click to show hint"}</span>
+<span id="cb11-379"><a href="#cb11-379" aria-hidden="true" tabindex="-1"></a>The plot is made in the chunk in the Plots section. The data it uses ('dat_processed_long') is created in an earlier chunk, so if you get an error saying the object can't be found, run the previous chunks first.</span>
+<span id="cb11-380"><a href="#cb11-380" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
