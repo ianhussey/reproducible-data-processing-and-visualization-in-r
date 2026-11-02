@@ -675,8 +675,8 @@ div.csl-indent {
 [19] "13_binding_and_joining.qmd"    "14_sharing_and_privacy.qmd"   
 [21] "15_visualization.qmd"          "16_reporting.qmd"             
 [23] "17_the_linear_model.qmd"       "images"                       
-[25] "plots"                         "project_1.qmd"                
-[27] "project_2.qmd"                 "updating.qmd"                 </code></pre>
+[25] "project_1.qmd"                 "project_2.qmd"                
+[27] "updating.qmd"                 </code></pre>
 </div>
 </div>
 <p>Go ‘up’ one directory and list the directories present:</p>
@@ -685,12 +685,9 @@ div.csl-indent {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
- [4] ".quarto"             "R"                   "_book"              
- [7] "chapters"            "data"                "exercises"          
-[10] "exercises_solutions" "images"              "old"                
-[13] "project_template"    "resources"           "site_libs"          
-[16] "slides"              "videos"             </code></pre>
+<pre><code> [1] ".quarto"          "R"                "_book"            "chapters"        
+ [5] "data"             "exercises"        "images"           "project_template"
+ [9] "resources"        "site_libs"        "slides"           "videos"          </code></pre>
 </div>
 </div>
 <p>From the above we can see that the ‘data’ folder is up one directory level from the current .qmd file. Let’s confirm this with <code>dir.exists()</code> to check the directory does indeed exist:</p>
@@ -1736,12 +1733,9 @@ div.csl-indent {
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
- [4] ".quarto"             "R"                   "_book"              
- [7] "chapters"            "data"                "exercises"          
-[10] "exercises_solutions" "images"              "old"                
-[13] "project_template"    "resources"           "site_libs"          
-[16] "slides"              "videos"             </code></pre>
+<pre><code> [1] ".quarto"          "R"                "_book"            "chapters"        
+ [5] "data"             "exercises"        "images"           "project_template"
+ [9] "resources"        "site_libs"        "slides"           "videos"          </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path =</span> <span class="st">"../data"</span>, <span class="co"># 'up' one directory level, down one into 'data'</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>

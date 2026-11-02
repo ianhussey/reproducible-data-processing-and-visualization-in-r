@@ -1,0 +1,276 @@
+---
+title: "Binding and joining - in-class exercises"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, joins, bind_rows, count, distinct, mutate, summarize, group_by
+library(tibble) # for tribble
+
+```
+
+# Today's data
+
+Data from a small pre-post study of a wellbeing intervention, spread across several data frames, as it often is in real projects:
+
+`dat_pre`: wellbeing before the intervention, one row per participant.
+
+`dat_post`: wellbeing after the intervention. The rows are in a different order, and participant 4 dropped out.
+
+`dat_demographics`: age and gender. Participant 4 was accidentally entered twice, and participant 6's demographics are missing.
+
+`dat_exclusions`: participants who must be excluded from the analysis, and why.
+
+`dat_feedback`: participants' ratings of how much they enjoyed the intervention, exported from different software that called the ID column 'participant_id' and saved it as text.
+
+```{r}
+
+dat_pre <- tribble(
+  ~id, ~condition,     ~wellbeing_pre,
+  1,   "control",      12,
+  2,   "intervention", 11,
+  3,   "control",      13,
+  4,   "intervention", 10,
+  5,   "control",      14,
+  6,   "intervention", 12
+)
+
+dat_post <- tribble(
+  ~id, ~condition,     ~wellbeing_post,
+  5,   "control",      14,
+  1,   "control",      13,
+  6,   "intervention", 15,
+  3,   "control",      13,
+  2,   "intervention", 16
+)
+
+dat_demographics <- tribble(
+  ~id, ~age, ~gender,
+  1,   23,   "female",
+  2,   31,   "male",
+  3,   27,   "non-binary",
+  4,   45,   "female",
+  4,   45,   "female",
+  5,   19,   "male"
+)
+
+dat_exclusions <- tribble(
+  ~id, ~reason,
+  3,   "failed attention check"
+)
+
+dat_feedback <- tribble(
+  ~participant_id, ~enjoyment,
+  "1",             4,
+  "2",             5,
+  "3",             2,
+  "5",             4,
+  "6",             3
+)
+
+```
+
+# Binding
+
+## Predict before you run
+
+Before running: what will happen? Why?
+
+```{r}
+#| error: true
+
+bind_cols(dat_pre, dat_post)
+
+```
+
+What would have happened if participant 4 had *not* dropped out, so that both data frames had 6 rows? Why is that worse than an error?
+
+## Stacking data from two sites
+
+The study was run at two sites, and each site saved its demographics separately. Before running: what will the result look like? 
+
+```{r}
+
+dat_site_a <- tribble(
+  ~id, ~age, ~gender,
+  7,   22,   "female",
+  8,   35,   "male"
+)
+
+dat_site_b <- tribble(
+  ~id, ~Age, ~gender,
+  9,   29,   "female",
+  10,  41,   "female"
+)
+
+bind_rows(dat_site_a, dat_site_b)
+
+```
+
+Fix the problem, and add a column 'site' recording which site each row came from.
+
+```{r}
+
+
+
+```
+
+# Joins
+
+## Predict the number of rows
+
+For each join below, predict how many rows the result will have and which participants will be included, then run it to check.
+
+```{r}
+
+full_join(dat_pre, dat_post, by = c("id", "condition"))
+
+left_join(dat_pre, dat_post, by = c("id", "condition"))
+
+left_join(dat_post, dat_pre, by = c("id", "condition"))
+
+inner_join(dat_pre, dat_post, by = c("id", "condition"))
+
+semi_join(dat_pre, dat_post, by = c("id", "condition"))
+
+anti_join(dat_pre, dat_post, by = c("id", "condition"))
+
+```
+
+## Why two condition columns?
+
+Before running: what columns will the result have? Why?
+
+```{r}
+
+left_join(dat_pre, dat_post, by = "id")
+
+```
+
+## Applying exclusions
+
+Remove the participants in `dat_exclusions` from `dat_pre` using a join. Then do the same with `filter()` and `%in%`. Which do you prefer, and why?
+
+```{r}
+
+
+
+```
+
+## Different names and types
+
+Add participants' enjoyment ratings from `dat_feedback` to `dat_post`. Before you start: what two problems will you need to solve?
+
+```{r}
+#| error: true
+
+left_join(dat_post, dat_feedback, by = join_by(id == participant_id))
+
+```
+
+```{r}
+
+
+
+```
+
+## Duplicates
+
+Before running: how many rows will the result have? Why?
+
+```{r}
+
+left_join(dat_pre, dat_demographics, by = "id")
+
+```
+
+Find the duplicates with `count()`, remove them, and then join again using the `relationship` argument so that any future duplicates would cause an error. What happens to participant 6?
+
+```{r}
+
+
+
+```
+
+# Fix the broken pipe
+
+This code is meant to combine the pre, post, and demographics data, remove the excluded participants, and calculate the mean change in wellbeing in each condition. It has (at least) four bugs, one of which doesn't change this particular result but would change others. Find and fix them one at a time.
+
+```{r}
+#| error: true
+
+dat_pre %>%
+  left_join(dat_post, by = "id") %>%
+  left_join(dat_demographics, by = "id") %>%
+  semi_join(dat_exclusions, by = "id") %>%
+  mutate(change = wellbeing_post - wellbeing_pre) %>%
+  group_by(condition) %>%
+  summarize(mean_change = mean(change))
+
+```
+
+# Put it all together
+
+Write a single pipe that creates `dat_combined`, with a comment above each step, in which:
+
+-   There is one row for every participant in `dat_pre`, with `NA` for the post score of participants who dropped out.
+-   There is a single 'condition' column.
+-   Age, gender, and enjoyment ratings are included, without duplicates.
+-   The excluded participants are removed.
+
+Then check your result: how many rows should it have, and does each participant appear exactly once? Finally, calculate the number of participants, the number who completed the post measure, and the mean age in each condition.
+
+```{r}
+
+
+
+```
+
+# Looking ahead
+
+`dat_combined` contains each participant's id, age, gender, condition, and scores. Imagine you wanted to share this data publicly alongside a published article. Could any participants be identified from it? Which columns, or combinations of columns, are the most risky, and what could you do about it?

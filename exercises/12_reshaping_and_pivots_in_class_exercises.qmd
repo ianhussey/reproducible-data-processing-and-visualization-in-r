@@ -1,0 +1,329 @@
+---
+title: "Reshaping and pivots - in-class exercises"
+author: "Ian Hussey"
+date: today
+editor: source
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    df-print: paged
+    embed-resources: true
+    fig-width: 7
+    fig-height: 5
+    include-in-header:
+      text: |
+        <style>
+        /* make quarto's light/dark toggle visible in standalone documents */
+        .quarto-color-scheme-toggle.top-right {
+          position: fixed; top: 1rem; left: 1rem; right: auto; z-index: 1050;
+          display: flex; align-items: center; gap: .4rem;
+          padding: .3rem .7rem; border: 1px solid #adb5bd; border-radius: .5rem;
+          background-color: var(--bs-body-bg); color: var(--bs-body-color);
+          font-size: .9rem; text-decoration: none;
+        }
+        .quarto-color-scheme-toggle.top-right .bi::before { width: 1.4rem; height: 1.4rem; background-size: 1.4rem 1.4rem; }
+        body.quarto-light .quarto-color-scheme-toggle.top-right .bi::before { filter: brightness(.4); }
+        .quarto-color-scheme-toggle.top-right::after { content: "Dark mode"; }
+        body.quarto-dark .quarto-color-scheme-toggle.top-right::after { content: "Light mode"; }
+        body { padding-top: 3rem; } /* room for the toggle above the title */
+        </style>
+execute:
+  message: false
+  warning: false
+---
+
+Put this file in `exercises/`!
+
+# Dependencies
+
+```{r}
+
+library(dplyr) # for %>%, mutate, filter, count, summarize, group_by, coalesce
+library(tidyr) # for pivot_longer, pivot_wider, separate
+library(tibble) # for tribble
+library(stringr) # for str_ functions
+library(forcats) # for fct
+library(ggplot2) # for ggplot
+
+```
+
+# Today's data
+
+`dat_wellbeing_wide`: one row per participant, with wellbeing scores at three timepoints in separate columns. Participant 4 did not complete the follow-up.
+
+`dat_items`: one row per participant, with responses to three items from a depression scale (PHQ) and three items from an anxiety scale (GAD), each scored 0 to 3.
+
+`dat_sessions`: one row per session, with the date each session was completed.
+
+`dat_versions`: age was saved in a different column in each of three versions of a survey.
+
+`dat_meta_wide`: summary statistics from three studies, one row per study.
+
+```{r}
+
+dat_wellbeing_wide <- tribble(
+  ~id, ~condition,     ~wellbeing_baseline, ~wellbeing_post, ~wellbeing_followup,
+  1,   "control",      12,                  13,              12,
+  2,   "intervention", 11,                  16,              15,
+  3,   "waitlist",     13,                  13,              14,
+  4,   "control",      14,                  14,              NA,
+  5,   "intervention", 10,                  15,              14,
+  6,   "waitlist",     12,                  12,              13
+)
+
+dat_items <- tribble(
+  ~id, ~phq_1, ~phq_2, ~phq_3, ~gad_1, ~gad_2, ~gad_3,
+  1,   0,      1,      0,      1,      1,      0,
+  2,   2,      3,      2,      3,      2,      2,
+  3,   1,      1,      2,      1,      NA,     1,
+  4,   3,      2,      3,      2,      3,      3,
+  5,   0,      0,      1,      0,      1,      0,
+  6,   1,      2,      1,      2,      1,      2
+)
+
+dat_sessions <- tribble(
+  ~id, ~timepoint,  ~wellbeing, ~date,
+  1,   "baseline",  12,         "2024-03-01",
+  1,   "post",      13,         "2024-03-15",
+  2,   "baseline",  11,         "2024-03-02",
+  2,   "post",      16,         "2024-03-16",
+  3,   "baseline",  13,         "2024-03-02",
+  3,   "post",      13,         "2024-03-17",
+  3,   "post",      14,         "2024-03-18"
+)
+
+dat_versions <- tribble(
+  ~id, ~age_v1, ~age_v2, ~age_v3,
+  1,   23,      NA,      NA,
+  2,   NA,      31,      NA,
+  3,   NA,      NA,      27,
+  4,   45,      NA,      46,
+  5,   NA,      NA,      NA
+)
+
+dat_meta_wide <- tribble(
+  ~study,       ~mean_trt, ~sd_trt, ~n_trt, ~mean_ctrl, ~sd_ctrl, ~n_ctrl,
+  "Smith 2019", 12.1,      4.2,     30,     15.3,       4.8,      31,
+  "Jones 2021", 8.4,       3.1,     52,     9.9,        3.5,      50,
+  "Lee 2022",   20.5,      6.0,     18,     24.1,       6.4,      20
+)
+
+```
+
+# Tidy data
+
+## Which rule is broken?
+
+The same wellbeing data was also exported in the format below. Which rule of Tidy Data does it break? Use `separate()` to fix it, so that 'baseline' and 'post' are numeric columns.
+
+```{r}
+
+dat_wellbeing_messy <- tribble(
+  ~id, ~baseline_post,
+  1,   "12/13",
+  2,   "11/16",
+  3,   "13/13"
+)
+
+```
+
+```{r}
+
+
+
+```
+
+## Is it tidy?
+
+Is `dat_wellbeing_wide` tidy? What counts as one observation? Does your answer depend on what you want to do with the data?
+
+# `pivot_longer()`
+
+## Wide to long
+
+Pivot `dat_wellbeing_wide` to long format, with one row per participant per timepoint and columns 'timepoint' and 'wellbeing'. Specify the `cols` argument in three different ways: with `starts_with()`, with negative selection, and with a range of columns using `:`.
+
+```{r}
+
+
+
+```
+
+## Predict before you run
+
+Before running: what will happen? Why?
+
+```{r}
+#| error: true
+
+dat_wellbeing_wide %>%
+  pivot_longer(cols = -id,
+               names_to = "timepoint",
+               values_to = "wellbeing")
+
+```
+
+## Clean up the timepoint names
+
+The 'timepoint' column contains "wellbeing_baseline", etc. Make it contain only "baseline", "post", and "followup", in two ways: with `str_remove()` after the pivot, and with the `names_prefix` argument of `pivot_longer()`. Then convert 'timepoint' to a factor in a meaningful order, calculate the mean wellbeing in each condition at each timepoint, and save the long data as `dat_wellbeing_long`.
+
+```{r}
+
+
+
+```
+
+## Missing values
+
+How many rows does `dat_wellbeing_long` have? Now pivot again with `values_drop_na = TRUE`, and save the result as `dat_wellbeing_long_dropped`. How many rows are there now, and which one is missing? When could dropping these rows cause problems?
+
+```{r}
+
+
+
+```
+
+## Item-level data
+
+Pivot `dat_items` to long format, with separate columns for 'scale' and 'item', using `names_to` with two names and `names_sep`. Then:
+
+1. Plot the distribution of responses on each scale using `facet_wrap()`.
+2. Calculate each participant's mean score on each scale. What happens to participant 3's GAD score? Is that what you want?
+
+```{r}
+
+
+
+```
+
+# `pivot_wider()`
+
+## Long to wide
+
+Pivot `dat_wellbeing_long` back to wide format, with one row per participant and one column per timepoint. Then calculate each participant's change in wellbeing from baseline to post, and the mean change in each condition.
+
+```{r}
+
+
+
+```
+
+## Round trip
+
+Use the `names_prefix` argument of `pivot_wider()` to recreate the original column names. Is the result identical to `dat_wellbeing_wide`? Check with `all.equal()`. Now try the same round trip starting from `dat_wellbeing_long_dropped`. What happens to participant 4's follow-up score?
+
+```{r}
+
+
+
+```
+
+## Predict before you run
+
+Before running: what shape will the result be? Why?
+
+```{r}
+
+dat_sessions %>%
+  filter(id != 3) %>%
+  pivot_wider(names_from = timepoint,
+              values_from = wellbeing)
+
+```
+
+Fix it so that there is one row per participant.
+
+```{r}
+
+
+
+```
+
+## Duplicates
+
+Now run the fixed code on all of `dat_sessions`, including participant 3. What happens? Find the problem using `count()`, then fix it by keeping only each participant's first session at each timepoint.
+
+```{r}
+
+
+
+```
+
+# Several values per column name
+
+Before running: how many rows and columns will the result have? What does `".value"` do?
+
+```{r}
+
+dat_meta_long <- dat_meta_wide %>%
+  pivot_longer(cols = -study,
+               names_to = c(".value", "condition"),
+               names_sep = "_")
+
+dat_meta_long
+
+```
+
+Using `dat_meta_long`, calculate the total sample size of each study. Then think about calculating the mean difference between conditions in each study. Which shape is easier for that?
+
+```{r}
+
+
+
+```
+
+# `coalesce()`
+
+Create a single 'age' column from `dat_versions` using `coalesce()`. Before doing so, check whether any participant has an age in more than one column. What does `coalesce()` do in that case? What would you do about it?
+
+```{r}
+
+
+
+```
+
+# Fix the broken pipe
+
+This code is meant to calculate the mean change in wellbeing from baseline to post in each condition. It has (at least) four bugs. Find and fix them one at a time.
+
+```{r}
+#| eval: false
+
+dat_wellbeing_wide %>%
+  pivot_longer(cols = -id,
+               names_to = "timepoint",
+               values_to = "wellbeing",
+               names_prefix = "wellbeing") %>%
+  pivot_wider(names_from = wellbeing,
+              values_from = timepoint) %>%
+  mutate(change = post - baseline) %>%
+  summarize(mean_change = mean(change))
+
+```
+
+# Put it all together
+
+Write a single pipe that starts from `dat_items` and creates `dat_scale_scores`, with one row per participant and the columns 'id', 'phq', and 'gad' containing each participant's mean score on each scale, with a comment above each step. Only calculate mean scores for participants who answered all items of that scale.
+
+Then calculate the sample's mean and SD on each scale, and the correlation between the two scales. Which shape of the data did you use for each of these?
+
+```{r}
+
+
+
+```
+
+# Looking ahead
+
+Imagine that the participants' age and gender were stored in a separate data frame, `dat_demographics`, with one row per participant and an 'id' column. How would you add them to `dat_scale_scores`? Why would putting the two data frames side by side not be a safe way to do this?
