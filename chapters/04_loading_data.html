@@ -473,8 +473,14 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/14_data_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -490,20 +496,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/16_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/18_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -668,20 +674,35 @@ div.csl-indent {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "01_setup.html"                 "01_setup.qmd"                 
- [3] "02_fundamentals.html"          "02_fundamentals.qmd"          
- [5] "02_fundamentals_files"         "03_reproducible_reports.html" 
- [7] "03_reproducible_reports.qmd"   "03_reproducible_reports_files"
- [9] "04_loading_data.qmd"           "04_loading_data.rmarkdown"    
-[11] "05_the_pipe_and_renaming.qmd"  "06_data_transformation_1.qmd" 
-[13] "07_data_transformation_2.qmd"  "08_data_transformation_3.qmd" 
-[15] "09_structuring_projects.qmd"   "10_data_types.qmd"            
-[17] "11_strings_and_factors.qmd"    "12_reshaping_and_pivots.qmd"  
-[19] "13_binding_and_joining.qmd"    "14_sharing_and_privacy.qmd"   
-[21] "15_visualization.qmd"          "16_reporting.qmd"             
-[23] "17_the_linear_model.qmd"       "images"                       
-[25] "project_1.qmd"                 "project_2.qmd"                
-[27] "updating.qmd"                 </code></pre>
+<pre><code> [1] "01_setup.html"                          
+ [2] "01_setup.qmd"                           
+ [3] "02_fundamentals.html"                   
+ [4] "02_fundamentals.qmd"                    
+ [5] "02_fundamentals_files"                  
+ [6] "03_reproducible_reports.html"           
+ [7] "03_reproducible_reports.qmd"            
+ [8] "03_reproducible_reports_files"          
+ [9] "04_loading_data.qmd"                    
+[10] "04_loading_data.rmarkdown"              
+[11] "05_the_pipe_and_renaming.qmd"           
+[12] "06_data_transformation_1.qmd"           
+[13] "07_data_transformation_2.qmd"           
+[14] "08_data_transformation_3.qmd"           
+[15] "09_structuring_projects.qmd"            
+[16] "10_data_types.qmd"                      
+[17] "11_strings_and_factors.qmd"             
+[18] "12_reshaping_and_pivots.qmd"            
+[19] "13_binding_and_joining.qmd"             
+[20] "14_data_privacy.qmd"                    
+[21] "15_data_sharing_and_version_control.qmd"
+[22] "16_visualization.qmd"                   
+[23] "17_reporting.qmd"                       
+[24] "18_the_linear_model.qmd"                
+[25] "images"                                 
+[26] "plots"                                  
+[27] "project_1.qmd"                          
+[28] "project_2.qmd"                          
+[29] "updating.qmd"                           </code></pre>
 </div>
 </div>
 <p>Go ‘up’ one directory and list the directories present:</p>
@@ -690,10 +711,12 @@ div.csl-indent {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".quarto"          "R"                "_book"            "chapters"        
- [5] "data"             "exercises"        "images"           "include"         
- [9] "project_template" "resources"        "site_libs"        "slides"          
-[13] "videos"          </code></pre>
+<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
+ [4] ".quarto"             "R"                   "_book"              
+ [7] "chapters"            "data"                "exercises"          
+[10] "exercises_solutions" "images"              "include"            
+[13] "old"                 "project_template"    "resources"          
+[16] "site_libs"           "slides"              "videos"             </code></pre>
 </div>
 </div>
 <p>From the above we can see that the ‘data’ folder is up one directory level from the current .qmd file. Let’s confirm this with <code>dir.exists()</code> to check the directory does indeed exist:</p>
@@ -1628,10 +1651,12 @@ div.csl-indent {
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".quarto"          "R"                "_book"            "chapters"        
- [5] "data"             "exercises"        "images"           "include"         
- [9] "project_template" "resources"        "site_libs"        "slides"          
-[13] "videos"          </code></pre>
+<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
+ [4] ".quarto"             "R"                   "_book"              
+ [7] "chapters"            "data"                "exercises"          
+[10] "exercises_solutions" "images"              "include"            
+[13] "old"                 "project_template"    "resources"          
+[16] "site_libs"           "slides"              "videos"             </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path =</span> <span class="st">"../data"</span>, <span class="co"># 'up' one directory level, down one into 'data'</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>

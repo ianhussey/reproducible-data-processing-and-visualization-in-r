@@ -451,8 +451,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_sharing_and_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy and anonymity <span class="badge badge-draft2">✎ TODO</span></span></span></a>
+  <a href="../chapters/14_data_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -468,20 +474,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
+  <a href="../chapters/16_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+  <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
+  <a href="../chapters/18_the_linear_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -3032,7 +3038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As with <code>select()</code>, it is often better to define what you <em>do</em> want (<code>==</code> and <code>%in%</code>) rather than what you <em>do not</em> want (<code>!=</code> and <code>!</code>+<code>%in%</code>). This is even more important with <code>filter()</code> as unexpected row values are much more common than unexpected column names.</p>
 <p>For example, if you specify a negative filter <code>dat %&gt;% filter(gender != "non-binary")</code> because you wish to filter to return only participants who identify as ‘male’ or ‘female’, you have in fact only excluded participants who specified ‘non-binary’. This code would also return participants with other response options such as ‘non binary’, ‘Non-Binary’, ‘NB’, etc.</p>
 <p>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</p>
-<p>Some rows of the ‘dat_demographics_renamed’ data frame contain “prolific ID” values, which could be linked back to the individual’s Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <a href="../chapters/14_sharing_and_privacy.html">Data Privacy</a>.</p>
+<p>Some rows of the ‘dat_demographics_renamed’ data frame contain “prolific ID” values, which could be linked back to the individual’s Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <a href="../chapters/14_data_privacy.html">Data privacy</a>.</p>
 <p>In this case, you would likely need to remove all rows referring to Prolific ID with a negative filter:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dat_demographics_anonymized <span class="ot">&lt;-</span> dat_demographics_renamed <span class="sc">%&gt;%</span></span>
@@ -3190,7 +3196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Note that the original ‘data_demographics_raw_messy.csv’ data file we originally read in to R still contains the Prolific ID codes! Again, see the <a href="../chapters/14_sharing_and_privacy.html">Data Privacy</a> chapter for how you would deal with this more thoroughly in your own projects.</p>
+<p>Note that the original ‘data_demographics_raw_messy.csv’ data file we originally read in to R still contains the Prolific ID codes! Again, see the <a href="../chapters/14_data_privacy.html">Data privacy</a> chapter for how you would deal with this more thoroughly in your own projects.</p>
 </section>
 </section>
 <section id="creating-and-modifying-columns-with-dplyrmutate" class="level2" data-number="6.5">
@@ -6109,7 +6115,7 @@ window.onload = function() {
 <span id="cb61-722"><a href="#cb61-722" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-723"><a href="#cb61-723" aria-hidden="true" tabindex="-1"></a>However, there can be cases where you specifically do not want some rows or want to retain anything other than a given value. Protecting participant privacy is one of them.</span>
 <span id="cb61-724"><a href="#cb61-724" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-725"><a href="#cb61-725" aria-hidden="true" tabindex="-1"></a>Some rows of the 'dat_demographics_renamed' data frame contain "prolific ID" values, which could be linked back to the individual's Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span>.</span>
+<span id="cb61-725"><a href="#cb61-725" aria-hidden="true" tabindex="-1"></a>Some rows of the 'dat_demographics_renamed' data frame contain "prolific ID" values, which could be linked back to the individual's Prolific.com account where they completed the study, and therefore risk exposing identifying information. If this data was shared with other researchers or publicly, this could violate the informed consent agreement and/or local data privacy laws. (Note that the prolific IDs included in this data frame are made up.) This is discussed in more detail in the chapter on <span class="co">[</span><span class="ot">Data privacy</span><span class="co">](14_data_privacy.qmd)</span>.</span>
 <span id="cb61-726"><a href="#cb61-726" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-727"><a href="#cb61-727" aria-hidden="true" tabindex="-1"></a>In this case, you would likely need to remove all rows referring to Prolific ID with a negative filter:</span>
 <span id="cb61-728"><a href="#cb61-728" aria-hidden="true" tabindex="-1"></a></span>
@@ -6120,7 +6126,7 @@ window.onload = function() {
 <span id="cb61-735"><a href="#cb61-735" aria-hidden="true" tabindex="-1"></a>dat_demographics_anonymized</span>
 <span id="cb61-736"><a href="#cb61-736" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-737"><a href="#cb61-737" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-738"><a href="#cb61-738" aria-hidden="true" tabindex="-1"></a>Note that the original 'data_demographics_raw_messy.csv' data file we originally read in to R still contains the Prolific ID codes! Again, see the <span class="co">[</span><span class="ot">Data Privacy</span><span class="co">](14_sharing_and_privacy.qmd)</span> chapter for how you would deal with this more thoroughly in your own projects.</span>
+<span id="cb61-738"><a href="#cb61-738" aria-hidden="true" tabindex="-1"></a>Note that the original 'data_demographics_raw_messy.csv' data file we originally read in to R still contains the Prolific ID codes! Again, see the <span class="co">[</span><span class="ot">Data privacy</span><span class="co">](14_data_privacy.qmd)</span> chapter for how you would deal with this more thoroughly in your own projects.</span>
 <span id="cb61-739"><a href="#cb61-739" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-740"><a href="#cb61-740" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and modifying columns with `dplyr::mutate()`</span></span>
 <span id="cb61-741"><a href="#cb61-741" aria-hidden="true" tabindex="-1"></a></span>
