@@ -453,14 +453,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14_data_privacy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data privacy</span></span></a>
+  <a href="../chapters/14_checking_data_processing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Checking your data processing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control</span></span></a>
+  <a href="../chapters/15_data_privacy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data privacy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/16_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Data sharing and version control</span></span></a>
   </div>
 </li>
       </ul>
@@ -476,20 +482,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16_principles_of_visualization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Principles of data visualization</span></span></a>
+  <a href="../chapters/17_principles_of_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principles of data visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17_plotting_with_ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Plotting data with ggplot2</span></span></a>
+  <a href="../chapters/18_plotting_with_ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Plotting data with ggplot2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/18_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
+  <a href="../chapters/19_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
       </ul>
@@ -1918,7 +1924,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Factor levels control:</p>
 <ul>
 <li>The order of rows in tables made with <code>count()</code> and <code>summarize()</code>.</li>
-<li>The order of categories in plots, e.g., the bars of a bar chart. See the <a href="../chapters/17_plotting_with_ggplot2.html">Plotting data with ggplot2</a> chapter.</li>
+<li>The order of categories in plots, e.g., the bars of a bar chart. See the <a href="../chapters/18_plotting_with_ggplot2.html">Plotting data with ggplot2</a> chapter.</li>
 <li>The reference category in regression models, i.e., which group the others are compared to. See the <a href="https://simulations.tidyver.se/chapters/11_everything_is_regression.html">‘Everything is regression’ chapter</a> of the companion book on simulation, which shows how a two-group comparison is coded as 0 and 1 in a regression.</li>
 </ul>
 <div class="cell">
@@ -2150,7 +2156,7 @@ Levels: female male non-binary</code></pre>
 </div>
 </div>
 </div>
-<p>This is most useful for plots, where ordering the categories by their values makes them much easier to compare than alphabetical order (see the <a href="../chapters/17_plotting_with_ggplot2.html">Plotting data with ggplot2</a> chapter). Be aware that the order is then determined by the data, so it can change when the data changes. When the categories have a meaningful order of their own, e.g., timepoints, set it explicitly with <code>fct()</code> or <code>fct_relevel()</code> instead.</p>
+<p>This is most useful for plots, where ordering the categories by their values makes them much easier to compare than alphabetical order (see the <a href="../chapters/18_plotting_with_ggplot2.html">Plotting data with ggplot2</a> chapter). Be aware that the order is then determined by the data, so it can change when the data changes. When the categories have a meaningful order of their own, e.g., timepoints, set it explicitly with <code>fct()</code> or <code>fct_relevel()</code> instead.</p>
 </section>
 <section id="changing-the-values-of-levels" class="level3" data-number="11.4.4">
 <h3 data-number="11.4.4" class="anchored" data-anchor-id="changing-the-values-of-levels"><span class="header-section-number">11.4.4</span> Changing the values of levels</h3>
@@ -3919,7 +3925,7 @@ window.onload = function() {
 <span id="cb84-540"><a href="#cb84-540" aria-hidden="true" tabindex="-1"></a>Factor levels control:</span>
 <span id="cb84-541"><a href="#cb84-541" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-542"><a href="#cb84-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The order of rows in tables made with <span class="in">`count()`</span> and <span class="in">`summarize()`</span>.</span>
-<span id="cb84-543"><a href="#cb84-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The order of categories in plots, e.g., the bars of a bar chart. See the <span class="co">[</span><span class="ot">Plotting data with ggplot2</span><span class="co">](17_plotting_with_ggplot2.qmd)</span> chapter.</span>
+<span id="cb84-543"><a href="#cb84-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The order of categories in plots, e.g., the bars of a bar chart. See the <span class="co">[</span><span class="ot">Plotting data with ggplot2</span><span class="co">](18_plotting_with_ggplot2.qmd)</span> chapter.</span>
 <span id="cb84-544"><a href="#cb84-544" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The reference category in regression models, i.e., which group the others are compared to. See the <span class="co">[</span><span class="ot">'Everything is regression' chapter</span><span class="co">](https://simulations.tidyver.se/chapters/11_everything_is_regression.html)</span> of the companion book on simulation, which shows how a two-group comparison is coded as 0 and 1 in a regression.</span>
 <span id="cb84-545"><a href="#cb84-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-548"><a href="#cb84-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -4016,7 +4022,7 @@ window.onload = function() {
 <span id="cb84-649"><a href="#cb84-649" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_score =</span> <span class="fu">mean</span>(score))</span>
 <span id="cb84-650"><a href="#cb84-650" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb84-651"><a href="#cb84-651" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-652"><a href="#cb84-652" aria-hidden="true" tabindex="-1"></a>This is most useful for plots, where ordering the categories by their values makes them much easier to compare than alphabetical order (see the <span class="co">[</span><span class="ot">Plotting data with ggplot2</span><span class="co">](17_plotting_with_ggplot2.qmd)</span> chapter). Be aware that the order is then determined by the data, so it can change when the data changes. When the categories have a meaningful order of their own, e.g., timepoints, set it explicitly with <span class="in">`fct()`</span> or <span class="in">`fct_relevel()`</span> instead.</span>
+<span id="cb84-652"><a href="#cb84-652" aria-hidden="true" tabindex="-1"></a>This is most useful for plots, where ordering the categories by their values makes them much easier to compare than alphabetical order (see the <span class="co">[</span><span class="ot">Plotting data with ggplot2</span><span class="co">](18_plotting_with_ggplot2.qmd)</span> chapter). Be aware that the order is then determined by the data, so it can change when the data changes. When the categories have a meaningful order of their own, e.g., timepoints, set it explicitly with <span class="in">`fct()`</span> or <span class="in">`fct_relevel()`</span> instead.</span>
 <span id="cb84-653"><a href="#cb84-653" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-654"><a href="#cb84-654" aria-hidden="true" tabindex="-1"></a><span class="fu">### Changing the values of levels</span></span>
 <span id="cb84-655"><a href="#cb84-655" aria-hidden="true" tabindex="-1"></a></span>
