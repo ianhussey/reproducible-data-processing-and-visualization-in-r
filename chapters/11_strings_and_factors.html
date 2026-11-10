@@ -424,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09_structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control</span></span></a>
   </div>
 </li>
       </ul>
@@ -483,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
       </ul>
@@ -1147,8 +1147,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"Male"</span>), <span class="st">"male"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] | fe&lt;male&gt;
-[2] | &lt;male&gt;</code></pre>
+<pre><code>[1] │ fe&lt;male&gt;
+[2] │ &lt;male&gt;</code></pre>
 </div>
 </div>
 <section id="character-classes" class="level3" data-number="11.3.1">
@@ -1189,8 +1189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"nonbinary"</span>, <span class="st">"non-binary"</span>, <span class="st">"non binary"</span>), <span class="st">"non-?binary"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] | &lt;nonbinary&gt;
-[2] | &lt;non-binary&gt;</code></pre>
+<pre><code>[1] │ &lt;nonbinary&gt;
+[2] │ &lt;non-binary&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -1219,12 +1219,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"3.5"</span>, <span class="st">"305"</span>), <span class="st">"3.5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] | &lt;3.5&gt;
-[2] | &lt;305&gt;</code></pre>
+<pre><code>[1] │ &lt;3.5&gt;
+[2] │ &lt;305&gt;</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"3.5"</span>, <span class="st">"305"</span>), <span class="st">"3</span><span class="sc">\\</span><span class="st">.5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] | &lt;3.5&gt;</code></pre>
+<pre><code>[1] │ &lt;3.5&gt;</code></pre>
 </div>
 </div>
 <p>Regex can become very complicated very quickly. Keep your patterns as simple as possible, test them on small examples with <code>str_view()</code> before using them on your data, and add a comment explaining what each pattern is meant to match.</p>
@@ -1310,14 +1310,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(dat_results_text<span class="sc">$</span>result, pattern_p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] | t(48) = 2.31, &lt;p = .025&gt;
-[2] | F(1, 120) = 8.45, &lt;p&lt;0.01&gt;
-[3] | r = .12, &lt;p = 0.21&gt;
-[4] | chi2(2) = 15.20, &lt;P &lt; .001&gt;
-[5] | z = 1.20, &lt;p=.230&gt;
-[6] | t(30) = 1.70, &lt;p &gt; .05&gt;
-[7] | b = 0.31, SE = 0.10, &lt;p &lt;= .002&gt;
-[8] | Step 2 was significant, &lt;p = .041&gt;</code></pre>
+<pre><code>[1] │ t(48) = 2.31, &lt;p = .025&gt;
+[2] │ F(1, 120) = 8.45, &lt;p&lt;0.01&gt;
+[3] │ r = .12, &lt;p = 0.21&gt;
+[4] │ chi2(2) = 15.20, &lt;P &lt; .001&gt;
+[5] │ z = 1.20, &lt;p=.230&gt;
+[6] │ t(30) = 1.70, &lt;p &gt; .05&gt;
+[7] │ b = 0.31, SE = 0.10, &lt;p &lt;= .002&gt;
+[8] │ Step 2 was significant, &lt;p = .041&gt;</code></pre>
 </div>
 </div>
 <p>Two new features are used here:</p>
@@ -2008,7 +2008,7 @@ Levels: female male</code></pre>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `fct()`:
 ! All values of `x` must appear in `levels` or `na`
-i Missing level: "non-binary"</code></pre>
+ℹ Missing level: "non-binary"</code></pre>
 </div>
 </div>
 <div class="cell">

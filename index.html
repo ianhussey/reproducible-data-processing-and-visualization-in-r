@@ -130,6 +130,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <style>
   /* more breathing room before section headings.
      scoped to main.content so the sidebar/TOC headings are left alone.
@@ -445,7 +448,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/09_structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -481,7 +484,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control</span></span></a>
   </div>
 </li>
       </ul>
@@ -504,7 +507,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
       </ul>
@@ -574,6 +577,35 @@ div.csl-indent {
 <section id="introduction" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h2><p><img src="cover.png" title="Reproducible Data Processing and Visualization" class="quarto-cover-image nolightbox img-fluid"></p>
 <p>This Open Source eBook provides materials for the semester-long Master’s seminar course “Reproducible Data Processing and Visualization in R” that I teach at the University of Bern’s Institute of Psychology.</p>
+<p>It is meant to supplement, not replace, what you learn in your other courses. Research methods courses teach you how to design studies that collect the right data, and statistics courses teach you how to analyze that data to answer your research questions. But there is a missing link between the two. The data that real studies produce is rarely ready to be analyzed: it arrives spread across multiple files, in awkward formats, with inconsistent labels, missing values, impossible responses, and participants who need to be excluded. Before any statistical model can be fitted, the data has to be imported, cleaned, checked, reshaped, combined, scored, and visualized. This process is often called <em>data wrangling</em>. It typically takes far more time than the analysis itself, and errors made here flow directly into the results and conclusions. Yet it is rarely taught explicitly. This book focuses on that missing link, and on doing it in a way that is transparent and reproducible.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A["&lt;b&gt;Research methods&lt;/b&gt;&lt;br&gt;Designing studies&lt;br&gt;and collecting data"] --&gt; B["&lt;b&gt;Data wrangling&lt;/b&gt;&lt;br&gt;Importing, cleaning,&lt;br&gt;checking, reshaping,&lt;br&gt;and visualizing data"]
+  B --&gt; C["&lt;b&gt;Statistical analysis&lt;/b&gt;&lt;br&gt;Fitting models to&lt;br&gt;answer research questions"]
+  style B stroke-width:3px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>This book doesn’t teach statistics itself, but two companion books do, both written to build an understanding of the statistical analyses that wrangled data feed into:</p>
+<ul>
+<li><em><a href="https://simulations.tidyver.se">Understanding Statistics Through Monte Carlo Simulations</a></em> uses simulations to show how statistical methods behave. Its <a href="https://simulations.tidyver.se/chapters/11_everything_is_regression.html">‘Everything is regression’ chapter</a> explains how correlations, <em>t</em>-tests, ANOVAs, and many other analyses are all linear models in disguise, and can be read without first learning how to simulate data.</li>
+<li><em><a href="https://trustworthyresear.ch">Trustworthiness Assessment and Forensic Meta-Science</a></em> covers how to understand and interpret <em>p</em>-values, effect sizes such as Cohen’s <em>d</em>, and standard deviations vs.&nbsp;standard errors, and how to check whether published results are trustworthy.</li>
+</ul>
+<p>Good data wrangling is about more than getting data into a shape your analysis function will accept. It also means:</p>
+<ul>
+<li><strong>Producing well-structured data</strong>: tidy, consistently formatted datasets that are easy to analyze, plot, and combine with other data.</li>
+<li><strong>Making data understandable</strong>: clear variable names, sensible labels, and documentation such as codebooks, so that others (and your future self) can tell what each value means.</li>
+<li><strong>Making data ready to share and reuse</strong>: datasets and code that others can check, reproduce, and build on, in line with open science practices.</li>
+<li><strong>Protecting participants’ privacy</strong>: removing or transforming identifying information before data leave your hands.</li>
+<li><strong>Supporting collaboration</strong>: writing readable, well-organized code in structured projects, so that colleagues can review, extend, and work on it with you.</li>
+</ul>
 </section>
 <section id="how-to-use-this-book" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
@@ -1328,59 +1360,83 @@ window.onload = function() {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This Open Source eBook provides materials for the semester-long Master's seminar course "Reproducible Data Processing and Visualization in R" that I teach at the University of Bern's Institute of Psychology.</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to use this book</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>It is meant to supplement, not replace, what you learn in your other courses. Research methods courses teach you how to design studies that collect the right data, and statistics courses teach you how to analyze that data to answer your research questions. But there is a missing link between the two. The data that real studies produce is rarely ready to be analyzed: it arrives spread across multiple files, in awkward formats, with inconsistent labels, missing values, impossible responses, and participants who need to be excluded. Before any statistical model can be fitted, the data has to be imported, cleaned, checked, reshaped, combined, scored, and visualized. This process is often called *data wrangling*. It typically takes far more time than the analysis itself, and errors made here flow directly into the results and conclusions. Yet it is rarely taught explicitly. This book focuses on that missing link, and on doing it in a way that is transparent and reproducible.</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>To run the code locally, I suggest that you download a copy of this book's code and data from <span class="co">[</span><span class="ot">the GitHub repository</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>. If you're already familiar with GitHub, just clone the repository to your local machine. If you're not, on the repository page, click the green 'Code' button, and then 'Download ZIP'. Find the .zip file on your hard drive (e.g., Downloads folder) and unzip/decompress the zip files. You'll find the .qmd files in the <span class="in">`chapters/`</span>, <span class="in">`exercises/`</span> and <span class="in">`solutions/`</span> folders.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>You can also copy and paste the code for any chapter directly from the website. Click the "<span class="sc">\&lt;</span>/<span class="sc">\&gt;</span> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework (<span class="co">[</span><span class="ot">osf.io</span><span class="co">](https://osf.io)</span>), or create simulated messy datasets with my R package <span class="co">[</span><span class="ot">{truffle}</span><span class="co">](https://github.com/ianhussey/truffle)</span> and practice.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/practice.png)</span>{.center width="60%"}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>%%| fig-align: center</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>flowchart LR</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  A[<span class="ot">"</span><span class="st">&lt;b&gt;Research methods&lt;/b&gt;&lt;br&gt;Designing studies&lt;br&gt;and collecting data</span><span class="ot">"</span>] --&gt; B[<span class="ot">"</span><span class="st">&lt;b&gt;Data wrangling&lt;/b&gt;&lt;br&gt;Importing, cleaning,&lt;br&gt;checking, reshaping,&lt;br&gt;and visualizing data</span><span class="ot">"</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  B --&gt; C[<span class="ot">"</span><span class="st">&lt;b&gt;Statistical analysis&lt;/b&gt;&lt;br&gt;Fitting models to&lt;br&gt;answer research questions</span><span class="ot">"</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  style B stroke-width:<span class="dv">3</span>px</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other learning resources</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>This book doesn't teach statistics itself, but two companion books do, both written to build an understanding of the statistical analyses that wrangled data feed into:</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>There are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Lisa DeBruine and Dale Barr's Open Source textbook <span class="co">[</span><span class="ot">Data Skills for Reproducible Research</span><span class="co">](https://psyteachr.github.io/reprores-v3/)</span> <span class="co">[</span><span class="ot">@debruine2021</span><span class="co">]</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {dplyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/dplyr.html)</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {tidyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/tidyr.html)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Allison Horst's <span class="co">[</span><span class="ot">interactive web app for learning {dplyr}</span><span class="co">](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Hadley Wickham and colleagues' Open Source textbook R For Data Science (aka <span class="co">[</span><span class="ot">R4DS</span><span class="co">](https://r4ds.hadley.nz/)</span>) <span class="co">[</span><span class="ot">@wickham2023r4ds</span><span class="co">]</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Particularly the <span class="co">[</span><span class="ot">section on data transformation</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>You can complete all the exercises in R4DS with interactive feedback by installing the {r4ds.tutorials} package (<span class="in">`install.packages("r4ds.tutorials")`</span>) loading the library (<span class="in">`library(r4ds.tutorials)`</span>), and going to the "Tutorial" tab in the Environment corner of RStudio. Individual tutorials can be completed alongside the R4DS book, in parallel to this book.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Garrick Aden-Buie's <span class="co">[</span><span class="ot">tidyexplain gifs</span><span class="co">](https://github.com/gadenbuie/tidyexplain)</span> for understanding how {tidyr}'s pivot functions work</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">datasciencebox.org</span><span class="co">](https://datasciencebox.org)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interactive tutorials that very useful for practicing processing and visualization skills once you've *already* learned the functions (i.e., don't start here)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot</span><span class="co">](https://minecr.shinyapps.io/dsbox-01-edibnb)</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, mutate</span><span class="co">](https://minecr.shinyapps.io/dsbox-02-accidents)</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, select, arrange, summarize, count, filter</span><span class="co">](https://minecr.shinyapps.io/dsbox-03-collegemajors)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions count, arrange, summarize</span><span class="co">](https://minecr.shinyapps.io/dsbox-04-legosales)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Recorded presentations</span><span class="co">](https://datasciencebox.org/02-exploring-data)</span> on many relevant topics</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## License</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="dv">&amp;copy;</span> Ian Hussey (2025-2026) </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Text and figures are licensed under a <span class="co">[</span><span class="ot">Creative Commons Attribution 4.0 (CC BY 4.0)</span><span class="co">](https://creativecommons.org/licenses/by/4.0/)</span> license.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Code is licensed under the <span class="co">[</span><span class="ot">MIT License</span><span class="co">](https://opensource.org/licenses/MIT)</span>.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite its source. See suggested citation below.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>If you use this book, please cite it as:</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Hussey, I. (2026). *Reproducible data processing and visualization in R and tidyverse*. </span><span class="co">[</span><span class="ot">wrangling.tidyver.se</span><span class="co">](https://wrangling.tidyver.se)</span><span class="at"> doi: </span><span class="co">[</span><span class="ot">10.5281/zenodo.19427859</span><span class="co">](https://doi.org/10.5281/zenodo.19427859)</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://doi.org/10.5281/zenodo.19427859"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://zenodo.org/badge/DOI/10.5281/zenodo.19427859.svg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"DOI"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contributing</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>If you are interested in contributing to or adapting this eBook, all code and data are available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*[Understanding Statistics Through Monte Carlo Simulations](https://simulations.tidyver.se)* uses simulations to show how statistical methods behave. Its ['Everything is regression' chapter](https://simulations.tidyver.se/chapters/11_everything_is_regression.html) explains how correlations, *t*-tests, ANOVAs, and many other analyses are all linear models in disguise, and can be read without first learning how to simulate data.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*[Trustworthiness Assessment and Forensic Meta-Science](https://trustworthyresear.ch)* covers how to understand and interpret *p*-values, effect sizes such as Cohen's *d*, and standard deviations vs. standard errors, and how to check whether published results are trustworthy.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Good data wrangling is about more than getting data into a shape your analysis function will accept. It also means:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Producing well-structured data**: tidy, consistently formatted datasets that are easy to analyze, plot, and combine with other data.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Making data understandable**: clear variable names, sensible labels, and documentation such as codebooks, so that others (and your future self) can tell what each value means.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Making data ready to share and reuse**: datasets and code that others can check, reproduce, and build on, in line with open science practices.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Protecting participants' privacy**: removing or transforming identifying information before data leave your hands.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Supporting collaboration**: writing readable, well-organized code in structured projects, so that colleagues can review, extend, and work on it with you.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to use this book</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>This book is made up of individual Quarto (.qmd) workbooks. Many of the exercises are easiest to complete in your own local copy of these .qmd files.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>To run the code locally, I suggest that you download a copy of this book's code and data from <span class="co">[</span><span class="ot">the GitHub repository</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>. If you're already familiar with GitHub, just clone the repository to your local machine. If you're not, on the repository page, click the green 'Code' button, and then 'Download ZIP'. Find the .zip file on your hard drive (e.g., Downloads folder) and unzip/decompress the zip files. You'll find the .qmd files in the <span class="in">`chapters/`</span>, <span class="in">`exercises/`</span> and <span class="in">`solutions/`</span> folders.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>You can also copy and paste the code for any chapter directly from the website. Click the "<span class="sc">\&lt;</span>/<span class="sc">\&gt;</span> Code" button on the top right of each page to see the full .qmd file's code. You can copy and paste this into a .qmd file. However, it's probably easier to download all the .qmd files and data as mentioned above.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Learning to code is a practice skill. Almost anyone can become competent in writing reproducible code for data processing and visualization with practice. More than anything else, completing this course requires that you practice in your own time, using not only the examples provided but also ones you create yourself. Take real data sets from your own studies, or the thousands available on the Open Science Framework (<span class="co">[</span><span class="ot">osf.io</span><span class="co">](https://osf.io)</span>), or create simulated messy datasets with my R package <span class="co">[</span><span class="ot">{truffle}</span><span class="co">](https://github.com/ianhussey/truffle)</span> and practice.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/practice.png)</span>{.center width="60%"}</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other learning resources</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>There are many excellent Open Source resources to learn R and {tidyverse} for data processing and visualization. Readers are encouraged to seek them out to support the materials already provided in this book. I can particularly recommend the following ones:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Lisa DeBruine and Dale Barr's Open Source textbook <span class="co">[</span><span class="ot">Data Skills for Reproducible Research</span><span class="co">](https://psyteachr.github.io/reprores-v3/)</span> <span class="co">[</span><span class="ot">@debruine2021</span><span class="co">]</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {dplyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/dplyr.html)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Section on {tidyr}</span><span class="co">](https://psyteachr.github.io/reprores-v3/tidyr.html)</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Allison Horst's <span class="co">[</span><span class="ot">interactive web app for learning {dplyr}</span><span class="co">](https://allisonhorst.shinyapps.io/dplyr-learnr/#section-welcome)</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Hadley Wickham and colleagues' Open Source textbook R For Data Science (aka <span class="co">[</span><span class="ot">R4DS</span><span class="co">](https://r4ds.hadley.nz/)</span>) <span class="co">[</span><span class="ot">@wickham2023r4ds</span><span class="co">]</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Particularly the <span class="co">[</span><span class="ot">section on data transformation</span><span class="co">](https://r4ds.hadley.nz/data-transform)</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>You can complete all the exercises in R4DS with interactive feedback by installing the {r4ds.tutorials} package (<span class="in">`install.packages("r4ds.tutorials")`</span>) loading the library (<span class="in">`library(r4ds.tutorials)`</span>), and going to the "Tutorial" tab in the Environment corner of RStudio. Individual tutorials can be completed alongside the R4DS book, in parallel to this book.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Garrick Aden-Buie's <span class="co">[</span><span class="ot">tidyexplain gifs</span><span class="co">](https://github.com/gadenbuie/tidyexplain)</span> for understanding how {tidyr}'s pivot functions work</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">datasciencebox.org</span><span class="co">](https://datasciencebox.org)</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interactive tutorials that very useful for practicing processing and visualization skills once you've *already* learned the functions (i.e., don't start here)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot</span><span class="co">](https://minecr.shinyapps.io/dsbox-01-edibnb)</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, mutate</span><span class="co">](https://minecr.shinyapps.io/dsbox-02-accidents)</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions ggplot, pipe, select, arrange, summarize, count, filter</span><span class="co">](https://minecr.shinyapps.io/dsbox-03-collegemajors)</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span><span class="co">[</span><span class="ot">Practice the functions count, arrange, summarize</span><span class="co">](https://minecr.shinyapps.io/dsbox-04-legosales)</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="co">[</span><span class="ot">Recorded presentations</span><span class="co">](https://datasciencebox.org/02-exploring-data)</span> on many relevant topics</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## License</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="dv">&amp;copy;</span> Ian Hussey (2025-2026) </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Text and figures are licensed under a <span class="co">[</span><span class="ot">Creative Commons Attribution 4.0 (CC BY 4.0)</span><span class="co">](https://creativecommons.org/licenses/by/4.0/)</span> license.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>Code is licensed under the <span class="co">[</span><span class="ot">MIT License</span><span class="co">](https://opensource.org/licenses/MIT)</span>.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>You are free to copy, share, adapt, and reuse the contents of this book — text, figures, and code — for any purpose, including commercial use, provided you cite its source. See suggested citation below.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Citation</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>If you use this book, please cite it as:</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Hussey, I. (2026). *Reproducible data processing and visualization in R and tidyverse*. </span><span class="co">[</span><span class="ot">wrangling.tidyver.se</span><span class="co">](https://wrangling.tidyver.se)</span><span class="at"> doi: </span><span class="co">[</span><span class="ot">10.5281/zenodo.19427859</span><span class="co">](https://doi.org/10.5281/zenodo.19427859)</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://doi.org/10.5281/zenodo.19427859"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://zenodo.org/badge/DOI/10.5281/zenodo.19427859.svg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"DOI"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contributing</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>If you are interested in contributing to or adapting this eBook, all code and data are available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/ianhussey/reproducible-data-processing-and-visualization-in-r)</span>.</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

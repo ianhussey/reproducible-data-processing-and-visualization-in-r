@@ -446,7 +446,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/09_structuring_projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Structuring projects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -482,7 +482,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/15_data_sharing_and_version_control.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control <span class="badge badge-draft2">✎ Rough draft</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data sharing and version control</span></span></a>
   </div>
 </li>
       </ul>
@@ -505,7 +505,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting</span></span></a>
   </div>
 </li>
       </ul>
@@ -672,12 +672,12 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "01_setup.html"                          
  [2] "01_setup.qmd"                           
- [3] "02_fundamentals.html"                   
- [4] "02_fundamentals.qmd"                    
- [5] "02_fundamentals_files"                  
- [6] "03_reproducible_reports.html"           
- [7] "03_reproducible_reports.qmd"            
- [8] "03_reproducible_reports_files"          
+ [3] "02_fundamentals_files"                  
+ [4] "02_fundamentals.html"                   
+ [5] "02_fundamentals.qmd"                    
+ [6] "03_reproducible_reports_files"          
+ [7] "03_reproducible_reports.html"           
+ [8] "03_reproducible_reports.qmd"            
  [9] "04_loading_data.qmd"                    
 [10] "04_loading_data.rmarkdown"              
 [11] "05_the_pipe_and_renaming.qmd"           
@@ -707,11 +707,11 @@ div.csl-indent {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
- [4] ".quarto"             "R"                   "_book"              
- [7] "chapters"            "data"                "exercises"          
-[10] "exercises_solutions" "images"              "include"            
-[13] "old"                 "project_template"    "resources"          
+<pre><code> [1] "_book"               ".claude"             ".git"               
+ [4] ".quarto"             ".Rproj.user"         "chapters"           
+ [7] "data"                "exercises"           "exercises_solutions"
+[10] "images"              "include"             "old"                
+[13] "project_template"    "R"                   "resources"          
 [16] "site_libs"           "slides"              "videos"             </code></pre>
 </div>
 </div>
@@ -736,10 +736,10 @@ div.csl-indent {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"../data/raw"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "data_age_gender_subset.csv"         "data_amp_raw.csv"                  
- [3] "data_amp_summary_subset.csv"        "data_demographics_raw.csv"         
- [5] "data_demographics_raw_messy.csv"    "data_likert.csv"                   
- [7] "data_likert.rds"                    "data_likert.xlsx"                  
- [9] "data_likert_messy.csv"              "data_raw_bfi.csv"                  
+ [3] "data_amp_summary_subset.csv"        "data_demographics_raw_messy.csv"   
+ [5] "data_demographics_raw.csv"          "data_likert_messy.csv"             
+ [7] "data_likert.csv"                    "data_likert.rds"                   
+ [9] "data_likert.xlsx"                   "data_raw_bfi.csv"                  
 [11] "data_selfreport_raw.csv"            "data_selfreport_summary_subset.csv"
 [13] "data_unique_id_subset.csv"         </code></pre>
 </div>
@@ -966,7 +966,7 @@ div.csl-indent {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dat_likert)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 20 x 5
+<pre><code># A tibble: 20 × 5
    date       group subject likert_1 likert_2
    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
  1 23.06.2022     1       1        1        4
@@ -1647,11 +1647,11 @@ div.csl-indent {
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">full.names =</span> <span class="cn">FALSE</span>, <span class="co"># abbreviated dir names</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">recursive =</span> <span class="cn">FALSE</span>) <span class="co"># only the directories, not their contents</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] ".Rproj.user"         ".claude"             ".git"               
- [4] ".quarto"             "R"                   "_book"              
- [7] "chapters"            "data"                "exercises"          
-[10] "exercises_solutions" "images"              "include"            
-[13] "old"                 "project_template"    "resources"          
+<pre><code> [1] "_book"               ".claude"             ".git"               
+ [4] ".quarto"             ".Rproj.user"         "chapters"           
+ [7] "data"                "exercises"           "exercises_solutions"
+[10] "images"              "include"             "old"                
+[13] "project_template"    "R"                   "resources"          
 [16] "site_libs"           "slides"              "videos"             </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path =</span> <span class="st">"../data"</span>, <span class="co"># 'up' one directory level, down one into 'data'</span></span>
