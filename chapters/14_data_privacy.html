@@ -141,6 +141,8 @@ div.csl-indent {
   /* Observable Inputs.button uses .btn-quarto: give it the plots' blue (the default text colour matched its background), and space between stacked buttons */
   .btn.btn-quarto { color: #fff; background-color: #2780e3; border-color: #2780e3; margin: 0.4rem 0; }
   .btn.btn-quarto:hover { background-color: #1f6ab8; border-color: #1f6ab8; }
+  /* quarto adds a copy button to every code cell, which still appears at the top right of Observable JS cells whose code is hidden (echo: false). hide it for those cells only */
+  .code-copy-outer-scaffold > .cell-code.hidden:has(> pre.js) ~ .code-copy-button { display: none; }
   .badge {
     display: inline-flex; align-items: center; gap: 0.3em;
     padding: 0.2em 0.65em; border-radius: 20px;
@@ -502,12 +504,6 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/18_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -950,9 +946,9 @@ my_project/                   &lt;- can be shared, e.g., on GitHub
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">UUIDgenerate</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">use.time =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "752ffa2f-61ce-434d-9ddb-9c045aae4f54"
-[2] "2bbb185f-3e4d-4c79-a137-5bab581a9aff"
-[3] "7b4cde7e-d367-4a9b-9b7e-5b020c790562"</code></pre>
+<pre><code>[1] "f9dc6ef1-a353-4aeb-803e-e925b2819d3e"
+[2] "504fcd0d-779a-48ca-b909-4d1ed66b9d88"
+[3] "22d35d2e-4ca7-427b-bbd3-78840e97b120"</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -1016,19 +1012,19 @@ my_project/                   &lt;- can be shared, e.g., on GitHub
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">040893190fe76384d391e288</td>
-<td style="text-align: left;">42ff37a3-7273-4f68-b4b8-37c4f271669c</td>
+<td style="text-align: left;">63d81bc8-f64d-4852-8926-940302f408e8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">a34ec431b729097dae597335</td>
-<td style="text-align: left;">0b0a1718-5402-44db-a97c-69db84720232</td>
+<td style="text-align: left;">cbe6c750-1173-4c2b-9681-90738f14ccc4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">1cb431712760491551325416</td>
-<td style="text-align: left;">d0cb52f6-f803-4471-a5fb-778f4e23f884</td>
+<td style="text-align: left;">45263fd1-5d16-4aaa-90b0-f42a18679b9c</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">599740063c98cb38a2cf4b7d</td>
-<td style="text-align: left;">ce3b29ac-53dc-49e8-acf6-9dbb50df36e9</td>
+<td style="text-align: left;">5f5b4923-c28e-4042-8f05-d6160fec0d89</td>
 </tr>
 </tbody>
 </table>
@@ -1062,62 +1058,62 @@ my_project/                   &lt;- can be shared, e.g., on GitHub
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">42ff37a3-7273-4f68-b4b8-37c4f271669c</td>
+<td style="text-align: left;">63d81bc8-f64d-4852-8926-940302f408e8</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">557</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">42ff37a3-7273-4f68-b4b8-37c4f271669c</td>
+<td style="text-align: left;">63d81bc8-f64d-4852-8926-940302f408e8</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">666</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">42ff37a3-7273-4f68-b4b8-37c4f271669c</td>
+<td style="text-align: left;">63d81bc8-f64d-4852-8926-940302f408e8</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">632</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">0b0a1718-5402-44db-a97c-69db84720232</td>
+<td style="text-align: left;">cbe6c750-1173-4c2b-9681-90738f14ccc4</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">522</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">0b0a1718-5402-44db-a97c-69db84720232</td>
+<td style="text-align: left;">cbe6c750-1173-4c2b-9681-90738f14ccc4</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">758</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">0b0a1718-5402-44db-a97c-69db84720232</td>
+<td style="text-align: left;">cbe6c750-1173-4c2b-9681-90738f14ccc4</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">664</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">d0cb52f6-f803-4471-a5fb-778f4e23f884</td>
+<td style="text-align: left;">45263fd1-5d16-4aaa-90b0-f42a18679b9c</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">609</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">d0cb52f6-f803-4471-a5fb-778f4e23f884</td>
+<td style="text-align: left;">45263fd1-5d16-4aaa-90b0-f42a18679b9c</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">628</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">d0cb52f6-f803-4471-a5fb-778f4e23f884</td>
+<td style="text-align: left;">45263fd1-5d16-4aaa-90b0-f42a18679b9c</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">668</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ce3b29ac-53dc-49e8-acf6-9dbb50df36e9</td>
+<td style="text-align: left;">5f5b4923-c28e-4042-8f05-d6160fec0d89</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">609</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ce3b29ac-53dc-49e8-acf6-9dbb50df36e9</td>
+<td style="text-align: left;">5f5b4923-c28e-4042-8f05-d6160fec0d89</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">301</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ce3b29ac-53dc-49e8-acf6-9dbb50df36e9</td>
+<td style="text-align: left;">5f5b4923-c28e-4042-8f05-d6160fec0d89</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">628</td>
 </tr>
@@ -1143,25 +1139,25 @@ my_project/                   &lt;- can be shared, e.g., on GitHub
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">42ff37a3-7273-4f68-b4b8-37c4f271669c</td>
+<td style="text-align: left;">63d81bc8-f64d-4852-8926-940302f408e8</td>
 <td style="text-align: right;">23</td>
 <td style="text-align: left;">female</td>
 <td style="text-align: right;">5</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">0b0a1718-5402-44db-a97c-69db84720232</td>
+<td style="text-align: left;">cbe6c750-1173-4c2b-9681-90738f14ccc4</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: left;">male</td>
 <td style="text-align: right;">NA</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">d0cb52f6-f803-4471-a5fb-778f4e23f884</td>
+<td style="text-align: left;">45263fd1-5d16-4aaa-90b0-f42a18679b9c</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: left;">non-binary</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ce3b29ac-53dc-49e8-acf6-9dbb50df36e9</td>
+<td style="text-align: left;">5f5b4923-c28e-4042-8f05-d6160fec0d89</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: left;">female</td>
 <td style="text-align: right;">NA</td>

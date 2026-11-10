@@ -121,6 +121,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   /* Observable Inputs.button uses .btn-quarto: give it the plots' blue (the default text colour matched its background), and space between stacked buttons */
   .btn.btn-quarto { color: #fff; background-color: #2780e3; border-color: #2780e3; margin: 0.4rem 0; }
   .btn.btn-quarto:hover { background-color: #1f6ab8; border-color: #1f6ab8; }
+  /* quarto adds a copy button to every code cell, which still appears at the top right of Observable JS cells whose code is hidden (echo: false). hide it for those cells only */
+  .code-copy-outer-scaffold > .cell-code.hidden:has(> pre.js) ~ .code-copy-button { display: none; }
   .badge {
     display: inline-flex; align-items: center; gap: 0.3em;
     padding: 0.2em 0.65em; border-radius: 20px;
@@ -482,12 +484,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../chapters/17_reporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/18_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
   </div>
 </li>
       </ul>
@@ -1917,7 +1913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>The order of rows in tables made with <code>count()</code> and <code>summarize()</code>.</li>
 <li>The order of categories in plots, e.g., the bars of a bar chart. See the <a href="../chapters/16_visualization.html">Visualization</a> chapter.</li>
-<li>The reference category in regression models, i.e., which group the others are compared to. See <a href="../chapters/18_the_linear_model.html">The linear model</a> chapter.</li>
+<li>The reference category in regression models, i.e., which group the others are compared to. See the <a href="https://simulations.tidyver.se/chapters/11_everything_is_regression.html">‘Everything is regression’ chapter</a> of the companion book on simulation, which shows how a two-group comparison is coded as 0 and 1 in a regression.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dat_timepoints <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -3918,7 +3914,7 @@ window.onload = function() {
 <span id="cb84-541"><a href="#cb84-541" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-542"><a href="#cb84-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The order of rows in tables made with <span class="in">`count()`</span> and <span class="in">`summarize()`</span>.</span>
 <span id="cb84-543"><a href="#cb84-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The order of categories in plots, e.g., the bars of a bar chart. See the <span class="co">[</span><span class="ot">Visualization</span><span class="co">](16_visualization.qmd)</span> chapter.</span>
-<span id="cb84-544"><a href="#cb84-544" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The reference category in regression models, i.e., which group the others are compared to. See <span class="co">[</span><span class="ot">The linear model</span><span class="co">](18_the_linear_model.qmd)</span> chapter.</span>
+<span id="cb84-544"><a href="#cb84-544" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The reference category in regression models, i.e., which group the others are compared to. See the <span class="co">[</span><span class="ot">'Everything is regression' chapter</span><span class="co">](https://simulations.tidyver.se/chapters/11_everything_is_regression.html)</span> of the companion book on simulation, which shows how a two-group comparison is coded as 0 and 1 in a regression.</span>
 <span id="cb84-545"><a href="#cb84-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-548"><a href="#cb84-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb84-549"><a href="#cb84-549" aria-hidden="true" tabindex="-1"></a>dat_timepoints <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>

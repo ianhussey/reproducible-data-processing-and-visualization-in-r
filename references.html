@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapters/18_the_linear_model.html" rel="prev">
+<link href="./chapters/17_reporting.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -139,6 +139,8 @@ div.csl-indent {
   /* Observable Inputs.button uses .btn-quarto: give it the plots' blue (the default text colour matched its background), and space between stacked buttons */
   .btn.btn-quarto { color: #fff; background-color: #2780e3; border-color: #2780e3; margin: 0.4rem 0; }
   .btn.btn-quarto:hover { background-color: #1f6ab8; border-color: #1f6ab8; }
+  /* quarto adds a copy button to every code cell, which still appears at the top right of Observable JS cells whose code is hidden (echo: false). hide it for those cells only */
+  .code-copy-outer-scaffold > .cell-code.hidden:has(> pre.js) ~ .code-copy-button { display: none; }
   .badge {
     display: inline-flex; align-items: center; gap: 0.3em;
     padding: 0.2em 0.65em; border-radius: 20px;
@@ -502,12 +504,6 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapters/18_the_linear_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -558,11 +554,6 @@ Allen, M., Poggiali, D., Whitaker, K., Marshall, T. R., Langen, J. van,
 &amp; Kievit, R. A. (2021). Raincloud plots: A multi-platform tool for
 robust data visualization. <em>Wellcome Open Research</em>, <em>4</em>,
 63. <a href="https://doi.org/10.12688/wellcomeopenres.15191.2">https://doi.org/10.12688/wellcomeopenres.15191.2</a>
-</div>
-<div id="ref-alsalti2026" class="csl-entry" role="listitem">
-Alsalti, T., Hussey, I., Elson, M., &amp; Arslan, R. (2026). A case
-study on norming an intelligence test using regularised prediction and
-poststratification. <em>Collabra: Psychology</em>, <em>12</em>(1). <a href="https://doi.org/10.1525/collabra.155850">https://doi.org/10.1525/collabra.155850</a>
 </div>
 <div id="ref-bryan2018" class="csl-entry" role="listitem">
 Bryan, J. (2018). Excuse me, do you have a moment to talk about version
@@ -1325,8 +1316,8 @@ window.onload = function() {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapters/18_the_linear_model.html" class="pagination-link" aria-label="Understanding (almost) everything as a Linear Model">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Understanding (almost) everything as a Linear Model</span></span>
+      <a href="./chapters/17_reporting.html" class="pagination-link" aria-label="Reporting <span class=&quot;badge badge-draft3&quot;>✎ Small TODOs</span>">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Reporting <span class="badge badge-draft3">✎ Small TODOs</span></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
